@@ -6,7 +6,7 @@ class Work < ApplicationRecord
 
   def self.sort_by_vote_order
     work = Work.all
-    return work.sort_by{|work| work.votes.count}.reverse
+    return work.order(title: :desc).sort_by{|work| work.votes.count}.reverse
   end
 
   def self.find_top_ten(category)

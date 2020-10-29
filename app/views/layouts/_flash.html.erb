@@ -1,0 +1,8 @@
+<% flash.each do |key, msg| %>
+  <div class="alert <%= flash_class(key) %>"%>
+    <button class='close visible' data-dismiss='alert' style ='visible'>
+    <small><sup></sup></small>
+    </button>
+    <%=content_tag(:div, msg)%>
+  </div>
+<% end %>

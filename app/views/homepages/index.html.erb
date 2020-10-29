@@ -1,0 +1,23 @@
+<main> 
+  <section class="spotlight">
+    <h2 class="spotlight__header">
+      <span class="spotlight__header--prefix">Media Spotlight:</span>
+        <%= link_to @spotlight.title, work_path(@spotlight.id), class:"spotlight__link-to" %> by 
+        <%= @spotlight.creator %>
+    </h2>
+    <p class="spotlight__description">
+      <%= pluralize @spotlight.votes.count, "vote" %> - <%= @spotlight.description %> 
+    </p>
+  </section>
+  <section class='top-ten__container'>
+    <section class='top-ten__list-container'>
+      <%= render partial: './works/top_ten_list', locals: {category: 'movie'} %>
+    </section>
+    <section class='top-ten__list-container'>
+      <%= render partial: './works/top_ten_list', locals: {category: 'book'} %>
+    </section>
+    <section class='top-ten__list-container'>
+      <%= render partial: './works/top_ten_list' , locals: {category: 'album'} %>
+    </section>
+  </section>
+</main> 

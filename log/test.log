@@ -1,0 +1,1225 @@
+  [1m[35m (8.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "schema_sha1"]]
+  [1m[35m (6.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (1.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  [1m[35m (147.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "media_ranker_test"[0m
+  [1m[35m (1552.4ms)[0m  [1m[35mCREATE DATABASE "media_ranker_test" ENCODING = 'unicode'[0m
+  [1m[35mSQL (1.2ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "users" CASCADE[0m
+  [1m[35m (21.3ms)[0m  [1m[35mCREATE TABLE "users" ("id" bigserial primary key, "username" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.4ms)[0m  [1m[35mDROP TABLE IF EXISTS "votes" CASCADE[0m
+  [1m[35m (4.8ms)[0m  [1m[35mCREATE TABLE "votes" ("id" bigserial primary key, "user_id" bigint, "work_id" bigint, "upvote" boolean, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.4ms)[0m  [1m[35mCREATE  INDEX  "index_votes_on_user_id" ON "votes"  ("user_id")[0m
+  [1m[35m (2.5ms)[0m  [1m[35mCREATE  INDEX  "index_votes_on_work_id" ON "votes"  ("work_id")[0m
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "works" CASCADE[0m
+  [1m[35m (8.3ms)[0m  [1m[35mCREATE TABLE "works" ("id" bigserial primary key, "category" character varying, "title" character varying, "creator" character varying, "publication_year" integer, "description" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (5.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (2.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20200517211907)[0m
+  [1m[35m (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20200517210921),
+(20200517211139);
+
+[0m
+  [1m[35m (5.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "test"], ["created_at", "2020-10-29 22:55:48.187398"], ["updated_at", "2020-10-29 22:55:48.187398"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "schema_sha1"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.2ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "schema_sha1"], ["value", "eb040d280b79cf153620d9823e5935066d860f84"], ["created_at", "2020-10-29 22:55:48.192007"], ["updated_at", "2020-10-29 22:55:48.192007"]]
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (4.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (2.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.1ms)[0m  [1m[35mALTER TABLE "users" DISABLE TRIGGER ALL;ALTER TABLE "votes" DISABLE TRIGGER ALL;ALTER TABLE "works" DISABLE TRIGGER ALL;ALTER TABLE "schema_migrations" DISABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" DISABLE TRIGGER ALL[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (10.4ms)[0m  [1m[31mDELETE FROM "users";
+DELETE FROM "votes";
+DELETE FROM "works";
+INSERT INTO "users" ("id", "username", "created_at", "updated_at") VALUES (162985263, 'Sharon Cheung', '2020-10-29 22:55:49.007156', '2020-10-29 22:55:49.007156'), (403700519, 'Joseph Nguyen', '2020-10-29 22:55:49.007156', '2020-10-29 22:55:49.007156'), (386443264, 'Hannah J', '2020-10-29 22:55:49.007156', '2020-10-29 22:55:49.007156'), (530365487, 'Hello Kitty', '2020-10-29 22:55:49.007156', '2020-10-29 22:55:49.007156'), (5513515, 'Woof Woof', '2020-10-29 22:55:49.007156', '2020-10-29 22:55:49.007156');
+INSERT INTO "votes" ("id", "user_id", "work_id", "upvote", "created_at", "updated_at") VALUES (980190962, 403700519, 7021072, DEFAULT, '2020-10-29 22:55:49.016390', '2020-10-29 22:55:49.016390'), (298486374, 162985263, 7021072, DEFAULT, '2020-10-29 22:55:49.016390', '2020-10-29 22:55:49.016390'), (113629430, 386443264, 7021072, DEFAULT, '2020-10-29 22:55:49.016390', '2020-10-29 22:55:49.016390'), (281110143, 5513515, 321130596, DEFAULT, '2020-10-29 22:55:49.016390', '2020-10-29 22:55:49.016390'), (1018350795, 403700519, 321130596, DEFAULT, '2020-10-29 22:55:49.016390', '2020-10-29 22:55:49.016390'), (51848956, 162985263, 321130596, DEFAULT, '2020-10-29 22:55:49.016390', '2020-10-29 22:55:49.016390'), (374648174, 386443264, 321130596, DEFAULT, '2020-10-29 22:55:49.016390', '2020-10-29 22:55:49.016390'), (638205575, 5513515, 334884854, DEFAULT, '2020-10-29 22:55:49.016390', '2020-10-29 22:55:49.016390');
+INSERT INTO "works" ("id", "category", "title", "creator", "publication_year", "description", "created_at", "updated_at") VALUES (7021072, 'movie', 'Guardians of the Galaxy', 'James Gunn', 2014, 'A group of intergalactic criminals are forced to work together.', '2020-10-29 22:55:49.018824', '2020-10-29 22:55:49.018824'), (396180092, 'movie', 'Prometheus', 'Ridley Scott', 2012, 'Following clues to the origin of mankind.', '2020-10-29 22:55:49.018824', '2020-10-29 22:55:49.018824'), (838179347, 'movie', 'Split', 'M. Night Shyamalan', 2016, 'Three girls are kidnapped by a man with a diagnosed 23 distinct personalities.', '2020-10-29 22:55:49.018824', '2020-10-29 22:55:49.018824'), (929075731, 'movie', 'Sing', 'Christophe Lourdelet', 2016, 'In a city of humanoid animals, a hustling theater impresario''s attempt to save his theater with a singing competition becomes grander than he anticipates even as its finalists'' find that their lives will never be the same.', '2020-10-29 22:55:49.018824', '2020-10-29 22:55:49.018824'), (265355242, 'movie', 'Suicide Squad', 'David Ayer', 2016, 'A secret government agency recruits some of the most dangerous incarcerated super-villains to form a defensive task force.', '2020-10-29 22:55:49.018824', '2020-10-29 22:55:49.018824'), (334884854, 'movie', 'The Great Wall', 'Yimou Zhang', 2016, 'European mercenaries searching for black powder become embroiled in the defense of the Great Wall of China against a horde of monstrous creatures.', '2020-10-29 22:55:49.018824', '2020-10-29 22:55:49.018824'), (495433430, 'movie', 'La La Land', 'Damien Chazelle', 2016, 'A jazz pianist falls for an aspiring actress in Los Angeles.', '2020-10-29 22:55:49.018824', '2020-10-29 22:55:49.018824'), (615831625, 'movie', 'Mindhorn', 'Sean Foley', 2016, 'A has-been actor best known for playing the title character in the 1980s detective series ', '2020-10-29 22:55:49.018824', '2020-10-29 22:55:49.018824'), (4555947, 'movie', 'The Lost City of Z', 'James Gray', 2016, 'A true-life drama, centering on British explorer Col. Percival Fawcett.', '2020-10-29 22:55:49.018824', '2020-10-29 22:55:49.018824'), (592940685, 'movie', 'Passengers', 'Morten Tyldum', 2016, 'A spacecraft traveling to a distant colony planet and transporting thousands of people has a malfunction in its sleep chambers.', '2020-10-29 22:55:49.018824', '2020-10-29 22:55:49.018824'), (816793030, 'movie', 'Fantastic Beasts and Where to Find Them', 'David Yates', 2016, 'The adventures of writer Newt Scamander in New York''s secret community of witches.', '2020-10-29 22:55:49.018824', '2020-10-29 22:55:49.018824'), (907060870, 'book', 'Hello World', 'Grace Hopper', 1998, 'Probably the best book ever for coding.', '2020-10-29 22:55:49.018824', '2020-10-29 22:55:49.018824'), (321130596, 'book', 'Yoga Asana', 'The Yoga Studio', 2000, 'The only book you need for fixing your yoga postures.', '2020-10-29 22:55:49.018824', '2020-10-29 22:55:49.018824'), (528045457, 'book', 'Start Here, Start Now', 'Bhante G', 2019, 'A book to help you begin your meditation journery.', '2020-10-29 22:55:49.018824', '2020-10-29 22:55:49.018824')[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "users" ENABLE TRIGGER ALL;ALTER TABLE "votes" ENABLE TRIGGER ALL;ALTER TABLE "works" ENABLE TRIGGER ALL;ALTER TABLE "schema_migrations" ENABLE TRIGGER ALL;ALTER TABLE "ar_internal_metadata" ENABLE TRIGGER ALL[0m
+  [1m[35m (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------------------------
+WorksController::update: test_0001_will correctly update an exisiting work
+--------------------------------------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWork Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "works" WHERE "works"."title" = $1 AND "works"."category" = $2 LIMIT $3[0m  [["title", "Harry Potter 3"], ["category", "movie"], ["LIMIT", 1]]
+  [1m[36mWork Create (0.2ms)[0m  [1m[32mINSERT INTO "works" ("category", "title", "creator", "publication_year", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["category", "movie"], ["title", "Harry Potter 3"], ["creator", "movie company"], ["publication_year", 1999], ["created_at", "2020-10-29 22:55:49.073330"], ["updated_at", "2020-10-29 22:55:49.073330"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "works"[0m
+Started PATCH "/works/929075732" for 127.0.0.1 at 2020-10-29 15:55:49 -0700
+Processing by WorksController#update as HTML
+  Parameters: {"work"=>{"title"=>"Harry Potter 5", "category"=>"book", "creator"=>"JK Rowling", "publication_year"=>"2000"}, "id"=>"929075732"}
+  [1m[36mWork Load (0.2ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."id" = $1 LIMIT $2[0m  [["id", 929075732], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWork Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "works" WHERE "works"."title" = $1 AND "works"."id" != $2 AND "works"."category" = $3 LIMIT $4[0m  [["title", "Harry Potter 5"], ["id", 929075732], ["category", "book"], ["LIMIT", 1]]
+  [1m[36mWork Update (0.6ms)[0m  [1m[33mUPDATE "works" SET "title" = $1, "category" = $2, "creator" = $3, "publication_year" = $4, "updated_at" = $5 WHERE "works"."id" = $6[0m  [["title", "Harry Potter 5"], ["category", "book"], ["creator", "JK Rowling"], ["publication_year", 2000], ["updated_at", "2020-10-29 22:55:49.126443"], ["id", 929075732]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/works/929075732
+Completed 302 Found in 13ms (ActiveRecord: 1.7ms | Allocations: 1674)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "works"[0m
+  [1m[36mWork Load (0.2ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."id" = $1 LIMIT $2[0m  [["id", 929075732], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------------------------------------------------------------
+WorksController::update: test_0002_does not update any work if given an invalid id and redirect
+-----------------------------------------------------------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "works"[0m
+Started PATCH "/works/-1" for 127.0.0.1 at 2020-10-29 15:55:49 -0700
+Processing by WorksController#update as HTML
+  Parameters: {"work"=>{"title"=>"Happy Feet", "category"=>"movie", "publication_year"=>"2005"}, "id"=>"-1"}
+  [1m[36mWork Load (0.3ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."id" = $1 LIMIT $2[0m  [["id", -1], ["LIMIT", 1]]
+Redirected to http://www.example.com/works
+Filter chain halted as :check_work rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.3ms | Allocations: 364)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "works"[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------------------------------------------------------------------------
+WorksController::update: test_0003_won't update if the updating information doesn't pass the validation and render
+------------------------------------------------------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWork Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "works" WHERE "works"."title" = $1 AND "works"."category" = $2 LIMIT $3[0m  [["title", "Harry Potter 3"], ["category", "movie"], ["LIMIT", 1]]
+  [1m[36mWork Create (0.2ms)[0m  [1m[32mINSERT INTO "works" ("category", "title", "creator", "publication_year", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["category", "movie"], ["title", "Harry Potter 3"], ["creator", "movie company"], ["publication_year", 1999], ["created_at", "2020-10-29 22:55:49.189932"], ["updated_at", "2020-10-29 22:55:49.189932"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "works"[0m
+Started PATCH "/works/929075733" for 127.0.0.1 at 2020-10-29 15:55:49 -0700
+Processing by WorksController#update as HTML
+  Parameters: {"work"=>{"title"=>nil, "category"=>"book", "creator"=>"JK Rowling", "publication_year"=>"2000"}, "id"=>"929075733"}
+  [1m[36mWork Load (0.4ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."id" = $1 LIMIT $2[0m  [["id", 929075733], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWork Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "works" WHERE "works"."title" IS NULL AND "works"."id" != $1 AND "works"."category" = $2 LIMIT $3[0m  [["id", 929075733], ["category", "book"], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering works/edit.html.erb within layouts/application
+  Rendered works/_form.html.erb (Duration: 26.3ms | Allocations: 3172)
+  Rendered works/edit.html.erb within layouts/application (Duration: 32.4ms | Allocations: 3765)
+[Webpacker] Compiling...
+[Webpacker] Compiled all packs in /Users/cheezitman/ada/temp/solutions/media-ranker/public/packs-test
+[Webpacker] warning ../../../../package.json: No license field
+
+[Webpacker] Hash: 286e3e95eccb077c5862
+Version: webpack 4.44.2
+Time: 5493ms
+Built at: 10/29/2020 3:56:02 PM
+                                     Asset       Size       Chunks                         Chunk Names
+    js/application-54de8aa2374117bd4cea.js    663 KiB  application  [emitted] [immutable]  application
+js/application-54de8aa2374117bd4cea.js.map    776 KiB  application  [emitted] [dev]        application
+                             manifest.json  384 bytes               [emitted]              
+Entrypoint application = js/application-54de8aa2374117bd4cea.js js/application-54de8aa2374117bd4cea.js.map
+[./app/javascript/channels sync recursive _channel\.js$] ./app/javascript/channels sync _channel\.js$ 160 bytes {application} [built]
+[./app/javascript/channels/index.js] 211 bytes {application} [built]
+[./app/javascript/packs/application.js] 770 bytes {application} [built]
+[./node_modules/webpack/buildin/global.js] (webpack)/buildin/global.js 905 bytes {application} [built]
+[./node_modules/webpack/buildin/module.js] (webpack)/buildin/module.js 552 bytes {application} [built]
+    + 6 hidden modules
+
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (Duration: 7.5ms | Allocations: 700)
+  Rendered layouts/_flash.html.erb (Duration: 1.0ms | Allocations: 167)
+Completed 200 OK in 13177ms (Views: 13131.0ms | ActiveRecord: 4.4ms | Allocations: 76876)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "works"[0m
+  [1m[36mWork Load (0.2ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."id" = $1 LIMIT $2[0m  [["id", 929075733], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------------------------------------------------------
+Work::custom methods::self.sort_by_vote_order: test_0002_will return an empty array if there is no Works
+--------------------------------------------------------------------------------------------------------
+  [1m[36mWork Load (0.2ms)[0m  [1m[34mSELECT "works".* FROM "works"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 7021072]]
+  [1m[36mVote Destroy (21.2ms)[0m  [1m[31mDELETE FROM "votes" WHERE "votes"."id" = $1[0m  [["id", 980190962]]
+  [1m[36mVote Destroy (0.8ms)[0m  [1m[31mDELETE FROM "votes" WHERE "votes"."id" = $1[0m  [["id", 298486374]]
+  [1m[36mVote Destroy (0.4ms)[0m  [1m[31mDELETE FROM "votes" WHERE "votes"."id" = $1[0m  [["id", 113629430]]
+  [1m[36mWork Destroy (0.2ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 7021072]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (2.7ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 396180092]]
+  [1m[36mWork Destroy (0.3ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 396180092]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 838179347]]
+  [1m[36mWork Destroy (0.3ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 838179347]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 929075731]]
+  [1m[36mWork Destroy (0.2ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 929075731]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.1ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 265355242]]
+  [1m[36mWork Destroy (0.3ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 265355242]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 334884854]]
+  [1m[36mVote Destroy (0.2ms)[0m  [1m[31mDELETE FROM "votes" WHERE "votes"."id" = $1[0m  [["id", 638205575]]
+  [1m[36mWork Destroy (0.1ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 334884854]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.1ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 495433430]]
+  [1m[36mWork Destroy (0.1ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 495433430]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.1ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 615831625]]
+  [1m[36mWork Destroy (0.1ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 615831625]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.1ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 4555947]]
+  [1m[36mWork Destroy (0.2ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 4555947]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.1ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 592940685]]
+  [1m[36mWork Destroy (0.1ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 592940685]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.1ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 816793030]]
+  [1m[36mWork Destroy (0.2ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 816793030]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.1ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 907060870]]
+  [1m[36mWork Destroy (0.4ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 907060870]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.5ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.3ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 321130596]]
+  [1m[36mVote Destroy (0.3ms)[0m  [1m[31mDELETE FROM "votes" WHERE "votes"."id" = $1[0m  [["id", 281110143]]
+  [1m[36mVote Destroy (0.1ms)[0m  [1m[31mDELETE FROM "votes" WHERE "votes"."id" = $1[0m  [["id", 1018350795]]
+  [1m[36mVote Destroy (0.2ms)[0m  [1m[31mDELETE FROM "votes" WHERE "votes"."id" = $1[0m  [["id", 51848956]]
+  [1m[36mVote Destroy (0.2ms)[0m  [1m[31mDELETE FROM "votes" WHERE "votes"."id" = $1[0m  [["id", 374648174]]
+  [1m[36mWork Destroy (0.2ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 321130596]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.1ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 528045457]]
+  [1m[36mWork Destroy (0.1ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 528045457]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mWork Load (0.2ms)[0m  [1m[34mSELECT "works".* FROM "works"[0m
+  [1m[36mWork Load (0.3ms)[0m  [1m[34mSELECT "works".* FROM "works"[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------------------------------------------------------------
+Work::custom methods::self.sort_by_vote_order: test_0003_will return according to their name if there is a tie
+--------------------------------------------------------------------------------------------------------------
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5513515], ["LIMIT", 1]]
+  [1m[36mWork Load (0.3ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."id" = $1 LIMIT $2[0m  [["id", 7021072], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."user_id" = $1 AND "votes"."work_id" = $2 LIMIT $3[0m  [["user_id", 5513515], ["work_id", 7021072], ["LIMIT", 1]]
+  [1m[36mVote Create (0.4ms)[0m  [1m[32mINSERT INTO "votes" ("user_id", "work_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 5513515], ["work_id", 7021072], ["created_at", "2020-10-29 22:56:02.508671"], ["updated_at", "2020-10-29 22:56:02.508671"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mWork Load (0.2ms)[0m  [1m[34mSELECT "works".* FROM "works"[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 7021072]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 396180092]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 838179347]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 929075731]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 265355242]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 334884854]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 495433430]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 615831625]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 4555947]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 592940685]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 816793030]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 907060870]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 321130596]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 528045457]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------------------------------------------------------------
+Work::custom methods::self.sort_by_vote_order: test_0001_will correctly return top ten according to the votes
+-------------------------------------------------------------------------------------------------------------
+  [1m[36mWork Load (0.2ms)[0m  [1m[34mSELECT "works".* FROM "works"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 7021072]]
+  [1m[35m (1.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 396180092]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 838179347]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 929075731]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 265355242]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 334884854]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 495433430]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 615831625]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 4555947]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 592940685]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 816793030]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 907060870]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 321130596]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 528045457]]
+  [1m[36mWork Load (0.1ms)[0m  [1m[34mSELECT "works".* FROM "works"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 7021072]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 396180092]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 838179347]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 929075731]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 265355242]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 334884854]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 495433430]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 615831625]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 4555947]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 592940685]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 816793030]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 907060870]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 321130596]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 528045457]]
+  [1m[36mWork Load (0.4ms)[0m  [1m[34mSELECT "works".* FROM "works"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 7021072]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 396180092]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 838179347]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 929075731]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 265355242]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 334884854]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 495433430]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 615831625]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 4555947]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 592940685]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 816793030]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 907060870]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 321130596]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 528045457]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------------------------------------------------
+WorksController::edt: test_0001_responds with success when getting the edit page for a valid work
+-------------------------------------------------------------------------------------------------
+  [1m[36mWork Load (0.2ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."id" = $1 LIMIT $2[0m  [["id", 838179347], ["LIMIT", 1]]
+Started GET "/works/838179347/edit" for 127.0.0.1 at 2020-10-29 15:56:02 -0700
+Processing by WorksController#edit as HTML
+  Parameters: {"id"=>"838179347"}
+  [1m[36mWork Load (0.2ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."id" = $1 LIMIT $2[0m  [["id", 838179347], ["LIMIT", 1]]
+  Rendering works/edit.html.erb within layouts/application
+  Rendered works/_form.html.erb (Duration: 1.6ms | Allocations: 1286)
+  Rendered works/edit.html.erb within layouts/application (Duration: 1.8ms | Allocations: 1341)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (Duration: 1.5ms | Allocations: 324)
+  Rendered layouts/_flash.html.erb (Duration: 0.0ms | Allocations: 17)
+Completed 200 OK in 21ms (Views: 19.3ms | ActiveRecord: 0.4ms | Allocations: 7818)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------------------------------
+WorksController::edt: test_0002_will redirect if there is no such a work
+------------------------------------------------------------------------
+Started GET "/works/-1/edit" for 127.0.0.1 at 2020-10-29 15:56:02 -0700
+Processing by WorksController#edit as HTML
+  Parameters: {"id"=>"-1"}
+  [1m[36mWork Load (0.2ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."id" = $1 LIMIT $2[0m  [["id", -1], ["LIMIT", 1]]
+Redirected to http://www.example.com/works
+Filter chain halted as :check_work rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.2ms | Allocations: 352)
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------------------------------------
+ApplicationHelper::helper::flash_class(level): test_0001_will return the correct flash message bootstrap classes
+----------------------------------------------------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------------
+Work::initialize: test_0001_can be instantiated
+-----------------------------------------------
+  [1m[36mWork Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "works" WHERE "works"."title" = $1 AND "works"."category" = $2 LIMIT $3[0m  [["title", "Harry Potter 3"], ["category", "book"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------
+Work::initialize: test_0002_will have the required fields
+---------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWork Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "works" WHERE "works"."title" = $1 AND "works"."category" = $2 LIMIT $3[0m  [["title", "Harry Potter 3"], ["category", "book"], ["LIMIT", 1]]
+  [1m[36mWork Create (0.2ms)[0m  [1m[32mINSERT INTO "works" ("category", "title", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["category", "book"], ["title", "Harry Potter 3"], ["created_at", "2020-10-29 22:56:02.614199"], ["updated_at", "2020-10-29 22:56:02.614199"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mWork Load (0.1ms)[0m  [1m[34mSELECT "works".* FROM "works" ORDER BY "works"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+UsersController::index: test_0001_responds to index
+---------------------------------------------------
+Started GET "/users" for 127.0.0.1 at 2020-10-29 15:56:02 -0700
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."user_id" = $1[0m  [["user_id", 162985263]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."user_id" = $1[0m  [["user_id", 403700519]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."user_id" = $1[0m  [["user_id", 386443264]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."user_id" = $1[0m  [["user_id", 530365487]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."user_id" = $1[0m  [["user_id", 5513515]]
+  Rendered users/index.html.erb within layouts/application (Duration: 7.2ms | Allocations: 2182)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (Duration: 1.9ms | Allocations: 323)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 17)
+Completed 200 OK in 27ms (Views: 24.2ms | ActiveRecord: 1.6ms | Allocations: 9141)
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Vote::custom method::self.check_exisiting_vote(current_user_id, work_id): test_0002_will return true if there is already an exisitng vote for that specific user and work
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 5513515], ["LIMIT", 1]]
+  [1m[36mWork Load (0.2ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."id" = $1 LIMIT $2[0m  [["id", 929075731], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."user_id" = $1 AND "votes"."work_id" = $2[0m  [["user_id", 5513515], ["work_id", 929075731]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Vote::custom method::self.check_exisiting_vote(current_user_id, work_id): test_0001_will return true if there is already an exisitng vote for that specific user and work
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 162985263], ["LIMIT", 1]]
+  [1m[36mWork Load (0.2ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."id" = $1 LIMIT $2[0m  [["id", 321130596], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."user_id" = $1 AND "votes"."work_id" = $2[0m  [["user_id", 162985263], ["work_id", 321130596]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------
+User: test_0001_can be instantiated
+-----------------------------------
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Chopper"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------
+User: test_0002_will have the required fields
+---------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Chopper"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["username", "Chopper"], ["created_at", "2020-10-29 22:56:02.670053"], ["updated_at", "2020-10-29 22:56:02.670053"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------------------
+Work::validations: test_0002_fails validation when there is no title
+--------------------------------------------------------------------
+  [1m[36mWork Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "works" WHERE "works"."title" IS NULL AND "works"."category" = $1 LIMIT $2[0m  [["category", "book"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------------------------
+Work::validations: test_0001_is valid when there is a title and a category
+--------------------------------------------------------------------------
+  [1m[36mWork Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "works" WHERE "works"."title" = $1 AND "works"."category" = $2 LIMIT $3[0m  [["title", "Hello World Made Easy"], ["category", "book"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------------------------------------------
+Work::validations: test_0003_fails validation when the title already exits in same category
+-------------------------------------------------------------------------------------------
+  [1m[36mWork Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "works" WHERE "works"."title" = $1 AND "works"."category" = $2 LIMIT $3[0m  [["title", "Guardians of the Galaxy"], ["category", "movie"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------
+User::relationships: test_0001_can have many votes
+--------------------------------------------------
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 403700519], ["LIMIT", 1]]
+  [1m[36mVote Load (0.1ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."user_id" = $1[0m  [["user_id", 403700519]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."user_id" = $1[0m  [["user_id", 403700519]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------
+UsersController::show: test_0001_will get show for a valid user
+---------------------------------------------------------------
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 530365487], ["LIMIT", 1]]
+Started GET "/users/530365487" for 127.0.0.1 at 2020-10-29 15:56:02 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"530365487"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 530365487], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."user_id" = $1[0m  [["user_id", 530365487]]
+  Rendered users/show.html.erb within layouts/application (Duration: 3.6ms | Allocations: 774)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (Duration: 0.9ms | Allocations: 322)
+  Rendered layouts/_flash.html.erb (Duration: 0.0ms | Allocations: 17)
+Completed 200 OK in 23ms (Views: 19.5ms | ActiveRecord: 1.2ms | Allocations: 7473)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------------------------------------------------------------
+UsersController::show: test_0002_will redirect to users path if there is no a valid id provided
+-----------------------------------------------------------------------------------------------
+Started GET "/users/-1" for 127.0.0.1 at 2020-10-29 15:56:02 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"-1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", -1], ["LIMIT", 1]]
+Redirected to http://www.example.com/users
+Completed 302 Found in 1ms (ActiveRecord: 0.2ms | Allocations: 334)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------
+HomepagesController: test_0001_can get the homepage
+---------------------------------------------------
+Started GET "/" for 127.0.0.1 at 2020-10-29 15:56:02 -0700
+Processing by HomepagesController#index as HTML
+  [1m[36mWork Load (0.2ms)[0m  [1m[34mSELECT "works".* FROM "works"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 7021072]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 396180092]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 838179347]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 929075731]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 265355242]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 334884854]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 495433430]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 615831625]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 4555947]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 592940685]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 816793030]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 907060870]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 321130596]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 528045457]]
+  Rendering homepages/index.html.erb within layouts/application
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 321130596]]
+  [1m[36mWork Load (0.2ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."category" = $1[0m  [["category", "movie"]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 7021072]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 396180092]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 838179347]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 929075731]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 265355242]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 334884854]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 495433430]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 615831625]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 4555947]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 592940685]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 816793030]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 7021072]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 334884854]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 592940685]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 615831625]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 495433430]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 816793030]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 265355242]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 929075731]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 838179347]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 396180092]]
+  Rendered ./works/_top_ten_list.erb (Duration: 15.8ms | Allocations: 5679)
+  [1m[36mWork Load (0.2ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."category" = $1[0m  [["category", "book"]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 907060870]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 321130596]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 528045457]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 321130596]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 528045457]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 907060870]]
+  Rendered ./works/_top_ten_list.erb (Duration: 3.6ms | Allocations: 1702)
+  [1m[36mWork Load (0.7ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."category" = $1[0m  [["category", "album"]]
+  Rendered ./works/_top_ten_list.erb (Duration: 1.7ms | Allocations: 200)
+  Rendered homepages/index.html.erb within layouts/application (Duration: 23.7ms | Allocations: 8378)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (Duration: 2.1ms | Allocations: 323)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 17)
+Completed 200 OK in 63ms (Views: 40.3ms | ActiveRecord: 6.1ms | Allocations: 19710)
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------
+Vote::relationship: test_0001_belongs to a user and a work
+----------------------------------------------------------
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."id" = $1 LIMIT $2[0m  [["id", 298486374], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 162985263], ["LIMIT", 1]]
+  [1m[36mWork Load (0.2ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."id" = $1 LIMIT $2[0m  [["id", 7021072], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------------------------------------
+WorksController::index: test_0001_responds with success when there are multiple works created
+---------------------------------------------------------------------------------------------
+  [1m[36mWork Load (0.2ms)[0m  [1m[34mSELECT "works".* FROM "works"[0m
+Started GET "/works" for 127.0.0.1 at 2020-10-29 15:56:02 -0700
+Processing by WorksController#index as HTML
+  Rendering works/index.html.erb within layouts/application
+  [1m[36mWork Load (0.2ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."category" = $1 ORDER BY "works"."title" ASC[0m  [["category", "album"]]
+  Rendered works/_list.html.erb (Duration: 2.0ms | Allocations: 451)
+  [1m[36mWork Load (0.1ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."category" = $1 ORDER BY "works"."title" ASC[0m  [["category", "book"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 907060870]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 528045457]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 321130596]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 321130596]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 528045457]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 907060870]]
+  Rendered works/_list.html.erb (Duration: 4.1ms | Allocations: 1862)
+  [1m[36mWork Load (0.2ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."category" = $1 ORDER BY "works"."title" ASC[0m  [["category", "movie"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 816793030]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 7021072]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 495433430]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 615831625]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 592940685]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 396180092]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 929075731]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 838179347]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 265355242]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 334884854]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 4555947]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 7021072]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 334884854]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 838179347]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 929075731]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 396180092]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 592940685]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 615831625]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 495433430]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 816793030]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 265355242]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 4555947]]
+  Rendered works/_list.html.erb (Duration: 19.9ms | Allocations: 6237)
+  Rendered works/index.html.erb within layouts/application (Duration: 27.4ms | Allocations: 9090)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (Duration: 1.4ms | Allocations: 321)
+  Rendered layouts/_flash.html.erb (Duration: 0.0ms | Allocations: 17)
+Completed 200 OK in 48ms (Views: 42.2ms | ActiveRecord: 4.1ms | Allocations: 15574)
+  [1m[35m (1.0ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------------------------------------------------------
+WorksController::index: test_0002_will responds with success when there are no work saved
+-----------------------------------------------------------------------------------------
+  [1m[36mWork Load (0.3ms)[0m  [1m[34mSELECT "works".* FROM "works"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.1ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 7021072]]
+  [1m[36mVote Destroy (0.2ms)[0m  [1m[31mDELETE FROM "votes" WHERE "votes"."id" = $1[0m  [["id", 980190962]]
+  [1m[36mVote Destroy (0.1ms)[0m  [1m[31mDELETE FROM "votes" WHERE "votes"."id" = $1[0m  [["id", 298486374]]
+  [1m[36mVote Destroy (0.1ms)[0m  [1m[31mDELETE FROM "votes" WHERE "votes"."id" = $1[0m  [["id", 113629430]]
+  [1m[36mWork Destroy (0.5ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 7021072]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.1ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 396180092]]
+  [1m[36mWork Destroy (0.2ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 396180092]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.1ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 838179347]]
+  [1m[36mWork Destroy (0.1ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 838179347]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.1ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 929075731]]
+  [1m[36mWork Destroy (0.2ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 929075731]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.1ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 265355242]]
+  [1m[36mWork Destroy (0.1ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 265355242]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.1ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 334884854]]
+  [1m[36mVote Destroy (0.2ms)[0m  [1m[31mDELETE FROM "votes" WHERE "votes"."id" = $1[0m  [["id", 638205575]]
+  [1m[36mWork Destroy (0.2ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 334884854]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.1ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 495433430]]
+  [1m[36mWork Destroy (0.7ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 495433430]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.1ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 615831625]]
+  [1m[36mWork Destroy (0.3ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 615831625]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.1ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 4555947]]
+  [1m[36mWork Destroy (0.1ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 4555947]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.1ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 592940685]]
+  [1m[36mWork Destroy (0.1ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 592940685]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 816793030]]
+  [1m[36mWork Destroy (0.4ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 816793030]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.1ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 907060870]]
+  [1m[36mWork Destroy (0.4ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 907060870]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.1ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 321130596]]
+  [1m[36mVote Destroy (0.2ms)[0m  [1m[31mDELETE FROM "votes" WHERE "votes"."id" = $1[0m  [["id", 281110143]]
+  [1m[36mVote Destroy (0.1ms)[0m  [1m[31mDELETE FROM "votes" WHERE "votes"."id" = $1[0m  [["id", 1018350795]]
+  [1m[36mVote Destroy (0.1ms)[0m  [1m[31mDELETE FROM "votes" WHERE "votes"."id" = $1[0m  [["id", 51848956]]
+  [1m[36mVote Destroy (0.1ms)[0m  [1m[31mDELETE FROM "votes" WHERE "votes"."id" = $1[0m  [["id", 374648174]]
+  [1m[36mWork Destroy (0.3ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 321130596]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.8ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 528045457]]
+  [1m[36mWork Destroy (0.4ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 528045457]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mWork Load (0.1ms)[0m  [1m[34mSELECT "works".* FROM "works"[0m
+Started GET "/works" for 127.0.0.1 at 2020-10-29 15:56:02 -0700
+Processing by WorksController#index as HTML
+  Rendering works/index.html.erb within layouts/application
+  [1m[36mWork Load (0.2ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."category" = $1 ORDER BY "works"."title" ASC[0m  [["category", "album"]]
+  Rendered works/_list.html.erb (Duration: 0.7ms | Allocations: 208)
+  [1m[36mWork Load (0.1ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."category" = $1 ORDER BY "works"."title" ASC[0m  [["category", "book"]]
+  Rendered works/_list.html.erb (Duration: 0.8ms | Allocations: 206)
+  [1m[36mWork Load (0.1ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."category" = $1 ORDER BY "works"."title" ASC[0m  [["category", "movie"]]
+  Rendered works/_list.html.erb (Duration: 0.4ms | Allocations: 206)
+  Rendered works/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 840)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (Duration: 0.9ms | Allocations: 320)
+  Rendered layouts/_flash.html.erb (Duration: 0.0ms | Allocations: 17)
+Completed 200 OK in 47ms (Views: 46.1ms | ActiveRecord: 0.7ms | Allocations: 7189)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------------------------------------------------------------------------------
+VotesController::Guest user cannot upvote without login: test_0001_won't change work vote by one if guest didn't sign in
+------------------------------------------------------------------------------------------------------------------------
+  [1m[36mWork Load (0.1ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."id" = $1 LIMIT $2[0m  [["id", 838179347], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 838179347]]
+Started GET "/works/838179347/upvote" for 127.0.0.1 at 2020-10-29 15:56:02 -0700
+Processing by VotesController#upvote as HTML
+  Parameters: {"work_id"=>"838179347"}
+Redirected to http://www.example.com/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 0ms (ActiveRecord: 0.0ms | Allocations: 273)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 838179347]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------------------------------------------------------
+Work::custom methods::self.find_spotlight: test_0001_can correctly return the highest voted work
+------------------------------------------------------------------------------------------------
+  [1m[36mWork Load (0.2ms)[0m  [1m[34mSELECT "works".* FROM "works"[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 7021072]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 396180092]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 838179347]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 929075731]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 265355242]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 334884854]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 495433430]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 615831625]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 4555947]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 592940685]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 816793030]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 907060870]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 321130596]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 528045457]]
+  [1m[36mWork Load (0.1ms)[0m  [1m[34mSELECT "works".* FROM "works"[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 7021072]]
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 396180092]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 838179347]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 929075731]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 265355242]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 334884854]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 495433430]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 615831625]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 4555947]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 592940685]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 816793030]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 907060870]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 321130596]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 528045457]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 321130596]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------------------
+Work::custom methods::self.find_spotlight: test_0002_will return nil if there is no Works data
+----------------------------------------------------------------------------------------------
+  [1m[36mWork Load (0.4ms)[0m  [1m[34mSELECT "works".* FROM "works"[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.1ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 7021072]]
+  [1m[36mVote Destroy (0.5ms)[0m  [1m[31mDELETE FROM "votes" WHERE "votes"."id" = $1[0m  [["id", 980190962]]
+  [1m[36mVote Destroy (0.2ms)[0m  [1m[31mDELETE FROM "votes" WHERE "votes"."id" = $1[0m  [["id", 298486374]]
+  [1m[36mVote Destroy (0.2ms)[0m  [1m[31mDELETE FROM "votes" WHERE "votes"."id" = $1[0m  [["id", 113629430]]
+  [1m[36mWork Destroy (0.2ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 7021072]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (2.1ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 396180092]]
+  [1m[36mWork Destroy (0.5ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 396180092]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.1ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 838179347]]
+  [1m[36mWork Destroy (0.2ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 838179347]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.1ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 929075731]]
+  [1m[36mWork Destroy (0.2ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 929075731]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 265355242]]
+  [1m[36mWork Destroy (0.2ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 265355242]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.1ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 334884854]]
+  [1m[36mVote Destroy (0.1ms)[0m  [1m[31mDELETE FROM "votes" WHERE "votes"."id" = $1[0m  [["id", 638205575]]
+  [1m[36mWork Destroy (0.1ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 334884854]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.1ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 495433430]]
+  [1m[36mWork Destroy (0.1ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 495433430]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.1ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 615831625]]
+  [1m[36mWork Destroy (0.1ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 615831625]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.1ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 4555947]]
+  [1m[36mWork Destroy (0.1ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 4555947]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.1ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 592940685]]
+  [1m[36mWork Destroy (0.1ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 592940685]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.1ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 816793030]]
+  [1m[36mWork Destroy (0.2ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 816793030]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.1ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 907060870]]
+  [1m[36mWork Destroy (0.1ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 907060870]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.8ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 321130596]]
+  [1m[36mVote Destroy (0.4ms)[0m  [1m[31mDELETE FROM "votes" WHERE "votes"."id" = $1[0m  [["id", 281110143]]
+  [1m[36mVote Destroy (0.5ms)[0m  [1m[31mDELETE FROM "votes" WHERE "votes"."id" = $1[0m  [["id", 1018350795]]
+  [1m[36mVote Destroy (0.3ms)[0m  [1m[31mDELETE FROM "votes" WHERE "votes"."id" = $1[0m  [["id", 51848956]]
+  [1m[36mVote Destroy (0.5ms)[0m  [1m[31mDELETE FROM "votes" WHERE "votes"."id" = $1[0m  [["id", 374648174]]
+  [1m[36mWork Destroy (0.5ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 321130596]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.1ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 528045457]]
+  [1m[36mWork Destroy (0.2ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 528045457]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mWork Load (0.1ms)[0m  [1m[34mSELECT "works".* FROM "works"[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------------------------------------------------------
+VotesController::Authenticated user that logged in can upvote a work: test_0001_will increase work vote by one if user did sign in
+----------------------------------------------------------------------------------------------------------------------------------
+Started POST "/login" for 127.0.0.1 at 2020-10-29 15:56:03 -0700
+Processing by UsersController#login as HTML
+  Parameters: {"user"=>{"username"=>"Gillian Chung"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Gillian Chung"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Gillian Chung"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["username", "Gillian Chung"], ["created_at", "2020-10-29 22:56:03.043147"], ["updated_at", "2020-10-29 22:56:03.043147"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/homepages
+Completed 302 Found in 4ms (ActiveRecord: 0.9ms | Allocations: 1059)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Gillian Chung"], ["LIMIT", 1]]
+  [1m[36mWork Load (0.3ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."id" = $1 LIMIT $2[0m  [["id", 334884854], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 334884854]]
+Started GET "/works/334884854/upvote" for 127.0.0.1 at 2020-10-29 15:56:03 -0700
+Processing by VotesController#upvote as HTML
+  Parameters: {"work_id"=>"334884854"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 530365489], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."user_id" = $1 AND "votes"."work_id" = $2[0m  [["user_id", 530365489], ["work_id", 334884854]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 530365489], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWork Load (0.1ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."id" = $1 LIMIT $2[0m  [["id", 334884854], ["LIMIT", 1]]
+  [1m[36mVote Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."user_id" = $1 AND "votes"."work_id" = $2 LIMIT $3[0m  [["user_id", 530365489], ["work_id", 334884854], ["LIMIT", 1]]
+  [1m[36mVote Create (0.2ms)[0m  [1m[32mINSERT INTO "votes" ("user_id", "work_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 530365489], ["work_id", 334884854], ["created_at", "2020-10-29 22:56:03.064682"], ["updated_at", "2020-10-29 22:56:03.064682"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mWork Load (0.1ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."id" = $1 LIMIT $2[0m  [["id", 334884854], ["LIMIT", 1]]
+Redirected to http://www.example.com/
+Completed 302 Found in 8ms (ActiveRecord: 2.3ms | Allocations: 1908)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 334884854]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------------------------------------------------------------
+VotesController::Authenticated user that logged in can upvote a work: test_0002_will create a new vote
+------------------------------------------------------------------------------------------------------
+Started POST "/login" for 127.0.0.1 at 2020-10-29 15:56:03 -0700
+Processing by UsersController#login as HTML
+  Parameters: {"user"=>{"username"=>"Gillian Chung"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Gillian Chung"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Gillian Chung"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["username", "Gillian Chung"], ["created_at", "2020-10-29 22:56:03.079771"], ["updated_at", "2020-10-29 22:56:03.079771"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/homepages
+Completed 302 Found in 3ms (ActiveRecord: 0.8ms | Allocations: 942)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Gillian Chung"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes"[0m
+  [1m[36mWork Load (0.1ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."id" = $1 LIMIT $2[0m  [["id", 334884854], ["LIMIT", 1]]
+Started GET "/works/334884854/upvote" for 127.0.0.1 at 2020-10-29 15:56:03 -0700
+Processing by VotesController#upvote as HTML
+  Parameters: {"work_id"=>"334884854"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 530365490], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."user_id" = $1 AND "votes"."work_id" = $2[0m  [["user_id", 530365490], ["work_id", 334884854]]
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 530365490], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWork Load (0.1ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."id" = $1 LIMIT $2[0m  [["id", 334884854], ["LIMIT", 1]]
+  [1m[36mVote Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."user_id" = $1 AND "votes"."work_id" = $2 LIMIT $3[0m  [["user_id", 530365490], ["work_id", 334884854], ["LIMIT", 1]]
+  [1m[36mVote Create (0.2ms)[0m  [1m[32mINSERT INTO "votes" ("user_id", "work_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 530365490], ["work_id", 334884854], ["created_at", "2020-10-29 22:56:03.093312"], ["updated_at", "2020-10-29 22:56:03.093312"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mWork Load (0.1ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."id" = $1 LIMIT $2[0m  [["id", 334884854], ["LIMIT", 1]]
+Redirected to http://www.example.com/
+Completed 302 Found in 6ms (ActiveRecord: 1.6ms | Allocations: 1902)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes"[0m
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT "votes".* FROM "votes" ORDER BY "votes"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mWork Load (0.2ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."id" = $1 LIMIT $2[0m  [["id", 334884854], ["LIMIT", 1]]
+  [1m[36mVote Load (0.3ms)[0m  [1m[34mSELECT "votes".* FROM "votes" ORDER BY "votes"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 530365490], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------
+VotesController::Authenticated user that logged in can upvote a work: test_0003_will NOT let the same user to upvote the same work more than once
+-------------------------------------------------------------------------------------------------------------------------------------------------
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 162985263], ["LIMIT", 1]]
+Started POST "/login" for 127.0.0.1 at 2020-10-29 15:56:03 -0700
+Processing by UsersController#login as HTML
+  Parameters: {"user"=>{"username"=>"Sharon Cheung"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Sharon Cheung"], ["LIMIT", 1]]
+Redirected to http://www.example.com/homepages
+Completed 302 Found in 1ms (ActiveRecord: 0.3ms | Allocations: 362)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Sharon Cheung"], ["LIMIT", 1]]
+  [1m[36mWork Load (0.1ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."id" = $1 LIMIT $2[0m  [["id", 321130596], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 321130596]]
+Started GET "/works/321130596/upvote" for 127.0.0.1 at 2020-10-29 15:56:03 -0700
+Processing by VotesController#upvote as HTML
+  Parameters: {"work_id"=>"321130596"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 162985263], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."user_id" = $1 AND "votes"."work_id" = $2[0m  [["user_id", 162985263], ["work_id", 321130596]]
+Redirected to http://www.example.com/
+Completed 302 Found in 5ms (ActiveRecord: 1.7ms | Allocations: 703)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 321130596]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes"[0m
+Started GET "/works/321130596/upvote" for 127.0.0.1 at 2020-10-29 15:56:03 -0700
+Processing by VotesController#upvote as HTML
+  Parameters: {"work_id"=>"321130596"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 162985263], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."user_id" = $1 AND "votes"."work_id" = $2[0m  [["user_id", 162985263], ["work_id", 321130596]]
+Redirected to http://www.example.com/
+Completed 302 Found in 2ms (ActiveRecord: 0.4ms | Allocations: 689)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes"[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------------------------------------------------------------------------------------
+VotesController::Authenticated user that logged in can upvote a work: test_0004_redirects us back if the user is not logged in
+------------------------------------------------------------------------------------------------------------------------------
+  [1m[36mWork Load (0.2ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."id" = $1 LIMIT $2[0m  [["id", 321130596], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 321130596]]
+Started GET "/works/321130596/upvote" for 127.0.0.1 at 2020-10-29 15:56:03 -0700
+Processing by VotesController#upvote as HTML
+  Parameters: {"work_id"=>"321130596"}
+Redirected to http://www.example.com/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 212)
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 321130596]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------------
+WorksController::show: test_0001_will respond with success when showing an exisitng work
+----------------------------------------------------------------------------------------
+  [1m[36mWork Load (0.2ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."id" = $1 LIMIT $2[0m  [["id", 838179347], ["LIMIT", 1]]
+Started GET "/works/838179347" for 127.0.0.1 at 2020-10-29 15:56:03 -0700
+Processing by WorksController#show as HTML
+  Parameters: {"id"=>"838179347"}
+  [1m[36mWork Load (0.2ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."id" = $1 LIMIT $2[0m  [["id", 838179347], ["LIMIT", 1]]
+  Rendering works/show.html.erb within layouts/application
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 838179347]]
+  [1m[35mCACHE  (0.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 838179347]]
+  Rendered works/show.html.erb within layouts/application (Duration: 2.7ms | Allocations: 1082)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (Duration: 2.2ms | Allocations: 323)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 17)
+Completed 200 OK in 16ms (Views: 13.5ms | ActiveRecord: 1.4ms | Allocations: 7685)
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------------------------------
+WorksController::show: test_0002_will redirect if a invalid work id is provided
+-------------------------------------------------------------------------------
+Started GET "/works/-1" for 127.0.0.1 at 2020-10-29 15:56:03 -0700
+Processing by WorksController#show as HTML
+  Parameters: {"id"=>"-1"}
+  [1m[36mWork Load (0.2ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."id" = $1 LIMIT $2[0m  [["id", -1], ["LIMIT", 1]]
+Redirected to http://www.example.com/works
+Filter chain halted as :check_work rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.2ms | Allocations: 352)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------
+UsersController: test_0001_can get the login form
+-------------------------------------------------
+Started GET "/login" for 127.0.0.1 at 2020-10-29 15:56:03 -0700
+Processing by UsersController#login_form as HTML
+  Rendering users/login_form.html.erb within layouts/application
+  Rendered users/login_form.html.erb within layouts/application (Duration: 1.4ms | Allocations: 593)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (Duration: 1.0ms | Allocations: 323)
+  Rendered layouts/_flash.html.erb (Duration: 0.0ms | Allocations: 17)
+Completed 200 OK in 14ms (Views: 12.3ms | ActiveRecord: 0.2ms | Allocations: 7063)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------
+User::validations: test_0003_must have a unique user name to create new user
+----------------------------------------------------------------------------
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Sharon Cheung"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------------------------------
+User::validations: test_0001_validates when there is a username provided
+------------------------------------------------------------------------
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Pepper Pig"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------
+User::validations: test_0002_will not validate a user without username
+----------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------
+Work::relations: test_0001_can have many Vote
+---------------------------------------------
+  [1m[36mWork Load (0.2ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."id" = $1 LIMIT $2[0m  [["id", 7021072], ["LIMIT", 1]]
+  [1m[36mVote Load (0.4ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 7021072]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 7021072]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------------------------------------------------
+WorksController::create: test_0002_does not creat new work if title is not provided
+-----------------------------------------------------------------------------------
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "works"[0m
+Started POST "/works" for 127.0.0.1 at 2020-10-29 15:56:03 -0700
+Processing by WorksController#create as HTML
+  Parameters: {"work"=>{"publication_year"=>"2020", "category"=>"movie", "creator"=>"abc family"}}
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWork Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "works" WHERE "works"."title" IS NULL AND "works"."category" = $1 LIMIT $2[0m  [["category", "movie"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering works/new.html.erb within layouts/application
+  Rendered works/_form.html.erb (Duration: 3.6ms | Allocations: 1244)
+  Rendered works/new.html.erb within layouts/application (Duration: 4.8ms | Allocations: 1402)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (Duration: 3.6ms | Allocations: 323)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 18)
+Completed 200 OK in 27ms (Views: 22.1ms | ActiveRecord: 3.0ms | Allocations: 8940)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "works"[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------------------------------------
+WorksController::create: test_0003_does not creat new work if cateogry is not provided
+--------------------------------------------------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "works"[0m
+Started POST "/works" for 127.0.0.1 at 2020-10-29 15:56:03 -0700
+Processing by WorksController#create as HTML
+  Parameters: {"work"=>{"title"=>"Modern Family Movie", "publication_year"=>"2020", "creator"=>"abc family"}}
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWork Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "works" WHERE "works"."title" = $1 AND "works"."category" IS NULL LIMIT $2[0m  [["title", "Modern Family Movie"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  Rendering works/new.html.erb within layouts/application
+  Rendered works/_form.html.erb (Duration: 2.2ms | Allocations: 1242)
+  Rendered works/new.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1297)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (Duration: 1.4ms | Allocations: 318)
+  Rendered layouts/_flash.html.erb (Duration: 0.1ms | Allocations: 17)
+Completed 200 OK in 21ms (Views: 15.9ms | ActiveRecord: 1.0ms | Allocations: 8709)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "works"[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------
+WorksController::create: test_0001_can create a new work with valid title provided
+----------------------------------------------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "works"[0m
+Started POST "/works" for 127.0.0.1 at 2020-10-29 15:56:03 -0700
+Processing by WorksController#create as HTML
+  Parameters: {"work"=>{"title"=>"Modern Family Movie", "category"=>"movie"}}
+  [1m[35m (0.7ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWork Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "works" WHERE "works"."title" = $1 AND "works"."category" = $2 LIMIT $3[0m  [["title", "Modern Family Movie"], ["category", "movie"], ["LIMIT", 1]]
+  [1m[36mWork Create (0.4ms)[0m  [1m[32mINSERT INTO "works" ("category", "title", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["category", "movie"], ["title", "Modern Family Movie"], ["created_at", "2020-10-29 22:56:03.307804"], ["updated_at", "2020-10-29 22:56:03.307804"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/works/929075735
+Completed 302 Found in 5ms (ActiveRecord: 1.8ms | Allocations: 993)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "works"[0m
+  [1m[36mWork Load (0.1ms)[0m  [1m[34mSELECT "works".* FROM "works" ORDER BY "works"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mWork Load (0.1ms)[0m  [1m[34mSELECT "works".* FROM "works" ORDER BY "works"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------------------------
+UsersController::logging in: test_0001_can login a new uesr
+-----------------------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+Started POST "/login" for 127.0.0.1 at 2020-10-29 15:56:03 -0700
+Processing by UsersController#login as HTML
+  Parameters: {"user"=>{"username"=>"Gillian Chung"}}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Gillian Chung"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Gillian Chung"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["username", "Gillian Chung"], ["created_at", "2020-10-29 22:56:03.326502"], ["updated_at", "2020-10-29 22:56:03.326502"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/homepages
+Completed 302 Found in 6ms (ActiveRecord: 2.2ms | Allocations: 942)
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Gillian Chung"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------------------------
+UsersController::logging in: test_0002_can login an exisiting user
+------------------------------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+Started POST "/login" for 127.0.0.1 at 2020-10-29 15:56:03 -0700
+Processing by UsersController#login as HTML
+  Parameters: {"user"=>{"username"=>"Hello Kitty"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Hello Kitty"], ["LIMIT", 1]]
+Redirected to http://www.example.com/homepages
+Completed 302 Found in 1ms (ActiveRecord: 0.2ms | Allocations: 362)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Hello Kitty"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 530365487], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------------------
+WorksController::new: test_0001_responds with success
+-----------------------------------------------------
+Started GET "/works/new" for 127.0.0.1 at 2020-10-29 15:56:03 -0700
+Processing by WorksController#new as HTML
+  Rendering works/new.html.erb within layouts/application
+  Rendered works/_form.html.erb (Duration: 2.9ms | Allocations: 1218)
+  Rendered works/new.html.erb within layouts/application (Duration: 3.0ms | Allocations: 1273)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  Rendered layouts/_header.html.erb (Duration: 1.2ms | Allocations: 318)
+  Rendered layouts/_flash.html.erb (Duration: 0.0ms | Allocations: 17)
+Completed 200 OK in 18ms (Views: 16.8ms | ActiveRecord: 0.2ms | Allocations: 7605)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-------------------------------------------------------------------------------------------------------------------------------
+Work::custom methods::self.find_top_ten(category): test_0002_will return the number of work they have in the system accordingly
+-------------------------------------------------------------------------------------------------------------------------------
+  [1m[36mWork Load (0.2ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."category" = $1[0m  [["category", "book"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 907060870]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 321130596]]
+  [1m[35m (1.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 528045457]]
+  [1m[36mWork Load (0.2ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."category" = $1[0m  [["category", "book"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 907060870]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 321130596]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 528045457]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------------------------------------------------------------------
+Work::custom methods::self.find_top_ten(category): test_0001_will return 10 work if there is enough work from same category and by votes count
+----------------------------------------------------------------------------------------------------------------------------------------------
+  [1m[36mWork Load (0.1ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."category" = $1[0m  [["category", "movie"]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 7021072]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 396180092]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 838179347]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 929075731]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 265355242]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 334884854]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 495433430]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 615831625]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 4555947]]
+  [1m[35m (4.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 592940685]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 816793030]]
+  [1m[36mWork Load (0.2ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."category" = $1[0m  [["category", "movie"]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 7021072]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 396180092]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 838179347]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 929075731]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 265355242]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 334884854]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 495433430]]
+  [1m[35m (4.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 615831625]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 4555947]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 592940685]]
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 816793030]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------------------------------------------------
+Work::custom methods::self.find_top_ten(category): test_0003_will return an empty array if there is no work in that category
+----------------------------------------------------------------------------------------------------------------------------
+  [1m[36mWork Load (0.1ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."category" = $1[0m  [["category", "album"]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+-----------------------------------------------
+Vote::instantize: test_0001_can be instantiated
+-----------------------------------------------
+  [1m[36mVote Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."user_id" IS NULL AND "votes"."work_id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------
+Vote::instantize: test_0002_will have the required field
+--------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."user_id" IS NULL AND "votes"."work_id" IS NULL LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Minnie Mouse"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.3ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["username", "Minnie Mouse"], ["created_at", "2020-10-29 22:56:03.419842"], ["updated_at", "2020-10-29 22:56:03.419842"]]
+  [1m[36mWork Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "works" WHERE "works"."title" = $1 AND "works"."category" = $2 LIMIT $3[0m  [["title", "Supersoul conversation"], ["category", "book"], ["LIMIT", 1]]
+  [1m[36mWork Create (0.4ms)[0m  [1m[32mINSERT INTO "works" ("category", "title", "creator", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["category", "book"], ["title", "Supersoul conversation"], ["creator", "Oprah Winfrey"], ["created_at", "2020-10-29 22:56:03.422671"], ["updated_at", "2020-10-29 22:56:03.422671"]]
+  [1m[36mVote Create (1.1ms)[0m  [1m[32mINSERT INTO "votes" ("user_id", "work_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 530365492], ["work_id", 929075736], ["created_at", "2020-10-29 22:56:03.424071"], ["updated_at", "2020-10-29 22:56:03.424071"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT "votes".* FROM "votes" ORDER BY "votes"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------------------------------------------
+WorksController::destroy: test_0001_will destroy work from database when the work exists and then redirect
+----------------------------------------------------------------------------------------------------------
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "works"[0m
+  [1m[36mWork Load (0.1ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."id" = $1 LIMIT $2[0m  [["id", 321130596], ["LIMIT", 1]]
+Started DELETE "/works/321130596" for 127.0.0.1 at 2020-10-29 15:56:03 -0700
+Processing by WorksController#destroy as HTML
+  Parameters: {"id"=>"321130596"}
+  [1m[36mWork Load (0.2ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."id" = $1 LIMIT $2[0m  [["id", 321130596], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mVote Load (0.2ms)[0m  [1m[34mSELECT "votes".* FROM "votes" WHERE "votes"."work_id" = $1[0m  [["work_id", 321130596]]
+  [1m[36mVote Destroy (0.2ms)[0m  [1m[31mDELETE FROM "votes" WHERE "votes"."id" = $1[0m  [["id", 281110143]]
+  [1m[36mVote Destroy (0.9ms)[0m  [1m[31mDELETE FROM "votes" WHERE "votes"."id" = $1[0m  [["id", 1018350795]]
+  [1m[36mVote Destroy (0.3ms)[0m  [1m[31mDELETE FROM "votes" WHERE "votes"."id" = $1[0m  [["id", 51848956]]
+  [1m[36mVote Destroy (0.4ms)[0m  [1m[31mDELETE FROM "votes" WHERE "votes"."id" = $1[0m  [["id", 374648174]]
+  [1m[36mWork Destroy (0.3ms)[0m  [1m[31mDELETE FROM "works" WHERE "works"."id" = $1[0m  [["id", 321130596]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/works
+Completed 302 Found in 8ms (ActiveRecord: 2.7ms | Allocations: 1251)
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "works"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+------------------------------------------------------------------------------------------------------------------------
+WorksController::destroy: test_0002_does not change the db when the work does not exist, then redirect back to work list
+------------------------------------------------------------------------------------------------------------------------
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT COUNT(*) FROM "works"[0m
+Started DELETE "/works/-1" for 127.0.0.1 at 2020-10-29 15:56:03 -0700
+Processing by WorksController#destroy as HTML
+  Parameters: {"id"=>"-1"}
+  [1m[36mWork Load (0.7ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."id" = $1 LIMIT $2[0m  [["id", -1], ["LIMIT", 1]]
+Redirected to http://www.example.com/works
+Filter chain halted as :check_work rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.7ms | Allocations: 352)
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "works"[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------------------------
+Vote::validations: test_0003_will not valid a vote if work is not provided
+--------------------------------------------------------------------------
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 162985263], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 162985263], ["LIMIT", 1]]
+  [1m[36mVote Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."user_id" = $1 AND "votes"."work_id" IS NULL LIMIT $2[0m  [["user_id", 162985263], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mVote Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."user_id" = $1 AND "votes"."work_id" IS NULL LIMIT $2[0m  [["user_id", 162985263], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+----------------------------------------------------------------------
+Vote::validations: test_0001_will validate a vote if the user and work
+----------------------------------------------------------------------
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 162985263], ["LIMIT", 1]]
+  [1m[36mWork Load (0.1ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."id" = $1 LIMIT $2[0m  [["id", 528045457], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 162985263], ["LIMIT", 1]]
+  [1m[36mWork Load (0.1ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."id" = $1 LIMIT $2[0m  [["id", 528045457], ["LIMIT", 1]]
+  [1m[36mVote Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."user_id" = $1 AND "votes"."work_id" = $2 LIMIT $3[0m  [["user_id", 162985263], ["work_id", 528045457], ["LIMIT", 1]]
+  [1m[36mVote Create (0.5ms)[0m  [1m[32mINSERT INTO "votes" ("user_id", "work_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 162985263], ["work_id", 528045457], ["created_at", "2020-10-29 22:56:03.472268"], ["updated_at", "2020-10-29 22:56:03.472268"]]
+  [1m[35m (0.2ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+  [1m[36mVote Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."user_id" = $1 AND "votes"."id" != $2 AND "votes"."work_id" = $3 LIMIT $4[0m  [["user_id", 162985263], ["id", 1018350800], ["work_id", 528045457], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+--------------------------------------------------------------------------
+Vote::validations: test_0002_will not valid a vote if user is not provided
+--------------------------------------------------------------------------
+  [1m[36mWork Load (0.1ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."id" = $1 LIMIT $2[0m  [["id", 528045457], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mWork Load (0.1ms)[0m  [1m[34mSELECT "works".* FROM "works" WHERE "works"."id" = $1 LIMIT $2[0m  [["id", 528045457], ["LIMIT", 1]]
+  [1m[36mVote Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."user_id" IS NULL AND "votes"."work_id" = $1 LIMIT $2[0m  [["work_id", 528045457], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[36mVote Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "votes" WHERE "votes"."user_id" IS NULL AND "votes"."work_id" = $1 LIMIT $2[0m  [["work_id", 528045457], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+---------------------------------------------------------------
+UsersController::logout: test_0001_can logoout a logged in user
+---------------------------------------------------------------
+Started POST "/login" for 127.0.0.1 at 2020-10-29 15:56:03 -0700
+Processing by UsersController#login as HTML
+  Parameters: {"user"=>{"username"=>"Gillian Chung"}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Gillian Chung"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mUser Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Gillian Chung"], ["LIMIT", 1]]
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO "users" ("username", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["username", "Gillian Chung"], ["created_at", "2020-10-29 22:56:03.492681"], ["updated_at", "2020-10-29 22:56:03.492681"]]
+  [1m[35m (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/homepages
+Completed 302 Found in 4ms (ActiveRecord: 0.8ms | Allocations: 943)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "Gillian Chung"], ["LIMIT", 1]]
+Started POST "/logout" for 127.0.0.1 at 2020-10-29 15:56:03 -0700
+Processing by UsersController#logout as HTML
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 530365493], ["LIMIT", 1]]
+Redirected to http://www.example.com/
+Completed 302 Found in 1ms (ActiveRecord: 0.2ms | Allocations: 422)
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m

@@ -1,4 +1,4 @@
-require "faker"
+nrequire "faker"
 require "date"
 require "csv"
 

@@ -2,9 +2,9 @@
 <!--<p>Find me in app/views/work/index.html.erb</p>-->
 <h2>All Work - Index Page </h2>
 
+<h3>Albums</h3>
 <table id="index-table">
   <tr>
-    <th>Category</th>
     <th>Title</th>
     <th>Creator</th>
     <th>Publication Year</th>
@@ -12,22 +12,50 @@
 
   </tr>
   <% @works.each do |work| %>
-    <tr>
-      <td>
-        <%= work.category%>
-      </td>
-      <td>
-        <%= work.title %>
-      </td>
-      <td>
-        <%= work.creator %>
-      </td>
-      <td>
-        <%= work.publication_year %>
-      </td>
-      <td>
-        <%= work.description %>
-      </td>
-    </tr>
-  <% end %>
+    <% if work.category == "album" %>
+      <tr>
+        <td>
+          <%= work.title %>
+        </td>
+        <td>
+          <%= work.creator %>
+        </td>
+        <td>
+          <%= work.publication_year %>
+        </td>
+        <td>
+          <%= work.description %>
+        </td>
+      </tr>
+    <% end %>
+  <%end %>
+</table>
+
+<h3>Books</h3>
+<table id="index-table">
+  <tr>
+    <th>Title</th>
+    <th>Creator</th>
+    <th>Publication Year</th>
+    <th>Description</th>
+
+  </tr>
+  <% @works.each do |work| %>
+    <% if work.category == "book" %>
+      <tr>
+        <td>
+          <%= work.title %>
+        </td>
+        <td>
+          <%= work.creator %>
+        </td>
+        <td>
+          <%= work.publication_year %>
+        </td>
+        <td>
+          <%= work.description %>
+        </td>
+      </tr>
+    <% end %>
+  <%end %>
 </table>

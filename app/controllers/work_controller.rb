@@ -1,8 +1,10 @@
 class WorkController < ApplicationController
   def index
+    @works = Work.all
   end
 
   def show
+
   end
 
   def update

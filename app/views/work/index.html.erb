@@ -15,7 +15,7 @@
     <% if work.category == "album" %>
       <tr>
         <td>
-          <%= work.title %>
+          <%= link_to "#{work.title}", work_path(work.id)%>
         </td>
         <td>
           <%= work.creator %>
@@ -44,7 +44,7 @@
     <% if work.category == "book" %>
       <tr>
         <td>
-          <%= work.title %>
+          <%= link_to "#{work.title}", work_path(work.id)%>
         </td>
         <td>
           <%= work.creator %>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root to: "work#index"
+  get 'homepages/index'
+  root to: "homepages#index"
 
   resources :work
 

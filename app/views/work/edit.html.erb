@@ -1,39 +1,7 @@
 <!--<h1>Work#edit</h1>-->
 <!--<p>Find me in app/views/work/edit.html.erb</p>-->
+<h2>Edit Work</h2>
 
-<h2>Add New Work</h2>
+<%= render partial: "form", locals: { action_name: "Edit" } %>
 
-<%#= render partial: "form", locals: { action_name: "Edit" } %>
-
-<%#= button_to "Cancel", :back, method: :get, class: "cancel" %>
-
-<%= form_with model: @works, class: 'work-form' do |f| %>
-  <p>Please provide the following information to edit your task to our database:</p>
-
-  <div>
-    <%= f.label :category %>
-    <%= f.text_area :category %>
-  </div>
-
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-
-  <div>
-    <%= f.label :creator %>
-    <%= f.text_area :creator %>
-  </div>
-
-  <div>
-    <%= f.label :publication_year %>
-    <%= f.datetime_local_field :publication_year %>
-  </div>
-
-  <div>
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-  </div>
-
-  <%= f.submit "Edit Work", class: "work-button" %>
-<% end %>
+<%= button_to "Cancel", :back, method: :get, class: "cancel" %>

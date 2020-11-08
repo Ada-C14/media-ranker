@@ -2,36 +2,6 @@
 <!--<p>Find me in app/views/work/new.html.erb</p>-->
 <h2>Add New Work</h2>
 
-<%#= render partial: "form", locals: { action_name: "Create" } %>
+<%= render partial: "form", locals: { action_name: "Create" } %>
 
-<%#= button_to "Cancel", root_path, method: :get, class: "cancel" %>
-
-<%= form_with model: @works, class: 'work-form' do |f| %>
-  <p>Please provide the following information to save your task to our database:</p>
-  <div>
-    <%= f.label :category %>
-    <%= f.text_area :category %>
-  </div>
-
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
-
-  <div>
-    <%= f.label :creator %>
-    <%= f.text_area :creator %>
-  </div>
-
-  <div>
-    <%= f.label :publication_year %>
-    <%= f.datetime_local_field :publication_year %>
-  </div>
-
-  <div>
-    <%= f.label :description %>
-    <%= f.text_area :description %>
-  </div>
-
-  <%= f.submit "Add a work piece!" %>
-<% end %>
+<%= button_to "Cancel", root_path, method: :get, class: "cancel" %>

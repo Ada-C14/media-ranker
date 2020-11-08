@@ -14,6 +14,19 @@ class WorkController < ApplicationController
   end
 
   def update
+    id = params[:id].to_i
+    @work = Work.find_by(id: id)
+
+    if @work.nil?
+      head :not_found
+      return
+    elsif @work.update(passenger_params)
+      redirect_to work_path
+      return
+    else
+      render :edit
+      return
+    end
   end
 
   def edit

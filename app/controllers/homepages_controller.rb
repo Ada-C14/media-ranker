@@ -1,5 +1,5 @@
 class HomepagesController < ApplicationController
   def index
-    @works = Work.sample(10)
+    @works = Work.all
   end
 end

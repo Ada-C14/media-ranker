@@ -30,6 +30,13 @@ class WorkController < ApplicationController
   end
 
   def edit
+    id = params[:id].to_i
+    @work = Work.find_by(id: id)
+
+    if @work.nil?
+      head :not_found
+      return
+    end
   end
 
   def destroy

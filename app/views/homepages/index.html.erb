@@ -10,10 +10,11 @@
     <th>Creator</th>
     <th>Publication Year</th>
     <th>Description</th>
-
   </tr>
+
+  <%count = 0 %>
   <% @works.each do |work| %>
-    <% if work.category == "album" %>
+    <% if work.category == "album" && count < 10%>
       <tr>
         <td>
           <%= link_to "#{work.title}", work_path(work.id)%>
@@ -28,6 +29,7 @@
           <%= work.description %>
         </td>
       </tr>
+      <% count += 1 %>
     <% end %>
   <%end %>
 </table>
@@ -40,10 +42,10 @@
     <th>Creator</th>
     <th>Publication Year</th>
     <th>Description</th>
-
   </tr>
+  <%count = 0 %>
   <% @works.each do |work| %>
-    <% if work.category == "book" %>
+    <% if work.category == "book" && count < 10%>
       <tr>
         <td>
           <%= link_to "#{work.title}", work_path(work.id)%>
@@ -58,6 +60,41 @@
           <%= work.description %>
         </td>
       </tr>
+      <% count += 1 %>
     <% end %>
   <%end %>
+</table>
+
+<h3>Top 10 - All Work - Spotlight</h3>
+<table id="index-table">
+  <tr>
+    <th>Category</th>
+    <th>Title</th>
+    <th>Creator</th>
+    <th>Publication Year</th>
+    <th>Description</th>
+  </tr>
+  <%count = 0 %>
+  <% @works.each do |work| %>
+    <% if count < 10%>
+      <tr>
+        <td>
+          <%= work.category %>
+        </td>
+        <td>
+          <%= link_to "#{work.title}", work_path(work.id)%>
+        </td>
+        <td>
+          <%= work.creator %>
+        </td>
+        <td>
+          <%= work.publication_year %>
+        </td>
+        <td>
+          <%= work.description %>
+        </td>
+      </tr>
+      <% count += 1 %>
+    <% end %>
+    <% end %>
 </table>

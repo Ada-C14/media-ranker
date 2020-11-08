@@ -2,11 +2,11 @@
 <!--<p>Find me in app/views/work/show.html.erb</p>-->
 <h2>Work: <%= @work.title%></h2>
 
-<!--<div class="edit-delete">-->
-<!--  <p><%#= link_to "Edit #{@work.name}", edit_work_path(@work.id) %></p>-->
-<!--  <p><%#= link_to "Delete #{@work.name}", work_path(@work.id), method: :delete, data:{confirm: 'Please confirm you would like to delete this work.'} %></p>-->
-<!--  <p><%#= link_to "Return to Work list", works_path %></p>-->
-<!--</div>-->
+<div class="edit-delete">
+  <p><%= link_to "Edit #{@work.title}", edit_work_path(@work.id) %></p>
+  <p><%= link_to "Delete #{@work.title}", work_path(@work.id), method: :delete, data:{confirm: 'Please confirm you would like to delete this work.'} %></p>
+  <p><%= link_to "Return to Work list", work_index_path %></p>
+</div>
 
 <div class="content">
   <p>Creator: <%= @work.creator %></p>

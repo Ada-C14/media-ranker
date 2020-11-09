@@ -1,0 +1,26 @@
+<section class="table">
+  <h4><%= category_name %></h4>
+  <table>
+    <thead>
+    <tr>
+      <th width="80">Votes</th>
+      <th>Title</th>
+      <th>Created By</th>
+      <th width="100">Published</th>
+      <th width="100">Upvote</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!--      TO:DO: order by votes -->
+    <% Work.where(category: category_type).each do |work| %>
+      <tr>
+        <td>num_votes</td>
+        <td><%= link_to work.title, work_path(work.id) %></td>
+        <td><%= work.creator %></td>
+        <td><%= work.publication_year %></td>
+        <td><%= link_to "Upvote", class: 'button' %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</section>

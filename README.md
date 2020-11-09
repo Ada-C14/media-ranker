@@ -2,6 +2,8 @@
 
 ![Build Status](https://travis-ci.com/CheezItMan/media-ranker.svg?branch=master)
 
+![Run Tests Video Lesson](https://github.com/Ada-C14/media-ranker/workflows/Run%20Tests%20Video%20Lesson/badge.svg)
+
 ## At a Glance
 
 - Individual, [stage 2](https://github.com/Ada-Developers-Academy/pedagogy/blob/master/classroom/rule-of-three.md#stage-2) project

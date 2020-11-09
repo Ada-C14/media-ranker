@@ -3,6 +3,6 @@
   <%= render partial: "table", locals: { category_name: "Albums", category_type: 'album' } %>
   <%= render partial: "table", locals: { category_name: "Books", category_type: 'book' } %>
   <%= render partial: "table", locals: { category_name: "Movies", category_type: 'movie' } %>
-  <%= link_to "View top media" %>
-  <%= link_to "Add a new work" %>
+  <%= link_to "View top media", root_path, class: "button btn-secondary" %>
+  <%= link_to "Add a new work", new_work_path, class: "button" %>
 </main>

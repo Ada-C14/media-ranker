@@ -43,6 +43,25 @@ describe WorksController do
     end
   end
 
+  describe "new" do
+    it "can get the new work page" do
+      get new_work_url
+      must_respond_with :success
+    end
+  end
+
+  describe "create" do
+
+    it "can create a work" do
+      skip
+    end
+
+    it "wont create a work if data is wrong" do
+      skip
+    end
+
+  end
+
   describe "show" do
     it "must get show" do
       get works_url(@work.id)
@@ -104,7 +123,6 @@ describe WorksController do
 
     it "redirects for nonexistent work" do
       expect{delete work_url(bad_work)}.wont_change "Work.count", -1
-
       must_redirect_to root_url
     end
 

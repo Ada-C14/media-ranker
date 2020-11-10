@@ -15,6 +15,21 @@ class WorksController < ApplicationController
     # end
   end
 
+  def new
+    @work = Work.new
+  end
+
+  def create
+    @work = Work.new(work_params)
+    if @work.save
+      #redirect somewhere
+      return
+    else
+      puts "do something else"
+      return
+    end
+  end
+
   def edit
     @work = Work.find_by(id: params[:id])
 

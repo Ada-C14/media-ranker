@@ -26,7 +26,19 @@ describe WorksController do
   end
 
   describe 'show' do
+    it "responds with success when showing an existing valid work" do
+      work
 
+      get work_path(work.id)
+
+      must_respond_with :success
+    end
+
+    it "will redirect when passed an invalid work id" do
+      get work_path(-1)
+
+      must_respond_with :redirect
+    end
   end
 
   describe 'new' do

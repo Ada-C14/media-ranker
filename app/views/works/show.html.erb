@@ -6,7 +6,7 @@
     <p><%= @work.description %> </p>
     <section class="work-buttons">
       <%= button_to "Back to media ranks", root_path, method: :get %>
-      <%# edit button %>
+      <%= button_to "Edit", edit_work_path(@work.id), method: :get%>
       <%# upvote button %>
       <%# delete button %>
     </section>
@@ -22,7 +22,7 @@
           <th>Date</th>
         </tr>
         <tbody>
-          <!-- will fill in with user info -->
+          <%# will fill in with user info %>
         </tbody>
       </thead>
 

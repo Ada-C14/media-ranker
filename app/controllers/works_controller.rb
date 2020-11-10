@@ -7,12 +7,42 @@ class WorksController < ApplicationController
   end
 
   def show
-    work_id = params[:id]
-    @work = Work.find_by(id: work_id)
+    @work = Work.find_by(id: params[:id])
 
+    # TODO:
     # if @work.nil?
     #   # here need to redirect to an error page
     # end
+  end
 
+  def edit
+    @work = Work.find_by(id: params[:id])
+
+    # TODO:
+    # if @work.nil?
+    #   # here need to redirect to an error page
+    # end
+  end
+
+  def update
+    @work = Work.find_by(id: params[:id])
+
+    if @work.nil?
+      # TODO:
+      # here need to redirect to an error page
+      # return
+      puts "redirect to that same error page as above"
+    elsif @work.update(work_params)
+      # TO DO: also need to have that successfully updated thing pop up
+      redirect_to work_path(@work.id)
+    end
+
+  end
+
+
+  private
+
+  def work_params
+    return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
   end
 end

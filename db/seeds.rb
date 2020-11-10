@@ -7,7 +7,6 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require "csv"
 
-
 WORK_FILE = Rails.root.join("db", "works-seeds.csv")
 
 work_failures = []

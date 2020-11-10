@@ -8,8 +8,24 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  <header>
+    <h1>Ride Share</h1>
+    <nav>
+      <%= link_to "Home", root_path %>
+      <%= link_to "View Works", works_path %>
+      <%= link_to "Add Work", new_work_path %>
+    </nav>
+  </header>
   <body>
     <%= yield %>
   </body>
+</html>
+
+
+
+
+<footer>
+  Copyright Alice D 2020
+</footer>
+
 </html>

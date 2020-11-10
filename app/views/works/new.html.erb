@@ -1,0 +1,30 @@
+<main>
+  <h2>Add a new work</h2>
+  <section>
+    <%= form_with model: @work do |f| %>
+      <div class="form-item">
+        <%= f.label :category %>
+        <%= f.select :category, options_for_select(Work.all.map(&:category).uniq) %>
+      </div>
+      <div class="form-item">
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+      </div>
+      <div class="form-item">
+        <%= f.label :creator %>
+        <%= f.text_field :creator %>
+      </div>
+      <div class="form-item">
+        <%= f.label :publication_year %>
+        <%= f.text_field :publication_year %>
+      </div>
+      <div class="form-item">
+        <%= f.label :description %>
+        <%= f.text_area :description %>
+      </div>
+      <div class="form-item">
+        <%= f.submit "Create Work", class: "button" %>
+      </div>
+    <% end %>
+  </section>
+</main>

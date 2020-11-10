@@ -6,3 +6,4 @@
 </ul>
 
 <%= link_to "Edit this #{@work.category.capitalize}", edit_work_path(@work.id) %>
+<%= link_to "Delete this #{@work.category.capitalize}", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"} %>

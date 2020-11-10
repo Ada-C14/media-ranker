@@ -1,2 +1,33 @@
-<h1>Works#show</h1>
-<p>Find me in app/views/works/show.html.erb</p>
+<main>
+  <section class="work-description">
+    <h2><%= @work.title %></h2>
+    <p>Created by: <%= @work.creator %></p>
+    <p>Published: <%= @work.publication_year %></p>
+    <p><%= @work.description %> </p>
+    <section class="work-buttons">
+      <%= button_to "Back to media ranks", root_path, method: :get %>
+      <%# edit button %>
+      <%# upvote button %>
+      <%# delete button %>
+    </section>
+  </section>
+
+
+  <section class="work-votes">
+    <h3>[FILL IN VAL] Votes for this Album</h3>
+    <table>
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Date</th>
+        </tr>
+        <tbody>
+          <!-- will fill in with user info -->
+        </tbody>
+      </thead>
+
+    </table>
+
+  </section>
+
+</main>

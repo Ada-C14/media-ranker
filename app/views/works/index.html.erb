@@ -1,0 +1,49 @@
+<h2>All Media</h2>
+
+<h3>Albums</h3>
+<table class="albums-table">
+  <tr>
+    <th>Title</th>
+    <th>Creator</th>
+    <th>publication_year</th>
+  </tr>
+  <% @albums.each do |album| %>
+    <tr>
+      <td><%= album.title %></td>
+      <td><%= album.creator %></td>
+      <td><%= album.publication_year %></td>
+    </tr>
+  <% end %>
+</table>
+
+<h3>Books</h3>
+<table class="books-table">
+  <tr>
+    <th>Title</th>
+    <th>Creator</th>
+    <th>publication_year</th>
+  </tr>
+  <% @books.each do |book| %>
+    <tr>
+      <td><%= book.title %></td>
+      <td><%= book.creator %></td>
+      <td><%= book.publication_year %></td>
+    </tr>
+  <% end %>
+</table>
+
+<h3>Movies</h3>
+<table class="movies-table">
+  <tr>
+    <th>Title</th>
+    <th>Creator</th>
+    <th>publication_year</th>
+  </tr>
+  <% @movies.each do |movie| %>
+    <tr>
+      <td><%= movie.title %></td>
+      <td><%= movie.creator %></td>
+      <td><%= movie.publication_year %></td>
+    </tr>
+  <% end %>
+</table>

@@ -1,6 +1,8 @@
 class WorksController < ApplicationController
   def index
-    @works = Work.all.order(:category)
+    @albums = Work.all_albums
+    @books = Work.all_books
+    @movies = Work.all_movies
   end
 
   def show

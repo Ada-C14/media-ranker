@@ -1,6 +1,100 @@
-<h2>Works</h2>
-<ul>
-  <% @works.each do |work| %>
-    <li><%= work.title %></li>
+<h2>List of Works</h2>
+<!--<h3>Albums</h3>-->
+<!--<ul>-->
+  <%# @albums.each do |album| %>
+<!--    <li><%#= album.title %></li>-->
+  <%# end %>
+<!--</ul>-->
+
+<!--<h3>Books</h3>-->
+<!--<ul>-->
+  <%# @books.each do |book| %>
+<!--    <li><%#= book.title %></li>-->
+  <%# end %>
+<!--</ul>-->
+
+<!--<h3>Movies</h3>-->
+<!--<ul>-->
+  <%# @movies.each do |movie| %>
+<!--    <li><%#= movie.title %></li>-->
+  <%# end %>
+<!--</ul>-->
+
+<table>
+  <thead>
+    <tr>
+      <th>Votes</th>
+      <th>Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+      <th>Upvote</th>
+    </tr>
+  </thead>
+  <h3>Albums</h3>
+
+  <tbody>
+      <% @albums.each do |album| %>
+        <tr>
+          <td><%=  %></td>
+          <td><%= link_to album.title, work_path(album) %></td>
+          <td><%= album.creator %></td>
+          <td><%= album.publication_year %></td>
+          <td><button>Upvote</button></td>
+        </tr>
   <% end %>
-</ul>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+  <tr>
+    <th>Votes</th>
+    <th>Title</th>
+    <th>Created By</th>
+    <th>Published</th>
+    <th>Upvote</th>
+  </tr>
+  </thead>
+  <h3>Books</h3>
+
+  <tbody>
+  <% @books.each do |book| %>
+    <tr>
+      <td><%=  %></td>
+      <td><%= link_to book.title, work_path(book) %></td>
+      <td><%= book.creator %></td>
+      <td><%= book.publication_year %></td>
+      <td><button>Upvote</button></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+  <tr>
+    <th>Votes</th>
+    <th>Title</th>
+    <th>Created By</th>
+    <th>Published</th>
+    <th>Upvote</th>
+  </tr>
+  </thead>
+
+  <h3>Movies</h3>
+
+  <tbody>
+  <% @movies.each do |movie| %>
+    <tr>
+      <td><%=  %></td>
+      <td><%= link_to movie.title, work_path(movie) %></td>
+      <td><%= movie.creator %></td>
+      <td><%= movie.publication_year %></td>
+      <td><button>Upvote</button></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%#= link_to "View top media", root_path %>
+<%= link_to "Add a new work", new_work_path %>

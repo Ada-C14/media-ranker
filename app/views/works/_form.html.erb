@@ -1,7 +1,7 @@
 <%= form_with model: @work, class: 'work-form' do |f| %>
 
   <p><%= f.label :category %>
-    <%= f.select :category, @work.category.map{ |category| category } %>
+    <%= f.select :category, ['album', 'book', 'movie'] %>
   </p>
 
   <p><%= f.label :title %>

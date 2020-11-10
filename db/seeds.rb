@@ -14,9 +14,8 @@ puts "Loading works data from #{MEDIA_FILE}"
 works_failures = []
 
 CSV.foreach(MEDIA_FILE, :headers => true) do |row|
-  category = Category.create(name: row['category'])
   work = Work.new
-  work.category_id = category.id
+  work.category = row['category']
   work.title = row['title']
   work.creator = row['creator']
   work.publication_year = row['publication_year']

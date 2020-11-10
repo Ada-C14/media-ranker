@@ -1,4 +1,4 @@
-require "test_helper"
+require 'test_helper'
 
 describe Work do
 
@@ -16,7 +16,7 @@ describe Work do
     expect(work.valid?).must_equal true
 
     work = Work.first
-    [:category, :title, :creator, :publication_year, :description].each do |field|
+    %i[category title creator publication_year description].each do |field|
       expect(work).must_respond_to field
     end
   end
@@ -87,9 +87,10 @@ describe Work do
   end
 
   describe 'custom methods' do
-
+    # TO:DO: UPDATE THESE WITH THE REAL METHODS
     it 'Work.media_spotlight: can get the top voted item' do
-
+      work
+      expect(Work.media_spotlight).must_equal work
     end
 
     it 'Work.media_spotlight: responds with success hmmm idk' do
@@ -97,12 +98,23 @@ describe Work do
     end
 
     it 'Work.top_ten(category): can get top ten items for each category' do
+      60.times do
+        Work.create(
+          category: %w[album book movie].sample,
+          title: 'title',
+          creator: 'creator',
+          publication_year: 2020,
+          description: 'description'
+        )
+      end
 
+      top_ten = Work.top_ten('movie')
+      expect(top_ten.size).must_equal 10
     end
 
     it 'Work.top_ten(category): can get up to 10 items if there are less than 10' do
-
+      work
+      expect(Work.top_ten('album')).must_equal [work]
     end
-
   end
 end

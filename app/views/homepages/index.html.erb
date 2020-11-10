@@ -2,11 +2,11 @@
   <section class="spotlight">
     <h2>
       <span>Media Spotlight:</span>
-      <a class="spotlight-title">Make this link to something</a>
-      by Make this the author of the highest voted thing
+      <%= link_to Work.media_spotlight.title, work_path(Work.media_spotlight.id), class: "spotlight-title" %>
+      by <%= Work.media_spotlight.creator %>
     </h2>
     <p class="spotlight-desc">
-      Num votes - top media description here
+      Num votes - <%= Work.media_spotlight.description %>
     </p>
   </section>
   <hr class="homepage-hr">

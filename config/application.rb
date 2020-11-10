@@ -12,10 +12,9 @@ module MediaRanker
     # Force new test files to be generated in the minitest-spec style
     g.test_framework :minitest, spec: true
   end
-    # Initialize configuration defaults for originally generated Rails version.
+  config.add_autoload_paths_to_load_path = true
+  # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 6.0
-    config.add_autoload_paths_to_load_path = true
-
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration can go into files in config/initializers

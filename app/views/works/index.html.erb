@@ -1,12 +1,17 @@
 <h1>List of Works</h1>
 <ul>
-  <% @works.category.each do |category|  %>
-    <%=category%>
-    <li>
-    <%= @works.select(category:category).each do %>
-      <%= link_to work.title, work_path(work) %>
-      <% end %>
+  <% categories = [] %>
+  <% @works.each do |work|  %>
+    <% categories << work.category %>
+    <% end %>
+
+      <% categories.uniq.each do |category| %>
+        <% works = @works.where(category:category) %>
+    <li><%= category %>
+        <% works.each do |work| %>
+      <li><%= link_to work.title, work_path(work) %></li>
+        <% end %>
     </li>
-  <% end %>
+      <% end %>
 </ul>
 <%= link_to "Add a new work", new_work_path %>

@@ -4,8 +4,8 @@ class Work < ApplicationRecord
     Work.all.limit(1)[0]
   end
 
-  def self.top_ten
-
+  def self.top_ten(category)
+    Work.where(category: category).limit(10)
   end
 
 end

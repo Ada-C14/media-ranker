@@ -1,0 +1,12 @@
+<h1>List of Works</h1>
+<ul>
+  <% @works.category.each do |category|  %>
+    <%=category%>
+    <li>
+    <%= @works.select(category:category).each do %>
+      <%= link_to work.title, work_path(work) %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>
+<%= link_to "Add a new work", new_work_path %>

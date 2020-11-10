@@ -1,31 +1,31 @@
 require "test_helper"
 
-describe WorkController do
+describe WorksController do
 
   describe "index" do
     it "can get the index path" do
-      get work_path
+      get works_path
       must_respond_with :success
     end
   end
 
   describe "show" do
 
-    it "can get a valid work" do
+    it "can get a valid works" do
       @work = Work.create(category: "book", title: "Work 1", creator: "Creator 1", publication_year: "January 1, 2020", description: "Description 1")
       work_id = @work.id
       get work_path(work_id)
       must_respond_with :success
     end
 
-    it "will respond with not_found for an invalid work" do
+    it "will respond with not_found for an invalid works" do
       get work_path(-1)
       must_respond_with :not_found
     end
   end
 
   describe "new" do
-    it "can get the new work page" do
+    it "can get the new works page" do
       get new_work_path
       must_respond_with :success
     end
@@ -60,54 +60,54 @@ describe WorkController do
 
     end
 
-    it "creates a new work" do
+    it "creates a new works" do
       expect {
-        post work_path, params: @valid_hash
+        post works_path, params: @valid_hash
       }.must_differ "Work.count", 1
 
       must_respond_with :redirect
-      expect(Work.last.category).must_equal hash[:work][:category]
-      expect(Work.last.title).must_equal hash[:work][:title]
-      expect(Work.last.creator).must_equal hash[:work][:creator]
-      expect(Work.last.publication_year).must_equal hash[:work][:publication_year]
-      expect(Work.last.description).must_equal hash[:work][:description]
+      expect(Work.last.category).must_equal @valid_hash[:work][:category]
+      expect(Work.last.title).must_equal @valid_hash[:work][:title]
+      expect(Work.last.creator).must_equal @valid_hash[:work][:creator]
+      expect(Work.last.publication_year).must_equal @valid_hash[:work][:publication_year]
+      expect(Work.last.description).must_equal @valid_hash[:work][:description]
     end
 
-    it "requires a category to create a work, does not create work otherwise, and responds with redirect if no title is entered" do
+    it "requires a category to create a works, does not create works otherwise, and responds with redirect if no title is entered" do
       expect {
-        post work_path, params: @invalid_hash_1
+        post works_path, params: @invalid_hash_1
       }.wont_change "Work.count"
 
       must_respond_with :bad_request
     end
 
-    it "requires a title to create a work, does not create work otherwise, and responds with redirect if no title is entered" do
+    it "requires a title to create a works, does not create works otherwise, and responds with redirect if no title is entered" do
       expect {
-        post work_path, params: @invalid_hash_2
+        post works_path, params: @invalid_hash_2
       }.wont_change "Work.count"
 
       must_respond_with :bad_request
     end
 
-    it "requires a creator to create a work, does not create work otherwise, and responds with redirect if no title is entered" do
+    it "requires a creator to create a works, does not create works otherwise, and responds with redirect if no title is entered" do
       expect {
-        post work_path, params: @invalid_hash_3
+        post works_path, params: @invalid_hash_3
       }.wont_change "Work.count"
 
       must_respond_with :bad_request
     end
 
-    it "requires a publication_year to create a work, does not create work otherwise, and responds with redirect if no title is entered" do
+    it "requires a publication_year to create a works, does not create works otherwise, and responds with redirect if no title is entered" do
       expect {
-        post work_path, params: @invalid_hash_4
+        post works_path, params: @invalid_hash_4
       }.wont_change "Work.count"
 
       must_respond_with :bad_request
     end
 
-    it "requires a description to create a work, does not create work otherwise, and responds with redirect if no title is entered" do
+    it "requires a description to create a works, does not create works otherwise, and responds with redirect if no title is entered" do
       expect {
-        post work_path, params: @invalid_hash_5
+        post works_path, params: @invalid_hash_5
       }.wont_change "Work.count"
 
       must_respond_with :bad_request
@@ -121,12 +121,12 @@ describe WorkController do
       @work = Work.create(category: "book", title: "Work 1", creator: "Creator 1", publication_year: "January 1, 2020", description: "Description 1")
     end
 
-    it "can get the edit page for an existing work" do
+    it "can get the edit page for an existing works" do
       get edit_work_path(@work.id)
       must_respond_with :success
     end
 
-    it "will respond with not_found when attempting to edit a nonexistant work" do
+    it "will respond with not_found when attempting to edit a nonexistant works" do
       get edit_work_path(-1)
       must_respond_with :not_found
     end
@@ -142,12 +142,12 @@ describe WorkController do
       }
     end
 
-    it "can update an existing work" do
+    it "can update an existing works" do
       expect {
         patch work_path(@work.id), params: @work_hash_6
       }.must_differ 'Work.count', 0
 
-      must_redirect_to work_path
+      must_redirect_to works_path
 
       updated_work = Work.find(@work.id)
       expect(updated_work.category).must_equal @work_hash_6[:work][:category]
@@ -169,7 +169,7 @@ describe WorkController do
 
   describe "destroy" do
 
-    it "can destroy a work" do
+    it "can destroy a works" do
       @work7 = Work.create(category: "book", title: "Work 7", creator: "Creator 7", publication_year: "January 7, 2020", description: "Description 7")
       # @work7.save
       id = @work7.id
@@ -181,7 +181,7 @@ describe WorkController do
       work7 = Work.find_by(title: "Work 7")
       expect(work7).must_be_nil
 
-      must_redirect_to work_path
+      must_redirect_to works_path
     end
 
     it "will respond with not_found for invalid ids" do

@@ -1,4 +1,4 @@
-class WorkController < ApplicationController
+class WorksController < ApplicationController
   def index
     @works = Work.all
   end
@@ -20,8 +20,8 @@ class WorkController < ApplicationController
     if @work.nil?
       head :not_found
       return
-    elsif @work.update(passenger_params)
-      redirect_to work_path
+    elsif @work.update(work_params)
+      redirect_to works_path
       return
     else
       render :edit
@@ -45,7 +45,7 @@ class WorkController < ApplicationController
 
     if @work
       @work.destroy
-      redirect_to work_path
+      redirect_to works_path
     else
       head :not_found
       return
@@ -69,7 +69,7 @@ class WorkController < ApplicationController
   private
 
   def work_params
-      return params.require(:work).permit(:name, :title, :creator, :publication_year, :description)
+      return params.require(:work).permit(:category, :name, :title, :creator, :publication_year, :description)
   end
 
 end

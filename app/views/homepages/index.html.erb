@@ -2,11 +2,19 @@
   <section class="spotlight">
     <h2>
       <span>Media Spotlight:</span>
-      <%= link_to Work.media_spotlight.title, work_path(Work.media_spotlight.id), class: "spotlight-title" %>
-      by <%= Work.media_spotlight.creator %>
+      <% if Work.media_spotlight %>
+        <%= link_to Work.media_spotlight.title, work_path(Work.media_spotlight.id), class: "spotlight-title" %>
+        by <%= Work.media_spotlight.creator %>
+      <% else %>
+        Vote on some works to see the most popular item here!
+      <% end %>
     </h2>
     <p class="spotlight-desc">
-      Num votes - <%= Work.media_spotlight.description %>
+      <% if Work.media_spotlight %>
+        Num votes - <%= Work.media_spotlight.description %>
+      <% else %>
+        What're you waiting for? Get to voting!
+      <% end %>
     </p>
   </section>
   <hr class="homepage-hr">

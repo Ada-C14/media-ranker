@@ -47,7 +47,22 @@ describe WorksController do
   describe "create" do
 
     it "can create a work" do
-      skip
+      work_hash = {
+        work: {
+          category: "album",
+          title: "create_test",
+          creator: "The Testor",
+          publication_year: 2020,
+          description: "We love a good create test"
+        }
+      }
+      expect {post works_url, params: work_hash}.must_differ 'Work.count', 1
+
+      new_work = Work.find_by(title: work_hash[:work][:title])
+      expect(new_work.title).must_equal work_hash[:work][:title]
+      expect(new_work.creator).must_equal work_hash[:work][:creator]
+      expect(new_work.description).must_equal work_hash[:work][:description]
+      must_redirect_to work_url(new_work.id)
     end
 
     it "wont create a work if data is wrong" do

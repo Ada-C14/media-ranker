@@ -22,10 +22,13 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
     if @work.save
-      #redirect somewhere
+      redirect_to work_path(@work.id)
+      flash[:success] = "Successfully created #{@work.category} #{@work.id}"
       return
     else
-      puts "do something else"
+      # TO DO: check to make sure this shows correctly in view (along with validation error message)
+      flash.now[:error] = "A problem occured: Could not create #{@work.category}"
+      render :new # show the create form again
       return
     end
   end

@@ -1,0 +1,34 @@
+
+<div class="spotlight">
+  <% unless Work.all.empty? %>
+    <% feat = Work.spotlight %>
+    <h3>Media Spotlight: <%= feat.title %> by <%= feat.creator %></h3>
+  <% end %>
+</div>
+
+<div class="top-books">
+  <h2>Top Books</h2>
+  <ul>
+    <% @books.each do |book| %>
+      <li><%= book.title %> by <%= book.creator %></li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="top-movies">
+  <h2>Top Movies</h2>
+  <ul>
+    <% @movies.each do |movie| %>
+      <li><%= movie.title %> by <%= movie.creator %></li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="top-albums">
+  <h2>Top Albums</h2>
+  <ul>
+    <% @albums.each do |album| %>
+      <li><%= album.title %> by <%= album.creator %> </li>
+    <% end %>
+  </ul>
+</div>

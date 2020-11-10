@@ -55,6 +55,13 @@ class WorksController < ApplicationController
     end
   end
 
+  def main
+    @works = Work.all
+    @albums = Work.top_albums
+    @books = Work.top_books
+    @movies = Work.top_movies
+  end
+
   private
 
   def work_params

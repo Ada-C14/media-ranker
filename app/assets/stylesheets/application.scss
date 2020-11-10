@@ -56,6 +56,10 @@ h2 {
   font-size: 2rem;
 }
 
+h3 {
+  font-size: 1.75rem;
+}
+
 h4 {
   font-size: 1.5rem;
   margin-block-start: 1.33em;
@@ -105,6 +109,17 @@ tr {
   border-color: inherit;
 }
 
+table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+table th, .table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
 ol, ul, dl {
   margin-top: 0;
   margin-bottom: 1rem;
@@ -139,14 +154,19 @@ a.button {
   color: white;
 }
 
+a.button:hover, a.button.delete:hover {
+  background-color: #007a6b;
+}
+
 a.button.btn-secondary {
   color: #fff;
   background-color: #6c757d;
   border-color: #6c757d;
 }
 
-a.button:hover {
-  background-color: #007a6b;
+a.button.delete {
+  background-color: #dc3545;
+  border-color: #dc3545;
 }
 
 a:link, a:visited {
@@ -279,4 +299,12 @@ ul#user li a {
 
 .top-ten-creator {
   color: slategrey;
+}
+
+.votes {
+  margin-top: 2rem;
+}
+
+.votes-header {
+  color: black;
 }

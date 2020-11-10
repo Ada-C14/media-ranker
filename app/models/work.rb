@@ -6,7 +6,8 @@ class Work < ApplicationRecord
   validates :title, :creator, :description, presence: true
   validates :publication_year,
             presence: true,
-            :numericality => { :greater_than_or_equal_to => 0 }
+            inclusion: { in: 1800..Date.today.year, message: "Please pick a work created from 1800 onward." },
+            numericality: { greater_than_or_equal_to: 1800, message: "Make sure you enter an integer value for year, from 1800 onward." }
 
   def self.media_spotlight
     Work.all.limit(1)[0]

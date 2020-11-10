@@ -6,9 +6,9 @@
     <p><%= @work.description %> </p>
     <section class="work-buttons">
       <%= button_to "Back to media ranks", root_path, method: :get %>
-      <%= button_to "Edit", edit_work_path(@work.id), method: :get%>
+      <%= button_to "Edit", edit_work_path(@work.id), method: :get %>
       <%# upvote button %>
-      <%# delete button %>
+      <%= button_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"} %>
     </section>
   </section>
 

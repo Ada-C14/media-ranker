@@ -36,7 +36,17 @@ class WorksController < ApplicationController
       # TO DO: also need to have that successfully updated thing pop up
       redirect_to work_path(@work.id)
     end
+  end
 
+  def destroy
+    @work = Work.find_by(id: params[:id])
+
+    if @work
+      # TO DO: also need to have that successfully updated thing pop up
+      @work.destroy
+    end
+    redirect_to root_path
+     
   end
 
 

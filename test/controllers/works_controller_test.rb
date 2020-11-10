@@ -26,7 +26,7 @@ describe WorksController do
 
   describe "root" do
     it "can get the root path" do
-      get root_path
+      get root_url
       must_respond_with :success
     end
   end
@@ -59,13 +59,13 @@ describe WorksController do
 
   describe "edit" do
     it "can get the edit page go an existing task" do
-      get edit_work_path(@work.id)
+      get edit_work_url(@work.id)
       must_respond_with :success
     end
 
     it "redirects to error page when attempting to edit a nonexistent work" do
       skip
-      get edit_work_path(bad_work)
+      get edit_work_url(bad_work)
       # must redirect somewhereeeeee
     end
   end
@@ -86,6 +86,26 @@ describe WorksController do
 
     it "will redirect for invalid work" do
       skip
+    end
+  end
+
+
+  describe "destroy" do
+
+    it "can destroy a model" do
+
+      expect {delete work_url(@work.id)}.must_change "Work.count", -1
+
+      work = Work.find_by(title: "Test")
+      expect(work).must_be_nil
+
+      must_redirect_to root_url
+    end
+
+    it "redirects for nonexistent work" do
+      expect{delete work_url(bad_work)}.wont_change "Work.count", -1
+
+      must_redirect_to root_url
     end
 
   end

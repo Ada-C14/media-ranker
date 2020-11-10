@@ -1,0 +1,11 @@
+<h1><%= @work.title %></h1>
+<h6>Created by:  <%= @work.creator %></h6>
+<h6>Published: <%= @work.publication_year %></h6>
+<h6>Description: <%= @work.description %></h6>
+
+  <div>
+<%#= link_to "Back to media ranks", root_path %>
+  <button><%= link_to "Edit", edit_work_path(@work) %></button>
+<%#= link_to "Upvote", work_path(@work) %>
+  <button><%= link_to "Delete", work_path(@work), method: :delete, data: {confirm: "Are you sure?"}%></button>
+  </div>

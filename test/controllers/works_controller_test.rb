@@ -2,12 +2,7 @@ require "test_helper"
 
 describe WorksController do
   before do
-    @work = Work.create!(
-      category: "album",
-      title: "test",
-      creator: "The Testor",
-      publication_year: 2020,
-      description: "We love a good test")
+    @work = works(:test_work)
   end
 
   let (:bad_work){
@@ -22,7 +17,6 @@ describe WorksController do
       },
     }
   }
-
 
   describe "root" do
     it "can get the root path" do

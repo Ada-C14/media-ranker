@@ -1,0 +1,18 @@
+<main>
+  <section class="spotlight">
+    <h2>
+      <span>Media Spotlight:</span>
+      <a class="spotlight-title">Make this link to something</a>
+      by Make this the author of the highest voted thing
+    </h2>
+    <p class="spotlight-desc">
+      Num votes - top media description here
+    </p>
+  </section>
+  <hr class="homepage-hr">
+  <section class="top-ten">
+    <%= render partial: "topten", locals: { category_name: "Movies", category_type: 'movie' } %>
+    <%= render partial: "topten", locals: { category_name: "Books", category_type: 'book' } %>
+    <%= render partial: "topten", locals: { category_name: "Albums", category_type: 'album' } %>
+  </section>
+</main>

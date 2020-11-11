@@ -21,9 +21,11 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
     if @work.save
+      flash[:success] = "#{@work.category.capitalize} added successfully"
       redirect_to work_path(@work.id)
       return
     else
+      flash.now[:error] = "A problem occured: could not create #{@work.category}"
       render :new, status: :bad_request
       return
     end
@@ -42,9 +44,11 @@ class WorksController < ApplicationController
     if @work.nil?
       head :not_found
     elsif @work.update(work_params)
+      flash[:success] = "#{@work.category.capitalize} successfully updated"
       redirect_to work_path
       return
     else
+      flash.now[:failure] = "A problem occurred: could not update #{@work.category}"
       render :edit, status: :bad_request
       return
     end
@@ -57,6 +61,7 @@ class WorksController < ApplicationController
       return
     else
       @work.destroy
+      flash[:success] = "#{@work.category.capitalize} successfully deleted"
       redirect_to works_path
       return
     end

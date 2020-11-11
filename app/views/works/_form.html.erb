@@ -1,8 +1,19 @@
 <% categories = %w{album book movie} %>
+
+<% if @work.errors.any? %>
+  <ul class="errors">
+    <% @work.errors.each do |column, message| %>
+      <li>
+        <strong><%= column.capitalize %> <%= message %></strong>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
 <%= form_with model: @work do |f| %>
   <div>
     <p><%= f.label :category %></p>
-    <p><%= f.select :category, categories, include_blank: true %></p>
+    <p><%= f.select :category, categories %></p>
 
     <p><%= f.label :title %></p>
     <p><%= f.text_field :title %></p>

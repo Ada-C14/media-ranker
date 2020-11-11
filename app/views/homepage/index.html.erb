@@ -1,5 +1,15 @@
 <h1>Media Ranker</h1>
 
+<h2>Media Spotlight</h2>
+<% spotlight = @works.find_by(id: 1) %>
+<ul>
+    <li>Title: <%= spotlight.title %></li>
+    <li>Category: <%= spotlight.category %></li>
+    <li>Creator: <%= spotlight.creator %></li>
+    <li>Published in: <%= spotlight.publication_year %></li>
+    <li>Description: <%= spotlight.description %></li>
+</ul>
+
 <h2>Top Albums</h2>
 <ul>
     <% top_ten = @albums.sample(10) %>

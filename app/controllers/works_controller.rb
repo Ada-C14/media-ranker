@@ -26,7 +26,7 @@ class WorksController < ApplicationController
 
     #instantiate a new book
     if @work.save
-      redirect_to works_path
+      redirect_to work_path(@work.id)
       return
     else # save failed :(
       render :new, status: :bad_request

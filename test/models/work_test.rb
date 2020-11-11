@@ -28,7 +28,22 @@ describe Work do
   end
 
   describe "custom methods" do
+    describe "spotlight" do
+      it "returns a random work object" do
+        expect(Work.spotlight).must_be_instance_of Work
+      end
+    end
 
+    describe "top ten" do
+      it "returns a list of 10 work objects for books" do
+        top_ten_books = Work.top_ten("book")
+        expect(top_ten_books.length).must_be :<=, 10
+        expect(top_ten_books.first).must_be_instance_of Work
+        top_ten_books.each do |book|
+          expect(book.category).must_equal "book"
+        end
+      end
+    end
   end
 
   describe "relationships" do

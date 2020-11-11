@@ -96,7 +96,15 @@ describe WorksController do
   end
 
   describe 'edit' do
+    it "responds with success when getting the edit page for an existing, valid work" do
+      get edit_work_path(work.id)
+      must_respond_with :success
+    end
 
+    it "responds with redirect when getting the edit page for a non-existing work" do
+      get edit_work_path(-1)
+      must_respond_with :redirect
+    end
   end
 
   describe 'update' do

@@ -1,6 +1,6 @@
 class Work < ApplicationRecord
 
-  validates :title, presence: true
+  validates :title, presence: true, uniqueness: { scope: [:category] }
 
   # for now, it takes a sample of 10 for the category
   def self.top_10(category)

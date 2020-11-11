@@ -22,3 +22,13 @@ CSV.open("db/works_seeds.csv", "w", :write_headers => true,
     csv << [category, title, creator, publication_year, description]
   end
 end
+
+CSV.open("db/users_seeds.csv", "w", :write_headers => true, :headers => ["username", "join_date"]) do |csv|
+
+  25.times do
+    username = Faker::Internet.username(specifier: 3..16)
+    join_date = rand(Date.today - 500..Date.today)
+
+    csv << [username, join_date]
+  end
+end

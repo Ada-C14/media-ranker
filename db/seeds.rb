@@ -31,3 +31,24 @@ end
 
 puts "Added #{Work.count} work records"
 puts "#{works_failures.length} works failed to save "
+
+USER_FILE = Rails.root.join('db', 'users_seeds.csv')
+puts "Loading User data from #{USER_FILE}"
+
+users_failures = []
+
+CSV.foreach(USER_FILE, :headers => true) do |row|
+  user = User.new
+  user.username = row['username']
+  user.join_date = row['join_date']
+  successful = user.save
+  if !successful
+    users_failures << successful
+    puts "Failed to save work: #{user.inspect}"
+  else
+    puts "Created work: #{user.inspect}"
+  end
+end
+
+puts "Added #{User.count} user records"
+puts "#{users_failures.length} users failed to save"

@@ -1,0 +1,16 @@
+
+
+<table class="users-table">
+  <tr>
+    <th>Username</th>
+    <th>Votes</th>
+    <th>Joined</th>
+  </tr>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= link_to "#{user.username}", user_path(user.id) %></td>
+      <td>votes</td>
+      <td><%= "#{user.join_date}" %></td>
+    </tr>
+  <% end %>
+</table>

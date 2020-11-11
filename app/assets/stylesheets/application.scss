@@ -16,3 +16,141 @@
 @import "bootstrap";
 
 @import "**/*";
+
+
+
+html {
+ font-family:sans-serif;
+ line-height:1.15;
+ -webkit-text-size-adjust:100%;
+ -ms-text-size-adjust:100%;
+//  -ms-overflow-style:scrollbar;
+ -webkit-tap-highlight-color:transparent
+}
+
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+ display:block
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+ margin:0;
+ font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+ font-size:1rem;
+ font-weight:400;
+ line-height:1.5;
+ color:#212529;
+ text-align:left;
+ background-color:#fff
+}
+
+.app-header__header {
+    max-width: 100%;
+    background-color: #B2DFDB;
+    margin-bottom: 0.5rem;
+    padding: 2rem 1rem 0.5rem 1rem;
+}
+
+.app-header__header h1 {
+    text-align: center;
+    margin: 25px auto 40px auto;
+}
+
+.app-header__nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+body, h1, h2, h3, h4, h5 {
+    font-family: "Gudea", sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+ margin-bottom:0.5rem;
+ font-family:inherit;
+ font-weight:500;
+ line-height:1.2;
+//  color:inherit
+}
+
+h1, h2, h3, h4, h5, h6 {
+ margin-top:0;
+ margin-bottom:0.5rem
+}
+
+h1, .h1 {
+ font-size:2.5rem;
+ color: #fd7e14;
+}
+h2, .h2 {
+ font-size:2rem
+}
+h3, .h3 {
+ font-size:1.75rem
+}
+h4, .h4 {
+ font-size:1.5rem
+}
+h5, .h5 {
+ font-size:1.25rem
+}
+h6, .h6 {
+ font-size:1rem
+}
+
+p {
+ margin-top:0;
+ margin-bottom:1rem
+}
+
+.nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+}
+
+ol, ul, dl {
+ margin-top:0;
+ margin-bottom:1rem
+}
+ol ol, ul ul, ol ul, ul ol {
+ margin-bottom:0
+}
+
+[tabindex="-1"]:focus {
+ outline:0 !important
+}
+
+a {
+ color:#007bff;
+ text-decoration:none;
+ background-color:transparent;
+ -webkit-text-decoration-skip:objects
+}
+a:hover {
+ color:#0056b3;
+ text-decoration:underline
+}
+a:not([href]):not([tabindex]) {
+ color:inherit;
+ text-decoration:none
+}
+a:not([href]):not([tabindex]):hover, a:not([href]):not([tabindex]):focus {
+ color:inherit;
+ text-decoration:none
+}
+a:not([href]):not([tabindex]):focus {
+ outline:0
+}
+
+small, .small {
+ font-size:80%;
+ font-weight:400;
+ color: white;
+}

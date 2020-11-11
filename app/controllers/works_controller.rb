@@ -18,11 +18,20 @@ class WorksController < ApplicationController
   end
 
   def new
-
+    @work = Work.new
   end
 
   def create
+    @work = Work.new(work_params)
 
+    #instantiate a new book
+    if @work.save
+      redirect_to works_path
+      return
+    else # save failed :(
+      render :new, status: :bad_request
+      return
+    end
   end
 
   def edit
@@ -37,6 +46,9 @@ class WorksController < ApplicationController
 
   end
 
+  private
 
+  def work_params
+    return params.require(:work).permit(:, :category, :title, :creator, publication_year, :description)
 
 end

@@ -1,74 +1,10 @@
-<h3>Books</h3>
-  <table class="table">
-    <thead>
-    <tr>
-      <th>Title</th>
-      <th>Created by</th>
-      <th>Published</th>
-      <th>Votes</th>
-      <th>Upvote</th>
-    </tr>
-    </thead>
+<td><%= button_to "Add New Work", new_work_path, method: :get %></td>
 
-    <tbody>
-    <% @works.where(category: "book").each do |work| %>
-      <tr>
-        <td><%= link_to "#{work.title}", work_path(work.id) %></td>
-        <td><%= "#{work.creator}" %></td>
-        <td><%= "#{work.published}" %></td>
-        <td><%= "Placeholder #{rand(10)}" %></td>
-        <td><%= "Placeholder button" %></td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+<h3>Books</h3>
+<%= render partial: "table", locals: { variable: @books } %>
 
 <h3>Movies</h3>
-<table class="table">
-  <thead>
-  <tr>
-    <th>Title</th>
-    <th>Created by</th>
-    <th>Published</th>
-    <th>Votes</th>
-    <th>Upvote</th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @works.where(category: "movie").each do |work| %>
-    <tr>
-      <td><%= link_to "#{work.title}", work_path(work.id) %></td>
-      <td><%= "#{work.creator}" %></td>
-      <td><%= "#{work.published}" %></td>
-      <td><%= "Placeholder #{rand(10)}" %></td>
-      <td><%= "Placeholder button" %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<%= render partial: "table", locals: { variable: @books } %>
 
 <h3>Albums</h3>
-<table class="table">
-  <thead>
-  <tr>
-    <th>Title</th>
-    <th>Created by</th>
-    <th>Published</th>
-    <th>Votes</th>
-    <th>Upvote</th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @works.where(category: "book").each do |work| %>
-    <tr>
-      <td><%= link_to "#{work.title}", work_path(work.id) %></td>
-      <td><%= "#{work.creator}" %></td>
-      <td><%= "#{work.published}" %></td>
-      <td><%= "Placeholder #{rand(10)}" %></td>
-      <td><%= "Placeholder button" %></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
+<%= render partial: "table", locals: { variable: @books } %>

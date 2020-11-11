@@ -1,0 +1,29 @@
+<h3> Top Books </h3>
+<% if @books.count == 0 %>
+  <p> No books to show </p>
+<% end %>
+<ol class="work-list">
+  <% @books.sample(10).each do |work| %>
+      <li><b><%= work.title.upcase %></b> - <%= work.category %> - <%= work.creator %> - <%= work.publication_year %></li>
+  <% end %>
+</ol>
+
+<h3> Top Albums </h3>
+<% if @albums.count == 0 %>
+  <p> No albums to show </p>
+<% end %>
+<ol class="work-list">
+  <% @albums.sample(10).each do |work| %>
+    <li><b><%= work.title.upcase %></b> - <%= work.category %> - <%= work.creator %> - <%= work.publication_year %></li>
+  <% end %>
+</ol>
+
+<h3> Top Movies </h3>
+<% if @movies.count == 0 %>
+  <p> No movies to show </p>
+<% end %>
+<ol class="work-list">
+  <% @movies.sample(10).each do |work| %>
+    <li><b><%= work.title.upcase %></b> - <%= work.category %> - <%= work.creator %> - <%= work.publication_year %></li>
+  <% end %>
+</ol>

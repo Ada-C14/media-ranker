@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root to: 'homepages#index'
+  root to: 'works#homepage'
 
   resources :works
+  get "/works", to: "works#homepage"
 
 end

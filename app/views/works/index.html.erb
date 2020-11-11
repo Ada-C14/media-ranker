@@ -1,1 +1,7 @@
 <h1>Hello World!</h1>
+
+<% @works.each do |work| %>
+  <ul>
+    <li><%= work.title %></li>
+  </ul>
+<% end %>

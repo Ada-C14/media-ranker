@@ -6,7 +6,7 @@ class WorksController < ApplicationController
   end
 
   def not_saved_error_notice
-    flash[:notice] = "Uh oh! That did not save correctly. Please try again."
+    flash.now[:notice] = "Uh oh! That did not save correctly. Please try again."
   end
 
   #########################################################

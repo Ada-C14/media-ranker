@@ -51,6 +51,22 @@ class WorksController < ApplicationController
     end
   end
 
+  def update
+    @work = Work.find_by(id: params[:id])
+
+    if @work.nil?
+      not_found_error_notice
+      return
+    elsif @work.update(work_params)
+      redirect_to work_path
+      return
+    else
+      not_saved_error_notice
+      render :edit
+      return
+    end
+  end
+
   private
 
   def work_params

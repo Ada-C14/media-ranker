@@ -1,0 +1,7 @@
+<div>
+  <h1><%= @work.title %></h1>
+    <h2>By: <%= @work.creator %></h2>
+  <%#= link_to "Edit", edit_work_path(@work) %>
+  <%#= link_to "Delete", work_path(@work), method: :delete, data: {confirm: "Are you sure?"}%>
+</div>
+<p><%= link_to "Return to Media List", works_path %></p>

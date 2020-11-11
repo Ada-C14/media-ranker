@@ -22,11 +22,11 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
 
     if @work.save
-      flash[:success] = "Successfully created #{work.category} #{work.id}"
+      flash[:success] = "Successfully created #{@work.category} #{@work.id}"
       redirect_to work_path(@work.id)
       return
     else
-      flash.now[:error] = "Something happened. #{@work.name} was not added."
+      flash.now[:error] = "Something happened. #{@work.title} was not added."
       render :new, status: :bad_request
       return
     end
@@ -65,7 +65,7 @@ class WorksController < ApplicationController
     end
 
     @work.destroy
-    flash[:success] = "Successfully destroyed #{work.category} #{work.id}"
+    flash[:success] = "Successfully destroyed #{@work.category} #{@work.id}"
     redirect_to root_path
   end
 

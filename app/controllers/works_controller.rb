@@ -1,12 +1,12 @@
 class WorksController < ApplicationController
   # Helper Methods
   def not_found_error_notice
-    flash[:notice] = "Uh oh! That work does not exist..."
+    flash[:notice] = "Uh oh! That work does not exist... Please try again."
     redirect_to works_path
   end
 
   def not_saved_error_notice
-    flash[:notice] = "Uh oh! That did not save correctly."
+    flash[:notice] = "Uh oh! That did not save correctly. Please try again."
   end
 
   #########################################################

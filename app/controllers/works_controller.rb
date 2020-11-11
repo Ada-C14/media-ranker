@@ -31,9 +31,9 @@ class WorksController < ApplicationController
   end
 
   def top
-    @top_albums = Work.top_by_category("movie")
-    @top_movies = Work.top_by_category("book")
-    @top_books = Work.top_by_category("album")
+    @top_albums = Work.top_by_category("album")
+    @top_movies = Work.top_by_category("movie")
+    @top_books = Work.top_by_category("book")
 
     @spotlight = Work.spotlight
 

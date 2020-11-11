@@ -18,12 +18,11 @@ class WorksController < ApplicationController
     end
   end
 
-
   def create
     @work = Work.new(work_params)
 
     if @work.save
-      flash[:success] = "#{@work.name} was successfully added!"
+      flash[:success] = "Successfully created #{work.category} #{work.id}"
       redirect_to work_path
       return
     else
@@ -33,6 +32,42 @@ class WorksController < ApplicationController
     end
   end
 
+  def edit
+    @work = Work.find_by(id: params[:id])
+
+    if @work.nil?
+      head :not_found
+      return
+    end
+  end
+
+  def update
+    @work = Work.find_by(id: params[:id])
+
+    if @work.nil?
+      head :not_found
+      return
+    elsif @work.update(work_params)
+      flash[:success] = "Successfully updated #{@work.category} #{@work.id}"
+      redirect_to work_path(@work)
+    else
+      render :edit, status: :bad_request
+      return
+    end
+  end
+
+  def destroy
+    @work = Work.find_by(id: params[:id])
+
+    if @work.nil?
+      head :not_found
+      return
+    end
+
+    @work.destroy
+    flash[:success] = "Successfully destroyed #{work.category} #{work.id}"
+    redirect_to works_path # this should actually redirect to the home page
+  end
 
   private
 

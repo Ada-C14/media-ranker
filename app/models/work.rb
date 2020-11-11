@@ -1,4 +1,6 @@
 class Work < ApplicationRecord
+  has_many :users, through: :votes
+
   validates :title, presence: true
   validates :category, presence: true
   validates :publication_year, numericality: { only_integer: true, less_than_or_equal_to: Date.today.year.to_i + 3 }

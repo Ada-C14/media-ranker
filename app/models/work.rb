@@ -7,4 +7,10 @@ class Work < ApplicationRecord
       return self.where(category: category).sample(10)
   end
 
+  #for now, the spotlight is based on the oldist publication year
+  def self.spotlight
+    works = self.all.filter {|work| !(work.publication_year.nil?)}
+    return works.min_by { |work| work.publication_year}
+  end
+
 end

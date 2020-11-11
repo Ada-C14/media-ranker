@@ -8,26 +8,38 @@ class Work < ApplicationRecord
   end
 
   def self.top_movies
-    return Work.where(category: "movie").limit(10)
+    movies = Work.where(category: "movie").limit(10)
+
+    movies.empty? ? nil : movies
   end
 
   def self.top_albums
-    return Work.where(category: "album").limit(10)
+    albums = Work.where(category: "album").limit(10)
+
+    albums.empty? ? nil : albums
   end
 
   def self.top_books
-    return Work.where(category: "book").limit(10)
+    books = Work.where(category: "book").limit(10)
+
+    books.empty? ? nil : books
   end
 
   def self.all_movies
-    return Work.where(category: "movie")
+    movies = Work.where(category: "movie")
+
+    movies.empty? ? nil : movies
   end
 
   def self.all_books
-    return Work.where(category: "book")
+    books = Work.where(category: "book")
+
+    books.empty? ? nil : books
   end
 
   def self.all_albums
-    return Work.where(category: "album")
+    albums = Work.where(category: "album")
+
+    albums.empty? ? nil : albums
   end
 end

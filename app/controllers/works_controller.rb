@@ -23,7 +23,7 @@ class WorksController < ApplicationController
 
     if @work.save
       flash[:success] = "Successfully created #{work.category} #{work.id}"
-      redirect_to work_path
+      redirect_to work_path(@work.id)
       return
     else
       flash.now[:error] = "Something happened. #{@work.name} was not added."
@@ -49,7 +49,7 @@ class WorksController < ApplicationController
       return
     elsif @work.update(work_params)
       flash[:success] = "Successfully updated #{@work.category} #{@work.id}"
-      redirect_to work_path(@work)
+      redirect_to work_path(@work.id)
     else
       render :edit, status: :bad_request
       return

@@ -1,11 +1,11 @@
 class CreateWorks < ActiveRecord::Migration[6.0]
   def change
     create_table :works do |t|
-      t.string :title
-      t.text :description
-      t.date :publication_date
-      t.string :creator
       t.string :category
+      t.string :title
+      t.string :creator
+      t.date :publication_year
+      t.text :description
 
       t.timestamps
     end

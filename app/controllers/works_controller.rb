@@ -60,7 +60,18 @@ class WorksController < ApplicationController
   end
 
   def destroy
+    work_id = params[:id]
+    @work = Work.find_by(id: work_id)
 
+    if @work.nil?
+      render file: "#{Rails.root}/public/404.html", status: :not_found
+      return
+    end
+
+    @work.destroy
+
+    redirect_to works_path
+    return
   end
 
   private

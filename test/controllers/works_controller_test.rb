@@ -158,6 +158,22 @@ describe WorksController do
   end
 
   describe 'destroy' do
+    it "destroys work in db when work exists and redirects" do
+      work
 
+      expect {
+        delete work_path(work.id)
+      }.must_change 'Work.count', -1
+
+      must_respond_with :redirect
+    end
+
+    it "does not change the db when work does not exist and redirects" do
+      expect {
+        delete work_path(-1)
+      }.wont_change 'Work.count'
+
+      must_respond_with :redirect
+    end
   end
 end

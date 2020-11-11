@@ -1,0 +1,35 @@
+<section class="media-table">
+  <h4><%= category %></h4>
+  <table class="table">
+
+    <% if category_local_variable.count == 0 %>
+      <p>No <%= category.downcase %> in the database!</p>
+
+    <% else %>
+      <thead>
+      <tr>
+        <th width="80">Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th width="100">Published</th>
+        <th width="100">Upvote</th>
+      </tr>
+      </thead>
+
+      <tbody>
+      <% category_local_variable.each do |work| %>
+        <tr>
+          <!--                      <td><%#= work.votes %></td>-->
+          <td><%= link_to work.title, work_path(work) %></td>
+          <td><%= work.creator %></td>
+          <td><%= work.publication_year %></td>
+          <!--            <td><%#= link_to "Upvote", work_upvote_path(work), method: :post, class: "btn btn-primary" %></td>-->
+        </tr>
+      <% end %>
+      </tbody>
+
+    <% end %>
+
+  </table>
+</section>
+

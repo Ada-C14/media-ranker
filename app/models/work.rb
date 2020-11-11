@@ -4,5 +4,4 @@ class Work < ApplicationRecord
   validates :creator, presence: true
   validates :publication_year, presence: true
   validates :description, presence: true
-
 end

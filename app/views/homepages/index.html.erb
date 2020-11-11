@@ -1,40 +1,43 @@
-<section>
-  <h2>Media Spotlight: <%= @spotlight.title %> by  <%= @spotlight.creator %>
-  </h2>
-  <p>
-    <%= @spotlight.description %>
-  </p>
-</section>
+<main>
+  <section class="spotlight">
+    <h2><span>Media Spotlight:</span> <%= link_to @spotlight.title, work_path(@spotlight) %> by  <%= @spotlight.creator %>
+    </h2>
+    <p>
+      <%= @spotlight.description %>
+    </p>
+  </section>
 
-<section>
-  <h3>Top Movies</h3>
+  <section>
+    <h3>Top Movies</h3>
+    <ul>
+      <% @top_movies.each do |work| %>
+        <li>
+          <%= link_to work.title, work_path(work.id)%> by <%= work.creator %>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+
+  <section>
+    <h3>Top Books</h3>
+    <ul>
+      <% @top_books.each do |work| %>
+        <li>
+          <%= link_to work.title, work_path(work.id)%> by <%= work.creator %>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+
+  <section>
+  <h3>Top Albums</h3>
   <ul>
-    <% @top_movies.each do |work| %>
+    <% @top_albums.each do |work| %>
       <li>
-        <%= link_to work.title, work_path(work.id)%> by <%= work.creator %>
+      <%= link_to work.title, work_path(work.id)%> by <%= work.creator %>
       </li>
     <% end %>
   </ul>
-</section>
+  </section>
 
-<section>
-  <h3>Top Books</h3>
-  <ul>
-    <% @top_books.each do |work| %>
-      <li>
-        <%= link_to work.title, work_path(work.id)%> by <%= work.creator %>
-      </li>
-    <% end %>
-  </ul>
-</section>
-
-<section>
-<h3>Top Albums</h3>
-<ul>
-  <% @top_albums.each do |work| %>
-    <li>
-    <%= link_to work.title, work_path(work.id)%> by <%= work.creator %>
-    </li>
-  <% end %>
-</ul>
-</section>
+</main>

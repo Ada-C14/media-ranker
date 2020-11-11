@@ -17,7 +17,9 @@
 
 @import "**/*";
 
-
+main {
+  padding: 2rem;
+}
 
 header  {
     max-width: 100%;
@@ -34,6 +36,10 @@ h1, h2, h3, h4, h5 {
      font-weight: bold;
    }
 
+a, h2, h3 {
+  color: #26A69A;
+}
+
 header h1 a {
   color: #FF5722;
   padding-right: 25px;
@@ -44,3 +50,19 @@ header h1 a {
 small {
   color: white;
 }
+
+h2 span {
+  color: #424242;
+}
+
+.spotlight {
+  padding: 0 2rem 2rem 2rem;
+}
+
+h2 a {
+  border-bottom: 2px solid;
+}
+
+
+
+

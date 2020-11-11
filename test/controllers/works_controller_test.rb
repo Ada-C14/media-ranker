@@ -20,7 +20,7 @@ describe WorksController do
   end
 
   describe "new" do
-    it "responds with success when loading page for a new work" do
+    it "responds with success" do
       get new_work_path
 
       must_respond_with :success

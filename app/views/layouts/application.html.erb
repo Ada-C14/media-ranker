@@ -10,6 +10,22 @@
   </head>
 
   <body>
+    <header>
+      <h1>Media Ranker | Raking the beat of Everything</h1>
+      <nav>
+        <ul>
+          <li>
+            <%= link_to "View top media", root_path %>
+          </li>
+          <li>
+            <%= link_to "View all media", works_path %>
+          </li>
+          <li>
+            <%= link_to "Add a new work", new_work_path %>
+          </li>
+        </ul>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>

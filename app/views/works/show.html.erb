@@ -5,6 +5,7 @@
     <div>Created by: <%= @work.creator %></div>
     <div>Published: <%= @work.publication_year %></div>
     <div><%= @work.description %></div>
-
+    <%= link_to "Edit", edit_work_path(@work) %>
+    <%= link_to "Delete", work_path(@work), method: :delete, data: {confirm: "Are you sure?"}%>
   </div>
 </section>

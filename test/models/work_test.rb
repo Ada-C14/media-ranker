@@ -33,6 +33,10 @@ describe Work do
       Vote.create!(user_id: @user.id, work_id: @work.id)
       expect(@work.votes.count).must_equal 2
     end
+
+    it "has many users through votes" do
+      skip
+    end
   end
 
   describe "validations" do

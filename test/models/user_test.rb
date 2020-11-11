@@ -26,4 +26,8 @@ describe User do
     end
   end
 
+  it "has many works through votes" do
+    skip
+  end
+
 end

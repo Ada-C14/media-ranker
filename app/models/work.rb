@@ -1,6 +1,7 @@
 class Work < ApplicationRecord
   validates :title, presence: true, uniqueness: true
   has_many :votes
+  has_many :users, through: :votes
 
   def self.select_spotlight
     # will this be in votes model?

@@ -1,0 +1,12 @@
+<section>
+  <h2 class="top10-header">Top Movies</h2>
+  <ul class="list-group">
+    <% @works.each do |work| %>
+      <li class="list-group-item">
+        <%= link_to work.title, work_path(work), :class => 'work-title' %>
+        <small>by <%= work.creator %></small>
+        <p>10 Votes</p>
+      </li>
+    <% end %>
+  </ul>
+</section>

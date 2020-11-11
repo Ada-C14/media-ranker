@@ -81,9 +81,29 @@ header {
   justify-content: space-between;
 }
 
-h2, h3 {
+h2, h3, h4, .work-title {
   color: $primary-color;
   font-weight: bold;
+}
+
+.work-title {
+  font-size: 1.5rem;
+}
+
+.work-title + small {
+  color: slategrey;
+  font-size: 19.2px;
+  line-height: 1.2;
+}
+
+.list-group-item {
+  border: none;
+}
+
+.work-title:hover {
+  color: #00796B;
+  text-decoration: none;
+  cursor: pointer;
 }
 
 .spotlight h2 span {
@@ -101,4 +121,15 @@ h2, h3 {
   .nav-item {
     padding: 5px 20px;
   }
+}
+
+.top10-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 2em;
+}
+
+.top10-header {
+  border-bottom: 2px solid;
+  border-bottom-color: #B2DFDB;
 }

@@ -7,6 +7,11 @@ class WorksController < ApplicationController
 
   def show
     @work = Work.find_by(id: params[:id])
+
+    if @work.nil?
+      head :not_found
+      return
+    end
   end
 
   def new
@@ -27,7 +32,7 @@ class WorksController < ApplicationController
   def edit
     @work = Work.find_by(id: params[:id])
     if @work.nil?
-      redirect_to works_path
+      head :not_found
       return
     end
   end

@@ -1,0 +1,44 @@
+<%= form_with model: @work do |f| %>
+
+  <% if @work.errors.any? %>
+    <ul>
+      <% @work.errors.each do |column, message| %>
+        <li>
+          <p><%= column %> <%= message %></p>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :category, :for => "exampleFormControlSelect1" %>
+    <br>
+    <select class="form-control" id="exampleFormControlSelect1">
+      <option>album</option>
+      <option>book</option>
+      <option>movie</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <%= f.label :title %>
+    <br>
+    <%= f.text_field :title, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :creator %>
+    <br>
+    <%= f.text_field :creator, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :publication_year %>
+    <br>
+    <%= f.text_field :publication_year, :class => "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %>
+    <br>
+    <%= f.text_area :description, :class => "form-control" %>
+  </div>
+  <br>
+  <%= f.submit action_name, :class => "btn btn-primary"%>
+<% end %>

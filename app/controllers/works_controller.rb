@@ -1,5 +1,7 @@
 class WorksController < ApplicationController
   def index
+    # in controller or model?
+    # @works = Work.all.order("votes_count DESC")
     @works = Work.all
     @movies = Work.where(category: "movie")
     @albums = Work.where(category: "album")

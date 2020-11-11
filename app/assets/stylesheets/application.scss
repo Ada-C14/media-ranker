@@ -43,7 +43,7 @@ header {
   h1 {
     margin: 25px auto 40px auto;
 
-    a {
+    .logo {
       color: $logo-color;
       font-weight: bold;
     }
@@ -81,5 +81,9 @@ header {
 h2, h3 {
   color: $primary-color;
   font-weight: bold;
+}
+
+.spotlight h2 span {
+  color: #424242;
 }
 

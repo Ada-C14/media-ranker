@@ -1,0 +1,41 @@
+<section class="work-information">
+  <h2><%= @work.title %></h2>
+  <p>Created by: <%= @work.creator %></p>
+  <p>Published: <%= @work.publication_year %></p>
+  <p><%= @work.description %></p>
+</section>
+<section class="button-container">
+  <%= button_to 'Back to media ranks', root_path, :class => 'btn btn-primary' %>
+  <%= button_to 'Edit', edit_work_path(@work), :class => 'btn btn-primary' %>
+  <%= button_to 'Upvote', root_path, :class => 'btn btn-primary' %>
+  <%= button_to 'Delete', root_path, :class => 'btn btn-danger' %>
+</section>
+<section class="votes-container">
+  <h3>Votes for this <%= @work.category.capitalize %></h3>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">User</th>
+      <th scope="col">Date</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+    </tr>
+    </tbody>
+  </table>
+</section>

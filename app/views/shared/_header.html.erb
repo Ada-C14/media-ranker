@@ -1,28 +1,17 @@
 <header>
   <h1>
-    <a class="logo">Media Ranker</a>
-    <small>| Ranking the Best of Everything</small>
+    <%= link_to 'Media Ranker', root_path, :class => 'logo' %>
+    <small>Ranking the Best of Everything</small>
   </h1>
   <nav class="navigation">
-    <ul class="nav">
-      <li class="nav-item">
-        <a class="nav-link" href="/works">View top media</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/works">View all media</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/works/new">Add a new work</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/users">View all users</a>
-      </li>
-    </ul>
-
-    <ul class="nav">
-      <li class="nav-item">
-        <a class="btn btn-primary" data-method="post" href="/">Log Out</a>
-      </li>
-    </ul>
+    <section class="nav-links">
+      <%= link_to "View top media", works_path, :class => 'nav-item' %>
+      <%= link_to "View all media", works_path, :class => 'nav-item' %>
+      <%= link_to "Add a new work", new_work_path, :class => 'nav-item' %>
+      <%= link_to "View all users", works_path, :class => 'nav-item' %>
+    </section>
+    <section class="nav-submit-button">
+      <%= button_to "Log Out", works_path, :class => 'btn btn-primary'%>
+    </section>
   </nav>
 </header>

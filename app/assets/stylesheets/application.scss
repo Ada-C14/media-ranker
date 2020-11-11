@@ -46,6 +46,9 @@ header {
     .logo {
       color: $logo-color;
       font-weight: bold;
+      border-right: white 2px solid;
+      padding-right: 25px;
+      margin-right: 15px;
     }
 
     a:hover {
@@ -87,3 +90,15 @@ h2, h3 {
   color: #424242;
 }
 
+.button-container {
+  display: flex;
+  gap: 5px;
+}
+
+.nav-links {
+  display: flex;
+
+  .nav-item {
+    padding: 5px 20px;
+  }
+}

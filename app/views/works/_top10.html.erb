@@ -1,0 +1,9 @@
+<section>
+  <h2>Top Movies</h2>
+  <% @works.each do |work| %>
+    <ul>
+      <li><%= link_to work.title, work_path(work) %></li>
+    </ul>
+  <% end %>
+</section>
+

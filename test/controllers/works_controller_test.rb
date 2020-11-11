@@ -185,5 +185,12 @@ describe WorksController do
 
       must_respond_with :success
     end
+
+    it 'can get the main page if there are no records' do
+      Work.all.delete_all
+
+      get root_path
+      must_respond_with :success
+    end
   end
 end

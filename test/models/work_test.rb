@@ -1,7 +1,48 @@
 require "test_helper"
 
 describe Work do
-  # it "does a thing" do
-  #   value(1+1).must_equal 2
-  # end
+
+  before do
+    @work = works(:test_work)
+  end
+  let (:second_work){
+    Work.create!(
+      category: "album",
+      title: "second test",
+      creator: "The Testor",
+      publication_year: 2020,
+      description: "We love a good create test")
+}
+
+  describe "instantiation" do
+    it "can be instantiated" do
+      expect(@work.valid?).must_equal true
+    end
+
+    it "will have the required fields" do
+      [:category, :title, :creator, :publication_year, :description].each do |field|
+        expect(@work).must_respond_to field
+      end
+    end
+  end
+  
+  describe "relations" do
+  end
+
+  describe "validations" do
+    it "is invalid without a title" do
+      @work.title = nil
+      result = @work.valid?
+      expect(result).must_equal false
+      expect(@work.errors.messages).must_include :title
+    end
+
+    it "is invalid with a non-unique title" do
+      second_work.title = "test"
+      result = second_work.valid?
+      expect(result).must_equal false
+    end
+    
+  end
+
 end

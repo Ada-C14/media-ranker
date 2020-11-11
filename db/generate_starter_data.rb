@@ -5,7 +5,7 @@ require "csv"
 # we already provide a filled out works_seeds.csv file, but feel free to
 # run this script in order to replace it and generate a new one
 # run using the command:
-# $ ruby db/generate_seeds.rb
+# $ ruby db/generate_starter_data.rb
 # if satisfied with this new works_seeds.csv file, recreate the db with:
 # $ rails db:reset
 # doesn't currently check for if titles are unique against each other
@@ -22,4 +22,9 @@ CSV.open("db/works_seeds.csv", "w", :write_headers => true, :headers => ["catego
   end
 end
 
-
+# CSV.open("db/users_seeds.csv", "w", :write_headers => true, :headers => ["name"]) do |csv|
+#   15.times do
+#     name = Faker::Name.name
+#     csv << [name]
+#   end
+# end

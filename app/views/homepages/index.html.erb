@@ -1,1 +1,34 @@
 <h1>Homepage</h1>
+
+<section>
+  <h3>Top Movies</h3>
+  <ul>
+    <% @works_movie.each do |work| %>
+      <li>
+        <%= link_to work.title, work_path(work.id)%>
+      </li>
+    <% end %>
+  </ul>
+</section>
+
+<section>
+  <h3>Top Books</h3>
+  <ul>
+    <% @works_book.each do |work| %>
+      <li>
+        <%= link_to work.title, work_path(work.id)%>
+      </li>
+    <% end %>
+  </ul>
+</section>
+
+<section>
+<h3>Top Albums</h3>
+<ul>
+  <% @works_album.each do |work| %>
+    <li>
+    <%= link_to work.title, work_path(work.id)%>
+    </li>
+  <% end %>
+</ul>
+</section>

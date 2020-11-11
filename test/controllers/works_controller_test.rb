@@ -43,9 +43,10 @@ describe WorksController do
       must_respond_with :success
     end
 
-    it "doesnt break when movies, albums, or books are nil" do
-      skip
-      # idk how to test this - movies/albums/books arent passed in anywhere
+    it "doesnt break when there are no works" do
+      @work.destroy
+      get works_url
+      must_respond_with :success
     end
   end
 

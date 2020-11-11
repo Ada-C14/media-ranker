@@ -10,6 +10,16 @@
   </head>
 
   <body>
+    <header><h1><%= link_to "Media Ranker", root_path %> | Ranking the Best of Everything</h1>
+      <nav> <%= link_to "View top media", root_path %>  --
+        <%= link_to "View all media", works_path %>  --
+        <%= link_to "Add a new work", new_work_path %>  --
+        placeholder view all users -- placeholder login
+<!--    <%#= link_to "View all users", new_user_path %>  ---->
+        <%#= button_tag "Log In", login_path %>
+      </nav>
+      <hr>
+    </header>
     <%= yield %>
   </body>
 </html>

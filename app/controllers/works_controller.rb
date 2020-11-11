@@ -27,7 +27,7 @@ class WorksController < ApplicationController
       redirect_to work_path(@work.id)
       return
     else
-      render :new, status :not_found
+      render :new, status: :not_found
     end
   end
 
@@ -47,6 +47,7 @@ class WorksController < ApplicationController
       return
     end
   end
+end
 
 private
 

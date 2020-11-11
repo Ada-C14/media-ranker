@@ -1,11 +1,51 @@
 <%# do i also need the body/header? those are in the application.html.erb file? %>
 <main>
+
   <section class="spotlight">
     <h2 class="spotlight-header">
-      <%# link_to "#{album.title}", work_path(album.id)%>
-      <span>Media Spotlight: <%= link_to %></span>
+      <% feat = Work.select_spotlight%>
+      <span>Media Spotlight: <%= link_to feat.title,  work_path(feat.id)%> by <%= feat.creator%></span>
     </h2>
-
+    <p class="spotlight-description"><%= feat.description %></p>
   </section>
 
+  <section class="top-ten-works">
+    <section class="top-ten-list-container">
+      <h2>Top Movies</h2>
+      <% movies, albums, books = Work.select_top_ten %>
+      <% if movies %>
+      <% movies.each do |movie| %>
+      <ul>
+        <li><%= link_to movie.title, work_path(movie.id)%> by <%= movie.creator %></li>
+        <%# TODO: include number of votes %>
+      </ul>
+      <% end %>
+    <% end %>
+    </section>
+
+    <section class="top-ten-list-container">
+      <h2>Top Books</h2>
+      <% if books %>
+      <% books.each do |book| %>
+      <ul>
+        <li><%= link_to book.title, work_path(book.id)%> by <%= book.creator %></li>
+        <%# TODO: include number of votes %>
+      </ul>
+      <% end %>
+    <% end %>
+    </section>
+
+    <section class="top-ten-list-container">
+      <h2>Top Albums</h2>
+      <% if albums %>
+      <% albums.each do |album| %>
+      <ul>
+        <li><%= link_to album.title, work_path(album.id)%> by <%= album.creator %></li>
+        <%# TODO: include number of votes %>
+      </ul>
+      <% end %>
+    <% end %>
+    </section>
+
+  </section>
 </main>

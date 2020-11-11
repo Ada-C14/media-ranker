@@ -1,0 +1,13 @@
+<h4><strong>Spotlight: </strong><%= @spotlight.title %></h4>
+<p><%= "#{rand(10)} Votes - #{@spotlight.description}" %></p>
+
+<h3>Top Books</h3>
+<%= render partial: "table", locals: { variable: @top_books } %>
+
+
+<h3>Top Movies</h3>
+<%= render partial: "table", locals: { variable: @top_movies } %>
+
+
+<h3>Top Albums</h3>
+<%= render partial: "table", locals: { variable: @top_albums } %>

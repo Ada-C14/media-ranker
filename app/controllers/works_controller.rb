@@ -2,7 +2,7 @@ class WorksController < ApplicationController
   # Helper Methods
   def not_found_error_notice
     flash[:notice] = "Uh oh! That work does not exist..."
-    redirect_to work_path
+    redirect_to works_path
   end
 
   def not_saved_error_notice
@@ -63,6 +63,19 @@ class WorksController < ApplicationController
     else
       not_saved_error_notice
       render :edit
+      return
+    end
+  end
+
+  def destroy
+    @work = Work.find_by(id: params[:id])
+
+    if @work.nil?
+      not_found_error_notice
+      return
+    else
+      @work.destroy
+      redirect_to works_path
       return
     end
   end

@@ -108,7 +108,53 @@ describe WorksController do
   end
 
   describe 'update' do
+    it "can update an existing work with valid information and redirect" do
+      work
+      new_work = Work.first
 
+      expect {
+        patch work_path(new_work.id), params: work_hash
+      }.wont_change 'Work.count'
+
+      new_work.reload
+
+      expect(new_work.category).must_equal work_hash[:work][:category]
+      expect(new_work.title).must_equal work_hash[:work][:title]
+      expect(new_work.creator).must_equal work_hash[:work][:creator]
+      expect(new_work.publication_year).must_equal work_hash[:work][:publication_year]
+      expect(new_work.description).must_equal work_hash[:work][:description]
+
+      must_respond_with :redirect
+      must_redirect_to work_path(work.id)
+    end
+
+    it "does not update work if given an invalid id and redirects" do
+      expect {
+        patch work_path(-1), params: work_hash
+      }.wont_change 'Work.count'
+
+      must_respond_with :redirect
+    end
+
+    it "does not patch work if the form data violates Work validations" do
+      original_category = work.category
+      original_title = work.title
+      original_creator = work.creator
+      original_publication_year = work.publication_year
+      original_description = work.description
+
+      expect {
+        patch work_path(work.id), params: invalid_work_hash
+      }.wont_change "Work.count"
+
+      work.reload
+
+      expect(work.category).must_equal original_category
+      expect(work.title).must_equal original_title
+      expect(work.creator).must_equal original_creator
+      expect(work.publication_year).must_equal original_publication_year
+      expect(work.description).must_equal original_description
+    end
   end
 
   describe 'destroy' do

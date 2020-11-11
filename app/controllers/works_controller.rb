@@ -16,7 +16,11 @@ class WorksController < ApplicationController
         end 
     end
 
+    def new
+        @work = Work.new
+    end
 
+    
     private
     
     def work_params

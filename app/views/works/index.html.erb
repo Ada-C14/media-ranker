@@ -12,4 +12,6 @@
     <% @books.each do |book| %>
         <li><%= link_to book.title, work_path(book) %></li>
     <% end %>
-</ul>   
+</ul>
+
+<%= link_to "New", new_work_path %>

@@ -1,7 +1,14 @@
 require "test_helper"
 
 describe Work do
-  # it "does a thing" do
-  #   value(1+1).must_equal 2
-  # end
+  let (:work){
+    Work.create!(
+        category: "album",
+        title: "test",
+        creator: "testor",
+        publication_year: 2020,
+        description: "testing")
+  }
+
+
 end

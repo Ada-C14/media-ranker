@@ -22,7 +22,7 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
     if @work.save
       flash.now[:success] = "Successfully created "
-      redirect_to root_path
+      redirect_to work_path(@work)
       return
     else
       flash.now[:error] = "something happend, #{@work.category} not added!"

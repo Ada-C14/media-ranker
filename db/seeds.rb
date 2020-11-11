@@ -5,7 +5,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'csv'
 
-WORK_FILE = Rails.root.join('db', 'seed_data', 'works-seeds.csv')
+WORK_FILE = Rails.root.join('db', 'works-seeds.csv')
 puts "Loading raw work data from #{WORK_FILE}"
 
 work_failures = []
@@ -25,7 +25,7 @@ CSV.foreach(WORK_FILE, :headers => true) do |row|
   end
 end
 
-puts "Added #{work.count} work records"
+puts "Added #{Work.count} work records"
 puts "#{work_failures.length} work values failed to save"
 
 puts "Manually resetting PK sequence on each table"

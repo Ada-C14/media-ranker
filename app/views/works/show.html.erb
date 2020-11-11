@@ -1,0 +1,17 @@
+<section>
+  
+  <section>
+    <h2><%= @work.title %></h2>
+    <p>Created By: <%= @work.creator %></p>
+    <p>Published: <%= @work.publication_year %></p>
+    <p>Description: <%= @work.description %></p>
+  </section>
+
+  <section>
+    <button><%= link_to "Back to media ranks" %></button>
+    <button><%= link_to "Edit" %></button>
+    <button><%= link_to "Upvote" %></button>
+    <button><%= link_to "Delete" %></button>
+  </section>
+
+</section>

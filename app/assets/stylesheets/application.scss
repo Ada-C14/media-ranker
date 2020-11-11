@@ -20,13 +20,66 @@
 @import url('https://fonts.googleapis.com/css2?family=Gudea:ital,wght@0,400;0,700;1,400&display=swap');
 
 $primary-color: #26a69a;
+$nav-link-color: #00796B;
+$header-color: #B2DFDB;
+$logo-color: #FF5722;
 $primary-font: 'Gudea', sans-serif;
+
+main {
+  padding: 2em;
+}
 
 .btn-primary {
   background-color: $primary-color;
   border-color: $primary-color;
 }
 
+header {
+  background-color: $header-color;
+  text-align: center;
+  max-width: 100%;
+  padding: 2rem 1rem 0.5rem 1rem;
+
+  h1 {
+    margin: 25px auto 40px auto;
+
+    a {
+      color: $logo-color;
+      font-weight: bold;
+    }
+
+    a:hover {
+      color: $logo-color;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    small {
+      color: white;
+    }
+  }
+
+  a {
+    color: $nav-link-color;
+  }
+
+  a:hover {
+    color: #0056b3;
+  }
+}
+
 * {
   font-family: $primary-font;
 }
+
+.navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+h2, h3 {
+  color: $primary-color;
+  font-weight: bold;
+}
+

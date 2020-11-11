@@ -2,17 +2,19 @@ class WorksController < ApplicationController
 
   def index
     @works = Work.all
+
+    @albums = @works.where(media: 'album')
+    @books = @works.where(media: 'book')
+    @movies = @works.where(media: 'movie')
   end
 
   def show
-    @work_id = params[:id].to.i
-    @works = Work.find_by(id:@work_id)
+    id = params[:id].to.i
+    @work = Work.find_by(id: id)
 
-    if @works.nil?
-      head :not_found
-      return
+    if @work.nil?
+      redirect_to works_path and return
     end
-
   end
 
   def new
@@ -21,29 +23,36 @@ class WorksController < ApplicationController
 
   def create
     @work = Work.new(work_params)
-    successful_save = @work.save
 
-    if successful_save
+    if @work.save
       redirect_to work_path(@work.id)
       return
     else
-      render :new, status: :not_found
+      render :new, status: :bad_request
+      return
     end
   end
 
   def edit
-    redirect_to work_path if @work.nil?
+    @work = Work.find_by(id:params[:id])
+
+    if @work.nil?
+      redirect_to work_path
+      return
+    end
   end
 
   def update
+    @work = Work.find_by(id:params[:id])
+
     if @work.nil?
-      head :not_found
+      redirect_to work_path
       return
     elsif @work.update(work_params)
-      redirect_to work_path(@work.id)
+      redirect_to work_path(@work)
       return
     else
-      render :edit
+      render :edit, status: :bad_request
       return
     end
   end
@@ -56,4 +65,3 @@ def work_params
 end
 
 
-# elsif @work.update(media:params[:work][:media], title: params[:work][:title],created_by: params[:work][:created_by], published: params[:work][:published], description:[:work][:description])

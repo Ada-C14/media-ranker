@@ -1,0 +1,22 @@
+<h2>List of Works</h2>
+
+<h3>Album Media:</h3>
+
+<% if @albums.size > 0 %>
+<table>
+  <tr>
+    <th> Title: </th>
+    <th> Creator: </th>
+    <th> Publication: </th>
+  </tr>
+
+  <% @albums.each do |album| %>
+
+    <tr>
+      <td><%= link_to album.title, work_path(album) %></td>
+      <td><%= album.created_by %></td>
+      <td><%= album.published %></td>
+    </tr>
+  <% end %>
+</table>
+<%end %>

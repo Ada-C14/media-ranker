@@ -1,0 +1,43 @@
+<h1><b>Media Spotlight: </b><% sample = @works.sample %>
+  <%= sample.title %>  by <%= sample.creator %> </h1>
+<p> <%=sample.description %> </p>
+<div class="row">
+  <div class="column"><h2>Top movies </h2>
+    <%  @works.each do |work| %>
+      <% if work.category == "movie" %>
+        <b><%= work.title %></b>  by <%= work.creator%><br>
+      <%end %>
+    <% end %>
+
+  </div>
+  <div class="column"> <h2>Top Books</h2>
+    <%  @works.each do |work| %>
+      <% if work.category == "book" %>
+        <b><%= work.title %></b>  by <%= work.creator%><br>
+      <%end %>
+    <% end %>
+
+  </div>
+  <div class="column"><h2>Top Albums</h2>
+    <%  @works.each do |work| %>
+      <% if work.category == "album" %>
+        <b><%= work.title %></b>  by <%= work.creator%><br>
+      <%end %>
+    <% end %>
+
+  </div>
+</div>
+
+
+<!--<section>-->
+<!--  <h2>Top Albums</h2>-->
+<!--  <ul>-->
+    <%# sample = @albums.sample(10) %>
+    <%# sample.each do |album| %>
+<!--      <li>-->
+<!--        <%#= link_to album.title, work_path(album.id), method: :get %> by <%#= album.creator %>-->
+<!--        <p>XX votes</p>-->
+<!--      </li>-->
+    <%#= end %>
+<!--  </ul>-->
+<!--</section>-->

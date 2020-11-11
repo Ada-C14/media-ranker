@@ -45,7 +45,7 @@ describe WorksController do
 
     it "doesnt break when movies, albums, or books are nil" do
       skip
-      # idk how to test this
+      # idk how to test this - movies/albums/books arent passed in anywhere
     end
   end
 

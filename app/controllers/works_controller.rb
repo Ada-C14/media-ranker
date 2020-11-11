@@ -51,10 +51,10 @@ class WorksController < ApplicationController
       render file: "#{Rails.root}/public/404.html", status: :not_found
       return
     elsif @work.update(work_params)
-      redirect_to works_path # go to the index so we can see the book in the list
+      redirect_to works_path # go to the index so we can see the work in the list
       return
     else # save failed :(
-    render :edit, status: :bad_request # show the new book form view again
+    render :edit, status: :bad_request
     return
     end
   end

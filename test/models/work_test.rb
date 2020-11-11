@@ -55,6 +55,16 @@ describe Work do
       # Assert
       expect(same_title_work.valid?).must_equal true
     end
+
+    it "must have a category" do
+      # Arrange
+      new_work.category = nil
+
+      # Assert
+      expect(new_work.valid?).must_equal false
+      expect(new_work.errors.messages).must_include :category
+      expect(new_work.errors.messages[:category]).must_equal ["can't be blank"]
+    end
   end
 
   # For top-10 or spotlight, what if there are less than 10 works? What if there are no works?

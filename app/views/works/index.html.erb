@@ -8,14 +8,27 @@
     <table class="table">
       <thead>
         <tr>
-          <th>title</th>
+          <th>Votes</th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th>Published</th>
+          <th>Upvote</th>
         </tr>
       </thead>
       <tbody>
       <% @works_album.each do|work| %>
         <tr>
-        <td> <%= link_to work.title, work_path(work.id) %></td>
-
+          <td>
+          </td>
+          <td> <%= link_to work.title, work_path(work.id) %>
+          </td>
+          <td>
+            <%= work.creator%>
+          </td>
+          <td>
+            <%= work.publication_year%>
+          </td>
+          <td></td>
         </tr>
       <% end %>
       </tbody>
@@ -26,14 +39,27 @@
     <table class="table">
       <thead>
       <tr>
-        <th>title</th>
+        <th>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Upvote</th>
       </tr>
       </thead>
       <tbody>
       <% @works_book.each do|work| %>
         <tr>
-          <td> <%= link_to work.title, work_path(work.id) %></td>
-
+          <td>
+          </td>
+          <td> <%= link_to work.title, work_path(work.id) %>
+          </td>
+          <td>
+            <%= work.creator%>
+          </td>
+          <td>
+            <%= work.publication_year%>
+          </td>
+          <td></td>
         </tr>
       <% end %>
       </tbody>
@@ -42,16 +68,27 @@
   <section class="media-table">
     <h4>Movies</h4>
     <table class="table">
-      <thead>
       <tr>
-        <th>title</th>
+        <th>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Upvote</th>
       </tr>
-      </thead>
       <tbody>
       <% @works_movie.each do|work| %>
         <tr>
-          <td> <%= link_to work.title, work_path(work.id) %></td>
-
+          <td>
+          </td>
+          <td> <%= link_to work.title, work_path(work.id) %>
+          </td>
+          <td>
+            <%= work.creator%>
+          </td>
+          <td>
+            <%= work.publication_year%>
+          </td>
+          <td></td>
         </tr>
       <% end %>
       </tbody>

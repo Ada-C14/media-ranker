@@ -1,0 +1,16 @@
+<h2>All Works</h2>
+
+<p>
+  <% categories = %w[book album movie] %>
+
+  <% categories.each do |type| %>
+  <h3> <%= type %> </h3>
+
+  <ul class="work-list">
+    <% @works.each do |work| %>
+      <% if work.category == type %>
+        <li><b><%= work.title.upcase %></b> - <%= work.category %> - <%= work.creator %> - <%= work.publication_year %></li>
+      <% end %>
+    <% end %>
+  </ul>
+<% end %>

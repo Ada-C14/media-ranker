@@ -1,5 +1,5 @@
 class WorksController < ApplicationController
   def index
-    @works = WORKS
+    @works = Work.all
   end
 end

@@ -1,9 +1,9 @@
 class VotesController < ApplicationController
-  def index
-  end
-
-  def new
-  end
+  # def index
+  # end
+  #
+  # def new
+  # end
 
   def create
   end

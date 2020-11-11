@@ -1,20 +1,12 @@
 Rails.application.routes.draw do
-  get 'votes/index'
-  get 'votes/new'
-  get 'votes/create'
-  get 'users/index'
-  get 'users/new'
-  get 'users/create'
-  get 'users/show'
-  get 'users/edit'
-  get 'users/update'
-  get 'users/destroy'
-  get 'works/index'
-  get 'works/new'
-  get 'works/create'
-  get 'works/show'
-  get 'works/edit'
-  get 'works/update'
-  get 'works/destroy'
+  root to: 'homepages#index'
+
+  resources :works do
+    post '/works/:id/upvote', to: 'votes#upvote', as: 'upvote'
+  end
+
+  resources :users, only: [:index, :new, :create, :show]
+
+  # resources :votes, only: [:create]
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -35,11 +35,28 @@ class WorksController < ApplicationController
   end
 
   def edit
+    @work = Work.find_by(id: params[:id])
+
+    if @work.nil?
+      render file: "#{Rails.root}/public/404.html", status: :not_found
+      return
+    end
 
   end
 
   def update
+    @work = Work.find_by(id: params[:id])
 
+    if @work.nil?
+      render file: "#{Rails.root}/public/404.html", status: :not_found
+      return
+    elsif @work.update(work_params)
+      redirect_to works_path # go to the index so we can see the book in the list
+      return
+    else # save failed :(
+    render :edit, status: :bad_request # show the new book form view again
+    return
+    end
   end
 
   def destroy

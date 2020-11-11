@@ -2,6 +2,7 @@
 <p><%= rand(1..50) %> votes - <%= Work.spotlight.description %></p>
 
 <section>
+  <h2>Top Movies</h2>
   <% @top_ten_movies = Work.top_ten("movie") %>
   <% if @top_ten_movies.empty? %>
     <p>No top ten for this category</p>
@@ -19,6 +20,7 @@
     <% end %>
   </ul>
 
+  <h2>Top Books</h2>
   <% @top_ten_books = Work.top_ten("book") %>
   <% if @top_ten_books.empty? %>
     <p>No top ten for this category</p>
@@ -36,6 +38,7 @@
     <% end %>
   </ul>
 
+  <h2>Top Albums</h2>
   <% @top_ten_albums = Work.top_ten("album") %>
   <% if @top_ten_albums.empty? %>
     <p>No top ten for this category</p>

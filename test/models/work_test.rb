@@ -14,7 +14,12 @@ describe Work do
       creator: "The Testor",
       publication_year: 2020,
       description: "We love a good create test")
-}
+    }
+    let (:second_user){
+      User.create!(
+        name: "second test user"
+      )
+    }
 
   describe "instantiation" do
     it "can be instantiated" do
@@ -35,7 +40,8 @@ describe Work do
     end
 
     it "has many users through votes" do
-      skip
+      Vote.create!(user_id: second_user.id, work_id: @work.id)
+      expect(@work.users.length).must_equal 2
     end
   end
 

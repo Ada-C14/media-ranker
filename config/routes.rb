@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   root to: 'homepages#index'
 
   resources :works do
-    post '/works/:id/upvote', to: 'votes#upvote', as: 'upvote'
+    post '/upvote', to: 'votes#upvote', as: 'upvote'
   end
 
   resources :users, only: [:index, :new, :create, :show]

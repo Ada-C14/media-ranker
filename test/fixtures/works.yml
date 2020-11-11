@@ -1,0 +1,18 @@
+odesza:
+  category: "album"
+  title: "In Return"
+  creator: "Odesza"
+  publication_year: 2014
+  description: "Et et expedita non aut quo."
+dune:
+  category: "book"
+  title: "Dune"
+  creator: "Frank Herbert"
+  publication_year: 1965
+  description: "Voluptatem adipisci qui velit."
+spiderman:
+  category: "movie"
+  title: "Spider-Man: Into the Spider-Verse"
+  creator: "ob Persichetti"
+  description: "Voluptatem adipisci qui velit."
+  publication_year: 2018

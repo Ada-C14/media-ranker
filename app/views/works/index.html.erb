@@ -2,81 +2,84 @@
   <h2>List of Works</h2>
 
   <section class="media-table">
+    <% if @works.length > 0 %>
+      <h4>Albums</h4>
+      <table class="table">
+        <thead>
+        <tr>
+          <th width=80>Votes</th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th width=100>Published</th>
+          <th width=100>Upvote</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @works.each do |work| %>
+        <tr>
+          <td><%= "count" %></td>
+          <td><%= @work.title "link_to title, path" %></td>
+          <td><%= @work.creator %></td>
+          <td><%= @work.publication_year %></td>
+          <%# TODO: change link below %>
+          <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/790/upvote">Upvote</a></td>
+        </tr>
+        <% end %>
+        </tbody>
+      </table>
 
-    <h4>Albums</h4>
-    <table class="table">
-      <thead>
-      <tr>
-        <th width=80>Votes</th>
-        <th>Title</th>
-        <th>Created By</th>
-        <th width=100>Published</th>
-        <th width=100>Upvote</th>
-      </tr>
-      </thead>
-      <tbody>
-      <%# @albumns.each do |work| %>
-      <tr>
-        <td><%= "count" %></td>
-        <td><%= "link_to title, path" %></td>
-        <td><%= "creator" %></td>
-        <td><%= "published" %></td>
-        <%# TODO: change link below %>
-        <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/790/upvote">Upvote</a></td>
-      </tr>
-      <%# end %>
-      </tbody>
-    </table>
+      <h4>Books</h4>
+      <table class="table">
+        <thead>
+        <tr>
+          <th width=80>Votes</th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th width=100>Published</th>
+          <th width=100>Upvote</th>
+        </tr>
+        </thead>
+        <tbody>
+        <%# @books.each do |work| %>
+        <tr>
+          <td><%= "count" %></td>
+          <td><%= "link_to title, path" %></td>
+          <td><%= "creator" %></td>
+          <td><%= "published" %></td>
+          <%# TODO: change link below %>
+          <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/790/upvote">Upvote</a></td>
+        </tr>
+        <%# end %>
+        </tbody>
+      </table>
 
-    <h4>Books</h4>
-    <table class="table">
-      <thead>
-      <tr>
-        <th width=80>Votes</th>
-        <th>Title</th>
-        <th>Created By</th>
-        <th width=100>Published</th>
-        <th width=100>Upvote</th>
-      </tr>
-      </thead>
-      <tbody>
-      <%# @books.each do |work| %>
-      <tr>
-        <td><%= "count" %></td>
-        <td><%= "link_to title, path" %></td>
-        <td><%= "creator" %></td>
-        <td><%= "published" %></td>
-        <%# TODO: change link below %>
-        <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/790/upvote">Upvote</a></td>
-      </tr>
-      <%# end %>
-      </tbody>
-    </table>
-
-    <h4>Movies</h4>
-    <table class="table">
-      <thead>
-      <tr>
-        <th width=80>Votes</th>
-        <th>Title</th>
-        <th>Created By</th>
-        <th width=100>Published</th>
-        <th width=100>Upvote</th>
-      </tr>
-      </thead>
-      <tbody>
-      <%# @Movies.each do |work| %>
-      <tr>
-        <td><%= "count" %></td>
-        <td><%= "link_to title, path" %></td>
-        <td><%= "creator" %></td>
-        <td><%= "published" %></td>
-        <%# TODO: change link below %>
-        <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/790/upvote">Upvote</a></td>
-      </tr>
-      <%# end %>
-      </tbody>
-    </table>
+      <h4>Movies</h4>
+      <table class="table">
+        <thead>
+        <tr>
+          <th width=80>Votes</th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th width=100>Published</th>
+          <th width=100>Upvote</th>
+        </tr>
+        </thead>
+        <tbody>
+        <%# @Movies.each do |work| %>
+        <tr>
+          <td><%= "count" %></td>
+          <td><%= "link_to title, path" %></td>
+          <td><%= "creator" %></td>
+          <td><%= "published" %></td>
+          <%# TODO: change link below %>
+          <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/790/upvote">Upvote</a></td>
+        </tr>
+        <%# end %>
+        </tbody>
+      </table>
+    <% else %>
+    <h1>No Media Found!</h1>
+    <% end %>
   </section>
 
 

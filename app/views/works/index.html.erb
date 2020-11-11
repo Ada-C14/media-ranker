@@ -2,7 +2,22 @@
 <ul>
   <% @works.each do |work| %>
     <li>
-      <%=work.title %>
+      <%= link_to work.title, work_path(work) %>
+      <%= work.category %>
     </li>
   <% end %>
 </ul>
+
+<h1>Albums</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Votes</th>
+    <th>Title</th>
+    <th>Created by</th>
+    <th>Published</th>
+    <th>Upvote</th>
+
+  </tr>
+  </thead>
+</table>

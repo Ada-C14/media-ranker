@@ -1,5 +1,8 @@
-<h4><strong>Spotlight: </strong><%= @spotlight.title %></h4>
-<p><%= "#{rand(10)} Votes - #{@spotlight.description}" %></p>
+
+<% unless @spotlight.nil? %>
+  <h4><strong>Spotlight: </strong><%= @spotlight.title %></h4>
+  <p><%= "#{rand(10)} Votes - #{@spotlight.description}" %></p>
+<% end %>
 
 <h3>Top Books</h3>
 <%= render partial: "table", locals: { variable: @top_books } %>

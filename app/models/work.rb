@@ -3,19 +3,41 @@ class Work < ApplicationRecord
   validates :category, presence: true, inclusion: { in: %w(book movie album) }
   validates :published, presence: true, numericality: true
 
+  def self.categories(media)
+    where(category: media)
+  end
 
-  # @works = Work.all
+  def self.movies
+    categories(:movie)
+  end
 
-    # @books = Work.all.where(category: "book")
-    # @movies = Work.all.where(category: "movie")
-    # @albums = Work.all.where(category: "album")
-    #
-    # @top_books = Work.all.where(category: "book").sample(10)
-    # @top_movies = Work.all.where(category: "movie").sample(10)
-    # @top_albums = Work.all.where(category: "album").sample(10)
+  def self.books
+    categories(:book)
+  end
+
+  def self.albums
+    categories(:album)
+  end
 
 
+  def self.top_10(media)
+     where(category: media).sample(10)
+  end
 
-  # @spotlight = @works.sample(1)
+  def self.top_books
+    top_10(:book)
+  end
+
+  def self.top_movies
+    top_10(:movie)
+  end
+
+  def self.top_albums
+    top_10(:album)
+  end
+
+  def self.spotlight
+    all.sample(1)[0]
+  end
 
 end

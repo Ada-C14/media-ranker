@@ -2,20 +2,19 @@ class WorksController < ApplicationController
 
   # custom top 10 method - how to refactor this into model?
   def top
-    # top_10
-    @spotlight = Work.all.sample(1)[0] # referencing index 0 to get into the array
-    @top_books = Work.all.where(category: "book").sample(10)
-    @top_movies = Work.all.where(category: "movie").sample(10)
-    @top_albums = Work.all.where(category: "album").sample(10)
+    @spotlight = Work.spotlight
+    @top_books = Work.top_books
+    @top_movies = Work.top_movies
+    @top_albums = Work.top_albums
   end
 
 
   def index
     @works = Work.all
     # categories
-    @books = Work.all.where(category: "book")
-    @movies = Work.all.where(category: "movie")
-    @albums = Work.all.where(category: "album")
+    @books = Work.books
+    @movies = Work.movies
+    @albums = Work.albums
   end
 
   def show

@@ -1,2 +1,31 @@
 <h1>Media Ranker</h1>
 
+<h2>Top Albums</h2>
+<ul>
+    <% top_ten = @albums.sample(10) %>
+    <% top_ten.each do |album| %>
+        <li>
+            <%= album.title %>
+        </li>
+    <% end %>
+</ul>
+
+<h2>Top Books</h2>
+<ul>
+    <% top_ten = @books.sample(10) %>
+    <% top_ten.each do |book| %>
+        <li>
+            <%= book.title %>
+        </li>
+    <% end %>
+</ul>
+
+<h2>Top Movies</h2>
+<ul>
+    <% top_ten = @movies.sample(10) %>
+    <% top_ten.each do |movie| %>
+        <li>
+            <%= movie.title %>
+        </li>
+    <% end %>
+</ul>

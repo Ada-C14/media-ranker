@@ -4,6 +4,8 @@ describe Work do
 
   before do
     @work = works(:test_work)
+    @user = User.create!(name: "test user")
+    @vote = Vote.create!(user_id: @user.id, work_id: @work.id)
   end
   let (:second_work){
     Work.create!(
@@ -27,6 +29,10 @@ describe Work do
   end
   
   describe "relations" do
+    it "can have many votes" do
+      Vote.create!(user_id: @user.id, work_id: @work.id)
+      expect(@work.votes.count).must_equal 2
+    end
   end
 
   describe "validations" do

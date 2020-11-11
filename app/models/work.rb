@@ -1,7 +1,9 @@
 class Work < ApplicationRecord
   def self.top_by_category(category, count:10)
-    list = find_by(category: category)
-    return list.sample(count)
+    list = []
+    list << Work.find_by(category: category)
+    top = list.sample(count)
+    return top
   end
 
   def self.spotlight

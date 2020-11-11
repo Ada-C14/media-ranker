@@ -1,7 +1,7 @@
 class HomepagesController < ApplicationController
   def index
-    @works_book = Work.where(category: 'book').sample(10)
-    @works_album = Work.where(category: 'album').sample(10)
-    @works_movie = Work.where(category: 'movie').sample(10)
+    @top_books = Work.top_10("book")
+    @top_albums = Work.top_10('album')
+    @top_movies = Work.top_10('movie')
   end
 end

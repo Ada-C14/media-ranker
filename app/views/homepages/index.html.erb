@@ -3,7 +3,7 @@
 <section>
   <h3>Top Movies</h3>
   <ul>
-    <% @works_movie.each do |work| %>
+    <% @top_movies.each do |work| %>
       <li>
         <%= link_to work.title, work_path(work.id)%>
       </li>
@@ -14,7 +14,7 @@
 <section>
   <h3>Top Books</h3>
   <ul>
-    <% @works_book.each do |work| %>
+    <% @top_books.each do |work| %>
       <li>
         <%= link_to work.title, work_path(work.id)%>
       </li>
@@ -25,7 +25,7 @@
 <section>
 <h3>Top Albums</h3>
 <ul>
-  <% @works_album.each do |work| %>
+  <% @top_albums.each do |work| %>
     <li>
     <%= link_to work.title, work_path(work.id)%>
     </li>

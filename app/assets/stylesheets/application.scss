@@ -16,3 +16,17 @@
 @import "bootstrap";
 
 @import "**/*";
+
+@import url('https://fonts.googleapis.com/css2?family=Gudea:ital,wght@0,400;0,700;1,400&display=swap');
+
+$primary-color: #26a69a;
+$primary-font: 'Gudea', sans-serif;
+
+.btn-primary {
+  background-color: $primary-color;
+  border-color: $primary-color;
+}
+
+* {
+  font-family: $primary-font;
+}

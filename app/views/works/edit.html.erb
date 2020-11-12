@@ -1,4 +1,4 @@
-<h2>New Media</h2>
+<h2>Edit Media</h2>
 
 <%= form_with model: @work, class: 'create-work' do |f| %>
   <p>Please provide the following information:</p>
@@ -18,13 +18,5 @@
   <%= f.label :category %>
   <%= f.select :category, ['album', 'book', 'movie'] %>
   <br>
-  <%= f.submit "New Media", class: "change-button" %>
+  <%= f.submit "Edit Media", class: "change-button" %>
 <%end%>
-
-<!--<p><%#= link_to "All Media", works_path %></p>-->
-
-<!--<select name="city_id" id="city_id">-->
-<!--  <option value="1">Book</option>-->
-<!--  <option value="2">Album</option>-->
-<!--  <option value="3">Movie</option>-->
-<!--</select>-->

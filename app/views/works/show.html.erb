@@ -13,4 +13,9 @@
   <div>
     Description: <%=@work.description %>
   </div>
+  <div>
+    Category: <%=@work.category %>
+  </div>
 </section>
+
+<%=link_to "Edit Media", edit_work_path(@work.id) %>

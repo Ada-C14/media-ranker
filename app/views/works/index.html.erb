@@ -1,18 +1,23 @@
 <p>Spotlight: <%= @works.select_spotlight %></p>
 
 <ul>
-  <h2>Top Books</h2>
-  <% @top_books.each do |book| %>
-    <li><%= book.title %></li>
-  <% end %>
-  <br>
-  <h2>Top Albums</h2>
-  <% @top_albums.each do |album| %>
-    <li><%= album.title %></li>
-  <% end %>
-  <h2>Top Movies</h2>
-  <% @top_movies.each do |movie| %>
-    <li><%= movie.title %></li>
+  <% if @works.length > 0 %>
+    <h2>Top Books</h2>
+    <% @top_books.each do |book| %>
+      <li><%= link_to book.title, work_path(book) %></li>
+    <% end %>
+    <br>
+    <h2>Top Albums</h2>
+    <% @top_albums.each do |album| %>
+      <li><%= link_to album.title, work_path(album) %></li>
+    <% end %>
+    <br>
+    <h2>Top Movies</h2>
+    <% @top_movies.each do |movie| %>
+      <li><%= movie.title %></li>
+    <% end %>
+  <% else %>
+    No works
   <% end %>
 </ul>
 

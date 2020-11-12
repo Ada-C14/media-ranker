@@ -1,4 +1,5 @@
 <% if @work.errors.any? %>
+  <p>A problem occurred: Could not create <%= @work.category %></p>
   <ul>
     <% @work.errors.each do |column, message| %>
       <li>

@@ -29,13 +29,17 @@ describe Work do
       # Arrange
       new_work.save
       new_user = User.create(username: "User")
+      new_user2 = User.create(username: "User2")
       vote_1 = Vote.create(user_id: new_user.id, work_id: new_work.id)
-      vote_2 = Vote.create(user_id: new_user.id, work_id: new_work.id)
+      vote_2 = Vote.create(user_id: new_user2.id, work_id: new_work.id)
 
       # Assert
       expect(new_work.votes.count).must_equal 2
+      expect(vote_1.user).must_equal new_user
+      expect(vote_2.user).must_equal new_user2
       new_work.votes.each do |vote|
         expect(vote).must_be_instance_of Vote
+        expect(vote.work_id).must_equal new_work.id
       end
     end
     it "can get information of users that voted for the work" do
@@ -47,6 +51,9 @@ describe Work do
 
       # Assert
       expect(new_work.users.count).must_equal 2
+      # check info
+      expect(new_work.users.find_by(username: "User")).must_equal new_user
+      expect(new_work.users.find_by(username: "User2")).must_equal new_user2
       new_work.users.each do |user|
         expect(user).must_be_instance_of User
       end

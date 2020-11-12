@@ -5,10 +5,26 @@ class WorksController < ApplicationController
 
   def show
     @work = Work.find(params[:id])
+     if @work.nil?
+      head :not_found
+      return
+     end
   end
 
-  def new
+  def create
+    @work = Work.new(work_params)
+    if @work.save
+      redirect_to work_path(@work.id)
+      return
+    else
+      render :new , status: :not_found
+      return
+    end
+  end
 
+  private
+  def work_params
+    return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
   end
 
 end

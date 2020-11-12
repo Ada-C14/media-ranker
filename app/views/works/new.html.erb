@@ -1,0 +1,30 @@
+<h2>New Media</h2>
+
+<%= form_with model: @work, class: 'create-work' do |f| %>
+  <p>Please provide the following information:</p>
+
+ <p><%= f.label :title %>
+   <%= f.text_field :title %> </p>
+
+  <p><%= f.label :creator %>
+  <%= f.text_field :creator %></p>
+
+  <p><%= f.label :publication_year %>
+  <%= f.text_field :publication_year %></p>
+
+  <p></p><%= f.label :description %>
+  <%= f.text_field :description %></p>
+
+ <p><%= f.label :category %>
+  <%= f.text_field :category %></p>
+
+  <%= f.submit "New Media", class: "change-button" %>
+<% end%>
+
+
+
+<!--<select name="city_id" id="city_id">-->
+<!--  <option value="1">Book</option>-->
+<!--  <option value="2">Album</option>-->
+<!--  <option value="3">Movie</option>-->
+<!--</select>-->

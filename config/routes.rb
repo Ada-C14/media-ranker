@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'users/show'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'homepages#index'
-  resources :works
+  # resources :works # probably don't need this anymore?
   resources :users, only: [:index, :show]
   resources :works do
     member do

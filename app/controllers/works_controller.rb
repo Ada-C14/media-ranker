@@ -82,8 +82,8 @@ class WorksController < ApplicationController
     if vote.save
       flash[:success] = "Successfully upvoted!"
     else
-      flash[:error] = "A problem occurred: Vote could not be saved"
-      flash[:error_messages] = vote.errors.messages
+      flash[:error] = "A problem occurred: Could not upvote"
+      flash[:error_messages] = vote.errors.values.flatten.join("\n")
     end
 
     redirect_to work_path(params[:id])

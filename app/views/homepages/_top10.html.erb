@@ -1,7 +1,7 @@
 <section>
-  <h2 class="top10-header">Top Movies</h2>
+  <h2 class="top10-header">Top <%= category %></h2>
   <ul class="list-group">
-    <% @works.each do |work| %>
+    <% works.each do |work| %>
       <li class="list-group-item">
         <%= link_to work.title, work_path(work), :class => 'work-title' %>
         <small>by <%= work.creator %></small>

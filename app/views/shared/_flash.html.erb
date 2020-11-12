@@ -2,16 +2,15 @@
   <% flash.each do |name, message| %>
     <div class="alert alert-<%= name %>">
       <%= message %>
+      <% if errors.any? %>
+        <ul>
+          <% errors.each do |column, message| %>
+            <li>
+              <p><%= column %> <%= message %></p>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
     </div>
   <% end %>
-
-  <%# if @work.errors.any? %>
-<!--    <ul>-->
-      <%# @work.errors.each do |column, message| %>
-<!--        <li>-->
-<!--          <p><%#= column %> <%#= message %></p>-->
-<!--        </li>-->
-      <%# end %>
-<!--    </ul>-->
-  <%# end %>
 </section>

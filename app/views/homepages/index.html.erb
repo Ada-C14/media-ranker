@@ -1,7 +1,7 @@
-<%= render 'spotlight' %>
+<%= render partial: 'spotlight', locals: { :work => Work.get_spotlight } %>
 
 <section class="top10-container">
-  <%= render 'top10' %>
-  <%= render 'top10' %>
-  <%= render 'top10' %>
+  <%= render partial: 'top10', locals: { :works => Work.get_top_ten('movie'), :category => 'Movies' } %>
+  <%= render partial: 'top10', locals: { :works => Work.get_top_ten('book'), :category => 'Books' } %>
+  <%= render partial: 'top10', locals: { :works => Work.get_top_ten('album'), :category => 'Albums' } %>
 </section>

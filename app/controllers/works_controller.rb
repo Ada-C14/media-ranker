@@ -30,6 +30,7 @@ class WorksController < ApplicationController
       flash[:success] = "Successfully created #{@work.category} #{@work.id}"
       return
     else # save failed :(
+      flash.now[:error] = "A problem occurred: Could not create #{@work.category}"
       render :new, status: :bad_request
       return
     end
@@ -55,8 +56,9 @@ class WorksController < ApplicationController
       redirect_to works_path # go to the index so we can see the work in the list
       return
     else # save failed :(
-    render :edit, status: :bad_request
-    return
+      flash.now[:error] = "A problem occurred: Could not edit #{@work.category}"
+      render :edit, status: :bad_request
+      return
     end
   end
 

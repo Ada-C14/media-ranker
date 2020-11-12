@@ -15,20 +15,7 @@ class UsersController < ApplicationController
 
   #########################################################
 
-  # def create
-  #   @user = User.new(user_params)
-  #
-  #   if @user.save
-  #     # redirect_to user_path(@user.id)
-  #     return
-  #   else
-  #     not_saved_error_notice
-  #     render :new
-  #     return
-  #   end
-  # end
-
-  # custom actions
+  # Custom actions
   def login_form
     @user = User.new
   end
@@ -38,14 +25,19 @@ class UsersController < ApplicationController
     user = User.find_by(username: username)
 
     if user
-      session[:user_id] = user.id
       successful_login('existing', user)
     else
-      user = User.create(username: username)
-      session[:user_id] = user.id
-      successful_login('new', user)
+      user = User.new(user_params)
+      if user.save
+        successful_login('new', user)
+      else
+        not_saved_error_notice
+        render :login_form
+        return
+      end
     end
 
+    session[:user_id] = user.id
     redirect_to root_path
     return
   end

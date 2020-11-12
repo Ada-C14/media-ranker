@@ -55,6 +55,8 @@ class WorksController < ApplicationController
   end
 
   def destroy
+    @work = Work.find_by(id: params[:id])
+
     @work.destroy
 
     #TODO: Add various flash messages

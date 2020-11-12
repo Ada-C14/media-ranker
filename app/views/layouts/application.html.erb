@@ -10,6 +10,43 @@
   </head>
 
   <body>
+  <header class="app-header__header">
+    <h1>
+      <%= link_to "Media Ranker", root_path %>
+      <small>Ranking the Best of Everything</small>
+    </h1>
+
+    <nav class="app-header__nav">
+      <ul class="nav app-header__site-nav-container">
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "View top media", root_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "View all media", works_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "Add new work", new_work_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "View all user", users_path, class: "nav-link" %>
+        </li>
+      </ul>
+      <ul class="nav app-header__user-nav-container">
+
+<!--        <li class="nav-item app-header__nav_item">-->
+<!--          <a class="btn btn-primary" href="/users/872">Logged in as YOYO</a>-->
+<!--        </li>-->
+<!--        <li class="nav-item app-header__nav_item">-->
+<!--          <a class="btn btn-primary" rel="nofollow" data-method="post" href="/logout">Log Out</a>-->
+<!--        </li>-->
+
+
+      </ul>
+    </nav>
+  </header>
     <%= yield %>
   </body>
+
 </html>
+<body>
+

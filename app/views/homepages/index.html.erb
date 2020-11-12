@@ -1,2 +1,68 @@
-<h1>Homepages#index</h1>
-<p>Find me in app/views/homepages/index.html.erb</p>
+<body>
+<!--:category, :title, :creator, :publication_year, :description-->
+<main>
+  <section class="spotlight">
+    <h2 class="spotlight__header">
+      <span class="spotlight__header--prefix">Media Spotlight</span>
+<!--      <%#= link_to Work.model_method.title?, work_path(Work.model_method.id) %> by <%#= Work.model_metho.creator class="spotlight__link-to" %>-->
+    </h2>
+    <p class="spotlight__description">
+<!--      <%#= Work.model_method.votes?, work_path(Work.model_method.id) %> - <%#= Work.model_method.description class="spotlight__link-to" %>-->
+    </p>
+  </section>
+
+  <hr class="root__hr" />
+
+  <section class="top-ten__container">
+    <section class="top-ten__list-container">
+      <h2 class="top-ten__header">
+        Top Movies
+      </h2>
+      <ul class="list-group top-ten__list">
+        <li class="list-group-item">
+          <h4>
+            <%#= link_to 'Movie Name', work_path(@work.id), class: "nav-link" %>
+<!--            <small class="top-ten__creator">by Alvin and the Chipmunks</small>-->
+          </h4>
+<!--          <p>9 votes</p>-->
+        </li>
+      </ul>
+      <!-- <a href="/works.movies">View More Movies</a> -->
+    </section>
+
+    <section class="top-ten__list-container">
+      <h2 class="top-ten__header">
+        Top Books
+      </h2>
+      <ul class="list-group top-ten__list">
+        <li class="list-group-item">
+          <h4>
+<!--            <a href="/works/790">Chipmunks in Low Places</a>-->
+<!--            <small class="top-ten__creator">by Alvin and the Chipmunks</small>-->
+          </h4>
+<!--          <p>9 votes</p>-->
+        </li>
+      </ul>
+      <!-- <a href="/works.books">View More Books</a> -->
+    </section>
+
+    <section class="top-ten__list-container">
+      <h2 class="top-ten__header">
+        Top Albums
+      </h2>
+      <ul class="list-group top-ten__list">
+        <li class="list-group-item">
+          <h4>
+<!--            <a href="/works/790">Chipmunks in Low Places</a>-->
+<!--            <small class="top-ten__creator">by Alvin and the Chipmunks</small>-->
+          </h4>
+<!--          <p>9 votes</p>-->
+        </li>
+      </ul>
+      <!-- <a href="/works.albums">View More Albums</a> -->
+    </section>
+
+  </section>
+
+</main>
+</body>

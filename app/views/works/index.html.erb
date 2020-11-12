@@ -16,12 +16,12 @@
     </thead>
 
     <tbody>
-    <% @works.find_by(category: "albums").each do |album|%>
+    <% @albums.each do |album|%>
       <tr>
         <td> <%= album.votes %> </td>
         <td><%= link_to album.title, work_path(album) %></td>
-        <td><% album.author %>></td>
-        <td><% album.publish_date %></td>
+        <td><% album.creator %></td>
+        <td><% album.publication_year %></td>
         <td>Upvote</td>
       </tr>
     <% end %>
@@ -43,12 +43,12 @@
     </thead>
 
     <tbody>
-    <% @works.find_by(category: "books").each do |book|%>
+    <% @book.each do |book|%>
       <tr>
         <td> <%= book.votes %> </td>
         <td><%= link_to book.title, work_path(book) %></td>
-        <td><% book.author %>></td>
-        <td><% book.publish_date %></td>
+        <td><% book.creator %></td>
+        <td><% book.publication_year %></td>
         <td>Upvote</td>
       </tr>
     <% end %>
@@ -70,17 +70,20 @@
     </thead>
 
     <tbody>
-    <% @works.find_by(category: "movies").each do |movie|%>
+    <% @movies.each do |movie|%>
       <tr>
         <td> <%= movie.votes %> </td>
         <td><%= link_to movie.title, work_path(movie) %></td>
-        <td><% movie.author %>></td>
-        <td><% movie.publish_date %></td>
+        <td><% movie.creator %></td>
+        <td><% movie.publication_year %></td>
         <td>Upvote</td>
       </tr>
     <% end %>
     </tbody>
   </table>
 </section>
+
+<% link_to "View top media", root_path, class: "btn-secondary"%>
+<% link_to "Add a new work", new_work_path, class: "btn-primary" %>
 
 

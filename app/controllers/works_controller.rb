@@ -2,6 +2,9 @@ class WorksController < ApplicationController
 
   def index
     @work = Work.all
+    @albums = @work.find_by(category: "albums")
+    @books = @work.find_by(category: "book")
+    @movies = @work.find_by(category: "movie")
   end
 
   def show
@@ -35,7 +38,7 @@ class WorksController < ApplicationController
   private
 
   def work_params
-    return params.require(:work).permit(:title, :author, :publish_date,:category, :description, :votes)
+    return params.require(:work).permit(:category, :title, :author, :publication_year, :description, :votes)
   end
 
 end

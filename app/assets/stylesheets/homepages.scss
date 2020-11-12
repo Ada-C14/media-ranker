@@ -1,3 +1,18 @@
 // Place all the styles related to the Homepages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+header {
+    background-color: #B2DFDB;
+    min-height: 205px;
+    vh:middle;
+}
+
+.MR {
+    color: #ff5722;
+
+}
+
+.MR :hover {
+    color: red;
+}

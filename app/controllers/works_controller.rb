@@ -1,7 +1,7 @@
 class WorksController < ApplicationController
 
   def index
-    @works = Work.all
+    @works = Work.all.order
   end
 
   def show
@@ -61,7 +61,6 @@ class WorksController < ApplicationController
     end
   end
 
-  def album
 
   private
   def work_params

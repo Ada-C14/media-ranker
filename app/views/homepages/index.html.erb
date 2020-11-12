@@ -1,31 +1,38 @@
 
-<main>
-  <section class="spotlight">
-    <h2 class="spotlight__header">
-      <span class="spotlight__header--prefix">Media Spotlight: <%= link_to Work.first.title, work_path(1) %> by <%= Work.first.creator %></span>
-        </h2>
-    <p class="spotlight__description">
-      4 votes - <%= Work.first.description %>
-    </p>
-  </section>
-</main>
-  <div class="container">
   <div class="row">
-    <div class="col-sm">
-      Books
-<% if @albums.length > 0 %>
-      <ol class="book_list">
-        <%= @albums.each do |album|  %>
-        <li> <%= link_to album.title, work_path(work.id) %></li>
-          <% end %>
-      </ol>
-        <% end %>
-    </div>
-    <div class="col-sm">
-      Movies
-    </div>
-    <div class="col-sm">
-     Albums
+    <div class="col-sm-12">
+      <section class="spotlight">
+        <h2 class="spotlight__header">
+          <span class="spotlight__header--prefix">Media Spotlight: <%= link_to Work.first.title, work_path(1) %> by <%= Work.first.creator %></span>
+        </h2>
+        <p class="spotlight__description">
+          4 votes - <%= Work.first.description %>
+        </p>
+      </section>
     </div>
   </div>
-</div>
+
+
+    <div class="row">
+      <div class="col-sm-12 col-md-4">
+        <h2>Top Movies </h2>
+        <% @work = Work.all %>
+        <% @movies = @work.where(category: "movie") %>
+        <ol>
+          <% @movies.each do |movie|  %>
+            <li><%= link_to movie.title, work_path(movie.id)  %></li>
+          <% end %>
+        </ol>
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <h2>Top Books</h2>
+      </div>
+      <div class="col-sm-12 col-md-4">
+        <h2>Top Albums</h2>
+      </div>
+    </div>
+
+
+
+
+

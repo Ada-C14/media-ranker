@@ -2,7 +2,7 @@
   <section class="spotlight">
     <h2 class="spotlight__header">
       <span class="spotlight__header--prefix">🔦Media Spotlight:</span>
-      <%= link_to "Work Title by Creator", root_path, class: "spotlight__link-to" %>
+      <%= link_to "#{@media_spotlight[0].title} by #{@media_spotlight[0].creator}", root_path, class: "spotlight__link-to" %>
     </h2>
     <p class="spotlight__description">
       13 votes - #hoot - need to update this
@@ -10,55 +10,29 @@
   </section>
   <hr class="root__hr">
   <section class="top-ten__container">
+
     <%# MOVIES %>
     <section class="top-ten__list-container">
       <h2 class="top-ten__header">
-        Top Movies
+        Top Movies 🎥
       </h2>
-      <ul class="list-group top-ten__list">
-        <%# @movies.each do |movie| %>
-        <li class="list-group-item">
-          <h4>
-            <%#link_to movie, movie path %>
-            <small class="top-ten__creator">by creator </small>
-          </h4>
-          <p>Votes</p>
-        </li>
-      </ul>
+      <%= render partial: 'spotlight', locals: {media: @top_10_movies} %>
     </section>
 
     <%# BOOKS %>
     <section class="top-ten__list-container">
       <h2 class="top-ten__header">
-        Top Books
+        Top Books 📚
       </h2>
-      <ul class="list-group top-ten__list">
-        <%# @books.each do |book| %>
-        <li class="list-group-item">
-          <h4>
-            <%# link_to book, book path %>
-            <small class="top-ten__creator">by creator</small>
-          </h4>
-          <p>votes</p>
-        </li>
-      </ul>
+      <%= render partial: 'spotlight', locals: {media: @top_10_books} %>
     </section>
 
     <%# ALBUMS %>
     <section class="top-ten__list-container">
       <h2 class="top-ten__header">
-        Top Albums
+        Top Albums 🎧
       </h2>
-      <ul class="list-group top-ten__list">
-        <%# @albumns.each do |albumn| %>
-        <li class="list-group-item">
-          <h4>
-            <%# link_to albumn, albumn path %>
-            <small class="top-ten__creator">by creator</small>
-          </h4>
-          <p> votes</p>
-        </li>
-      </ul>
+      <%= render partial: 'spotlight', locals: {media: @top_10_albums} %>
     </section>
   </section>
 </main>

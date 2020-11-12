@@ -1,0 +1,14 @@
+<ul class="list-group top-ten__list">
+  <% media.each do |medium| %>
+  <li class="list-group-item">
+    <h4>
+      <%= link_to "#{medium.title}", work_path(medium.id) %>
+      <br>
+      <small class="top-ten__creator">
+      by <%= "#{medium.creator}" %>
+      </small>
+    </h4>
+    <p>Votes</p>
+  </li>
+    <% end %>
+</ul>

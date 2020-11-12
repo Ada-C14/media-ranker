@@ -23,7 +23,7 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
     if @work.save
-      flash.now[:success] = "Successfully created "
+      flash.now[:success] = "Successfully created  #{@work.category} #{@work.id}"
       redirect_to work_path(@work)
       return
     else
@@ -39,7 +39,7 @@ class WorksController < ApplicationController
       head :not_found
       return
     elsif @work.update(work_params)
-      flash[:success] = "Succesfully updated"
+      flash[:success] = "Succesfully updated #{@work.category} #{@work.id}"
       redirect_to work_path(@work)
       return
     else
@@ -56,6 +56,17 @@ class WorksController < ApplicationController
   end
 
   def destroy
+    work = Work.find_by(id: params[:id])
+
+    if work.nil?
+      head :not_found
+      return
+    else
+      work.destroy
+      flash[:success] = "Successfully destroyed #{@work.category} #{@work.id}"
+      redirect_to works_path
+    end
+
   end
 
   private

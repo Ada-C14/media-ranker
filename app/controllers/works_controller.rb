@@ -11,16 +11,30 @@ class WorksController < ApplicationController
      end
   end
 
+  def new
+    @work = Work.new
+  end
+
   def create
     @work = Work.new(work_params)
     if @work.save
       redirect_to work_path(@work.id)
       return
     else
-      render :new , status: :not_found
+      render :new #, status: :not_found
       return
     end
   end
+
+  def edit
+
+  end
+
+  def update
+
+  end
+
+  # def
 
   private
   def work_params

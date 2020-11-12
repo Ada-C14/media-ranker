@@ -67,5 +67,39 @@ describe Vote do
       expect(vote.user).must_be_instance_of User
       expect(vote.work).must_be_instance_of Work
     end
+
+    it 'can set the user through "user"' do
+      user = User.create(username: "user")
+      vote = Vote.new
+      vote.user = user
+
+      expect(vote.user).must_equal user
+      expect(vote.user_id).must_equal user.id
+    end
+
+    it 'can set the user through "user_id"' do
+      user = User.create(username: "user")
+      vote = Vote.new
+      vote.user_id = user.id
+
+      expect(vote.user_id).must_equal user.id
+      expect(vote.user).must_equal user
+    end
+
+    it 'can set the work through "work"' do
+      vote = Vote.new
+      vote.work = new_work
+
+      expect(vote.work).must_equal new_work
+      expect(vote.work_id).must_equal new_work.id
+    end
+
+    it 'can get set the work through "work_id"' do
+      vote = Vote.new
+      vote.work_id = new_work.id
+
+      expect(vote.work_id).must_equal new_work.id
+      expect(vote.work).must_equal new_work
+    end
   end
 end

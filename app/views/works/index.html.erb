@@ -2,27 +2,33 @@
 <section class="media-table">
   <% ["album", "book", "movie"].each do |category| %>
     <h4><%= category %>s</h4>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Votes</th>
-          <th>Title</th>
-          <th>Created By</th>
-          <th>Published</th>
-          <th>Upvote</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @works.where(category: category).each do |work| %>
+
+    <% works_list = @works.where(category: category) %>
+    <% if works_list.empty? %>
+      <p>No <%= category %>s Available</p>
+    <% else %>
+      <table class="table">
+        <thead>
           <tr>
-            <td><%# votes %></td>
-            <td><%= link_to "#{work.title}", work_path(work) %></td>
-            <td><%= work.creator %></td>
-            <td><%= work.publication_year %></td>
-            <td><%# Upvote %></td>
+            <th>Votes</th>
+            <th>Title</th>
+            <th>Created By</th>
+            <th>Published</th>
+            <th>Upvote</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
+        </thead>
+        <tbody>
+          <% works_list.each do |work| %>
+            <tr>
+              <td><%# votes %></td>
+              <td><%= link_to "#{work.title}", work_path(work) %></td>
+              <td><%= work.creator %></td>
+              <td><%= work.publication_year %></td>
+              <td><%# Upvote %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% end %>
   <% end %>
 </section>

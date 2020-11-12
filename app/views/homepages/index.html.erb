@@ -1,11 +1,13 @@
-<section class="spotlight">
-  <h2 class="spotlight__header">
-    <span class="spotlight__header--prefix">Media Spotlight</span>
-    <% spotlight = Work.spotlight %>
-    <%= link_to "#{spotlight.title}", work_path(spotlight) %>
-  </h2>
-  <p class="spotlight__description">Insert description</p>
-</section>
+<% spotlight = Work.spotlight %>
+<% if spotlight %>
+  <section class="spotlight">
+    <h2 class="spotlight__header">
+      <span class="spotlight__header--prefix">Media Spotlight:</span>
+      <%= link_to "#{spotlight.title}", work_path(spotlight) %>
+    </h2>
+    <p class="spotlight__description">Insert description</p>
+  </section>
+<% end %>
 
 <hr class="root__hr">
 
@@ -14,14 +16,19 @@
     <section class="top-ten__list-container">
       <h2 class="top-ten__header">Top <%= category %>s</h2>
       <ul>
-        <% Work.top_ten(category).each do |work|%>
-          <li class="list-group-item">
-            <h4>
-              <%= link_to "#{work.title}", work_path(work) %>
-              <small class="top-ten__creator">by <%= work.creator %></small>
-            </h4>
-            <p>Insert Number Of Votes</p>
-          </li>
+        <% top_ten = Work.top_ten(category) %>
+        <% if top_ten.empty? %>
+          <li class="list-group-item">No <%= category %>s Available</li>
+        <% else %>
+          <% top_ten.each do |work|%>
+            <li class="list-group-item">
+              <h4>
+                <%= link_to "#{work.title}", work_path(work) %>
+                <small class="top-ten__creator">by <%= work.creator %></small>
+              </h4>
+              <p>Insert Number Of Votes</p>
+            </li>
+          <% end %>
         <% end %>
       </ul>
     </section>

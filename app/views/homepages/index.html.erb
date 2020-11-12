@@ -1,0 +1,29 @@
+<h1>Media Spotlight: <%= Work.media_spotlight.title %> by <%= Work.media_spotlight.creator %></h1>
+<p>PUT VOTES HERE - <%= Work.media_spotlight.description %> </p>
+
+<br>
+
+<h1>Top Movies</h1>
+<% Work.top_ten("movie").each do |work| %>
+<%= work.title %> by <%= work.creator %>
+<h5>PUT VOTES HERE</h5>
+<br>
+<% end %>
+
+<br>
+
+<h1>Top Books</h1>
+<% Work.top_ten("book").each do |work| %>
+  <%= work.title %> by <%= work.creator %>
+  <h5>PUT VOTES HERE</h5>
+  <br>
+<% end %>
+
+<br>
+
+<h1>Top Albums</h1>
+<% Work.top_ten("album").each do |work| %>
+  <%= work.title %> by <%= work.creator %>
+  <h5>PUT VOTES HERE</h5>
+  <br>
+<% end %>

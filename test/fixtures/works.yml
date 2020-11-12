@@ -1,0 +1,15 @@
+rubber_soul:
+  category: album
+  title: Rubber Soul
+  creator: The Beatles
+  publication_year: 1965
+bedlam:
+  category: book
+  title: The Bedlam Stacks
+  creator: Natasha Pulley
+fifth_season:
+  category: book
+  title: The Fifth Season
+  creator: N.K. Jemisin
+  publication_year: 2015
+  description: 2016 Hugo Award Winner for Best Novel

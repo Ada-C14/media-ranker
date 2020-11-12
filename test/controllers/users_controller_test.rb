@@ -17,7 +17,7 @@ describe UsersController do
       must_respond_with :success
     end
 
-    it 'will respond with no found for invalid user ids' do
+    it 'will respond with not found for invalid user ids' do
       get user_path(-1)
 
       must_respond_with :not_found

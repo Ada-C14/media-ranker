@@ -9,6 +9,10 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
+    if @user.nil?
+      redirect_to root_path, status: :not_found
+      return
+    end
   end
 
   def login

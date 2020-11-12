@@ -1,15 +1,17 @@
 class Work < ApplicationRecord
+  VALID_CATEGORIES = ['album', 'book', 'movie']
+
   validates :title, presence: true
   validates :title, uniqueness: true
+  validates :category, presence: true, inclusion: {in: VALID_CATEGORIES}
 
   def self.top_by_category(category, count:10)
-    if category.nil?
-      return "There is no item of this category"
-    else
-      list = Work.where(category: category)
-      top = list.sample(count)
-      return top
+    if !VALID_CATEGORIES.include?(category)
+      raise ArgumentError("Invalid category")
     end
+    list = Work.where(category: category)
+    top = list.sample(count)
+    return top
   end
 
   def self.spotlight

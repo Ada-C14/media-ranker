@@ -5,7 +5,7 @@ describe Work do
   #   value(1+1).must_equal 2
   # end
   let (:new_work) {
-    Work.create(category: "Book", title: "Test book", creator: "Bruce Lee", publication_date: "2020", description: "This is very helpful book for testing")
+    Work.create(category: "book", title: "Test book", creator: "Bruce Lee", publication_date: "2020", description: "This is very helpful book for testing")
   }
   it "can be instantiated" do
     #assert
@@ -25,7 +25,7 @@ describe Work do
   describe "validations" do
     #arrange
     before do
-      @work = Work.create(category: "Movie", title: "It", creator: "Someone Withimagination", publication_date: "2018", description: "This is very scary movie")
+      @work = Work.create(category: "movie", title: "It", creator: "Someone Withimagination", publication_date: "2018", description: "This is very scary movie")
     end
     it "is invalid without a title" do
       # act
@@ -47,11 +47,10 @@ describe Work do
 
     it 'is invalid with a non-unique title' do
       # Arrange
-
       # we create a new work unique_work,
       # and modify @work so it becomes invalid
       # to follow the pattern of invalidating @work
-      unique_work = Work.create!(category: "Movie", title: "Unique movie", creator: "Talent", publication_date: "2018", description: "This is very unique movie")
+      unique_work = Work.create!(category: "movie", title: "Unique movie", creator: "Talent", publication_date: "2018", description: "This is very unique movie")
       @work.title = unique_work.title
 
       # Act
@@ -61,21 +60,30 @@ describe Work do
       expect(result).must_equal false
       expect(@work.errors.messages).must_include :title
     end
+
+    it 'is invalid with invalid category' do
+      # arrange
+      @work.category = "art"
+      # act
+      result = @work.valid?
+      # assert
+      expect(result).must_equal false
+    end
   end
 
-  # describe "custom methods" do
-  #   describe "top_by_category" do
-  #     before do
-  #       @work = Work.create(category: "Movie", title: "It", creator: "Someone Withimagination", publication_date: "2018", description: "This is very scary movie")
-  #     end
-  #     it "returns a message if category is nil" do
-  #       #arrange
-  #       @work.category = nil
-  #       #act+assert
-  #       expect(@work.top_by_category("Movie")).must_equal "There is no item of this category"
-  #     end
-  #   end
-  # end
+  describe "custom methods" do
+    describe "top_by_category" do
+      before do
+        @work = Work.create(category: "movie", title: "It", creator: "Someone Withimagination", publication_date: "2018", description: "This is very scary movie")
+      end
+      # it "returns a message if category is nil" do
+      #   #arrange
+      #   @work.category = nil
+      #   #act+assert
+      #   expect(Work.top_by_category("movie")).must_equal "There is no item of this category"
+      # end
+    end
+  end
 
   describe "relations" do
   end

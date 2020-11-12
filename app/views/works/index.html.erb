@@ -1,3 +1,9 @@
 <h1>All media</h1>
 <%# link_to "Homepage", root_path %>
 <%= link_to "New Media", new_work_path %>
+
+<ul>
+<% @works.each do |work| %>
+  <li><%= work.title %> - <%= work.category %></li>
+<% end %>
+</ul>

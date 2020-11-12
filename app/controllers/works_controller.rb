@@ -20,7 +20,7 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
     if @work.save
-      redirect_to work_path(id: @work[:id])
+      redirect_to works_path #(id: @work[:id])
       return
     else
       render :new, status: :bad_request

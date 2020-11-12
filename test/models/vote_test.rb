@@ -1,7 +1,29 @@
 require "test_helper"
 
 describe Vote do
-  # it "does a thing" do
-  #   value(1+1).must_equal 2
-  # end
+  let(:new_work) {
+    Work.new(category: "book", title: "test title", creator: "test creator", publication_year: 2020, description: "test description")
+  }
+
+  describe "relationships" do
+    it "belongs to a user" do
+      # Arrange
+      new_work.save
+      user = User.create!({username: "test user"})
+      vote = Vote.create!(user_id: user.id, work_id: new_work.id)
+
+      # Act/Assert
+      expect(vote.user_id).must_equal user.id
+    end
+
+    it "belongs to a work" do
+      # Arrange
+      new_work.save
+      user = User.create!({username: "test user"})
+      vote = Vote.create!(user_id: user.id, work_id: new_work.id)
+
+      # Act/Assert
+      expect(vote.work_id).must_equal new_work.id
+    end
+  end
 end

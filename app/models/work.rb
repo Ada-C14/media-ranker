@@ -16,7 +16,7 @@ class Work < ApplicationRecord
 
   def self.top_ten(category)
     # top ten sort_by vote?
-    top_ten_list = Work.where(category: category).sort_by { |work| [work.votes.count, work.title] }.limit(10)
+    top_ten_list = Work.where(category: category).sort_by { |work| work.votes.count }.limit(10)
     return top_ten_list
   end
 end

@@ -10,6 +10,28 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="main-container">
+      <header>
+        <h1><%= link_to "Media Ranker", root_path %> | Ranking the Best of Everything</h1>
+        <nav>
+          <div>
+            <%= link_to "View top media", works_path %>
+            <%= link_to "View all media", works_path %>
+            <%= link_to "Add a new work", new_work_path %>
+            <%= link_to "View all users", users_path %>
+          </div>  
+          <div>
+            <p>Logged in as Someone</p>
+            <p>Log In/Log Out</p>
+          </div>
+        </nav>
+      </header>
+
+      <%= yield %>
+      
+      <footer>
+        <p>Copyright 2020 Ting-Yi @Ada Developers Academy</p>
+      </footer>
+    </div>  
   </body>
 </html>

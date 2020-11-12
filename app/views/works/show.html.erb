@@ -1,0 +1,40 @@
+<section>
+  <article class="work-info">
+    <h2><%= @work.title %></h2>
+    <p>Created by: <%= @work.creator %></p>
+    <p>Published <%= @work.publication_year %></p>
+    <% if @work.description %>
+      <p><%= @work.description %></p>
+    <% end %>  
+  </article>
+  <article class="operation-button">
+    <div>
+      <%= link_to "Back to media ranks", root_path %>
+    </div>  
+    <div>
+      <%= link_to "Edit", edit_work_path(@work) %>
+    </div>
+    <div>
+      <%= "Upvote" %>
+    </div>
+    <div>
+      <%= link_to "Delete", work_path(@work), method: :delete, data: {confirm: "Are you sure?"} %>
+    </div>
+  </article>
+  <article class="who-vote-table">
+    <h4><%= "X Votes for this" %><%= @work.category.capitalize %></h4>
+    <table class="show-table">
+      <tr>
+        <th>User</th>
+        <th>Date</th>
+      </tr>
+      <tr>
+        <th>need to figure out</th>
+        <th>work.vote.each do |vote| for vote.username & vote.date....order in vote.date</th>
+      </tr>  
+    </table>
+  </article>
+</section>
+
+
+

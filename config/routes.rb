@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   post "/logout", to: "users#logout", as: "logout"
   get "/users/current", to: "users#current", as: "current_user"
 
-  root to: 'works#index'
+  root to: 'homepages#index'
 
   resources :works
   resources :users

@@ -14,6 +14,8 @@ describe Vote do
 
       # Act/Assert
       expect(vote.user_id).must_equal user.id
+      expect(vote.user).must_equal user
+
     end
 
     it "belongs to a work" do
@@ -24,6 +26,7 @@ describe Vote do
 
       # Act/Assert
       expect(vote.work_id).must_equal new_work.id
+      expect(vote.work).must_equal new_work
     end
   end
 end

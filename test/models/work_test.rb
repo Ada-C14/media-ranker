@@ -1,17 +1,29 @@
 require "test_helper"
 
 describe Work do
-  describe 'validations' do
-    before do
-      @work = Work.new(
-          category: "book",
-          title: "Test Book",
-          creator: "Test Author",
-          publication_year: 2020,
-          description: "A test description"
-      )
+  before do
+    @work = Work.new(
+        category: "book",
+        title: "Book1",
+        creator: "Test Author",
+        publication_year: 2020,
+        description: "A test description"
+    )
+  end
+  describe 'initialize' do
+    it 'can be initialized' do
+      expect(@work.valid?).must_equal true
     end
 
+    it 'will have the required fields' do
+      @work.save
+      work = Work.find_by(title: "Book1")
+      [:category, :title, :creator, :publication_year, :description].each do |field|
+        expect(work).must_respond_to field
+      end
+    end
+  end
+  describe 'validations' do
     it 'is valid when the required fields are present' do
       result = @work.valid?
       expect(result).must_equal true

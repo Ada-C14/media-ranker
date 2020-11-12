@@ -1,13 +1,28 @@
 require "test_helper"
 
 describe User do
-  describe 'validations' do
-    before do
-      @user = User.new(
-          username: "Test user",
-      )
+  before do
+    @user = User.new(
+        username: "Test user",
+        )
+  end
+  describe 'initialize' do
+    it 'can be initialized' do
+      expect(@user.valid?).must_equal true
     end
 
+    it "will have the required fields" do
+      @user.save
+
+      work = User.find_by(username: "Test user")
+
+      [:username, :join_date].each do |field|
+        expect(work).must_respond_to field
+      end
+    end
+  end
+
+  describe 'validations' do
     it 'is valid when the required fields are present' do
       result = @user.valid?
       expect(result).must_equal true

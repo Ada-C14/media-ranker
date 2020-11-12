@@ -1,7 +1,17 @@
 require "test_helper"
 
 describe Work do
-  # it "does a thing" do
-  #   value(1+1).must_equal 2
-  # end
+  before do
+    # Arrange
+    @work = works(:dead_alive)
+  end
+
+  it 'is valid when all fields are present' do
+    # Act
+    result = @work.valid?
+
+    # Assert
+    expect(result).must_equal true
+  end
+
 end

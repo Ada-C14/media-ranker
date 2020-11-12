@@ -29,7 +29,7 @@ describe WorksController do
       # Arrange
       work_hash = {
           work: {
-              title: "Dead Alive",
+              title: "DeadAlive",
               creator: "Peter Jackson",
               publication_date: Time.new("1980"),
               description: "Classic splatter-comedy",

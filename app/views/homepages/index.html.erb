@@ -1,0 +1,39 @@
+
+<main>
+  <section class="spotlight">
+    <h2 class="spotlight__header">
+      <span class="spotlight__header--prefix">Media Spotlight:</span>
+      <%=link_to(top_work_overall(@works).title, work_path(top_work_overall(@works).id), class: "spotlight__link-to")%>
+    </h2>
+    <p class="spotlight__description">
+      <%=top_work_overall(@works).votes.count%> votes
+    </p>
+  </section>
+
+  <hr class="root__hr">
+
+  <section class="top-ten__container">
+    <% %w[book movie album].each do |category|%>
+      <section class="top-ten__list-container">
+      <h2 class="top-ten__header">
+        <%="Top #{category}s" %>
+      </h2>
+        <%top_ten_works(@works, category).each do |work|%>
+        <ul class="list-group top-ten__list">
+          <li class="list-group-item">
+            <h4>
+              <%=link_to(work.title, work_path(work.id))%>
+            </h4>
+            <p>
+              <%=work.votes.count%> votes
+            </p>
+          </li>
+          </ul>
+        <%end%>
+      </section>
+    <% end %>
+  </section>
+
+</main>
+
+

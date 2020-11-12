@@ -1,0 +1,23 @@
+<% spotlight_work = Work.spotlight %>
+
+<h1>Media Spotlight: <%= spotlight_work.title %> by <%= spotlight_work.creator %></h1>
+<p><%= spotlight_work.description %></p>
+
+<% top_works = Work.top_ten %>
+<h3>Top Albums</h3>
+<% top_works[:albums].each do |album| %>
+  <%= album.title %>
+  <br/>
+<% end %>
+
+<h3>Top Books</h3>
+<% top_works[:books].each do |book| %>
+  <%= book.title %>
+  <br/>
+<% end %>
+
+<h3>Top Movies</h3>
+<% top_works[:movies].each do |movie| %>
+  <%= movie.title %>
+  <br/>
+<% end %>

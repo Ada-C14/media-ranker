@@ -43,7 +43,7 @@ class WorksController < ApplicationController
 
   def destroy
     work_id = params[:id]
-    @work = Driver.find_by(id: work_id)
+    @work = Work.find_by(id: work_id)
     if @work.nil?
       head :not_found
       return

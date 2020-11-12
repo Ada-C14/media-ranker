@@ -14,7 +14,7 @@
     <br>
     <h2>Top Movies</h2>
     <% @top_movies.each do |movie| %>
-      <li><%= movie.title %></li>
+      <li><%= link_to movie.title, work_path(movie) %></li>
     <% end %>
   <% else %>
     No works

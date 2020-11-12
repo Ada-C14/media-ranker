@@ -26,7 +26,7 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(works_param)
 
-    if @works.save
+    if @work.save
       redirect_to work_path(@work.id)
       return
     else
@@ -36,7 +36,7 @@ class WorksController < ApplicationController
 
   private
 
-  def works_params
-    return params.require(:works).permit(:id, :category, :title, :creator, :publication_year, :description)
+  def works_param
+    return params.require(:work).permit(:id, :category, :title, :creator, :publication_year, :description)
   end
 end

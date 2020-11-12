@@ -21,9 +21,36 @@ describe Work do
     end
   end
 
-  # TODO: Add tests for relationships
-  # describe "relationships" do
-  # end
+  # TODO: Resolve errors and add fixtures
+  describe "relationships" do
+    before do
+      new_work.save
+      @user_1 = User.new({username: "test user 1"})
+      @user_2 = User.new({username: "test user 2"})
+
+      Vote.create(user_id: @user_1.id, work_id: new_work.id)
+      Vote.create(user_id: @user_2.id, work_id: new_work.id)
+    end
+
+    it "can have many votes" do
+      expect(new_work.votes.count).must_equal 2
+
+      new_work.votes.each do |vote|
+        expect(vote).must_be_instance_of Vote
+      end
+    end
+
+    it "can have many users through votes" do
+      expect(new_work.users.count).must_equal 2
+
+      expect(new_work.users.first).must_equal @user_1
+      expect(new_work.users.last).must_equal @user_2
+
+      new_work.users.each do |user|
+        expect(user).must_be_instance_of User
+      end
+    end
+  end
 
   describe "validations" do
     it "has a title" do
@@ -72,13 +99,31 @@ describe Work do
     describe "spotlight" do
       it "returns only one work" do
         new_work.save
+        second_work = Work.create(category: "movie", title: "test movie title", creator: "test creator", publication_year: 2020, description: "test description")
+        user_1 = User.new({username: "test user"})
+        vote_1 = Vote.new(user_id: user_1, work_id: new_work.id)
+
         work = Work.spotlight
 
+        expect(Work.count).must_equal 2
         expect(work).must_be_instance_of Work
-        expect(Work.count).must_equal 1
+        expect(work).must_equal new_work
       end
 
-      it "returns the most voted for work (for now random until votes model is added)" do
+      it "returns the most voted for work" do
+        # Arrange
+        new_work.save
+        second_work = Work.create(category: "movie", title: "test movie title", creator: "test creator", publication_year: 2020, description: "test description")
+
+        user_1 = User.new({username: "test user"})
+        vote_1 = Vote.new(user_id: user_1, work_id: new_work.id)
+
+        # Act
+        work = Work.spotlight
+
+        # Assert
+        expect(work).must_be_instance_of Work
+        expect(work).must_equal new_work
       end
     end
 

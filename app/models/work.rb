@@ -7,7 +7,7 @@ class Work < ApplicationRecord
 
   def self.spotlight
     # return Work.all.sample # before adding votes model
-    return Work.all.max_by { |work| work.votes.count}
+    return Work.all.max_by { |work| work.votes.count} # TODO return the first max
   end
 
   def self.top_ten(category)

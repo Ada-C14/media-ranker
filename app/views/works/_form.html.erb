@@ -12,29 +12,32 @@
 
 <%= form_with model: @work, class: 'create-work' do |f| %>
 
+  <div class="form-section">
   <%= f.label :category %>
   <%= f.select :category, ['album', 'book', 'movie'] %>
+  </div>
 
-  <br>
-
+  <div class="form-section">
   <%= f.label :title %>
-  <%= f.text_field :title %>
+  <%= f.text_field :title, class: 'form-fill' %>
+  </div>
 
-  <br>
-
+  <div class="form-section">
   <%= f.label :creator %>
-  <%= f.text_field :creator %>
+  <%= f.text_field :creator, class: 'form-fill' %>
+  </div>
 
-  <br>
-
+  <div class="form-section">
   <%= f.label :publication_year %>
-  <%= f.text_field :publication_year %>
+  <%= f.text_field :publication_year, class: 'form-fill' %>
+  </div>
 
-  <br>
-
+  <div class="form-section">
   <%= f.label :description %>
-  <%= f.text_area :description %>
-  <br>
+  <%= f.text_area :description, class: 'form-fill' %>
+  </div>
 
+  <div class="form-section">
   <%= f.submit "#{action_name} Work", class: "work-button" %>
+  </div>
 <% end %>

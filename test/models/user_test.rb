@@ -4,6 +4,31 @@ describe User do
   let(:new_user) {
     User.new(username: "test user")
   }
+
+  it "can be instantiated" do
+    # Assert
+    expect(new_user.valid?).must_equal true
+  end
+
+  it "will have the required fields" do
+    # Arrange
+    new_user.save
+    user = User.first
+
+    # Assert
+    expect(user).must_respond_to :username
+  end
+
+  describe "validations" do
+    it "must have a username" do
+      new_user.username = nil
+
+      expect(new_user.valid?).must_equal false
+      expect(new_user.errors.messages).must_include :username
+      expect(new_user.errors.messages[:username]).must_equal ["can't be blank"]
+    end
+  end
+
   describe "relationships" do
     before do
       new_user.save

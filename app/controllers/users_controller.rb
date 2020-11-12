@@ -17,15 +17,18 @@ class UsersController < ApplicationController
   end
 
   def login
-    username = params[:user][:username]
-    user = User.find_by(username: username)
-    if user
+    if @user
       session[:user_id] = user.id
-      flash[:success] = "Successfully logged in as returning user #{username}"
+      flash[:success] = "Successfully logged in as existing user #{username}"
     else
-      user = User.create(username: username)
-      session[:user_id] = user.id
-      flash[:success] = "Successfully logged in as new user #{username}"
+      @user = User.new(user_params)
+      if @user.save
+        session[:user_id] = user.id
+        flash[:success] = "Successfully logged in as new user #{username}"
+      else
+        render :login_form
+        return
+      end
     end
 
     redirect_to root_path

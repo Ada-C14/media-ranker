@@ -1,0 +1,47 @@
+<main>
+  <section>
+    <h2>
+      <%= @work.title %>
+    </h2>
+    <p>Created by:
+      <%= @work.creator %>
+    </p>
+    <p>Published:
+      <%= @work.publication_year %>
+    </p>
+    <p>
+      <%= @work.description %>
+    </p>
+    <section>
+      <a class="btn btn-primary" href="/">Back to media ranks</a>
+      <a class="btn btn-primary" href="/works/731/edit">Edit</a>
+      <a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/731/upvote">Upvote</a>
+      <a class="btn btn-danger" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/works/731">Delete</a>
+    </section>
+  </section>
+  <section class="works-votes__container">
+    <h3 class="works-votes__header">3 Votes for this Book</h3>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>User</th>
+        <th>Date</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><a href="/users/874">testingcat</a></td>
+        <td>Nov 11, 2020</td>
+      </tr>
+      <tr>
+        <td><a href="/users/615">dee</a></td>
+        <td>May 22, 2020</td>
+      </tr>
+      <tr>
+        <td><a href="/users/694">Chris P. Bacon</a></td>
+        <td>May 21, 2020</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+</main>

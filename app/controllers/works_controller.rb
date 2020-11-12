@@ -12,7 +12,11 @@ class WorksController < ApplicationController
 
     if @work.nil?
       redirect_to works_path
+      return
+    else
+
     end
+
   end
 
   def new

@@ -8,10 +8,4 @@ class HomepagesController < ApplicationController
     @top_10_albums = Work.where(category: 'album').sample(10)
   end
 
-  def show
-
-  end
-  # def work_params
-  #   return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
-  # end
 end

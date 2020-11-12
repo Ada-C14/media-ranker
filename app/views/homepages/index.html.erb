@@ -2,7 +2,7 @@
   <section class="spotlight">
     <h2 class="spotlight__header">
       <span class="spotlight__header--prefix">🔦Media Spotlight:</span>
-      <%= link_to "#{@media_spotlight[0].title} by #{@media_spotlight[0].creator}", root_path, class: "spotlight__link-to" %>
+      <%= link_to "#{@media_spotlight[0].title} by #{@media_spotlight[0].creator}", work_path(@media_spotlight[0].id), class: "spotlight__link-to" %>
     </h2>
     <p class="spotlight__description">
       13 votes - #hoot - need to update this

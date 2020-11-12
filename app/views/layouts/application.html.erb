@@ -12,22 +12,31 @@
   <body>
 
 <!--    header-->
+<header>
+
     <div>
+      <h1>
+        <%= link_to "Medcia Ranker", works_path %>
+        | Ranking the Best of Everything
+      </h1>
+
 
     </div>
 
 <!--  header navbar-->
   <nav>
     <button></button>
+
     <div>
       <div>
         <%= link_to "view top media", works_path %>
         <%= link_to "view all media", works_path%>
         <%= link_to "add a new work", new_work_path%>
-        <%= link_to "view all users", users_path%>
+        <%#= link_to "view all users", users_path%>
       </div>
     </div>
   </nav>
+</header>
   <section class="flash-msg__section">
     <% flash.each do |name, message| %>
       <strong class="<%= name %>">

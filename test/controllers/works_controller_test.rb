@@ -30,13 +30,6 @@ describe WorksController do
     }
   }
 
-  describe "root" do
-    it "can get the root path" do
-      get root_url
-      must_respond_with :success
-    end
-  end
-
   describe "index" do
     it "must get index" do
       get works_url
@@ -45,6 +38,7 @@ describe WorksController do
 
     it "doesnt break when there are no works" do
       @work.destroy
+      expect(Work.count).must_equal 0
       get works_url
       must_respond_with :success
     end

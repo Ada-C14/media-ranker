@@ -8,18 +8,22 @@ describe UsersController do
 
   describe "index" do
     it "must get index" do
-      skip
+      get users_url
+      must_respond_with :success
     end
 
     it "doesnt break when there are no users" do
-      skip
+      @user.destroy
+      get users_url
+      expect(User.count).must_equal 0
+      must_respond_with :success
     end
   end
 
   describe "show" do
     it "must get show" do
-      skip
-      # must_respond_with :success
+      get user_url(@user.id)
+      must_respond_with :success
     end
 
     it "redirects to error page for invalid show" do

@@ -1,5 +1,12 @@
 <main>
   <section>
+    <section>
+      <% if flash[:success] %>
+        <h1>
+          <%= flash[:success] %>
+        </h1>
+      <% end %>
+    </section>
     <h2>
       <%= @work.title %>
     </h2>

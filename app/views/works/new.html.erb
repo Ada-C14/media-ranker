@@ -1,5 +1,11 @@
 <main>
   <h2>Add a new work</h2>
+    <% if flash[:error]%>
+      <h1>
+        <%= flash[:error] %>
+      </h1>
+  <% end %>
+  </section>
   <section>
     <%= render partial: "form", locals: { action_name: "Create Work"} %>
   </section>

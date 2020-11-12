@@ -6,8 +6,11 @@ Rails.application.routes.draw do
   get "/users/current", to: "users#current", as: "current_user"
 
   root to: 'homepages#index'
+  resources :homepages, only: [:index]
+  resources :works do
+    resources :votes, only: [:create]
+  end
 
-  resources :works
   resources :users
-
+  resources :votes
 end

@@ -89,4 +89,8 @@ describe Work do
       expect(albums.count).must_equal 0
     end
   end
+
+  describe "spotlight" do
+    it ""
+  end
 end

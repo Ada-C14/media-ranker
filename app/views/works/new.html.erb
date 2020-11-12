@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Media Ranker 2.0</title>
+  <meta name="csrf-param" content="authenticity_token" />
+  <meta name="csrf-token" content="g/IG+zr6hOZUyLT2WSlta4IkW4x52f/ToX4sCOQoAcMkAOxXkcDtpKq78siJzgeKKjKOoynokucNLbumqfkerg==" />
+
+  <link rel="stylesheet" media="screen" href="/assets/application-23e0d10ed2d885fab99a6549bc004eca19f49cf694e045afebe16b6e9bf1345a.css" />
+  <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Gudea:400,700|Hammersmith+One" />
+  <link rel="stylesheet" media="all" href="/assets/application-23e0d10ed2d885fab99a6549bc004eca19f49cf694e045afebe16b6e9bf1345a.css" data-turbolinks-track="reload" />
+  <script src="/assets/application-f29d14b755d80577972d103e106ff1c2bc9a53efbc3b1e775d62d596da7222db.js" data-turbolinks-track="reload"></script>
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon-910822ff6cd5f6d37119171c4b716f1d4e5fe0e8ad5e408627659ebf8d7f16b1.ico" />
+</head>
+
+<body>
+<%= render partial: "homepages/nav"%>
+<% if @work.errors.any? %>
+  <ul class="errors">
+    <% @work.errors.each do |column, message| %>
+      <li>
+        <strong><%= column.capitalize %></strong>: <%= message %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+<main>
+  <h2>Add a new work</h2>
+  <section>
+    <%= form_with model: @work, class: 'create-work' do |f| %>
+      <div class="form-group">
+        <label><%= f.label :category %></label>
+        <%= f.select(:category, ['album', 'book', 'movie'], {}, {class: "form-control"})%>
+      </div>
+
+      <div class="form-group">
+        <label><%= f.label :title %></label>
+        <%= f.text_field(:title,{class: "form-control"} )%>
+      </div>
+
+      <div class="form-group">
+        <label><%= f.label :creator %></label>
+        <%= f.text_field(:creator,{class: "form-control"} )%>
+      </div>
+
+      <div class="form-group">
+        <label><%= f.label :publication_year %></label>
+        <%= f.text_field(:publication_year,{class: "form-control"} )%>
+      </div>
+
+      <div class="form-group">
+        <label><%= f.label :description %></label>
+        <%= f.text_area(:description,{class: "form-control"} )%>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit "Create Work", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </section>
+</main>
+</body>
+</html>

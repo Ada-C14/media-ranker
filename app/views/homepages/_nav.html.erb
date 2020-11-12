@@ -9,10 +9,10 @@
         <%= link_to "View top media", root_path, method: :get, class: "nav-link" %>
       </li>
       <li class="nav-item app-header__nav_item">
-        <a class="nav-link" href="/works">View all media</a>
+        <%= link_to "View all media", works_path, method: :get, class: "nav-link" %>
       </li>
       <li class="nav-item app-header__nav_item">
-        <a class="nav-link" href="/works/new">Add a new work</a>
+        <%= link_to "Add a new work", new_work_path, method: :get, class: "nav-link" %>
       </li>
       <li class="nav-item app-header__nav_item">
         <a class="nav-link" href="/users">View all users</a>

@@ -1,0 +1,72 @@
+book1:
+  category: book
+  title: Red Bean
+  creator: Carrina Tom
+  publication_year: 2001
+  description: nvfkdjhg hgkjghr sdkjh
+book2:
+  category: book
+  title: The Town
+  creator: George Crain
+  publication_year: 1958
+  description: nvfkdjhg hgkjghr sdkjh
+book3:
+  category: book
+  title: The Captain's Lava
+  creator: Max Heller
+  publication_year: 1999
+  description: nvfkdjhg hgkjghr sdkjh
+book4:
+  category: book
+  title: Red Bean
+  creator: Carlton Johnson
+  publication_year: 1864
+  description: nvfkdjhg hgkjghr sdkjh
+book5:
+  category: book
+  title: Attack of the Meatball
+  creator: Aria Fiddles
+  publication_year: 1899
+  description: nvfkdjhg hgkjghr sdkjh
+book6:
+  category: book
+  title: Crazy in Love
+  creator: Vivian So
+  publication_year: 1989
+  description: nvfkdjhg hgkjghr sdkjh
+book7:
+  category: book
+  title: Where the Tomato Grows
+  creator: Benny Tran
+  publication_year: 1988
+  description: nvfkdjhg hgkjghr sdkjh
+book8:
+  category: book
+  title: Why does it rain
+  creator: Melissa Feng
+  publication_year: 2011
+  description: nvfkdjhg hgkjghr sdkjh
+book9:
+  category: book
+  title: The Grass is Not Green
+  creator: Sam Demco
+  publication_year: 2015
+  description: nvfkdjhg hgkjghr sdkjh
+book10:
+  category: book
+  title: Dogs are the Best
+  creator: Justin Do
+  publication_year: 1986
+  description: nvfkdjhg hgkjghr sdkjh
+book11:
+  category: book
+  title: Say No
+  creator: Kirk Bode
+  publication_year: 1987
+  description: nvfkdjhg hgkjghr sdkjh
+movie1:
+  category: movie
+  title: Lala Land
+  creator: Tim Carl
+  publication_year: 2011
+  description: nvfkdjhg hgkjghr sdkjh

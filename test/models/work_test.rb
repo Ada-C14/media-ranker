@@ -16,7 +16,7 @@ describe Work do
       )
     end
 
-    it 'is value when all fields are present' do
+    it 'is valid when all fields are present' do
       result = @work.valid?
 
       expect(result).must_equal true
@@ -63,4 +63,40 @@ describe Work do
     end
   end
 
+  describe 'top_10' do
+    it 'should extract 10 works of the category' do
+
+      category = "book"
+
+      books = Work.top_10(category)
+
+      expect(books.count).must_equal 10
+    end
+
+    it "should extract works even if there are less than 10" do
+      category = "movie"
+
+      movies = Work.top_10(category)
+
+      expect(movies.count).must_equal 1
+    end
+
+    it 'list 0 works if the category does not have any works' do
+      category = "album"
+
+      albums = Work.top_10(category)
+
+      expect(albums.count).must_equal 0
+    end
+  end
+
+  describe "spotlight" do
+    it "should be nil if there are no works" do
+      Work.delete_all
+
+      spotlight = Work.spotlight
+
+      expect(spotlight).must_be_nil
+    end
+  end
 end

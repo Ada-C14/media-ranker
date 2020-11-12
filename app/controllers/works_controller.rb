@@ -7,9 +7,12 @@ class WorksController < ApplicationController
   end
 
   def not_saved_error_notice
-    flash[:notice] = "That did not save correctly."
+    flash[:notice] = "Something happened. Media not added."
   end
 
+  def saved_notice
+    flash[:success] = "Media added successfully"
+  end
   #########################################################
 
   def index
@@ -41,6 +44,7 @@ class WorksController < ApplicationController
         description: params[:work][:description])
 
     if @work.save
+      saved_notice
       redirect_to work_path(@work.id)
       return
     else

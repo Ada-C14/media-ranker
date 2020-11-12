@@ -5,10 +5,14 @@
   <section class="spotlight">
     <h2 class="spotlight__header">
       <span class="spotlight__header--prefix">Media Spotlight</span>
+      <% if !@spotlight.nil? %>
       <%= link_to "#{@spotlight.title}", work_path(@spotlight.id), method: :get, class: "spotlight__link-to"%> by <%= @spotlight.creator%>
+      <% end %>
     </h2>
     <p class="spotlight__description">
+      <% if !@spotlight.nil? %>
       <%= @spotlight.votes.count %> votes - <%=@spotlight.description%>
+      <% end %>
     </p>
   </section>
 

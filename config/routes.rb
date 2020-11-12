@@ -3,6 +3,4 @@ Rails.application.routes.draw do
   get 'homepages/index'
 
   resources :works
-  resources :user
-
 end

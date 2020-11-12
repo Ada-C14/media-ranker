@@ -24,15 +24,12 @@
       <label><%= f.label :description %></label>
       <%= f.text_area(:description,{class: "form-control"} )%>
     </div>
-
-    <%if @work.title.nil? %>
     <div class="form-group">
-      <%= f.submit "Create Work", class: "btn btn-primary" %>
-    </div>
-    <% else %>
-      <div class="form-group">
+      <% if action_name.downcase == 'new' %>
+        <%= f.submit "Create Work", class: "btn btn-primary" %>
+      <% else %>
         <%= f.submit "Update Work", class: "btn btn-primary" %>
-      </div>
-    <% end %>
+      <% end %>
+    </div>
   <% end %>
 </section>

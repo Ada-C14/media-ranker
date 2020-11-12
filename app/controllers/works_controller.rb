@@ -34,6 +34,17 @@ class WorksController < ApplicationController
   end
 
   def update
+    @work = Work.find_by(id: params[:id])
+    if @work.nil?
+      head :not_found
+      return
+    elsif @work.update(work_params)
+      flash[:success] = "Succesfully updated"
+      redirect_to work_path(@work)
+      return
+    else
+      render :edit, status: :bad_request
+    end
   end
 
   def edit

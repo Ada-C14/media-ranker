@@ -19,6 +19,11 @@
         <%#= button_to "Log In", login_user_path, method: :patch %>
       </nav>
       <hr>
+      <section class="flash">
+        <% flash.each do |name, message| %>
+          <div class="<%=name%>"><%= message %></div>
+        <% end %>
+      </section>
     </header>
     <%= yield %>
   </body>

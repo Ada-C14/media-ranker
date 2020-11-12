@@ -20,9 +20,11 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
 
     if @work.save
+      flash[:success] = "#{@work.title} was successfully added!"
       redirect_to work_path(@work.id)
       return
     else
+      flash.now[:error] = "A problem occurred: could not create #{@work.category}"
       render :new, status: :bad_request
       return
     end
@@ -44,11 +46,13 @@ class WorksController < ApplicationController
       head :not_found
       return
     elsif @work.update(work_params)
+      flash[:success] = "Successfully updated #{@work.category} #{@work.id}!"
       redirect_to work_path(@work.id)
       return
     else # save failed :(
-    render :edit, status: :bad_request
-    return
+      flash.now[:error] = "A problem occurred: could not update #{@work.category}"
+      render :edit, status: :bad_request
+      return
     end
   end
 
@@ -56,6 +60,7 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
 
     if @work.nil?
+      flash[:error] = "A problem occurred: could not update #{@work.category}"
       redirect_to works_path, head: :temporary_redirect
       return
     end
@@ -63,6 +68,7 @@ class WorksController < ApplicationController
 
     @work.destroy
 
+    flash[:success] = "Successfully destroyed #{@work.category} #{@work.id}!"
     redirect_to works_path
     return
   end

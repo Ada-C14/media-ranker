@@ -5,4 +5,9 @@
 <p> <%= @work.description %></p>
 
 
-<%= button_to "Back to media ranks", root_path, method: :get %>
+<section>
+  <%= button_to "Back to media ranks", root_path, method: :get, form: {style: 'display:inline-block;'} %>
+  <%= button_to "Edit", edit_work_path, method: :get, form: {style: 'display:inline-block;'} %>
+  placeholder for upvote
+  <%= button_to "Delete", work_path(@work.id), method: :delete, form: {style: 'display:inline-block;'}, class: 'delete_button', data: { confirm: "Are you sure you want to delete this driver?" } %>
+</section>

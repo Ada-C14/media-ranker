@@ -23,6 +23,7 @@ class WorksController < ApplicationController
     if @work.save
       redirect_to work_path(@work)
     else
+      flash.now[:error] = "A problem occurred: Could not create #{@work.category}"
       render :new, status: :bad_request
     end
   end
@@ -66,6 +67,6 @@ class WorksController < ApplicationController
   private
 
   def work_params
-    return params.require(:work).permit(:category, :title, :creator, :publication_year, :description, )
+    return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
   end
 end

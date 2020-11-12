@@ -1,5 +1,17 @@
 <sectoin>
   <h1>Log In</h1>
+  <article class="form-border">  
+    <% if @user.errors.any? %>
+      <ul class="errors">
+        <% @user.errors.each do |column, message| %>
+          <li>
+            <strong><%= column.capitalize %></strong> <%= message %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </article>
+
   <article>
     <%= form_with model: @user, class: 'edit-form' do |f| %>
       <%= f.label :username %></th>

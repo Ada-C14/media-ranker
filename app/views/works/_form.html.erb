@@ -1,0 +1,21 @@
+<h3>Add a New Work</h3>
+<%= form_with model: @work, class: 'create-work' do |f| %>
+
+  <div class="new-work-form">
+    <%= f.label :category, "Category" %>
+    <%= f.select :category, Work.all.map { |work| work.category }.uniq,{}, class: "form-control"%>
+    <br>
+    <%= f.label :title, "Title" %>
+    <%= f.text_field :title, class:"form-control" %>
+    <br>
+    <%= f.label :creator, "Creator" %>
+    <%= f.text_field :creator, class:"form-control" %>
+    <br>
+    <%= f.label :publication_year, "Publication Year" %>
+    <%= f.text_field :publication_year, class:"form-control" %>
+    <br>
+    <%= f.label :description, "Description" %>
+    <%= f.text_area :description, class:"form-control" %>
+  </div>
+  <%= f.submit action_name, class:"btn btn-primary"%>
+<% end %>

@@ -8,4 +8,7 @@ class Work < ApplicationRecord
   # validates :publication_year, numericality: { only_integer: true }
   # validates :description, presence: true
 
+  def self.spotlight
+    return Work.all.max_by {|work| work.votes.count}
+  end
 end

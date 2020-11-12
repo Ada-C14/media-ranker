@@ -1,0 +1,13 @@
+Media Spotlight: <%= link_to Work.spotlight.title, work_path(Work.spotlight.id)%> by <%= Work.spotlight.creator %>
+<%= Work.spotlight.votes.count %> votes - <%= Work.spotlight.description %>
+<% hash = { "movie" => "Top Movies", "album" => "Top Albums", "book" => "Top Books" } %>
+
+<% ["movie", "book", "album"].each do |category| %>
+  <% works = @works.where(category:category) %>
+  <% works = works.max_by(10) { |work| work.votes.count } %>
+  <h4><%= hash[category] %></h4>
+  <% works.each do |work| %>
+    <p><%= link_to work.title, work_path(work.id) %> by <%= work.creator %></p>
+     <%= work.votes.count%> votes
+  <% end %>
+<% end %>

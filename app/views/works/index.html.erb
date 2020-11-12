@@ -4,7 +4,7 @@
 
   <% ["album", "book", "movie"].each do |category| %>
     <% works = @works.where(category:category) %>
-
+    <% works = works.sort_by { |work| work.votes.count }.reverse! %>
       <table class="table">
         <h4><%= hash[category] %></h4>
         <thead>

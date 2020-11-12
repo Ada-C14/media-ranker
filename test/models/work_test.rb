@@ -173,51 +173,55 @@ describe Work do
   # TODO How do top-10 and spotlight handle works with no votes? Ties in the number of votes?
   describe "top ten" do
     it "can return only the top ten works if there are at least ten works (for now just random)" do
-      work_1 = Work.create!(category: "book", title: "test title 1", creator: "test creator 1", publication_year: 2019, description: "test description 1")
-      work_2 = Work.create!(category: "book", title: "test title 2", creator: "test creator 2", publication_year: 2019, description: "test description 2")
-      work_3 = Work.create!(category: "book", title: "test title 3", creator: "test creator 3", publication_year: 2019, description: "test description 3")
-      work_4 = Work.create!(category: "book", title: "test title 4", creator: "test creator 4", publication_year: 2019, description: "test description 4")
-      work_5 = Work.create!(category: "book", title: "test title 5", creator: "test creator 5", publication_year: 2019, description: "test description 5")
-      work_6 = Work.create!(category: "book", title: "test title 6", creator: "test creator 6", publication_year: 2019, description: "test description 6")
-      work_7 = Work.create!(category: "book", title: "test title 7", creator: "test creator 7", publication_year: 2019, description: "test description 7")
-      work_8 = Work.create!(category: "book", title: "test title 8", creator: "test creator 8", publication_year: 2019, description: "test description 8")
-      work_9 = Work.create!(category: "book", title: "test title 9", creator: "test creator 9", publication_year: 2019, description: "test description 9")
-      work_10 = Work.create!(category: "book", title: "test title 10", creator: "test creator 10", publication_year: 2019, description: "test description 10")
-      work_11 = Work.create!(category: "book", title: "test title 11", creator: "test creator 11", publication_year: 2019, description: "test description 11")
+      # Arrange
+      11.times do |i|
+        Work.create!(category: "book", title: "test title #{i + 1}", creator: "test creator #{i + 1}", publication_year: 2019, description: "test description #{i + 1}")
+      end
 
+      # Act
       top_ten = Work.top_ten("book")
+
+      # Assert
       expect(top_ten.count).must_equal 10
     end
 
     it "should return only the top ten works from the same category" do
-      work_1 = Work.create!(category: "book", title: "test title 1", creator: "test creator 1", publication_year: 2019, description: "test description 1")
-      work_2 = Work.create!(category: "book", title: "test title 2", creator: "test creator 2", publication_year: 2019, description: "test description 2")
-      work_3 = Work.create!(category: "book", title: "test title 3", creator: "test creator 3", publication_year: 2019, description: "test description 3")
-      work_4 = Work.create!(category: "book", title: "test title 4", creator: "test creator 4", publication_year: 2019, description: "test description 4")
-      work_5 = Work.create!(category: "book", title: "test title 5", creator: "test creator 5", publication_year: 2019, description: "test description 5")
-      work_6 = Work.create!(category: "book", title: "test title 6", creator: "test creator 6", publication_year: 2019, description: "test description 6")
-      work_7 = Work.create!(category: "book", title: "test title 7", creator: "test creator 7", publication_year: 2019, description: "test description 7")
-      work_8 = Work.create!(category: "book", title: "test title 8", creator: "test creator 8", publication_year: 2019, description: "test description 8")
-      work_9 = Work.create!(category: "book", title: "test title 9", creator: "test creator 9", publication_year: 2019, description: "test description 9")
-      work_10 = Work.create!(category: "book", title: "test title 10", creator: "test creator 10", publication_year: 2019, description: "test description 10")
-      work_11 = Work.create!(category: "movie", title: "test title 11", creator: "test creator 11", publication_year: 2019, description: "test description 11")
-      work_12 = Work.create!(category: "album", title: "test title 12", creator: "test creator 12", publication_year: 2019, description: "test description 12")
+      # Arrange
+      10.times do |i|
+        Work.create!(category: "book", title: "test title #{i + 1}", creator: "test creator #{i + 1}", publication_year: 2019, description: "test description #{i + 1}")
+      end
 
+      Work.create!(category: "movie", title: "test title 11", creator: "test creator 11", publication_year: 2019, description: "test description 11")
+      Work.create!(category: "album", title: "test title 12", creator: "test creator 12", publication_year: 2019, description: "test description 12")
+
+      new_user = User.create!(username: "test user")
+
+      # Act
       top_ten = Work.top_ten("book")
+
+      # Assert
+      top_ten.each do |work|
+        Vote.create(work_id: work.id, user_id: new_user.id)
+      end
+
       top_ten.each do |work|
         expect(work.category).must_equal "book"
+        expect(work.votes.count).must_equal 1
       end
+      expect(top_ten.count).must_equal 10
     end
 
     it "returns all works available if there are not at least 10" do
-    work_1 = Work.create!(category: "book", title: "test title 1", creator: "test creator 1", publication_year: 2019, description: "test description 1")
-    work_2 = Work.create!(category: "book", title: "test title 2", creator: "test creator 2", publication_year: 2019, description: "test description 2")
-    work_3 = Work.create!(category: "book", title: "test title 3", creator: "test creator 3", publication_year: 2019, description: "test description 3")
-    work_4 = Work.create!(category: "book", title: "test title 4", creator: "test creator 4", publication_year: 2019, description: "test description 4")
-    work_5 = Work.create!(category: "book", title: "test title 5", creator: "test creator 5", publication_year: 2019, description: "test description 5")
+      # Arrange
+      5.times do |i|
+        Work.create!(category: "book", title: "test title #{i + 1}", creator: "test creator #{i + 1}", publication_year: 2019, description: "test description #{i + 1}")
+      end
 
-    top_ten = Work.top_ten("book")
-    expect(top_ten.count).must_equal 5
+      # Act
+      top_ten = Work.top_ten("book")
+
+      # Assert
+      expect(top_ten.count).must_equal 5
     end
 
     it "if there are no works then the top ten array must be empty" do

@@ -68,15 +68,24 @@ class WorksController < ApplicationController
   end
 
   def upvote
+
     user_id = session[:user_id]
-    vote = Vote.new(user_id: user_id, work_id: params[:id])
-    if vote.save
-      redirect_back(fallback_location: root_path)
-      flash[:success] = "Successfully upvoted!"
-      # TODO: you also cant vote for something twice...
-    else
+
+    if user_id.nil?
       redirect_back(fallback_location: root_path)
       flash[:error] = "A problem occurred: You must log in to do that"
+    else
+      vote = Vote.new(user_id: user_id, work_id: params[:id])
+      if vote.save
+        redirect_back(fallback_location: root_path)
+        flash[:success] = "Successfully upvoted!"
+      else
+          # TODO: you also cant vote for something twice...
+        redirect_back(fallback_location: root_path)
+        flash[:error] = "A problem occurred: Could not upvote"
+        # maybe below will capture error message from validation
+        # flash[:error_message] = 
+      end
     end
   end
 

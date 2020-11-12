@@ -29,5 +29,9 @@ describe Vote do
       expect(@vote.work_id).must_equal @work.id
       expect(@vote.work).must_equal @work
     end
+
+    it "cannot be duplicated for a given work/user" do
+      skip
+    end
   end
 end

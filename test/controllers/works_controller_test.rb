@@ -144,11 +144,19 @@ describe WorksController do
 
   describe "upvote" do
 
-    it "can upvote" do
+    it "can upvote for a logged in user" do
       user = User.create(name: "test user")
+      perform_login(user)
 
-      expect{post upvote_work_path(@work.id), params: {user_id: user.id, work_id: @work.id}}.must_differ "Vote.count", 1
-  
+      expect{post upvote_work_path(@work.id)}.must_differ "Vote.count", 1
+      expect(user.votes.length).must_equal 1
+    end
+
+    it "redirects if user is not logged in" do
+      skip
+      expect{post upvote_work_path(@work.id)}.wont_change "Vote.count"
+      # skipping because how do i test this? should i?
+      # expect(flash[:error]).must_equal "A problem occurred: You must log in to do that"
     end
 
     it "can't be voted for more than once by same user" do

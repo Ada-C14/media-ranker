@@ -1,2 +1,22 @@
 <h3>User Summary: <%= "#{@user.username}" %></h3>
 <p>Joined site <%= @user.join_date %></p>
+
+<h3>Votes</h3>
+<table class="votes-table">
+  <tr>
+    <th>Media Title</th>
+    <th>Created By</th>
+    <th>Published</th>
+    <th>Category</th>
+    <th>Voted On</th>
+  </tr>
+  <% @user.votes.each do |vote| %>
+    <tr>
+      <td><%= link_to "#{vote.work.title}", work_path(id: vote.work.id) %></td>
+      <td><%= vote.work.creator %></td>
+      <td><%= vote.work.publication_year %></td>
+      <td><%= vote.work.category %></td>
+      <td><%= vote.created_at.to_s %></td>
+    </tr>
+  <% end %>
+</table>

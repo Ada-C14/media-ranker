@@ -44,7 +44,22 @@ describe User do
         expect(vote).must_be_instance_of Vote
       end
       expect(work.votes.count).must_equal 3
+    end
+  end
 
+  describe 'vote_count' do
+    it 'returns the number of votes for a user' do
+      user = users(:user2)
+      votes = user.vote_count
+
+      expect(votes).must_equal 3
+    end
+
+    it 'returns 0 if the user has no votes' do
+      user = @user
+      votes = user.vote_count
+
+      expect(votes).must_equal 0
     end
   end
 end

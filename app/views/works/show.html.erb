@@ -1,8 +1,8 @@
 <section>
-<h2> <%= work.title %> </h2>
-<p>Created by: <%= work.creator %></p>
-  <p>Published:<%= work.publication_year %> </p>
-  <p><%= work.description%></p>
+<h2> <%= @work.title %> </h2>
+<p>Created by: <%= @work.creator %></p>
+  <p>Published:<%= @work.publication_year %> </p>
+  <p><%= @work.description%></p>
   <section>
     <a class="btn btn-primary" href="/works">Back to media ranks</a>
     <a class="btn btn-primary" href="edit_work">Edit</a>
@@ -10,3 +10,4 @@
     <a class="btn btn-danger" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="work_path(work.id)">Delete</a>
   </section>
 </section>
+

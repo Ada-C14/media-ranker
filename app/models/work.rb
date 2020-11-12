@@ -1,5 +1,5 @@
 class Work < ApplicationRecord
-  has_many :votes
+  has_many :votes, dependent: :delete_all # we can't delete users, so we'll only need it here
   has_many :users, through: :votes
   # before validating
   before_validation {self.category = category.downcase if !self.category.nil?} # presence catches a nil entry

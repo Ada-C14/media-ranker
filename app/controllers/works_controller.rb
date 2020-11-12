@@ -55,7 +55,7 @@ class WorksController < ApplicationController
       return
     else
       flash.now[:error] = "A problem occurred: Could not update #{@work.category}"
-      render :edit
+      render :edit, status: :bad_request
       return
     end
   end
@@ -68,7 +68,7 @@ class WorksController < ApplicationController
       cat = @work.category
       @work.destroy
       flash[:success] = "Successfully destroyed #{cat} #{work_id}"
-      redirect_to works_path
+      redirect_to root_path
     else
       head :not_found
       return

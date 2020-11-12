@@ -2,7 +2,11 @@
 <html>
 <body>
 <main>
-  <h2>Edit This <%=@work.category.capitalize %></h2>
+  <h2>Edit This
+    <% if !@work.category.nil? %>
+      <%=@work.category.capitalize %>
+    <% end %>
+  </h2>
   <%= render partial: "form", locals: { action_name: "Edit" } %>
 </main>
 </body>

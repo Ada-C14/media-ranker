@@ -1,20 +1,62 @@
+<h1>List of Works</h1>
+
 <% if @works.length > 0 %>
+
+<!--  TODO: Update to include vote count when initialized-->
+
+  <h3>Albums</h3>
   <table>
     <tr>
-      <th>Category</th>
       <th>Title</th>
       <th>Created By</th>
       <th>Published</th>
     </tr>
-    <% @works.each do |work| %>
+
+    <% @works.by_category("album").each do |work| %>
       <tr>
-        <td><%= work.category %></td>
         <td><%= link_to work.title, work_path(work.id)%></td>
         <td><%= work.creator %></td>
         <td><%= work.publication_year %></td>
       </tr>
     <% end %>
   </table>
+
+  <br>
+
+  <h3>Books</h3>
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+    </tr>
+    <% @works.by_category("book").each do |work| %>
+      <tr>
+        <td><%= link_to work.title, work_path(work.id)%></td>
+        <td><%= work.creator %></td>
+        <td><%= work.publication_year %></td>
+      </tr>
+    <% end %>
+  </table>
+
+  <br>
+
+  <h3>Movies</h3>
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+    </tr>
+    <% @works.by_category("movie").each do |work| %>
+      <tr>
+        <td><%= link_to work.title, work_path(work.id)%></td>
+        <td><%= work.creator %></td>
+        <td><%= work.publication_year %></td>
+      </tr>
+    <% end %>
+  </table>
+
 <% else %>
   <p>No media in the system!</p>
 <% end %>

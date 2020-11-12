@@ -16,6 +16,18 @@ class WorksController < ApplicationController
     @work = Work.new
   end
 
+  def create
+    @work = Work.new(work_params)
+
+    if @work.save
+      redirect_to work_path(@work.id)
+      return
+    else
+      render :new, status: :bad_request
+      return
+    end
+  end
+
   def homepage
     @works = Work.all
     @spotlight = Work.all.sample(1)[0]

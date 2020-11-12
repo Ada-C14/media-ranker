@@ -21,12 +21,12 @@ describe Work do
     end
   end
 
-  # TODO: Resolve errors and add fixtures
+  # TODO: Add fixtures
   describe "relationships" do
     before do
       new_work.save
-      @user_1 = User.new({username: "test user 1"})
-      @user_2 = User.new({username: "test user 2"})
+      @user_1 = User.create({username: "test user 1"})
+      @user_2 = User.create({username: "test user 2"})
 
       Vote.create(user_id: @user_1.id, work_id: new_work.id)
       Vote.create(user_id: @user_2.id, work_id: new_work.id)

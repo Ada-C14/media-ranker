@@ -1,8 +1,8 @@
 <h1> Works List</h1>
 <h2> Books </h2>
-
+<main>
 <table style="width:100%">
-  <tr>
+  <tr class="border-bottom">
     <th>Votes</th>
     <th>Title</th>
     <th>Created By</th>
@@ -11,11 +11,11 @@
   </tr>
   <% @works.each do |work| %>
     <% if work.category == "book" %>
-  <tr>
+      <tr class="border-bottom">
         <td> </td>
     <td> <%= link_to work.title, work_path(work)  %></td>
-    <td><%= link_to work.creator, work_path(work)  %></td>
-    <td><%= link_to work.publication_date, work_path(work) %></td>
+    <td><%= work.creator %></td>
+    <td><%= work.publication_date %></td>
     <td> </td>
     <%end %>
   <% end %>
@@ -25,7 +25,7 @@
 <h2> Albums </h2>
 
 <table style="width:100%">
-  <tr>
+  <tr class="border-bottom">
     <th>Votes</th>
     <th>Title</th>
     <th>Created By</th>
@@ -34,11 +34,11 @@
   </tr>
   <% @works.each do |work| %>
     <% if work.category == "album" %>
-      <tr>
+      <tr class="border-bottom">
         <td> </td>
         <td> <%= link_to work.title, work_path(work) %></td>
-        <td><%= link_to work.creator, work_path(work) %></td>
-        <td><%= link_to work.publication_date, work_path(work)%></td>
+        <td><%= work.creator %></td>
+        <td><%= work.publication_date%></td>
         <td> </td>
     <%end %>
   <% end %>
@@ -48,7 +48,7 @@
 <h2> Movies </h2>
 
 <table>
-  <tr>
+  <tr class="border-bottom">
     <th>Votes</th>
     <th>Title</th>
     <th>Created By</th>
@@ -57,13 +57,14 @@
   </tr>
   <% @works.each do |work| %>
     <% if work.category == "movie" %>
-      <tr>
+      <tr class="border-bottom">
         <td> </td>
         <td> <%= link_to work.title, work_path(work) %></td>
-        <td><%= link_to work.creator, work_path(work) %></td>
-        <td><%= link_to work.publication_date, work_path(work)%></td>
+        <td><%= work.creator %></td>
+        <td><%= work.publication_date%></td>
         <td> </td>
   </tr>
     <%end %>
   <% end %>
 </table>
+</main>

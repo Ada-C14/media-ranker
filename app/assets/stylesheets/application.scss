@@ -39,8 +39,8 @@ header {
     header h1 {
     color: white;
     text-align: center;
-        margin: 25px auto 40px auto;
-        font-size: 2.5rem;
+    margin: 25px auto 40px auto;
+    font-size: 2.5rem;
     }
 
     .header_nav {
@@ -48,7 +48,7 @@ header {
         list-style-type: none;
     }
 .header_nav_links {
-display: flex;
+    display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
@@ -63,7 +63,7 @@ display: flex;
 
     }
 
-    ul {
+    header nav ul {
         display: flex;
         flex-wrap: wrap;
         padding-left: 10;

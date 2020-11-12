@@ -4,4 +4,12 @@ class Work < ApplicationRecord
 
   validates :title, presence: true, uniqueness: true
 
+  def spotlight
+
+  end
+
+  def top_ten
+
+  end
+
 end

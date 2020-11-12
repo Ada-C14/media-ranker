@@ -1,26 +1,93 @@
 // Place all the styles related to the Homepages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
-
-.column {
-  float: left;
-  width: 33.33%;
+.largest-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 2em;
 }
 
-/* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
+.top-ten-header {
+    color: #26A69A;
+    border-bottom: 2px solid;
+    border-bottom-color: #B2DFDB;
+    font-size: 2rem;
+    line-height: 1.2;
+    margin-top: 0;
+    font-weight: bold;
 }
+
+.top-ten-list {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+}
+
+.list-group-item:last-child {
+    margin-bottom: 0;
+
+}
+.list-group-item:first-child {
+}
+.list-group-item {
+    display: block;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: -1px;
+    background-color: #fff;
+    font-size: 20px;
+    font-weight: bold;
+    color: #26A69A;
+    border: 0;
+    }
+
+
+// .column {
+//   float: left;
+//   width: 33.33%;
+// }
+//
+// /* Clear floats after the columns */
+// .row:after {
+//   content: "";
+//   display: table;
+//   clear: both;
+// }
 
 body {
     margin: 0;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     font-size: 1rem;
-    font-weight: 400;
+//     font-weight: 400;
     line-height: 1.5;
     color: #212529;
     text-align: left;
     background-color: #fff;
+    font-family: "Gudea", sans-serif;
+
     }
+
+.spotlight_description {
+    margin-bottom: 0;
+
+}
+
+.spotlight {
+    padding: 0 2rem 2rem 2rem;
+}
+* {
+
+    font-family: "Gudea", sans-serif;
+}
+
+.creator {
+color: slategrey;
+}
+
+.media {
+color: #424242;
+display: inline;
+}
+
+// a {
+//     color: #26A69A;
+//
+// }

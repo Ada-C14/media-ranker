@@ -23,7 +23,7 @@ class WorksController < ApplicationController
       redirect_to work_path(@work.id)
       return
     else
-      flash.now[:error] = "Something happened. #{@work.category} not added."
+      flash.now[:error] = "A problem occurred: Could not create #{@work.category}."
       render :new, status: :bad_request
       return
     end

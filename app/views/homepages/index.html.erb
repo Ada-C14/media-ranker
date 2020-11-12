@@ -1,42 +1,62 @@
-<h1><b>Media Spotlight: </b><% sample = @works.sample %>
+<section class = "spotlight"><h1><span class ="media">Media Spotlight: </span><% sample = @works.sample %>
   <%= link_to sample.title, work_path(sample)%>  by <%= sample.creator %> </h1>
-<p> <%=sample.description %> </p>
-<div class="row">
-  <div class="column"><h2>Top movies </h2>
-    <%#  @works.each do |work| %>
-      <%# if work.category == "movie" %>
+<p class = "spotlight_description"> <%=sample.description %> </p>
+</section>
+<section class="largest-container">
+<section class="top-ten-container">
+  <h2 class="top-ten-header"> Top Movies</h2>
+  <ul class="top-ten-list">
     <% sample_ten = @works.where(category: "movie").sample(10) %>
     <% sample_ten.each do |work| %>
-    <b><%= link_to work.title, work_path(work) %></b>  by <%= work.creator%><br>
-    <% end %>
+      <li class = "list-group-item"> <%= link_to work.title, work_path(work) %> <small class="creator"> <br> by <%= work.creator%> </small></li>
+    <%end %>
+  </ul>
+</section>
 
-  </div>
-  <div class="column"> <h2>Top Books</h2>
-   <%  sample_ten = @works.where(category: "book").sample(10) %>
-    <% sample_ten.each do |work| %>
-        <b><%= link_to work.title, work_path(work) %></b>  by <%= work.creator%><br>
+<section class="top-ten-container">
+  <h2 class="top-ten-header"> Top Books</h2>
+    <ul class="top-ten-list">
+      <% sample_ten = @works.where(category: "book").sample(10) %>
+      <% sample_ten.each do |work| %>
+        <li class = "list-group-item"> <%= link_to work.title, work_path(work) %> <small class="creator"> <br> by <%= work.creator%> </small> <br></li>
       <%end %>
+    </ul>
+</section>
 
-  </div>
-  <div class="column"><h2>Top Albums</h2>
-    <% sample_ten = @works.where(category: "album").sample(10)  %>
-    <% sample_ten.each do |work| %>
-        <b><%= link_to work.title, work_path(work) %></b>  by <%= work.creator%><br>
-    <% end %>
+<section class="top-ten-container">
+  <h2 class="top-ten-header"> Top Albums</h2>
+    <ul class="top-ten-list">
+      <% sample_ten = @works.where(category: "album").sample(10) %>
+      <% sample_ten.each do |work| %>
+        <li class = "list-group-item"> <%= link_to work.title, work_path(work) %> <small class="creator"> <br> by <%= work.creator%></small><br></li>
+      <%end %>
+    </ul>
+</section>
+</section>
+<!--<div class="row">-->
+<!--  <div class="column"><h2>Top movies </h2>-->
+    <%#  @works.each do |work| %>
+      <%# if work.category == "movie" %>
+    <%# sample_ten = @works.where(category: "movie").sample(10) %>
+    <%# sample_ten.each do |work| %>
+<!--    <b><%#= link_to work.title, work_path(work) %></b>  by <%#= work.creator%><br>-->
+    <%# end %>
 
-  </div>
-</div>
+<!--  </div>-->
+<!--  <div class="column"> <h2>Top Books</h2>-->
+   <%#  sample_ten = @works.where(category: "book").sample(10) %>
+    <%# sample_ten.each do |work| %>
+<!--        <b><%#= link_to work.title, work_path(work) %></b>  by <%#= work.creator%><br>-->
+      <%#end %>
+
+<!--  </div>-->
+<!--  <div class="column"><h2>Top Albums</h2>-->
+    <%# sample_ten = @works.where(category: "album").sample(10)  %>
+    <%# sample_ten.each do |work| %>
+<!--        <b><%#= link_to work.title, work_path(work) %></b>  by <%#= work.creator%><br>-->
+    <%# end %>
+
+<!--  </div>-->
+<!--</div>-->
 
 
-<!--<section>-->
-<!--  <h2>Top Albums</h2>-->
-<!--  <ul>-->
-    <%# sample = @albums.sample(10) %>
-    <%# sample.each do |album| %>
-<!--      <li>-->
-<!--        <%#= link_to album.title, work_path(album.id), method: :get %> by <%#= album.creator %>-->
-<!--        <p>XX votes</p>-->
-<!--      </li>-->
-    <%#= end %>
-<!--  </ul>-->
-<!--</section>-->

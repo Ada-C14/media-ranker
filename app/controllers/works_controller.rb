@@ -17,9 +17,19 @@ class WorksController < ApplicationController
   end
 
   def new
+    @work = Work.new
   end
 
   def create
+    @work = Work.new(works_params)
+
+    if @work.save
+      flash[:success] = "Work added to the ranker"
+      redirect_to work_path(@work) and return
+    else
+      flash[:error] = "Sorry, the work was not saved"
+      render :new, status: :bad_request and return
+    end
   end
 
   def edit

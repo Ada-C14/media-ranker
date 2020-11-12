@@ -21,11 +21,11 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
 
     if @work.save
-      # flash[:success] = "Successfully created #{@work.category} #{@work.id}"
-      redirect_to work_path(@work), success: "Successfully created #{@work.category} #{@work.id}"
+      flash[:success] = "Successfully created #{@work.category} #{@work.id}"
+      redirect_to work_path(@work.id)
     else
-      # flash.now[:error] = "A problem occurred: Could not create #{@work.category}"
-      render :new, status: :bad_request, warning: "A problem occurred: Could not create #{@work.category}"
+      flash.now[:warning] = "A problem occured: Could not create #{@work.category}"
+      render :new, status: :bad_request
     end
   end
 
@@ -33,7 +33,7 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
 
     if @work.nil?
-      redirect_to root_path
+      head :not_found
       return
     end
   end
@@ -45,7 +45,7 @@ class WorksController < ApplicationController
       head :not_found
       return
     elsif @work.update(work_params)
-      redirect_to @work
+      redirect_to work_path(@work.id)
       return
     else
       render :edit

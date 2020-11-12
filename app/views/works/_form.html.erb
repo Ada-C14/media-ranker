@@ -1,23 +1,8 @@
 <%= form_with model: @work do |f| %>
-
-  <% if @work.errors.any? %>
-    <ul>
-      <% @work.errors.each do |column, message| %>
-        <li>
-          <p><%= column %> <%= message %></p>
-        </li>
-      <% end %>
-    </ul>
-  <% end %>
-
   <div class="form-group">
-    <%= f.label :category, :for => "exampleFormControlSelect1" %>
+    <%= f.label :category %>
     <br>
-    <select class="form-control" id="exampleFormControlSelect1">
-      <option>album</option>
-      <option>book</option>
-      <option>movie</option>
-    </select>
+    <%= f.select(:category, options_for_select(['album', 'book', 'movie']), {}, { :class => 'form-control' }) %>
   </div>
   <div class="form-group">
     <%= f.label :title %>

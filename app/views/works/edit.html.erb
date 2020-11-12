@@ -1,2 +1,12 @@
+<% if @work.errors.any? %>
+  <ul>
+    <% @work.errors.each do |column, message| %>
+      <li>
+        <p><%= column %> <%= message %></p>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
 <h2>Edit This <%= @work.category %></h2>
-<%= render partial: "form", locals: { action_name: "Update Work" } %>
+<%= render partial: "form", locals: { action_name: "Update Work", title: "#{@work.title}", category: "#{@work.category}", year: "#{@work.year}", description: "#{@work.description}", creator: "#{@work.creator}"} %>

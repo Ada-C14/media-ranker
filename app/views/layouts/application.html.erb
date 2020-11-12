@@ -48,9 +48,6 @@
           </li>
         <% end  %>
       </ul>
-
-
-
     </nav>
   </header>
   <section class="alert__container">
@@ -70,6 +67,14 @@
         <%elsif !@user.nil? %>
           <ul class="errors">
             <% @user.errors.each do |column, message| %>
+              <li>
+                <%= column %>: <%= message %>
+              </li>
+            <% end %>
+          </ul>
+        <%elsif !@vote.nil? %>
+          <ul class="errors">
+            <% @vote.errors.each do |column, message| %>
               <li>
                 <%= column %>: <%= message %>
               </li>

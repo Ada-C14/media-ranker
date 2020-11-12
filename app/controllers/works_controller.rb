@@ -82,12 +82,11 @@ class WorksController < ApplicationController
     else
       user_id = session[:user_id]
       work_id = params[:id]
-      @vote = Vote.create(user_id: user_id, work_id: work_id)
-      if @vote.valid?
+      @vote = Vote.new(user_id: user_id, work_id: work_id)
+      if @vote.save
         flash[:success] = "Successfully upvoted!"
       else
-        head :not_found
-        return
+        flash.now[:error] = "A problem occurred: Could not upvote"
       end
     end
     redirect_to request.referrer

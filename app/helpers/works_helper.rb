@@ -8,6 +8,6 @@ module WorksHelper
   end
 
   def categories
-    return
+    return %w[book movie album]
   end
 end

@@ -1,10 +1,15 @@
+<h3> Media Spotlight: <%= link_to @spotlight.title.titleize, work_path(@spotlight.id) %> by <%= @spotlight.creator %> </h3>
+<p> <%= @spotlight.description %></p>
+
+<hr>
+
 <h3> Top Books </h3>
 <% if @books.count == 0 %>
   <p> No books to show </p>
 <% end %>
 <ol class="work-list">
   <% @books.sample(10).each do |work| %>
-      <li><b><%= work.title.upcase %></b> - <%= work.category %> - <%= work.creator %> - <%= work.publication_year %></li>
+      <li><b><%= link_to work.title.upcase, work_path(work.id) %></b> - <%= work.category %> - <%= work.creator %> - <%= work.publication_year %></li>
   <% end %>
 </ol>
 
@@ -14,7 +19,7 @@
 <% end %>
 <ol class="work-list">
   <% @albums.sample(10).each do |work| %>
-    <li><b><%= work.title.upcase %></b> - <%= work.category %> - <%= work.creator %> - <%= work.publication_year %></li>
+    <li><b><%= link_to work.title.upcase, work_path(work.id) %></b> - <%= work.category %> - <%= work.creator %> - <%= work.publication_year %></li>
   <% end %>
 </ol>
 
@@ -24,6 +29,6 @@
 <% end %>
 <ol class="work-list">
   <% @movies.sample(10).each do |work| %>
-    <li><b><%= work.title.upcase %></b> - <%= work.category %> - <%= work.creator %> - <%= work.publication_year %></li>
+    <li><b><%= link_to work.title.upcase, work_path(work.id) %></b> - <%= work.category %> - <%= work.creator %> - <%= work.publication_year %></li>
   <% end %>
 </ol>

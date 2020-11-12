@@ -18,10 +18,16 @@ class WorksController < ApplicationController
 
   def homepage
     @works = Work.all
+    @spotlight = Work.all.sample(1)[0]
     @books = Work.where(category: "book")
     @albums = Work.where(category: "album")
     @movies = Work.where(category: "movie")
   end
 
+
+  private
+  def work_params
+    return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+  end
 
 end

@@ -172,20 +172,25 @@ describe Work do
 
   # TODO How do top-10 and spotlight handle works with no votes? Ties in the number of votes?
   describe "top ten" do
-    it "can return only the top ten works if there are at least ten works (for now just random)" do
+    it "can return only the top ten works based on votes if there are at least ten works" do
       # Arrange
       11.times do |i|
         Work.create!(category: "book", title: "test title #{i + 1}", creator: "test creator #{i + 1}", publication_year: 2019, description: "test description #{i + 1}")
       end
 
+      new_user = User.create!(username: "test user")
+
       # Act
       top_ten = Work.top_ten("book")
+      top_ten.each do |work|
+        Vote.create(work_id: work.id, user_id: new_user.id)
+      end
 
       # Assert
       expect(top_ten.count).must_equal 10
     end
 
-    it "should return only the top ten works from the same category" do
+    it "should return only the top ten works based on votes from the same category" do
       # Arrange
       10.times do |i|
         Work.create!(category: "book", title: "test title #{i + 1}", creator: "test creator #{i + 1}", publication_year: 2019, description: "test description #{i + 1}")
@@ -198,12 +203,11 @@ describe Work do
 
       # Act
       top_ten = Work.top_ten("book")
-
-      # Assert
       top_ten.each do |work|
         Vote.create(work_id: work.id, user_id: new_user.id)
       end
 
+      # Assert
       top_ten.each do |work|
         expect(work.category).must_equal "book"
         expect(work.votes.count).must_equal 1
@@ -224,7 +228,42 @@ describe Work do
       expect(top_ten.count).must_equal 5
     end
 
-    it "if there are no works then the top ten array must be empty" do
+    it "returns the works created earlier if all the works have no votes" do
+      # Arrange
+      12.times do |i|
+        Work.create!(category: "book", title: "test title #{i + 1}", creator: "test creator #{i + 1}", publication_year: 2019, description: "test description #{i + 1}")
+      end
+
+      # Act
+      top_ten = Work.top_ten("book")
+
+      # Assert
+      expect(Work.top_ten("book")[10]).must_be_nil
+      expect(Work.top_ten("book")[11]).must_be_nil
+      expect(top_ten.count).must_equal 10
+    end
+
+    it "returns the works created earlier if there is a tie in votes" do
+      # Arrange
+      new_user = User.create!(username: "test user")
+
+      12.times do |i|
+        Work.create!(category: "book", title: "test title #{i + 1}", creator: "test creator #{i + 1}", publication_year: 2019, description: "test description #{i + 1}")
+      end
+
+      # Act
+      top_ten = Work.top_ten("book")
+      top_ten.each do |work|
+        Vote.create(work_id: work.id, user_id: new_user.id)
+      end
+
+      # Assert
+      expect(Work.top_ten("book")[10]).must_be_nil
+      expect(Work.top_ten("book")[11]).must_be_nil
+      expect(top_ten.count).must_equal 10
+    end
+
+    it "if there are no works at all then the top ten array must be empty" do
       top_ten = Work.top_ten("book")
       expect(top_ten).must_be_empty
     end

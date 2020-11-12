@@ -6,5 +6,8 @@ class HomepagesController < ApplicationController
     @books = Work.where(category: 'book').sort_by{|work| -work.votes.count}.first(10)
     @movies = Work.where(category: 'movie').sort_by{|work| -work.votes.count}.first(10)
     @albums = Work.where(category: 'album').sort_by{|work| -work.votes.count}.first(10)
+    @work_hash = { movies: @movies,
+                  books: @books,
+                  albums: @albums }
   end
 end

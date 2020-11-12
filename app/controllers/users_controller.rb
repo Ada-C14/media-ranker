@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   # Helper Methods
   def successful_login(type, user)
-    flash[:notice] =
+    flash[:success] =
       if type == 'new'
         "Successfully created new user #{user.username} with ID #{user.id}"
       else

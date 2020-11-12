@@ -17,12 +17,11 @@ describe UsersController do
 
   describe "log in" do
     it "can log in a new user" do
-      expect { login('annakim') }.must_differ 'User.count', 1
+      user = nil
+      expect { user = login('annakim') }.must_differ 'User.count', 1
       must_respond_with :redirect
 
-      user = User.find_by(username: user_hash[:user][:username])
-
-      expect(user.username).must_equal user_hash[:user][:username]
+      expect(user.username).must_equal 'annakim'
       expect(session[:user_id]).must_equal user.id
     end
 

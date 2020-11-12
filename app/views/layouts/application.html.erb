@@ -24,15 +24,16 @@
 <!--          <li><%#= link_to "View all users", users_path %></li>-->
         </ul>
         <ul class="nav" id="user">
+          <% if  %>
           <li><%= link_to "Log In", login_path, class: "button" %></li>
         </ul>
       </nav>
     </header>
     <section class="flash-msg__section">
-      <% flash.each do |name, message| %>
-        <strong class="<%= name %>">
+      <% flash.each do |type, message| %>
+        <div class="flash-alert <%= type %>">
           <%= message %>
-        </strong>
+        </div>
       <% end %>
     </section>
     <%= yield %>

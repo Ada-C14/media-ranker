@@ -21,12 +21,39 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      redirect_to user_path(@user)
+      redirect_to current_user_path(@user)
       return
     else
       render :new, status: :bad_request
       return
     end
+  end
+
+  def login_form
+
+  end
+
+  def login
+
+  end
+
+  def logout
+
+  end
+
+  def current
+
+  end
+
+  def find_by_id
+    user_id = params[:id].to_i
+    user = User.find_by(id: user_id)
+  end
+
+  private
+
+  def user_params
+    return params.require(:user).permit(:name)
   end
 
 end

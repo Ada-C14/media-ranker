@@ -12,9 +12,10 @@
   <section class="top-ten-works">
     <section class="top-ten-list-container">
       <h2>Top Movies</h2>
-      <% movies, albums, books = Work.select_top_ten %>
-      <% if movies %>
-      <% movies.each do |movie| %>
+      <%# movies = Work.movies %>
+      <% top_movies = Work.select_top_ten("movies") %>
+      <% if top_movies %>
+      <% top_movies.each do |movie| %>
       <ul>
         <li><%= link_to movie.title, work_path(movie.id)%> by <%= movie.creator %></li>
         <%# TODO: include number of votes %>
@@ -25,20 +26,24 @@
 
     <section class="top-ten-list-container">
       <h2>Top Books</h2>
-      <% if books %>
-      <% books.each do |book| %>
-      <ul>
-        <li><%= link_to book.title, work_path(book.id)%> by <%= book.creator %></li>
-        <%# TODO: include number of votes %>
-      </ul>
+      <%# books = Work.books %>
+      <% top_books = Work.select_top_ten("books") %>
+      <% if top_books %>
+        <% top_books.each do |book| %>
+        <ul>
+          <li><%= link_to book.title, work_path(book.id)%> by <%= book.creator %></li>
+          <%# TODO: include number of votes %>
+        </ul>
       <% end %>
     <% end %>
     </section>
 
     <section class="top-ten-list-container">
       <h2>Top Albums</h2>
-      <% if albums %>
-      <% albums.each do |album| %>
+      <%# albums = Work.albums %>
+      <% top_albums = Work.select_top_ten("albums") %>
+      <% if top_albums %>
+      <% top_albums.each do |album| %>
       <ul>
         <li><%= link_to album.title, work_path(album.id)%> by <%= album.creator %></li>
         <%# TODO: include number of votes %>

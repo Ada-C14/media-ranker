@@ -144,8 +144,11 @@ describe WorksController do
 
   describe "upvote" do
 
-    it "can upvote" do 
-      skip
+    it "can upvote" do
+      user = User.create(name: "test user")
+
+      expect{post upvote_work_path(@work.id), params: {user_id: user.id, work_id: @work.id}}.must_differ "Vote.count", 1
+  
     end
 
     it "can't be voted for more than once by same user" do

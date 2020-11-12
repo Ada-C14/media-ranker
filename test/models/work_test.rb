@@ -58,7 +58,34 @@ describe Work do
       result = second_work.valid?
       expect(result).must_equal false
     end
-    
+  end
+
+  describe "select spotlight" do
+    it "can select the spotlight" do
+      skip
+    end
+
+    it "picks the first work in the chance of ties" do
+      skip
+    end
+
+    it "returns 'media have not been voted for' in the case of no votes" do
+      skip
+    end
+  end
+
+  describe "select top 10 media" do
+    it "can select the top 10 media" do
+      skip
+    end
+
+    it "returns nothing in the case of no votes" do
+      skip
+    end
+
+    it "picks the first 10 works it sees in the case of ties" do
+      skip
+    end
   end
 
 end

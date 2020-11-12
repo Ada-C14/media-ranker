@@ -4,17 +4,15 @@ class Work < ApplicationRecord
   has_many :users, through: :votes
 
   def self.select_spotlight
-    # will this be in votes model?
-    # this will change to pick the work with the highest votes
-    spotlight = self.all.sample
+    works = self.all
+    spotlight = works.sort_by{|work| work.votes.length}.reverse[0]
     return spotlight
   end
 
-  def self.select_top_ten
-    movies = Work.where(category: "movie")
-    albums = Work.where(category: "album")
-    books = Work.where(category: "book")
-    return movies, albums, books
+  def self.select_top_ten(media)
+    works = self.where(category: media[0..-2])
+    top_works = works.sort_by{|work| work.votes.length}.reverse[0..9]
+    return top_works
   end
 
 end

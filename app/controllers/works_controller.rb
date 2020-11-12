@@ -73,6 +73,7 @@ class WorksController < ApplicationController
     if vote.save
       redirect_back(fallback_location: root_path)
       flash[:success] = "Successfully upvoted!"
+      # TODO: you also cant vote for something twice...
     else
       redirect_back(fallback_location: root_path)
       flash[:error] = "A problem occurred: You must log in to do that"

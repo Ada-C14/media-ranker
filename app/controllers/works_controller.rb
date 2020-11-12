@@ -18,10 +18,10 @@ class WorksController < ApplicationController
   end
 
   def create
-    work = Work.new(work_params)
+    @work = Work.new(work_params)
 
-    if work.save
-      redirect_to work_path(work)
+    if @work.save
+      redirect_to work_path(@work)
     else
       render :new, status: :bad_request
     end
@@ -43,7 +43,7 @@ class WorksController < ApplicationController
       head :not_found
       return
     elsif @work.update(work_params)
-      redirect_to works_path
+      redirect_to @work
       return
     else
       render :edit
@@ -66,6 +66,6 @@ class WorksController < ApplicationController
   private
 
   def work_params
-    return params.require(:work).permit(:title, :description, )
+    return params.require(:work).permit(:category, :title, :creator, :publication_year, :description, )
   end
 end

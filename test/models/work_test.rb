@@ -10,32 +10,38 @@ describe Work do
         description: "test description"
     )
   }
-  it 'is valid when all fields are present' do
-    # Act
-    result = @work.valid?
+  it "has all the required fields" do
+    new_work.save
+    work = Work.first
 
-    # Assert
-    expect(result).must_equal true
+    [:title, :category, :creator, :publication_year, :description].each do |field|
+      expect(work).must_respond_to field
+    end
+  end
+
+  it 'is valid when all fields are present' do
+    new_work.save
+    expect(new_work.valid?).must_equal true
   end
 
   it 'is invalid without a title' do
     # Arrange
-    @work.title = nil
-
-    # Act
-    result = @work.valid?
+    new_work.title = nil
 
     # Assert
-    expect(result).must_equal false
-    expect(@work.errors.messages).must_include :title
+    expect(new_work.valid?).must_equal false
+    expect(new_work.errors.messages).must_include :title
   end
+
   it "is invalid with a non-unique title" do
     # do we need the other fields? I'm going with no
-    unique_work = Work.create!(title: new_work.title)
+    Work.create!(title: new_work.title)
 
     expect(new_work.valid?).must_equal false
     expect(new_work.errors.messages).must_include :title
-    expect(new_work.errors.messages[:title].include?("has already been taken")).must_equal true
-
+    expect(new_work.errors.messages[:title].include?("already been taken")).must_equal true
   end
+end
+describe "rerlationships" do
+
 end

@@ -75,6 +75,25 @@ class WorksController < ApplicationController
     end
   end
 
+  # custom method
+  def upvote
+    if session[:user_id].nil?
+      flash.now[:error] = "A problem occurred: You must log in to do that"
+    else
+      user_id = session[:user_id]
+      work_id = params[:id]
+      @vote = Vote.create(user_id: user_id, work_id: work_id)
+      if @vote.valid?
+        flash[:success] = "Successfully upvoted!"
+      else
+        head :not_found
+        return
+      end
+    end
+    redirect_to request.referrer
+    return
+  end
+
   private
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)

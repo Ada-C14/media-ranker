@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html>
-<body>
 <main>
   <section>
     <h2><%= @work.title %></h2>
@@ -10,7 +7,7 @@
     <section>
       <%= link_to "Back to media ranks", root_path, method: :get, class: "btn btn-primary"%>
       <%= link_to "Edit", edit_work_path(@work.id), method: :get, class: "btn btn-primary"%>
-      <a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/859/upvote">Upvote</a>
+      <%= link_to "Upvote", upvote_path(@work.id), method: :post, class: "btn btn-primary"%>
       <%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger"%>
     </section>
   </section>
@@ -38,6 +35,5 @@
   </section>
 
 </main>
-</body>
-</html>
+
 

@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html>
-<body>
 <main>
   <h2>List of Works</h2>
 
@@ -23,7 +20,7 @@
           <td><%= link_to "#{album.title}", work_path(album.id), method: :get%></td>
           <td><%= album.creator %></td>
           <td><%= album.publication_year %></td>
-          <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/859/upvote">Upvote</a></td>
+          <td><%= link_to "Upvote", upvote_path(album.id), method: :post, class: "btn btn-primary"%></td>
         </tr>
       <% end %>
       </tbody>
@@ -48,7 +45,7 @@
           <td><%= link_to "#{book.title}", work_path(book.id), method: :get%></td>
           <td><%= book.creator %></td>
           <td><%= book.publication_year %></td>
-          <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/859/upvote">Upvote</a></td>
+          <td><%= link_to "Upvote", upvote_path(book.id), method: :post, class: "btn btn-primary"%></td>
         </tr>
       <% end %>
       </tbody>
@@ -73,7 +70,7 @@
           <td><%= link_to "#{movie.title}", work_path(movie.id), method: :get%></td>
           <td><%= movie.creator %></td>
           <td><%= movie.publication_year %></td>
-          <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/859/upvote">Upvote</a></td>
+          <td><%= link_to "Upvote", upvote_path(movie.id), method: :post, class: "btn btn-primary"%></td>
         </tr>
       <% end %>
       </tbody>
@@ -84,5 +81,3 @@
   <%= link_to "Add a new work", new_work_path, method: :get, class: "btn btn-primary" %>
 
 </main>
-</body>
-</html>

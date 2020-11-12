@@ -21,10 +21,11 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
 
     if @work.save
-      redirect_to work_path(@work)
+      # flash[:success] = "Successfully created #{@work.category} #{@work.id}"
+      redirect_to work_path(@work), success: "Successfully created #{@work.category} #{@work.id}"
     else
-      flash.now[:error] = "A problem occurred: Could not create #{@work.category}"
-      render :new, status: :bad_request
+      # flash.now[:error] = "A problem occurred: Could not create #{@work.category}"
+      render :new, status: :bad_request, warning: "A problem occurred: Could not create #{@work.category}"
     end
   end
 

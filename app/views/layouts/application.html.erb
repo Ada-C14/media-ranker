@@ -10,16 +10,9 @@
   </head>
 
   <body>
-  <%= render 'shared/header' %>
+    <%= render 'shared/header' %>
+    <%= render 'shared/flash' %>
     <main>
-<!--      <section class="alert alert-warning">-->
-        <%# flash.each do |name, message| %>
-<!--          <strong class="<%#= name %>">-->
-            <%#= message %>
-<!--          </strong>-->
-        <%# end %>
-<!--      </section>-->
-
       <%= yield %>
     </main>
   </body>

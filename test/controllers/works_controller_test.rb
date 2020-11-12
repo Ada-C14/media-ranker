@@ -142,4 +142,15 @@ describe WorksController do
 
   end
 
+  describe "upvote" do
+
+    it "can upvote" do 
+      skip
+    end
+
+    it "can't be voted for more than once by same user" do
+      skip
+    end
+  end
+
 end

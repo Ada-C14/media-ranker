@@ -71,11 +71,11 @@ class WorksController < ApplicationController
     user_id = session[:user_id]
     vote = Vote.new(user_id: user_id, work_id: params[:id])
     if vote.save
-      flash.now[:success] = "Successfully upvoted!"
-      redirect_to works_path
+      redirect_back(fallback_location: root_path)
+      flash[:success] = "Successfully upvoted!"
     else
-      flash.now[:error] = "A problem occurred: You must log in to do that"
-      redirect_to works_path
+      redirect_back(fallback_location: root_path)
+      flash[:error] = "A problem occurred: You must log in to do that"
     end
   end
 

@@ -7,22 +7,29 @@
     <section class="work-buttons">
       <%= button_to "Back to media ranks", root_path, method: :get %>
       <%= button_to "Edit", edit_work_path(@work.id), method: :get %>
-      <%# upvote button %>
+      <%= button_to "Upvote", upvote_work_path(@work.id) %>
       <%= button_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"} %>
     </section>
   </section>
 
 
   <section class="work-votes">
-    <h3>[FILL IN VAL] Votes for this Album</h3>
-    <table>
+    <h3><%= @work.votes.length %> Votes for this Album</h3>
+    <table class="table">
       <thead>
         <tr>
           <th>User</th>
           <th>Date</th>
         </tr>
         <tbody>
-          <%# will fill in with user info %>
+          <% if @work.votes.length > 0 %>
+          <% @work.users.each do |user| %>
+            <tr>
+              <td><%= user.name %></td>
+              <td><%= user.updated_at %></td>
+            </tr>
+            <% end %>
+          <% end %>
         </tbody>
       </thead>
 

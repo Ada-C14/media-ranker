@@ -99,8 +99,8 @@ describe Work do
     describe "spotlight" do
       it "returns only one work" do
         # Arrange
-        new_work.save
-        Work.create(category: "movie", title: "test movie title", creator: "test creator", publication_year: 2020, description: "test description")
+        new_work.save!
+        Work.create!(category: "movie", title: "test movie title", creator: "test creator", publication_year: 2020, description: "test description")
 
         # Act
         spotlight_work = Work.spotlight
@@ -108,7 +108,6 @@ describe Work do
         # Assert
         expect(Work.count).must_equal 2
         expect(spotlight_work).must_be_instance_of Work
-        # expect(spotlight_work.count).must_equal 1 TODO find a way to test this better
       end
 
       it "returns the most voted for work" do

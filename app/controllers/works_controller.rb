@@ -69,6 +69,7 @@ class WorksController < ApplicationController
     redirect_to root_path
   end
 
+  # TODO write tests
   def upvote
     user = User.find_by(id: session[:user_id])
 

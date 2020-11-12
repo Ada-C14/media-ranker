@@ -17,7 +17,16 @@ class WorksController < ApplicationController
   end
 
   def create
-    @work.Work.new(work_params)
+    @work = Work.new(work_params)
+    if @work.save
+      flash[:success] = "#{@work.category} added successfully"
+      redirect_to work_path(@work.id)
+      return
+    else
+      flash.now[:error] = "Something happened. #{@work.category} not added."
+      render :new, status: :bad_request
+      return
+    end
   end
 
   def edit

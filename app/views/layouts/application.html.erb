@@ -10,6 +10,33 @@
   </head>
 
   <body>
-    <%= yield %>
+  <header>
+    <nav class="header_nav">
+      <h1><%= link_to 'Media Ranker', homepages_path %> Ranking the Best of Everything</h1>
+      <ul class="header_nav_links">
+        <li><%= link_to 'View Top Media', homepages_path %></li>
+        <li><%= link_to 'View all Media', works_path %></li>
+        <li><%= link_to 'Add New Work', new_work_path %></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="flash-msg__section">
+    <% flash.each do |name, message| %>
+      <strong class="<%= name %>">
+        <%= message %>
+      </strong>
+    <% end %>
+  </section>
+<main>
+  <%= yield %>
+</main>
+
+<!--  <footer>-->
+<!--    <ul class="footer-nav">-->
+<!--      <li class="copy">© 2020 Ida Goitom </li>-->
+<!--      <li><a href="#top">Back to top</a></li>-->
+<!--    </ul>-->
+<!--  </footer>-->
   </body>
 </html>

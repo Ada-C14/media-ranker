@@ -16,3 +16,67 @@
 @import "bootstrap";
 
 @import "**/*";
+* {
+    font-family: "Gudea", sans-serif;
+}
+header {
+    max-width: 100%;
+    background-color: #B2DFDB;
+    margin-bottom: 0.5rem;
+    padding: 2rem 1rem 0.5rem 1rem;
+
+    }
+
+    header h1 a {
+        color: #FF5722;
+        padding-right: 25px;
+        margin-right: 15px;
+        border-right: white 2px solid;
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+
+    header h1 {
+    color: white;
+    text-align: center;
+        margin: 25px auto 40px auto;
+        font-size: 2.5rem;
+    }
+
+    .header_nav {
+        color: #00796B;
+        list-style-type: none;
+    }
+.header_nav_links {
+display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+    header nav ul
+    {
+    list-style-type: none;
+
+    }
+
+    header nav ul li a {
+        color: #00796B;
+
+    }
+
+    ul {
+        display: flex;
+        flex-wrap: wrap;
+        padding-left: 10;
+        margin-bottom: 10;
+        list-style: none;
+
+    }
+// .footer-nav {
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: flex-end;
+//   }
+
+    body a {
+    color: #00796B;
+    }

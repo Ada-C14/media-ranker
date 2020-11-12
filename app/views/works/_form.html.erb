@@ -1,6 +1,15 @@
 <div class="container-content">
 
   <h1></h1>
+  <% if @work.errors.any? %>
+    <ul class="errors">
+      <% @work.errors.each do |column, message| %>
+        <li>
+          <strong><%= column.capitalize %></strong> <%= message %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
   <div class="summary">
     <h2> Add a New Work </h2>
     <%= form_with model: @work do |f| %>

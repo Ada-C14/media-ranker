@@ -1,0 +1,23 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th width=80>Votes</th>
+    <th>Title</th>
+    <th>Created By</th>
+    <th width=100>Published</th>
+    <th width=100>Upvote</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% media.each do |medium| %>
+    <tr>
+      <td><%= "count" %></td>
+      <td><%= link_to "#{medium.title}", works_path %></td>
+      <td><%= "#{medium.creator}" %></td>
+      <td><%= "#{medium.publication_year}" %></td>
+      <%# TODO: change link below %>
+      <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/790/upvote">Upvote</a></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

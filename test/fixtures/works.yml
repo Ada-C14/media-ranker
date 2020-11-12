@@ -64,3 +64,9 @@ book11:
   creator: Kirk Bode
   publication_year: 1987
   description: nvfkdjhg hgkjghr sdkjh
+movie1:
+  category: movie
+  title: Lala Land
+  creator: Tim Carl
+  publication_year: 2011
+  description: nvfkdjhg hgkjghr sdkjh

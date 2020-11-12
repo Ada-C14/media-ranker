@@ -11,7 +11,7 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
 
     if @work.nil?
-      flash.now[:error] = "Work not found"
+      flash[:error] = "Work not found"
       redirect_to works_path and return
     end
   end
@@ -33,11 +33,27 @@ class WorksController < ApplicationController
   end
 
   def edit
+    @work = Work.find_by(id: params[:id])
 
+    if @work.nil?
+      flash[:error] = "Work not found"
+      redirect_to works_path and return
+    end
   end
 
   def update
+    @work = Work.find_by(id: params[:id])
 
+    if @work.nil?
+      flash[:error] = "Work not found"
+      redirect_to works_path and return
+    elsif @work.update(works_params)
+      flash[:success] = "Your work has been updated"
+      redirect_to work_path(@work) and return
+    else
+      flash[:error] = "Sorry, your work was not updated"
+      render :edit, status: :bad_request and return
+    end
   end
 
   def destroy

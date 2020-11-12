@@ -3,7 +3,7 @@
 <p>Published: <%= @work.publication_year %></p>
 <p><%= @work.description %></p>
 
-<%= link_to "Back to media ranks", root_path %>
-<%= link_to "Upvote", upvote_work_path, method: :post%>
-<p><%= link_to "Edit", edit_work_path %></p>
-<p><%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"} %></p>
+<p><button><%= link_to "Back to media ranks", root_path %></button></p>
+<p><button><%= link_to "Edit", edit_work_path %></button></p>
+<p><button><%= link_to "Upvote", upvote_work_path, method: :post %></button></p>
+<p><button><%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"} %></button></p>

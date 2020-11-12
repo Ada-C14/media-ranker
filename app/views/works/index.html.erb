@@ -18,7 +18,7 @@
           <td><%= link_to album.title, work_path(album) %></td>
           <td><%= album.creator %></td>
           <td><%= album.publication_year %></td>
-          <td><button>Upvote</button></td>
+          <td><button><%= link_to "Upvote", upvote_work_path(album), method: :post %></button></td>
         </tr>
   <% end %>
   </tbody>
@@ -43,7 +43,7 @@
       <td><%= link_to book.title, work_path(book) %></td>
       <td><%= book.creator %></td>
       <td><%= book.publication_year %></td>
-      <td><button>Upvote</button></td>
+      <td><button><%= link_to "Upvote", upvote_work_path(book), method: :post %></button></td>
     </tr>
   <% end %>
   </tbody>
@@ -69,11 +69,11 @@
       <td><%= link_to movie.title, work_path(movie) %></td>
       <td><%= movie.creator %></td>
       <td><%= movie.publication_year %></td>
-      <td><button>Upvote</button></td>
+      <td><button><%= link_to "Upvote", upvote_work_path(movie), method: :post %></button></td>
     </tr>
   <% end %>
   </tbody>
 </table>
 
-<%= link_to "View top media", root_path %>
-<%= link_to "Add a new work", new_work_path %>
+<p><button><%= link_to "View top media", root_path %></button></p>
+<p><button><%= link_to "Add a new work", new_work_path %></button></p>

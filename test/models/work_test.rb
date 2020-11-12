@@ -98,16 +98,17 @@ describe Work do
   describe "custom methods" do
     describe "spotlight" do
       it "returns only one work" do
+        # Arrange
         new_work.save
-        second_work = Work.create(category: "movie", title: "test movie title", creator: "test creator", publication_year: 2020, description: "test description")
-        user_1 = User.new({username: "test user"})
-        vote_1 = Vote.new(user_id: user_1, work_id: new_work.id)
+        Work.create(category: "movie", title: "test movie title", creator: "test creator", publication_year: 2020, description: "test description")
 
-        work = Work.spotlight
+        # Act
+        spotlight_work = Work.spotlight
 
+        # Assert
         expect(Work.count).must_equal 2
-        expect(work).must_be_instance_of Work
-        expect(work).must_equal new_work
+        expect(spotlight_work).must_be_instance_of Work
+        expect(spotlight_work.count).must_equal 1
       end
 
       it "returns the most voted for work" do
@@ -115,21 +116,23 @@ describe Work do
         new_work.save
         second_work = Work.create(category: "movie", title: "test movie title", creator: "test creator", publication_year: 2020, description: "test description")
 
-        user_1 = User.new({username: "test user"})
-        vote_1 = Vote.new(user_id: user_1, work_id: new_work.id)
+        user = User.new({username: "test user"})
+        Vote.new(user_id: user, work_id: new_work.id)
 
         # Act
-        work = Work.spotlight
+        spotlight_work = Work.spotlight
 
         # Assert
-        expect(work).must_be_instance_of Work
-        expect(work).must_equal new_work
+        expect(second_work.votes.count).must_equal 0
+        expect(spotlight_work.votes.count).must_equal 1
+        expect(spotlight_work).must_be_instance_of Work
+        expect(spotlight_work).must_equal new_work
       end
     end
 
     it "if there are no works then the spotlight work must be nil" do
-      work = Work.spotlight
-      expect(work).must_be_nil
+      spotlight_work = Work.spotlight
+      expect(spotlight_work).must_be_nil
     end
   end
 

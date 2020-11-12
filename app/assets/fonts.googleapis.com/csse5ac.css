@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'Gudea';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Gudea'), url(https://fonts.gstatic.com/s/gudea/v10/neIFzCqgsI0mp9CI_oU.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Gudea';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Gudea Bold'), local('Gudea-Bold'), url(https://fonts.gstatic.com/s/gudea/v10/neIIzCqgsI0mp9gz25WBFqk.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Hammersmith One';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Hammersmith One'), local('HammersmithOne'), url(https://fonts.gstatic.com/s/hammersmithone/v12/qWcyB624q4L_C4jGQ9IK0O_dFlnrtREg.ttf) format('truetype');
+}

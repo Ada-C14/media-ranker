@@ -54,6 +54,13 @@ class WorksController < ApplicationController
     end
   end
 
+  def destroy
+    @work.destroy
+
+    #TODO: Add various flash messages
+    redirect_to root_path
+  end
+
   private
   def work_params
     params.require(:work).permit(:title, :category, :creator, :description, :publication_year)

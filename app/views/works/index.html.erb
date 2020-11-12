@@ -1,19 +1,52 @@
 <h1>List of Works</h1>
 
 <h3>Albums</h3>
-<% @albums.each do |work| %>
-  <%= link_to work.title, work_path(work) %>
-  <br/>
-<% end %>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Creator</th>
+    <th>Published</th>
+  </tr>
+
+  <% @albums.each do |work| %>
+    <tr>
+      <td><%= link_to work.title, work_path(work) %></td>
+      <td><%= work.creator %></td>
+      <td><%= work.publication_year %></td>
+    </tr>
+  <% end %>
+</table>
 
 <h3>Books</h3>
-<% @books.each do |work| %>
-  <%= link_to work.title, work_path(work) %>
-  <br/>
-<% end %>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Creator</th>
+    <th>Published</th>
+  </tr>
+
+  <% @books.each do |work| %>
+    <tr>
+      <td><%= link_to work.title, work_path(work) %></td>
+      <td><%= work.creator %></td>
+      <td><%= work.publication_year %></td>
+    </tr>
+  <% end %>
+</table>
 
 <h3>Movies</h3>
-<% @movies.each do |work| %>
-  <%= link_to work.title, work_path(work) %>
-  </br>
-<% end %>
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Creator</th>
+    <th>Published</th>
+  </tr>
+
+  <% @movies.each do |work| %>
+    <tr>
+      <td><%= link_to work.title, work_path(work) %></td>
+      <td><%= work.creator %></td>
+      <td><%= work.publication_year %></td>
+    </tr>
+  <% end %>
+</table>

@@ -21,11 +21,11 @@
       <% Work.top_ten("album").each do |album| %>
         <h5><%= link_to album.title, work_path(album) %></h5>
         <p><%= "by #{album.creator}" %></p>
+        <p><%= "#{album.votes.count}" %>votes</p>
       <% end %>
       <li>
       </li>
     </ul>
-    <p>votes</p>
   </section>
 
 <!--  book-->
@@ -36,11 +36,12 @@
       <% Work.top_ten("book").each do |book| %>
         <h5><%= link_to book.title, work_path(book) %></h5>
         <p><%= "by #{book.creator}" %></p>
+        <p><%= "#{book.votes.count}" %>votes</p>
       <% end %>
       <li>
       </li>
     </ul>
-    <p>votes</p>
+
   </section>
 
 <!--  movie-->
@@ -51,11 +52,11 @@
       <% Work.top_ten("movie").each do |movie| %>
         <h5><%= link_to movie.title, work_path(movie) %></h5>
         <p><%= "by #{movie.creator}" %></p>
+        <p><%= "#{movie.votes.count}" %>votes</p>
       <% end %>
       <li>
       </li>
     </ul>
-    <p>votes</p>
   </section>
 </section>
 

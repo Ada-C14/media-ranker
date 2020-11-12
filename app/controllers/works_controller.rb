@@ -13,4 +13,50 @@ class WorksController < ApplicationController
     end
   end
 
+  def new
+    @work = Work.new
+  end
+
+  def create
+    @work = Work.new(work_params)
+
+    #TODO: Add various flash messages
+    if @work.save
+      redirect_to work_path(@work)
+    else
+      render :new, status: :bad_request
+    end
+  end
+
+  def edit
+    @work = Work.find_by(id: params[:id])
+
+    #TODO: Add various flash messages
+    if @work.nil?
+      head :not_found
+      return
+    end
+  end
+
+  def update
+    @work = Work.find_by(id: params[:id])
+
+    #TODO: Add various flash messages
+    if @work.nil?
+      head :not_found
+      return
+    elsif @work.update(work_params)
+      redirect_to work_path(@work)
+      return
+    else
+      render :edit
+      return
+    end
+  end
+
+  private
+  def work_params
+    params.require(:work).permit(:title, :category, :creator, :description, :publication_year)
+  end
+
 end

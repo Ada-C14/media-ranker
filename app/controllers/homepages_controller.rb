@@ -1,5 +1,5 @@
 class HomepagesController < ApplicationController
   def index
-    # Don't need to say anything...lol
+    @works = Work.all
   end
 end

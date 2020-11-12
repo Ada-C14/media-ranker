@@ -1,6 +1,6 @@
 <section class="homepage">
   <article class="hp-spotlight">  
-    <h2>Media Spotlight: a popular work here</h2>
+    <h2>Media Spotlight: a popular work today (voted the most)</h2>
     <div>
       <p>its votes</p>
     </div>
@@ -11,12 +11,30 @@
   <article class="hp-top10">
     <div class="hp-movie">
       <h2>Top Movies</h2>
+      <div>
+        <% @works.where(category: "movie").sample(10).each do |work|  %>
+            <h4><%= link_to work.title, work_path(work) %> <%= "by #{work.creator}" %></h4>
+            <p># votes</p>
+        <% end %>
+      </div>  
     </div>
     <div class="hp-book">
       <h2>Top Books</h2>
+      <div>
+        <% @works.where(category: "book").sample(10).each do |work|  %>
+            <h4><%= link_to work.title, work_path(work) %> <%= "by #{work.creator}" %></h4>
+            <p># votes</p>
+        <% end %>
+      </div> 
     </div>
     <div class="hp-album">
       <h2>Top Albums</h2>
+      <div>
+        <% @works.where(category: "album").sample(10).each do |work|  %>
+            <h4><%= link_to work.title, work_path(work) %> <%= "by #{work.creator}" %></h4>
+            <p># votes</p>
+        <% end %>
+      </div> 
     </div>
   </article>  
 </section>

@@ -1,0 +1,26 @@
+<h2>List of Users</h2>
+
+<section class="table-border"> 
+  <article>
+    <table class="list-table">
+      <tr>
+        <th>Username</th>
+        <th>Votes</th>
+        <th>Joined</th>
+      </tr>  
+      <% @users.order(joined: :desc).each do |user|  %>
+        <tr>
+          <th><%= link_to user.username, user_path(user) %></th>
+          <th>Votes#</th>
+          <th><%= user.joined %></th>
+        </tr>  
+      <% end %>
+    </table>  
+  </article> 
+</section>
+
+<section>
+  <div>
+    <p><%= link_to "Back to Media List", root_path %></p>
+  </div>
+</section>  

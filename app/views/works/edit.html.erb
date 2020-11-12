@@ -1,5 +1,3 @@
 <main>
-  <h2>Edit this <%= @work.category %></h2>
-
-  <%= render partial: "form", locals: { action_name: "Update" } %>
+  <%= render partial: "form", locals: { action_name: "Update", header: "Edit this #{@work.category}"} %>
 </main>

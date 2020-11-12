@@ -187,7 +187,9 @@ describe WorksController do
     end
 
     it 'can get the main page if there are no records' do
-      Work.all.delete_all
+      Work.all.each do |work|
+        work.destroy
+      end
 
       get root_path
       must_respond_with :success

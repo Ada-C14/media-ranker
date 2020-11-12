@@ -1,5 +1,5 @@
 class Work < ApplicationRecord
-  has_many :users, through: :votes
+  has_many :votes, dependent: :delete_all
 
   validates :title, presence: true
   validates :category, presence: true
@@ -44,6 +44,4 @@ class Work < ApplicationRecord
 
     albums.empty? ? nil : albums
   end
-
-
 end

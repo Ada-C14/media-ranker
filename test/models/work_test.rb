@@ -58,7 +58,9 @@ describe Work do
     end
 
     it "returns nil if there are no works" do
-      Work.all.delete_all
+      Work.all.each do |work|
+        work.destroy
+      end
 
       featured_work = Work.spotlight
 
@@ -76,8 +78,10 @@ describe Work do
       end
     end
 
-    it "returns nil if there are no works" do
-      Work.all.delete_all
+    it "returns nil if there are no movies" do
+      Work.where(category: "movie").each do |movie|
+        movie.destroy
+      end
 
       top_10_movies = Work.top_movies
 
@@ -96,7 +100,9 @@ describe Work do
     end
 
     it "returns nil if there are no albums" do
-      Work.where(category: 'album').delete_all
+      Work.where(category: 'album').each do |album|
+        album.destroy
+      end
 
       top_10_albums = Work.top_albums
 
@@ -115,7 +121,9 @@ describe Work do
     end
 
     it "returns nil if there are no books" do
-      Work.where(category: "book").delete_all
+      Work.where(category: "book").each do |book|
+        book.destroy
+      end
 
       top_10_books = Work.top_books
 
@@ -133,7 +141,9 @@ describe Work do
     end
 
     it "returns nil if there are no movies" do
-      Work.where(category: 'movie').delete_all
+      Work.where(category: 'movie').each do |work|
+        work.destroy
+      end
 
       movies = Work.all_movies
 
@@ -150,8 +160,10 @@ describe Work do
       end
     end
 
-    it "returns nil if there are no works" do
-      Work.all.delete_all
+    it "returns nil if there are no books" do
+      Work.where(category: "book").each do |book|
+        book.destroy
+      end
 
       books = Work.all_books
 
@@ -168,8 +180,10 @@ describe Work do
       end
     end
 
-    it "returns nil if there are no works" do
-      Work.all.delete_all
+    it "returns nil if there are no albums" do
+      Work.where(category: "album").each do |album|
+        album.destroy
+      end
 
       albums = Work.all_albums
 

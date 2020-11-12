@@ -1,0 +1,12 @@
+<h2><%= @work.title %></h2>
+
+<ul>
+  <li>Created by: <%= @work.creator %></li>
+  <li>Published: <%= @work.publication_year %></li>
+  <li>Description: <%= @work.description %></li>
+</ul>
+
+<div class="button"><%= link_to "Back to Media Ranks", works_path %></div>
+<div class="button"><%= link_to "Edit", edit_work_path %></div>
+<div class="button">Upvote</div>
+<div class="button">Delete</div>

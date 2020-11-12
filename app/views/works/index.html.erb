@@ -1,0 +1,61 @@
+<h2>List of Media</h2>
+
+<h3>Albums</h3>
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% @works.where(category: "album").each do |album| %>
+    <tr>
+      <td><%= link_to album.title, work_path(album) %></td>
+      <td><%= album.creator %></td>
+      <td><%= album.publication_year %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<h3>Books</h3>
+<table>
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Created By</th>
+    <th>Published</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @works.where(category: "book").each do |book| %>
+    <tr>
+      <td><%= link_to book.title, work_path(book) %></td>
+      <td><%= book.creator %></td>
+      <td><%= book.publication_year %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<h3>Movies</h3>
+<table>
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Created By</th>
+    <th>Published</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @works.where(category: "movie").each do |movie| %>
+    <tr>
+      <td><%= link_to movie.title, work_path(movie) %></td>
+      <td><%= movie.creator %></td>
+      <td><%= movie.publication_year %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

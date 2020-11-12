@@ -18,4 +18,8 @@ class WorksController < ApplicationController
       return
     end
   end
+
+  def new
+
+  end
 end

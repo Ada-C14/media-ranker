@@ -22,9 +22,17 @@
           <li class="nav app-header-site-item"><%= link_to "View all users", users_path %></li>
         </ul>
 
-        <ul class="nac app-header-user">
+        <ul class="nav app-header-user">
+          <% if session[:user_id] %>
+            <%# is the below too much logic for a view? %>
+            <% user = User.find(session[:user_id]) %>
+            <li class="nav app-header-user-item"><%= button_to "Logged in as #{user.name}", user_path(user.id), method: :get %></li>
+            <li class="nav app-header-user-item"><%= button_to "Logout", logout_path%></li>
+          <% else %>  
+            <li class="nav app-header-user-item"><%= button_to "Login", login_path, method: :get%></li>
+          <% end %>
           <%# if logged in, need to be able to login/go to show page for user %>
-          <li><%= button_to "Login", login_path, method: :get%></li>
+          
         </ul>
         
       </nav>

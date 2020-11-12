@@ -24,7 +24,7 @@
       <%= link_to "Back to media ranks", root_path, method: :get, class: "btn btn-primary"%>
       <%= link_to "Edit", edit_work_path(@work.id), method: :get, class: "btn btn-primary"%>
       <a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/859/upvote">Upvote</a>
-      <a class="btn btn-danger" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/works/859">Delete</a>
+      <%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger"%>
     </section>
   </section>
 

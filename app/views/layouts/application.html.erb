@@ -9,7 +9,16 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <nav>
+    <%= link_to "Home", root_path %>
+    <%= link_to "All Media", works_path %>
+  </nav>
+
   <body>
     <%= yield %>
   </body>
+
+  <footer>
+    Copyright © 2020 India Kato. All Rights Reserved.
+  </footer>
 </html>

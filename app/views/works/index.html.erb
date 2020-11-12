@@ -1,5 +1,7 @@
 <h1>Media</h1>
 
+<%= link_to "New Media", new_work_path %>
+
 <h2>Albums</h2>
 <ul>
     <% @albums.each do |album| %>
@@ -13,5 +15,3 @@
         <li><%= link_to book.title, work_path(book) %></li>
     <% end %>
 </ul>
-
-<%= link_to "New", new_work_path %>

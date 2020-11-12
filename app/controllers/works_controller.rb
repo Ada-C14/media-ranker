@@ -3,7 +3,10 @@ class WorksController < ApplicationController
   before_action :find_work, except: [:index, :new, :create]
 
   def index
-    @work = Work.all
+    @works = Work.all
+    @albums = Work.where(category: "album")
+    @books = Work.where(category: "book")
+    @movies = Work.where(category: "movie")
   end
 
   def show

@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   root to: 'homepages#index'
   resources :works
   resources :users, only: [:index, :show]
+  resources :works do
+    member do
+      post 'upvote'
+    end
+  end
 
   get "/login", to: "users#login_form", as: "login"
   post "/login", to: "users#login"

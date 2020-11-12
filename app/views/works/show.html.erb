@@ -4,6 +4,6 @@
 <p><%= @work.description %></p>
 
 <%= link_to "Back to media ranks", root_path %>
-<%# link_to "Upvote", root_path %>
+<%= link_to "Upvote", upvote_work_path, method: :post%>
 <p><%= link_to "Edit", edit_work_path %></p>
 <p><%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"} %></p>

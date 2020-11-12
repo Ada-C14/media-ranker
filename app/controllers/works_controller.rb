@@ -69,6 +69,27 @@ class WorksController < ApplicationController
     redirect_to root_path
   end
 
+  def upvote
+    user = User.find_by(id: session[:user_id])
+
+    if user.nil?
+      flash[:error] = "A problem occurred: You must log in to do that"
+      return
+    end
+
+    vote = Vote.new(user_id: session[:user_id], work_id: params[:id])
+
+    if vote.save
+      flash[:success] = "Successfully upvoted!"
+    else
+      flash[:error] = "A problem occurred: Vote could not be saved"
+      flash[:error_messages] = vote.errors.messages
+    end
+
+    redirect_to work_path(params[:id])
+    return
+  end
+
   private
 
   def work_params

@@ -2,7 +2,7 @@
 
 <% @works.each do |work|%>
   <div>
-    <strong><%=work.title %></strong>
+    <strong><%=link_to work.title, work_path(work.id) %></strong>
     <em><%=work.creator %></em>
   </div>
 <% end %>

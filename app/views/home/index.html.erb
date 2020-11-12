@@ -2,9 +2,103 @@
 
 <h3><strong>Spotlight</strong></h3>
 
+# How to set to change daily?
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Creator</th>
+        <th>Published</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%@spotlight.each do |light| %>
+        <tr>
+          <td><%=light.title %></td>
+          <td><%=light.creator %></td>
+          <td><%=light.publication_year %></td>
+          <td><%=light.description %></td>
+        </tr>
+      <%end %>
+    </tbody>
+  </table>
+</div>
 
 
 <h3><strong>Top 10 Media</strong></h3>
+
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Creator</th>
+        <th>Published</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%@top_books.each do |book|%>
+        <tr>
+          <td><%=book.title %></td>
+          <td><%=book.creator %></td>
+          <td><%=book.publication_year %></td>
+          <td><%=book.description %></td>
+        </tr>
+      <%end %>
+    </tbody>
+  </table>
+</div>
+
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Creator</th>
+        <th>Published</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%@top_albums.each do |album|%>
+        <tr>
+          <td><%=album.title %></td>
+          <td><%=album.creator %></td>
+          <td><%=album.publication_year %></td>
+          <td><%=album.description %></td>
+        </tr>
+      <%end %>
+    </tbody>
+  </table>
+</div>
+
+
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Creator</th>
+        <th>Published</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%@top_movies.each do |movie|%>
+        <tr>
+          <td><%=movie.title %></td>
+          <td><%=movie.creator %></td>
+          <td><%=movie.publication_year %></td>
+          <td><%=movie.description %></td>
+        </tr>
+      <%end %>
+    </tbody>
+  </table>
+</div>
+
 
 <%#link_to # VIEW TOP MEDIA %>
 <%#link_to # VIEW ALL MEDIA %>

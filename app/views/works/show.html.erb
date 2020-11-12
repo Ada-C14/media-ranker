@@ -22,14 +22,10 @@
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <td><a href="/users/913">hoot</a></td>
-        <td>Nov 12, 2020</td>
-      </tr>
-        </tr>
-        <td><a href="/users/722">user</a></td>
-        <td>Nov 12, 2020</td>
-        </tr>
+      <% @work.users.each do |user| %>
+        <td><%= link_to "#{user.username}", user_path(user.id), method: :get%></td>
+        <td><%= @work.votes.find_by(user_id: user.id).created_at.strftime("%b %d, %Y") %></td>
+      <% end %>
       </tbody>
       </table>
   </section>

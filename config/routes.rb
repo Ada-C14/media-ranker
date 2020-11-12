@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   root to: "works#top"
   resources :works
-  resources :users, only:[:index, :show, :new, :create]
+  # resources :users, only:[:index, :show]
+  resources :votes, only:[:new, :create, :destroy ]
 
   get 'works/top', to: 'works#top', as: 'top_works'
 

@@ -108,16 +108,16 @@ describe Work do
         # Assert
         expect(Work.count).must_equal 2
         expect(spotlight_work).must_be_instance_of Work
-        expect(spotlight_work.count).must_equal 1
+        # expect(spotlight_work.count).must_equal 1 TODO find a way to test this better
       end
 
       it "returns the most voted for work" do
         # Arrange
         new_work.save
-        second_work = Work.create(category: "movie", title: "test movie title", creator: "test creator", publication_year: 2020, description: "test description")
+        second_work = Work.create!(category: "movie", title: "test movie title", creator: "test creator", publication_year: 2020, description: "test description")
 
-        user = User.new({username: "test user"})
-        Vote.new(user_id: user, work_id: new_work.id)
+        user = User.create!(username: "test user")
+        Vote.create!(user_id: user.id, work_id: new_work.id)
 
         # Act
         spotlight_work = Work.spotlight
@@ -128,14 +128,49 @@ describe Work do
         expect(spotlight_work).must_be_instance_of Work
         expect(spotlight_work).must_equal new_work
       end
+
+      it "returns the first work if there are two works with the same amount of votes" do
+        # Arrange
+        new_work.save
+        second_work = Work.create!(category: "movie", title: "test movie title", creator: "test creator", publication_year: 2020, description: "test description")
+
+        user = User.create!(username: "test user")
+        Vote.create!(user_id: user.id, work_id: new_work.id)
+        Vote.create!(user_id: user.id, work_id: second_work.id)
+
+        # Act
+        spotlight_work = Work.spotlight
+
+        # expect(spotlight_work.count).must_equal 1
+        expect(spotlight_work).must_equal new_work
+        expect(spotlight_work.votes.count).must_equal 1
+        expect(second_work.votes.count).must_equal 1
+        expect(spotlight_work).must_be_instance_of Work
+      end
+
+      it "returns the first work if there are no votes for any works" do
+        # Arrange
+        new_work.save
+        second_work = Work.create!(category: "movie", title: "test movie title", creator: "test creator", publication_year: 2020, description: "test description")
+
+        # Act
+        spotlight_work = Work.spotlight
+
+        # Assert
+        expect(spotlight_work).must_equal new_work
+        expect(spotlight_work.votes.count).must_equal 0
+        expect(second_work.votes.count).must_equal 0
+        expect(spotlight_work).must_be_instance_of Work
+      end
     end
 
-    it "if there are no works then the spotlight work must be nil" do
+    it "if there are no works at all then the spotlight work must be nil" do
       spotlight_work = Work.spotlight
       expect(spotlight_work).must_be_nil
     end
   end
 
+  # TODO How do top-10 and spotlight handle works with no votes? Ties in the number of votes?
   describe "top ten" do
     it "can return only the top ten works if there are at least ten works (for now just random)" do
       work_1 = Work.create!(category: "book", title: "test title 1", creator: "test creator 1", publication_year: 2019, description: "test description 1")

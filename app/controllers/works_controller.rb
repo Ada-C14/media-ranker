@@ -7,7 +7,7 @@ class WorksController < ApplicationController
   end
 
   def not_saved_error_notice
-    flash[:notice] = "Something happened. Media not added."
+    flash.now[:notice] = "Something happened. Media not added. Please try again."
   end
 
   def saved_notice
@@ -36,12 +36,7 @@ class WorksController < ApplicationController
   end
 
   def create
-    @work = Work.new(
-        category: params[:work][:category],
-        title: params[:work][:title],
-        creator: params[:work][:creator],
-        publication_year: params[:work][:publication_year],
-        description: params[:work][:description])
+    @work = Work.new(work_params)
 
     if @work.save
       saved_notice
@@ -52,5 +47,9 @@ class WorksController < ApplicationController
       render :new
       return
     end
+  end
+
+  def work_params
+    return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
   end
 end

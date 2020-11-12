@@ -11,37 +11,38 @@
     <% end %>
   </section>
 
-  <section>
-    <h3>Top Movies</h3>
+  <section class="top-ten-container">
+    <section class="list">
+      <h2 class="top-ten-header">Top Movies</h2>
+      <ul>
+        <% @top_movies.each do |work| %>
+          <li>
+            <%= link_to work.title, work_path(work.id)%> by <%= work.creator %>
+          </li>
+        <% end %>
+      </ul>
+    </section>
+
+    <section class="list">
+      <h2 class="top-ten-header">Top Books</h2>
+      <ul>
+        <% @top_books.each do |work| %>
+          <li>
+            <%= link_to work.title, work_path(work.id)%> by <%= work.creator %>
+          </li>
+        <% end %>
+      </ul>
+    </section>
+
+    <section class="list">
+    <h2 class="top-ten-header">Top Albums</h2>
     <ul>
-      <% @top_movies.each do |work| %>
+      <% @top_albums.each do |work| %>
         <li>
-          <%= link_to work.title, work_path(work.id)%> by <%= work.creator %>
+        <%= link_to work.title, work_path(work.id)%> by <%= work.creator %>
         </li>
       <% end %>
     </ul>
+    </section>
   </section>
-
-  <section>
-    <h3>Top Books</h3>
-    <ul>
-      <% @top_books.each do |work| %>
-        <li>
-          <%= link_to work.title, work_path(work.id)%> by <%= work.creator %>
-        </li>
-      <% end %>
-    </ul>
-  </section>
-
-  <section>
-  <h3>Top Albums</h3>
-  <ul>
-    <% @top_albums.each do |work| %>
-      <li>
-      <%= link_to work.title, work_path(work.id)%> by <%= work.creator %>
-      </li>
-    <% end %>
-  </ul>
-  </section>
-
 </main>

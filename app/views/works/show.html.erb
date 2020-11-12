@@ -1,15 +1,18 @@
-<% if @work.created_at < Time.now + 30 %>
-  <p>Successfully created <%= @work.category %> <%= @work.id %></p>
-<% end %>
+<main>
+  <% if @work.created_at > Time.now - 30 %>
+    <p>Successfully created <%= @work.category %> <%= @work.id %></p>
+  <% end %>
 
-<h2><%= @work.title%></h2>
-<section>
-  <div class="work-info">
-    <div>Category: <%= @work.category %></div>
-    <div>Created by: <%= @work.creator %></div>
-    <div>Published: <%= @work.publication_year %></div>
-    <div><%= @work.description %></div>
-    <%= link_to "Edit", edit_work_path(@work) %>
-    <%= link_to "Delete", work_path(@work), method: :delete, data: {confirm: "Are you sure?"}%>
-  </div>
-</section>
+  <h2><%= @work.title%></h2>
+  <section>
+    <div class="work-info">
+      <div>Category: <%= @work.category %></div>
+      <div>Created by: <%= @work.creator %></div>
+      <div>Published: <%= @work.publication_year %></div>
+      <div><%= @work.description %></div>
+      <%= link_to "Edit", edit_work_path(@work) %>
+      <%= link_to "Delete", work_path(@work), method: :delete, data: {confirm: "Are you sure?"}%>
+    </div>
+  </section>
+
+</main>

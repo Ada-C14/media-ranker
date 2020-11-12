@@ -1,8 +1,5 @@
 <main>
   <h2>List of Works</h2>
-  <%# albums = @works.select {|work| work.category == 'album'} %>
-  <%# books = @works.select {|work| work.category == 'book'} %>
-  <%# movies = @works.select {|work| work.category == 'movie'} %>
   <section class="media-table">
     <h4>Albums</h4>
     <table class="table">
@@ -16,7 +13,7 @@
         </tr>
       </thead>
       <tbody>
-      <% @works_album.each do|work| %>
+      <% @albums.each do|work| %>
         <tr>
           <td>
           </td>
@@ -47,7 +44,7 @@
       </tr>
       </thead>
       <tbody>
-      <% @works_book.each do|work| %>
+      <% @books.each do|work| %>
         <tr>
           <td>
           </td>
@@ -76,7 +73,7 @@
         <th>Upvote</th>
       </tr>
       <tbody>
-      <% @works_movie.each do|work| %>
+      <% @movies.each do|work| %>
         <tr>
           <td>
           </td>
@@ -88,7 +85,7 @@
           <td>
             <%= work.publication_year%>
           </td>
-          <td></td>
+          <td></td>git a
         </tr>
       <% end %>
       </tbody>

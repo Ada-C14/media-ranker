@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  root to: 'works#index'
+  root to: 'works#top_works'
+
+  get '/works/top_works', to: 'works#top_works', as: 'top_works'
+
 
   resources :votes
 
@@ -11,6 +14,8 @@ Rails.application.routes.draw do
   resources :works do
     resources :votes
   end
+
+
   # get 'votes/index'
   # get 'votes/show'
   # get 'votes/new'

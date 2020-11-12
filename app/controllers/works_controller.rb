@@ -14,12 +14,16 @@ class WorksController < ApplicationController
     end
   end
 
+  def top_works
+    @work = Work.all.order(Vote.all.length)
+  end
+
   def new
     @work = Work.new
   end
 
   def create
-    @work - Work.new(work_params)
+    @work = Work.new(work_params)
 
     if @work.save
       redirect_to work_path(@work.id)

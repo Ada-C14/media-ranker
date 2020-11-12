@@ -75,10 +75,11 @@ class WorksController < ApplicationController
     end
   end
 
-  # custom method
+  # custom method to upvote
+  # NEEDS TESTS
   def upvote
     if session[:user_id].nil?
-      flash.now[:error] = "A problem occurred: You must log in to do that"
+      flash[:error] = "A problem occurred: You must log in to do that"
     else
       user_id = session[:user_id]
       work_id = params[:id]
@@ -86,7 +87,8 @@ class WorksController < ApplicationController
       if @vote.save
         flash[:success] = "Successfully upvoted!"
       else
-        flash.now[:error] = "A problem occurred: Could not upvote"
+        flash[:error] = "A problem occurred: Could not upvote"
+        flash[:error_messages] = @vote.errors.messages
       end
     end
     redirect_to request.referrer

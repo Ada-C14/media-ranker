@@ -52,11 +52,23 @@
   </header>
   <section class="alert__container">
     <% flash.each do |name, message| %>
+      <%if name != 'error_messages' %>
         <span class="<%= name %>">
           <%= message %>
         </span>
-      <% if action_name.downcase != 'destroy' %>
-        <% if !@work.nil? %>
+      <%end %>
+    <% end %>
+    <%if flash.key?(:error_messages) %>
+      <ul class="errors">
+        <% flash[:error_messages].each do |error, message| %>
+          <li>
+            <%= error %>: <%= message[0] %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+    <% if action_name.downcase != 'destroy' %>
+       <% if !@work.nil? %>
           <ul class="errors">
             <% @work.errors.each do |column, message| %>
               <li>
@@ -72,17 +84,8 @@
               </li>
             <% end %>
           </ul>
-        <%elsif !@vote.nil? %>
-          <ul class="errors">
-            <% @vote.errors.each do |column, message| %>
-              <li>
-                <%= column %>: <%= message %>
-              </li>
-            <% end %>
-          </ul>
         <% end %>
       <% end %>
-    <% end %>
   </section>
     <%= yield %>
   </body>

@@ -35,7 +35,7 @@ describe Work do
   
   describe "relations" do
     it "can have many votes" do
-      Vote.create!(user_id: @user.id, work_id: @work.id)
+      Vote.create!(user_id: second_user.id, work_id: @work.id)
       expect(@work.votes.count).must_equal 2
     end
 
@@ -54,10 +54,16 @@ describe Work do
     end
 
     it "is invalid with a non-unique title for a given category" do
-      skip
-      # second_work.title = "test"
-      # result = second_work.valid?
-      # expect(result).must_equal false
+      second_work.title = "test"
+      result = second_work.valid?
+      expect(result).must_equal false
+    end
+
+    it "is valis for a non-unique title with a different category" do
+      second_work.title = "test"
+      second_work.category = "movie"
+      result = second_work.valid?
+      expect(result).must_equal true
     end
   end
 

@@ -12,6 +12,14 @@
   <body>
     <header>
       <h1>Media Ranker</h1>
+      <nav>
+        <%= link_to "View Top Media", works_path %> ||
+        <%= link_to "View All Media", works_path %> ||
+        <%= link_to "Add a New Work", new_work_path %> ||
+        View All Users
+        Logged in as
+        Log Out
+      </nav>
     </header>
     <%= yield %>
   </body>

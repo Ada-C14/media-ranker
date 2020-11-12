@@ -18,10 +18,11 @@ describe UsersController do
   describe "log in" do
     it "can log in a new user" do
       user = nil
-      expect { user = login('annakim') }.must_differ 'User.count', 1
+      test_username = 'hannakix'
+      expect { user = login(test_username) }.must_differ 'User.count', 1
       must_respond_with :redirect
 
-      expect(user.username).must_equal 'annakim'
+      expect(user.username).must_equal test_username
       expect(session[:user_id]).must_equal user.id
     end
 
@@ -30,6 +31,17 @@ describe UsersController do
 
       expect { login(user.username) }.wont_change 'User.count'
       expect(session[:user_id]).must_equal user.id
+    end
+  end
+
+  describe 'log out' do
+    it 'can log out a logged-in user' do
+      login
+      expect(session[:user_id]).wont_be nil
+
+      post logout_path
+
+      expect(session[:user_id]).must_equal nil
     end
   end
 end

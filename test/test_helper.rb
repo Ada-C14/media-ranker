@@ -18,7 +18,7 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
-  def login(username)
+  def login(username = 'annakim')
     user_hash = {
         user: {
             username: username

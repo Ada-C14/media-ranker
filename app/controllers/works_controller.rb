@@ -4,7 +4,7 @@ class WorksController < ApplicationController
 
 
   def index
-    @work = Work.all
+    @works = Work.all
   end
 
   def show
@@ -15,7 +15,9 @@ class WorksController < ApplicationController
   end
 
   def top_works
-    @work = Work.all.order(Vote.all.length)
+    @works = Work.all.sample(10)
+    @work = Work.all.sample
+
   end
 
   def new

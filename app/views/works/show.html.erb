@@ -1,2 +1,25 @@
-<h1>Works#show</h1>
-<p>Find me in app/views/works/show.html.erb</p>
+<main>
+  <section>
+    <h2><%= @work.title %></h2>
+    <p>
+      Created by: <%= @work.creator%>
+    </p>
+    <p>
+      Published: <%= @work.publication_year%>
+    </p>
+    <p>
+      <%= @work.description%>
+    </p>
+
+    <section>
+      <%= link_to "Back to media ranks", root_path, class: "btn btn-primary" %>
+      <%= link_to "Edit", edit_work_path, class: "btn btn-primary" %>
+      <%#= link_to "Upvote", some vote path , method: :post, class: "btn btn-primary" %>
+      <%= link_to "Delete", work_path(@work.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+    </section>
+  </section>
+
+
+
+<!--  vote table section  here -->
+</main>

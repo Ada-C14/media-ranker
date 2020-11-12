@@ -91,6 +91,12 @@ describe Work do
   end
 
   describe "spotlight" do
-    it ""
+    it "should be nil if there are no works" do
+      Work.delete_all
+
+      spotlight = Work.spotlight
+
+      expect(spotlight).must_be_nil
+    end
   end
 end

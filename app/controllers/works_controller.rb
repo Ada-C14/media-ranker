@@ -7,7 +7,6 @@ class WorksController < ApplicationController
     @top_albums = Work.top_albums
   end
 
-
   def index
     @works = Work.all
     @books = Work.books

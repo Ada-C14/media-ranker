@@ -36,20 +36,6 @@ class WorksController < ApplicationController
     @top_books = Work.top_by_category("book")
 
     @spotlight = Work.spotlight
-
-    # if @top_albums.nil?
-    #   head :not_found
-    #   return
-    # end
-    # if @top_movies.nil?
-    #   head :not_found
-    #   return
-    # end
-    # if @top_books.nil?
-    #   head :not_found
-    #   return
-    # end
-
   end
 
   private

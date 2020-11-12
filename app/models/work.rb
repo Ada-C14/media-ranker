@@ -1,5 +1,5 @@
 class Work < ApplicationRecord
-  validates :title, presence: true, uniqueness: true
+  validates :title, presence: true, uniqueness: {scope: [:category]}
   has_many :votes
   has_many :users, through: :votes
 

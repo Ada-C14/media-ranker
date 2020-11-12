@@ -30,6 +30,10 @@ describe WorksController do
     }
   }
 
+  let (:user){
+    User.create!(name: "test user")
+  }
+
   describe "index" do
     it "must get index" do
       get works_url
@@ -145,7 +149,6 @@ describe WorksController do
   describe "upvote" do
 
     it "can upvote for a logged in user" do
-      user = User.create(name: "test user")
       perform_login(user)
 
       expect{post upvote_work_path(@work.id)}.must_differ "Vote.count", 1
@@ -160,7 +163,9 @@ describe WorksController do
     end
 
     it "can't be voted for more than once by same user" do
-      skip
+      perform_login(user)
+      expect{post upvote_work_path(@work.id)}.must_differ "Vote.count", 1
+      expect{post upvote_work_path(@work.id)}.wont_change "Vote.count"
     end
   end
 

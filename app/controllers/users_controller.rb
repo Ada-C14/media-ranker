@@ -5,6 +5,12 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find_by(id: params[:id])
+
+    # TODO:
+    # if @user.nil?
+    #   # here need to redirect to an error page
+    # end
   end
 
   def login_form

@@ -1,2 +1,30 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<main>
+
+  <h2>User Summary: <%= link_to @user.name, user_path(@user.id) %></h2>
+  <%# TODO: format below %>
+  <p>Joined site <%= @user.created_at %></p>
+
+  <section class="user-votes-container">
+    <h3 class="user-votes-header">Votes</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Media Title</th>
+          <th>Created By</th>
+          <th>Published</th>
+          <th>Category</th>
+          <th>Voted On</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%# will have info about their votes %>
+      </tbody>
+
+    </table>
+
+  </section>
+
+  <%= button_to "See all Users", users_path, method: :get %>
+  <%= button_to "Back to Media List", root_path, method: :get %>
+
+</main>

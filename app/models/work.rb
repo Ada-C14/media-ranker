@@ -6,10 +6,12 @@ class Work < ApplicationRecord
   validates :category, presence: true
 
   def self.spotlight
-    return Work.all.sample
+    # return Work.all.sample # before adding votes model
+    return Work.all.max_by { |work| work.votes.count}
   end
 
   def self.top_ten(category)
-    return Work.where(category: category).sample(10)
+    # return Work.where(category: category).sample(10) # before adding votes model
+    return Work.where(category: category).sort_by { |work| work.votes.count }.reverse[0..9]
   end
 end

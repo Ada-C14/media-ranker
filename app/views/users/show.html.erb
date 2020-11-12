@@ -12,17 +12,17 @@
     <th>Voted On</th>
   </tr>
   </thead>
-<!--  <tbody>-->
-  <%# @user.works.each do |work| %>
-<!--    <tr>-->
-<!--      <td><%#= link_to work.title, work_path(work) %></td>-->
-<!--      <td><%#= work.creator %></td>-->
-<!--      <td><%#= work.publication_year %></td>-->
-<!--      <td><%#= work.category.capitalize %></td>-->
-<!--      <td><%#=  %></td>-->
-<!--    </tr>-->
-  <%# end %>
-<!--  </tbody>-->
+  <tbody>
+  <% @user.works.each do |work| %>
+    <tr>
+      <td><%= link_to work.title, work_path(work) %></td>
+      <td><%= work.creator %></td>
+      <td><%= work.publication_year %></td>
+      <td><%= work.category.capitalize %></td>
+      <td><%= work.created_at.strftime("%B %d, %Y") %></td>
+    </tr>
+  <% end %>
+  </tbody>
 </table>
 
 <p><button><%= link_to "See all Users", users_path %></button></p>

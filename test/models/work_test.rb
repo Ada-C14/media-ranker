@@ -16,7 +16,7 @@ describe Work do
       )
     end
 
-    it 'is value when all fields are present' do
+    it 'is valid when all fields are present' do
       result = @work.valid?
 
       expect(result).must_equal true

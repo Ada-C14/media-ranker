@@ -21,6 +21,9 @@ class UsersController < ApplicationController
   def logout
   end
 
+  def current
+  end
+
 
 
 

@@ -1,8 +1,4 @@
 <main>
-  <% if @work.created_at > Time.now - 30 %>
-    <p>Successfully created <%= @work.category %> <%= @work.id %></p>
-  <% end %>
-
   <h2><%= @work.title%></h2>
   <section>
     <div class="work-info">

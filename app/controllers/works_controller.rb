@@ -27,6 +27,7 @@ class WorksController < ApplicationController
     #instantiate a new book
     if @work.save
       redirect_to work_path(@work.id)
+      flash[:success] = "Successfully created #{@work.category} #{@work.id}"
       return
     else # save failed :(
       render :new, status: :bad_request

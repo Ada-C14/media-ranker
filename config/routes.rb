@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'works#index'
+  root to: 'homepages#index'
 
   resources :works
 end

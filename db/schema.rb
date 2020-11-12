@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 2020_11_12_055125) do
   create_table "works", force: :cascade do |t|
     t.string "category"
     t.string "title"
+    t.string "creator"
     t.integer "publication_year"
     t.string "description"
     t.integer "votes"

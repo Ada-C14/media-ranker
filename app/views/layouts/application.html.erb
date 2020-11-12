@@ -21,10 +21,10 @@
     <button></button>
     <div>
       <div>
-        <%= link_to "view top media"%>
-        <%= link_to "view all media"%>
-        <%= link_to "add a new work"%>
-        <%= link_to "view all users"%>
+        <%= link_to "view top media", works_path %>
+        <%= link_to "view all media", works_path%>
+        <%= link_to "add a new work", new_work_path%>
+        <%= link_to "view all users", users_path%>
       </div>
     </div>
   </nav>
@@ -35,6 +35,9 @@
       </strong>
     <% end %>
   </section>
+
+<!--  login button-->?
+
 
     <div>
       <%= yield %>

@@ -1,17 +1,33 @@
-<h1>List of Works</h1>
-<ul>
-  <% categories = [] %>
-  <% @works.each do |work|  %>
-    <% categories << work.category %>
-    <% end %>
+<h2>List of Works</h2>
 
-      <% categories.uniq.each do |category| %>
-        <% works = @works.where(category:category) %>
-    <li><%= category %>
+<% hash = { "album" => "Albums", "book" => "Books", "movie" => "Movies"} %>
+
+  <% ["album", "book", "movie"].each do |category| %>
+    <% works = @works.where(category:category) %>
+
+      <table class="table">
+        <h4><%= hash[category] %></h4>
+        <thead>
+        <tr>
+          <th width="80">Votes</th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th width="100">Published</th>
+          <th width="100">Upvote</th>
+        </tr>
+        </thead>
+        <tbody>
         <% works.each do |work| %>
-      <li><%= link_to work.title, work_path(work) %></li>
+          <tr>
+            <td> <%= work.votes.count%> </td>
+            <td> <%= link_to work.title, work_path(work.id) %> </td>
+            <td> <%= work.creator %> </td>
+            <td> <%= work.publication_year %> </td>
+            <td> <%= link_to 'Upvote', work_votes_path(work.id), method: :post, class: "btn btn-primary" %> </td>
+          </tr>
         <% end %>
-    </li>
-      <% end %>
-</ul>
-<%= link_to "Add a new work", new_work_path %>
+        </tbody>
+      </table>
+<% end %>
+<%= link_to 'View top media', root_path, class: "btn btn-secondary" %>
+<%= link_to "Add a new work", new_work_path, class: "btn btn-primary" %>

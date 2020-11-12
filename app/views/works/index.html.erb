@@ -20,3 +20,45 @@
   <% end %>
 </table>
 <%end %>
+
+<h3>Books Media:</h3>
+
+<% if @books.size > 0 %>
+  <table>
+    <tr>
+      <th> Title: </th>
+      <th> Creator: </th>
+      <th> Publication: </th>
+    </tr>
+
+    <% @books.each do |book| %>
+
+      <tr>
+        <td><%= link_to book.title, work_path(book) %></td>
+        <td><%= book.created_by %></td>
+        <td><%= book.published %></td>
+      </tr>
+    <% end %>
+  </table>
+<%end %>
+
+<h3>Movie Media:</h3>
+
+<% if @movies.size > 0 %>
+  <table>
+    <tr>
+      <th> Title: </th>
+      <th> Creator: </th>
+      <th> Publication: </th>
+    </tr>
+
+    <% @movies.each do |movie| %>
+
+      <tr>
+        <td><%= link_to movie.title, work_path(movie) %></td>
+        <td><%= movie.created_by %></td>
+        <td><%= movie.published %></td>
+      </tr>
+    <% end %>
+  </table>
+<%end %>

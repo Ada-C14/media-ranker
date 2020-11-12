@@ -15,22 +15,76 @@
   </thead>
 
   <tbody>
-  <% @works.each do |work| %>
+  <% albums = @works.filter{ |work| work.category == 'album'}%>
+  <% albums.each do |work| %>
     <tr>
-      <td><%= work.id %></td>
+      <td><%= rand(25) %></td>
       <td><%= link_to work.title, work_path(work.id)%></td>
       <td><%= work.creator %></td>
       <td><%= work.publication_date %></td>
       <td><button type="button">Upvote</button></td>
-
-<!--      <td><%#=trip.passenger ? trip.passenger.name : "N/A"%></td>-->
-<!--      <td><%#=trip.driver ? trip.driver.name : "N/A"%></td>-->
-<!--      <td><%#=trip.rating%></td>-->
-<!--      <td><%#=dollar_format(trip.cost)%></td>-->
-<!--      <td><%#=trip.date%></td>-->
     </tr>
   <% end %>
   </tbody>
-
 </table>
 </section>
+
+<section>
+  <h4>Books</h4>
+  <table id='books-table' class="table table-hover">
+    <thead class="thead-light">
+    <tr>
+      <th>Votes</th>
+      <th>Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+
+      <th>Upvote</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% books = @works.filter{ |work| work.category == 'book'}%>
+    <% books.each do |work| %>
+      <tr>
+        <td><%= rand(25) %></td>
+        <td><%= link_to work.title, work_path(work.id)%></td>
+        <td><%= work.creator %></td>
+        <td><%= work.publication_date %></td>
+        <td><button type="button">Upvote</button></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <h4>Movies</h4>
+  <table id='movies-table' class="table table-hover">
+    <thead class="thead-light">
+    <tr>
+      <th>Votes</th>
+      <th>Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+      <th>Upvote</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% movies = @works.filter{ |work| work.category == 'movie'}%>
+    <% movies.each do |work| %>
+      <tr>
+        <td><%= rand(25) %></td>
+        <td><%= link_to work.title, work_path(work.id)%></td>
+        <td><%= work.creator %></td>
+        <td><%= work.publication_date %></td>
+        <td><button type="button">Upvote</button></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</section>
+
+<button type="button">View top media</button>
+<button type="button">Add a new work</button>

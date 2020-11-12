@@ -5,8 +5,15 @@ class Work < ApplicationRecord
 
   def self.select_spotlight
     works = self.all
-    spotlight = works.sort_by{|work| work.votes.length}.reverse[0]
-    return spotlight
+    spotlight_votes = works.max_by{|work| work.votes.length}.votes.length
+    if spotlight_votes == 0
+      return nil
+    else
+      top_works = works.select{|work| work.votes.length == spotlight_votes}
+      top_work = top_works.sort_by{|work| work.title}[0]
+    end
+
+    return top_work
   end
 
   def self.select_top_ten(media)

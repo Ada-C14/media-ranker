@@ -4,7 +4,11 @@
   <section class="spotlight">
     <h2 class="spotlight-header">
       <% feat = Work.select_spotlight%>
-      <span>Media Spotlight: <%= link_to feat.title,  work_path(feat.id)%> by <%= feat.creator%></span>
+      <% if feat %>
+        <span>Media Spotlight: <%= link_to feat.title,  work_path(feat.id)%> by <%= feat.creator%></span>
+      <% else %>
+        <span>Media Spotlight: No Media Voted For :(</span>
+      <% end %>
     </h2>
     <p class="spotlight-description"><%= feat.description %></p>
   </section>

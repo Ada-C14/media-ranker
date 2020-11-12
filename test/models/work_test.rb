@@ -69,15 +69,27 @@ describe Work do
 
   describe "select spotlight" do
     it "can select the spotlight" do
-      skip
+      Vote.create!(user_id: @user.id, work_id: second_work.id)
+      Vote.create!(user_id: second_user.id, work_id: @work.id)
+
+      expect(@work.votes.length).must_equal 2
+      expect(second_work.votes.length).must_equal 1
+      expect(Work.select_spotlight).must_equal @work
     end
 
-    it "picks the first work in the chance of ties" do
-      skip
+    it "chooses alphabetically in the chance of ties" do
+      Vote.create!(user_id: @user.id, work_id: second_work.id)
+
+      expect(@work.votes.length).must_equal 1
+      expect(second_work.votes.length).must_equal 1
+      expect(Work.select_spotlight).must_equal second_work
     end
 
-    it "returns 'media have not been voted for' in the case of no votes" do
-      skip
+    it "returns nil in the case of no votes" do
+      @vote.destroy
+
+      expect(Vote.count).must_equal 0
+      expect(Work.select_spotlight).must_be_nil
     end
   end
 

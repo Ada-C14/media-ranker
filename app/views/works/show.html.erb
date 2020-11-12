@@ -1,7 +1,9 @@
 <div>
   <h1><%= @work.title %></h1>
-    <h2>By: <%= @work.creator %></h2>
+  <h2>Created By: <%= @work.creator %></h2>
+  <h2>Published: <%= @work.publication_year %></h2>
+  <p><%= @work.description %></p>
   <%#= link_to "Edit", edit_work_path(@work) %>
   <%#= link_to "Delete", work_path(@work), method: :delete, data: {confirm: "Are you sure?"}%>
 </div>
-<p><%= link_to "Return to Media List", works_path %></p>
+<%= link_to "Back to media ranks", works_path, class: "button" %>

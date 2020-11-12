@@ -27,7 +27,7 @@ CSV.foreach(WORKS_FILE, :headers => true) do |row|
   end
 end
 
-puts "Added #{Work.count} driver records"
-puts "#{works_failures.length} drivers failed to save"
+puts "Added #{Work.count} works records"
+puts "#{works_failures.length} works failed to save"
 
-puts "That's all, folks"
+puts "\nThat's all, folks"

@@ -9,7 +9,7 @@ class WorksController < ApplicationController
   end
 
   def show
-    id = params[:id].to.i
+    id = params[:id]
     @work = Work.find_by(id: id)
 
     if @work.nil?
@@ -28,6 +28,7 @@ class WorksController < ApplicationController
       redirect_to work_path(@work.id)
       return
     else
+      flash.now[:error] = "Something happened. Media not added."
       render :new, status: :bad_request
       return
     end

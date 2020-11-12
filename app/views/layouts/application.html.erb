@@ -10,8 +10,24 @@
   </head>
 
   <body>
-  <header>
-    <%# this will have that media ranker motto/links to all pages %>
+  <header class="app-header">
+      <h1>
+        <%= link_to "Media Ranker", root_path %><small> Ranking the Best of Everything</small>
+      </h1>
+      <nav class="app-header-nav">
+        <ul class="nav app-header-sites">
+          <li class="nav app-header-site-item"><%= link_to "View top media", root_path %></li>
+          <li class="nav app-header-site-item"><%= link_to "View all media", works_path %></li>
+          <li class="nav app-header-site-item"><%= link_to "Add a new work", new_work_path %></li>
+          <li class="nav app-header-site-item"><%= link_to "View all users", users_path %></li>
+        </ul>
+
+        <ul class="nac app-header-user">
+          <%# if logged in, need to be able to login/go to show page for user %>
+          <li><%= button_to "Login", login_path, method: :get%></li>
+        </ul>
+        
+      </nav>
   </header>
     <section>
       <% flash.each do |name, message| %>

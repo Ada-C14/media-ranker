@@ -7,6 +7,15 @@ describe User do
     @vote = Vote.create!(user_id: @user.id, work_id: @work.id)
   end
 
+  let (:second_work){
+    Work.create!(
+      category: "album",
+      title: "second test",
+      creator: "The Testor",
+      publication_year: 2020,
+      description: "We love a good create test")
+    }
+
   describe "instantiation" do
     it "can be instantiated" do
       expect(@user.valid?).must_equal true
@@ -24,10 +33,21 @@ describe User do
       Vote.create!(user_id: @user.id, work_id: @work.id)
       expect(@user.votes.count).must_equal 2
     end
+
+    it "has many works through votes" do
+      Vote.create!(user_id: @user.id, work_id: second_work.id)
+      expect(@user.works.length).must_equal 2
+    end
   end
 
-  it "has many works through votes" do
-    skip
+  describe "validations" do
+
+    it "cant be created with a username" do
+      @user.name = nil
+      result = @user.valid?
+      expect(result).must_equal false
+    end
+
   end
 
 end

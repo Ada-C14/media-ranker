@@ -67,6 +67,18 @@ class WorksController < ApplicationController
      
   end
 
+  def upvote
+    user_id = session[:user_id]
+    vote = Vote.new(user_id: user_id, work_id: params[:id])
+    if vote.save
+      flash.now[:success] = "Successfully upvoted!"
+      redirect_to works_path
+    else
+      flash.now[:error] = "A problem occurred: You must log in to do that"
+      redirect_to works_path
+    end
+  end
+
 
   private
 

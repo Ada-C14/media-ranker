@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   post '/logout', to: 'users#logout', as: 'logout'
 
   resources :works
+  post 'works/:id/upvote', to: 'works#upvote', as: 'upvote_work'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

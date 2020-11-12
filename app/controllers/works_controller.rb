@@ -3,6 +3,9 @@ class WorksController < ApplicationController
     @books = Work.where(category: 'book').sort_by{|work| -work.votes.count}
     @movies = Work.where(category: 'movie').sort_by{|work| -work.votes.count}
     @albums = Work.where(category: 'album').sort_by{|work| -work.votes.count}
+    @work_hash = {albums: @albums,
+                  books: @books,
+                  movies: @movies}
   end
 
   def show

@@ -1,5 +1,6 @@
 class Work < ApplicationRecord
   validates :title, :creator, :description, presence: true
+  validates :title, uniqueness: true
   validates :category, presence: true, inclusion: { in: %w(book movie album) }
   validates :published, presence: true, numericality: true
 
@@ -21,7 +22,13 @@ class Work < ApplicationRecord
 
 
   def self.top_10(media)
-     where(category: media).sample(10)
+    media_list = categories(media)
+
+    if media_list.length >= 10
+      return media_list.sample(10)
+    else
+      return media_list
+    end
   end
 
   def self.top_books

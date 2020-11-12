@@ -1,7 +1,35 @@
 require "test_helper"
 
 describe WorksController do
-  # it "does a thing" do
-  #   value(1+1).must_equal 2
-  # end
+
+  describe "index" do
+    it "responds with success when there are many works saved" do
+
+    end
+  end
+
+  describe "show" do
+
+  end
+
+  describe "new" do
+
+  end
+
+  describe "create" do
+
+  end
+
+  describe "edit" do
+
+  end
+
+  describe "update" do
+
+  end
+
+  describe "destroy" do
+
+  end
+
 end

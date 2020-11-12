@@ -1,6 +1,5 @@
 class WorksController < ApplicationController
 
-  # custom top 10 method - how to refactor this into model?
   def top
     @spotlight = Work.spotlight
     @top_books = Work.top_books
@@ -11,7 +10,6 @@ class WorksController < ApplicationController
 
   def index
     @works = Work.all
-    # categories
     @books = Work.books
     @movies = Work.movies
     @albums = Work.albums
@@ -34,9 +32,11 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
 
     if @work.save
+      flash[:success] = "#{@work.category.capitalize} was successfully added!"
       redirect_to work_path(@work)
       return
     else
+      flash.now[:failure] = "#{@work.title} was not successfully added."
       render :new, status: :bad_request
       return
     end
@@ -58,9 +58,11 @@ class WorksController < ApplicationController
       head :not_found
       return
     elsif @work.update(work_params)
+      flash[:success] = "#{@work.category.capitalize} was successfully updated!"
       redirect_to work_path(@work)
       return
     else
+      flash.now[:failure] = "#{@work.title} was not successfully updated."
       render :edit, status: :bad_request
       return
     end

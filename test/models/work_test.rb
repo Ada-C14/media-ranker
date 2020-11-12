@@ -59,7 +59,7 @@ describe Work do
       expect(result).must_equal false
     end
 
-    it "is valis for a non-unique title with a different category" do
+    it "is valid for a non-unique title with a different category" do
       second_work.title = "test"
       second_work.category = "movie"
       result = second_work.valid?

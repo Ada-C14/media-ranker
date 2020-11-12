@@ -2,10 +2,11 @@
 <section class="spotlight">
   <h2 class="spotlight__header">
     Media Spotlight
-    <%#= link_to %>
-<!--    by <%#= %>-->
+    <%= link_to "#{Work.spotlight.title}", work_path(Work.spotlight)%>
+    <%= "by #{Work.spotlight.creator}" %>
   </h2>
-  <p>votes, </p>
+<!--  <%#= Work.spotlight.votes.count %><p>votes, </p><%#= Work.spotlight.description %>-->
+
 </section>
 
 <hr>
@@ -53,26 +54,3 @@
 
 
 
-<!--=====================================-->
-<!--<section class="spotlight">-->
-<!--  <h2>-->
-<!--    Media Spotlight-->
-<!--  </h2>-->
-<!--</section>-->
-
-
-<!--<section class="container">-->
-<!--  <h2 class="album">Top Album</h2>-->
-
-<!--</section>-->
-
-
-<!--<section class="container">-->
-<!--  <h2 class="book">Top Books</h2>-->
-<!--</section>-->
-
-
-<!--<section class="container">-->
-<!--  <h2 class="movie">Top Movies</h2>-->
-
-<!--</section>-->

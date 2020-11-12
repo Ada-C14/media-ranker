@@ -33,4 +33,10 @@ class WorksController < ApplicationController
   def destroy
 
   end
+
+  private
+
+  def works_params
+    return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+  end
 end

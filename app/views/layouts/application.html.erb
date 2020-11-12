@@ -10,6 +10,11 @@
   </head>
 
   <body>
+  <nav>
+    <%= link_to "View top media", root_path %>
+    <%= link_to "View all media", works_path %>
+    <%= link_to "Add a new work", new_work_path %>
+  </nav>
   <section class="flash_message">
     <% flash.each do |name, message| %>
       <strong class="<%= name %>">

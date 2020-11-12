@@ -2,18 +2,18 @@
 
 <h3>Albums</h3>
 <% @albums.each do |work| %>
-  <%= work.title %>
+  <%= link_to work.title, work_path(work) %>
   <br/>
 <% end %>
 
 <h3>Books</h3>
 <% @books.each do |work| %>
-  <%= work.title %>
+  <%= link_to work.title, work_path(work) %>
   <br/>
 <% end %>
 
 <h3>Movies</h3>
 <% @movies.each do |work| %>
-  <%= work.title %>
+  <%= link_to work.title, work_path(work) %>
   </br>
 <% end %>

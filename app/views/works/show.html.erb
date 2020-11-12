@@ -2,3 +2,7 @@
 
 <p>Created by: <%= @work.creator %></p>
 <p>Published: <%= @work.publication_year %></p>
+
+<%= link_to "See all rankings", root_path %>
+<%= link_to "Edit this work", edit_work_path(@work) %>
+<%= link_to "Delete this work", work_path(@work), method: :delete %>

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :works
 
+  resources :users, except: [:destroy, :edit, :update]
   get "/login", to: "users#login_form", as: :login
   post "/login", to: "users#login"
   post "/logout", to: "users#logout", as: :logout

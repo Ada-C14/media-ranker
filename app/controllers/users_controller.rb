@@ -15,7 +15,6 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       flash[:success] = "Successfully logged in as new user #{username}"
     end
-
     redirect_to root_path
     return
   end
@@ -29,10 +28,16 @@ class UsersController < ApplicationController
     end
   end
 
-  private
-
-  def user_params
-    return params.require(:user).permit(:username)
+  def logout
+      session[:user_id] = nil
+      flash[:success] = "Successfully logged out."
+    redirect_to root_path
+    return
   end
+
+  # private
+  # def user_params
+  #   return params.require(:user).permit(:username)
+  # end
 
 end

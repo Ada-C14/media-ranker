@@ -1,5 +1,6 @@
 <%= form_with model: @work, class: 'create-work' do |f| %>
   <p>Please provide the following information to add new Media:</p>
+
 <div>
   <%= f.label :media %>
   <%= f.select :media, [ ["album"], ["movie"], ["book"] ] %>

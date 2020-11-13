@@ -156,10 +156,8 @@ describe WorksController do
     end
 
     it "redirects if user is not logged in" do
-      skip
       expect{post upvote_work_path(@work.id)}.wont_change "Vote.count"
-      # skipping because how do i test this? should i?
-      # expect(flash[:error]).must_equal "A problem occurred: You must log in to do that"
+      expect(flash[:error]).must_equal "A problem occurred: You must log in to do that"
     end
 
     it "can't be voted for more than once by same user" do

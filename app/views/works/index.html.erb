@@ -1,0 +1,12 @@
+<h1>Media</h1>
+
+<h3><%= button_to "Add a Medium", new_work_path, method: :get %></h3>
+<div>
+  <ul>
+    <% @works.each do |work|  %>
+      <li>
+        <%= link_to work.title, work_path(work.id) %>
+      </li>
+    <% end %>
+  </ul>
+</div>

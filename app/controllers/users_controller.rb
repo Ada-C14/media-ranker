@@ -59,9 +59,9 @@ class UsersController < ApplicationController
   end
 
   def current
-    user = User.get_session_user(session[:user_id])
+    @user = User.get_session_user(session[:user_id])
 
-    unless user
+    unless @user
       authentication_notice
       redirect_to root_path
       return

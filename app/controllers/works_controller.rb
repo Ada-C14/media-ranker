@@ -75,12 +75,12 @@ class WorksController < ApplicationController
     if @work.nil? 
       render :file => "#{Rails.root}/public/404.html",  layout: false, status: :not_found
       return
-    elsif @work.votes.find_by(user_id: current_user.id)  
+    elsif @work.votes.find_by(user_id: session[:user_id])  
       flash[:error] = "A problem occurred: Could not upvote"
       redirect_to work_path(@work.id) 
       return
     else
-      @work.votes.create(user_id: current_user.id, work_id: @work.id, data: Time.now.strftime("%b %d, %Y"))
+      @work.votes.create(user_id: session[:user_id], work_id: @work.id, date: Time.now.strftime("%b %d, %Y"))
       flash[:success] = "Successfully upvoted!"
       redirect_to work_path(@work.id) 
       return

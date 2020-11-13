@@ -21,12 +21,8 @@
             <%= link_to "View all users", users_path %>
           </div>  
           <div>
-
-          <li><%= link_to "Log In", login_path %></li>
-          <li><%= link_to "Log Out", logout_path, method: :post %></li>
-          <li><%= link_to "Current User", current_user_path %></li>
-            <% if @current_user %>
-              <%= link_to "Logged in as #{ @user.username }", user_path(@user) %>
+            <% if User.find_by(id: session[:user_id]) %>
+              <%= link_to "Logged in as #{ User.find_by(id: session[:user_id]).username }", user_path(id: session[:user_id]) %>
               <%= link_to "Log Out", logout_path, method: :post %>
             <% else %>
               <%= link_to "Log In", login_path %>  

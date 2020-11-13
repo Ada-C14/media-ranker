@@ -30,6 +30,4 @@ class VotesController < ApplicationController
   def vote_params
     return params.require(:vote).permit(:user_id, :work_id)
   end
-
-
 end

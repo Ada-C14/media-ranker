@@ -27,7 +27,7 @@ class Work < ApplicationRecord
     media_list = categories(media)
 
     if media_list.length >= 10
-      return media_list.sample(10)
+      return media_list.first(10)
     else
       return media_list
     end

@@ -1,0 +1,19 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Username</th>
+    <th>Votes</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= user.id %></td>
+      <td><%= user.username %></td>
+      <td><%= user.votes.count %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

@@ -34,15 +34,30 @@ describe UsersController do
 
       expect(session[:user_id]).must_equal user.id
     end
+  end
 
-    describe "logout" do
-      it "can logout an existing user" do
-        login()
-        expect(session[:user_id]).wont_be_nil
+  describe "logout" do
+    it "can logout an existing user" do
+      login()
+      expect(session[:user_id]).wont_be_nil
 
-        post logout_path
+      post logout_path
 
-        expect(session[:user_id]).must_be_nil
-      end
+      expect(session[:user_id]).must_be_nil
     end
   end
+
+  describe "current user" do
+    it "can return the page if the user is logged in" do
+      login()
+      get current_user_path
+      must_respond_with :success
+    end
+
+    it "redirects back if the user is not logged in" do
+      get current_user_path
+      must_respond_with :redirect
+      expect(flash[:error]).must_equal "You must be logged in to view this page"
+    end
+  end
+end

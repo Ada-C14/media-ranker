@@ -1,6 +1,16 @@
 <h3>Add a New Work</h3>
 <%= form_with model: @work, class: 'create-work' do |f| %>
 
+  <% if @work.errors.any? %>
+    <ul>
+      <% @work.errors.each do |column, message| %>
+        <li>
+          <%= column %> <%= message %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
   <div class="new-work-form">
     <%= f.label :category, "Category" %>
     <%= f.select :category, Work.all.map { |work| work.category }.uniq,{}, class: "form-control"%>

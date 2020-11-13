@@ -1,14 +1,2 @@
-<%= render partial: 'shared/flash', :locals => { :errors => @work.errors } %>
-
-<%# if @work.errors.any? %>
-<!--  <ul>-->
-    <%# @work.errors.each do |column, message| %>
-<!--      <li>-->
-<!--        <p><%#= column %> <%#= message %></p>-->
-<!--      </li>-->
-    <%# end %>
-<!--  </ul>-->
-<%# end %>
-
 <h2>Add a new work</h2>
 <%= render partial: "form", locals: { action_name: "Create Work" } %>

@@ -1,3 +1,2 @@
-<%= render partial: 'shared/flash', :locals => { :errors => @work.errors } %>
-<h2>Edit This <%= @work.category %></h2>
+<h2>Edit This <%= @work.category.capitalize %></h2>
 <%= render partial: "form", locals: { action_name: "Update Work", title: "#{@work.title}", category: "#{@work.category}", publication_year: "#{@work.publication_year}", description: "#{@work.description}", creator: "#{@work.creator}"} %>

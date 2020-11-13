@@ -11,7 +11,7 @@
   <%= button_to 'Delete', work_path(@work), data: {confirm: "Are you sure?"}, :method => :delete, :class => 'btn btn-danger' %>
 </section>
 <section class="votes-container">
-  <h3>Votes for this <%= @work.category %></h3>
+  <h3>Votes for this <%= @work.category.capitalize %></h3>
   <table class="table">
     <thead>
     <tr>

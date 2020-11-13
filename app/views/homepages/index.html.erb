@@ -1,0 +1,10 @@
+<%#= render 'works/works_table' %>
+
+<h3><%= @spotlight.title %></h3>
+<%= @spotlight.description %>
+
+<%= render partial: "works/works_table", locals: { category: "Albums", works: @albums } %>
+
+<%= render partial: "works/works_table", locals: { category: "Books", works: @books } %>
+
+<%= render partial: "works/works_table", locals: { category: "Movies", works: @movies } %>

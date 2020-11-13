@@ -1,0 +1,21 @@
+<h3><%= category %></h3>
+<table class="table">
+  <tr>
+    <th width="80px">Votes</th>
+    <th width="1400px">Title</th>
+    <th>Created By</th>
+    <th width="100px">Published</th>
+    <th width="100px">Upvote</th>
+  </tr>
+  <tbody>
+  <tr>
+    <% works.each do |work| %>
+        <td>Vote</td>
+        <td><%= work.title %></td>
+        <td><%= work.creator %></td>
+        <td><%= work.publication_year %></td>
+        <td>VOTE</td>
+        </tr>
+    <% end %>
+    </tbody>
+</table>

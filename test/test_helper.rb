@@ -17,16 +17,34 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
-  def login(username = "Username 1")
-    user_hash = {
+  # def login(username = "Username 1")
+  #   @user_hash = {
+  #       user: {
+  #           username: username
+  #       }
+  #   }
+  #
+  #   post login_path, params: @user_hash
+  #
+  #   user = User.find_by(username: username)
+  #   return user
+  # end
+
+  def perform_login(user = nil)
+    user ||= User.first
+
+    login_data = {
         user: {
-            username: "Username 1"
-        }
+            username: user.username,
+        },
     }
+    post login_path, params: login_data
 
-    post login_path, params: user_hash
+    user = User.find_by(username: user.username)
 
-    user = User.find_by(username: username)
+    # Verify the user ID was saved - if that didn't work, this test is invalid
+    expect(session[:user_id]).must_equal user.id
+
     return user
   end
 

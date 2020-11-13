@@ -11,9 +11,17 @@
   <header>
     <h1>Ride Share</h1>
     <nav>
-      <%= link_to "Home", root_path %>
-      <%= link_to "View Works", works_path %>
-      <%= link_to "Add Work", new_work_path %>
+      <ul>
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "View Works", works_path %></li>
+        <li><%= link_to "Add Work", new_work_path %></li>
+        <% if session[:user_id] %>
+        <%# if @user.nil? %>
+          <li><%= link_to "Logout", logout_path, method: :post%></li>
+        <%else %>
+          <li><%= link_to "Login", login_path %></li>
+        <% end %>
+      </ul>
     </nav>
   </header>
   <body>

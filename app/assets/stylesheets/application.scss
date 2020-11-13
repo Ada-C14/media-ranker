@@ -51,7 +51,10 @@ ul {
   margin-inline-end: 0px;
   padding-inline-start: 40px;
 }
-
+ol, ul, dl {
+    margin-top: 0;
+    margin-bottom:1rem
+}
 li {
   display: list-item;
 }
@@ -168,4 +171,28 @@ a:hover {
 .nav-link {
   display: block;
   padding: 0.5rem 1rem;
+}
+
+.form-control {
+    display: block;
+    width: 100%;
+    height: calc(2.25rem + 2px);
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 1px solid #ced4da;
+    border-radius: 0.25rem;
+    transition:border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out
+}
+.form-group {
+ margin-bottom:1rem
+}
+input, button, select, optgroup, textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height:inherit
 }

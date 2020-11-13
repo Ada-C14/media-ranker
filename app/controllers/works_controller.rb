@@ -5,9 +5,9 @@ class WorksController < ApplicationController
     @albums = Work.where(category: "album")
     @movies = Work.where(category: "movie")
 
-    @top_books = @books.top_ten(category: 'book')
-    @top_albums = @albums.top_ten(category: 'album')
-    @top_movies = @movies.top_ten(category: 'movie')
+    @top_books = @books.top_ten('book')
+    @top_albums = @albums.top_ten('album')
+    @top_movies = @movies.top_ten('movie')
   end
 
   def show
@@ -31,6 +31,18 @@ class WorksController < ApplicationController
       return
     else
       render :new
+    end
+  end
+
+  def update
+    @work = Work.find_by(id: params[:id])
+
+    if @work.nil?
+      redirect_to works_path
+      return
+    else
+      @work.update(works_param)
+      redirect_to works_path
     end
   end
 

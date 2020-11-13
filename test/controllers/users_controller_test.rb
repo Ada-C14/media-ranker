@@ -2,7 +2,7 @@ require "test_helper"
 
 describe UsersController do
 
-  let (:test_user) {
+  let (:new_user) {
     User.create(username: 'annakim')
   }
 
@@ -13,7 +13,7 @@ describe UsersController do
 
   describe 'index' do
     it 'responds with success when there are users saved' do
-      test_user
+      new_user
       get users_path
       must_respond_with :success
     end
@@ -26,8 +26,8 @@ describe UsersController do
 
   describe 'show' do
     it "responds with success when showing an existing valid work" do
-      user
-      get user_path(user.id)
+      new_user
+      get user_path(new_user.id)
       must_respond_with :success
     end
 

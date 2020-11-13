@@ -13,6 +13,11 @@ class UsersController < ApplicationController
     flash.now[:notice] = "Uh oh! That did not save correctly. Please try again."
   end
 
+  def not_found_error_notice
+    flash[:notice] = "Uh oh! That work does not exist... Please try again."
+    redirect_to works_path
+  end
+
   def authentication_notice
     flash[:notice] = 'Please log in to perform this action'
   end

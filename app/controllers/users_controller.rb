@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   end
 
   def not_found_error_notice
-    flash[:notice] = "Uh oh! That work does not exist... Please try again."
+    flash[:notice] = "Uh oh! That user does not exist... Please try again."
     redirect_to works_path
   end
 
@@ -80,6 +80,7 @@ class UsersController < ApplicationController
     @user = User.get_session_user(session[:user_id])
 
     unless @user
+      raise
       authentication_notice
       redirect_to root_path
       return

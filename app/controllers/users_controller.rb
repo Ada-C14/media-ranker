@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
 
+  def index
+    @users = User.all
+  end
+
   def show
-    @user = User.find_by(id: params[:user][:username])
+    @user = User.find_by(id: user_id)
 
     if @user.nil?
       head :not_found
@@ -47,4 +51,11 @@ class UsersController < ApplicationController
       return
     end
   end
+
+  private
+
+  def user_params
+    return params.require(:user).permit(:username)
+  end
+
 end

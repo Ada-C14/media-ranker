@@ -2,17 +2,42 @@ require "test_helper"
 
 describe UsersController do
 
-  # let (:user_hash) {
-  #     {
-  #         user: {
-  #             username: 'annakim'
-  #         }
-  #     }
-  # }
+  let (:test_user) {
+    User.create(username: 'annakim')
+  }
 
   it "can get the login form" do
     get login_path
     must_respond_with :success
+  end
+
+  describe 'index' do
+    it 'responds with success when there are users saved' do
+      test_user
+      get users_path
+      must_respond_with :success
+    end
+
+    it 'responds with success when there are no users saved' do
+      get users_path
+      must_respond_with :success
+    end
+  end
+
+  describe 'show' do
+    it "responds with success when showing an existing valid work" do
+      user
+
+      get user_path(user.id)
+
+      must_respond_with :success
+    end
+
+    it "will redirect when passed an invalid work id" do
+      get user_path(-1)
+
+      must_respond_with :redirect
+    end
   end
 
   describe "log in" do

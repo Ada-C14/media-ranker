@@ -9,5 +9,4 @@ Rails.application.routes.draw do
   post "/logout", to: "users#logout", as: :logout
   get "/users/current", to: "users#current", as: :current_user
   resources :users, only: [:index, :show]
-
 end

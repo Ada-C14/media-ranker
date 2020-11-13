@@ -19,6 +19,19 @@ class UsersController < ApplicationController
 
   #########################################################
 
+  def index
+    @users = User.all
+  end
+
+  def show
+    user_id = params[:id].to_i
+    @user = User.find_by(id: user_id)
+    if @user.nil?
+      not_found_error_notice
+      return
+    end
+  end
+
   # Custom actions
   def login_form
     @user = User.new

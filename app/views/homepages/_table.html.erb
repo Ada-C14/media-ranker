@@ -1,8 +1,8 @@
-<h2>Top <%= category.capitalize %></h2>
+<h2 class="top-ten__header">Top <%= category.capitalize %></h2>
 <% if top_works%>
   <% top_works.each do |work| %>
-  <ul>
-    <li><h4><%= link_to work.title, work_path(work.id)%><small> by <%= work.creator %></small> </h4><p><%= work.votes.length %> votes</p></li>
+  <ul class="list-group top-ten__list">
+    <li class="list-group-item"><h4><%= link_to work.title, work_path(work.id)%><small class="top-ten__creator"> by <%= work.creator %></small> </h4><p><%= work.votes.length %> votes</p></li>
   </ul>
   <% end %>
 <% end %>

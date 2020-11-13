@@ -28,6 +28,7 @@ class WorksController < ApplicationController
     else
       # TO DO: check to make sure this shows correctly in view (along with validation error message)
       flash.now[:error] = "A problem occured: Could not create #{@work.category}"
+      flash.now[:error_message] = @work.errors.messages[:title][0]
       render :new # show the create form again
       return
     end
@@ -84,6 +85,7 @@ class WorksController < ApplicationController
         redirect_back(fallback_location: root_path)
         flash[:error] = "A problem occurred: Could not upvote"
         # maybe below will capture error message from validation
+        raise
         # flash[:error_message] = 
       end
     end

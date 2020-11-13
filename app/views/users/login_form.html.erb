@@ -3,10 +3,14 @@
   <h2>Log In</h2>
 
   <%= form_with model: @user, url: login_path do |f| %>
-    <%= f.label :username %>
-    <%= f.text_field :name %>
+    <div class="form-group">
+      <%= f.label :username %>
+      <%= f.text_field :name, id: "username", class: "form-control" %>
+    </div>
 
-    <%= f.submit "Login" %>
+    <div class="form-group">
+      <%= f.submit "Login", class: "btn btn-primary" %>
+    </div>
   <% end %>
 
   <article>

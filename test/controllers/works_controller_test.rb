@@ -200,6 +200,9 @@ describe WorksController do
         upvote_work_path(@work.id)
       }.must_change "Vote.count", 1
 
+      expect(flash[:success]).must_equal "Successfully upvoted!"
+
+
       must_respond_with :redirect
       must_redirect_to root_path
     end
@@ -219,6 +222,8 @@ describe WorksController do
       expect {
         upvote_work_path(@work.id)
       }.must_change "Vote.count", 0
+
+      expect(flash[:error]).must_equal "A problem occurred: Could not upvote"
 
        must_respond_with :redirect
        must_redirect_to root_path

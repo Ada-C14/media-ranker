@@ -188,8 +188,31 @@ describe Work do
       end
     end
 
+    # sort_cat is already tested, will just check for # num of elements and instance types
     describe "work_hash" do
+      it "returns an hash with empty arrays of values if there are no works" do
+        empty_arrays = Work.work_hash
+        expect(empty_arrays.length).must_equal 3
+        empty_arrays.each {|cat, array| expect(array).must_be_empty}
+      end
+      it "returns a hash with keys matching to what category the array contains works of" do
+        @work1.save
+        @work2.save
+        @work3.save
+        @work4.save
 
+        work_hash = Work.work_hash
+        expect(work_hash.length).must_equal 3
+
+        total_works = 0
+        work_hash.each do |cat, array|
+          expect(array.length).must_equal Work.where(category: cat.to_s.chop).count
+          total_works += array.length
+          array.each {|work| expect(work.category).must_equal cat.to_s.chop}
+        end
+
+        expect(total_works).must_equal Work.all.count
+      end
     end
   end
 end

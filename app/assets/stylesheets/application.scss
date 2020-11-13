@@ -105,7 +105,6 @@ nav ul {
 
 main {
     padding: 2rem;
-
 }
 
 .top-ten__header {
@@ -178,3 +177,105 @@ a  {
  a, h2, h3 {
    color: #26A69A;
  }
+
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: transparent;
+    }
+
+table {
+    display: table;
+    border-collapse: collapse;
+    border-spacing: 2px;
+    border-color: grey;
+}
+
+label {
+    display: inline-block;
+    margin-bottom: 0.5rem;
+    cursor: default;
+    }
+
+.form-group {
+    margin-bottom: 1rem;
+    }
+
+form {
+    display: block;
+    margin-top: 0em;
+}
+
+button, input {
+    overflow: visible;
+    }
+
+input, button, select, optgroup, textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    }
+
+input[type="hidden" i] {
+  display: none;
+  appearance: initial;
+  background-color: initial;
+  cursor: default;
+  padding: initial;
+  border: initial;
+        }
+
+input {
+    text-rendering: auto;
+    color: -internal-light-dark(black, white);
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+}
+
+
+div {
+    display: block;
+}
+
+textarea {
+    overflow: auto;
+    resize: vertical;
+}
+
+.btn {
+        display: inline-block;
+         font-weight: 400;
+         text-align: center;
+         white-space: nowrap;
+         vertical-align: middle;
+      }
+
+.btn-secondary {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+    }
+
+.btn-primary:hover {
+  background-color: #0c5460;
+}
+
+.user-votes__container {
+    margin-top: 2rem;
+}
+
+.user-votes__header {
+    color: black;
+}
+
+.app-header__site-nav-container .app-header__nav_item {
+    margin-right: 2rem;
+}
+
+.app-header__nav_item {
+    margin-top: 1rem;
+}

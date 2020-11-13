@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def login
     username = params[:user][:username]
     user = User.find_by(username: username)
+
     if user
       session[:user_id] = user.id
       flash[:success] = "Successfully logged in as returning user #{username}"
@@ -20,19 +21,10 @@ class UsersController < ApplicationController
   end
 
   def logout
-    if session[:user_id]
-      user = User.find_by(id: session[:user_id])
-      unless user.nil?
-        session[:user_id] = nil
-        flash[:notice] = "successfully loggedout #{user.username}"
-      else
-        session[:user_id] = nil
-        flash[:notice] = "Error Unknown User"
-      end
-    else
-      flash[:error] = "you must be logged in to logout"
-    end
+    session[:user_id] = nil
+    flash[:success] = "Succesfully logged out"
     redirect_to root_path
+    return
 
   end
 

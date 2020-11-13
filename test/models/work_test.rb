@@ -4,7 +4,8 @@ describe Work do
 
   describe "validations" do
     it "is valid when all fields are present" do
-      result = works(:hp1).valid?
+      work = Work.new(category: "book", title: "Harry Potter and the Prisoner of Azkaban", publication_year: "2000", description: "Harry return to hogwarts and is reunited with his Godfather")
+      result = work.valid?
       expect(result).must_equal true
     end
 
@@ -48,11 +49,15 @@ describe Work do
 
   describe "relationships" do
     it "can have many users through votes" do
-
+      work = works(:hp1)
+      expect(work.users.length).must_equal 3
+      expect(work.users.first).must_equal users(:harry)
+      expect(work.users.last).must_equal users(:justin)
     end
 
     it "can have many votes" do
-
+      work = works(:hp1)
+      expect(work.votes.length).must_equal 3
     end
   end
 end

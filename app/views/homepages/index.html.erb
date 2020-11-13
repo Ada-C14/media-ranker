@@ -16,7 +16,7 @@
       <h2 class="top-ten__header">
         Top Movies 🎥
       </h2>
-      <%= render partial: 'spotlight', locals: {media: @top_10_movies} %>
+      <%= render partial: 'spotlight', locals: {media: @top_movies} %>
     </section>
 
     <%# BOOKS %>
@@ -24,7 +24,7 @@
       <h2 class="top-ten__header">
         Top Books 📚
       </h2>
-      <%= render partial: 'spotlight', locals: {media: @top_10_books} %>
+      <%= render partial: 'spotlight', locals: {media: @top_books} %>
     </section>
 
     <%# ALBUMS %>
@@ -32,7 +32,7 @@
       <h2 class="top-ten__header">
         Top Albums 🎧
       </h2>
-      <%= render partial: 'spotlight', locals: {media: @top_10_albums} %>
+      <%= render partial: 'spotlight', locals: {media: @top_albums} %>
     </section>
   </section>
 </main>

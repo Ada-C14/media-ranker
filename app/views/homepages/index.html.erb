@@ -7,7 +7,7 @@
       <%= link_to @work_first.title, work_path(@work_first)%> by <%= @work_first.creator %>
     </h2>
     <p class="spotlight__description">
-      <%= @work_fitst.votes %> votes
+      <%= @work_first.votes %> votes
     </p>
   </section>
 
@@ -19,7 +19,7 @@
         Top Movies
       </h2>
       <ul class="list-group top-ten__list">
-        <% @movies.sample(10).each do |movie| %>
+        <% @movies.first(10).each do |movie| %>
           <li class="list-group-item">
             <h4>
               <%= link_to movie.title, work_path(movie) %>

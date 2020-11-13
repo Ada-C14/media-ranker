@@ -11,6 +11,20 @@
 </ul>
 </div>
 
+<%= button_to "Back to media ranks", homepage_path,
+              method: "get", class: "btn btn-info", id:"btn1" %>
+
+<%= button_to "Edit", edit_work_path(@work),
+              method: "get", class: "btn btn-info", id:"btn2" %>
+
+<%= button_to "Upvote", homepage_path,
+              method: "get", class: "btn btn-info", id:"btn3" %>
+
+<%= button_to "Delete", work_path(@work),
+              method: :delete, class: "btn btn-danger", id:"btn4",
+              data: {confirm: "Are you sure?"} %>
+
+
 
 
 

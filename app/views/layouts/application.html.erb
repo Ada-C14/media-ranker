@@ -26,7 +26,7 @@
           <%=  link_to "View all users", users_path, class: "nav-link" %>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-          <button class="btn btn-info my-2 my-sm-0 login-btn" type="submit">Login</button>
+          <%= link_to "Login", login_path, class: "btn btn-info my-2 my-sm-0 login-btn", id:"login", type:"submit" %>
         </form>
       </div>
     </nav>

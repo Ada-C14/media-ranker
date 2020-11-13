@@ -35,18 +35,44 @@ class WorksController < ApplicationController
       redirect_to work_path(@work.id)
       return
     else
-      flash.now[:error] = "Unable to add media!"
-      render :new, status: bad_request
+      flash[:error] = "Unable to add media!"
+      render :new, status: :bad_request
       return
     end
   end
 
-  def edit; end
+  def edit
+    @work = Work.find_by(id: params[:id])
+    if @work.nil?
+      head :not_found
+    end
+  end
 
-  def update; end
+  def update
+    @work = Work.find_by(id: params[:id])
+    if @work.nil?
+      head :not_found
+    elsif @work.update(work_params)
+      flash[:success] = "Success! The #{@work.category} #{@work.title} has been updated."
+      redirect_to work_path(params[:id])
+    else
+      flash.now[:error] = "Unable to perform update!"
+      render :edit
+    end
+  end
 
-  def destroy; end
+  def destroy
+    work = Work.find_by(id: params[:id])
 
+    if work.nil?
+      head :not_found
+      return
+    end
+
+    work.destroy
+    flash[:success] = "🔥The #{work.category} #{work.title} has been removed🔥"
+    redirect_to root_path
+  end
 
   private
 

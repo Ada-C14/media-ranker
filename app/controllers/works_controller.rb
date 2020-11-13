@@ -1,9 +1,11 @@
 class WorksController < ApplicationController
   def index
     @works = Work.all
-    @albums = Work.albums
-    @books = Work.books
-    @movies = Work.movies
+
+    WORK_CATEGORIES.each do |category|
+      var_name = "@#{category}s"
+      instance_variable_set(var_name, Work.by_category(category))
+    end
   end
 
   def new

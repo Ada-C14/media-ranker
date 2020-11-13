@@ -13,6 +13,55 @@ dune:
 spiderman:
   category: "movie"
   title: "Spider-Man: Into the Spider-Verse"
-  creator: "ob Persichetti"
-  description: "Voluptatem adipisci qui velit."
+  creator: "Rob Persichetti"
+  description: "Vero consectetur delectus consequatur id aut accusantium unde excepturi."
   publication_year: 2018
+flume:
+  category: "album"
+  title: "Skin"
+  creator: "Flume"
+  publication_year: 2016
+  description: "Voluptatem consequatur qui consectetur nisi officiis culpa."
+diplo:
+  category: "album"
+  title: "LSD"
+  creator: "diplo"
+  publication_year: 2019
+  description: "Omnis qui quia odio."
+camila:
+  category: "album"
+  title: "Camila"
+  creator: "Camila Cabello"
+  publication_year: 2018
+  description: "Quis recusandae cum est facere consequatur minima magni et."
+guide:
+  category: "book"
+  title: "The Hitchhiker's Guide to the Galaxy"
+  creator: "Douglas Adams"
+  publication_year: 1979
+  description: "Voluptatem adipisci qui velit."
+feynman:
+  category: "book"
+  title: "Surely You're Joking, Mr. Feynman!"
+  creator: "Richard Feynman"
+  publication_year: 1985
+  description: "Id dolorem qui laborum quia."
+freak:
+  category: "book"
+  title: "Freak the Mighty"
+  creator: "Rodman Philbrick"
+  publication_year: 1993
+  description: "Fugit perferendis est quam sunt porro vel rerum."
+moana:
+  category: "movie"
+  title: "Moana"
+  creator: "Ron Clements,"
+  description: "Perferendis harum fuga corporis."
+  publication_year: 2016
+shadows:
+  category: "movie"
+  title: "What We Do in the Shadows"
+  creator: "Jemaine Clement"
+  description: "Incidunt molestias deserunt laudantium."
+  publication_year: 2019
+

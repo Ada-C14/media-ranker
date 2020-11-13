@@ -1,15 +1,31 @@
+WORK_CATEGORIES = ["book", "album", "movie"]
+
 class Work < ApplicationRecord
   has_many :votes
   has_many :users, through: :votes
 
-  def self.albums
-    return albums = Work.where(category: "album")
+  def self.by_category(category_string)
+    return Work.where(category: category_string)
   end
 
-  def self.books
-    return books = Work.where(category: "book")
+  def self.spotlight
+    works = self.all
+
+    most_votes = works.max_by do |work|
+      work.votes.count
+    end
+
+    return most_votes
   end
 
-  def self.movies
-    return movies = Work.where(category: "movie")
+  def self.top_10
+    works = self.all
+
+    top_10 = works.max_by(10) do |work|
+      work.votes.count
+    end
+
+    return top_10
   end
+
+end

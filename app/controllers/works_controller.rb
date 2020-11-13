@@ -5,10 +5,6 @@ class WorksController < ApplicationController
     redirect_to works_path
   end
 
-  def not_saved_error_notice(action)
-    flash.now[:notice] = "A problem occurred: Could not #{action} #{@work.category}"
-  end
-
   #########################################################
 
   def index

@@ -9,18 +9,10 @@ class UsersController < ApplicationController
       end
   end
 
-  def not_saved_error_notice
-    flash.now[:notice] = "Uh oh! That did not save correctly. Please try again."
-  end
-
   def not_found_error_notice
     flash[:notice] = "Uh oh! That user does not exist... Please try again."
     redirect_to works_path
   end
-
-  # def authentication_notice
-  #   flash[:notice] = 'Please log in to perform this action'
-  # end
 
   #########################################################
 
@@ -53,7 +45,7 @@ class UsersController < ApplicationController
       if user.save
         successful_login('new', user)
       else
-        not_saved_error_notice
+        not_saved_error_notice('create')
         render :login_form
         return
       end
@@ -77,13 +69,7 @@ class UsersController < ApplicationController
   end
 
   def current
-    @user = User.find_by(id: session[:user_id])
-
-    unless @user
-      authentication_notice
-      redirect_to root_path
-      return
-    end
+    verify_login
   end
 
   private

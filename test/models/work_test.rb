@@ -71,7 +71,8 @@ describe Work do
       # Assert
       expect(work.valid?).must_equal false
       expect(work.errors.messages).must_include :category
-      expect(work.errors.messages[:category]).must_equal ["can't be blank"]
+      expect(work.errors.messages[:category]).must_equal ["can't be blank", "category must be a movie, book or album"]
+
     end
     it "publication date must be a number" do
       # Arrange
@@ -83,7 +84,17 @@ describe Work do
       expect(work.errors.messages).must_include :publication_date
       expect(work.errors.messages[:publication_date]).must_equal ["is not a number"]
     end
+    it "category must be a movie, book or album" do
+      # Arrange
+      work = Work.first
+      work.category = 'podcast'
 
+      # Assert
+      expect(work.valid?).must_equal false
+      expect(work.errors.messages).must_include :category
+      expect(work.errors.messages[:category]).must_equal ["category must be a movie, book or album"]
+
+    end
   end
 
 end

@@ -14,4 +14,5 @@ describe Work do
     expect(result).must_equal true
   end
 
+
 end

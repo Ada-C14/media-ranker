@@ -34,7 +34,19 @@ class WorksController < ApplicationController
     action_success_check(@work.destroy, works_path, success_msg: "Successfully destroyed #{@work.category} #{@work.id}")
   end
 
+  def upvote
+    redirect_to works_path and return if @work.nil?
+
+    if @current_user.nil?
+      flash[:error] = "A problem occurred: You must log in to do that"
+      redirect_to request.referrer and return
+    end
+
+    action_success_check(Vote.create(user: @current_user, work: @work), works_path, success_msg: "Successfully upvoted!")
+  end
+
   private
+
   def work_params
     return params.require(:work).permit(:work_id, :title, :description, :publication_date, :creator, :category)
   end

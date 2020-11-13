@@ -55,7 +55,7 @@ describe UsersController do
     it 'redirects if user is not logged in' do
       get current_user_path
       must_respond_with :redirect
-      expect(flash[:notice]).must_equal 'Please log in to view this page'
+      expect(flash[:notice]).must_equal 'Please log in to perform this action'
     end
   end
 end

@@ -8,10 +8,17 @@
     <% end %>
   </ul>
 <% end %>
+<main>
 <h2>Log In</h2>
 <%= form_with model: @user, class: 'login__form', url: login_path do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username %>
+    <div class="form-group">
+      <%= f.label :username %>
+      <%= f.text_field :username, class: "form-control" %>
+    </div>
 
-  <%= f.submit "Log In", class: "btn btn-primary"%>
+    <div class="form-group">
+      <%= f.submit "Log In", class: "btn btn-primary"%>
+    </div>
+
 <% end %>
+</main>

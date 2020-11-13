@@ -22,7 +22,7 @@
       <td><%= link_to work.title, work_path(work.id)%></td>
       <td><%= work.creator %></td>
       <td><%= work.publication_date %></td>
-      <td><button type="button">Upvote</button></td>
+      <td><button type="button" class="btn btn-info">Upvote</button></td>
     </tr>
   <% end %>
   </tbody>
@@ -51,7 +51,7 @@
         <td><%= link_to work.title, work_path(work.id)%></td>
         <td><%= work.creator %></td>
         <td><%= work.publication_date %></td>
-        <td><button type="button">Upvote</button></td>
+        <td><button type="button" class="btn btn-info">Upvote</button></td>
       </tr>
     <% end %>
     </tbody>
@@ -79,12 +79,12 @@
         <td><%= link_to work.title, work_path(work.id)%></td>
         <td><%= work.creator %></td>
         <td><%= work.publication_date %></td>
-        <td><button type="button">Upvote</button></td>
+        <td><button type="button" class="btn btn-info">Upvote</button></td>
       </tr>
     <% end %>
     </tbody>
   </table>
 </section>
 
-<a href="<%=root_path %>"><button type="button">View Top Media</button></a>
-<a href="<%=new_work_path %>"><button type="button">Add a new work</button></a>
+<a href="<%=root_path %>"><button type="button" class="btn btn-info">View Top Media</button></a>
+<a href="<%=new_work_path %>"><button type="button" class="btn btn-info">Add a new work</button></a>

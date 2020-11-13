@@ -12,5 +12,5 @@ Rails.application.routes.draw do
 
   resources :works
 
-  root to: 'works#index'
+  root to: 'works#top'
 end

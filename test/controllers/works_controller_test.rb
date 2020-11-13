@@ -163,53 +163,60 @@ describe WorksController do
     end
 
     it "deletes votes associated with a deleted work" do
-      # # Arrange
-      # user = User.create!(username: "test user")
-      # Vote.create!(work_id: @work.id, user_id: user.id)
-      #
-      # # Act
-      # expect {
-      #   delete work_path(@work.id)
-      # }.must_change "Vote.count", -1
-      #
-      # deleted_vote = Vote.find_by(user_id: user.id)
-      #
-      # # Assert
-      # expect(deleted_vote).must_be_nil
-      # expect(user.votes.count).must_equal 0
-      # must_respond_with :redirect
-      # must_redirect_to root_path
+      # Arrange
+      user = User.create!(username: "test user")
+      Vote.create!(work_id: @work.id, user_id: user.id)
 
+      # Act
+      expect {
+        delete work_path(@work.id)
+      }.must_change "Vote.count", -1
+
+      deleted_vote = Vote.find_by(user_id: user.id)
+
+      # Assert
+      expect(deleted_vote).must_be_nil
+      expect(user.votes.count).must_equal 0
+      must_respond_with :redirect
+      must_redirect_to root_path
     end
   end
 
   describe "upvote" do
     it "can upvote a work if the user is logged in" do
-      # user = User.create!(username: "test user")
-      # login_data = {
-      #     user: {
-      #         username: user.username
-      #     }
-      # }
-      # post login_path, params: login_data
-      # # user.self.login
-      # post login_path
+      user = User.create!(username: "test user")
+      login_data = {
+          user: {
+              username: user.username
+          }
+      }
+      post login_path, params: login_data
 
-      # upvote = user.works.upvote
-      # expect(upvote).must_respond_with :success
+      expect {
+        upvote_work_path(@work.id)
+      }.must_change "Vote.count", 1
+
+      must_respond_with :redirect
+      must_redirect_to root_path
     end
 
     it "cannot not upvote a work if the user is logged out" do
-      # user = nil
-      #
-      # upvote = user.works.upvote
-      # expect(upvote).
-    end
+       user = nil
 
-    it "redirects to the work show page" do
+       # login_data = {
+       #     user: {
+       #         username: user.username
+       #     }
+       # }
+       # post login_path, params: login_data
 
-    end
+      expect {
+        upvote_work_path(@work.id)
+      }.must_change "Vote.count", 0
 
+       must_respond_with :redirect
+       must_redirect_to root_path
+      end
     end
   end
 

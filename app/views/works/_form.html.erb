@@ -1,15 +1,17 @@
 
-<%= form_with model: @work, class: 'work-form' do |f| %>
 
-  <% if @work.errors.any? %>
-    <ul class="errors">
-      <% @work.errors.each do |column, message| %>
-        <li>
-          <p><strong><%= column.capitalize %></strong> <%= message %></p>
-        </li>
-      <% end %>
-    </ul>
-  <% end %>
+<%# if @work.errors.any? %>
+<!--  <ul class="errors">-->
+    <%# @work.errors.each do |column, message| %>
+<!--      <li>-->
+<!--        <p><strong><%#= column.capitalize %></strong> <%#= message %></p>-->
+<!--      </li>-->
+    <%# end %>
+<!--  </ul>-->
+<%# end %>
+
+
+<%= form_with model: @work, class: 'work-form' do |f| %>
 
   <div id="form-lines">
 

@@ -47,7 +47,7 @@ class WorksController < ApplicationController
   def edit
 
     if @work.nil?
-      redirect_to edit_work_path
+      head :not_found
       return
     end
   end

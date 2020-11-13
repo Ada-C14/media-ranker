@@ -1,7 +1,9 @@
+<main>
+
 <h2>List of Works</h2>
 
 <% hash = { "album" => "Albums", "book" => "Books", "movie" => "Movies"} %>
-
+  <section class="media-table">
   <% ["album", "book", "movie"].each do |category| %>
     <% works = @works.where(category:category) %>
     <% works = works.sort_by { |work| work.votes.count }.reverse! %>
@@ -11,7 +13,7 @@
         <tr>
           <th width="80">Votes</th>
           <th>Title</th>
-          <th>Created By</th>
+          <th width="500">Created By</th>
           <th width="100">Published</th>
           <th width="100">Upvote</th>
         </tr>
@@ -28,6 +30,9 @@
         <% end %>
         </tbody>
       </table>
-<% end %>
+      </section>
+
+  <% end %>
 <%= link_to 'View top media', root_path, class: "btn btn-secondary" %>
 <%= link_to "Add a new work", new_work_path, class: "btn btn-primary" %>
+</main>

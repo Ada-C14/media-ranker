@@ -18,7 +18,10 @@ class Work < ApplicationRecord
   end
 
   def self.top_ten(category)
-    # top ten sort_by vote?
     return Work.where(category: category).sort_by { |work| work.votes.count }.first(10)
+  end
+
+  def self.sorted(category)
+    return Work.where(category: category).sort_by { |work| work.votes.count }.reverse
   end
 end

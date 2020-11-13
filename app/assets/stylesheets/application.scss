@@ -132,6 +132,7 @@ table td {
 table th, table td {
   padding: 0.75rem;
   border-top: 1px solid #dee2e6;
+  vertical-align: middle !important;
 }
 
 ol, ul, dl {
@@ -172,7 +173,7 @@ a.button {
   color: white;
 }
 
-.button:hover, .button.delete:hover {
+.button:hover, .button.delete:hover, .button.btn-secondary:hover {
   background-color: #007a6b;
 }
 

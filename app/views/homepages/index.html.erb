@@ -1,3 +1,7 @@
+<% @work = Work.all %>
+<% @movies = @work.where(category: "movie") %>
+<% @books = @work.where(category: "book") %>
+<% @albums = @work.where(category: "album") %>
 
   <div class="row">
     <div class="col-sm-12">
@@ -12,23 +16,30 @@
     </div>
   </div>
 
-
     <div class="row">
-      <div class="col-sm-12 col-md-4">
+      <div class="col-sm-12 col-md-4 mx-0">
         <h2>Top Movies </h2>
-        <% @work = Work.all %>
-        <% @movies = @work.where(category: "movie") %>
         <ol>
           <% @movies.each do |movie|  %>
-            <li><%= link_to movie.title, work_path(movie.id)  %></li>
+            <li><%= link_to movie.title, work_path(movie.id)  %> by <%= movie.creator %></li>
           <% end %>
         </ol>
       </div>
       <div class="col-sm-12 col-md-4">
         <h2>Top Books</h2>
+        <ol>
+          <% @books.each do |book|  %>
+            <li><%= link_to book.title, work_path(book.id)  %>, by <%= book.creator %></li>
+          <% end %>
+        </ol>
       </div>
       <div class="col-sm-12 col-md-4">
         <h2>Top Albums</h2>
+        <ol>
+          <% @albums.each do |album|  %>
+            <li><%= link_to album.title, work_path(album.id)  %></li>
+          <% end %>
+        </ol>
       </div>
     </div>
 

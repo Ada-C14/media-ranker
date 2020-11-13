@@ -1,7 +1,7 @@
 class WorksController < ApplicationController
 
   def index
-    @works = Work.all.order
+    @works = Work.all
   end
 
   def show

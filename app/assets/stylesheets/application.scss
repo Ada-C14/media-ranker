@@ -17,8 +17,15 @@
 
 @import "**/*";
 
-body {
 
-    font-family: sans-serif;
+
+body{
+    left-margin: 0;
+    font-family: "Gudea", sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: left;
+
 
 }

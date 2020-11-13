@@ -1,12 +1,15 @@
-<h1><%= @work.title %></h1>
+<div class="show-item">
 
-<ul>
+<h2><%= @work.title %></h2>
+
+<ul class="title-info">
   <li>Created by: <%= @work.creator %></li>
   <li>Published: <%= @work.publication_year %> </li>
   <% unless @work.description.nil? %>
-    <li><p>Description: <%= @work.description %></p></li>
+    <li><p><%= @work.description %></p></li>
   <% end %>
 </ul>
+</div>
 
 
 

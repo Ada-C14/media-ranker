@@ -6,13 +6,61 @@ header {
     background-color: #B2DFDB;
     min-height: 205px;
     vh:middle;
+    font-family: "Gudea", sans-serif;
+    text-decoration: none;
+    line-height: 1.2;
+    border-right: white 2px solid;
+
+}
+
+
+header a:hover {
+
+    text-decoration: none;
 }
 
 .MR {
-    color: #ff5722;
+    color: #ff5722 !important;
+    font-size: 2.5rem;
+    text-align: middle;
+    padding-right: 15px;
+    border-right: 2px solid white;
 
 }
 
-.MR :hover {
-    color: red;
+h1 small {
+    color: white;
+    font-size: 80%;
+    font-weight: 400;
+}
+
+.btn:hover {
+
+    background-color: #00796B !important;
+    color: white;
+}
+
+.login-btn {
+    background-color: #26969a !important;
+    float: right;
+
+
+}
+
+
+header h1{
+    padding-top: 55px;
+}
+
+nav {
+  margin-top: 50px;
+
+}
+
+nav a{
+ color: #00796B !important;
+}
+
+.nav-link {
+    margin-right: 50px;
 }

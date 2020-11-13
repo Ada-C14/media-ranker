@@ -7,20 +7,33 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-     <%= favicon_link_tag asset_path('owl-favicon.png') %>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Gudea:wght@400;700&display=swap" rel="stylesheet">
+    <%= favicon_link_tag asset_path('owl-favicon.png') %>
   </head>
   <body>
 
-  <header class="text-center">
-    <h1><a href="/" class="MR">Media Ranker</a> | <small>Ranking the Best of Everything</small></h1>
-    <nav class="nav align-bottom">
-      <a class="nav-link active" href="/">View top Media</a>
-      <a class="nav-link" href="#">View all media</a>
-      <a class="nav-link" href="#">Add a new work</a>
-      <a class="nav-link" href="#">View all users</a>
-      <button type="button" class="btn btn-info float-right">Log In</button>
+  <header class="text-center header">
+    <h1><a href="/" class="MR"><strong>Media Ranker</strong></a> <small> Ranking the Best of Everything</small></h1>
+    <nav class="navbar navbar-expand-sm">
+
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <%=  link_to "View top media", homepage_path, class: "nav-link" %>
+          <%=  link_to "View all media", works_path, class: "nav-link" %>
+          <%=  link_to "Add a new work", new_work_path, class: "nav-link" %>
+          <%=  link_to "View all users", new_work_path, class: "nav-link" %>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+          <button class="btn btn-info my-2 my-sm-0 login-btn" type="submit">Login</button>
+        </form>
+      </div>
     </nav>
   </header>
+
+
+
   <div class="container">
     <%= yield %>
   </div><!--  </div> end container-->

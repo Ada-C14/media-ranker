@@ -40,9 +40,12 @@ class UsersController < ApplicationController
 
   def current
     @current_user = User.find_by(id: session[:user_id])
+
     unless @current_user
       flash[:error] = "You must log in to see this page"
       redirect_to root_path and return
     end
+
+    return @current_user
   end
 end

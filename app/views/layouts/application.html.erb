@@ -15,6 +15,17 @@
     <%= link_to "View all media", works_path %>
     <%= link_to "Add a new work", new_work_path %>
     <%= link_to "View all users", users_path %>
+
+    <%#= button_to "Log in", { :action => "login", :controller => "users" }, method: :get %>
+
+    <% @current_user = User.find_by(id: session[:user_id]) %>
+    <% if @current_user.nil? %>
+      <%= button_to "Log in", { :action => "login", :controller => "users" }, method: :get %>
+    <% else %>
+      <%= button_to "Logged in as #{ @current_user.username }", user_path(@current_user), method: :get %>
+      <%= button_to "Log out", { action: "logout", :controller => "users" }, method: :post %>
+    <% end %>
+
   </nav>
   <section class="flash_message">
     <% flash.each do |name, message| %>

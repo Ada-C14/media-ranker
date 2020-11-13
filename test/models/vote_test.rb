@@ -1,7 +1,15 @@
 require "test_helper"
 
 describe Vote do
-  # it "does a thing" do
-  #   value(1+1).must_equal 2
-  # end
+  describe 'relations' do
+    it "has a work" do
+      vote = votes(:user1_work1)
+      expect(vote.work_id).must_equal works(:kreb_album).id
+    end
+
+    it "has an user" do
+      vote = votes(:user1_work1)
+      expect(vote.user_id).must_equal users(:john).id
+    end
+  end
 end

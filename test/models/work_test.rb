@@ -43,6 +43,7 @@ describe Work do
   end
 
   it "rejects invalid categories" do
+
     invalid_categories = ['banana', 28982, nil]
     invalid_categories.each do |category|
       work = Work.new(title: "test", category: category)
@@ -51,5 +52,39 @@ describe Work do
     end
   end
 
+  end
+
+  describe "custom methods" do
+    before do
+      @practicalmagic = works(:practicalmagic)
+      @lathe = works(:lathe)
+    end
+
+    it "self.by_category gathers works of a specific category" do
+
+      # correctly pulls books when handed book category
+      expect(Work.by_category("book")).must_include @practicalmagic && @lathe
+
+      # correctly does not pull movies when handed book category
+      expect(Work.by_category("book")).wont_include @spacejam
+    end
+
+    it "self.media_spotlight pulls a random work to spotlight" do #TODO: update for wave 2+
+
+    expect(Work.media_spotlight).must_be_instance_of Work
+
+    end
+
+    it "self.top_ten pulls up to ten works" do #TODO: update for wave 2+
+
+    # pulls ten randomly if ten+ available TODO: I don't know why it pulls only nine here...10 in yml?
+    all_movies = Work.all.find_all { |work| work.category == "movie" }
+    expect(Work.top_ten("movie").count).must_equal all_movies.length
+
+    # if less than ten works available, displays max possible
+    all_books = Work.all.find_all { |work| work.category == "book" }
+    expect(Work.top_ten("book").count).must_equal all_books.length
+
+    end
   end
 end

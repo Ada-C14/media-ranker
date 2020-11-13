@@ -50,7 +50,7 @@
     <section class="alert__container">
       <% flash.each do |name, message| %>
         <div class="alert alert-<%= name %>">
-          <%= message %>
+          <%= content_tag :div, message.html_safe %>
         </div>
       <% end %>
     </section>

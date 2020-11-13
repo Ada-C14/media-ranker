@@ -14,7 +14,7 @@ class VotesController < ApplicationController
 
     @vote = Vote.new(work_id: work.id, user_id: user.id)
     if @vote.voted?
-      flash[:error] = "A problem occurred: Could not upvote. User has already voted for this work"
+      flash[:error] = "A problem occurred: Could not upvote. <br> User has already voted for this work"
       redirect_back(fallback_location: root_path)
       return
     end

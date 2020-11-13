@@ -47,9 +47,7 @@ describe User do
     it "can have a work through a vote" do
       @vote.save
 
-      upvoted_work = @user.votes.first.work
-
-      expect(upvoted_work).must_equal @work
+      expect(@user.works).must_include @work
     end
   end
 end

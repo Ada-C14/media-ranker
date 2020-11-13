@@ -63,9 +63,7 @@ describe Work do
     it "can have a user through a vote" do
       @vote.save
 
-      voter = @work.votes.first.user
-
-      expect(voter).must_equal @user
+      expect(@work.users).must_include @user
     end
   end
 
@@ -95,27 +93,6 @@ describe Work do
       expect(album.count).must_be :<=,10
       expect(book.count).must_be :<=,10
       expect(movie.count).must_be :<=,10
-    end
-  end
-
-  describe "upvote" do
-    before do
-      @user = User.new(username: "ringolingo")
-    end
-
-    it "adds a vote to a work when a user is logged in" do
-      @user.save
-      work = Work.first
-
-      raise NotImplementedError
-    end
-
-    it "does not add a vote if there is no logged in user" do
-      raise NotImplementedError
-    end
-
-    it "does not add a vote to a work logged in user has already voted for" do
-      raise NotImplementedError
     end
   end
 end

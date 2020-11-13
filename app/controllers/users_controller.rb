@@ -10,6 +10,9 @@ class UsersController < ApplicationController
   # def logout
   # "Successfully logged out"
   # end
+  def login form
+
+  end
 
   def create
     @user = User.new(users_params)

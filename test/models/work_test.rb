@@ -99,5 +99,12 @@ describe Work do
       end
     end
 
+    describe 'categories' do
+      it 'can get a list of categories' do
+        expect(Work.categories).must_be_kind_of Array
+        expect(Work.categories.length).must_equal 3
+      end
+    end
+
   end
 end

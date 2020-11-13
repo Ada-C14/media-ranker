@@ -1,6 +1,7 @@
 class WorksController < ApplicationController
   def index
     @works = Work.all
+    #filter?
   end
 
   def show
@@ -8,8 +9,6 @@ class WorksController < ApplicationController
     if @work.nil?
       render :not_found #for now.. flash?
       return
-    else
-      redirect_to work_path(id: @work[:id])
     end
   end
 
@@ -51,11 +50,11 @@ class WorksController < ApplicationController
   def destroy
     @work = Work.find_by(id: params[:id])
     if @work.nil?
-      render :not_found
+      redirect_to works_path
       return
     else
       @work.destroy
-      redirect_to root_path #no root path yet
+      redirect_to works_path #no root path yet
       return
     end
   end

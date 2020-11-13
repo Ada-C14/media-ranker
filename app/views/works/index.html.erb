@@ -1,9 +1,19 @@
+<header>
 <h1>All media</h1>
 <%# link_to "Homepage", root_path %>
-<%= link_to "New Media", new_work_path %>
+<%= link_to "New Media", new_work_path, class: "link" %>
+</header>
 
 <ul>
 <% @works.each do |work| %>
-  <li><%= work.title %> - <%= work.category %></li>
+  <li><%= link_to work.title, work_path(id: work[:id]), class: "link" %> - <%= work.category %></li>
 <% end %>
+</ul>
+
+<ul>
+<% @works.category_filter("book").each do |book| %>
+    <li>
+      <%= book.title %>
+    </li>
+  <% end %>
 </ul>

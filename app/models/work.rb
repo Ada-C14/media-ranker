@@ -5,4 +5,12 @@ class Work < ApplicationRecord
   validates :creator, presence: true
   validates :publication_year, presence: true, numericality: { only_integer: true }, length: { is: 4 }
   validates :description, presence: true
+
+  def self.category_filter(category)
+    #filter categories
+    return self.where(category: category)
+  end
+
+  
+
 end

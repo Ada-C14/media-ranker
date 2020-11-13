@@ -1,0 +1,12 @@
+kreb_album:
+  category: album
+  title: Kreb-Full-o Been
+  creator: Ms. Trevion Buckridge
+  publication_year: 2016
+  description: Vero consectetur delectus consequatur id aut accusantium unde excepturi.
+joe_book:
+  category: book
+  title: Joe Treat
+  creator: Blaise Lesch
+  publication_year: 1968
+  description: Voluptatem adipisci qui velit.

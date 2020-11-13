@@ -7,7 +7,6 @@ class Work < ApplicationRecord
   validates :description, presence: true
 
   def self.category_filter(category)
-    #filter categories
     return self.where(category: category)
   end
 

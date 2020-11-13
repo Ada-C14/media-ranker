@@ -4,16 +4,52 @@
 <%= link_to "New Media", new_work_path, class: "link" %>
 </header>
 
-<ul>
-<% @works.each do |work| %>
-  <li><%= link_to work.title, work_path(id: work[:id]), class: "link" %> - <%= work.category %></li>
-<% end %>
-</ul>
+<!--<ul>-->
+<%# @works.each do |work| %>
+<!--  <li><%#= link_to work.title, work_path(id: work[:id]), class: "link" %> - <%#= work.category %></li>-->
+<%# end %>
+<!--</ul>-->
 
-<ul>
-<% @works.category_filter("book").each do |book| %>
-    <li>
-      <%= book.title %>
-    </li>
-  <% end %>
-</ul>
+<section class="float-left" >
+  <h3>Books</h3>
+  <ul>
+    <% @works.category_filter("Book").each do |book| %>
+      <li>
+        <%= link_to book.title, work_path(id: book[:id]), class: "link" %>
+      </li>
+    <% end %>
+  </ul>
+</section>
+
+<section class="float-right" >
+  <h3>Shows</h3>
+  <ul>
+    <% @works.category_filter("Show").each do |show| %>
+      <li>
+        <%= link_to show.title, work_path(id: show[:id]), class: "link" %>
+      </li>
+    <% end %>
+  </ul>
+</section>
+
+<section class="float-left" >
+  <h3>Movies</h3>
+  <ul>
+    <% @works.category_filter("Movie").each do |movie| %>
+      <li>
+        <%= link_to movie.title, work_path(id: movie[:id]), class: "link" %>
+      </li>
+    <% end %>
+  </ul>
+</section>
+
+<section class="float-right" >
+  <h3>Albums</h3>
+  <ul>
+    <% @works.category_filter("Album").each do |album| %>
+      <li>
+        <%= link_to album.title, work_path(id: album[:id]), class: "link" %>
+      </li>
+    <% end %>
+  </ul>
+</section>

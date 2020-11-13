@@ -7,7 +7,7 @@
 <%= form_with model: @work, class: 'new-or-edit-work' do |f| %>
 
   <%= f.label :category %>
-  <%= f.select :category, ["Book", "Album", "Movie"] %>
+  <%= f.select :category, ["Book", "Album", "Movie", "Show"] %>
 
   <%= f.label :title %>
   <%= f.text_field :title %>

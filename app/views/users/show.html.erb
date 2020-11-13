@@ -1,1 +1,2 @@
-<h1>show</h1>
+<h1>User Summary: <%= link_to @user.username, user_path(@user)  %></h1>
+<h5>Joined site <%= @user.created_at.strftime("%Y-%m-%d") %></h5>

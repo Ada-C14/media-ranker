@@ -37,11 +37,11 @@ describe UsersController do
   describe 'log out' do
     it 'can log out a logged-in user' do
       login
-      expect(session[:user_id]).wont_be nil
+      expect(session[:user_id]).wont_be_nil
 
       post logout_path
 
-      expect(session[:user_id]).must_equal nil
+      expect(session[:user_id]).must_be_nil
     end
   end
 end

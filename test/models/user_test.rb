@@ -16,6 +16,9 @@ describe User do
       description: "We love a good create test")
     }
 
+  let (:hard_coded_time){
+    Time.parse("2008-06-21 13:30:00 UTC")
+    }
   describe "instantiation" do
     it "can be instantiated" do
       expect(@user.valid?).must_equal true
@@ -46,6 +49,14 @@ describe User do
       @user.name = nil
       result = @user.valid?
       expect(result).must_equal false
+    end
+  end
+
+  describe "format time" do
+
+    it "can format time" do
+      @user.created_at = hard_coded_time
+      expect(@user.format_time).must_equal "Jun 21, 2008"
     end
   end
 

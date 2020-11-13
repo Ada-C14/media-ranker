@@ -19,14 +19,14 @@ describe UsersController do
 
       expect(user).wont_be_nil
       expect(session[:user_id]).must_equal user.id
-      expect(user.username).must_equal user_hash[:user][:username]
+      expect(user.name).must_equal "Ada Lovelace"
     end
 
     it "can login an existing user" do
-      user = User.create(username: "Ed Sheeran")
+      user = User.create(name: "Ed Sheeran")
 
       expect {
-        login(user.username)
+        login(user.name)
       }.wont_change "User.count"
 
       expect(session[:user_id]).must_equal user.id

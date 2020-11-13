@@ -17,17 +17,17 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
-  def login(username = "Ada Lovelace")
+  def login(name = "Ada Lovelace")
     # Arrange
     user_hash = {
-        user: {
-            username: username
-        }
+      user: {
+        name: name
+      }
     }
 
     post login_path, params: user_hash
 
-    user = User.find_by(username: username)
+    user = User.find_by(name: name)
     return user
   end
 

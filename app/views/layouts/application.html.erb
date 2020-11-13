@@ -11,8 +11,11 @@
 
   <body>
     <%= render 'shared/header' %>
+    <%= render partial: 'shared/flash' %>
     <% if @work %>
       <%= render partial: 'shared/flash', :locals => { :errors => @work.errors } %>
+    <% elsif @user %>
+      <%= render partial: 'shared/flash', :locals => { :errors => @user.errors } %>
     <% end %>
     <main>
       <%= yield %>

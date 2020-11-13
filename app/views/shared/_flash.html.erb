@@ -2,7 +2,7 @@
   <% flash.each do |name, message| %>
     <div class="alert alert-<%= name %>">
       <%= message %>
-      <% if errors.any? %>
+      <% if defined?(errors) && errors.any? %>
         <ul>
           <% errors.each do |column, message| %>
             <li>

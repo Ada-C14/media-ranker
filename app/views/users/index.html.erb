@@ -13,10 +13,8 @@
       <% @users.each do |user| %>
       <tr>
         <td><%= link_to user.name, user_path(user.id) %></td>
-        <%# TODO: fix below when know how to count votes %>
-        <td><%= user.votes %></td>
-        <%# TODO: format date %>
-        <td><%= user.created_at %></td>
+        <td><%= user.votes.length %></td>
+        <td><%= user.format_created_at_time %></td>
       </tr>
       <% end %>
     <% end %>

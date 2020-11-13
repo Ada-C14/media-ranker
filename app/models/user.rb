@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :votes
   has_many :works, through: :votes
 
-  def format_time
+  def format_created_at_time
     return(self.created_at.strftime("%b %d, %Y"))
   end
 end

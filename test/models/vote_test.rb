@@ -40,11 +40,11 @@ describe Vote do
     end
   end
 
-  describe "format time" do
+  describe "format created attime" do
 
-    it "can format time" do
+    it "can format created at time" do
       @vote.created_at = hard_coded_time
-      expect(@vote.format_time).must_equal "Jun 21, 2008"
+      expect(@vote.format_created_at_time).must_equal "Jun 21, 2008"
     end
   end
 

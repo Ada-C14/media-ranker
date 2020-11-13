@@ -1,8 +1,7 @@
 <main>
 
   <h2>User Summary: <%= link_to @user.name, user_path(@user.id) %></h2>
-  <%# TODO: format below %>
-  <p>Joined site <%= @user.created_at %></p>
+  <p>Joined site <%= @user.format_created_at_time %></p>
 
   <section class="user-votes-container">
     <h3 class="user-votes-header">Votes</h3>
@@ -17,7 +16,17 @@
         </tr>
       </thead>
       <tbody>
-        <%# will have info about their votes %>
+        <% if @user.works.length > 0 %>
+          <% @user.works.each do |work| %>
+            <tr>
+              <td><%= link_to work.title, work_path(work.id) %></td>
+              <td><%= work.title %></td>
+              <td><%= work.publication_year %></td>
+              <td><%= work.category.capitalize %></td>
+              <td><%= work.votes[0].format_created_at_time %></td>
+            </tr>
+          <% end %>
+        <% end %>
       </tbody>
 
     </table>

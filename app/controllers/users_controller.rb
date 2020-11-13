@@ -9,11 +9,6 @@ class UsersController < ApplicationController
       end
   end
 
-  def not_found_error_notice
-    flash[:notice] = "Uh oh! That user does not exist... Please try again."
-    redirect_to works_path
-  end
-
   #########################################################
 
   def index

@@ -9,8 +9,18 @@ class ApplicationController < ActionController::Base
       if @work
         "A problem occurred: Could not #{action} #{@work.category}"
       else
-        "A problem occurred: Could not #{action} user. Please try again."
+        'A problem occurred: Could not login. Please make sure that you are entering a valid username.'
       end
+  end
+
+  def not_found_error_notice
+    if params[:controller] == 'works'
+      flash[:notice] = 'Uh oh! That work could not be found... Please try again.'
+      redirect_to works_path
+    else
+      flash[:notice] = 'Uh oh! That user could not be found... Please try again.'
+      redirect_to users_path
+    end
   end
 
   # Login verification used across controller actions

@@ -1,12 +1,4 @@
 class WorksController < ApplicationController
-  # Helper Methods
-  def not_found_error_notice
-    flash[:notice] = "Uh oh! That work does not exist... Please try again."
-    redirect_to works_path
-  end
-
-  #########################################################
-
   def index
     @works = Work.all
   end
@@ -81,5 +73,4 @@ class WorksController < ApplicationController
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
   end
-
 end

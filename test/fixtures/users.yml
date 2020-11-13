@@ -1,6 +1,9 @@
 harry:
+  id: 1
   username: Harry
 john:
+  id: 2
   username: John87
 justin:
+  id: 3
   username: MadMountie

@@ -1,1 +1,46 @@
-<h1>Works New Page</h1>
+<h1>Add a new work</h1>
+<section>
+  <%= form_with model: @work do |f|%>
+    <%# if @work.errors.any? %>
+    <!--      <ul>-->
+    <%# @work.errors.each do |column, message| %>
+    <!--          <li>-->
+    <!--            <strong><%#= column.capitalize %></strong> <%#= message %>-->
+    <!--          </li>-->
+    <%# end %>
+    <!--      </ul>-->
+    <%# end %>
+
+    <p>Please provide the following information to add your new media to our database:</p>
+    <div>
+      select category
+      <%#= f.label :category %>
+      <%#= f.select(:work, :category, [['Album', 1], ['Book', 2], ['Movie', 3]]) %>
+    </div>
+
+    <div>
+      enter title
+      <%#= f.label :title %>
+      <%#= f.text_area :title %>
+    </div>
+
+    <div>
+      enter creator
+      <%#= f.label :creator %>
+      <%#= f.text_area :creator %>
+    </div>
+
+    <div>
+      enter year published
+      <%#= f.label :publication_year %>
+      <%#= f.text_area :publication_year %>
+    </div>
+
+    <div>
+      enter description
+      <%#= f.label :description%>
+      <%#= f.text_area :description %>
+    </div>
+    <%= f.submit "Create Work", class: "task-button" %>
+  <% end %>
+</section>

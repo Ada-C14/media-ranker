@@ -1,2 +1,34 @@
-<h1>Works#show</h1>
-<p>Find me in app/views/works/show.html.erb</p>
+
+  <section>
+    <h2><%= @work.title %></h2>
+    <p>Created by: <%= @work.creator %></p>
+    <p>Published: <%= @work.publication_date %></p>
+    <p><%= @work.description %></p>
+  </section>
+
+  <section>
+    <%= button_to 'Back to media ranks', root_path, class: 'button button-primary' %>
+    <%= button_to 'Edit', edit_work_path(@work.id), class: 'button button-primary'  %>
+    <%= button_to 'Upvote', work_path(@work.id), class: 'button button-primary'  %>
+    <%= button_to 'Delete', works_path(@work.id), method: :delete, data: {confirm: "Are you sure?"}, class: 'button button-danger'  %>
+  </section>
+
+  <section class="works-votes-container">
+    <h3 class="works-votes-header"><%= @work.votes.count %> Votes for this <%= @work.category.capitalize %> </h3>
+    <table>
+      <thead>
+      <tr>
+        <th>
+
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      </tr>
+      </tbody>
+    </table>
+
+  </section>
+
+

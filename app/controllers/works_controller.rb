@@ -5,6 +5,9 @@ class WorksController < ApplicationController
 
   def index
     @works = Work.all
+    @albums = @works.where(category: "album")
+    @books = @works.where(category: "book")
+    @movies = @works.where(category: "movie")
   end
 
   def show
@@ -15,8 +18,13 @@ class WorksController < ApplicationController
   end
 
   def top_works
-    @works = Work.all.sample(10)
+    @works = Work.all
     @work = Work.all.sample
+
+    @albums = @works.where(category: 'album').sample(10)
+    @books = @works.where(category: 'book').sample(10)
+    @movies = @works.where(category: 'movie').sample(10)
+
 
   end
 

@@ -9,16 +9,16 @@
   </article>
   <article class="operation-button">
     <div>
-      <%= link_to "Back to media ranks", root_path %>
+      <%= button_to "Back to media ranks", root_path %>
     </div>  
     <div>
-      <%= link_to "Edit", edit_work_path(@work) %>
+      <%= button_to "Edit", edit_work_path(@work) %>
     </div>
     <div>
-      <%= "Upvote" %>
+      <%= button_to "Upvote", upvote_work_path(@work) %>
     </div>
     <div>
-      <%= link_to "Delete", work_path(@work), method: :delete, data: {confirm: "Are you sure?"} %>
+      <%= button_to "Delete", work_path(@work), method: :delete, data: {confirm: "Are you sure?"} %>
     </div>
   </article>
   <article class="who-vote-table">

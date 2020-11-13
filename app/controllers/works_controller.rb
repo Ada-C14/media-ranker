@@ -48,6 +48,7 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
 
     if @work.nil?
+      flash[:error] = "Couldn't find work to update."
       head :not_found
       return
     elsif @work.update(work_params)
@@ -60,7 +61,23 @@ class WorksController < ApplicationController
       return
     end
   end
-  
+
+  def destroy
+    @work = Work.find_by(id: params[:id])
+    if @work.nil?
+      flash[:error] = "Couldn't find work to delete"
+      head :not_found
+      return
+    elsif @work.destroy
+      flash[:success] = "Work deleted successfully"
+      redirect_to works_path
+      return
+    else
+      flash[:error] = "Work could not be deleted"
+      redirect_to works_path, status: :internal_server_error
+    end
+  end
+
   private
 
   def work_params

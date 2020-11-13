@@ -2,20 +2,21 @@
 <main>
 
   <section class="spotlight">
-    <h2 class="spotlight-header">
+    <h2 class="spotlight__header">
       <% feat = Work.select_spotlight%>
       <% if feat %>
-        <span>Media Spotlight: <%= link_to feat.title,  work_path(feat.id)%> by <%= feat.creator%></span>
+        <span class="spotlight__header--prefix">Media Spotlight: <%= link_to feat.title,  work_path(feat.id), class: "spotlight__link-to" %> by <%= feat.creator%></span>
       <% else %>
-        <span>Media Spotlight: No Media Voted For :(</span>
+        <span class="spotlight__header--prefix">Media Spotlight: No Media Voted For :(</span>
       <% end %>
     </h2>
     <% if feat %>
-      <p class="spotlight-description"><%= feat.description %></p>
+      <p class="spotlight__description"><%= feat.description %></p>
     <% end %>
   </section>
 
-  <section class="top-ten-works">
+  <hr class="root__hr">
+  <section class="top-ten__container">
     <section class="top-ten__list-container">
       <% top_movies = Work.select_top_ten("movies") %>
       <%= render partial: "table", locals: {category: "movies", top_works: top_movies} %>

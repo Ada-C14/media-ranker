@@ -63,7 +63,7 @@ class WorksController < ApplicationController
       return
     else
       work.destroy
-      flash[:success] = "Successfully destroyed #{@work.category} #{@work.id}"
+      flash[:success] = "Successfully destroyed #{work.category} #{work.id}"
       redirect_to works_path
     end
 

@@ -41,7 +41,13 @@ describe Work do
     expect(new_work.errors.messages).must_include :title
     expect(new_work.errors.messages[:title].include?("already been taken")).must_equal true
   end
-end
-describe "rerlationships" do
+
+  # describe "rerlationships" do
+  #
+  # end
 
 end
+
+
+
+

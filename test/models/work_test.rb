@@ -30,8 +30,6 @@ describe Work do
 
       expect(invalid_work).must_equal false
     end
-
   end
-
 
 end

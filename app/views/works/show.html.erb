@@ -2,13 +2,15 @@
 
 
 <p>Created by: <%= @work.created_by %></p>
+
 <p>Published: <%= @work.published %></p>
+
 <p>Description: <%= @work.description %></p>
 
+<section>
+<%= button_to "Back to Media Ranking", root_path, method: :get %>
+<%= button_to "Edit", edit_work_path(@work), method: :get %>
+<%= button_to "Delete Media", work_path(@work), method: :delete, data: { confirm: "Are you sure"}  %>
+</section>
 
-
-<%= link_to "Return to Media List", works_path %> |
-<%= link_to "Edit", edit_work_path %> |
-<%= link_to "Add a New Media", new_work_path%> |
-<%= link_to "Delete Media", work_path(@work.id), method: :delete, data: { confirm: "Are you sure"}  %>
-
+<!--<%#= link_to "Add a New Media", new_work_path%> |-->

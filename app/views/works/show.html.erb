@@ -7,7 +7,7 @@
 <section class="button-container">
   <%= button_to 'Back to media ranks', root_path, method: :get, :class => 'btn btn-primary' %>
   <%= button_to 'Edit', edit_work_path(@work.id), method: :get, :class => 'btn btn-primary' %>
-  <%= button_to 'Upvote', root_path, :class => 'btn btn-primary' %>
+  <%= button_to 'Upvote', work_upvote_path(@work.id), method: :post, :class => 'btn btn-primary' %>
   <%= button_to 'Delete', work_path(@work), data: {confirm: "Are you sure?"}, :method => :delete, :class => 'btn btn-danger' %>
 </section>
 <section class="votes-container">

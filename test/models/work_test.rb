@@ -137,5 +137,60 @@ describe Work do
       expect(new_work.publication_year).must_equal 1999
     end
   end
+
+  describe "custom methods" do
+    before do
+      @user = User.create(username: 'voter')
+      @work1 = Work.new(category: 'book', title: 'A')
+      @work2 = Work.new(category: 'book', title: 'B')
+      @work3 = Work.new(category: 'movie', title: 'A')
+      @work4 = Work.new(category: 'album', title: 'A')
+    end
+
+    describe "spotlight" do
+
+    end
+
+    describe "sort_cat" do
+      it 'returns empty array for when there are no works for a certain category' do
+        expect(Work.sort_cat('book')).must_be_empty
+        expect(Work.sort_cat('book')).must_be_kind_of Array
+      end
+      it 'returns an array of works in a category sorted by vote, most to least ' do
+        # two book entries
+        @work1.save
+        @work2.save
+
+        # vote for one
+        Vote.create(work_id: @work2.id, user_id: @user.id)
+
+        # get sorted array
+        sorted_books = Work.sort_cat('book')
+
+        expect(sorted_books.length).must_equal 2
+        expect(sorted_books.first.id).must_equal @work2.id
+        expect(sorted_books.first.votes.count).must_equal 1
+        expect(sorted_books.last.votes.count).must_equal 0
+      end
+
+      it "sorts works with the same number of votes in ABC order" do
+        # two book entries
+        @work1.save
+        @work2.save
+
+        # get sorted array
+        sorted_books = Work.sort_cat('book')
+
+        expect(sorted_books.length).must_equal 2
+        expect(sorted_books.first.id).must_equal @work1.id
+        expect(sorted_books.first.votes.count).must_equal 0
+        expect(sorted_books.last.votes.count).must_equal 0
+      end
+    end
+
+    describe "work_hash" do
+
+    end
+  end
 end
 

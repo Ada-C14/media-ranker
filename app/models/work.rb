@@ -12,7 +12,7 @@ class Work < ApplicationRecord
   end
 
   def self.spotlight
-    return Work.all.sort_by{ |work| [-work.votes.count, work.title.downcase] }.first
+    return Work.all.sort_by{ |work| [-work.votes.count, work.title.downcase, work.updated_at] }.first
   end
 
   def self.work_hash

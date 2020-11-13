@@ -13,7 +13,6 @@
       <a href="/">Media Ranker</a>
       <small>Ranking the Best of Everything</small>
     </h1>
-
     <nav>
       <ul>
         <li>
@@ -46,6 +45,18 @@
     </nav>
   </header>
   <body>
+
+    <section class="alert__container">
+      <% flash.each do |name, message| %>
+        <div class="alert alert-success">
+          <span>
+            <%= message %>
+          </span>
+        </div>
+      <% end %>
+    </section>
+
     <%= yield %>
+
   </body>
 </html>

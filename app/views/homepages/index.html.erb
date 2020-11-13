@@ -18,7 +18,6 @@
   <section class="top-ten-works">
     <section class="top-ten-list-container">
       <h2>Top Movies</h2>
-      <%# movies = Work.movies %>
       <% top_movies = Work.select_top_ten("movies") %>
       <% if top_movies %>
       <% top_movies.each do |movie| %>

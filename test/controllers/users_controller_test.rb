@@ -29,6 +29,7 @@ describe UsersController do
       login(user.username)
     }.wont_change "User.count"
   end
+
   describe "logout" do
     it "can logout in user" do
       login()
@@ -37,7 +38,21 @@ describe UsersController do
       post logout_path
       expect(session[:user_id]).must_be_nil
     end
+  end
 
+  describe "current user" do
+    it "it can return the page if the user logged in" do
+      login()
+
+      get current_user_path
+      must_respond_with :success
+    end
+
+    it "redirect us back ifuser is not logged in" do
+      get current_user_path
+      must_respond_with :redirect
+      expect(flash[:error]).must_equal "you must be logged in to view this page"
+    end
   end
 
 

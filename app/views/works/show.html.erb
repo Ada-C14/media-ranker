@@ -11,6 +11,23 @@
   </section>
 </section>
 <section>
-  <h3>[insert #] of Votes for this Album</h3>
-  <%# add table of votes %>
+  <h3><%= @work.votes.count %> Votes for this <%= @work.category %></h3>
+  <section class="media-table">
+      <table class="table">
+        <thead>
+        <tr>
+          <th>User</th>
+          <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @work.votes.each do |vote| %>
+          <tr>
+            <td><%= vote.user.username%></td>
+            <td><%= vote.date %></td>
+          </tr>
+        <% end %>
+        </tbody>
+      </table>
+  </section>
 </section>

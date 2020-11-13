@@ -8,8 +8,10 @@ class UsersController < ApplicationController
     username = params[:user][:username]
     user = User.find_by(username: username)
 
-    # existing user
-    if user
+    if user.nil?
+      flash.now[:error] = "A problem occurred: Could not log in"
+      render :login_form, status: :bad_request
+    elsif user
       session[:user_id] = user.id
       flash[:success] = "Successfully logged in as existing user #{username}"
     else

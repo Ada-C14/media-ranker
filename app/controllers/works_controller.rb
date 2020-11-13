@@ -41,9 +41,44 @@ class WorksController < ApplicationController
   end
 
   def edit
+    @work = Work.find_by(id: params[:id])
+
+    if @work.nil?
+      head :not_found
+      return
+    end
   end
 
   def update
+    @work = Work.find_by(id: params[:id])
+
+    if @work.nil?
+      head :not_found
+      return
+    elsif @work.update(work_params)
+      flash[:success] = "#{@work.title} updated successfully"
+      redirect_to works_path # go to the list of media
+      return
+    else # save failed :(
+      flash.now[:error] = "Something happened. #{@work.title} not updated."
+      render :edit, status: :bad_request # show the new work form view again
+      return
+    end
+  end
+
+  def destroy
+    work_id = params[:id]
+    @work = Work.find_by(id: work_id)
+
+    if @work.nil?
+      head :not_found
+      return
+    end
+
+    @work.destroy
+
+    redirect_to works_path
+    return
   end
 
   private

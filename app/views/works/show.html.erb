@@ -7,8 +7,27 @@
 </section>
 
 <section>
-  <button type="button">Back to media ranks</button>
-  <button type="button">Edit</button>
-  <button type="button">Upvote</button>
-  <button type="button">Delete</button>
+  <a href="<%=root_path %>"><button type="button" class="btn btn-info">Back to media ranks</button></a>
+  <a href="<%=edit_work_path %>"><button type="button" class="btn btn-info">Edit</button></a>
+
+<!--  make link work!!, no view or controller yet-->
+  <a href="<%=root_path %>"><button type="button" class="btn btn-info">Upvote</button></a>
+
+  <!--  this doesn't work-->
+  <a href="<%=works_path %>"><button type="button" class="btn btn-info">Delete</button></a>
+  <!--  this work but it's not a button-->
+  <%= link_to 'Delete', @work, method: :delete, data: { confirm: 'Are you sure?' } %>
+</section>
+
+<section>
+  <h3>... votes for this <%=@work.category %></h3>
+  <table>
+    <tr>
+    <th>User</th>
+    <th>Date</th>
+    </tr>
+
+    <tbody>
+    </tbody>
+  </table>
 </section>

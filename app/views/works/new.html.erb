@@ -10,33 +10,35 @@
   </ul>
 <% end %>
 
-<section>
-  <%= form_with model: @work, class: 'create-work' do |f| %>
-    <div>
-    <%= f.label :category %>
-    <%= f.select :category, [["book","book"], ["album", "album"], ["movie", "movie"]]%>
-    </div>
+<%= render partial: "form", locals: { action_name: "Create" } %>
+<!--<section>-->
 
-    <div>
-      <%= f.label :title %>
-      <%= f.text_field :title %>
-    </div>
+  <%#= form_with model: @work, class: 'create-work' do |f| %>
+<!--    <div>-->
+    <%#= f.label :category %>
+    <%#= f.select :category, [["book","book"], ["album", "album"], ["movie", "movie"]]%>
+<!--    </div>-->
 
-    <div>
-      <%= f.label :creator %>
-      <%= f.text_field :creator %>
-    </div>
+<!--    <div>-->
+      <%#= f.label :title %>
+      <%#= f.text_field :title %>
+<!--    </div>-->
 
-    <div>
-      <%= f.label :publication_year %>
-      <%= f.text_field :publication_date %>
-    </div>
+<!--    <div>-->
+      <%#= f.label :creator %>
+      <%#= f.text_field :creator %>
+<!--    </div>-->
 
-    <div>
-      <%= f.label :description %>
-      <%= f.text_area :description %>
-    </div>
+<!--    <div>-->
+      <%#= f.label :publication_year %>
+      <%#= f.text_field :publication_date %>
+<!--    </div>-->
 
-    <%= f.submit "Create work", class: "work-button" %>
-  <% end %>
-</section>
+<!--    <div>-->
+      <%#= f.label :description %>
+      <%#= f.text_area :description %>
+<!--    </div>-->
+
+    <%#= f.submit "Create work", class: "work-button" %>
+  <%# end %>
+<!--</section>-->

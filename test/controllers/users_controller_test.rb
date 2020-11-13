@@ -7,6 +7,7 @@ describe "UsersController" do
 
       must_respond_with :success
     end
+  end
 
   describe "logging in" do
     it "can log a user in" do

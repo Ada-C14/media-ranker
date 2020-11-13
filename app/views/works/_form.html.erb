@@ -1,0 +1,25 @@
+<% if action_name == "Edit" %>
+  <h2>Edit Work - <%= @work.title %></h2>
+<% else %>
+  <h2>Create a New Work</h2>
+<% end %>
+
+<%= form_with model: @work, class: 'new-or-edit-work' do |f| %>
+
+  <%= f.label :category %>
+  <%= f.select :category, ["Book", "Album", "Movie"] %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :creator %>
+  <%= f.text_field :creator %>
+
+  <%= f.label :publication_year %>
+  <%= f.text_field :publication_year %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+
+  <%= f.submit "Save Work", class: 'work-button' %>
+<% end %>

@@ -1,3 +1,14 @@
+<% if @work.errors.any? %>
+  <div class="errors">
+    <% @work.errors.each do |column, message| %>
+      <p>
+        Oops! Your data doesn't look quite right: <strong><%= column.capitalize %></strong> <%= message %>.
+      </p>
+    <% end %>
+  </div>
+<% end %>
+
+
 <%=form_with model: @work, class: 'work_form' do |f| %>
 
   <div class="form-group">

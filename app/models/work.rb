@@ -9,7 +9,7 @@ class Work < ApplicationRecord
 
   def self.categories
     # Class method to get acceptable categories
-    ['album', 'movie', 'book']
+    CATEGORIES
   end
 
   def self.top_ten(category)

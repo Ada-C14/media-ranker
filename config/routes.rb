@@ -7,6 +7,6 @@ Rails.application.routes.draw do
   post '/login', to: 'users#login'
   post '/logout', to: 'users#logout'
   get '/users/current', to: 'users#current', as: 'current_user'
-  
+
   # get '/works/:count', to: 'works#index', as: :works_count
 end

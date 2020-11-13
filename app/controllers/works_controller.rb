@@ -12,7 +12,7 @@ class WorksController < ApplicationController
 
   def create
     @work = Work.create(work_params)
-    action_success_check(@work, work_path(@work), destination_view: :new)
+    action_success_check(@work, work_path(@work), destination_view: :new, success_msg: "Successfully created #{@work.category} #{@work.id}")
   end
 
   def show
@@ -25,13 +25,13 @@ class WorksController < ApplicationController
 
   def update
     redirect_to works_path and return if @work.nil?
-    action_success_check(@work.update(work_params), work_path, destination_view: :edit)
+    action_success_check(@work.update(work_params), work_path, destination_view: :edit, success_msg: "Successfully updated #{@work.category} #{@work.id}")
   end
 
   def destroy
     redirect_to works_path and return if @work.nil?
 
-    action_success_check(@work.destroy, works_path)
+    action_success_check(@work.destroy, works_path, success_msg: "Successfully destroyed #{@work.category} #{@work.id}")
   end
 
   private

@@ -2,8 +2,22 @@ require "test_helper"
 
 describe Vote do
   describe "relationships" do
-    it "something" do
-      raise NotImplementedError
+    before do
+      @work = works(:rubber_soul)
+      @user = users(:ringolingo)
+      @vote = Vote.new(user_id: @user.id, work_id: @work.id)
+    end
+
+    it "has a user" do
+      @vote.save
+
+      expect(@vote.user).must_equal @user
+    end
+
+    it "has a work" do
+      @vote.save
+
+      expect(@vote.work).must_equal @work
     end
   end
 
@@ -14,7 +28,8 @@ describe Vote do
     end
 
     it "creates a vote when given a user and work" do
-      vote = Vote.new(user_id: @user.id, work_id: @work.id)
+      # vote = Vote.new(user_id: @user.id, work_id: @work.id)
+      vote = Vote.new(user: @user, work: @work)
 
       success = vote.valid?
 
@@ -45,27 +60,6 @@ describe Vote do
       success = second_vote.valid?
 
       expect(success).must_equal false
-    end
-  end
-
-  describe "upvote" do
-    before do
-      @user = User.new(username: "ringolingo")
-    end
-
-    it "adds a vote to a work when a user is logged in" do
-      @user.save
-      work = Work.first
-
-      raise NotImplementedError
-    end
-
-    it "does not add a vote if there is no logged in user" do
-      raise NotImplementedError
-    end
-
-    it "does not add a vote to a work logged in user has already voted for" do
-      raise NotImplementedError
     end
   end
 end

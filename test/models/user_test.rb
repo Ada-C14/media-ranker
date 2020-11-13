@@ -30,7 +30,7 @@ describe User do
 
   describe "relations" do
     it "can have many votes" do
-      Vote.create!(user_id: @user.id, work_id: @work.id)
+      Vote.create!(user_id: @user.id, work_id: second_work.id)
       expect(@user.votes.count).must_equal 2
     end
 

@@ -1,7 +1,9 @@
 <main>
 <section class="spotlight">
-  <h2 class="spotlight__header"><span class="spotlight__header--prefix">Media Spotlight:  </span><%= Work.spotlight.title %> by <%= Work.spotlight.creator %></h2>
-<p class="spotlight__description"><%= Work.spotlight.votes.count %> votes - <%= Work.spotlight.description %></p>
+  <h2 class="spotlight__header">
+    <span class="spotlight__header--prefix">Media Spotlight:</span>
+    <%= link_to Work.spotlight.title, work_path(Work.spotlight), class: "spotlight__link-to" %> by <%= Work.spotlight.creator %></h2>
+  <p class="spotlight__description"><%= Work.spotlight.votes.count %> votes - <%= Work.spotlight.description %></p>
 </section>
  <hr class="root__hr">
 <section class="top-ten__container">
@@ -37,7 +39,7 @@
       <li class="list-group-item">
         <h4>
           <%= link_to book.title, work_path(book) %>
-          <small><%= "by #{book.creator}" %></small>
+          <small class="top-ten__creator"><%= "by #{book.creator}" %></small>
         </h4>
         <p><%= book.votes.count %> votes</p>
       </li>
@@ -57,7 +59,7 @@
       <li class="list-group-item">
         <h4>
           <%= link_to album.title, work_path(album) %>
-          <small><%= "by #{album.creator}" %></small>
+          <small class="top-ten__creator"><%= "by #{album.creator}" %></small>
         </h4>
         <p><%= album.votes.count %> votes</p>
       </li>

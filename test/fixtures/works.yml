@@ -1,0 +1,18 @@
+spacejam:
+  category: movie
+  title: Space Jam
+  creator: Joe Pytka
+  description: American live-action/animated sports comedy film directed by Joe Pytka and starring basketball player Michael Jordan.
+  publication_year: 1996
+practicalmagic:
+  category: book
+  title: Practical Magic
+  creator: Alice Hoffman
+  description: A critically-acclaimed book about the witchy women in the Owens family.
+  publication_year: 1996
+lathe:
+  category: book
+  title: Lathe of Heaven
+  creator: Ursula Leguin
+  description: When dreams can alter reality.
+  publication_year: 1971

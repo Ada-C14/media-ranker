@@ -95,25 +95,4 @@ describe Work do
       expect(movie.count).must_be :<=,10
     end
   end
-
-  describe "upvote" do
-    before do
-      @user = User.new(username: "ringolingo")
-    end
-
-    it "adds a vote to a work when a user is logged in" do
-      @user.save
-      work = Work.first
-
-      raise NotImplementedError
-    end
-
-    it "does not add a vote if there is no logged in user" do
-      raise NotImplementedError
-    end
-
-    it "does not add a vote to a work logged in user has already voted for" do
-      raise NotImplementedError
-    end
-  end
 end

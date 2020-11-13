@@ -1,4 +1,8 @@
 class WorksController < ApplicationController
+  def homepage
+    @works = Work.all
+  end
+
   def index
     @works = Work.all
     #filter?
@@ -7,7 +11,7 @@ class WorksController < ApplicationController
   def show
     @work = Work.find_by(id: params[:id])
     if @work.nil?
-      render :not_found #for now.. flash?
+      redirect_to root_path #for now.. flash?
       return
     end
   end

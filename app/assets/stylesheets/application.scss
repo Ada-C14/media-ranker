@@ -25,14 +25,31 @@ header {
   background-color: #0f6674;
 }
 
+header h1 {
+  color: #9fcdff;
+}
+
+header h2 {
+  color: #e4606d;
+}
+
 .link {
   color: #8fd19e;
 }
+//why is css so complicated!!!
+section {
+  display: grid;
 
-section #float-left {
-  float: left;
 }
 
-section #float-right {
-  float: right;
-}
+//section #float-left {
+//  float: left;
+//}
+//
+//section #float-right {
+//  float: right;
+//}
+
+//section ul {
+//  text-align: left;
+//}

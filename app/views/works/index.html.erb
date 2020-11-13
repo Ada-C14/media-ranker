@@ -1,7 +1,7 @@
 <header>
-<h1>All media</h1>
-<%# link_to "Homepage", root_path %>
-<%= link_to "New Media", new_work_path, class: "link" %>
+  <h1>All media</h1>
+  <%= link_to "Home", root_path, class: "link" %>
+  <%= link_to "New Media", new_work_path, class: "link" %>
 </header>
 
 <!--<ul>-->
@@ -10,7 +10,7 @@
 <%# end %>
 <!--</ul>-->
 
-<section class="float-left" >
+<section>
   <h3>Books</h3>
   <ul>
     <% @works.category_filter("Book").each do |book| %>
@@ -21,7 +21,7 @@
   </ul>
 </section>
 
-<section class="float-right" >
+<section>
   <h3>Shows</h3>
   <ul>
     <% @works.category_filter("Show").each do |show| %>
@@ -32,7 +32,7 @@
   </ul>
 </section>
 
-<section class="float-left" >
+<section>
   <h3>Movies</h3>
   <ul>
     <% @works.category_filter("Movie").each do |movie| %>
@@ -43,7 +43,7 @@
   </ul>
 </section>
 
-<section class="float-right" >
+<section>
   <h3>Albums</h3>
   <ul>
     <% @works.category_filter("Album").each do |album| %>

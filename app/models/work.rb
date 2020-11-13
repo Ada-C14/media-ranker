@@ -10,6 +10,12 @@ class Work < ApplicationRecord
     return self.where(category: category)
   end
 
-  
+  def self.spotlight
+    top10 = []
+    10.times do
+      top10 << Work.all.sample
+    end
+    return top10
+  end
 
 end

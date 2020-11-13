@@ -1,0 +1,15 @@
+<header>
+    <h1>Welcome to Media Ranker!</h1>
+    <h2>The best place to rate cool stuff</h2>
+    <%= link_to "New Media", new_work_path, class: "link" %>
+    <%= link_to "All Media", works_path, class: "link" %>
+</header>
+
+<h3>This week's spotlight</h3>
+<ul>
+  <% @works.spotlight.each do |work| %>
+    <li>
+      <%= link_to work.title, work_path(id: work[:id]), class: "link" %>
+    </li>
+  <% end %>
+</ul>

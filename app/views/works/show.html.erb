@@ -9,10 +9,10 @@
   </article>
   <article class="operation-button">
     <div>
-      <%= button_to "Back to media ranks", root_path %>
+      <%= button_to "Back to media ranks", root_path, method: :get %>
     </div>  
     <div>
-      <%= button_to "Edit", edit_work_path(@work) %>
+      <%= button_to "Edit", edit_work_path(@work), method: :get %>
     </div>
     <div>
       <%= button_to "Upvote", upvote_work_path(@work) %>

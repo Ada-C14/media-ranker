@@ -23,10 +23,10 @@
 
   <article class="operation-button">
     <div>
-      <%= link_to "See all Users", users_path %>
+      <%= button_to "See all Users", users_path, method: :get %>
     </div>  
     <div>
-      <%= link_to "Back to Media List", root_path %>
+      <%= button_to "Back to Media List", root_path, method: :get %>
     </div>
   </article>
 </section>

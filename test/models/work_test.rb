@@ -73,15 +73,36 @@ describe Work do
 
   describe "custom methods" do
     describe "top_by_category" do
-      before do
-        @work = Work.create(category: "movie", title: "It", creator: "Someone Withimagination", publication_date: "2018", description: "This is very scary movie")
+      it "returns 2 works when asked for 10" do
+        #arrange
+        work_1 = Work.create(category: "album", title: "Yellow submarine", creator: "Beetles", publication_date: "1967", description: "Legendary album")
+        work_2 = Work.create(category: "album", title: "Master of Puppets", creator: "Metallica", publication_date: "1998", description: "Best album ever")
+        #act+assert
+        expect(Work.top_by_category("album")).must_equal [work_1, work_2]
       end
-      # it "returns a message if category is nil" do
-      #   #arrange
-      #   @work.category = nil
-      #   #act+assert
-      #   expect(Work.top_by_category("movie")).must_equal "There is no item of this category"
-      # end
+
+      it "return empty array when there is no work of particular type" do
+        #act+assert
+        expect(Work.top_by_category("album")).must_be_empty
+      end
+    end
+
+    describe "spotlight" do
+      it "returns nil when work is empty" do
+        #arrange
+        #act+assert
+        expect(Work.spotlight).must_equal nil
+      end
+
+      it "return empty array when there is no work of particular type" do
+        #arrange
+        work = Work.create(category: "album", title: "Master of Puppets", creator: "Metallica", publication_date: "1998", description: "Best album ever")
+
+        #act+assert
+        expect(Work.spotlight).must_equal work
+        #because it's a class method I call it on the class,
+        # and after that use variable work to compare it with the result
+      end
     end
   end
 

@@ -54,6 +54,10 @@ header {
     box-sizing: border-box;
 }
 
+main {
+    padding: 2rem;
+}
+
 body {
     font-size: 1rem;
     font-family: "Gudea", sans-serif;
@@ -79,7 +83,7 @@ small, .small {
 
 ul {
     list-style-type: none;
-}
+   }
 
 .app-header-nav {
     display: flex;
@@ -102,10 +106,6 @@ nav ul {
 .btn-primary a {
    color: white;
    }
-
-main {
-    padding: 2rem;
-}
 
 .top-ten__header {
     color: #26A69A;
@@ -236,7 +236,6 @@ input {
     text-shadow: none;
 }
 
-
 div {
     display: block;
 }
@@ -264,9 +263,9 @@ textarea {
   background-color: #0c5460;
 }
 
-.user-votes__container {
-    margin-top: 2rem;
-}
+// .user-votes__container {
+//     margin-top: 2rem;
+// }
 
 .user-votes__header {
     color: black;
@@ -279,3 +278,21 @@ textarea {
 .app-header__nav_item {
     margin-top: 1rem;
 }
+
+.alert {
+    margin: 0;
+}
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    }

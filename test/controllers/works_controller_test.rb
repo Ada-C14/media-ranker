@@ -184,14 +184,18 @@ describe WorksController do
 
   describe "upvote" do
     it "can upvote a work if the user is logged in" do
+      # Arrange
       user = User.create!(username: "test user")
       login_data = {
           user: {
               username: user.username
           }
       }
+
+      # Act
       post login_path, params: login_data
 
+      # Assert
       expect {
         upvote_work_path(@work.id)
       }.must_change "Vote.count", 1
@@ -201,6 +205,7 @@ describe WorksController do
     end
 
     it "cannot not upvote a work if the user is logged out" do
+      # Arrange
        user = nil
 
        # login_data = {
@@ -210,6 +215,7 @@ describe WorksController do
        # }
        # post login_path, params: login_data
 
+      # Assert
       expect {
         upvote_work_path(@work.id)
       }.must_change "Vote.count", 0

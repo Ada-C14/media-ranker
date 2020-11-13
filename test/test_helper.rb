@@ -28,5 +28,8 @@ class ActiveSupport::TestCase
     post login_path, params: user_hash
 
     user = User.find_by(username: user_hash[:user][:username])
+    expect(session[:user_id]).must_equal user.id
+
+    return user
   end
 end

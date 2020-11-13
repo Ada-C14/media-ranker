@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  # Shared flash notices
   def authentication_notice
     flash[:notice] = 'Please log in to perform this action'
   end
@@ -12,6 +13,7 @@ class ApplicationController < ActionController::Base
       end
   end
 
+  # Login verification used across controller actions
   def verify_login
     @user = User.find_by(id: session[:user_id])
 

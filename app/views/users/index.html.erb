@@ -1,0 +1,15 @@
+<h3>List of Users</h3>
+
+<table>
+  <tr>
+    <th>Username</th>
+    <th>Joined</th>
+  </tr>
+
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= link_to user.username, user_path(user) %></td>
+      <td><%= user.created_at.strftime("%b %d, %Y") %></td>
+    </tr>
+  <% end %>
+</table>

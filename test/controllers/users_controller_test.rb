@@ -11,7 +11,7 @@ describe UsersController do
 
   describe "logging in" do
 
-    it "can login a new user" do
+    it "can login a new user" do # PASSING Test
       #Arrange  -> form data that will be submitted
       user_hash = {
           user: {
@@ -46,7 +46,7 @@ describe UsersController do
   end
   describe "logout" do
 
-    it "can logout a user" do
+    it "can logout a user" do # PASSING
       login()
       expect(session[:user_id]).wont_be_nil
 

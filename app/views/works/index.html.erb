@@ -3,6 +3,11 @@
 <nav>
   <%= button_to "Homepage", root_path, method: :get %>
   <%= button_to "Add a New Media", new_work_path, method: :get %>
+  <li><% if session[:user_id] %></li>
+      <li><%= button_to "Logout", logout_path, method: :post %></li><
+    <%else %>
+      <li><%=button_to "Log in", login_path, method: :get %></li>
+    <%end %>
 </nav>
 
 <h3>Album Media:</h3>

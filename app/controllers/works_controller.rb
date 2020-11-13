@@ -1,8 +1,8 @@
 class WorksController < ApplicationController
   def index
-    @albums = Work.all_albums
-    @books = Work.all_books
-    @movies = Work.all_movies
+    @albums = Work.where(category: "album").sort_by_vote_count
+    @books = Work.where(category: "book").sort_by_vote_count
+    @movies = Work.where(category: "movie").sort_by_vote_count
   end
 
   def show
@@ -68,10 +68,10 @@ class WorksController < ApplicationController
   end
 
   def main
-    @works = Work.all
-    @albums = Work.top_albums
-    @books = Work.top_books
-    @movies = Work.top_movies
+    @spotlight = Work.spotlight
+    @albums = Work.top_works("album")
+    @books = Work.top_works("book")
+    @movies = Work.top_works("movie")
   end
 
   private

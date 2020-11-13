@@ -1,0 +1,11 @@
+<h2><%= header %></h2>
+<ul>
+  <% unless works.blank? %>
+    <% works.each do |work| %>
+      <li><%= link_to "#{work.title}", work_path(work.id) %> by <%= work.creator %>
+
+        <p><%= pluralize(work.votes.size, "vote") %></p>
+      </li>
+    <% end %>
+  <% end %>
+</ul>

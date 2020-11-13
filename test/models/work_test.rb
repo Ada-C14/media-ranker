@@ -63,10 +63,11 @@ describe Work do
   end
 
   describe "spotlight" do
-    it "returns a pseudorandomly selected work" do
+    it "returns the work with the most votes" do
       featured_work = Work.spotlight
+      most_votes = works(:book)
 
-      expect(featured_work).must_be_instance_of Work
+      expect(featured_work.id).must_equal most_votes.id
     end
 
     it "returns nil if there are no works" do
@@ -80,126 +81,51 @@ describe Work do
     end
   end
 
-  describe 'top_movies' do
-    it 'returns up to 10 records from the movie category' do
-      top_10_movies = Work.top_movies
+  describe 'top_works' do
+    it 'returns up to 10 records from a category' do
+      top_movies = Work.top_works("movie")
+      top_books = Work.top_works("book")
+      top_albums = Work.top_works("album")
 
-      expect(top_10_movies.count).must_be :<=, 10
-      top_10_movies.each do |movie|
+      expect(top_movies.count.values.first).must_be :<=, 10
+      expect(top_books.count.values.first).must_be :<=, 10
+      expect(top_albums.count.values.first).must_be :<=, 10
+      top_movies.each do |movie|
         expect(movie.category).must_equal "movie"
       end
-    end
-
-    it "returns nil if there are no movies" do
-      Work.where(category: "movie").each do |movie|
-        movie.destroy
-      end
-
-      top_10_movies = Work.top_movies
-
-      expect(top_10_movies).must_be_nil
-    end
-  end
-
-  describe 'top_albums' do
-    it 'returns up to 10 records from the album category' do
-      top_10_albums = Work.top_albums
-
-      expect(top_10_albums.count).must_be :<=, 10
-      top_10_albums.each do |album|
+      top_albums.each do |album|
         expect(album.category).must_equal "album"
       end
-    end
-
-    it "returns nil if there are no albums" do
-      Work.where(category: 'album').each do |album|
-        album.destroy
-      end
-
-      top_10_albums = Work.top_albums
-
-      expect(top_10_albums).must_be_nil
-    end
-  end
-
-  describe 'top_books' do
-    it 'returns up to 10 records from the book category' do
-      top_10_books = Work.top_books
-
-      expect(top_10_books.count).must_be :<=, 10
-      top_10_books.each do |book|
+      top_books.each do |book|
         expect(book.category).must_equal "book"
       end
     end
 
-    it "returns nil if there are no books" do
-      Work.where(category: "book").each do |book|
-        book.destroy
-      end
-
-      top_10_books = Work.top_books
-
-      expect(top_10_books).must_be_nil
-    end
-  end
-
-  describe 'all_movies' do
-    it 'returns a collection of records with category = movie' do
-      movies = Work.all_movies
-
-      movies.each do |movie|
-        expect(movie.category).must_equal "movie"
-      end
-    end
-
-    it "returns nil if there are no movies" do
-      Work.where(category: 'movie').each do |work|
+    it "returns nil if there are no works" do
+      Work.all.each do |work|
         work.destroy
       end
 
-      movies = Work.all_movies
+      top_movies = Work.top_works("movie")
+      top_books = Work.top_works("book")
+      top_album = Work.top_works("album")
 
-      expect(movies).must_be_nil
+      expect(top_movies).must_be_nil
+      expect(top_books).must_be_nil
+      expect(top_album).must_be_nil
     end
   end
 
-  describe 'all_books' do
-    it 'returns a collection of records with category = books' do
-      books = Work.all_books
+  describe 'sort_by_vote_count' do
+    it 'returns a an ActiveRecord relation object with elements sorted in descending order' do
+      sorted_works = Work.sort_by_vote_count
+      votes = 3
 
-      books.each do |book|
-        expect(book.category).must_equal "book"
+      expect(sorted_works).must_be_kind_of ActiveRecord::Relation
+      sorted_works.each do |work|
+        expect(work.votes.count).must_equal votes
+        votes -= 1
       end
-    end
-
-    it "returns nil if there are no books" do
-      Work.where(category: "book").each do |book|
-        book.destroy
-      end
-
-      books = Work.all_books
-
-      expect(books).must_be_nil
-    end
-  end
-
-  describe 'all_albums' do
-    it 'returns a collection of records with category = album' do
-      albums = Work.all_albums
-
-      albums.each do |album|
-        expect(album.category).must_equal "album"
-      end
-    end
-
-    it "returns nil if there are no albums" do
-      Work.where(category: "album").each do |album|
-        album.destroy
-      end
-
-      albums = Work.all_albums
-
-      expect(albums).must_be_nil
     end
   end
 end

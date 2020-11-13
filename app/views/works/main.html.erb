@@ -7,34 +7,13 @@
 </div>
 
 <div class="top-books">
-  <h2>Top Books</h2>
-  <ul>
-    <% unless @books.blank? %>
-      <% @books.each do |book| %>
-        <li><%= book.title %> by <%= book.creator %></li>
-      <% end %>
-    <% end %>
-  </ul>
+  <%= render partial: "top", locals: { header: "Top Books", works: @books } %>
 </div>
 
 <div class="top-movies">
-  <h2>Top Movies</h2>
-  <ul>
-    <% unless @movies.blank? %>
-      <% @movies.each do |movie| %>
-        <li><%= movie.title %> by <%= movie.creator %></li>
-      <% end %>
-    <% end %>
-  </ul>
+  <%= render partial: "top", locals: { header: "Top Movies", works: @movies } %>
 </div>
 
 <div class="top-albums">
-  <h2>Top Albums</h2>
-  <ul>
-    <% unless @albums.blank? %>
-      <% @albums.each do |album| %>
-        <li><%= album.title %> by <%= album.creator %> </li>
-      <% end %>
-    <% end %>
-  </ul>
+  <%= render partial: "top", locals: { header: "Top Albums", works: @albums } %>
 </div>

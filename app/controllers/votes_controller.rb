@@ -11,8 +11,14 @@ class VotesController < ApplicationController
   #########################################################
 
   def create
-    vote = Vote.new(vote_params)
-    vote.save ? successful_upvote : unsuccessful_upvote
+    raise
+    # if params[:work_id]
+    #   vote = Vote.new(vote_params)
+    #   vote.save ? successful_upvote : unsuccessful_upvote
+    # else
+    #
+    # end
+
     redirect_back(fallback_location: root_path)
   end
 

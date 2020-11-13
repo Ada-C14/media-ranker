@@ -85,7 +85,7 @@ class WorksController < ApplicationController
         redirect_back(fallback_location: root_path)
         flash[:error] = "A problem occurred: Could not upvote"
         # maybe below will capture error message from validation
-        raise
+        # raise
         # flash[:error_message] = 
       end
     end

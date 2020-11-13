@@ -33,7 +33,7 @@ class UsersController < ApplicationController
         flash.now[:error] = "A problem occurred: Could not login"
         render :login_form
         return
-         # flash[:error_message] = 
+         # flash[:error_message] = user.errors.messages
       end
     end
 

@@ -153,6 +153,7 @@ describe WorksController do
 
       expect{post upvote_work_path(@work.id)}.must_differ "Vote.count", 1
       expect(user.votes.length).must_equal 1
+      expect(flash[:success]).must_equal "Successfully upvoted!"
     end
 
     it "redirects if user is not logged in" do
@@ -161,9 +162,12 @@ describe WorksController do
     end
 
     it "can't be voted for more than once by same user" do
+      skip
+      # skipping because idk about my flash thing
       perform_login(user)
       expect{post upvote_work_path(@work.id)}.must_differ "Vote.count", 1
       expect{post upvote_work_path(@work.id)}.wont_change "Vote.count"
+      expect(flash[:error]).must_equal "A problem occurred: Could not upvote"
     end
   end
 

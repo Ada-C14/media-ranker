@@ -1,4 +1,5 @@
 <section class="spotlight">
+  <% if @media_spotlight %>
   <h2 class="spotlight__header">
     <span class="spotlight__header--prefix">Media Spotlight</span>
     <%= link_to @media_spotlight.title, works_path(@media_spotlight.id), class:
@@ -7,6 +8,9 @@
   <p class="spotlight__description">
     <%= @media_spotlight.description %>
   </p>
+  <% else %>
+  <h2>Hello World!</h2>
+  <% end %>
 </section>
 <hr class="root__hr" />
 <section class="top-ten__container">

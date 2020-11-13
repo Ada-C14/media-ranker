@@ -1,0 +1,12 @@
+cat:
+  title: cat
+  creator: cat
+  description: A rousing tale about cat
+  publication_year: 2020
+  category: movie
+dog:
+  title: dog
+  creator: dog
+  description: an overrated book on dog
+  publication_year: 1970
+  category: book

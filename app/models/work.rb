@@ -10,13 +10,15 @@ class Work < ApplicationRecord
   has_many :users, through: :votes
 
   def self.spotlight
-     spotlight_media = Work.all.sample
-     return spotlight_media
+    sort = all.sort do |a, b|
+      vote_check = b.votes.count <=> a.votes.count
+      !vote_check.zero? ? vote_check : a.title <=> b.title
+    end
+    sort.first
   end
 
   def self.top_ten(category)
     # top ten sort_by vote?
-    top_ten_list = Work.where(category: category).sort_by { |work| work.votes.count }.first(10)
-    return top_ten_list
+    return Work.where(category: category).sort_by { |work| work.votes.count }.first(10)
   end
 end

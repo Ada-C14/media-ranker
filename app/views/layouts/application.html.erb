@@ -24,7 +24,12 @@
         </ul>
 
         <ul class="nav app-header__user-nav-container">
-          <li class="nav-iem app-header__nav_item"><a class="btn btn-primary" href="/login">Log in</a></li>
+          <% if session[:user_id] %>
+            <li><%= link_to "Logged in as #{ User.find_by(id: session[:user_id]).username }", current_user_path(session[:user_id]), class: "nav-iem app-header__nav_item" %></li>
+            <li><%= link_to "Log Out", logout_path, method: :post, class: "nav-iem app-header__nav_item" %></li>
+            <% else %>
+          <li><%= link_to "Log In", login_path, class: "nav-iem app-header__nav_item"%></li>
+            <% end %>
         </ul>
       </nav>
     </header>

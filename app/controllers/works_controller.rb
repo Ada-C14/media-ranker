@@ -1,7 +1,7 @@
 class WorksController < ApplicationController
 
   before_action :find_by, except: [:index, :new, :create]
-
+  before_action :find_user
 
   def index
     @works = Work.all
@@ -25,7 +25,6 @@ class WorksController < ApplicationController
     @books = @works.where(category: 'book').sample(10)
     @movies = @works.where(category: 'movie').sample(10)
 
-
   end
 
   def new
@@ -36,9 +35,11 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
 
     if @work.save
+      flash[:success] = "Work added successfully"
       redirect_to work_path(@work.id)
       return
     else
+      flash.now[:error] = "Something happened. Work not added."
       render :new, status: :bad_request
       return
     end
@@ -79,6 +80,10 @@ class WorksController < ApplicationController
 
   def find_by
     @work = Work.find_by(id: params[:id])
+  end
+
+  def find_user
+    @current_user = User.find_by(id: session[:user_id])
   end
 
   def work_params

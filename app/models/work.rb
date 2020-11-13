@@ -8,5 +8,6 @@ class Work < ApplicationRecord
   validates :publication_date, presence: true, numericality: true
   validates :creator, presence: true
   validates :category, presence: true, inclusion: { in: %w(album book movie), message: "category must be a movie, book or album" }
+  validates :votes, uniqueness: true, message: "a user can only vote for a single work one time"
 
 end

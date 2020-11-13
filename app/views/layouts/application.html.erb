@@ -46,7 +46,7 @@
         </ul>
       </nav>
     </header>
-
+    <% unless flash.empty? %>
     <section class="alert__container">
       <% flash.each do |name, message| %>
         <div class="alert alert-<%= name %>">
@@ -54,6 +54,7 @@
         </div>
       <% end %>
     </section>
+  <% end %>
     <%= yield %>
   </body>
 </html>

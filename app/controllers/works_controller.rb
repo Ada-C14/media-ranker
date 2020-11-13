@@ -2,7 +2,7 @@ class WorksController < ApplicationController
 
   # Helper Methods
   def not_found_error_notice
-    flash[:notice] = "That work does not exist."
+    flash[:notice] = "That media does not exist."
     redirect_to works_path
   end
 
@@ -28,7 +28,7 @@ class WorksController < ApplicationController
 
   def show
     work_id = params[:id].to_i
-    @work = Work.find_by_id(id: work_id)
+    @work = Work.find_by_id(work_id)
 
     if @work.nil?
       not_found_error_notice
@@ -56,7 +56,7 @@ class WorksController < ApplicationController
 
   def edit
     work_id = params[:id].to_i
-    @work = Work.find_by_id(id: work_id)
+    @work = Work.find_by_id(work_id)
 
     if @work.nil?
       not_found_error_notice

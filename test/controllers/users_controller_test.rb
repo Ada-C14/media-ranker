@@ -1,6 +1,8 @@
 require "test_helper"
 
 describe UsersController do
+  desc
+
   describe "index" do
     it "responds with success when users are saved" do
       user = users()
@@ -19,44 +21,78 @@ describe UsersController do
     end
   end
 
-  describe "new" do
+  describe "login_form" do
     it "responds with success" do
-      get new_user_path
+      get login_path
 
       must_respond_with :success
     end
   end
 
-  describe "create" do
-    it "creates a user with valid input and redirects" do
-      valid_user_hash = {
-        user: {
-          username: "eeyore"
-        }
-      }
-
+  describe "login" do
+    it "can login a new user" do
       expect{
-        post users_path, params: valid_user_hash
+        user = login("New User")
       }.must_change "User.count", 1
 
       must_respond_with :redirect
+      expect(user).wont_be_nil
+      expect(session[:user_id]).must_equal user.id
+      expect(user.username).must_equal User.first.username
     end
 
-    it "does not create a user without a username" do
-      invalid_user_hash = {
-        user: {
-          username: nil
-        }
-      }
+    it "can login an existing user" do
+      user = user(:pooh)
 
-      expect{
-        post users_path, params: invalid_user_hash
-      }.wont_change "User.count"
+      expect {
+        login(user.username)
+      }.wont_change "User.count", 1
 
-      must_respond_with :render
+      must_respond_with :redirect
+      expect(session[:user_id]).must_equal user.id
     end
-
   end
+
+  describe "logout" do
+    it "can logout a logged in user" do
+      login()
+      expect(session[:user_id]).wont_be_nil
+
+      post logout_path
+
+      expect(session[:user_id]).must_be_nil
+    end
+  end
+
+  # describe "create" do
+  #   it "creates a user with valid input and redirects" do
+  #     valid_user_hash = {
+  #       user: {
+  #         username: "eeyore"
+  #       }
+  #     }
+  #
+  #     expect{
+  #       post users_path, params: valid_user_hash
+  #     }.must_change "User.count", 1
+  #
+  #     must_respond_with :redirect
+  #   end
+  #
+  #   it "does not create a user without a username" do
+  #     invalid_user_hash = {
+  #       user: {
+  #         username: nil
+  #       }
+  #     }
+  #
+  #     expect{
+  #       post users_path, params: invalid_user_hash
+  #     }.wont_change "User.count"
+  #
+  #     must_respond_with :render
+  #   end
+  # end
 
   describe "show" do
     it "responds with success when showing an existing user" do

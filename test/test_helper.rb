@@ -17,5 +17,19 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
+  def login(username = nil)
+    username ||= "Test User"
+
+    login_data = {
+      user: {
+        username: username
+      }
+    }
+
+    post login_path, params: login_data
+
+    return user
+  end
+
   # Add more helper methods to be used by all tests here...
 end

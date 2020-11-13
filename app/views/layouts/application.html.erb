@@ -10,15 +10,28 @@
   </head>
 
   <body>
-    <section class="flash-message_section">
+    <% if @user.errors.any? || flash.any? %>
+      <section class="alert_container">
+        <div class="alert alert-warning">
 
-      <% flash.each do |name, message| %>
-      <strong class="<%= name %>" >
-        <%= message %>
-        </strong>
-      <% end %>
+        <% flash.each do |name, message| %>
+          <span class="<%= name %>" >
+            <%= message %>
+          </span>
+        <% end %>
 
-    </section>
+        <ul>
+          <% @user.errors.each do |column, message| %>
+            <li>
+              <%= column %>: <%= message %>
+            </li>
+          <% end %>
+        </ul>
+
+        </div>
+      </section>
+    <% end %>
+
 
   <main>
     <%= yield %>

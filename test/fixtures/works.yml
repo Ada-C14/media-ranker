@@ -1,0 +1,72 @@
+treat:
+  category: book
+  title: Joe Treat
+  creator: Blaise Lesch
+  publication_year: 1968
+  description: Voluptatem adipisci qui velit
+blue:
+  category: album
+  title: Blue Breake
+  creator: Dr. Sarai Langosh
+  publication_year: 1949
+  description: Et et expedita non aut quo
+select:
+  category: book
+  title: Summer Select
+  creator: Ms. Gwendolyn Ortiz
+  publication_year: 1946
+  description: Et molestiae eos nam odit aut sed
+been:
+  category: album
+  title: Kreb-Full-o Been
+  creator: Ms. Trevion Buckridge
+  publication_year: 2016
+  description: Vero consectetur delectus consequatur id aut accusantium unde excepturi
+wake:
+  category: album
+  title: Wake-up Pie
+  creator: Timmy Streich I
+  publication_year: 1919
+  description: Voluptatem consequatur qui consectetur nisi officiis culpa
+blend:
+  category: book
+  title: Postmodern Blend
+  creator: Meredith Brekke
+  publication_year: 1970
+  description: Dolorem fugit accusantium qui
+forrester:
+  category: book
+  title: Green Forrester
+  creator: Raquel Hirthe
+  publication_year: 1933
+  description: Omnis qui quia odio
+pie:
+  category: book
+  title: Red Pie
+  creator: Davon Kub
+  publication_year: 1961
+  description: Id dolorem qui laborum quia
+breaker:
+  category: book
+  title: Melty Breaker
+  creator: Montana Dickinson Sr.
+  publication_year: 1991
+  description: Perferendis harum fuga corporis
+winter:
+  category: book
+  title: Winter Pie
+  creator: Mr. Syble Kuhn
+  publication_year: 1970
+  description: Incidunt molestias deserunt laudantium
+enlightenment:
+  category: book
+  title: Blacktop Enlightenment
+  creator: Seamus D'Amore
+  publication_year: 1928
+  description: Ea id cumque et pariatur magni nemo dolorem
+mug:
+  category: book
+  title: Heart Mug
+  creator: Orpha Douglas
+  publication_year: 2009
+  description: Qui voluptas alias quia

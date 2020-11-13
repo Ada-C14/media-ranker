@@ -49,7 +49,7 @@
       <% if top_albums %>
       <% top_albums.each do |album| %>
       <ul>
-        <li><%= link_to album.title, work_path(album.id)%> by <%= album.creator %></li>
+        <li><%= link_to album.title, work_path(album.id)%> by <%= album.creator %><%= album.votes.length %></li>
         <%# TODO: include number of votes %>
       </ul>
       <% end %>

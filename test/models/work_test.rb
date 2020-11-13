@@ -95,15 +95,30 @@ describe Work do
 
   describe "select top 10 media" do
     it "can select the top 10 media" do
-      skip
+      @vote.destroy
+      10.times do |i|
+        work = Work.create!(title: "test work #{i}", category: "album")
+        user =  User.create!(name: "test user #{i}")
+        Vote.create!(user_id: user.id, work_id: work.id)
+      end
+
+      top_works = Work.select_top_ten("albums")
+      expect(top_works.length).must_equal 10
+      expect(top_works.include?(@work)).must_equal false
+      expect(top_works.map{|work| work.votes.length}.all? {|votes| votes == 1}).must_equal true
     end
 
-    it "returns nothing in the case of no votes" do
-      skip
+    it "returns nil in the case of no votes" do
+      @vote.destroy
+      expect(Vote.count).must_equal 0
+      expect(Work.select_top_ten("albums")).must_be_nil
     end
 
-    it "picks the first 10 works it sees in the case of ties" do
-      skip
+    it "chooses alphabetically in the chance of ties" do
+      Vote.create!(user_id: second_user.id, work_id: second_work.id)
+      expect(Vote.count).must_equal 2
+      expect(Work.select_top_ten("albums")[0]).must_equal second_work
+      expect(Work.select_top_ten("albums")[1]).must_equal @work
     end
   end
 

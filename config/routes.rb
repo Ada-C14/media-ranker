@@ -12,4 +12,9 @@ Rails.application.routes.draw do
 
   # root
   root to: 'pages#index'
+
+  resources :works do
+    resources :votes, only: [:create]
+  end
+
 end

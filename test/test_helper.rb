@@ -28,6 +28,7 @@ class ActiveSupport::TestCase
     }
     post login_path, params: login_data
 
+
     expect(session[:user_id ]).must_equal user.id
 
     return user

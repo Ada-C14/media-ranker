@@ -161,5 +161,73 @@ describe WorksController do
 
       must_respond_with :not_found
     end
+
+    it "deletes votes associated with a deleted work" do
+      # Arrange
+      user = User.create!(username: "test user")
+      Vote.create!(work_id: @work.id, user_id: user.id)
+
+      # Act
+      expect {
+        delete work_path(@work.id)
+      }.must_change "Vote.count", -1
+
+      deleted_vote = Vote.find_by(user_id: user.id)
+
+      # Assert
+      expect(deleted_vote).must_be_nil
+      expect(user.votes.count).must_equal 0
+      must_respond_with :redirect
+      must_redirect_to root_path
+    end
   end
-end
+
+  describe "upvote" do
+    it "can upvote a work if the user is logged in" do
+      # Arrange
+      user = User.create!(username: "test user")
+      login_data = {
+          user: {
+              username: user.username
+          }
+      }
+
+      # Act
+      post login_path, params: login_data
+
+      # Assert
+      expect {
+        upvote_work_path(@work.id)
+      }.must_change "Vote.count", 1
+
+      expect(flash[:success]).must_equal "Successfully upvoted!"
+
+
+      must_respond_with :redirect
+      must_redirect_to root_path
+    end
+
+    it "cannot not upvote a work if the user is logged out" do
+      # Arrange
+       user = nil
+
+       # login_data = {
+       #     user: {
+       #         username: user.username
+       #     }
+       # }
+       # post login_path, params: login_data
+
+      # Assert
+      expect {
+        upvote_work_path(@work.id)
+      }.must_change "Vote.count", 0
+
+      expect(flash[:error]).must_equal "A problem occurred: Could not upvote"
+
+       must_respond_with :redirect
+       must_redirect_to root_path
+      end
+    end
+  end
+

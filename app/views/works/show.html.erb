@@ -12,28 +12,28 @@
   </section>
 </section>
 
-<!--<section class="works-votes_container">-->
-<!--  <h3 class="works-votes__header"><%#= @work.votes %> Votes for this Album</h3>-->
-<!--  <table class="table">-->
-<!--    <thead>-->
-<!--      <tr>-->
-<!--        <th>User</th>-->
-<!--        <th>Date</th>-->
-<!--      </tr>-->
-<!--    </thead>-->
+<section class="works-votes_container">
+  <h3 class="works-votes__header"><%= @work.votes.count if @work.votes.count > 0 %> Votes for this Album</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Date</th>
+      </tr>
+    </thead>
 
-<!--    <tbody>-->
-<%# if @work.votes > 0 %>
-<%# @work.votes.each do |vote| %>
-<!--          <tr>-->
-<!--            <td><%#= link_to vote.user.username, user_path(vote.user) %></td>-->
-<!--            <td><%#= vote.created_at %></td>-->
-<!--          </tr>-->
+    <tbody>
+<% if @work.votes.count > 0 %>
+<% @work.votes.each do |vote| %>
+          <tr>
+            <td><%= link_to vote.user.username, user_path(vote.user) %></td>
+            <td><%= vote.created_at %></td>
+          </tr>
 
-<%# end %>
-<%# end %>
-<!--    </tbody>-->
+<% end %>
+<% end %>
+    </tbody>
 
-<!--  </table>-->
-<!--</section>-->
+  </table>
+</section>
 

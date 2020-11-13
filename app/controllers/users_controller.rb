@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     if @user.nil?
       @user = User.new(users_params)
       if @user.save
-        session[:user_id] = user.id
+        session[:user_id] = @user.id
         flash[:success] = "Successfully created new user #{@user.username} with ID #{@user.id}"
       else
         flash.now[:error] = "A problem occurred: Could not log in"

@@ -1,6 +1,15 @@
 require "test_helper"
 
 describe Work do
+  describe "relation" do
+    it "has many votes" do
+      dune = works(:dune)
+      vote_for_dune = votes(:pooh_dune)
+
+      expect(dune.votes.include?(vote_for_dune)).must_equal true
+    end
+  end
+
   describe "validations" do
     let(:work) {
       Work.new(title: "Sample Work")

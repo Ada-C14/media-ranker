@@ -24,6 +24,7 @@ CSV.foreach(WORK_FILE, :headers => true) do |row|
   work.creator = row['creator']
   work.publication_year = row['publication_year'].to_i
   work.description = row['description']
+  sleep(1) # will always seed with different creation times
   successful = work.save
   if !successful
     work_failures << work

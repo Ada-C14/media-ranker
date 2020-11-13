@@ -148,7 +148,40 @@ describe Work do
     end
 
     describe "spotlight" do
+      it "returns nil if there are no works" do
+        assert_nil(Work.spotlight)
+      end
+      it "returns work with most votes" do
+        @work1.save
+        @work2.save
 
+        Vote.create(work_id: @work2.id, user_id: @user.id)
+
+        expect(Work.spotlight).must_equal @work2
+        expect(Work.spotlight.votes.count).must_equal 1
+        expect(Work.spotlight.votes.count).must_equal @work2.votes.count
+      end
+      it "returns work earlier in alphabet if top have same number of votes" do
+        @work1.save
+        @work2.save
+
+
+        expect(Work.spotlight).must_equal @work1
+        expect(Work.spotlight.votes.count).must_equal 0
+        expect(Work.spotlight.votes.count).must_equal @work2.votes.count
+      end
+
+      it "returns work created earlier if same title (possible with diff. cat) and same number of votes" do
+        @work1.save
+        sleep(1)
+        @work3.save
+
+
+        expect(Work.spotlight).must_equal @work3
+        expect(Work.spotlight.votes.count).must_equal 0
+        expect(Work.spotlight.votes.count).must_equal @work1.votes.count
+        expect(Work.spotlight.title).must_equal @work1.title
+      end
     end
 
     describe "sort_cat" do
@@ -168,6 +201,7 @@ describe Work do
         sorted_books = Work.sort_cat('book')
 
         expect(sorted_books.length).must_equal 2
+        expect(sorted_books.first).must_equal @work2
         expect(sorted_books.first.id).must_equal @work2.id
         expect(sorted_books.first.votes.count).must_equal 1
         expect(sorted_books.last.votes.count).must_equal 0
@@ -182,6 +216,7 @@ describe Work do
         sorted_books = Work.sort_cat('book')
 
         expect(sorted_books.length).must_equal 2
+        expect(sorted_books.first).must_equal @work1
         expect(sorted_books.first.id).must_equal @work1.id
         expect(sorted_books.first.votes.count).must_equal 0
         expect(sorted_books.last.votes.count).must_equal 0

@@ -12,10 +12,14 @@ class Work < ApplicationRecord
   end
 
   def self.spotlight
-    return Work.all.sort_by{ |work| [-work.votes.count, work.title.downcase, work.updated_at] }.first
+    return Work.all.empty? ? nil : Work.all.sort_by{ |work| [-work.votes.count,
+                                                             work.title.downcase,
+                                                             DateTime.now - work.updated_at.to_datetime] }.first
   end
 
   def self.work_hash
-    return { movies: Work.sort_cat('movie'), books: Work.sort_cat('book'), albums: Work.sort_cat('album')}
+    return { movies: Work.sort_cat('movie'),
+             books: Work.sort_cat('book'),
+             albums: Work.sort_cat('album')}
   end
 end

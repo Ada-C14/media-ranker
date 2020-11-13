@@ -24,10 +24,10 @@ CSV.open("db/works-seeds.csv", "w", :write_headers => true,
 end
 
 CSV.open("db/users-seeds.csv", "w", :write_headers => true,
-        :headers => ["name"]) do |csv|
+        :headers => ["username"]) do |csv|
   25.times do
-    name = Faker::Games::Minecraft.unique.mob
+    username = Faker::Games::Minecraft.unique.mob
 
-    csv << [name]
+    csv << [username]
   end
 end

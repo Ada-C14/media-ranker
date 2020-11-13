@@ -31,6 +31,26 @@ end
 puts "Added #{Work.count} media records"
 puts "#{work_failures.length} media failed to save"
 
+USERS_FILE = Rails.root.join('db', 'users-seeds.csv')
+puts "Loading raw media data from #{USERS_FILE}"
+
+user_failures = []
+CSV.foreach(USERS_FILE, :headers => true) do |row|
+  user = User.new
+  user.id = row['id']
+  user.username = row['username']
+  successful = user.save
+  if !successful
+    user_failures << user
+    puts "Failed to save user: #{user.inspect}"
+  else
+    puts "Created user: #{user.inspect}"
+  end
+end
+
+puts "Added #{User.count} user records"
+puts "#{user_failures.length} users failed to save"
+
 
 # Since we set the primary key (the ID) manually on each of the
 # tables, we've got to tell postgres to reload the latest ID

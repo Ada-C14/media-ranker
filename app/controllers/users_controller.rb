@@ -17,9 +17,9 @@ class UsersController < ApplicationController
 
     if @user.nil?
       @user = User.new(user_params)
-      flash[:success] = "Successfully created new user #{@user.name} with ID #{@user.id}"
+      flash[:success] = "Successfully created new user #{@user.username} with ID #{@user.id}"
     elsif @user
-      flash[:success] = "Successfully logged in as existing user #{user.name}"
+      flash[:success] = "Successfully logged in as existing user #{@user.username}"
     else
       flash.now[:warning] = "Something went wrong 😱...let's try again 😊:"
       render :login_form
@@ -41,5 +41,5 @@ class UsersController < ApplicationController
 end
 
 def user_params
-  return params.require(:user).permit(:name)
+  return params.require(:user).permit(:username)
 end

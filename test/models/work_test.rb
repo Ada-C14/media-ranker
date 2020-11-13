@@ -63,9 +63,7 @@ describe Work do
     it "can have a user through a vote" do
       @vote.save
 
-      voter = @work.votes.first.user
-
-      expect(voter).must_equal @user
+      expect(@work.users).must_include @user
     end
   end
 

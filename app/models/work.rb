@@ -6,6 +6,15 @@ class Work < ApplicationRecord
   has_many :votes
   has_many :users, through: :votes
 
+  def users
+    users = []
+    votes.each do |vote|
+      users << vote.user
+    end
+
+    return users
+  end
+
   def self.top_ten
     @top_albums = Work.where(category: "album").sample(10)
     @top_books = Work.where(category: "book").sample(10)

@@ -8,7 +8,7 @@
   <ul class="work-list">
     <% @works.each do |work| %>
       <% if work.category == type %>
-        <li><b><%= link_to work.title.upcase, work_path(work.id) %></b> - <%= work.category %> - <%= work.creator %> - <%= work.publication_year %></li>
+        <li><b><%= link_to work.title.upcase, work_path(work.id) %></b> - <%= work.category %> - <%= work.creator %> - <%= work.publication_year %> -- <%= work.votes.count %> votes</li>
       <% end %>
     <% end %>
   </ul>

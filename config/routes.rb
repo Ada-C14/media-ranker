@@ -3,19 +3,18 @@ Rails.application.routes.draw do
   root to: 'works#homepage'
 
   resources :works do
-    resources :votes
+    resources :votes, only: [:create]
   end
 
   get "/works", to: "works#homepage"
 
-  resources :users do
-    resources :votes
-  end
+
 
   get "/login", to: "users#login_form", as: "login"
   post "/login", to: "users#login"
   post "/logout", to: "users#logout", as: "logout"
   get "/users/current", to: "users#current", as: "current_user"
 
-  resources :votes
+  resources :users, only: [:index, :show]
+
 end

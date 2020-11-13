@@ -8,7 +8,8 @@ class WorksController < ApplicationController
 
   def show
     if @work.nil?
-      head :not_found
+      flash[:alert] = "Work not found"
+      redirect_to root_path
       return
     end
   end
@@ -32,14 +33,16 @@ class WorksController < ApplicationController
 
   def edit
     if @work.nil?
-      head :not_found
+      flash[:alert] = "Work not found"
+      redirect_to root_path
       return
     end
   end
 
   def update
     if @work.nil?
-      head :not_found
+      flash[:alert] = "Work not found"
+      redirect_to root_path
     elsif @work.update(work_params)
       flash[:success] = "#{@work.category.capitalize} successfully updated"
       redirect_to work_path
@@ -53,7 +56,8 @@ class WorksController < ApplicationController
 
   def destroy
     if @work.nil?
-      head :not_found
+      flash[:alert] = "Work not found"
+      redirect_to root_path
       return
     else
       @work.destroy

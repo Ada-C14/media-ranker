@@ -23,10 +23,10 @@ describe WorksController do
 
     end
 
-    it 'will respond with not found for invalid ids' do
+    it 'will respond with redirect for invalid ids' do
       get "/works/-1"
 
-      must_respond_with :not_found
+      must_redirect_to root_path
     end
   end
 
@@ -105,9 +105,9 @@ describe WorksController do
       must_respond_with :success
     end
 
-    it 'will respond with 404 when attempting to edit a nonexistent work' do
+    it 'will respond with redirect when attempting to edit a nonexistent work' do
       get edit_work_path(-1)
-      must_respond_with :not_found
+      must_redirect_to root_path
     end
   end
 
@@ -137,12 +137,12 @@ describe WorksController do
       expect(updated_work.creator).must_equal new_info[:work][:creator]
     end
 
-    it 'responds with not found for invalid ids' do
+    it 'responds with redirect for invalid ids' do
       expect {
         patch work_path(-1), params: new_info
       }.wont_change "Work.count"
 
-      must_respond_with :not_found
+      must_respond_with :redirect
     end
 
     it "will not update if the params are invalid" do
@@ -170,12 +170,13 @@ describe WorksController do
       must_redirect_to works_path
     end
 
-    it 'does not change the db when the work does not exist and responds with not_found' do
+    it 'does not change the db when the work does not exist and responds with redirect' do
       expect {
         delete work_path(-1)
       }.wont_change "Work.count"
 
-      must_respond_with :not_found
+      must_respond_with :redirect
+      must_redirect_to root_path
     end
   end
 

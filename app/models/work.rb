@@ -1,4 +1,6 @@
 class Work < ApplicationRecord
+  has_many :votes
+  has_many :users, through: :votes
 
   validates :category,
             presence: true,
@@ -25,5 +27,4 @@ class Work < ApplicationRecord
   def self.top_ten(category)
     Work.where(category: category).limit(10)
   end
-
 end

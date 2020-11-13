@@ -17,44 +17,18 @@
 
   <section class="top-ten-works">
     <section class="top-ten-list-container">
-      <h2>Top Movies</h2>
       <% top_movies = Work.select_top_ten("movies") %>
-      <% if top_movies %>
-      <% top_movies.each do |movie| %>
-      <ul>
-        <li><%= link_to movie.title, work_path(movie.id)%> by <%= movie.creator %></li>
-        <%# TODO: include number of votes %>
-      </ul>
-      <% end %>
-    <% end %>
+      <%= render partial: "table", locals: {category: "movies", top_works: top_movies} %>
     </section>
 
     <section class="top-ten-list-container">
-      <h2>Top Books</h2>
-      <%# books = Work.books %>
       <% top_books = Work.select_top_ten("books") %>
-      <% if top_books %>
-        <% top_books.each do |book| %>
-        <ul>
-          <li><%= link_to book.title, work_path(book.id)%> by <%= book.creator %></li>
-          <%# TODO: include number of votes %>
-        </ul>
-      <% end %>
-    <% end %>
+      <%= render partial: "table", locals: {category: "books", top_works: top_books} %>
     </section>
 
     <section class="top-ten-list-container">
-      <h2>Top Albums</h2>
-      <%# albums = Work.albums %>
       <% top_albums = Work.select_top_ten("albums") %>
-      <% if top_albums %>
-      <% top_albums.each do |album| %>
-      <ul>
-        <li><%= link_to album.title, work_path(album.id)%> by <%= album.creator %><%= album.votes.length %></li>
-        <%# TODO: include number of votes %>
-      </ul>
-      <% end %>
-    <% end %>
+      <%= render partial: "table", locals: {category: "albums", top_works: top_albums} %>
     </section>
 
   </section>

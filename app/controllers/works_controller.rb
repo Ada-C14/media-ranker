@@ -1,7 +1,7 @@
 class WorksController < ApplicationController
 
   def index
-    @works = Work.all
+    @works = Work.order("votes_count DESC, created_at")
   end
 
   def show

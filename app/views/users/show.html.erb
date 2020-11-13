@@ -1,2 +1,38 @@
 <h1>User Summary: <%= link_to @user.username, user_path(@user)  %></h1>
 <h5>Joined site <%= @user.created_at.strftime("%Y-%m-%d") %></h5>
+
+<h2>Votes</h2>
+<hr>
+
+<section>
+  <table>
+    <thead>
+      <tr>
+        <th>Media Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Category</th>
+        <th>Voted On</th>
+      </tr>
+    </thead>
+
+    <tbody>
+    <% @user.votes.each do |vote| %>
+      <tr>
+        <%= work = work.find_by(id: vote.work_id) %>
+        <td><%= link_to work.title, work_path(work), method: :get, :class => work.category %></td>
+        <td><%= work.creator %></td>
+        <td><%= work.publication_year %></td>
+        <td><%=  work.category %></td>
+        <td><%=  vote.created_at.strftime("%Y-%m-%d") %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <hr>
+
+  <button><%= link_to "See all Users", users_path %></button>
+  <button><%= link_to "Back to Media List", root_path %></button>
+</section>
+
+

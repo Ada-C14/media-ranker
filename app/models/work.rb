@@ -4,6 +4,8 @@ class Work < ApplicationRecord
   validates :category, presence: true, inclusion: { in: %w(book movie album) }
   validates :published, presence: true, numericality: true
 
+  has_many :votes
+
   def self.categories(media)
     where(category: media)
   end

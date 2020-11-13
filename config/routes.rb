@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :votes, only:[:new, :create, :destroy ]
 
   get 'works/top', to: 'works#top', as: 'top_works'
+  post 'works/:work_id/upvote', to: 'votes#upvote', as: 'upvote'
 
   get "/login", to: "users#login_form", as: "login"
   post "/login", to: "users#login"

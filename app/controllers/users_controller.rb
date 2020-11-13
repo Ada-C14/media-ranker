@@ -10,13 +10,13 @@ class UsersController < ApplicationController
     if user.nil?
       #new user
       user = User.new(username:params[:user][:username])
-      if ! user.save
-      flash[:welcome] = "Welcome #{user.username}"
-      return
+      if user.save
+        flash[:welcome] = "Welcome #{user.username}"
       end
+      #else what if the user doesnt save?
     else
       flash[:welcome] = "Welcome back #{user.username}"
-  end
+    end
     session[:user_id] = user.id
     redirect_to root_path
     end

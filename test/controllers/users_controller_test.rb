@@ -26,7 +26,7 @@ describe UsersController do
       #This will redirect
 
       must_respond_with :redirect
-      user = User.find_by[username: user_hash[:user][:username]]
+      user = User.find_by(username: user_hash[:user][:username])
 
       #expect user exist and session will be set to current users id
       expect(user).wont_be_nil

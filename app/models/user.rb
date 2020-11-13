@@ -6,7 +6,9 @@ class User < ApplicationRecord
             presence: true,
             uniqueness: true
 
-  def self.get_session_user(session_id)
-    User.find_by(id: session_id)
+  def vote
+    # work =
+    # user = User.find_by(id: session[:user_id])
+    # user.votes << Vote.create()
   end
 end

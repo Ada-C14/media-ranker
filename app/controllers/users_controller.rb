@@ -66,7 +66,7 @@ class UsersController < ApplicationController
 
   def logout
     if session[:user_id]
-      user = User.get_session_user(session[:user_id])
+      user = User.find_by(id: session[:user_id])
       user ? flash[:success] = 'Successfully logged out' : flash[:notice] = 'Error: unknown user'
       session[:user_id] = nil
     else
@@ -77,10 +77,9 @@ class UsersController < ApplicationController
   end
 
   def current
-    @user = User.get_session_user(session[:user_id])
+    @user = User.find_by(id: session[:user_id])
 
     unless @user
-      raise
       authentication_notice
       redirect_to root_path
       return

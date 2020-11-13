@@ -33,11 +33,20 @@
       </nav>
     </header>
     <section class="flash-msg__section">
-      <% flash.each do |type, message| %>
+        <% flash.each do |type, message| %>
         <div class="flash-alert <%= type %>">
           <%= message %>
-        </div>
-      <% end %>
+        <% end %>
+        <% if @work %>
+          <% if @work.errors.any? %>
+            <ul>
+              <% @work.errors.each do |column, message| %>
+                <li><strong><%= column.capitalize %></strong>: <%= message %></li>
+              <% end %>
+            </ul>
+          <% end %>
+        <% end %>
+      </div>
     </section>
     <%= yield %>
   </body>

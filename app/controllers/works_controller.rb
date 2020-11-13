@@ -5,8 +5,8 @@ class WorksController < ApplicationController
     redirect_to works_path
   end
 
-  def not_saved_error_notice
-    flash.now[:notice] = "Uh oh! That did not save correctly. Please try again."
+  def not_saved_error_notice(action)
+    flash.now[:notice] = "A problem occurred: Could not #{action} #{@work.category}"
   end
 
   #########################################################
@@ -35,7 +35,7 @@ class WorksController < ApplicationController
       redirect_to work_path(@work.id)
       return
     else
-      not_saved_error_notice
+      not_saved_error_notice('create')
       render :new
       return
     end
@@ -61,7 +61,7 @@ class WorksController < ApplicationController
       redirect_to work_path
       return
     else
-      not_saved_error_notice
+      not_saved_error_notice('update')
       render :edit
       return
     end

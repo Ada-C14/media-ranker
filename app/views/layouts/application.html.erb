@@ -19,9 +19,9 @@
       <div class="link-header"><%= link_to 'Add a new work', new_work_path %></div>
       <div class="link-header"><%= link_to 'View all users TO CHANGE', works_path %></div>
       <% if session[:user_id] %>
-        <div><%= link_to "Logout", logout_path, method: :post %></div>
+        <div class="btn btn-primary"><%= link_to "Logout", logout_path, method: :post %></div>
       <% else %>
-        <div><%= link_to "Login", login_path %></div>
+        <div class="btn btn-primary"><%= link_to "Login", login_path %></div>
       <% end %>
         </nav>
   </header>

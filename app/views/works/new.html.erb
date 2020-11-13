@@ -1,0 +1,40 @@
+<h2>New Work</h2>
+
+<% if @work.errors.any? %>
+  <span class="errors"><strong>Please check the errors below:</strong></span>
+  <ul class="errors">
+    <% @work.errors.each do |column, message| %>
+      <li>
+        <strong><%= column.capitalize %></strong> <%= message %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<div class="new-work">
+  <%= form_with model: @work do |f| %>
+    Type of Work:
+    <br>
+    <%= f.select :category, [['Album', :album],['Book', :book]]%>
+    <br>
+    <br>
+    <%= f.label :title%>
+    <br>
+    <%= f.text_field :title %>
+    <br>
+    <%= f.label :creator%>
+    <br>
+    <%= f.text_field :creator %>
+    <br>
+    <%= f.label :publication_year%>
+    <br>
+    <%= f.text_field :publication_year %>
+    <br>
+    <%= f.label :description%>
+    <br>
+    <%= f.text_field :description %>
+    <br>
+    <br>
+    <%= f.submit %>
+  <% end %>
+</div>

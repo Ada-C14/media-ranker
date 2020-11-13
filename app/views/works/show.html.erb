@@ -1,0 +1,12 @@
+<h2><%= @work.title %></h2>
+
+<section>
+  <p>Created by <%= @work.creator %></p>
+  <p>Published <%= @work.publication_year %></p>
+  <p><%= @work.description %></p>
+</section>
+<section>
+  <p class="btn btn-primary"><%= link_to "Back to Media Rank", root_path %></p>
+  <p class="btn btn-primary"><%= link_to "Edit", edit_work_path(@work.id) %></p>
+  <p class="btn btn-danger"><%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"} %></p>
+</section>

@@ -1,0 +1,9 @@
+<h2><%= @user.name.titleize %></h2>
+
+<p> Created: <%= @user.created_at %></p>
+
+
+<section>
+  <%= button_to "Back to media list", root_path, method: :get, form: {style: 'display:inline-block;'} %>
+  <%= button_to "View all users", users_path, method: :get, form: {style: 'display:inline-block;'} %>
+</section>

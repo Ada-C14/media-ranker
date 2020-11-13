@@ -1,0 +1,7 @@
+<%= form_with model: @user, class: 'user-form' do |f| %>
+
+  <%= f.label ":name" %>
+  <%= f.text_field :name %>
+
+  <%= f.submit "Save", class: "button" %>
+<% end %>

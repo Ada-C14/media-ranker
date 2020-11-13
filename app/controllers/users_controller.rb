@@ -18,9 +18,9 @@ class UsersController < ApplicationController
     redirect_to works_path
   end
 
-  def authentication_notice
-    flash[:notice] = 'Please log in to perform this action'
-  end
+  # def authentication_notice
+  #   flash[:notice] = 'Please log in to perform this action'
+  # end
 
   #########################################################
 

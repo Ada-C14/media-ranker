@@ -17,7 +17,9 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+
   def login
+    # raise
     name = params[:user][:name]
     user = User.find_by(name: name)
 
@@ -30,10 +32,11 @@ class UsersController < ApplicationController
         session[:user_id] = user.id
         flash[:success] = "Successfully created new user #{user.name} with ID #{user.id}"
       else
-        flash.now[:error] = "A problem occurred: Could not login"
-        render :login_form
+        flash[:error] = "A problem occurred: Could not login"
+        bulk_error_message = user.errors.messages[:name][0]
+        flash[:error_message] = "username: #{bulk_error_message}"
+        redirect_back(fallback_location: root_path)
         return
-         # flash[:error_message] = user.errors.messages
       end
     end
 

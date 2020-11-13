@@ -36,8 +36,11 @@
   </header>
   
     <section>
-      <% flash.each do |name, message| %>
-      <%= message %>
+      <%= flash[:error] %>
+      <% if flash[:error_message] %>
+        <ul>
+          <li><%= flash[:error_message] %></li>
+        </ul>
       <% end %>
     </section>
       <%= yield %>

@@ -1,4 +1,11 @@
 class VotesController < ApplicationController
+
+  def upvote
+    # @user = User.find_by(id: params[:user][:id])
+    @work = Work.find_by(id: params[:work][:id])
+    @work.votes.create
+    redirect_to(works_path)
+  end
   def index
 
   end

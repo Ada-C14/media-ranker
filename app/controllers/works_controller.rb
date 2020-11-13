@@ -62,6 +62,24 @@ class WorksController < ApplicationController
     return
   end
 
+  def upvote
+    @work = Work.find_by(id: params[:id])
+    @user = User.find_by(id: session[:user_id])
+    if @user.nil?
+      flash.now[:error] = "Must be logged in to vote."
+      render :show
+      return
+    end
+
+    if @work.nil?
+      redirect_to(works_path)
+    else
+      Vote.create!(work: @work, user: @user)
+      # @work.votes.create!(user: @user)
+    render :show
+    end
+
+  end
   private
 
   def work_params

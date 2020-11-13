@@ -4,12 +4,18 @@ class Work < ApplicationRecord
 
   validates :title, presence: true, uniqueness: true
 
-  def spotlight
-
+  def self.spotlight
+    works = Work.all
+    max = works.max_by { |work| work.votes.count }
+    return max
   end
 
-  def top_ten
-
-  end
-
+  def self.top_ten(category:)
+    works = Work.all.where(category: category)
+   works.sort_by do |work|
+     work.votes.count
+    end.reverse.first(10)
+    end
 end
+
+

@@ -1,7 +1,7 @@
 <h1> Works List</h1>
 <h2> Books </h2>
 <main>
-<table style="width:100%">
+<table>
   <tr class="border-bottom">
     <th>Votes</th>
     <th>Title</th>
@@ -12,11 +12,11 @@
   <% @works.each do |work| %>
     <% if work.category == "book" %>
       <tr class="border-bottom">
-        <td> </td>
-    <td> <%= link_to work.title, work_path(work)  %></td>
-    <td><%= work.creator %></td>
-    <td><%= work.publication_date %></td>
-    <td> </td>
+        <td><%= pluralize(work.votes.count, "vote") %></td>
+        <td> <%= link_to work.title, work_path(work)  %></td>
+        <td><%= work.creator %></td>
+        <td><%= work.publication_date %></td>
+        <td><%= button_to '+1', upvote_work_path(work), method: :post %></td>
     <%end %>
   <% end %>
   </tr>
@@ -24,7 +24,7 @@
 
 <h2> Albums </h2>
 
-<table style="width:100%">
+<table>
   <tr class="border-bottom">
     <th>Votes</th>
     <th>Title</th>
@@ -35,11 +35,11 @@
   <% @works.each do |work| %>
     <% if work.category == "album" %>
       <tr class="border-bottom">
-        <td> </td>
+        <td><%= pluralize(work.votes.count, "vote") %></td>
         <td> <%= link_to work.title, work_path(work) %></td>
         <td><%= work.creator %></td>
         <td><%= work.publication_date%></td>
-        <td> </td>
+        <td><%= button_to '+1', upvote_work_path(work), method: :post %></td>
     <%end %>
   <% end %>
   </tr>
@@ -58,12 +58,12 @@
   <% @works.each do |work| %>
     <% if work.category == "movie" %>
       <tr class="border-bottom">
-        <td> </td>
+        <td><%= pluralize(work.votes.count, "vote") %></td>
         <td> <%= link_to work.title, work_path(work) %></td>
         <td><%= work.creator %></td>
         <td><%= work.publication_date%></td>
-        <td> </td>
-  </tr>
+        <td><%= button_to '+1', upvote_work_path(work), method: :post %></td>
+      </tr>
     <%end %>
   <% end %>
 </table>

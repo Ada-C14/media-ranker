@@ -44,4 +44,18 @@ describe UsersController do
       expect(session[:user_id]).must_be_nil
     end
   end
+
+  describe 'current user' do
+    it 'can return user page if a user is logged in' do
+      login
+      get current_user_path
+      must_respond_with :success
+    end
+
+    it 'redirects if user is not logged in' do
+      get current_user_path
+      must_respond_with :redirect
+      expect(flash[:notice]).must_equal 'Please log in to view this page'
+    end
+  end
 end

@@ -29,14 +29,20 @@
           <a class="nav-link" href="/users">View all users</a>
         </li>
       </ul>
-<!--      <ul class="nav app-header__user-nav-container">-->
-<!--        <li class="nav-item app-header__nav_item">-->
-<!--          <a class="btn btn-primary" href="/users/858">Logged in as vvv</a>-->
-<!--        </li>-->
-<!--        <li class="nav-item app-header__nav_item">-->
-<!--          <a class="btn btn-primary" rel="nofollow" data-method="post" href="/logout">Log Out</a>-->
-<!--        </li>-->
-<!--      </ul>-->
+      <ul class="nav app-header__user-nav-container">
+        <%if(@current_user)%>
+          <li class="nav-item app-header__nav_item">
+            <%=link_to("Logged in as #{@current_user.name}", user_path(@current_user.id), class: "btn btn-primary") %>
+          </li>
+          <li class="nav-item app-header__nav_item">
+            <%=link_to("Logout", logout_path, class: "btn btn-primary", method: :post) %>
+          </li>
+        <%else%>
+          <li class="nav-item app-header__nav_item">
+            <%=link_to( "Login", login_path, class: "btn btn-primary") %>
+          </li>
+        <%end%>
+      </ul>
     </nav>
   </header>
   <body>

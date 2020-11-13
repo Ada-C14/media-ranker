@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>MediaRanker</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
+</head>
+<header>
+  <h1>
+    Media Ranker
+  </h1>
+</header>
+<div>
+  <div class="navbar">
+    <ul>
+      <li><%= link_to "Home", homepages_path %></li>
+      <li> <%= link_to "All Media", works_path%></li>
+      <li> <%= link_to "Enter New Media", new_work_path %></li>
+    </ul>
+  </div>
+
+<h3>To enter a new piece of Media, please fill out all fields in the form below.</h3>
+<%= form_with model: @work do |f| %>
+
+  <%= f.label :category %>
+  <%= f.select :category, [ 'album','book','movie' ], :prompt => 'Select One' %>
+
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+
+  <%= f.label :creator %>
+  <%= f.text_field :creator %>
+
+  <%= f.label :publication_year %>
+  <%= f.text_field :publication_year %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+
+  <%= f.submit "Enter New Media" %>
+<% end %>
+</div>
+</html>

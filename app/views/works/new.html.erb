@@ -1,1 +1,18 @@
 <h1>new page for Works</h1>
+
+<%= form_with model: @work, class: 'create-work' do |f|%>
+  <p>Please provide the following information to add a new media to our database:</p>
+  <%= f.label :category %>
+  <%= f.text_field :category %>
+  <%= f.label :title %>
+  <%= f.text_field :title %>
+  <%= f.label :creator %>
+  <%= f.text_field :creator %>
+  <%= f.label :publication_year %>
+  <%= f.text_field :publication_year %>
+  <%= f.label :description %>
+  <%= f.text_field :description %>
+
+  <%= f.submit "Create Work", class: "Work-button" %>
+<% end %>
+

@@ -1,1 +1,16 @@
 <h1>show page for Works</h1>
+
+<h3><%= @work.title %></h3>
+<ul>
+  <li>Work: <%= @work.title %> </li>
+  <li>Created by: <%= @work.creator %> </li>
+  <li>Published: <%= @work.publication_year %> </li>
+
+<!--  # HOW DO I GET THE LIST OF VOTES FOR THIS WORK!!!-->
+  <%# @trips.each do |trip| %>
+<!--    <li> <%#= link_to trip.id, trip_path(trip)%></li>-->
+  <%# end %>
+</ul>
+
+<p><%= link_to "Edit", edit_work_path %></p>
+<p><%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"} %></p>

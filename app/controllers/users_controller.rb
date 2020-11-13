@@ -13,7 +13,6 @@ class UsersController < ApplicationController
       if @user.save
         session[:user_id] = @user.id
         flash[:success] = "Successfully created new user #{username} with ID #{@user.id}"
-        return
       else
         flash.now[:error] = "A problem occurred: Could not log in"
         render :login_form, status: :bad_request

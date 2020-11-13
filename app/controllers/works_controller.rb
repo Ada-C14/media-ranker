@@ -55,9 +55,11 @@ class WorksController < ApplicationController
     elsif @work.update(work_params)
       flash[:success] = "Success! The #{@work.category} #{@work.title} has been updated."
       redirect_to work_path(params[:id])
+      return
     else
       flash.now[:error] = "Unable to perform update!"
       render :edit
+      return
     end
   end
 
@@ -72,6 +74,7 @@ class WorksController < ApplicationController
     work.destroy
     flash[:success] = "🔥The #{work.category} #{work.title} has been removed🔥"
     redirect_to root_path
+    return
   end
 
   private

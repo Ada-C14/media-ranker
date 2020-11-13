@@ -15,9 +15,9 @@
     </p>
     <section>
       <a class="btn btn-primary" href="/">Back to media ranks</a>
-      <a class="btn btn-primary" href="/works/731/edit">Edit</a>
+      <%= link_to  "Edit", edit_work_path, class: "btn btn-primary" %>
       <a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/731/upvote">Upvote</a>
-      <a class="btn btn-danger" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/works/731">Delete</a>
+      <%= link_to "Delete", work_path(@work.id), method: :delete, data: { confirm: "Are you sure you want to delete this #{@work.category}?"}, class: "btn btn-danger" %>
     </section>
   </section>
   <section class="works-votes__container">

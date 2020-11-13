@@ -31,9 +31,19 @@
         </li>
       </ul>
       <ul class="nav app-header__user-nav-container">
-        <li class="nav-item app-header__nav_item">
-          login button
-        </li>
+        <% if session[:user_id] %>
+          <% @user = User.find(session[:user_id]) %>
+          <li class="nav-item app-header__nav_item">
+            <%= link_to "Logged in as #{@user.name}", user_path(@user), class: "btn btn-primary" %>
+          </li>
+          <li class="nav-item app-header__nav_item">
+            <%= link_to "Log Out", logout_path, method: :post, class: "btn btn-primary" %>
+          </li>
+        <% else %>
+          <li class="nav-item app-header__nav_item">
+            <%= link_to "Log In", login_path, class: "btn btn-primary" %>
+          </li>
+        <% end %>
       </ul>
     </nav>
   </header>

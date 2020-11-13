@@ -22,10 +22,12 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
 
     if @work.save
-      redirect_to works_path
+      flash[:success] = "#{@work.title} was successfully created!"
+      redirect_to work_path @work.id
       return
     else
-    render :new, status: :bad_request #shows new work form again
+      flash.now[:error] = "#{@work.title} was NOT added"
+      render :new, status: :bad_request #shows a new work form again
     return
     end
   end
@@ -36,6 +38,12 @@ class WorksController < ApplicationController
     @top_books = Work.top_by_category("book")
 
     @spotlight = Work.spotlight
+  end
+
+  def edit
+  end
+
+  def update
   end
 
   private

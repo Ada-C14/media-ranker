@@ -27,15 +27,12 @@ describe UsersController do
   describe 'show' do
     it "responds with success when showing an existing valid work" do
       user
-
       get user_path(user.id)
-
       must_respond_with :success
     end
 
     it "will redirect when passed an invalid work id" do
       get user_path(-1)
-
       must_respond_with :redirect
     end
   end

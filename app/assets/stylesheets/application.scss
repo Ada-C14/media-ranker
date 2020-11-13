@@ -17,9 +17,37 @@
 
 @import "**/*";
 
-// header {
-//     max-width: 100%;
-//     background-color: #B2DFDB;
-//     margin-bottom: 0.5rem;
-//     padding: 2rem 1rem 0.5rem 1rem;
-// }
+.app-header-header {
+    max-width: 100%;
+    background-color: #B2DFDB;
+    margin-bottom: 0.5rem;
+    padding: 2rem 1rem 0.5rem 1rem;
+}
+
+header {
+    display: block;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 1rem;
+    font-family: "Gudea", sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+}
+
+
+ul {
+    list-style-type: none;
+}
+
+.app-header-nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

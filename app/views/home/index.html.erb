@@ -43,7 +43,7 @@
     <tbody>
       <%@top_books.each do |book|%>
         <tr>
-          <td><%=book.title %></td>
+          <td><strong><%=link_to book.title, work_path(book.id) %></strong></td>
           <td><%=book.creator %></td>
           <td><%=book.publication_year %></td>
           <td><%=book.description %></td>
@@ -67,7 +67,7 @@
     <tbody>
       <%@top_albums.each do |album|%>
         <tr>
-          <td><%=album.title %></td>
+          <td><strong><%=link_to album.title, work_path(album.id) %></strong></td>
           <td><%=album.creator %></td>
           <td><%=album.publication_year %></td>
           <td><%=album.description %></td>
@@ -91,7 +91,7 @@
     <tbody>
       <%@top_movies.each do |movie|%>
         <tr>
-          <td><%=movie.title %></td>
+          <td><strong><%=link_to movie.title, work_path(movie.id) %></strong></td>
           <td><%=movie.creator %></td>
           <td><%=movie.publication_year %></td>
           <td><%=movie.description %></td>

@@ -1,1 +1,22 @@
 <h2>User Index</h2>
+
+<div>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Votes</th>
+        <th>Date Joined</th>
+      </tr>
+     </thead>
+    <tbody>
+    <% @users.each do |user|%>
+      <tr>
+        <td><strong><%=link_to user.name, user_path(user.id) %></strong></td>
+<!--        <td><%#=user.votes %></td>-->
+<!--        <td><%#=user.created%></td>-->
+      </tr>
+    <%end %>
+    </tbody>
+  </table>
+</div>

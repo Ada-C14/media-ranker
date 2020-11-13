@@ -2,6 +2,7 @@ class Work < ApplicationRecord
   validates :title, :creator, :publication_year, :description, presence: true
   validates :title, uniqueness: true
   validates :publication_year, numericality: true
+  has_many :votes
 
   def self.top_10_works_in_category(work_category)
     # top = @works.select {|row| row.category == category}
@@ -13,4 +14,6 @@ class Work < ApplicationRecord
     spot = Work.all.sample(1)
     return spot
   end
+
+  # Method sorts the votes
 end

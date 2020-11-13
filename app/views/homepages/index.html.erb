@@ -10,7 +10,9 @@
         <span>Media Spotlight: No Media Voted For :(</span>
       <% end %>
     </h2>
-    <p class="spotlight-description"><%= feat.description %></p>
+    <% if feat %>
+      <p class="spotlight-description"><%= feat.description %></p>
+    <% end %>
   </section>
 
   <section class="top-ten-works">

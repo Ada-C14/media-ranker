@@ -18,12 +18,14 @@ class Work < ApplicationRecord
   def self.select_top_ten(media)
     media = media[0..-2]
     works = self.where(category: media)
-    spotlight_votes = works.max_by{|work| work.votes.length}.votes.length
-    if spotlight_votes == 0
-      return nil
-    else
-      top_works = works.sort_by{|work| [-work.votes.length, work.title]}[0..9]
-      return top_works
+    if works.length > 0 
+      spotlight_votes = works.max_by{|work| work.votes.length}.votes.length
+      if spotlight_votes == 0
+        return nil
+      else
+        top_works = works.sort_by{|work| [-work.votes.length, work.title]}[0..9]
+        return top_works
+      end
     end
   end
 

@@ -78,3 +78,9 @@
   <% end %>
   </tbody>
 </table>
+
+<%= button_to "View top media", homepage_path,
+              method: "get", class: "btn btn-info index_btn", id:"gray_btn" %>
+
+<%= button_to "Add a new work", new_work_path,
+              method: "get", class: "btn btn-info index_btn", id: "btn5" %>

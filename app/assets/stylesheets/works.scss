@@ -20,13 +20,13 @@ label, select, input {
     text-decoration: none;
 }
 
-#btn1, #btn2, #btn3 {
+#btn1, #btn2, #btn3, #btn5 {
     float: left;
     margin-right: 5px;
     background-color: #26969a !important;
 }
 
-#btn1:hover, #btn2:hover, #btn3:hover {
+#btn1:hover, #btn2:hover, #btn3:hover, #btn5:hover {
     background-color: #00796B !important;
     color: white;
 
@@ -35,3 +35,14 @@ label, select, input {
 #btn4 {
     float: left;
 }
+
+#gray_btn {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    float: left;
+}
+
+.index_btn {
+    margin-right: 5px;
+}
+

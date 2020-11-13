@@ -7,3 +7,5 @@ Description: <%= @work.description %>
 <br>
 <%= link_to "Back to Media Ranks", works_path, class:"btn btn-primary" %>
 <%= link_to "Edit", edit_work_path, class:"btn btn-primary" %>
+<%= link_to "Delete", work_path(@work.id), method: :delete, data: {
+    confirm: "Are you sure you want to delete?" }, class:"btn btn-primary" %>

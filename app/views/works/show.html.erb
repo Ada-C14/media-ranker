@@ -4,7 +4,23 @@
   <li>Created by: <%= @work.creator %></li>
   <li>Published: <%= @work.publication_year %></li>
 </ul>
-
+<%= link_to "Back to media ranks", root_path %>
 <%= link_to "Edit this #{@work.category.capitalize}", edit_work_path(@work.id) %>
 <%= link_to "Delete this #{@work.category.capitalize}", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"} %>
 <%= button_to "Upvote", work_upvote_path(@work.id) %>
+
+<% unless @work.votes.nil? %>
+  <h3><%= pluralize(@work.votes.size, "vote") %> for this <%= @work.category %></h3>
+  <table>
+    <tr>
+      <th>User</th>
+      <th>Date</th>
+    </tr>
+      <% @work.votes.each do |vote| %>
+        <tr>
+          <td><%= link_to "#{vote.user.username}", users_path(id: vote.user.id) %></td>
+          <td><%= vote.created_at.to_s %></td>
+        </tr>
+      <% end %>
+  </table>
+<% end %>

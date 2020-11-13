@@ -1,9 +1,6 @@
 require "test_helper"
 
 describe Work do
-  # what do you do with there's not 10 things in the database
-  # check the order of works to test top 10
-  # self.books, and self.
   describe "self.by_category(category)" do
 
     it "returns list with correct number of works of specific category saved" do

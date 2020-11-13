@@ -13,6 +13,10 @@ class UsersController < ApplicationController
     flash.now[:notice] = "Uh oh! That did not save correctly. Please try again."
   end
 
+  def authentication_notice
+    flash[:notice] = 'Please log in to perform this action'
+  end
+
   #########################################################
 
   # Custom actions
@@ -44,14 +48,24 @@ class UsersController < ApplicationController
 
   def logout
     if session[:user_id]
-      user = User.find_by(id: session[:user_id])
+      user = User.get_session_user(session[:user_id])
       user ? flash[:success] = 'Successfully logged out' : flash[:notice] = 'Error: unknown user'
       session[:user_id] = nil
     else
-      flash[:notice] = "Must be logged in first to log out"
+      authentication_notice
     end
 
     redirect_to root_path
+  end
+
+  def current
+    user = User.get_session_user(session[:user_id])
+
+    unless user
+      authentication_notice
+      redirect_to root_path
+      return
+    end
   end
 
   private

@@ -1,0 +1,23 @@
+working_media:
+  category: book
+  title: The Cat In the Hat
+  creator: Dr. Seuss
+  publication_year: 1999
+  description: Super cute children's book
+#working_album:
+#  category: album
+#  title: The Sound of Music
+#  creator: Richard Rogers
+#  Publication Year: 1959
+#  Description: Do a deer a female deer
+#working_movie:
+#  category: movie
+#  title: The Princess Diaries
+#  creator: Disney
+#  Publication Year: 2002
+#  Description: Mia!
+bad_media:
+  category: movie
+  creator: Disney
+  publication_year: 2020
+  description: BAAAAAD.

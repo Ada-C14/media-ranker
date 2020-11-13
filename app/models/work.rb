@@ -16,7 +16,6 @@ class Work < ApplicationRecord
   end
 
   def self.select_top_ten(media)
-    media = media[0..-2]
     works = self.where(category: media)
     if works.length > 0 
       spotlight_votes = works.max_by{|work| work.votes.length}.votes.length

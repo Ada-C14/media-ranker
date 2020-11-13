@@ -18,13 +18,13 @@
   <hr class="root__hr">
 
   <section class="top-ten__container">
-      <% top_movies = Work.select_top_ten("movies") %>
-      <%= render partial: "table", locals: {category: "movies", top_works: top_movies} %>
+      <% top_movies = Work.select_top_ten("movie") %>
+      <%= render partial: "table", locals: {category: "Movies", top_works: top_movies} %>
 
-      <% top_books = Work.select_top_ten("books") %>
-      <%= render partial: "table", locals: {category: "books", top_works: top_books} %>
+      <% top_books = Work.select_top_ten("book") %>
+      <%= render partial: "table", locals: {category: "Books", top_works: top_books} %>
 
-      <% top_albums = Work.select_top_ten("albums") %>
-      <%= render partial: "table", locals: {category: "albums", top_works: top_albums} %>
+      <% top_albums = Work.select_top_ten("album") %>
+      <%= render partial: "table", locals: {category: "Albums", top_works: top_albums} %>
   </section>
 </main>

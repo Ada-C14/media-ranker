@@ -1,6 +1,39 @@
 require "test_helper"
 
 describe Work do
+  describe "validations" do
+    let(:work) {
+      Work.new(title: "Sample Work")
+    }
+
+    it "is valid when all fields are present" do
+      result = work.valid?
+
+      expect(result).must_equal true
+    end
+
+    it "is invalid without a title" do
+      work.title = nil
+
+      result = work.valid?
+
+      expect(result).must_equal false
+      expect(work.errors.messages).must_include :title
+      expect(work.errors.messages[:title]).must_include "can't be blank"
+    end
+
+    it "is invalid if title already exists" do
+      unique_work = Work.create!(title: "Unique Work")
+      work.title = unique_work.title
+
+      result = work.valid?
+
+      expect(result).must_equal false
+      expect(work.errors.messages).must_include :title
+      expect(work.errors.messages[:title]).must_include "has already been taken"
+    end
+  end
+
   describe "self.by_category(category)" do
 
     it "returns list with correct number of works of specific category saved" do

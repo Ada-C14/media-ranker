@@ -10,24 +10,35 @@
   </head>
 
   <body>
-    <% if @user.errors.any? || flash.any? %>
+    <% if flash.any? %>
       <section class="alert_container">
         <div class="alert alert-warning">
 
-        <% flash.each do |name, message| %>
-          <span class="<%= name %>" >
-            <%= message %>
-          </span>
-        <% end %>
-
-        <ul>
-          <% @user.errors.each do |column, message| %>
-            <li>
-              <%= column %>: <%= message %>
-            </li>
+          <% flash.each do |name, message| %>
+            <span class="<%= name %>" >
+              <%= message %>
+            </span>
           <% end %>
-        </ul>
 
+          <ul>
+            <% if (@user && @user.errors.any?) %>
+              <% @user.errors.each do |column, message| %>
+                <li>
+                  <%= column %>: <%= message %>
+                </li>
+              <% end %>
+            <% end %>
+          </ul>
+
+          <ul>
+            <% if (@work && @work.errors.any?) %>
+              <% @work.errors.each do |column, message| %>
+                <li>
+                  <%= column %>: <%= message %>
+                </li>
+              <% end %>
+            <% end %>
+          </ul>
         </div>
       </section>
     <% end %>

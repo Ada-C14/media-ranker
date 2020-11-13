@@ -10,6 +10,23 @@
   </head>
 
   <body>
+  <header>
+    <h1>Media Ranker</h1>
+    <small>Ranking the Best of Everything</small>
+    <nav>
+      <ul>
+        <li><%= link_to "View top media", root_path%></li>
+        <li><%= link_to "View all media", works_path%></li>
+        <li><%= link_to "Add a new work", new_work_path%></li>
+<!--        <li><%#= link_to "View all users", users_path %></li>-->
+      </ul>
+      <ul>
+        <li>
+          <a href="/login"><button type="button">Log in</button></a>
+        </li>
+      </ul>
+    </nav>
+  </header>
 
   <section class="flash-msg__section">
     <% flash.each do |name, message| %>

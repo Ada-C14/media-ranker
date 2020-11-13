@@ -2,7 +2,7 @@
   <% if @media_spotlight %>
   <h2 class="spotlight__header">
     <span class="spotlight__header--prefix">Media Spotlight</span>
-    <%= link_to @media_spotlight.title, works_path(@media_spotlight.id), class:
+    <%= link_to @media_spotlight.title, work_path(@media_spotlight), class:
         "spotlight__link-to" %> by <%= @media_spotlight.creator %>
   </h2>
   <p class="spotlight__description">
@@ -24,7 +24,7 @@
         <% @works_hash[category].each do |work| %>
         <li class="list-group-item">
           <h4>
-            <%= link_to work.title, works_path(work.id) %>
+            <%= link_to work.title, work_path(work) %>
             <small class="top-ten__creator">by <%= work.creator %></small>
           </h4>
         </li>

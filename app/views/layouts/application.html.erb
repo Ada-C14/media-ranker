@@ -21,9 +21,12 @@
 <!--        <li><%#= link_to "View all users", users_path %></li>-->
       </ul>
       <ul>
-        <li>
-          <a href="/login"><button type="button" class="btn btn-info">Log in</button></a>
-        </li>
+        <% if session[:user_id] %>
+<!--          it's a link not a button!-->
+        <li><%= link_to "Logout", logout_path, method: :post %></li>
+          <% else %>
+        <li><a href="/login"><button type="button" class="btn btn-info">Log in</button></a></li>
+          <% end %>
       </ul>
     </nav>
   </header>

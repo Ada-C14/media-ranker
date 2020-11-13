@@ -10,28 +10,26 @@
   </head>
 
   <body>
-  <header class="app-header">
+  <header class="app-header__header">
       <h1>
         <%= link_to "Media Ranker", root_path %><small> Ranking the Best of Everything</small>
       </h1>
-      <nav class="app-header-nav">
-        <ul class="nav app-header-sites">
-          <li class="nav app-header-site-item"><%= link_to "View top media", root_path %></li>
-          <li class="nav app-header-site-item"><%= link_to "View all media", works_path %></li>
-          <li class="nav app-header-site-item"><%= link_to "Add a new work", new_work_path %></li>
-          <li class="nav app-header-site-item"><%= link_to "View all users", users_path %></li>
+      <nav class="app-header__nav">
+        <ul class="nav app-header__site-nav-container">
+          <li class="nav-item app-header__nav_item"><%= link_to "View top media", root_path, class: "nav-link" %></li>
+          <li class="nav-item app-header__nav_item"><%= link_to "View all media", works_path, class: "nav-link" %></li>
+          <li class="nav-item app-header__nav_item"><%= link_to "Add a new work", new_work_path, class: "nav-link" %></li>
+          <li class="nav-item app-header__nav_item"><%= link_to "View all users", users_path, class: "nav-link" %></li>
         </ul>
 
-        <ul class="nav app-header-user">
+        <ul class="nav app-header__user-nav-container">
           <% if session[:user_id] %>
-            <%# is the below too much logic for a view? %>
             <% user = User.find(session[:user_id]) %>
-            <li class="nav app-header-user-item"><%= button_to "Logged in as #{user.name}", user_path(user.id), method: :get %></li>
-            <li class="nav app-header-user-item"><%= button_to "Logout", logout_path%></li>
+            <li class="nav-item app-header__nav_item"><%= button_to "Logged in as #{user.name}", user_path(user.id), method: :get, class: "btn btn-primary" %></li>
+            <li class="nav-item app-header__nav_item"><%= button_to "Logout", logout_path, class: "btn btn-primary" %></li>
           <% else %>  
-            <li class="nav app-header-user-item"><%= button_to "Login", login_path, method: :get%></li>
+            <li class="nav-item app-header__nav_item"><%= button_to "Login", login_path, method: :get, class: "btn btn-primary" %></li>
           <% end %>
-          <%# if logged in, need to be able to login/go to show page for user %>
           
         </ul>
         

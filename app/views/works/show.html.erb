@@ -3,6 +3,9 @@
 <p>Created by: <%= @work.creator %></p>
 <p>Published: <%= @work.publication_year %></p>
 
-<%= link_to "See all rankings", root_path %>
-<%= link_to "Edit this work", edit_work_path(@work) %>
-<%= link_to "Delete this work", work_path(@work), method: :delete %>
+<%= link_to "Back to media ranks", root_path %>
+<%= link_to "Edit", edit_work_path(@work) %>
+<%= button_to "Upvote", { action: "upvote", :controller => "works" }, method: :post %>
+<%= link_to "Delete", work_path(@work), method: :delete %>
+
+<h4><%= @work.votes.count %> Votes for this <%= @work.category %></h4>

@@ -69,6 +69,25 @@ class WorksController < ApplicationController
     end
   end
 
+  def upvote
+    @work = Work.find_by(id: params[:id])
+    user_id = session[:user_id]
+
+    @vote = @work.upvote(user_id)
+
+    if @vote.save
+      flash[:success] = "Thank you, your vote has been tallied!"
+    else
+      flash.now[:error] = "Sorry, something went wrong"
+    end
+
+    redirect_back fallback_location: root_path and return
+
+    # route this to the vote model upvote method
+    # to handle all of the business logic
+    # passing in the params[:id] as an argument?
+  end
+
   private
 
   def works_params

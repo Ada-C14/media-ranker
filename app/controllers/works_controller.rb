@@ -13,6 +13,11 @@ class WorksController < ApplicationController
   def saved_notice
     flash[:success] = "Media added successfully"
   end
+
+  def work_params
+    return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+  end
+
   #########################################################
 
   def index
@@ -49,7 +54,31 @@ class WorksController < ApplicationController
     end
   end
 
-  def work_params
-    return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+  def edit
+    work_id = params[:id].to_i
+    @work = Work.find_by_id(id: work_id)
+
+    if @work.nil?
+      not_found_error_notice
+      return
+    end
   end
+
+  def update
+    @work = Work.find_by(id: params[:id])
+
+    if @work.nil?
+      not_found_error_notice
+      return
+    elsif
+      @work.update(work_params)
+      redirect_to work_path
+      return
+    else
+      not_saved_error_notice
+      render edit
+      return
+    end
+  end
+
 end

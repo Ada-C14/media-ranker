@@ -67,12 +67,20 @@ describe Work do
 
       # correctly does not pull movies when handed book category
       expect(Work.by_category("book")).wont_include @spacejam
+
+      # displays a message if no works exist
+      Work.destroy_all
+      expect(Work.by_category("book")).must_be_kind_of String
     end
 
     it "self.media_spotlight pulls a random work to spotlight" do #TODO: update for wave 2+
 
-    expect(Work.media_spotlight).must_be_instance_of Work
+      # positive nominal
+      expect(Work.media_spotlight).must_be_instance_of Work
 
+      # displays a message if no works exist
+      Work.destroy_all
+      expect(Work.by_category("book")).must_be_kind_of String
     end
 
     it "self.top_ten pulls up to ten works" do #TODO: update for wave 2+
@@ -85,6 +93,9 @@ describe Work do
     all_books = Work.all.find_all { |work| work.category == "book" }
     expect(Work.top_ten("book").count).must_equal all_books.length
 
+    # displays a message if no works exist
+    Work.destroy_all
+    expect(Work.by_category("book")).must_be_kind_of String
     end
   end
 end

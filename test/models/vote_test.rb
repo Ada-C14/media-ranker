@@ -7,6 +7,10 @@ describe Vote do
     @vote = Vote.create!(user_id: @user.id, work_id: @work.id)
   end
 
+  let (:hard_coded_time){
+    Time.parse("2008-06-21 13:30:00 UTC")
+    }
+
   describe "instantiation" do
     it "can be instantiated" do
       expect(@vote.valid?).must_equal true
@@ -35,4 +39,13 @@ describe Vote do
       expect(result.valid?).must_equal false
     end
   end
+
+  describe "format time" do
+
+    it "can format time" do
+      @vote.created_at = hard_coded_time
+      expect(@vote.format_time).must_equal "Jun 21, 2008"
+    end
+  end
+
 end

@@ -21,11 +21,27 @@
             <%= link_to "View all users", users_path %>
           </div>  
           <div>
-            <p>Logged in as Someone</p>
-            <p><%= button_to "Log In", new_user_path %>/Log Out</p>
+
+          <li><%= link_to "Log In", login_path %></li>
+          <li><%= link_to "Log Out", logout_path, method: :post %></li>
+          <li><%= link_to "Current User", current_user_path %></li>
+            <% if @current_user %>
+              <%= link_to "Logged in as #{ @user.username }", user_path(@user) %>
+              <%= link_to "Log Out", logout_path, method: :post %>
+            <% else %>
+              <%= link_to "Log In", login_path %>  
+            <% end %>
           </div>
         </nav>
       </header>
+      <section class="flash-msg__section">
+        <% flash.each do |name, message| %>
+          <strong class="<%= name %>">
+            <%= message %>
+          </strong>
+        <% end %>
+      </section>
+
 
       <%= yield %>
       

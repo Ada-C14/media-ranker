@@ -16,21 +16,15 @@
   </section>
 
   <hr class="root__hr">
+
   <section class="top-ten__container">
-    <section class="top-ten__list-container">
       <% top_movies = Work.select_top_ten("movies") %>
       <%= render partial: "table", locals: {category: "movies", top_works: top_movies} %>
-    </section>
 
-    <section class="top-ten__list-container">
       <% top_books = Work.select_top_ten("books") %>
       <%= render partial: "table", locals: {category: "books", top_works: top_books} %>
-    </section>
 
-    <section class="top-ten__list-container">
       <% top_albums = Work.select_top_ten("albums") %>
       <%= render partial: "table", locals: {category: "albums", top_works: top_albums} %>
-    </section>
-
   </section>
 </main>

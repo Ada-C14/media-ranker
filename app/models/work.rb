@@ -6,6 +6,12 @@ class Work < ApplicationRecord
   validates :publication_year, numericality: { only_integer: true, allow_nil: true,
                                                allow_blank: true}
 
+
+  def self.categories
+    # Class method to get acceptable categories
+    ['album', 'movie', 'book']
+  end
+
   def self.top_ten(category)
     return Work.where(category: category).sample(10)
   end

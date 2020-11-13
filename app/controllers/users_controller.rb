@@ -1,4 +1,14 @@
 class UsersController < ApplicationController
+
+  def show
+    @user = User.find_by(id: params[:user][:username])
+
+    if @user.nil?
+      head :not_found
+      return
+    end
+  end
+
   def login_form
     @user = User.new
   end
@@ -25,7 +35,6 @@ class UsersController < ApplicationController
     flash[:success] = "Succesfully logged out"
     redirect_to root_path
     return
-
   end
 
 

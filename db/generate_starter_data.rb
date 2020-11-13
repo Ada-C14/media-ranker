@@ -22,3 +22,12 @@ CSV.open("db/works-seeds.csv", "w", :write_headers => true,
     csv << [category, title, creator, publication_year, description]
   end
 end
+
+CSV.open("db/users-seeds.csv", "w", :write_headers => true,
+        :headers => ["name"]) do |csv|
+  25.times do
+    name = Faker::Games::Minecraft.unique.mob
+
+    csv << [name]
+  end
+end

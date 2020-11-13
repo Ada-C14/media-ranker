@@ -30,11 +30,37 @@ class WorksController < ApplicationController
       redirect_to work_path(@work.id)
       return
     else
-      flash[:error] = "Something went wrong. Failed to save work"
+      flash.now[:error] = "Something went wrong. Failed to save work"
       render :new, status: :bad_request
     end
   end
+  
+  def edit
+    @work = Work.find_by(id: params[:id])
+    
+    if @work.nil?
+      redirect_to works_path
+      return
+    end
+  end
 
+  def update
+    @work = Work.find_by(id: params[:id])
+
+    if @work.nil?
+      head :not_found
+      return
+    elsif @work.update(work_params)
+      flash[:success] = "Work ID #{@work.id} updated successfully"
+      redirect_to work_path(@work.id)
+      return
+    else
+      flash.now[:error] = "Work failed to update"
+      render :edit, status: :bad_request
+      return
+    end
+  end
+  
   private
 
   def work_params

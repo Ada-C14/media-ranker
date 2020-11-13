@@ -1,6 +1,6 @@
 require "test_helper"
 
-describe "Work" do
+describe Work do
   describe "validations" do
     it "validates that it has a title" do
       media = Work.first
@@ -28,24 +28,26 @@ describe "Work" do
   #   end
   # end
 
-  describe "spotlight" do
-    it "selects a media to spotlight" do
-      spotlight = Work.select_spotlight
-      # binding.pry
-      expect(spotlight.title).must_equal "Joe Treat"
-    end
-  end
+  # describe "spotlight" do
+  #   it "selects a media to spotlight" do
+  #     spotlight = Work.select_spotlight
+  #
+  #     expect(spotlight.title).must_equal works.title
+  #   end
+  # end
 
   describe "top ten media" do
     it "can select top ten" do
       top_ten = Work.top_ten("book")
-      # binding.pry
+
       expect(top_ten.count).must_equal 10
     end
 
-    # it "redirects if there's 0 media available for top ten" do
-    #   test movie (0 in test db)
-    # end
+    it "redirects if there's 0 media available for top ten" do
+      top_ten = Work.top_ten("movie")
+
+      expect(top_ten.count).must_equal 0
+    end
     #
     # it "redirects if there's less than ten top works" do
     #   test albums (less than 10)

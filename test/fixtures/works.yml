@@ -70,3 +70,9 @@ mug:
   creator: Orpha Douglas
   publication_year: 2009
   description: Qui voluptas alias quia
+book:
+  category: book
+  title: Test Book
+  creator: Rubber Duck
+  publication_year: 2020
+  description: Quack quack

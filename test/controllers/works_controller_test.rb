@@ -39,7 +39,7 @@ describe WorksController do
 
     end
 
-    it "responds with 404 with an invalid passenger id" do
+    it "responds with 404 with an invalid user id" do
       # Act
       get work_path(-1)
       # Assert
@@ -153,7 +153,7 @@ describe WorksController do
 
     end
 
-    it "does not update passenger if the form data violates Passenger validations, and responds by rendering form with errors listed" do
+    it "does not update work if the form data violates Work validations, and responds by rendering form with errors listed" do
       # Arrange
       id = Work.find_by(title:"cars vhs")[:id]
       work = Work.find_by(id: id)
@@ -216,7 +216,7 @@ describe WorksController do
       expect(user.votes.count).must_equal 0
     end
 
-    it "does not change the db when the passenger does not exist, then responds with 404" do
+    it "does not change the db when the work does not exist, then responds with 404" do
       # Act
       expect {
         delete work_path(-1)

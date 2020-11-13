@@ -4,8 +4,27 @@
 <h6>Description: <%= @work.description %></h6>
 
 <div>
-<%#= link_to "Back to media ranks", root_path %>
-  <button><%= link_to "Edit", edit_work_path(@work) %></button>
-<%#= link_to "Upvote", work_path(@work) %>
-  <button><%= link_to "Delete", work_path(@work), method: :delete, data: {confirm: "Are you sure?"}%></button>
+  <%= link_to "Back to media ranks", root_path, class: "btn btn-primary" %>
+  <%= link_to "Edit", edit_work_path(@work), class: "btn btn-primary" %>
+  <%= link_to "Upvote", work_votes_path(@work), method: :post, class: "btn btn-primary" %>
+  <%= link_to "Delete", work_path(@work), method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure?"}%>
 </div>
+
+<%= @work.votes.count %> Votes for this <%= @work.category.capitalize %>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>User</th>
+    <th>Date</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @work.votes.each do |vote| %>
+    <tr>
+      <td> <%= link_to vote.user.username, user_path(vote.user.id) %> </td>
+      <td> <%= vote.created_at.strftime("%b %d, %Y") %> </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

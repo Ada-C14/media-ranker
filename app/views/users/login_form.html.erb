@@ -1,7 +1,17 @@
+<% if @user.errors.any? %>
+  <p> A problem occurred: Could not log in</p>
+  <ul class="errors">
+    <% @user.errors.each do |column, message| %>
+      <li>
+        <strong><%= column.capitalize %></strong> <%= message %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+<h2>Log In</h2>
 <%= form_with model: @user, class: 'login__form', url: login_path do |f| %>
-  <h1>Log In</h1>
   <%= f.label :username %>
   <%= f.text_field :username %>
 
-  <%= f.submit "Log In", class: "btn btn-info"%>
+  <%= f.submit "Log In", class: "btn btn-primary"%>
 <% end %>

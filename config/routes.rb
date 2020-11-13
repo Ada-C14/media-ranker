@@ -9,8 +9,8 @@ Rails.application.routes.draw do
 
   get '/works/top', to: 'works#top'
 
-  resources :works, only: [:index]
-  resources :users, only: [:index]
+  resources :works
+  resources :users
 
-  root to: 'works#index'
+  root to: 'homepages#index'
 end

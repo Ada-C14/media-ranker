@@ -4,9 +4,10 @@
   <section class="spotlight">
     <h2 class="spotlight__header">
       <span class="spotlight__header--prefix">Media Spotlight</span>
-<!--      <%#= link_to Work.model_method.title?, work_path(Work.model_method.id) %> by <%#= Work.model_metho.creator class="spotlight__link-to" %>-->
+      <%= link_to @work.title, work_path(@work.id), class: "spotlight__link-to" %> by <%= @work.creator %>
     </h2>
     <p class="spotlight__description">
+      <%= @work.description%>
 <!--      <%#= Work.model_method.votes?, work_path(Work.model_method.id) %> - <%#= Work.model_method.description class="spotlight__link-to" %>-->
     </p>
   </section>
@@ -19,13 +20,15 @@
         Top Movies
       </h2>
       <ul class="list-group top-ten__list">
-        <li class="list-group-item">
-          <h4>
-            <%#= link_to 'Movie Name', work_path(@work.id), class: "nav-link" %>
-<!--            <small class="top-ten__creator">by Alvin and the Chipmunks</small>-->
-          </h4>
-<!--          <p>9 votes</p>-->
-        </li>
+        <% @movies.each do |work| %>
+          <li class="list-group-item">
+            <h4>
+              <%= link_to work.title, work_path(work.id) %>
+              <small class="top-ten__creator">by <%= work.creator %></small>
+            </h4>
+            <p><%# work.votes method? %></p>
+          </li>
+        <% end %>
       </ul>
       <!-- <a href="/works.movies">View More Movies</a> -->
     </section>
@@ -35,14 +38,15 @@
         Top Books
       </h2>
       <ul class="list-group top-ten__list">
-        <li class="list-group-item">
-          <h4>
-<!--            <a href="/works/790">Chipmunks in Low Places</a>-->
-<!--            <small class="top-ten__creator">by Alvin and the Chipmunks</small>-->
-          </h4>
-<!--          <p>9 votes</p>-->
-        </li>
-      </ul>
+        <% @books.each do |work| %>
+          <li class="list-group-item">
+            <h4>
+              <%= link_to work.title, work_path(work.id) %>
+              <small class="top-ten__creator">by <%= work.creator %></small>
+            </h4>
+            <p><%# work.votes method %></p>
+          </li>
+        <% end %>
       <!-- <a href="/works.books">View More Books</a> -->
     </section>
 
@@ -51,13 +55,15 @@
         Top Albums
       </h2>
       <ul class="list-group top-ten__list">
-        <li class="list-group-item">
-          <h4>
-<!--            <a href="/works/790">Chipmunks in Low Places</a>-->
-<!--            <small class="top-ten__creator">by Alvin and the Chipmunks</small>-->
-          </h4>
-<!--          <p>9 votes</p>-->
-        </li>
+        <% @albums.each do |work| %>
+          <li class="list-group-item">
+            <h4>
+              <%= link_to work.title, work_path(work.id) %>
+              <small class="top-ten__creator">by <%= work.creator %></small>
+            </h4>
+            <p><%# work.votes method %></p>
+          </li>
+        <% end %>
       </ul>
       <!-- <a href="/works.albums">View More Albums</a> -->
     </section>

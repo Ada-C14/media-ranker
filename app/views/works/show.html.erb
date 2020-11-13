@@ -11,12 +11,12 @@
       <%= @work.description%>
     </p>
 
-    <section>
+    <seroction>
       <%= link_to "Back to media ranks", root_path, class: "btn btn-primary" %>
       <%= link_to "Edit", edit_work_path, class: "btn btn-primary" %>
       <%#= link_to "Upvote", some vote path , method: :post, class: "btn btn-primary" %>
       <%= link_to "Delete", work_path(@work.id), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
-    </section>
+    </seroction>
   </section>
 
 

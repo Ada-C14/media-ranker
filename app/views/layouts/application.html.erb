@@ -15,8 +15,11 @@
         <%= link_to "View all media", works_path %>  --
         <%= link_to "Add a new work", new_work_path %>  --
         <%= link_to "View all users", users_path %>  --
-        <%= link_to "Temp Add User", new_user_path %>  --
-        <%#= button_to "Log In", login_user_path, method: :patch %>
+        <% if session[:user_id] == nil %>
+          <%= button_to "Log In", login_path, method: :get, form: {style: 'display:inline-block;'} %>
+        <% elsif session[:user_id] != nil %>
+          <%= button_to "Log Out", logout_path, method: :post, form: {style: 'display:inline-block;'} %>
+        <% end %>
       </nav>
       <hr>
       <section class="flash">

@@ -3,10 +3,12 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def action_success_check(action, redirect_path, destination_view: :show)
+  def action_success_check(action, redirect_path, destination_view: :show, success_msg: "Action Successful", error_msg: "Error - input invalid")
     if action
+      flash[:success] = success_msg
       redirect_to redirect_path
     else
+      flash.now[:error] = error_msg
       render destination_view, status: :bad_request
     end
   end
@@ -15,3 +17,5 @@ class ApplicationController < ActionController::Base
     @current_user = User.find_by(id: session[:user_id])
   end
 end
+
+

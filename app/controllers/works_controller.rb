@@ -58,7 +58,8 @@ class WorksController < ApplicationController
       return
     else
       @work.destroy
-      redirect_to work_path
+      flash[:success] = "Successfully destroyed #{@work.category} #{@work.id}"
+      redirect_to homepage_path
       return
     end
   end

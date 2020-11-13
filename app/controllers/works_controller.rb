@@ -35,7 +35,7 @@ class WorksController < ApplicationController
       redirect_to work_path(@work.id)
       return
     else
-      flash[:error] = "Unable to add media!"
+      flash.now[:error] = "Unable to add media!"
       render :new, status: bad_request
       return
     end

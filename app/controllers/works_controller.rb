@@ -1,11 +1,6 @@
 class WorksController < ApplicationController
   def index
-    @books = Work.where(category: 'book').sort_by{|work| -work.votes.count}
-    @movies = Work.where(category: 'movie').sort_by{|work| -work.votes.count}
-    @albums = Work.where(category: 'album').sort_by{|work| -work.votes.count}
-    @work_hash = {albums: @albums,
-                  books: @books,
-                  movies: @movies}
+    @work_hash = Hash[Work.work_hash.sort]
   end
 
   def show

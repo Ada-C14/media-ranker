@@ -21,7 +21,7 @@
         <h2 class="top-ten__header">
           Top <%= category.capitalize %>
         </h2>
-        <%= render partial: 'table', locals: { works: list } %>
+        <%= render partial: 'table', locals: { works: list.first(10) } %>
         <!-- <a href="/works.movies">View More Movies</a> -->
       </section>
     <% end %>

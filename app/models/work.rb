@@ -6,4 +6,16 @@ class Work < ApplicationRecord
   # validations
   validates :category, inclusion: { in: %w[book movie album], message: 'must be book, movie, or album'}
   validates :title, presence: true, uniqueness: {scope: :category, message: 'has already been taken'}
+
+  def self.sort_cat(category)
+    return Work.where(category: category).sort_by{ |work| [-work.votes.count, work.title.downcase] }
+  end
+
+  def self.spotlight
+    return Work.all.sort_by{ |work| [-work.votes.count, work.title.downcase] }.first
+  end
+
+  def self.work_hash
+    return { movies: Work.sort_cat('movie'), books: Work.sort_cat('book'), albums: Work.sort_cat('album')}
+  end
 end

@@ -1,6 +1,36 @@
-love:
+work_1:
+  category: album
   title: Bigger Love
   creator: John Legend
-  category: album
   publication_year: 2020
-  description: Check out the full article here where John discusses all things Bigger Love and the big business moves he’s been making this year
+  description: Check out the full article here where John discusses all things Bigger Love and the big business moves he’s been making this year.
+work_2:
+  category: movie
+  title: Dark Waters
+  creator: Todd Haynes
+  publication_year: 2019
+  description: A tenacious attorney uncovers a dark secret that connects a growing number of unexplained deaths to one of the world's largest corporations. .
+work_3:
+  category: movie
+  title: Serenity
+  creator: Steven Knight
+  publication_year: 2019
+  description: Baker Dill is a fishing boat captain who leads tours off of the tranquil enclave of Plymouth Island.
+work_4:
+  category: book
+  title: Good to Great
+  creator: Jim Collins
+  publication_year: 2016
+  description: Why Some Companies Make the Leap...And Others Don't.
+work_5:
+  category: album
+  title: Major Cup
+  creator: Jayde Bartoletti
+  publication_year: 1944
+  description: Quis recusandae cum est facere consequatur minima magni et.
+work_6:
+  category: book
+  title: Think Big, Act Small
+  creator: Jason Jennings
+  publication_year: 2016
+  description: How America's Best Performing Companies Keep the Start-up Spirit Alive

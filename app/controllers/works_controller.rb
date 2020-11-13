@@ -70,6 +70,23 @@ class WorksController < ApplicationController
     return
   end
 
+  def upvote
+    @work = Work.find_by(id: params[:id])
+    if @work.nil? 
+      render :file => "#{Rails.root}/public/404.html",  layout: false, status: :not_found
+      return
+    elsif @work.votes.find_by(user_id: current_user.id)  
+      flash[:error] = "A problem occurred: Could not upvote"
+      redirect_to work_path(@work.id) 
+      return
+    else
+      @work.votes.create(user_id: current_user.id, work_id: @work.id, data: Time.now.strftime("%b %d, %Y"))
+      flash[:success] = "Successfully upvoted!"
+      redirect_to work_path(@work.id) 
+      return
+    end
+  end
+
   private
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)

@@ -4,6 +4,7 @@ class Vote < ApplicationRecord
 
   validates :work_id, uniqueness: {scope: :user_id}
 
+  # alternative
   # def voted?
   #   self.work.votes.each do |vote|
   #     return true if vote.user_id == self.user.id

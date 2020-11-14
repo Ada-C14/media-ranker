@@ -1,0 +1,31 @@
+#5 votes for work1, 4 votes for work2, 1 votes for work3
+vote1:
+  user: user1
+  work: work1
+vote2:
+  user: user2
+  work: work1
+vote3:
+  user: user3
+  work: work1
+vote4:
+  user: user4
+  work: work1
+vote5:
+  user: user5
+  work: work1
+vote6:
+  user: user1
+  work: work2
+vote7:
+  user: user2
+  work: work2
+vote8:
+  user: user3
+  work: work2
+vote9:
+  user: user4
+  work: work2
+vote10:
+  user: user5
+  work: work3

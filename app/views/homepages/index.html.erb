@@ -1,0 +1,37 @@
+<main>
+<section class="spotlight">
+  <h2 class="spotlight__header">
+    <span class="spotlight__header--prefix">Media Spotlight:</span>
+    <% unless Work.spotlight.nil?  %>
+      <%= link_to Work.spotlight.title, work_path(Work.spotlight.id), class: "spotlight__link-to" %> by <%= Work.spotlight.creator %>
+      </h2>
+      <p class="spotlight__description">
+        <%= Work.spotlight.votes.count %> votes - <%= Work.spotlight.description %>
+      </p>
+    <% end  %>
+</section>
+
+  <hr class="root__hr">
+  <section class="top-ten__container">
+    <% hash = { "movie" => "Top Movies", "album" => "Top Albums", "book" => "Top Books" } %>
+    <% ["movie", "book", "album"].each do |category| %>
+      <% works = Work.top_ten(category) %>
+
+      <section class="top-ten__list-container">
+      <h2 class="top-ten__header">
+          <%= hash[category] %></h2>
+        <ul class="list-group top-ten__list">
+          <% works.each do |work| %>
+            <li class="list-group-item">
+          <h4><%= link_to work.title, work_path(work.id) %>
+            <small class="top-ten__creator">by <%= work.creator %> </small>
+          </h4>
+              <p><%= work.votes.count%> votes</p>
+            </li>
+          <% end %>
+        </ul>
+    </section>
+    <% end %>
+  </section>
+
+</main>

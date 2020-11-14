@@ -1,0 +1,21 @@
+<main>
+  <h2>User Summary: <%= @user.username %></h2>
+  <p>Joined site <%= @user.created_at.strftime("%B %-d, %Y") %></p>
+  <section class="votes">
+    <h3 class="votes-header">Votes</h3>
+    <table>
+      <thead>
+      <th>Media Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+      <th>Category</th>
+      <th>Voted On</th>
+      </thead>
+      <tbody>
+
+      </tbody>
+    </table>
+  </section>
+  <%= link_to "See all Users", users_path, class: "button btn-secondary" %>
+  <%= link_to "Back to Media List", works_path, class: "button" %>
+</main>

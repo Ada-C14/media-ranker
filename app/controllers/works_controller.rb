@@ -25,9 +25,10 @@ class WorksController < ApplicationController
       redirect_to work_path(@work)
       return
     else
-      flash.now[:error] = "something happend, #{@work.category} not added!"
+      @work.errors.each do |column, message|
+        flash.now[:error] = "A problem occurred: Could not#{action_name} #{@work.category} #{column}: #{message}!"
+      end
       render :new, status: :bad_request
-      return
     end
   end
 

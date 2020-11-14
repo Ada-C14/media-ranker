@@ -53,18 +53,19 @@
           </ul>
 
           <ul>
-            <% if session[:vote_error] %>
-              <% session[:vote_error].each do |column, message| %>
+            <% if session[:error] %>
+              <% session[:error].each do |column, message| %>
                 <li>
                   <%= column %>: <%= message.first %>
                 </li>
               <% end %>
+              <% session[:error] = nil %>
             <% end %>
           </ul>
         </div>
       </section>
     <% end %>
-    <%# raise %>
+
 
 
 

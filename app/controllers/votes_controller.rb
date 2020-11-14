@@ -16,7 +16,7 @@ class VotesController < ApplicationController
           return
         else
           flash[:error] = "A problem occurred: Could not upvote"
-          session[:vote_error] = @vote.errors
+          session[:error] = @vote.errors
           redirect_back(fallback_location: root_path)
           end
 

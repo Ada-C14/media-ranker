@@ -26,8 +26,12 @@
           <%=  link_to "View all users", users_path, class: "nav-link" %>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-          <%= link_to "Login", login_path, class: "btn btn-info my-2 my-sm-0 login-btn", id:"login", type:"submit" %>
-        </form>
+        <% if session[:user_id] %>
+          <%= link_to "Logout", logout_path, class: "btn btn-info my-2 my-sm-0", id:"logout", method: "post" %>
+            <% else %>
+            <%= link_to "Login", login_path, class: "btn btn-info my-2 my-sm-0 login-btn", id:"login", type:"submit" %>
+        <% end %>
+            </form>
       </div>
     </nav>
   </header>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_12_002436) do
+ActiveRecord::Schema.define(version: 2020_11_14_002125) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2020_11_12_002436) do
     t.string "category"
     t.string "title"
     t.string "creator"
-    t.float "publication_year"
+    t.integer "publication_year"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

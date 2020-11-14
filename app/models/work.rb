@@ -10,7 +10,9 @@ class Work < ApplicationRecord
     works.max_by { |work| work.votes.count }
   end
 
-  def self.top_works(media)
+  def self.top_ten(media)
+    return nil  if self.nil?
+
     all_results = Work.where(media: media.to_s)
     unless all_results == []
       return all_results.max_by(10) { |work| work.votes.count }

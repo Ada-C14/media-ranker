@@ -1,10 +1,10 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  resources :works  #Nested Routes --
-  #   resources :votes, only: [:create,destroy]
+  resources :works   #Nested Routes --
+  #   resources :votes, only: [:create]
   # end
 
-  root :to => "works#homepage" #homepage custon route
+  root :to => "works#homepage" #homepage custom route
 
   get "/login", to: "users#login_form", as: "login"
   post "/login", to: "users#login"
@@ -12,4 +12,6 @@ Rails.application.routes.draw do
 
   #Custom route for upvotes -- votes controller who handles upvoting
   post 'works/vote', to: 'work#upvote', as: 'upvote'
+
+  resources :users, only: [:index, :show]
 end

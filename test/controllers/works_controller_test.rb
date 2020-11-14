@@ -5,7 +5,7 @@ describe WorksController do
   let (:work) {
     Work.create!(title: "Dead Alive",
                 creator: "Peter Jackson",
-                publication_date: Time.new("1980"),
+                publication_date: 1980,
                 description: "Classic splatter-comedy",
                 category: "movie")
   }
@@ -31,7 +31,7 @@ describe WorksController do
           work: {
               title: "DeadAlive",
               creator: "Peter Jackson",
-              publication_date: Time.new("1980"),
+              publication_date: 1980,
               description: "Classic splatter-comedy",
               category: "movie"
           }
@@ -45,7 +45,7 @@ describe WorksController do
       new_work = Work.find_by(title: work_hash[:work][:title])
       expect(new_work.title).must_equal work_hash[:work][:title]
       expect(new_work.creator).must_equal work_hash[:work][:creator]
-      expect(new_work.publication_date.to_time).must_equal work_hash[:work][:publication_date]
+      expect(new_work.publication_date).must_equal work_hash[:work][:publication_date]
       expect(new_work.description).must_equal work_hash[:work][:description]
       expect(new_work.category).must_equal work_hash[:work][:category]
 
@@ -92,7 +92,7 @@ describe WorksController do
     before do
       Work.create!(title: "Dead Alive",
                    creator: "Peter Jackson",
-                   publication_date: Time.new("1980"),
+                   publication_date: 1980,
                    description: "Classic splatter-comedy",
                    category: "movie")
     end
@@ -102,7 +102,7 @@ describe WorksController do
           work: {
               title: "Mulholland Dr",
               creator: "David Lynch",
-              publication_date: Time.new("2001"),
+              publication_date: 2001,
               description: "Cult surreal noir. Half dream.",
               category: "movie"
           }
@@ -121,7 +121,7 @@ describe WorksController do
       test_work = Work.find_by(id: id)
       expect(test_work.title).must_equal work_hash[:work][:title]
       expect(test_work.creator).must_equal work_hash[:work][:creator]
-      expect(test_work.publication_date.to_time).must_equal work_hash[:work][:publication_date]
+      expect(test_work.publication_date).must_equal work_hash[:work][:publication_date]
       expect(test_work.description).must_equal work_hash[:work][:description]
       expect(test_work.category).must_equal work_hash[:work][:category]
 
@@ -139,7 +139,7 @@ describe WorksController do
     before do
       Work.create!(title: "Dead Alive",
                    creator: "Peter Jackson",
-                   publication_date: Time.new("1980"),
+                   publication_date: 1980,
                    description: "Classic splatter-comedy",
                    category: "movie")
     end

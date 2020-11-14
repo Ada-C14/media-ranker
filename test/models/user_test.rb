@@ -16,9 +16,7 @@ describe User do
 
       work = User.find_by(username: "Test user")
 
-      [:username, :join_date].each do |field|
-        expect(work).must_respond_to field
-      end
+      expect(work).must_respond_to :username
     end
   end
 

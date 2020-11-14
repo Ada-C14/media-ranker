@@ -21,6 +21,7 @@ class WorksController < ApplicationController
       return
     else
       flash.now[:error] = "A problem occurred: Could not create #{@work.category}"
+      flash.now[:validation] = @work.errors.messages
       render :new, status: :bad_request
       return
     end
@@ -56,6 +57,7 @@ class WorksController < ApplicationController
       return
     else
       flash.now[:error] = "A problem occurred: Could not update #{@work.category}"
+      flash.now[:validation] = @work.errors.messages
       render :edit, status: :bad_request
       return
     end

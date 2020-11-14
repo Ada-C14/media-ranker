@@ -27,41 +27,21 @@
         <div class="alert alert-warning">
 
           <% flash.each do |name, message| %>
-            <span class="<%= name %>" >
-              <%= message %>
-            </span>
+
+            <% if name == "validation" %>
+              <ul>
+                <% flash[:validation].each do |column, message| %>
+                  <li>
+                    <%= column %>: <%= message.first %>
+                  </li>
+                <% end %>
+              </ul>
+
+            <% else %>
+              <span class="<%= name %>"><%= message %></span>
+            <% end %>
+
           <% end %>
-
-          <ul>
-            <% if (@user && @user.errors.any?) %>
-              <% @user.errors.each do |column, message| %>
-                <li>
-                  <%= column %>: <%= message %>
-                </li>
-              <% end %>
-            <% end %>
-          </ul>
-
-          <ul>
-            <% if (@work && @work.errors.any?) %>
-              <% @work.errors.each do |column, message| %>
-                <li>
-                  <%= column %>: <%= message %>
-                </li>
-              <% end %>
-            <% end %>
-          </ul>
-
-          <ul>
-            <% if session[:error] %>
-              <% session[:error].each do |column, message| %>
-                <li>
-                  <%= column %>: <%= message.first %>
-                </li>
-              <% end %>
-              <% session[:error] = nil %>
-            <% end %>
-          </ul>
         </div>
       </section>
     <% end %>

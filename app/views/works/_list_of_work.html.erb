@@ -14,7 +14,8 @@
 
     <tbody>
       <% if works.count > 0 %>
-        <% works.order_by_votes.each do |work| %>
+
+        <% works.each do |work| %>
           <tr>
             <td><%= work.votes.count %></td>
             <td><%= link_to work.title, work_path(work) %></td>

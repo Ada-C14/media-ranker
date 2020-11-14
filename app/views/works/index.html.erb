@@ -1,2 +1,28 @@
-<h1>Works#index</h1>
-<p>Find me in app/views/works/index.html.erb</p>
+<h1>List of Works</h1>
+ 
+<div>
+<h2>Albums</h2>
+<ul>
+<% albums = @works.select{ |work| work[:category] == "album"} %>
+<% albums.each do |album| %>
+  <li>
+  <%= album[:title] %> <%= album[:creator] %> <%= album[:publication_year] %>
+  </li>
+<% end %>
+
+</ul>
+</div>
+
+<div>
+<h2>Books</h2>
+<ul>
+<% books = @works.select{ |book| book[:category] == "book"} %>
+<% books.each do |book| %>
+  <li>
+  <%= book[:title] %> <%= book[:creator] %> <%= book[:publication_year] %>
+  </li>
+<% end %>
+
+</ul>
+</div>
+

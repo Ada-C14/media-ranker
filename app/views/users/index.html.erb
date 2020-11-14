@@ -2,13 +2,18 @@
 
 <table class="table">
   <tr>
-    <th width="80px">name</th>
+    <th>name</th>
+    <th>number of votes</th>
+
   </tr>
   <tbody>
   <tr>
     <% @users.each do |user| %>
         <td><%= user.username %> </td>
-        </tr>
+        <td><%= user.votes.count %> </td>
+
+
+      </tr>
       <% end %>
     </tbody>
 </table>

@@ -4,7 +4,7 @@
   <p>Created by <%= @work.creator %></p>
   <p>Published <%= @work.publication_year %></p>
   <p><%= @work.description %></p>
-  <p><%= @work.votes.count %></p>
+  <p><strong>Votes: <%= @work.votes.count %></strong></p>
 </section>
 <section>
   <p class="btn btn-primary"><%= link_to "Back to Media Rank", root_path %></p>

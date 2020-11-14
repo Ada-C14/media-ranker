@@ -88,6 +88,7 @@ class WorksController < ApplicationController
     redirect_to works_path
   end
 
+
   private
   
   def work_params

@@ -8,6 +8,8 @@ class WorksController < ApplicationController
     @top_books = @books.top_ten('book')
     @top_albums = @albums.top_ten('album')
     @top_movies = @movies.top_ten('movie')
+    @user = User.find_by(id: session[:user_id])
+    @username = @user.username
   end
 
   def show
@@ -21,6 +23,8 @@ class WorksController < ApplicationController
 
   def new
     @work = Work.new
+    @user = User.find_by(id: session[:user_id])
+    @username = @user.username
   end
 
   def create

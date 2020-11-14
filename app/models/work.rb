@@ -15,5 +15,8 @@ class Work < ApplicationRecord
     return spot
   end
 
+  def self.works_in_category(work_category)
+    Work.where(category: work_category)
+  end
   # Method sorts the votes
 end

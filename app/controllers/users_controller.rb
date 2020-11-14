@@ -49,16 +49,7 @@ class UsersController < ApplicationController
     end
     redirect_to root_path
   end
-  # if @user.nil?
-  #   user = User.new(name: params[:user][:name])
-  #   if ! user.save
-  #     flash[:error] = "Unable to Login"
-  #     redirect_to root_path
-  #   end
-  #   flash[:welcome] = "Welcome #{user.name}"
-  # else
-  #   flash[:welcome] = "Welcome back #{user.name}"
-  # end
+
   def current
     @user = User.find_by(id: session[:user_id])
     unless @user

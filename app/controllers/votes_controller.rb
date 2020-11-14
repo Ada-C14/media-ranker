@@ -3,7 +3,7 @@ class VotesController < ApplicationController
   def upvote
     @user = User.find_by(id: session[:user_id])
     if @user.nil?
-      flash[:error] = "user isnt logged in"
+      flash[:error] = "User isn't logged in"
       redirect_to root_path
       return
     end

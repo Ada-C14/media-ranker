@@ -1,6 +1,5 @@
 <h2><%= @work.title %></h2>
 
-
 <p>Created by: <%= @work.created_by %></p>
 
 <p>Published: <%= @work.published %></p>
@@ -10,6 +9,7 @@
 <section>
 <%= button_to "Back to Media Ranking", root_path, method: :get %>
 <%= button_to "Edit", edit_work_path(@work), method: :get %>
+<%= button_to "Upvote", upvote_path(@work.id), method: :post %>
 <%= button_to "Delete Media", work_path(@work), method: :delete, data: { confirm: "Are you sure"}  %>
 </section>
 

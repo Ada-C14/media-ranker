@@ -47,6 +47,13 @@
       </div>
       <% end %>
     </section>
+
+
+      <% if flash[:success] %>
+        <section class="alert alert-success">
+          <span><%= flash[:success] %></span>
+      <% end %>
+      </section>
       <%= yield %>
   </body>
 </html>

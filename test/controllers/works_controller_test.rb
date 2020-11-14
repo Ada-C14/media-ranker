@@ -117,7 +117,7 @@ describe WorksController do
     work = Work.find_by(id: @work.id)
     expect(work.category).must_equal update_work_hash[:work][:category]
     expect(work.description).must_equal update_work_hash[:work][:description]
-    # expect(flash[:success]).must_equal "Successfully updated #{@work.category} #{@work.id}"
+    expect(flash[:success]).must_equal "Successfully updated #{work.category} #{work.id}"
     end
 
     it "will redirect for invalid work" do

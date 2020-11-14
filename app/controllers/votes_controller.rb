@@ -7,7 +7,7 @@ class VotesController < ApplicationController
     end
 
     @user = User.find_by(id: session[:user_id])
-    work_id = params[:work_id]#.id
+    work_id = params[:work_id]
     user_id = @user.id
 
     vote = Vote.new(user_id: user_id, work_id: work_id)
@@ -16,14 +16,14 @@ class VotesController < ApplicationController
       saved = vote.save
       if saved
         flash[:success] = "Successfully upvoted!"
-        redirect_to works_path
+        redirect_to work_path(work_id)
         return
       else
         flash[:failure] = "Unable to upvote at this time! 👾🔥👾🔥👾"
       end
     else
       flash[:error] = "A problem occurred: Could not upvote - user: has already voted for this work"
-      redirect_to works_path
+      redirect_to work_path(work_id)
       return
     end
 

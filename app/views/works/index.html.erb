@@ -25,7 +25,9 @@
           <td>
             <%= work.publication_year%>
           </td>
-          <td></td>
+          <td>
+            <%= button_to "Upvote", work_votes_path(work.id) %>
+          </td>
         </tr>
       <% end %>
       </tbody>
@@ -56,7 +58,9 @@
           <td>
             <%= work.publication_year%>
           </td>
-          <td></td>
+          <td>
+            <%= button_to "Upvote", work_votes_path(work.id) %>
+          </td>
         </tr>
       <% end %>
       </tbody>
@@ -85,7 +89,9 @@
           <td>
             <%= work.publication_year%>
           </td>
-          <td></td>
+          <td>
+            <%= button_to "Upvote", work_votes_path(work.id) %>
+          </td>
         </tr>
       <% end %>
       </tbody>

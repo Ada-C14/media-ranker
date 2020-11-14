@@ -9,8 +9,14 @@ Rails.application.routes.draw do
 
   get '/works/top', to: 'works#top'
 
+  resources :works do
+    member do
+      post :upvote
+    end
+  end
 
   resources :works
+  resources :users
 
   root to: 'works#top'
 end

@@ -23,14 +23,20 @@ body {
 
 header {
   background-color: #0f6674;
+  padding: 60px;
 }
 
 header h1 {
   color: #9fcdff;
+  font-size: 65px;
 }
 
 header h2 {
   color: #e4606d;
+}
+
+header .link {
+  padding: 20px;
 }
 
 .link {

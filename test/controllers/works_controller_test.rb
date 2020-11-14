@@ -81,6 +81,7 @@ describe WorksController do
       expect(Work.last.publication_year).must_equal 1979
       expect(Work.last.description).must_equal "elevator music"
 
+      expect(flash[:success]).must_equal "You've successfully created a new work!"
       must_redirect_to work_path(Work.last.id)
     end
 
@@ -99,6 +100,7 @@ describe WorksController do
         post works_path, params: invalid_params
       }.wont_change "Work.count"
 
+      expect(flash.now[:error]).must_equal "Hmm..something went wrong, your work was not saved"
       must_respond_with :bad_request
     end
   end
@@ -138,12 +140,40 @@ describe WorksController do
 
       expect(@album.description).must_equal "3rd studio album"
 
+      expect(flash[:success]).must_equal "You've successfully edited this work!"
       must_redirect_to work_path(@album.id)
+    end
+
+    it "flashes an error and redirects for invalid work" do
+      expect {
+        delete work_path(-1)
+      }.wont_change "Work.count"
+
+      expect(flash.now[:error]).must_equal "Hmm..we couldn't find a work with that id"
+      must_redirect_to works_path
     end
   end
 
   describe "destroy" do
+    it "destroys a valid work and redirects" do
+      existing_work = Work.last
 
+      expect {
+        delete work_path(existing_work.id)
+      }.must_change "Work.count", -1
+
+      expect(flash[:success]).must_equal "You've successfully deleted this work! Who needs it!"
+      must_redirect_to works_path
+    end
+
+    it "flashes an error and redirects for invalid work" do
+      expect {
+        delete work_path(-1)
+      }.wont_change "Work.count"
+
+      expect(flash.now[:error]).must_equal "Hmm..we couldn't find a work with that id"
+      must_redirect_to works_path
+    end
   end
 
 end

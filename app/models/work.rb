@@ -12,6 +12,11 @@ class Work < ApplicationRecord
     return Work.where(category: category).order("votes_count DESC, created_at").limit(10)
   end
 
-
-
+  def single_or_plural_votes
+    if votes_count == 1
+      return "1 Vote"
+    else
+      return "#{votes_count} Votes"
+    end
+  end
 end

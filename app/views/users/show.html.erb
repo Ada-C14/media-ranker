@@ -1,5 +1,7 @@
 <h2> User Summary : <%=@user.username %></h2>
 
+<!--Joined site -- need to figure out how to do this-->
+
 <section class="user-votes__container">
   <h3 class="user-votes__header">Votes</h3>
   <table class="table">
@@ -24,3 +26,5 @@
   </table>
 </section>
 
+<%= button_to "See all Users", users_path, method: :get %>
+<%= button_to "View all media", works_path, method: :get %>

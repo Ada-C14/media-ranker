@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   post "/logout", to: "users#logout", as: "logout"
 
   #Custom route for upvotes -- votes controller who handles upvoting
-  post 'works/vote', to: 'work#upvote', as: 'upvote'
+  post 'works/:work_id/vote', to: 'votes#upvote', as: 'upvote'
 
   resources :users, only: [:index, :show]
 end

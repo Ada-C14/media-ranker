@@ -42,10 +42,14 @@ class UsersController < ApplicationController
     end
 
   def show
-    @user = User.find(id: params[:id])
-    if user.nil?
+    @user = User.find_by(id: params[:id])
+    if @user.nil?
       redirect_to root_path
       return
     end
+  end
+
+  def user_params
+    params.require(:user).permit(:username)
   end
 end

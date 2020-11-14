@@ -1,14 +1,12 @@
 class VotesController < ApplicationController
 
-  def create
-    if session[:user_id].nil?
-      flash.now[:error]= "You need to be logged in to vote"
+  def upvote
+    @user = User.find_by(id: session[:user_id])
+    if @user.nil?
+      flash[:error] = "user isnt logged in"
+      redirect_to root_path
       return
     end
-  end
-
-  def upvote
-
     @work = Work.find_by(id: params[:work_id])
 
     @vote = Vote.new(

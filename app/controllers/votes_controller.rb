@@ -1,5 +1,7 @@
 class VotesController < ApplicationController
   def upvote
+
+
     if params[:work_id]
       @work = Work.find_by(id: params[:work_id])
 
@@ -14,14 +16,13 @@ class VotesController < ApplicationController
           return
         else
           flash[:error] = "A problem occurred: Could not upvote"
-          # user: has already voted for this work
+          session[:vote_error] = @vote.errors
           redirect_back(fallback_location: root_path)
-          return
-        end
+          end
 
       else
         flash[:error] = "A problem occurred: You must log in to do that"
-        redirect_to :back
+        redirect_back(fallback_location: root_path)
         return
       end
 

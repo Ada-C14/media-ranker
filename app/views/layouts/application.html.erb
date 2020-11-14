@@ -51,9 +51,21 @@
               <% end %>
             <% end %>
           </ul>
+
+          <ul>
+            <% if session[:vote_error] %>
+              <% session[:vote_error].each do |column, message| %>
+                <li>
+                  <%= column %>: <%= message.first %>
+                </li>
+              <% end %>
+            <% end %>
+          </ul>
         </div>
       </section>
     <% end %>
+    <%# raise %>
+
 
 
   <main>

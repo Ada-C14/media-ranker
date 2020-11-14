@@ -3,6 +3,7 @@
   <div class="notice"><%= flash[:notice] %></div>
 <% end %>
 
+
 <section class="media-table">
   <h4> Albums</h4>
   <table class="table">
@@ -18,11 +19,11 @@
     <tbody>
     <% @albums.each do |album| %>
       <tr>
-        <td></td>
+        <td><%= album.votes.count %></td>
         <td><%= link_to album.title, work_path(album.id)%></td>
         <td><%= album.creator%></td>
         <td><%= album.publication_year%></td>
-        <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/">Upvote</a></td>
+        <td><%= link_to "vote" , upvote_path(album.id), method: :post %></td>
       </tr>
     <% end %>
     </tbody>
@@ -44,18 +45,17 @@
     <tbody>
     <% @books.each do |book| %>
       <tr>
-        <td></td>
+        <td><%= book.votes.count %></td>
         <td><%= link_to book.title %></a></td>
         <td><%= book.creator %></td>
         <td><%= book.publication_year%></td>
-        <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/">Upvote</a></td>
+        <td><%= link_to "vote" , upvote_path(book.id), method: :post %></td>
       </tr>
     <% end %>
     </tbody>
   </table>
 
 </section>
-
 
 <section class="media-table">
   <h4>Movies</h4>
@@ -72,11 +72,11 @@
     <tbody>
     <% @movies.each do |movie| %>
     <tr>
-      <td></td>
+      <td><%= movie.votes.count %></td>
       <td><a href="/works"><%= movie.title %></a></td>
       <td><%= movie.creator%></td>
       <td><%= movie.publication_year%></td>
-      <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/">Upvote</a></td>
+      <td><%= link_to "vote" , upvote_path(movie.id), method: :post %></td>
     </tr>
     <% end %>
     </tbody>

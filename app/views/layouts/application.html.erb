@@ -25,14 +25,20 @@
 
         <ul class="nav app-header__user-nav-container">
           <% if session[:user_id] %>
-            <li><%= link_to "Logged in as #{ User.find_by(id: session[:user_id]).username }", current_user_path(session[:user_id]), class: "nav-iem app-header__nav_item" %></li>
-            <li><%= link_to "Log Out", logout_path, method: :post, class: "nav-iem app-header__nav_item" %></li>
+            <button class="btn btn-primary"><%= link_to "Logged in as #{ User.find_by(id: session[:user_id]).username }", current_user_path(session[:user_id])%></button>
+              <button class="btn btn-primary"><%= link_to "Log Out", logout_path, method: :post%></button>
             <% else %>
-          <li><%= link_to "Log In", login_path, class: "nav-iem app-header__nav_item"%></li>
+            <button class="btn btn-primary"><%= link_to "Log In", login_path %></button>
             <% end %>
         </ul>
       </nav>
     </header>
+
+
+     <% if flash[:notice] %>
+      <div class="notice"><%= flash[:notice] %></div>
+     <% end %>
+
     <main>
       <%= yield %>
     </main>

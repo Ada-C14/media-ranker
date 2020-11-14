@@ -16,7 +16,7 @@
 
     <% @works.by_category("album").each do |work| %>
       <tr>
-        <td><%= work.votes.count %></td>
+        <td><%= work.votes_count.nil? ? "0" : work.votes_count %></td>
         <td><%= link_to work.title, work_path(work.id)%></td>
         <td><%= work.creator %></td>
         <td><%= work.publication_year %></td>
@@ -38,7 +38,7 @@
     </tr>
     <% @works.by_category("book").each do |work| %>
       <tr>
-        <td><%= work.votes.count %></td>
+        <td><%= work.votes_count.nil? ? "0" : work.votes_count %></td>
         <td><%= link_to work.title, work_path(work.id)%></td>
         <td><%= work.creator %></td>
         <td><%= work.publication_year %></td>
@@ -60,7 +60,7 @@
     </tr>
     <% @works.by_category("movie").each do |work| %>
       <tr>
-        <td><%= work.votes.count %></td>
+        <td><%= work.votes_count.nil? ? "0" : work.votes_count %></td>
         <td><%= link_to work.title, work_path(work.id)%></td>
         <td><%= work.creator %></td>
         <td><%= work.publication_year %></td>

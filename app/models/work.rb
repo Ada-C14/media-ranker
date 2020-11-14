@@ -5,15 +5,8 @@ class Work < ApplicationRecord
   validates :title, presence: true, uniqueness: { scope: :category }
 
   def self.spotlight
-
   end
 
-  def self.sort_votes
-
+  def self.top_ten(category)
   end
-
-  def self.top_ten
-
-  end
-
 end

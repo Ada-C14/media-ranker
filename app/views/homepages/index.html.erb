@@ -1,5 +1,4 @@
 <body>
-<!--:category, :title, :creator, :publication_year, :description-->
 <main>
   <section class="spotlight">
     <h2 class="spotlight__header">
@@ -7,8 +6,7 @@
       <%= link_to @work.title, work_path(@work.id), class: "spotlight__link-to" %> by <%= @work.creator %>
     </h2>
     <p class="spotlight__description">
-      <%= @work.description%>
-<!--      <%#= Work.model_method.votes?, work_path(Work.model_method.id) %> - <%#= Work.model_method.description class="spotlight__link-to" %>-->
+      <%= @work.votes.count%> - <%= @work.description%>
     </p>
   </section>
 
@@ -26,7 +24,7 @@
               <%= link_to work.title, work_path(work.id) %>
               <small class="top-ten__creator">by <%= work.creator %></small>
             </h4>
-            <p><%# work.votes method? %></p>
+            <p><%= work.votes.count %></p>
           </li>
         <% end %>
       </ul>
@@ -44,7 +42,7 @@
               <%= link_to work.title, work_path(work.id) %>
               <small class="top-ten__creator">by <%= work.creator %></small>
             </h4>
-            <p><%# work.votes method %></p>
+            <p><%= work.votes.count %></p>
           </li>
         <% end %>
       <!-- <a href="/works.books">View More Books</a> -->
@@ -61,7 +59,7 @@
               <%= link_to work.title, work_path(work.id) %>
               <small class="top-ten__creator">by <%= work.creator %></small>
             </h4>
-            <p><%# work.votes method %></p>
+            <p><%= work.votes.count %></p>
           </li>
         <% end %>
       </ul>

@@ -28,22 +28,27 @@
           <%= link_to "Add new work", new_work_path, class: "nav-link" %>
         </li>
         <li class="nav-item app-header__nav_item">
-          <%= link_to "View all user", users_path, class: "nav-link" %>
+          <%= link_to "View all users", users_path, class: "nav-link" %>
         </li>
       </ul>
       <ul class="nav app-header__user-nav-container">
-
-<!--        <li class="nav-item app-header__nav_item">-->
-<!--          <a class="btn btn-primary" href="/users/872">Logged in as YOYO</a>-->
-<!--        </li>-->
-<!--        <li class="nav-item app-header__nav_item">-->
-<!--          <a class="btn btn-primary" rel="nofollow" data-method="post" href="/logout">Log Out</a>-->
-<!--        </li>-->
-
-
+        <% if session[:user_id] %>
+          <li>
+            <%= link_to "Logged in as #{session[:username]}", user_path(session[:user_id]), class: "btn btn-primary" %>
+          </li>
+          <li>
+            <%= link_to "Log Out", logout_path, method: :post, class: "btn btn-primary" %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to "Log In", login_path, class: "btn btn-primary" %>
+          </li>
+        <% end %>
       </ul>
     </nav>
   </header>
+
+<!--  consider putting in application model? -->
   <% if flash[:error] %>
     <div class="alert alert-warning alert-container">
       <%= flash[:error] %>
@@ -53,24 +58,32 @@
         </ul>
       <% end %>
 
-      <% if @work %>
-        <% if @work.errors.any? %>
+      <% if @user %>
+        <% if @user.errors.any? %>
           <ul>
-            <% @work.errors.each do |column, message| %>
-              <li>
-                <%= column %>: <%= message %>
-              </li>
+            <% @user.errors.each do |column, message| %>
+              <li> <%= column %>: <%= message %> </li>
             <% end %>
           </ul>
         <% end %>
       <% end %>
+
+      <% if @work %>
+        <% if @work.errors.any? %>
+          <ul>
+            <% @work.errors.each do |column, message| %>
+              <li> <%= column %>: <%= message %> </li>
+            <% end %>
+          </ul>
+        <% end %>
+      <% end %>
+
     </div>
   <% elsif flash[:success] %>
     <div class="alert alert-success alert-container">
       <%= flash[:success] %>
     </div>
   <% end %>
-
 
     <%= yield %>
   </body>

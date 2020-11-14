@@ -19,7 +19,7 @@ class VotesController < ApplicationController
     if @vote.save
       p 'SAVED VOTE'
       flash[:success] = "Successfully upvoted!"
-      redirect_to work_path(work.id)
+      redirect_to :back
       return
     else
       flash[:warning] = "A problem occurred: Could not upvote"

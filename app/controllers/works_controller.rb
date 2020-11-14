@@ -21,7 +21,7 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
     if @work.save
       flash[:success] = "Successfully created #{@work.category} #{@work.id}"
-      redirect_to root_path
+      redirect_to work_path(@work)
       return
     else
       render :new, status: :bad_request

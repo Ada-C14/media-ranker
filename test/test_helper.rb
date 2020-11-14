@@ -29,8 +29,9 @@ class ActiveSupport::TestCase
     post login_path, params: login_data
 
     # Verify the user ID was saved - if that didn't work, this test is invalid
+    user = User.find_by(username: user.username)
     expect(session[:user_id]).must_equal user.id
-
+    must_redirect_to root_path
     return user
   end
 end

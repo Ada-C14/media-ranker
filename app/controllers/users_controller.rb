@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   def index
-    @users = User.all
+    if session[:user_id]
+      @users = User.all
+    else
+      flash.now[:error] = "You must be logged in to see this page"
+    end
   end
 
   def show

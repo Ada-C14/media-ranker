@@ -19,6 +19,49 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Gudea:wght@400;700&display=swap');
 
+body {
+    margin: 0;
+    font-size: 1rem;
+    font-family: "Gudea", sans-serif;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    text-align: left;
+    background-color: #fff;
+}
+
+main {
+    padding: 2rem;
+}
+
+ul {
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+li {
+  display: list-item;
+    }
+
+h1, h2, h3, h4, h5 {
+    font-family: "Gudea", sans-serif;
+    font-weight: bold;
+    }
+
+ a:hover {
+   text-decoration: none;
+   color: #00796B;
+    }
+
+ .btn-primary {
+   background-color: #26A69A;
+   color: white;
+   border-color: #26A69A;
+   }
+
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
     display: block;
 }
@@ -54,24 +97,6 @@ header {
     box-sizing: border-box;
 }
 
-main {
-    padding: 2rem;
-}
-
-body {
-    font-size: 1rem;
-    font-family: "Gudea", sans-serif;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #212529;
-    text-align: left;
-}
-
- h1, h2, h3, h4, h5 {
-    font-family: "Gudea", sans-serif;
-    font-weight: bold;
-    }
-
 .root__hr {
     margin: 0px auto 3rem auto;
     color: #EEEEEE; }
@@ -106,12 +131,6 @@ nav ul {
   list-style: none;
 }
 
-.btn-primary {
-  background-color: #26A69A;
-  color: white;
-  border-color: #26A69A;
-}
-
 .btn-primary a {
    color: white;
    }
@@ -127,6 +146,7 @@ a  {
     background-color: transparent;
     }
 
+// Media Spotlight
 .spotlight {
     padding: 0 2rem 2rem 2rem;
     }
@@ -147,6 +167,7 @@ a  {
     color: #424242;
 }
 
+// Top Ten Media
 .top-ten__creator {
     color: slategrey;
     }
@@ -178,15 +199,16 @@ a  {
  padding-left: 0;
 }
 
- a:hover {
-   text-decoration: none;
-   color: #0f6674;
- }
+//  a:hover {
+//    text-decoration: none;
+//    color: #0f6674;
+//  }
 
  a, h2, h3 {
    color: #26A69A;
  }
 
+// Tables
 .table {
     width: 100%;
     margin-bottom: 1rem;
@@ -225,6 +247,7 @@ h3 {
     margin-bottom: 0.5rem;
 }
 
+// Forms
 label {
     display: inline-block;
     margin-bottom: 0.5rem;
@@ -278,8 +301,6 @@ div {
 textarea {
     overflow: auto;
     resize: vertical;
-
-
 }
 
 .btn {
@@ -331,6 +352,7 @@ textarea {
     margin-top: 1rem;
 }
 
+//  Flash messages
 .alert {
     margin: 0;
 }
@@ -361,9 +383,9 @@ textarea {
    border-color: #ffeeba;
    }
 
-   .alert__container {
-       margin: 2rem 0 1rem 0;
-       }
+.alert__container {
+   margin: 2rem 0 1rem 0;
+   }
 
 .form-control {
     display: block;
@@ -380,6 +402,10 @@ textarea {
     transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
     }
 
-    .textarea.form-control {
-        height: auto;
-        }
+.textarea.form-control {
+   height: auto;
+   }
+
+.form-group {
+    margin-bottom:1rem
+    }

@@ -169,7 +169,7 @@ describe WorksController do
 
       # Act
       expect {
-        delete work_path(@work.id)
+         delete work_path(@work.id)
       }.must_change "Vote.count", -1
 
       deleted_vote = Vote.find_by(user_id: user.id)
@@ -197,19 +197,19 @@ describe WorksController do
 
       # Assert
       expect {
-        upvote_work_path(@work.id)
+        post upvote_work_path(@work.id)
       }.must_change "Vote.count", 1
 
       expect(flash[:success]).must_equal "Successfully upvoted!"
 
 
       must_respond_with :redirect
-      must_redirect_to root_path
+      must_redirect_to work_path(@work.id)
     end
 
     it "cannot not upvote a work if the user is logged out" do
       # Arrange
-       user = nil
+      #  user = nil
 
        # login_data = {
        #     user: {
@@ -220,13 +220,13 @@ describe WorksController do
 
       # Assert
       expect {
-        upvote_work_path(@work.id)
-      }.must_change "Vote.count", 0
+        post upvote_work_path(@work.id)
+      }.wont_change "Vote.count"
 
-      expect(flash[:error]).must_equal "A problem occurred: Could not upvote"
+      expect(flash[:error]).must_equal "A problem occurred: You must log in to do that"
 
        must_respond_with :redirect
-       must_redirect_to root_path
+       must_redirect_to works_path
       end
     end
   end

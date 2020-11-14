@@ -12,19 +12,19 @@
     </section>
   </section>
   <section class="votes">
-    <h3 class="votes-header">NUM Votes for this <%= @work.category %></h3>
+    <h3 class="votes-header"><%= @work.votes.count %> Votes for this <%= @work.category.capitalize %></h3>
     <table>
       <thead>
         <th>User</th>
         <th>Date</th>
       </thead>
       <tbody>
+      <% @work.users.each do |user| %>
         <tr>
-<!--          SOME LOOP HERE TO GET ALL VOTES-->
-          <td>LINK TO USER</td>
-          <td>VOTE DATE</td>
+          <td><%= link_to user.username, user_path(user.id) %></td>
+          <td><%= Vote.find_by(user_id: user.id).created_at.strftime("%b %-d, %Y") %></td>
         </tr>
-        <tr></tr>
+      <% end %>
       </tbody>
     </table>
   </section>

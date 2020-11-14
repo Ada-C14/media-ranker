@@ -12,7 +12,15 @@
       <th>Voted On</th>
       </thead>
       <tbody>
-
+        <% @user.works.each do |work| %>
+          <tr>
+            <td><%= link_to work.title, work_path(work.id) %></td>
+            <td><%= work.creator %></td>
+            <td><%= work.publication_year %></td>
+            <td><%= work.category.capitalize %></td>
+            <td><%= Vote.find_by(work_id: work.id).created_at.strftime("%b %-d, %Y") %></td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </section>

@@ -35,6 +35,16 @@ describe User do
   end
 
   describe 'custom methods' do
+    it 'includes_work? returns true if user voted for work' do
 
+    end
+
+    it 'includes_work? returns false if user did not vote for work' do
+
+    end
+
+    it 'sorted_votes_user_creation: will sort by vote count; then by created_at' do
+
+    end
   end
 end

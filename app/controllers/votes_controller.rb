@@ -22,7 +22,7 @@ class VotesController < ApplicationController
         flash[:failure] = "Unable to upvote at this time! 👾🔥👾🔥👾"
       end
     else
-      flash[:error] = "A problem occurred: Could not upvote - user: has already voted for this work"
+      flash[:error] = "A problem occurred: Could not upvote - #{@user.username}: has already voted for this work"
       redirect_to work_path(work_id)
       return
     end

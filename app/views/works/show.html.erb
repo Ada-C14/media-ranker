@@ -22,7 +22,11 @@
   </section>
   <section class="works-votes__container">
     <h3 class="works-votes__header">
-      <%= "#{@work.sum_votes} for this Book" %>
+      <% if @work.sum_votes == 1 %>
+        <%= "#{@work.sum_votes} vote for this Book" %>
+      <% else %>
+        <%= "#{@work.sum_votes} votes for this Book" %>
+      <% end %>
     </h3>
     <table class="table">
       <thead>
@@ -32,18 +36,17 @@
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <td><a href="/users/874">testingcat</a></td>
-        <td>Nov 11, 2020</td>
-      </tr>
-      <tr>
-        <td><a href="/users/615">dee</a></td>
-        <td>May 22, 2020</td>
-      </tr>
-      <tr>
-        <td><a href="/users/694">Chris P. Bacon</a></td>
-        <td>May 21, 2020</td>
-      </tr>
+      <% @work.votes.each do |vote| %>
+        <tr>
+          <% user = User.find_by(id: vote.user_id) %>
+          <td>
+            <%= link_to user.username, user_path(user.id) %>
+          </td>
+        <td>
+          <%= vote.created_at %>
+        </td>
+        </tr>
+      <% end %>
       </tbody>
     </table>
   </section>

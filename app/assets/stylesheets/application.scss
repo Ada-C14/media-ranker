@@ -91,6 +91,15 @@ ul {
     justify-content: space-between;
 }
 
+.app-header__nav_item .nav-link {
+    color: #00796B;
+    }
+
+.nav-link {
+    display: block;
+    padding: 0.5rem 1rem;
+}
+
 nav ul {
   display: flex;
   flex-wrap: wrap;
@@ -304,6 +313,14 @@ textarea {
 
 .user-votes__header {
     color: black;
+}
+
+.works-votes__container {
+    margin-top: 2rem;
+    }
+
+.works-votes__header {
+   color: black;
 }
 
 .app-header__site-nav-container .app-header__nav_item {

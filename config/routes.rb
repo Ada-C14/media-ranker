@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   get '/users/current', to: 'users#current', as: 'current_user'
 
   root to: 'works#index'
-  resources :works
-  resources :users
+  resources :works do
+    post 'upvote'
+  end
+  resources :users, only: [:index, :show]
 
 end

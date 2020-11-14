@@ -76,6 +76,21 @@ class WorksController < ApplicationController
     end
   end
 
+  def upvote
+    @vote = Vote.all.find_by(work_id: params[:work_id], user_id: session[:user_id])
+
+    if @vote.nil?
+      Vote.create(work_id: params[:work_id], user_id: session[:user_id])
+      flash[:success] = "Successfully voted!"
+      redirect_to work_path
+    else
+      flash[:error] = "Already voted for this work."
+      redirect_to works_path
+      #Why won't redirect_to work_path work?
+      return
+    end
+  end
+
   private
 
   def works_param

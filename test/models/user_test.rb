@@ -22,12 +22,12 @@ describe User do
   end
 
   describe "custom methods" do
-    describe "joined" do
+    describe "format_created_date" do
       it "returns a formatted data string for the created_at column" do
         date = Date.today.strftime("%b %d, %Y")
         user = User.create!(username: "test user")
-        expect(user.joined).must_equal date
-        expect(user.joined).must_be_instance_of String
+        expect(user.format_date).must_equal date
+        expect(user.format_date).must_be_instance_of String
       end
     end
   end

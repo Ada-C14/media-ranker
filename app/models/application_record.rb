@@ -6,4 +6,8 @@ class ApplicationRecord < ActiveRecord::Base
       "#{attribute.capitalize.to_s.gsub("_id", "")} #{message}"
     end
   end
+
+  def format_date
+    return self.created_at.strftime("%b %d, %Y")
+  end
 end

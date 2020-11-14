@@ -38,6 +38,10 @@ describe Vote do
       end
     end
 
+    describe "date" do
+
+    end
+
   end
   describe "relationships" do
     it "belongs to a user" do

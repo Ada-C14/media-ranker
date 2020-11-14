@@ -16,7 +16,7 @@
         <tr>
           <td><%= link_to "#{user.username}", user_path(user) %></td>
           <td><%= user.votes.count%></td>
-          <td><%= user.joined %></td>
+          <td><%= user.format_date %></td>
         </tr>
       <% end %>
       </tbody>

@@ -10,8 +10,5 @@ class Vote < ApplicationRecord
     return Vote.new(work_id: work_id, user_id: user_id)
   end
 
-  def date
-    return self.created_at.strftime("%b %d, %Y")
-  end
 end
 

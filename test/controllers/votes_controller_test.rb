@@ -20,7 +20,7 @@ describe VotesController do
 
       expect {
         post work_upvote_path(work)
-      }.must_differ work.votes_count
+      }.must_differ work.votes_count 1
 
       vote = Vote.find_by(user_id: user.id)
       expect(vote.user).must_equal user

@@ -5,12 +5,11 @@ class ApplicationController < ActionController::Base
   end
 
   def not_saved_error_notice(action)
-    flash.now[:notice] =
-      if @work
-        "A problem occurred: Could not #{action} #{@work.category}"
-      else
-        'A problem occurred: Could not login. Please make sure that you are entering a valid username.'
-      end
+    if @work
+      flash.now[:notice] = "A problem occurred: Could not #{action} #{@work.category}"
+    else
+      flash[:notice] = 'A problem occurred: Could not login. Please make sure that you are entering a valid username.'
+    end
   end
 
   def not_found_error_notice

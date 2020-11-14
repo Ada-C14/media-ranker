@@ -13,12 +13,19 @@ class Work < ApplicationRecord
       raise ArgumentError("Invalid category")
     end
     list = Work.where(category: category)
-    top = list.sample(count)
+
+    # top =
+    top = Work.where(category: category)
+              .left_joins(:votes)
+              .group(:id)
+              .order('COUNT(votes.id) DESC')
+              .limit(10)
     return top
   end
 
   def self.spotlight
-    spotlight = Work.all.sample(1)
-    return spotlight[0]
+    list = Work.all
+    spotlight = list.max_by{|work| work.votes.count}
+    return spotlight
   end
 end

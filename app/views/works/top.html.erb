@@ -1,8 +1,8 @@
-<h2>The main page!</h2>
 <section>
   <h2>
   <span>Media Spotlight:</span> <%= link_to @spotlight.title, work_path(@spotlight.id) %> by <%=@spotlight.creator %>
   </h2>
+  <p><%=@spotlight.votes.length%> votes - <%=@spotlight.description%></p>
 </section>
 <p><%=@spotlight.description %></p>
 
@@ -11,7 +11,10 @@
     <h2>Top movies</h2>
       <% @top_movies.each do |movie| %>
       <ul>
-        <li><%= link_to movie.title, work_path(movie.id) %> by <%= movie.creator%> </br> Votes: <%=rand(50)%></li>
+        <li>
+          <h4><%= link_to movie.title, work_path(movie.id) %> by <%= movie.creator%> </h4>
+          <p><%=movie.votes.length%> votes</p>
+        </li>
       </ul>
       <% end %>
     </section>
@@ -20,7 +23,10 @@
     <h2>Top books</h2>
       <% @top_books.each do |book| %>
         <ul>
-          <li><%= link_to book.title, work_path(book.id) %> by <%= book.creator%> </br> Votes: <%=rand(50)%></li>
+          <li>
+            <h4><%= link_to book.title, work_path(book.id) %> by <%= book.creator%></h4>
+            <p><%=book.votes.length%> votes</p>
+          </li>
         </ul>
       <% end %>
     </section>
@@ -29,7 +35,10 @@
     <h2>Top albums</h2>
       <% @top_albums.each do |album| %>
         <ul>
-          <li><%= link_to album.title, work_path(album.id) %> by <%= album.creator%> </br> Votes: <%=rand(50)%></li>
+          <li>
+            <h4><%= link_to album.title, work_path(album.id) %> by <%= album.creator%></h4>
+            <p><%=album.votes.length%> votes</p>
+          </li>
         </ul>
       <% end %>
     </section>

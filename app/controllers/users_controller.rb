@@ -28,10 +28,10 @@ class UsersController < ApplicationController
         redirect_to root_path
         return
       end
-      flash[:welcome] = "Welcome #{user.name}"
+      flash[:welcome] = "Welcome, #{user.name}"
     else
       #existing user
-      flash[:welcome] = "Welcome back #{user.name}"
+      flash[:welcome] = "Welcome back, #{user.name}"
     end
 
     session[:user_id] = user.id
@@ -43,7 +43,7 @@ class UsersController < ApplicationController
       user = User.find_by(id: session[:user_id])
       unless user.nil?
         session[:user_id] = nil
-        flash[:notice] = "Goodbye #{user.name}"
+        flash[:notice] = "Goodbye, #{user.name}"
       else
         session[:user_id] = nil
         flash[:notice] = "Error unknown user"

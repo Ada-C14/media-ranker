@@ -17,7 +17,6 @@ class Work < ApplicationRecord
   end
 
   def self.spotlight
-    #work_id = self.id
     votes = Vote.all
     vote_count = {}
     count = 0

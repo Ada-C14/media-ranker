@@ -69,7 +69,6 @@ class WorksController < ApplicationController
     redirect_to root_path
   end
 
-  # TODO write tests
   def upvote
     user = User.find_by(id: session[:user_id])
     work = Work.find_by(id: params[:id])
@@ -81,7 +80,7 @@ class WorksController < ApplicationController
     end
 
     if work.nil?
-      flash[:error] = "Could not find work"
+      flash[:error] = "A problem occurred: Could not find work"
       redirect_to works_path
       return
     end

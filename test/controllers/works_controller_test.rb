@@ -202,22 +202,11 @@ describe WorksController do
 
       expect(flash[:success]).must_equal "Successfully upvoted!"
 
-
       must_respond_with :redirect
       must_redirect_to work_path(@work.id)
     end
 
     it "cannot not upvote a work if the user is logged out" do
-      # Arrange
-      #  user = nil
-
-       # login_data = {
-       #     user: {
-       #         username: user.username
-       #     }
-       # }
-       # post login_path, params: login_data
-
       # Assert
       expect {
         post upvote_work_path(@work.id)
@@ -225,9 +214,34 @@ describe WorksController do
 
       expect(flash[:error]).must_equal "A problem occurred: You must log in to do that"
 
-       must_respond_with :redirect
-       must_redirect_to works_path
-      end
+      must_respond_with :redirect
+      must_redirect_to works_path
+    end
+
+    it "cannot upvote a work if the work cannot be found" do
+      # Arrange
+      user = User.create!(username: "test user")
+      login_data = {
+          user: {
+              username: user.username
+          }
+      }
+
+      id = -1
+
+      # Act
+      post login_path, params: login_data
+
+      # Assert
+      expect {
+        post upvote_work_path(id)
+      }.wont_change "Vote.count"
+
+      expect(flash[:error]).must_equal "A problem occurred: Could not find work"
+
+      must_respond_with :redirect
+      must_redirect_to works_path
     end
   end
+end
 

@@ -30,4 +30,14 @@ class Work < ApplicationRecord
     return top_10
   end
 
+  def self.order_by_votes
+    works = self.all
+
+    sorted_works = works.sort_by do |work|
+      work.votes.count
+    end
+
+    return sorted_works.reverse
+  end
+
 end

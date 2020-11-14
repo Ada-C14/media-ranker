@@ -1,20 +1,21 @@
 <main>
-  <section class="work-description">
+
+  <section>
     <h2><%= @work.title %></h2>
     <p>Created by: <%= @work.creator %></p>
     <p>Published: <%= @work.publication_year %></p>
     <p><%= @work.description %> </p>
-    <section class="work-buttons">
-      <%= button_to "Back to media ranks", root_path, method: :get %>
-      <%= button_to "Edit", edit_work_path(@work.id), method: :get %>
-      <%= button_to "Upvote", upvote_work_path(@work.id) %>
-      <%= button_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"} %>
+    <section class="test">
+      <%= button_to "Back to media ranks", root_path, method: :get, class: "btn btn-primary" %>
+      <%= button_to "Edit", edit_work_path(@work.id), method: :get, class: "btn btn-primary" %>
+      <%= button_to "Upvote", upvote_work_path(@work.id), class: "btn btn-primary" %>
+      <%= button_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger" %>
     </section>
   </section>
 
 
-  <section class="work-votes">
-    <h3><%= @work.votes.length %> Votes for this Album</h3>
+  <section class="works-votes__container">
+    <h3 class="works-votes__header"><%= @work.votes.length %> Votes for this Album</h3>
     <table class="table">
       <thead>
         <tr>

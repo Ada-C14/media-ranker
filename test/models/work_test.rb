@@ -6,13 +6,7 @@ describe Work do
     @work = works(:dead_alive)
   end
 
-  it 'is valid when all fields are present' do
-    # Act
-    result = @work.valid?
 
-    # Assert
-    expect(result).must_equal true
-  end
   #have 9 works, see if it works with, 9, add one (no votes) , see if it is last
   describe 'relationships' do
     it 'can be added to a vote' do
@@ -30,8 +24,12 @@ describe Work do
 
   describe 'validations' do
 
-    it "will be valid with string title string creator, string description, string category, and int date_published" do
-      expect(@work.valid?).must_equal true
+    it 'is valid when all fields are present and correctly formatted' do
+      # Act
+      result = @work.valid?
+
+      # Assert
+      expect(result).must_equal true
     end
 
     it "will be invalid without title" do
@@ -94,13 +92,13 @@ describe Work do
 
     describe 'top_one' do
       it 'top_one return the work with the most votes' do
-        20.times {Vote.create(user: users(:me), work: @work)}
+        20.times {|i| Vote.create(user: User.new(name: "usr#{i}"), work: @work)}
         expect(Work.top_one.title).must_equal "Dead Alive"
       end
 
       it 'if there is a tie, top_one returns first in alphabetical order' do
-        20.times {Vote.create(user: users(:me), work: @work)}
-        20.times {Vote.create(user: users(:me), work: works(:aguirre))}
+        20.times {|i| Vote.create(user: User.new(name: "usr#{i}"), work: @work)}
+        20.times {|i| Vote.create(user: User.new(name: "usr#{i}"), work: works(:aguirre))}
         expect(Work.top_one.title).must_equal "Aguirre, the Wrath of God"
       end
 
@@ -112,7 +110,7 @@ describe Work do
 
     describe 'top_ten' do
       it 'top_ten("category")[0] has the most votes' do
-        20.times {Vote.create(user: users(:me), work: @work)}
+        20.times {|i| Vote.create(user: User.new(name: "usr#{i}"), work: @work)}
         expect(Work.top_ten("movie")[0].title).must_equal "Dead Alive"
       end
 
@@ -124,7 +122,7 @@ describe Work do
 
       it 'will work if number of works is < 10' do
         works.each{|work| work.delete unless(work.id == 2 || work.id == 3)}
-        20.times {Vote.create(user: users(:me), work: works(:aguirre))}
+        20.times {|i| Vote.create(user: User.new(name: "usr#{i}"), work: works(:aguirre))}
         expect(Work.top_ten("movie")[0].title).must_equal "Aguirre, the Wrath of God"
         expect(Work.top_ten("movie")[1].title).must_equal "Movie A"
       end

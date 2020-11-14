@@ -1,10 +1,11 @@
 <body>
 <header>
+  <h2> Welcome to Media Ranker</h2>
   <nav>
     <ul>
       <li><%= link_to "Add a New Media", new_work_path%></li>
       <li><%= link_to "Return to Media List", works_path %></li>
-      <li><% if session[:user_id] %></li>
+      <% if session[:user_id] %>
           <li><%= link_to "Logout", logout_path, method: :post %></li>
           <%else %>
           <li><%=link_to "Log in", login_path %></li>
@@ -12,4 +13,10 @@
         </ul>
         </nav>
     </header>
+
+
+<!--<p>-->
+  <%#= spotlight. %>
+<!--</p>-->
+
     </body>

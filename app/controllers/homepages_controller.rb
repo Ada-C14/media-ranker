@@ -3,7 +3,7 @@ class HomepagesController < ApplicationController
   def index
     @works = Work.all
     @work = Work.find_by(id: params[:id])
-    #@media_spotlight = @works.where(id: @works.spotlight)
+    @media_spotlight = Work.find_by(id: Work.spotlight)
     @top_movies = if Work.where(category: 'movie').length <= 10
                     Work.where(category: 'movie')
     else

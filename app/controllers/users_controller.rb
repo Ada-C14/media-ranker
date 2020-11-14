@@ -17,6 +17,7 @@ class UsersController < ApplicationController
 
     if @user.nil?
       @user = User.new(user_params)
+      @user.save
       flash[:success] = "Successfully created new user #{@user.username} with ID #{@user.id}"
     elsif @user
       flash[:success] = "Successfully logged in as existing user #{@user.username}"
@@ -33,11 +34,19 @@ class UsersController < ApplicationController
 
   def logout
     session[:user_id] = nil
-    flash[:success] = "Successfully logged out"
+    flash[:success] = "Successfully logged out #{@user.username}"
     redirect_to root_path
     return
   end
 
+  def current
+    @user = User.find_by(id: session[:user_id])
+    if @user.nil?
+      flash[:error] = "You must be logged in to view this page"
+      redirect_to root_path
+      return
+    end
+  end
 end
 
 def user_params

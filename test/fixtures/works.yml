@@ -1,36 +1,140 @@
 dead_alive:
+  id: 11
   title: Dead Alive
   creator: Peter Jackson
   description: Classic splatter-comedy
   category: movie
+  publication_date: 1977
 vertigo:
+  id: 1
   title: Vertigo
   creator: Peter Jackson
   description: Thriller
   category: movie
+  publication_date: 1974
 aguirre:
+  id: 2
   title: Aguirre, the Wrath of God
   creator: Werner Herzog
   description: German art house
   category: movie
-wide_shut:
-  title: Eyes Wide Shut
-  creator: Stanley Kubrick
-  description: Things get weird
+  publication_date: 1976
+mov_a:
+  id: 3
+  title: Movie A
+  creator: Director A
+  description: Things get a
   category: movie
-wide_shut:
-  title: Eyes Wide Shut
+  publication_date: 1975
+mov_b:
+  id: 4
+  title: Movie B
   creator: Stanley Kubrick
-  description: Things get weird
+  description: Things get b
   category: movie
-
+  publication_date: 1969
+mov_c:
+  id: 5
+  title: Movie C
+  creator: Stanley Kubrick
+  description: Things get b
+  category: movie
+  publication_date: 1965
+mov_d:
+  id: 20
+  title: Movie D
+  creator: Stanley Kubrick
+  description: Things get b
+  category: movie
+  publication_date: 1944
+mov_e:
+  id: 6
+  title: Movie E
+  creator: Stanley Kubrick
+  description: Things get b
+  category: movie
+  publication_date: 1921
+mov_f:
+  id: 7
+  title: Movie F
+  creator: Stanley Kubrick
+  description: Things get b
+  category: movie
+  publication_date: 1933
+mov_g:
+  id: 8
+  title: Movie G
+  creator: Stanley Kubrick
+  description: Things get b
+  category: movie
+  publication_date: 1921
 story_eye:
+  id: 9
   title: Story of the Eye
   creator: Georges Bataille
   description: Not for the squeamish
   category: book
-story_eye:
-  title: Story of the Eye
-  creator: Georges Bataille
+  publication_date: 1931
+handmaid:
+  id: 10
+  title: Handmaid's Tale
+  creator: Margaret Atwood
   description: Not for the squeamish
   category: book
+  publication_date: 1850
+lot_49:
+  id: 12
+  title: The Crying of Lot 49
+  creator: Thomas Pynchon
+  description: Not for the squeamish
+  category: book
+  publication_date: 1959
+rainbow:
+  id: 13
+  title: Gravity's Rainbow
+  creator: Thomas Pynchon
+  description: Long book
+  category: book
+  publication_date: 1969
+book_a:
+  id: 14
+  title: Book A
+  creator: Thomas Pynchon
+  description: Long book
+  category: book
+  publication_date: 1969
+book_b:
+  id: 15
+  title: Book B
+  creator: Thomas Pynchon
+  description: Long book
+  category: book
+  publication_date: 1969
+book_c:
+  id: 16
+  title: Book C
+  creator: Thomas Pynchon
+  description: Long book
+  category: book
+  publication_date: 1969
+book_d:
+  id: 17
+  title: Book D
+  creator: Thomas Pynchon
+  description: Long book
+  category: book
+  publication_date: 1969
+book_e:
+  id: 18
+  title: Book E
+  creator: Thomas Pynchon
+  description: Long book
+  category: book
+  publication_date: 1969
+book_f:
+  id: 19
+  title: Book F
+  creator: Thomas Pynchon
+  description: Long book
+  category: book
+  publication_date: 1969

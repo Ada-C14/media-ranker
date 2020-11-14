@@ -1,0 +1,22 @@
+book:
+  category: "book"
+  title: "The Book"
+  creator: "The Author"
+  publication_year: 2020
+  description: "The Description"
+
+new_cat_work:
+  category: "movie"
+  title: "The Book"
+
+workBA:
+  category: 'book'
+  title: 'A'
+
+workBB:
+  category: 'book'
+  title: 'B'
+
+workAA:
+  category: 'album'
+  title: 'A'

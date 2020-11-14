@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'homepages#index'
   resources :works do
-    resources :votes, only: [:create]
+    post "/upvote", to: 'votes#upvote', as: "upvote"
   end
   resources :users, only: [:index, :show]
 

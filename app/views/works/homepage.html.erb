@@ -1,0 +1,33 @@
+<section>
+  <h1>
+    <span class="spotlight-black-text">Media Spotlight:</span>
+    <%= @sample_work.title %> by
+    <%= @sample_work.creator %>
+  </h1>
+  <p><%= rand(1..50) %> votes - <%= @sample_work.description %></p>
+</section>
+<section>
+  <% Work::CATEGORIES.each do |category| %>
+  <section>
+    <h2>Top <%= "#{category.capitalize}s" %> </h2>
+    <ul>
+      <% if @works.where(category: category).empty? %>
+        <li>
+          <h3>
+            No <%= "#{category.capitalize}s" %> added yet!
+          </h3>
+        </li>
+      <% else %>
+        <% @works.where(category: category).each do |item| %>
+          <li>
+            <h3 class="top-title">
+              <%= item.title %>
+            </h3>
+            <p> <%= rand(1..50) %> votes </p>
+          </li>
+        <% end %>
+      <% end %>
+    </ul>
+  </section>
+  <% end %>
+</section>

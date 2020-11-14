@@ -1,8 +1,8 @@
 <section>
   <h1>List of Works</h1>
-  <%# loop for the categories %>
+  <% Work::CATEGORIES.each do |category| %>
     <section>
-      <h2>Category Name Goes Here</h2>
+      <h2> <%= "#{category.capitalize}s" %> </h2>
       <table>
         <thead>
         <tr>
@@ -14,18 +14,18 @@
         </tr>
         </thead>
         <tbody>
-          <%# loop for the categories %>
+          <% @works.where(category: category).each do |item| %>
             <tr>
-              <td>total votes</td>
-              <td>Media Title</td>
-              <td>Created By</td>
-              <td>Published Date</td>
+              <td> <%= rand(1..50) %> </td>
+              <td> <%= item.title %> </td>
+              <td> <%= item.creator %></td>
+              <td> <%= item.publication_year %></td>
               <td>Upvote button</td>
             </tr>
-          <%# end category loop %>
+          <% end %>
         </tbody>
       </table>
     </section>
-  <%# end category loop %>
+  <% end %>
 </section>
 

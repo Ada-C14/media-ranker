@@ -1,6 +1,11 @@
 class WorksController < ApplicationController
+  def homepage
+    @works = Work.all
+    @sample_work = @works.sample
+  end
+
   def index
-    # @works = Works.all
+    @works = Work.all
   end
 
   def show

@@ -8,10 +8,6 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <%#link_to # VIEW TOP MEDIA %>
-  <%#link_to # VIEW ALL MEDIA %>
-  <%#link_to # ADD A NEW WORK %>
-  <%#link_to # VIEW ALL USERS %>
   <header>
     <nav>
       <div class="nav">
@@ -21,7 +17,13 @@
         <%=link_to "View All Users", users_path %>
       </div>
 
-      <button type="button" class="btn btn-dark"><%=link_to "LOGIN", login_path%></button>
+      <% session_user = User.find_by(id: session[:user_id]) %>
+      <% if session_user %>
+      <%= button_to "LOGOUT", logout_path%>
+        <%= link_to "Logged in as #{session_user.name}", current_user_path, class: "btn btn-primary"%>
+        <%else %>
+      <%= button_to "LOGIN", login_path, method: :get %>
+      <%end %>
       <%#=link_to "All Users", work_path %>
       <%#=link_to "Add New User", work_path %>
     </nav>

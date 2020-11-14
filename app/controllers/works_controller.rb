@@ -27,10 +27,13 @@ class WorksController < ApplicationController
     @work = Work.new(works_param)
 
     if @work.save
+      flash[:success] = "Your #{@work.category} was added successfully!"
       redirect_to work_path(@work.id)
       return
     else
+      flash.now[:error] = "Oops! Media was not added."
       render :new
+      return
     end
   end
 

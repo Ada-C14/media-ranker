@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   #allow user to visit this page of they logged in
   get "/users/current", to: "users#current", as: "current_user"
   root to:'works#top'
-
+  post "/users/vote", to: "users#vote", as: "vote"
   # get 'users/login'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 

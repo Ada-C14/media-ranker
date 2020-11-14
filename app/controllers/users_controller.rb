@@ -65,6 +65,23 @@ class UsersController < ApplicationController
     end
   end
 
+  def vote
+    user = User.find_by(id: session[:user_id])
+    if user.nil?
+      flash[:error] = "You must be logged in to view this page"
+      redirect_to root_path
+      return
+    end
+
+    @vote = Vote.create(work_id: params[:work_id], user_id: user.id)
+    if not @vote.valid?
+      flash[:error] = "You can't vote more than once for each media"
+    end
+
+    redirect_back(fallback_location: root_path)
+  end
+
+
   private
 
   def user_params

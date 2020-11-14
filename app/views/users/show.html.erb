@@ -26,7 +26,7 @@
           <td><%= vote.work.creator %></td>
           <td><%= vote.work.publication_year %></td>
           <td><%= vote.work.category %></td>
-          <td><%= vote.created_at.to_s %></td>
+          <td><%= vote.created_at.strftime("%b %d, %Y") %></td>
         </tr>
       </tbody>
     <% end %>

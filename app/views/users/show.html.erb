@@ -1,0 +1,14 @@
+<h2><strong><%=@user.title %></strong></h2>
+
+<section class="show_details">
+  <div>
+    Name:  <%=@user.id %>
+  </div>
+</section>
+
+
+<!--# Render votes view partials info here?-->
+
+
+<%=link_to "Edit Media", edit_work_path(@work.id) %>
+<%=link_to "Delete Media", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"} %>

@@ -1,6 +1,7 @@
 <h2>Works Index</h2>
 
 <div>
+  <h3>Books</h3>
   <table>
     <thead>
     <tr>
@@ -12,7 +13,7 @@
     </tr>
     </thead>
     <tbody>
-      <% @works.each do |work|%>
+      <% @works.top_10_works_in_category('book').each do |work|%>
         <tr>
           <td><%=rand(1..9) %></td>
           <td><strong><%=link_to work.title, work_path(work.id) %></strong></td>
@@ -21,6 +22,58 @@
           <td><%= button_to "Upvote", works_path, method: :get %></td>
         </tr>
       <%end %>
+    </tbody>
+  </table>
+</div>
+<br>
+<h3>Albums</h3>
+<div>
+  <table>
+    <thead>
+    <tr>
+      <th>Votes</th>
+      <th>Title</th>
+      <th>Creator</th>
+      <th>Published</th>
+      <th>Upvote</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @works.top_10_works_in_category('album').each do |work|%>
+      <tr>
+        <td><%=rand(1..9) %></td>
+        <td><strong><%=link_to work.title, work_path(work.id) %></strong></td>
+        <td><%=work.creator %></td>
+        <td><%=work.publication_year %></td>
+        <td><%= button_to "Upvote", works_path, method: :get %></td>
+      </tr>
+    <%end %>
+    </tbody>
+  </table>
+</div>
+<br>
+<h3>Movies</h3>
+<div>
+  <table>
+    <thead>
+    <tr>
+      <th>Votes</th>
+      <th>Title</th>
+      <th>Creator</th>
+      <th>Published</th>
+      <th>Upvote</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @works.top_10_works_in_category('movie').each do |work|%>
+      <tr>
+        <td><%=rand(1..9) %></td>
+        <td><strong><%=link_to work.title, work_path(work.id) %></strong></td>
+        <td><%=work.creator %></td>
+        <td><%=work.publication_year %></td>
+        <td><%= button_to "Upvote", works_path, method: :get %></td>
+      </tr>
+    <%end %>
     </tbody>
   </table>
 </div>

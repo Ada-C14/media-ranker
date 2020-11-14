@@ -56,8 +56,10 @@ describe Work do
 
   describe "custom methods" do
     before do
+      @spacejam = works(:spacejam)
       @practicalmagic = works(:practicalmagic)
       @lathe = works(:lathe)
+      @user = users(:testuser)
     end
 
     it "self.by_category gathers works of a specific category" do
@@ -73,10 +75,12 @@ describe Work do
       expect(Work.by_category("book")).must_be_kind_of String
     end
 
-    it "self.media_spotlight pulls a random work to spotlight" do #TODO: update for wave 2+
+    it "self.media_spotlight pulls the top voted work" do
 
       # positive nominal
+      Vote.create!(user_id: @user.id, work_id: @lathe.id)
       expect(Work.media_spotlight).must_be_instance_of Work
+      expect(Work.media_spotlight.votes_count).must_equal Work.maximum(:votes_count)
 
       # displays a message if no works exist
       Work.destroy_all
@@ -85,7 +89,7 @@ describe Work do
 
     it "self.top_ten pulls up to ten works" do #TODO: update for wave 2+
 
-    # pulls ten randomly if ten+ available TODO: I don't know why it pulls only nine here...10 in yml?
+    # pulls top ten if ten+ available TODO: Why wouldn't it let me name stuff4 in .yml 'd' ??? Had to be 'de'??
     all_movies = Work.all.find_all { |work| work.category == "movie" }
     expect(Work.top_ten("movie").count).must_equal all_movies.length
 
@@ -96,6 +100,7 @@ describe Work do
     # displays a message if no works exist
     Work.destroy_all
     expect(Work.by_category("book")).must_be_kind_of String
+    puts Work.by_category("book")
     end
   end
 end

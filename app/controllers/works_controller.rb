@@ -14,6 +14,10 @@ class WorksController < ApplicationController
     flash[:success] = "Media added successfully"
   end
 
+  def already_voted
+    flash[:notice] = "You already voted to this media"
+  end
+
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
   end
@@ -92,5 +96,27 @@ class WorksController < ApplicationController
       redirect_to work_path
       return
     end
+  end
+
+  def upvote
+    session[:user_id]
+    @work = Work.find_by_id(params[:id])
+    @user = User.find_by_id(session[:user_id])
+
+    if @work.nil?
+      not_found_error_notice
+      return
+    end
+    if @user.nil?
+      not_found_error_notice
+      return
+    end
+    if Vote.find_by(user:@user, work:@work)
+      already_voted
+    else
+      Vote.create!(user:@user, work:@work)
+    end
+
+    redirect_to works_path
   end
 end

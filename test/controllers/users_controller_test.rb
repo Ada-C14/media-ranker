@@ -14,7 +14,7 @@ describe UsersController do
       user = nil
       expect {
         user = login()
-      }.must_change "User.count", 1
+      }.must_differ "User.count", 1
 
       must_respond_with :redirect
 

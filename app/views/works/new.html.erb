@@ -1,11 +1,1 @@
-<%# should this also be in the application.html.erb with the flash? %>
-<% if @work.errors.any? %>
-  <ul class="errors">
-    <% @work.errors.each do |column, message| %>
-      <li>
-        <%= column %>: <%= message %>
-      </li>
-    <% end %>
-  </ul>
-  <% end %>
 <%= render partial: "form", locals: { action_name: "Create", header_sentence: "Add a new work" } %>

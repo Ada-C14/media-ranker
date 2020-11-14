@@ -26,10 +26,10 @@ class WorksController < ApplicationController
       flash[:success] = "Successfully created #{@work.category} #{@work.id}"
       return
     else
-      # TO DO: check to make sure this shows correctly in view (along with validation error message)
-      flash.now[:error] = "A problem occured: Could not create #{@work.category}"
-      flash.now[:error_message] = @work.errors.messages[:title][0]
-      render :new # show the create form again
+      flash[:error] = "A problem occured: Could not create #{@work.category}"
+      bulk_error_message = @work.errors.messages[:title][0]
+      flash[:error_message] = "title: #{bulk_error_message}"
+      redirect_back(fallback_location: root_path)
       return
     end
   end

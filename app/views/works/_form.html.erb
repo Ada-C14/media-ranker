@@ -1,22 +1,37 @@
-<%= form_with model: @work do |f| %>
-  <p><%= header_sentence %></p>
+<main>
+  <h2><%= header_sentence %></h2>
+  <section>
+  <%= form_with model: @work do |f| %>
 
-  <%= f.label :category %>
-  <%# SHOULD THESE BE HARD CODED???%>
-  <%= f.select :category, ['book', 'movie', 'album'] %>
+      <div class="form-group">
+        <%= f.label :category %>
+        <%# f.select { :class => "form-control" }, :category, ['album', 'book', 'movie'] %>
+        <%= f.select :category, ['album', 'book', 'movie'], {},  { :class => "form-control" } %>
+      </div>
 
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+      <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
 
-  <%= f.label :creator %>
-  <%= f.text_field :creator %>
+      <div class="form-group">
+        <%= f.label :creator %>
+        <%= f.text_field :creator, class: "form-control" %>
+      </div>
 
-  <%= f.label :publication_year %>
-  <%= f.text_field :publication_year %>
+      <div class="form-group">
+        <%= f.label :publication_year %>
+        <%= f.text_field :publication_year, class: "form-control" %>
+      </div>
 
-  <%= f.label :description %>
-  <%= f.text_field :description %>
+      <div class="form-group">
+        <%= f.label :description %>
+        <%= f.text_field :description, class: "form-control" %>
+      </div>
 
-  <%= f.submit "#{action_name} Work" %>
-
-<% end %>
+      <div class="form-group">
+        <%= f.submit "#{action_name} Work", class: "btn btn-primary" %>
+      </div>
+  <% end %>
+  </section>
+</main>

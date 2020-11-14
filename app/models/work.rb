@@ -7,6 +7,7 @@ class Work < ApplicationRecord
   validates :description, presence: true
 
   def sum_votes
+    return "🤯" if Vote.all.empty?
     work_id = self.id
     total_votes = Vote.where(work_id: work_id).count
     if total_votes.nil?
@@ -17,6 +18,7 @@ class Work < ApplicationRecord
   end
 
   def self.spotlight
+    return "😬" if Vote.all.empty?
     votes = Vote.all
     vote_count = {}
     count = 0
@@ -28,5 +30,12 @@ class Work < ApplicationRecord
       end
     end
     return vote_count.key(vote_count.values.max)
+  end
+
+  def self.top_ten_sort(category)
+    return "🤔" if Work.all.empty?
+    works = Work.where(category: category).max_by(10) do |work|
+      work.votes.count
+    end
   end
 end

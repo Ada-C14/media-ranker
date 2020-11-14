@@ -1,38 +1,44 @@
 <main>
-  <section class="spotlight">
-    <h2 class="spotlight__header">
-      <span class="spotlight__header--prefix">🔦Media Spotlight:</span>
-      <%= link_to "#{@media_spotlight.title} by #{@media_spotlight.creator}", work_path(@media_spotlight.id), class: "spotlight__link-to" %>
-    </h2>
-    <p class="spotlight__description">
-      <%= "#{@media_spotlight.sum_votes} votes - #{@media_spotlight.description}" %>
-    </p>
-  </section>
-  <hr class="root__hr">
-  <section class="top-ten__container">
-
-    <%# MOVIES %>
-    <section class="top-ten__list-container">
-      <h2 class="top-ten__header">
-        Top Movies 🎥
+  <% if @works.any? %>
+    <section class="spotlight">
+      <h2 class="spotlight__header">
+        <span class="spotlight__header--prefix">🔦Media Spotlight:</span>
+        <%= link_to "#{@media_spotlight.title} by #{@media_spotlight.creator}", work_path(@media_spotlight.id), class: "spotlight__link-to" %>
       </h2>
-      <%= render partial: 'spotlight', locals: {media: @top_movies} %>
+      <p class="spotlight__description">
+        <%= "#{@media_spotlight.sum_votes} votes - #{@media_spotlight.description}" %>
+      </p>
     </section>
+    <hr class="root__hr">
+    <section class="top-ten__container">
 
-    <%# BOOKS %>
-    <section class="top-ten__list-container">
-      <h2 class="top-ten__header">
-        Top Books 📚
-      </h2>
-      <%= render partial: 'spotlight', locals: {media: @top_books} %>
-    </section>
+      <%# MOVIES %>
+      <section class="top-ten__list-container">
+        <h2 class="top-ten__header">
+          Top Movies 🎥
+        </h2>
+        <%= render partial: 'spotlight', locals: {media: @top_movies} %>
+      </section>
 
-    <%# ALBUMS %>
-    <section class="top-ten__list-container">
-      <h2 class="top-ten__header">
-        Top Albums 🎧
-      </h2>
-      <%= render partial: 'spotlight', locals: {media: @top_albums} %>
+      <%# BOOKS %>
+      <section class="top-ten__list-container">
+        <h2 class="top-ten__header">
+          Top Books 📚
+        </h2>
+        <%= render partial: 'spotlight', locals: {media: @top_books} %>
+      </section>
+
+      <%# ALBUMS %>
+      <section class="top-ten__list-container">
+        <h2 class="top-ten__header">
+          Top Albums 🎧
+        </h2>
+        <%= render partial: 'spotlight', locals: {media: @top_albums} %>
+      </section>
     </section>
-  </section>
+  <% else %>
+    <h2>🔥🤯🔥🤯🔥🤯🔥🤯🔥🤯🔥🤯🔥🤯🔥🤯🔥🤯🔥🤯🔥🤯🔥🤯🔥🤯🔥</h2>
+    <h1>No Media!</h1>
+    <h2>🔥🤯🔥🤯🔥🤯🔥🤯🔥🤯🔥🤯🔥🤯🔥🤯🔥🤯🔥🤯🔥🤯🔥🤯🔥🤯🔥</h2>
+  <% end %>
 </main>

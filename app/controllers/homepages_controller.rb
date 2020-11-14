@@ -6,18 +6,18 @@ class HomepagesController < ApplicationController
     @media_spotlight = Work.find_by(id: Work.spotlight)
     @top_movies = if Work.where(category: 'movie').length <= 10
                     Work.where(category: 'movie')
-    else
-      Work.where(category: 'movie').sample(10)
+                  else
+                    Work.where(category: 'movie').sample(10)
                   end
     @top_books = if Work.where(category: 'book').length <= 10
                    Work.where(category: 'book')
-    else
-      Work.where(category: 'book').sample(10)
+                 else
+                   Work.where(category: 'book').sample(10)
                  end
     @top_albums = if Work.where(category: 'album').length <= 10
                     Work.where(category: 'album')
-    else
-      Work.where(category: 'album').sample(10)
+                  else
+                    Work.where(category: 'album').sample(10)
                   end
 
     # TODO: uncomment for later

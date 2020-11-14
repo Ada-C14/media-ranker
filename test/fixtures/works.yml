@@ -1,0 +1,76 @@
+work_one:
+  title: Kreb-Full-o Been
+  description: Vero consectetur delectus consequatur id aut accusantium unde excepturi.
+  publication_date: 2016
+  creator: Ms. Trevion Buckridge
+  category: album
+
+work_two:
+  title: Wake-up Pie
+  description: Voluptatem consequatur qui consectetur nisi officiis culpa.
+  publication_date: 1919
+  creator: Timmy Streich I
+  category: album
+
+work_three:
+  title: Major Cup
+  description: Quis recusandae cum est facere consequatur minima magni et.
+  publication_date: 1944
+  creator: Jayde Bartoletti
+  category: album
+
+work_four:
+  title: Summer Select
+  description: Et molestiae eos nam odit aut sed.
+  publication_date: 1946
+  creator: Ms. Gwendolyn Ortiz
+  category: book
+#
+#work_five:
+#  title: Summer Select
+#  description: Et molestiae eos nam odit aut sed.
+#  publication_date: 1946
+#  creator: Ms. Gwendolyn Ortiz
+#  category: book
+#
+work_six:
+  title: Holiday Choice
+  description: Excepturi voluptas ut voluptatum.
+  publication_date: 1940
+  creator: Alexandria Lehner
+  category: album
+#
+#work_seven:
+#  title: Green Forrester
+#  description: Omnis qui quia odio.
+#  publication_date: 1933
+#  creator: Raquel Hirthe
+#  category: book
+#
+#work_eight:
+#  title: Winter Mug
+#  description: Laboriosam autem iusto quae sed voluptate et.
+#  publication_date: 1990
+#  creator: Tia Weissnat II
+#  category: album
+#
+#work_nine:
+#  title: Red Pie
+#  description: Id dolorem qui laborum quia.
+#  publication_date: 1961
+#  creator: Davon Kub
+#  category: book
+
+#work_ten:
+#  title: Major Equinox
+#  description: Fugit perferendis est quam sunt porro vel rerum.
+#  publication_date: 1997
+#  creator: Queen Satterfield
+#  category: album
+
+#work_eleven:
+#  title: Joe Treat
+#  description: Voluptatem adipisci qui velit.
+#  publication_date: 1969
+#  creator: Blaise Lesch
+#  category: book

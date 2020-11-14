@@ -16,7 +16,7 @@
         <td> <%= link_to work.title, work_path(work)  %></td>
         <td><%= work.creator %></td>
         <td><%= work.publication_date %></td>
-        <td><%= button_to '+1', upvote_work_path(work), method: :post %></td>
+        <td><%= button_to 'Upvote', upvote_work_path(work), method: :post %></td>
     <%#end %>
   <% end %>
   </tr>
@@ -39,7 +39,7 @@
         <td> <%= link_to work.title, work_path(work) %></td>
         <td><%= work.creator %></td>
         <td><%= work.publication_date%></td>
-        <td><%= button_to '+1', upvote_work_path(work), method: :post %></td>
+        <td><%= button_to 'Upvote', upvote_work_path(work), method: :post %></td>
     <%#end %>
   <% end %>
   </tr>
@@ -65,7 +65,7 @@
         <td> <%= link_to movie.title, work_path(movie) %></td>
         <td><%= movie.creator %></td>
         <td><%= movie.publication_date%></td>
-        <td><%= button_to '+1', upvote_work_path(movie), method: :post %></td>
+        <td><%= button_to 'Upvote', upvote_work_path(movie), method: :post %></td>
       </tr>
     <%#end %>
   <% end %>

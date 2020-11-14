@@ -12,7 +12,7 @@ class Work < ApplicationRecord
 
   def self.top_ten(category:)
     works = Work.all.where(category: category)
-   works.sort_by do |work|
+    works = works.sort_by do |work|
      work.votes.count
     end.reverse.first(10)
   end

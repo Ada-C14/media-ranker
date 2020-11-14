@@ -23,6 +23,7 @@ class WorksController < ApplicationController
       redirect_to root_path
       return
     else
+      flash.now[:error] = "A problem occurred: could not create #{@work.category}."
       render :new, status: :bad_request
       return
     end
@@ -48,6 +49,7 @@ class WorksController < ApplicationController
       redirect_to works_path
       return
     else
+      flash.now[:failure] = "A problem occurred: could not update #{@work.category}"
       render :edit, status: :bad_request
       return
     end

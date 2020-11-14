@@ -1,5 +1,6 @@
-<h3>To enter a new piece of Media, please fill out all fields in the form below.</h3>
-<%= form_with model: @work do |f| %>
+<%= form_with model: @work, class: 'edit-driver' do |f| %>
+
+  <p>Please provide the following information to edit your media in our database:</p>
 
   <%= f.label :category %>
   <%= f.select :category, [ 'album','book','movie' ], :prompt => 'Select One' %>
@@ -16,7 +17,5 @@
   <%= f.label :description %>
   <%= f.text_field :description %>
 
-  <%= f.submit "Enter New Media" %>
+  <%= f.submit "Edit Media", class: "media-button" %>
 <% end %>
-</div>
-</html>

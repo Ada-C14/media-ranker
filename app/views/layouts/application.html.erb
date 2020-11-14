@@ -1,15 +1,42 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>MediaRanker</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <title>AdaBooks</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+<header>
+  <h1>Welcome to Media Ranker</h1>
+</header>
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><%= link_to "Home", root_path %></li>
+      <li><%= link_to "All Media", works_path%></li>
+      <li><%= link_to "New Media", new_work_path %></li>
+<!--      <li><%#= link_to "New User", new_user_path  %></li>-->
+<!--      <li><%#= link_to "Log In", login_path %></li>-->
+<!--      <li><%#= link_to "Log Out", logout_path, method: :post %></li>-->
+<!--      <li><%#= link_to "Current User", current_user_path %></li>-->
+    </ul>
+  </nav>
+</header>
 
-  <body>
-    <%= yield %>
-  </body>
+<section class="flash-msg__section">
+  <% flash.each do |name, message| %>
+    <strong class="<%= name %>">
+      <%= message %>
+    </strong>
+  <% end %>
+</section>
+
+<%= yield %>
+</body>
+<footer>
+  <p>Copyright Rachael 2020</p>
+</footer>
 </html>

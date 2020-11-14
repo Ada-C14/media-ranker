@@ -1,24 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>MediaRanker</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
-  </head>
-<header>
-  <h1>
-    Media Ranker
-  </h1>
-</header>
-  <div>
-    <div class="navbar">
-      <ul>
-       <li><%= link_to "Home", homepages_path %></li>
-       <li> <%= link_to "All Media", works_path%></li>
-      </ul>
-    </div>
-    <body>
+<body>
     <div>
         <h3> Spotlight Media!
           <% @work = @works.sample(1) %>
@@ -52,5 +32,3 @@
         </h4>
       </h4>
     </div>
-    </body>
-</html>

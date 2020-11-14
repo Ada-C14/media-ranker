@@ -1,25 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>MediaRanker</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
-</head>
-<header>
-  <h1>
-    Media Ranker
-  </h1>
-</header>
-<div>
-  <div class="navbar">
-    <ul>
-      <li><%= link_to "Home", homepages_path %></li>
-      <li> <%= link_to "All Media", works_path%></li>
-      <li> <%= link_to "Enter New Media", new_work_path %></li>
-    </ul>
-  </div>
-  <body>
+<body>
   <h2 class="title">
     <%= "Title: #{@work.title}" %>
   </h2>
@@ -38,6 +17,4 @@
   <h3>
     <%= "Description: #{@work.description}" %>
   </h3>
-  </body>
-</div>
-</html>
+</body>

@@ -21,13 +21,14 @@ class WorksController < ApplicationController
 
   def create
     @work = Work.new(work_params)
-
+    puts @work.inspect
+    puts @work.valid?
     if @work.save
       redirect_to works_path
-      # flash[:success] = "#{@work.title} was successfully added!"
+      flash[:success] = "#{@work.title} was successfully added!"
       return
     else
-      flash.now[:error] = "Something happened. Book not added."
+      flash.now[:error] = "Something happened. Media not added."
       render :new, status: :bad_request
       return
     end

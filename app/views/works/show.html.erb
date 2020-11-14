@@ -13,4 +13,24 @@
 <%= button_to "Delete Media", work_path(@work), method: :delete, data: { confirm: "Are you sure"}  %>
 </section>
 
+<section class="works-votes__container">
+  <h3 class="works-votes__header"><%= @work.votes.size %> Votes for this <%= @work.media %></h3>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>User</th>
+      <th>Date</th>
+    </tr>
+    </thead>
+    <% @work.votes.each do |vote| %>
+      <tbody>
+      <tr>
+        <td><%= link_to vote.user.username, user_path(vote.user.id), method: :get %></td>
+        <td><%= vote.created_at.strftime('%b %d, %Y') %></td>
+      </tr>
+      </tbody>
+    <% end %>
+  </table>
+</section>
+
 <!--<%#= link_to "Add a New Media", new_work_path%> |-->

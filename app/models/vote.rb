@@ -2,5 +2,5 @@ class Vote < ApplicationRecord
   belongs_to :user
   belongs_to :work
 
-  #TODO: add validation for if user already voted on a work
+  validates :user, uniqueness: { scope: :work, message: "has already voted for this work" }
 end

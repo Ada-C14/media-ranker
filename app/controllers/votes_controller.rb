@@ -26,7 +26,7 @@ class VotesController < ApplicationController
     if @user.includes_work?(params[:work_id])
       already_voted
     else
-      vote = Vote.new(vote_params)
+      vote = Vote.new(user_id: @user.id, work_id: params[:work_id])
       vote.save ? successful_upvote : unsuccessful_upvote
     end
 

@@ -108,7 +108,15 @@ class WorksController < ApplicationController
 
     if user.nil?
       flash.now[:error] = "You must be logged in to vote on works"
-      render
+      render work_path(work.id)
+    end
+
+    vote = Vote.new
+    vote.user_id = user.id
+    vote.work_id = work.id
+
+    if vote.save
+
     end
 
 

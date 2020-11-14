@@ -4,7 +4,10 @@ class UsersController < ApplicationController
   end
 
   def show
+    user_id = params[:id].to_i
+    @user = User.find_by(id: user_id)
 
+    @works = Work.all
   end
 
   def new

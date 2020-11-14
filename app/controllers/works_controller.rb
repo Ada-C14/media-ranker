@@ -1,10 +1,12 @@
 class WorksController < ApplicationController
+  before_action :find_work, only: [:show, :edit, :update, :destroy, :upvote]
+  before_action :find_current_user, only: [:upvote]
+
   def index
     @work_hash = Hash[Work.work_hash.sort]
   end
 
   def show
-    @work = Work.find_by(id: params[:id])
     if @work.nil?
       head :not_found
       return
@@ -31,7 +33,6 @@ class WorksController < ApplicationController
   end
 
   def edit
-    @work = Work.find_by(id: params[:id])
     if @work.nil?
       head :not_found
       return
@@ -39,9 +40,6 @@ class WorksController < ApplicationController
   end
 
   def update
-    work_id = params[:id]
-    @work = Work.find_by(id: work_id)
-
     if @work.nil?
       head :not_found
       return
@@ -59,13 +57,12 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    work_id = params[:id]
-    @work = Work.find_by(id: work_id)
     # NOTE: confirmation page is handled by index and show pages as a dialog box.
     if @work
       cat = @work.category
+      id = @work.id
       @work.destroy
-      flash[:success] = "Successfully destroyed #{cat} #{work_id}"
+      flash[:success] = "Successfully destroyed #{cat} #{id}"
       redirect_to root_path
     else
       head :not_found
@@ -76,12 +73,10 @@ class WorksController < ApplicationController
   # custom method to upvote
   # NEEDS TESTS
   def upvote
-    if session[:user_id].nil?
+    if @user.nil?
       flash[:error] = "A problem occurred: You must log in to do that"
     else
-      user_id = session[:user_id]
-      work_id = params[:id]
-      @vote = Vote.new(user_id: user_id, work_id: work_id)
+      @vote = Vote.new(user_id: @user.id, work_id: @work.id)
       if @vote.save
         flash[:success] = "Successfully upvoted!"
       else
@@ -98,4 +93,7 @@ class WorksController < ApplicationController
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
   end
 
+  def find_work
+    @work = Work.find_by_id(params[:id])
+  end
 end

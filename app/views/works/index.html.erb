@@ -17,7 +17,7 @@
           <th><%= link_to work.title, work_path(work) %></th>
           <th><%= work.creator %></th>
           <th><%= work.publication_year %></th>
-          <th><%= button_to "Upvote", upvote_work_path(work) %></th>
+          <th><%= button_to "Upvote", upvote_work_path(work), class: "btn btn-info" %></th>
         </tr>  
       <% end %>
     </table>  
@@ -38,7 +38,7 @@
           <th><%= link_to work.title, work_path(work) %></th>
           <th><%= work.creator %></th>
           <th><%= work.publication_year %></th>
-          <th><%= button_to "Upvote", upvote_work_path(work) %></th>
+          <th><%= button_to "Upvote", upvote_work_path(work), class: "btn btn-info" %></th>
         </tr>  
       <% end %>
     </table>  
@@ -59,7 +59,7 @@
           <th><%= link_to work.title, work_path(work) %></th>
           <th><%= work.creator %></th>
           <th><%= work.publication_year %></th>
-          <th><%= button_to "Upvote", upvote_work_path(work) %></th>
+          <th><%= button_to "Upvote", upvote_work_path(work), class: "btn btn-info" %></th>
         </tr>  
       <% end %>
     </table>  
@@ -68,9 +68,9 @@
 
 <section>
   <div>
-    <p><%= button_to "View top media", root_path, method: :get %></p>
+    <p><%= button_to "View top media", root_path, method: :get, class: "btn btn-secondary" %></p>
   </div>
   <div class="index">
-    <p><%= button_to "Add a new work", new_work_path, method: :get %></p>
+    <p><%= button_to "Add a new work", new_work_path, method: :get, class: "btn btn-info" %></p>
   </div> 
 </section>  

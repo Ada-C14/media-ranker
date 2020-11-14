@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :votes
   has_many :works, through: :votes
 
-  def each_user_votes(user)
-    return user.votes.count
+  def each_user_votes
+    return self.votes.count
   end
 end

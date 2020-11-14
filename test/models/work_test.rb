@@ -47,12 +47,30 @@ describe Work do
   end
 
   describe 'relations' do
-    it "has many votes" do
-      skip
+    describe "votes" do
+      it "can set the vote using a Vote" do
+        # Arrange & Act
+        user1 = users(:john)
+        work2 = works(:joe_book)
+        vote = votes(:user1_work2)
+
+        # Assert
+        expect(work2.votes.find(vote.id)).must_equal vote
+      end
     end
 
-    it "have many users thru votes" do
-      skip
-    end
+    describe "users" do 
+      it "only considers a vote is voted by an user" do
+        # Arrange
+        user1 = users(:john)
+        work1 = works(:kreb_album)
+
+        expect(work1.users.include?(user1)).must_equal false
+        # Act
+        vote = Vote.create!(user_id: user1.id, work_id: work1.id)
+        # Assert
+        expect(work1.users.include?(user1)).must_equal true
+      end
+    end  
   end
 end

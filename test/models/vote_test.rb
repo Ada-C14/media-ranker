@@ -4,7 +4,6 @@ describe Vote do
   it 'is valid when all fields are present' do
     # Arrange
     vote = votes(:user1_work3)
-    p vote.valid?
     # Act
     result = vote.valid?
 
@@ -48,14 +47,52 @@ describe Vote do
   end
 
   describe 'relations' do
-    it "has a work" do
+    it "can set the work using a Work" do
+      # Arrange
+      user1 = users(:john)
+      work2 = works(:joe_book)
+      # Act
       vote = votes(:user1_work2)
-      expect(vote.work_id).must_equal works(:joe_book).id
+      vote.work = work2
+
+      # Assert
+      expect(vote.work_id).must_equal work2.id
     end
 
-    it "has an user" do
-      vote = votes(:user1_work3)
-      expect(vote.user_id).must_equal users(:john).id
+    it "can set the work using a work_id" do
+      # Arrange
+      user1 = users(:john)
+      work2 = works(:joe_book)
+      # Act
+      vote = votes(:user1_work2)
+      vote.work_id = work2.id
+
+      # Assert
+      expect(vote.work).must_equal work2
+    end
+
+    it "can set the user using an User" do
+      # Arrange
+      user1 = users(:john)
+      work2 = works(:joe_book)
+      # Act
+      vote = votes(:user1_work2)
+      vote.user = user1
+
+      # Assert
+      expect(vote.user_id).must_equal user1.id
+    end
+
+    it "can set the user using an user_id" do
+      # Arrange
+      user1 = users(:john)
+      work2 = works(:joe_book)
+      # Act
+      vote = votes(:user1_work2)
+      vote.user_id = user1.id
+
+      # Assert
+      expect(vote.user).must_equal user1
     end
   end
 end

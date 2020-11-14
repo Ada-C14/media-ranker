@@ -1,5 +1,5 @@
 <section>
-  <h4 class="work-category-header">Albums</h4>
+  <h4 class="work-category-header"><%= category %></h4>
   <table class="table">
     <thead>
       <tr>
@@ -11,27 +11,15 @@
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>0</td>
-        <td><a href="/works/752">What a Girl Wants</a></td>
-        <td>Some User</td>
-        <td>2020</td>
-        <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/752/upvote">Upvote</a></td>
-      </tr>
-      <tr>
-        <td>0</td>
-        <td><a href="/works/664">Resist</a></td>
-        <td>Some User</td>
-        <td>1994</td>
-        <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/664/upvote">Upvote</a></td>
-      </tr>
-      <tr>
-        <td>0</td>
-        <td><a href="/works/693">Back to the Future</a></td>
-        <td>Some User</td>
-        <td>2005</td>
-        <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/693/upvote">Upvote</a></td>
-      </tr>
+      <% works.each do |work| %>
+        <tr>
+          <td><%= work.votes.length %></td>
+          <td><%= link_to work.title, work_path(work), :class => 'text-primary' %></td>
+          <td><%= work.creator %></td>
+          <td><%= work.publication_year %></td>
+          <td><%= button_to 'Upvote', upvote_path(work.id), method: :post, :class => 'btn btn-primary' %></td>
+        </tr>
+      <% end %>
     </tbody>
   </table>
 </section>

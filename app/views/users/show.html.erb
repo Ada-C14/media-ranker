@@ -1,7 +1,7 @@
 <h2>User Summary: <%= @user.name %></h2>
-<p>Joined site <%= @user.created_at.strftime("%B %-d, %Y") %></p>
+<p>Joined site <%= @user.created_at.strftime("%b %-d, %Y") %></p>
 <section class="votes-container">
-  <h3>Votes</h3>
+  <h3 class="text-black">Votes</h3>
   <table class="table">
     <thead>
       <tr>
@@ -15,11 +15,11 @@
     <tbody>
       <% @user.votes.each do |vote| %>
         <tr>
-          <td><%= link_to "#{Work.find_by(id: vote[:work_id]).title}", work_path(id: vote[:work_id]) %></td>
+          <td><%= link_to "#{Work.find_by(id: vote[:work_id]).title}", work_path(id: vote[:work_id]), :class => 'text-primary' %></td>
           <td><%= Work.find_by(id: vote[:work_id]).creator %></td>
           <td><%= Work.find_by(id: vote[:work_id]).publication_year %></td>
-          <td><%= Work.find_by(id: vote[:work_id]).category %></td>
-          <td><%= vote[:created_at].strftime("%B %-d, %Y") %></td>
+          <td><%= Work.find_by(id: vote[:work_id]).category.capitalize %></td>
+          <td><%= vote[:created_at].strftime("%b %-d, %Y") %></td>
         </tr>
       <% end %>
     </tbody>

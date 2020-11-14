@@ -11,7 +11,7 @@
   <%= button_to 'Delete', work_path(@work), data: {confirm: "Are you sure?"}, :method => :delete, :class => 'btn btn-danger' %>
 </section>
 <section class="votes-container">
-  <h3>Votes for this <%= @work.category.capitalize %></h3>
+  <h3 class="text-black"><%= @work.votes.count %> Votes for this <%= @work.category.capitalize %></h3>
   <table class="table">
     <thead>
       <tr>
@@ -22,8 +22,8 @@
     <tbody>
       <% @work.votes.each do |vote| %>
         <tr>
-          <th scope="row"><%= User.find_by(id: vote[:user_id]).name %></th>
-          <td><%= vote[:created_at].strftime("%B %-d, %Y") %></td>
+          <td scope="row"><%= link_to "#{vote.user.name}", user_path(id: vote.user.id), :class => 'text-primary' %></td>
+          <td><%= vote[:created_at].strftime("%b %-d, %Y") %></td>
         </tr>
       <% end %>
     </tbody>

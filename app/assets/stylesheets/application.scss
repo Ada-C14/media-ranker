@@ -39,6 +39,19 @@ main {
   }
 }
 
+.btn-secondary:hover {
+  background-color: $nav-link-color;
+  border-color: $nav-link-color;
+}
+
+a.text-primary {
+  color: $primary-color !important;
+
+  &:hover {
+    color: $nav-link-color !important;
+  }
+}
+
 header {
   background-color: $header-color;
   text-align: center;
@@ -106,6 +119,10 @@ h2, h3, h4, .work-title {
   border: none;
 }
 
+.spotlight {
+  border-bottom: 2px solid;
+}
+
 .work-title:hover, .spotlight:hover {
   color: #00796B;
   text-decoration: none;
@@ -126,6 +143,11 @@ h2, h3, h4, .work-title {
 
   .nav-item {
     padding: 5px 20px;
+    text-decoration: none;
+
+    &:hover {
+      color: $nav-link-color;
+    }
   }
 }
 
@@ -154,4 +176,17 @@ h2, h3, h4, .work-title {
 
 .spotlight {
   color: $primary-color;
+}
+
+.votes-container {
+  margin-top: 2rem;
+}
+
+.nav-submit-button {
+  display: flex;
+  gap: 2rem;
+}
+
+.text-black {
+  color: black !important;
 }

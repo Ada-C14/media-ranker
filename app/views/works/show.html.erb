@@ -25,7 +25,7 @@
       <% @users.each do |user| %>
         <% @work.votes.each do |vote| %>
           <% if vote.user_id == user.id %>
-            <li>  <%= user.name %> </li>
+            <li> <%= user.name %> </li>
           <% end %>
         <% end %>
       <% end %>

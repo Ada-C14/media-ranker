@@ -1,0 +1,16 @@
+<h1>List of Users</h1>
+<table>
+  <tr class="border-bottom">
+    <th>Username</th>
+    <th>Votes</th>
+    <th>Joined</th>
+  </tr>
+  <% @users.each do |user| %>
+    <tr class="border-bottom">
+<!--      <td> <%#= link_to user.name, user_path(user)  %></td>-->
+      <td> <%= user.name  %></td>
+      <td><%= user.votes.count %></td>
+      <td><%= user.created_at %></td>
+  <% end %>
+  </tr>
+</table>

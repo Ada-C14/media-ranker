@@ -22,8 +22,12 @@ ActiveRecord::Schema.define(version: 2020_11_13_044848) do
   end
 
   create_table "votes", force: :cascade do |t|
+    t.bigint "work_id"
+    t.bigint "user_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_votes_on_user_id"
+    t.index ["work_id"], name: "index_votes_on_work_id"
   end
 
   create_table "works", force: :cascade do |t|

@@ -113,10 +113,6 @@ describe Work do
       expect(top_ten.size).must_equal 10
     end
 
-    # it 'must top_ten(category) method get the top ten item even if there is less than 10 items in each category' do
-    #   @work
-    #   expect(Work.top_ten('book')).must_equal [@work]
-    # end
 
   end
 

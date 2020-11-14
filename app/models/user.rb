@@ -9,8 +9,6 @@ class User < ApplicationRecord
   def includes_work?(work_id)
     works = self.works
 
-    # return false if works.blank?
-
     works.each do |work|
       return true if work.id == work_id
     end

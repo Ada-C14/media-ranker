@@ -32,7 +32,8 @@ class UsersController < ApplicationController
   def login
     if params[:username].present?
       username = params[:username]
-    elsif params[:user]
+      user_params = { username: username }
+    elsif user_params
       username = user_params[:username]
     else
       not_saved_error_notice('create')

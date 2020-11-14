@@ -99,7 +99,7 @@ describe Work do
     describe "spotlight" do
       it "returns only one work" do
         # Arrange
-        new_work.save!
+        new_work.save
         Work.create!(category: "movie", title: "test movie title", creator: "test creator", publication_year: 2020, description: "test description")
 
         # Act
@@ -140,7 +140,6 @@ describe Work do
         # Act
         spotlight_work = Work.spotlight
 
-        # expect(spotlight_work.count).must_equal 1
         expect(spotlight_work).must_equal new_work
         expect(spotlight_work.votes.count).must_equal 1
         expect(second_work.votes.count).must_equal 1
@@ -169,12 +168,12 @@ describe Work do
     end
   end
 
-  # TODO How do top-10 and spotlight handle works with no votes? Ties in the number of votes?
+  # How do top-10 and spotlight handle works with no votes? Ties in the number of votes?
   describe "top ten" do
     it "can return only the top ten works based on votes if there are at least ten works" do
       # Arrange
       11.times do |i|
-        Work.create!(category: "book", title: "test title #{i + 1}", creator: "test creator #{i + 1}", publication_year: 2019, description: "test description #{i + 1}")
+        Work.create(category: "book", title: "test title #{i + 1}", creator: "test creator #{i + 1}", publication_year: 2019, description: "test description #{i + 1}")
       end
 
       new_user = User.create!(username: "test user")
@@ -192,7 +191,7 @@ describe Work do
     it "should return only the top ten works based on votes from the same category" do
       # Arrange
       10.times do |i|
-        Work.create!(category: "book", title: "test title #{i + 1}", creator: "test creator #{i + 1}", publication_year: 2019, description: "test description #{i + 1}")
+        Work.create(category: "book", title: "test title #{i + 1}", creator: "test creator #{i + 1}", publication_year: 2019, description: "test description #{i + 1}")
       end
 
       Work.create!(category: "movie", title: "test title 11", creator: "test creator 11", publication_year: 2019, description: "test description 11")
@@ -230,7 +229,7 @@ describe Work do
     it "returns the works created earlier if all the works have no votes" do
       # Arrange
       12.times do |i|
-        Work.create!(category: "book", title: "test title #{i + 1}", creator: "test creator #{i + 1}", publication_year: 2019, description: "test description #{i + 1}")
+        Work.create(category: "book", title: "test title #{i + 1}", creator: "test creator #{i + 1}", publication_year: 2019, description: "test description #{i + 1}")
       end
 
       # Act
@@ -247,7 +246,7 @@ describe Work do
       new_user = User.create!(username: "test user")
 
       12.times do |i|
-        Work.create!(category: "book", title: "test title #{i + 1}", creator: "test creator #{i + 1}", publication_year: 2019, description: "test description #{i + 1}")
+        Work.create(category: "book", title: "test title #{i + 1}", creator: "test creator #{i + 1}", publication_year: 2019, description: "test description #{i + 1}")
       end
 
       # Act

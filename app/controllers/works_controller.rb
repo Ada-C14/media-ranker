@@ -74,7 +74,7 @@ class WorksController < ApplicationController
     elsif @work.nil?
       head :not_found
       return
-    elsif @user.nil?
+    elsif @user.nil? #TODO: Somehow this doesn't work
       flash[:message] = "A problem occurred: You must log in to do that"
       return
     end

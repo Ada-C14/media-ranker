@@ -89,7 +89,7 @@ class WorksController < ApplicationController
         flash[:error_messages] = @vote.errors.messages
       end
     end
-    redirect_to request.referrer
+    redirect_back fallback_location: works_path
     return
   end
 

@@ -199,6 +199,7 @@ describe WorksController do
       work = Work.create(category: 'book', title: "delete the vote")
       user = User.create(username: "shadow")
       user.save
+      # we can do this because we are not trying to do so via a path
       vote = Vote.create(work_id: work.id, user_id: user.id)
       user_id = user.id
       work_id = work.id
@@ -225,6 +226,58 @@ describe WorksController do
       }.wont_change 'Work.count'
 
       must_respond_with :not_found
+    end
+  end
+
+  describe "upvote" do
+    before do
+      @work = Work.create(category: "movie", title: "upvote me")
+      @user = User.create(username: "voter")
+      @login_data = {user: {username: @user.username} }
+    end
+    it "doesn't allow logged out users to vote" do
+      expect{
+        post upvote_path(@work.id)
+      }.wont_change "Vote.count"
+
+      # check flash which will signal in unit testing whether it worked
+      expect(flash[:error]).must_equal "A problem occurred: You must log in to do that"
+
+      assert_nil(session[:id]) # sanity check
+    end
+
+
+    it "allows logged in users to vote for a work" do
+      post login_path, params: @login_data
+
+      expect{
+        post upvote_path(@work.id)
+      }.must_change "Vote.count", 1
+
+      assert_nil(flash[:error]) # no error message should be there
+
+      # make sure the vote exists
+      vote = @work.votes.find_by(user_id: @user.id)
+      assert_not_nil(vote)
+    end
+
+    it "prevents users from voting the same work twice" do
+      # login and vote
+      post login_path, params: @login_data
+      post upvote_path(@work.id)
+
+      # vote again
+      expect{
+        post upvote_path(@work.id)
+      }.wont_change "Vote.count"
+
+      # check flash which will signal in unit testing whether it worked
+      expect(flash[:error]).must_equal "A problem occurred: Could not upvote"
+
+      # see if original vote is still there
+      vote = @work.votes.find_by(user_id: @user.id)
+      assert_not_nil(vote)
+
     end
   end
 end

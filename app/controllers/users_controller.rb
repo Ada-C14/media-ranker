@@ -45,15 +45,6 @@ class UsersController < ApplicationController
     return
   end
 
-  def current
-    @current_user = User.find_by(id: session[:user_id])
-    unless @current_user
-      flash[:error] = "A problem occured: You must log in to do that"
-      redirect_to root_path
-      return
-    end
-  end
-
   private
   def user_params
     return params.require(:user).permit(:username, :joined).tap { |user| user[:joined] = Time.now.strftime("%b %d, %Y") }

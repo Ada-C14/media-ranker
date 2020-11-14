@@ -110,5 +110,53 @@ describe Work do
 
   describe 'custom methods' do
 
+    describe 'top_one' do
+      it 'top_one return the work with the most votes' do
+        20.times {Vote.create(user: users(:me), work: @work)}
+        expect(Work.top_one.title).must_equal "Dead Alive"
+      end
+
+      it 'if there is a tie, top_one returns first in alphabetical order' do
+        20.times {Vote.create(user: users(:me), work: @work)}
+        20.times {Vote.create(user: users(:me), work: works(:aguirre))}
+        expect(Work.top_one.title).must_equal "Aguirre, the Wrath of God"
+      end
+
+      it 'top_one returns nil when there are no works' do
+        Work.delete_all
+        expect(Work.top_one).must_be_nil
+      end
+    end
+
+    describe 'top_ten' do
+      it 'top_ten("category")[0] has the most votes' do
+        20.times {Vote.create(user: users(:me), work: @work)}
+        expect(Work.top_ten("movie")[0].title).must_equal "Dead Alive"
+      end
+
+      it 'top_ten("category")[9] has the least votes out of the ten' do
+        works.each{|work| Vote.create(user: users(:me), work: work) unless work.id == 2}
+
+        expect(Work.top_ten("movie")[9].title).must_equal "Aguirre, the Wrath of God"
+      end
+
+      it 'will work if number of works is < 10' do
+        works.each{|work| work.delete unless(work.id == 2 || work.id == 3)}
+        20.times {Vote.create(user: users(:me), work: works(:aguirre))}
+        expect(Work.top_ten("movie")[0].title).must_equal "Aguirre, the Wrath of God"
+        expect(Work.top_ten("movie")[1].title).must_equal "Movie A"
+      end
+
+      it 'will return empty array if there are no works in category' do
+        expect(Work.top_ten("album")).must_equal []
+      end
+
+      it 'will list alphabetically if there is a tie' do
+        works.each{|work| Vote.create(user: users(:me), work: work)}
+
+        expect(Work.top_ten("movie")[0].title).must_equal "Aguirre, the Wrath of God"
+        expect(Work.top_ten("movie")[8].title).must_equal "Aguirre, the Wrath of God"
+      end
+    end
   end
 end

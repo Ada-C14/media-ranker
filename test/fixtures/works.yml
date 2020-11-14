@@ -4,18 +4,18 @@ working_media:
   creator: Dr. Seuss
   publication_year: 1999
   description: Super cute children's book
-#working_album:
-#  category: album
-#  title: The Sound of Music
-#  creator: Richard Rogers
-#  Publication Year: 1959
-#  Description: Do a deer a female deer
-#working_movie:
-#  category: movie
-#  title: The Princess Diaries
-#  creator: Disney
-#  Publication Year: 2002
-#  Description: Mia!
+working_album:
+  category: album
+  title: The Sound of Music
+  creator: Richard Rogers
+  publication_year: 1959
+  description: Do a deer a female deer
+working_movie:
+  category: movie
+  title: The Princess Diaries
+  creator: Disney
+  publication_year: 2002
+  description: Mia!
 bad_media:
   category: movie
   creator: Disney

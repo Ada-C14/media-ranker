@@ -31,4 +31,5 @@ class ActiveSupport::TestCase
     return user
   end
   # Add more helper methods to be used by all tests here...
+
 end

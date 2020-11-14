@@ -87,9 +87,11 @@ describe WorksController do
     end
 
     it "redirects to error page for invalid work" do
-      skip
+      # skip
       get works_url(bad_work)
-      # must redirect somewhereeeeee
+      must_respond_with :not_found
+      # must_render_template layout: "#{Rails.root}/public/404"
+      # must_render :"#{Rails.root}/public/404"
     end
   end
 

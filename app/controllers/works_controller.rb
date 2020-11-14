@@ -82,10 +82,11 @@ class WorksController < ApplicationController
     if @vote.nil?
       Vote.create(work_id: params[:work_id], user_id: session[:user_id])
       flash[:success] = "Successfully voted!"
-      redirect_to work_path
+      redirect_back fallback_location: '/'
+      return
     else
       flash[:error] = "Already voted for this work."
-      redirect_to works_path
+      redirect_back fallback_location: '/'
       #Why won't redirect_to work_path work?
       return
     end

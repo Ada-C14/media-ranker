@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <header class="app-header__header">
+    <h1>
+      <a href="/">Media Ranker</a>
+      <small>Ranking the Best of Everything</small>
+    </h1>
+
+    <nav class="app-header__nav">
+      <ul class="nav app-header__site-nav-container">
+        <li class="nav-item app-header__nav_item">
+          <a class="nav-link" href="/">View top media</a>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <a class="nav-link" href="/works">View all media</a>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <a class="nav-link" href="/works/new">Add a new work</a>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <a class="nav-link" href="/users">View all users</a>
+        </li>
+      </ul>
+      <ul class="nav app-header__user-nav-container">
+        <% if session[:user_id] %>
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "Logged in as current_user_path(session[:user_id]) %>
+
+        </li>
+      </ul>
+
+      <!-- TODO: Going to have to make this a conditional view
+      <ul class="nav app-header__user-nav-container">
+
+        <li class="nav-item app-header__nav_item">
+          <a class="btn btn-primary" href="/users/806">Logged in as i</a>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <a class="btn btn-primary" rel="nofollow" data-method="post" href="/logout">Log Out</a>
+        </li>
+      </ul>
+      -->
+    </nav>
+  </header>
+  <section class="alert__container">
+    <% flash.each do |name, message| %>
+      <% if name == "success" %>
+        <div class="alert alert-success">
+          <span><%= message %></span>
+        </div>
+      <% else %>
+        <div class="alert alert-warning">
+          <span><%= message %></span>
+          <ul>
+            <% @work&.errors&.each do |column, message| %>
+            <li><%= column %> <%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <% end %>
+  </section>
+    <main>
+      <%= yield %>
+    </main>
+  </body>
+</html>

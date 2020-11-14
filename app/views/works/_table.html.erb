@@ -11,8 +11,7 @@
     </tr>
     </thead>
     <tbody>
-    <!--      TO:DO: order by votes -->
-    <% Work.where(category: category_type).each do |work| %>
+    <% Work.sort_by_votes(category_type).each do |work| %>
       <tr>
         <td><%= work.votes.count %></td>
         <td><%= link_to work.title, work_path(work.id) %></td>

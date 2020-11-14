@@ -9,7 +9,7 @@
     </tr>
     </thead>
     <tbody>
-    <% User.order(:created_at).each do |user| %>
+    <% User.sorted_votes_user_creation.each do |user| %>
       <tr>
         <td><%= link_to user.username, user_path(user.id) %></td>
         <td><%= user.votes.count %></td>

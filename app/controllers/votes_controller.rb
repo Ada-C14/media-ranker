@@ -9,7 +9,8 @@ class VotesController < ApplicationController
   end
 
   def already_voted
-    flash[:notice] = "Looks like you've already voted for this work!"
+    flash[:notice] = "Problem occurred: could not upvote.
+                      Looks like you've already voted for this work!"
   end
 
   #########################################################

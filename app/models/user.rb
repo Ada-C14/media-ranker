@@ -10,9 +10,13 @@ class User < ApplicationRecord
     works = self.works
 
     works.each do |work|
-      return true if work.id == work_id
+      return true if work.id == work_id.to_i
     end
 
     return false
+  end
+
+  def self.sorted_votes_user_creation
+    User.all.sort_by { |user| [user.votes.count, user.created_at] }.reverse
   end
 end

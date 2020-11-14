@@ -1,6 +1,6 @@
 
 <section class="spotlight">
-  <% unless Work.all.empty? %>
+  <% if Vote.any? %>
     <% feat = Work.spotlight %>
     <h2 class="spotlight__header">
       <span class="spotlight__header--prefix">

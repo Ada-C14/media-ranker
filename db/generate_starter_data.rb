@@ -28,6 +28,6 @@ CSV.open("db/users_seeds.csv", "w", :write_headers => true, :headers => ["userna
   25.times do
     username = Faker::Internet.username(specifier: 3..16)
 
-    csv << [username, join_date]
+    csv << [username]
   end
 end

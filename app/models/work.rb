@@ -21,7 +21,7 @@ class Work < ApplicationRecord
   end
 
   def self.media_spotlight
-    if Work.all.nil?
+    if Work.all.empty?
       output_message = "No works have been added to the system yet!"
       return output_message
     else
@@ -31,12 +31,13 @@ class Work < ApplicationRecord
   end
 
   def self.top_ten(category)
-    if Work.by_category(category).nil?
+    top_ten = where(category: category).order(votes_count: :asc).limit(10)
+
+    if top_ten.empty?
       output_message = "No #{category}s have been added to the system yet!"
       return output_message
     else
-
-      return where(category: category).order(votes_count: :asc).limit(10)
+      return top_ten
     end
   end
 end

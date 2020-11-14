@@ -82,12 +82,18 @@ describe Work do
       expect(Work.media_spotlight).must_be_instance_of Work
       expect(Work.media_spotlight.votes_count).must_equal Work.maximum(:votes_count)
 
+      # pulls first if ties
+      Vote.create!(user_id: @user.id, work_id: @practicalmagic.id)
+      expect(Work.media_spotlight).must_be_instance_of Work
+      expect(Work.media_spotlight.votes_count).must_equal Work.maximum(:votes_count)
+      expect(Work.media_spotlight).must_equal @lathe
+
       # displays a message if no works exist
       Work.destroy_all
-      expect(Work.by_category("book")).must_be_kind_of String
+      expect(Work.media_spotlight).must_be_kind_of String
     end
 
-    it "self.top_ten pulls up to ten works" do #TODO: update for wave 2+
+    it "self.top_ten pulls up to ten works" do
 
     # pulls top ten if ten+ available TODO: Why wouldn't it let me name stuff4 in .yml 'd' ??? Had to be 'de'??
     all_movies = Work.all.find_all { |work| work.category == "movie" }
@@ -99,8 +105,7 @@ describe Work do
 
     # displays a message if no works exist
     Work.destroy_all
-    expect(Work.by_category("book")).must_be_kind_of String
-    puts Work.by_category("book")
+    expect(Work.top_ten("book")).must_be_kind_of String
     end
   end
 end

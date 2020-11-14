@@ -1,0 +1,21 @@
+test1_vote:
+  user_id: 3
+  work_id: 5
+test2_vote:
+  user_id: 1
+  work_id: 5
+test3_vote:
+  user_id: 6
+  work_id: 5
+test4_vote:
+  user_id: 1
+  work_id: 1
+test5_vote:
+  user_id: 1
+  work_id: 2
+test6_vote:
+  user_id: 3
+  work_id: 2
+test7_vote:
+  user_id: 6
+  work_id: 2

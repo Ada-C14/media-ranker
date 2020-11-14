@@ -56,10 +56,15 @@ describe Work do
 
 
   describe "spotlight" do
-    it "can return the top rated work" do
+    it "is an instance of work" do
       wave_1_spotlight = works(:test3_book)
       expect(wave_1_spotlight).must_be_instance_of Work
-      # TODO: future waves, incorporate top votes
+    end
+
+    it "can return the top rated work" do
+      wave_2_spotlight = Work.spotlight
+      expect(wave_2_spotlight).must_equal 5
+
     end
   end
 

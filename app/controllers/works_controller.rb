@@ -75,11 +75,15 @@ class WorksController < ApplicationController
 
   def homepage
     @works = Work.all
-    @spotlight = Work.all.sample(1)[0]
+
+    @spotlight = top_rated(@works)
+
     @books = Work.where(category: "book")
     @ranked_books = rank10(@books)
+
     @albums = Work.where(category: "album")
     @ranked_albums = rank10(@albums)
+
     @movies = Work.where(category: "movie")
     @ranked_movies = rank10(@movies)
   end
@@ -89,6 +93,12 @@ class WorksController < ApplicationController
 
     return sorted_list.first(10)
 
+  end
+
+  def top_rated(work_list)
+    sorted_list = work_list.sort_by { |work| work.votes.count }.reverse
+
+    return sorted_list.first
   end
 
 

@@ -1,5 +1,5 @@
 <h3> Media Spotlight: <%= link_to @spotlight.title.titleize, work_path(@spotlight.id) %> by <%= @spotlight.creator %> </h3>
-<p> <%= @spotlight.description %></p>
+<p> <%= @spotlight.votes.count %> votes -- <%= @spotlight.description %></p>
 
 <hr>
 

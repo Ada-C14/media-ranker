@@ -11,8 +11,8 @@ class Work < ApplicationRecord
   end
 
   def self.top_ten(category)
-    top_ten = Work.where(category: category).sample(10)
-    # spotlight = Vote.order('work_id DESC').first
-
+    works = Work.where(category: category)
+    top_ten = works.all.sort_by{ |work| [work.votes.count, work.title]}.last(10)
+    return top_ten.reverse!
   end
 end

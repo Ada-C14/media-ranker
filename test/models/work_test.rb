@@ -13,6 +13,6 @@ describe Work do
     # Assert
     expect(result).must_equal true
   end
-
+  #have 9 works, see if it works with, 9, add one (no votes) , see if it is last
 
 end

@@ -3,7 +3,33 @@ dead_alive:
   creator: Peter Jackson
   description: Classic splatter-comedy
   category: movie
-naked_lunch:
+vertigo:
+  title: Vertigo
+  creator: Peter Jackson
+  description: Thriller
+  category: movie
+aguirre:
+  title: Aguirre, the Wrath of God
+  creator: Werner Herzog
+  description: German art house
+  category: movie
+wide_shut:
+  title: Eyes Wide Shut
+  creator: Stanley Kubrick
+  description: Things get weird
+  category: movie
+wide_shut:
+  title: Eyes Wide Shut
+  creator: Stanley Kubrick
+  description: Things get weird
+  category: movie
+
+story_eye:
+  title: Story of the Eye
+  creator: Georges Bataille
+  description: Not for the squeamish
+  category: book
+story_eye:
   title: Story of the Eye
   creator: Georges Bataille
   description: Not for the squeamish

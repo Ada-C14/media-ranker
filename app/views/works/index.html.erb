@@ -32,7 +32,9 @@
               <td>
                 <%=work.publication_date%>
               </td>
-<!--              <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/859/upvote">Upvote</a></td>-->
+              <td>
+                <%=link_to("Upvote", upvote_work_path(work.id), method: :post, class: "btn btn-primary")%>
+              </td>
             </tr>
           <%end%>
         </tbody>

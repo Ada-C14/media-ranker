@@ -19,10 +19,11 @@
         <%= link_to "View All Users", users_path %> ||
 
         <% if session[:user_id] %>
-          <%= link_to "Logged in as #{@username}", current_user_path, class:"btn btn-primary" %>
+          <% user = User.find_by(id: session[:user_id]) %>
+          <%= link_to "Logged in as #{user.username}", current_user_path, class:"btn btn-primary" %>
           <%= link_to "Log Out", logout_path, method: :post, class:"btn btn-primary" %>
         <% else %>
-          <%= link_to "Log In", login_path %> ||
+          <%= link_to "Log In", login_path, class:"btn btn-primary" %>
         <% end %>
       </nav>
       <section class="flash">

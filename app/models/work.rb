@@ -32,7 +32,7 @@ class Work < ApplicationRecord
     return vote_count.key(vote_count.values.max)
   end
 
-  def self.top_works(category, num=10)
+  def self.top_works(category, num = 10)
     #return "🤔" if Work.all.empty?
     # returns array of works, sorted by highest votes, in descending order (high to low)
     return Work.where(category: category).max_by(num) do |work|

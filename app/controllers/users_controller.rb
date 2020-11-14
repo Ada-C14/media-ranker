@@ -67,6 +67,7 @@ class UsersController < ApplicationController
 
   def current
     @user = User.find_by(id: session[:user_id])
+    @username = @user.username
 
     if @user.nil?
       flash[:error] = "You must be logged in to view this page."

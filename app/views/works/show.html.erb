@@ -12,11 +12,8 @@
 
 <!--  make link work!!, no view or controller yet-->
   <a href="<%=root_path %>"><button type="button" class="btn btn-info">Upvote</button></a>
-
-  <!--  this doesn't work-->
-  <a href="<%=works_path %>"><button type="button" class="btn btn-info">Delete</button></a>
-  <!--  this work but it's not a button-->
-  <%= link_to 'Delete', @work, method: :delete, data: { confirm: 'Are you sure?' } %>
+<!--  <a href="<%#=works_path %>"><button type="button" class="btn btn-info">Delete</button></a>-->
+  <%= link_to 'Delete', @work, method: :delete, class: "btn btn-primary", data: { confirm: 'Are you sure?' } %>
 </section>
 
 <section>

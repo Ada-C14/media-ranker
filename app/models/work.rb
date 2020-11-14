@@ -1,4 +1,7 @@
 class Work < ApplicationRecord
+  has_many :votes
+
+
   VALID_CATEGORIES = ['album', 'book', 'movie']
 
   validates :title, presence: true

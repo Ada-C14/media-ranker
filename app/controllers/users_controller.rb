@@ -33,8 +33,8 @@ class UsersController < ApplicationController
     if params[:username].present?
       username = params[:username]
       user_params = { username: username }
-    elsif user_params
-      username = user_params[:username]
+    elsif params[:user].present?
+      username = params[:user][:username]
     else
       not_saved_error_notice('create')
       render :login_form

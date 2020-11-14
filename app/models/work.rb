@@ -21,10 +21,10 @@ class Work < ApplicationRecord
             }
 
   def self.media_spotlight
-    Work.all.limit(1)[0]
+    Work.all.sort_by { |work| work.votes.count }.reverse[0]
   end
 
   def self.top_ten(category)
-    Work.where(category: category).limit(10)
+    Work.where(category: category).sort_by { |work| work.votes.count }.reverse[0..9]
   end
 end

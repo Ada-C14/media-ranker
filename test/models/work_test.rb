@@ -28,7 +28,7 @@ describe Work do
     end
   end
 
-  describe "relationships" do
+  describe "relations" do
 
   end
 

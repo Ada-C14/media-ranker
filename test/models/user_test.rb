@@ -17,7 +17,7 @@ describe User do
     expect(user).must_respond_to :username
   end
 
-  describe "relationships" do
+  describe "relations" do
 
   end
 

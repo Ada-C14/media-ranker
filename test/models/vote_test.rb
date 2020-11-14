@@ -26,11 +26,46 @@ describe Vote do
     end
   end
 
+  describe 'relations' do
+    before do
+      @vote = votes(:vote1)
+    end
+    it 'belongs to one user' do
+      expect(@vote.user).must_be_instance_of User
+      expect(@vote.user).must_equal users(:user1)
+    end
+
+    it "belongs to one work" do
+      expect(@vote.work).must_be_instance_of Work
+      expect(@vote.work).must_equal works(:book)
+    end
+  end
+
 
   describe 'validations' do
+    before do
+      @vote = votes(:vote1)
+    end
+
     it 'prevents multiple votes for a work by the same user' do
+      vote3 = Vote.create(work_id: @vote.work_id, user_id: @vote.user_id)
 
+      expect(vote3.valid?).must_equal false
+      expect(vote3.errors.messages).must_include :work_id
+      expect(vote3.errors.messages[:work_id]).must_equal ["has already been taken"]
 
+    end
+
+    it 'is invalid for a non-existent user' do
+      new_vote.user = nil
+
+      expect(new_vote.valid?).must_equal false
+    end
+
+    it 'is invalid for a non-existent work' do
+      new_vote.work = nil
+
+      expect(new_vote.valid?).must_equal false
     end
   end
 end

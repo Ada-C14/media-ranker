@@ -9,7 +9,7 @@
     <%= link_to "Back to media ranks", root_path, :class => "btn btn-primary" %>
     <%= link_to "Edit this #{@work.category.capitalize}", edit_work_path(@work.id), :class => "btn btn-primary" %>
     <%= link_to "Delete this #{@work.category.capitalize}", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"},:class => "btn btn-danger" %>
-    <%= link_to "Upvote", work_upvote_path(@work.id), :class => "btn btn-primary"%>
+    <%= link_to "Upvote", work_upvote_path(@work.id), method: :post, :class => "btn btn-primary"%>
   </section>
 </section>
 <section class="works-votes__container">

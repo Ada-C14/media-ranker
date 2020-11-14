@@ -49,12 +49,24 @@
     </nav>
   </header>
   <section class="flash-msg__section">
-
     <% flash.each do |name, message| %>
       <div class="alert <%= flash_class(name) %>">
-        <strong class="<%= name %>">
-          <%= message %>
-        </strong>
+        <% if name == "error" %>
+          <strong class="<%= name %>">
+            <%= message %>
+          </strong>
+          <ul>
+            <% @work.errors.each do |column, message| %>
+              <li>
+                <strong><%= column.capitalize %> <%= message %></strong>
+              </li>
+            <% end %>
+          </ul>
+        <% else %>
+          <strong class="<%= name %>">
+            <%= message %>
+          </strong>
+        <% end %>
       </div>
     <% end %>
   </section>

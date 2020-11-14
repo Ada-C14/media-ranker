@@ -15,8 +15,9 @@
       <h1><%= link_to 'Media Ranker', homepages_path %> Ranking the Best of Everything</h1>
       <ul class="header_nav_links">
         <li><%= link_to 'View Top Media', homepages_path %></li>
-        <li><%= link_to 'View all Media', works_path %></li>
+        <li><%= link_to 'View All Media', works_path %></li>
         <li><%= link_to 'Add New Work', new_work_path %></li>
+        <li><%= link_to 'View All Users', users_path %></li>
         <% if session[:user_id] %>
         <li> <%= link_to "Logout", logout_path, method: :post %></li>
           <% else %>

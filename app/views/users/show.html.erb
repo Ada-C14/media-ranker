@@ -11,13 +11,12 @@
     <th>Category</th>
     <th>Voted On</th>
   </tr>
-<!--  <%# experiment = @work.votes.any? { |vote| vote.user_id == @user.id} %> %>-->
   <% unless @user == nil || @works == nil %>
     <% @works.each do |work| %>
      <% @user.votes.each do |vote| %>
       <% if vote.work_id == work.id %>
         <tr class="border-bottom">
-        <td><%= work.title  %></td>
+          <td> <%= link_to work.title, work_path(work) %></td>
         <td><%= work.creator %></td>
         <td><%= work.publication_date %></td>
         <td><%= work.category %></td>

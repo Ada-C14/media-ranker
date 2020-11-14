@@ -1,7 +1,23 @@
 require "test_helper"
 
 describe UsersController do
-  # it "does a thing" do
-  #   value(1+1).must_equal 2
-  # end
+  describe "index" do
+
+  end
+
+  describe "show" do
+
+  end
+
+  describe "login" do
+
+  end
+
+  describe "logout" do
+
+  end
+
+  describe "current_user" do
+
+  end
 end

@@ -17,8 +17,10 @@ describe Work do
     it "will return just the works from a particular category" do
       @works = Work.all
 
+      books = @works.category_filter("Book")
+
       expect {
-        @works.category_filter("Book").category
+        books.first.category
       }.must_equal "Book"
 
     end

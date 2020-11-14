@@ -1,19 +1,26 @@
 
-<div class="spotlight">
+<section class="spotlight">
   <% unless Work.all.empty? %>
     <% feat = Work.spotlight %>
-    <h3>Media Spotlight: <%= feat.title %> by <%= feat.creator %></h3>
+    <h2 class="spotlight__header">
+      <span class="spotlight__header--prefix">
+        Media Spotlight:
+      </span>
+      <%= link_to "#{feat.title}", work_path(id: feat.id), :class => "spotlight__link-to" %> by <%= feat.creator %>
+    </h2>
+    <p class="spotlight__description">
+      <%= pluralize(feat.votes.count, "vote") %> - <%= feat.description %>
+    </p>
   <% end %>
-</div>
-
-<div class="top-books">
-  <%= render partial: "top", locals: { header: "Top Books", works: @books } %>
-</div>
-
-<div class="top-movies">
-  <%= render partial: "top", locals: { header: "Top Movies", works: @movies } %>
-</div>
-
-<div class="top-albums">
-  <%= render partial: "top", locals: { header: "Top Albums", works: @albums } %>
-</div>
+</section>
+<section class="top-ten__container">
+  <section class="top-ten__list-container">
+    <%= render partial: "top", locals: { header: "Top Albums", works: @albums } %>
+  </section>
+  <section class="top-ten__list-container">
+    <%= render partial: "top", locals: { header: "Top Books", works: @books } %>
+  </section>
+  <section class="top-ten__list-container">
+    <%= render partial: "top", locals: { header: "Top Movies", works: @movies } %>
+  </section>
+</section>

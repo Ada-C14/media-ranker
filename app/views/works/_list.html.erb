@@ -1,5 +1,5 @@
 <h3><%= header %></h3>
-<table>
+<table class="table">
   <tr>
     <th>Votes</th>
     <th>Title</th>
@@ -13,7 +13,7 @@
       <td><%= link_to "#{work.title}", work_path(work.id) %></td>
       <td><%= work.creator %></td>
       <td><%= work.publication_year %></td>
-      <td><%= button_to "Upvote", work_upvote_path(work.id) %></td>
+      <td><%= link_to "Upvote", work_upvote_path(work.id), method: :post, :class => "btn btn-primary" %></td>
     </tr>
   <% end %>
 </table>

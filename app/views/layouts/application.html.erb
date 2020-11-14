@@ -9,31 +9,57 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <header>
-    <nav>
-      <%= link_to "Home", root_path %>
-      <%= link_to "View all media", works_path %>
-      <%= link_to "Add new work", new_work_path %>
-      <%= link_to "All users", users_path %>
-      <% unless session[:user_id] %>
-        <%= link_to "Log In", login_path %>
-      <% else %>
-        <%= link_to "Logged in as #{User.find_by(id: session[:user_id]).username}", user_path(id: session[:user_id]) %>
-      <% end %>
-      <% if session[:user_id] %>
-        <%= link_to "Log Out", logout_path, method: :post %>
-      <% end %>
 
+  <body>
+  <header class="app-header__header">
+    <h1>
+      <%= link_to "Media Ranker", root_path %>
+      <small>Ranking the Best of Everything</small>
+    </h1>
+    <nav class="app-header__nav">
+      <ul class="nav app-header__site-nav-container">
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "Home", root_path, :class => "nav-link" %>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "View all media", works_path, :class => "nav-link" %>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "Add new work", new_work_path, :class => "nav-link" %>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "All users", users_path, :class => "nav-link" %>
+        </li>
+      </ul>
+      <ul class="nav app-header__user-nav-container">
+        <% if session[:user_id] %>
+          <li class="nav-item app-header__nav_item">
+            <%= link_to "Logged in as #{User.find_by(id: session[:user_id]).username}",
+                        user_path(id: session[:user_id]), :class => "btn btn-primary" %>
+          </li>
+          <li class="nav-item app-header__nav_item">
+            <%= link_to "Log Out", logout_path, method: :post, :class => 'btn btn-primary' %>
+          </li>
+        <% else %>
+          <li class="nav-item app-header__nav_item">
+            <%= link_to "Log In", login_path, :class => "btn btn-primary" %>
+          </li>
+        <% end %>
+      </ul>
     </nav>
   </header>
-  <body>
   <section class="flash-msg__section">
+
     <% flash.each do |name, message| %>
-      <strong class="<%= name %>">
-        <%= message %>
-      </strong>
+      <div class="alert <%= flash_class(name) %>">
+        <strong class="<%= name %>">
+          <%= message %>
+        </strong>
+      </div>
     <% end %>
   </section>
+  <main>
     <%= yield %>
+  </main>
   </body>
 </html>

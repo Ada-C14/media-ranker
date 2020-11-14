@@ -5,11 +5,11 @@ class UsersController < ApplicationController
 
   def login
     @user = User.find_by(id: params[:id])
-    if @user.nil?
-
-    elsif
-
-    end
+    # if @user.nil?
+    #
+    # elsif
+    #
+    # end
 
   end
 
@@ -19,10 +19,5 @@ class UsersController < ApplicationController
 
   def current_user
 
-  end
-
-  private
-  def user_params
-    
   end
 end

@@ -15,6 +15,10 @@ class Work < ApplicationRecord
     return Work.where(category: category).sort_by { |work| work.votes.count }.reverse[0..9]
   end
 
+  def self.sorted(category)
+    return Work.where(category: category).sort_by { |work| work.votes.count }.reverse
+  end
+
   def vote_date
     vote = Vote.find_by(work_id: self.id)
     return vote.created_at.strftime("%b %d, %Y")

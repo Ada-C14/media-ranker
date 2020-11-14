@@ -14,7 +14,7 @@
   </thead>
 
   <tbody>
-      <% @albums.each do |album| %>
+      <% @albums.sorted("album").each do |album| %>
         <tr>
           <td><%= album.votes.count %></td>
           <td><%= link_to album.title, work_path(album) %></td>
@@ -41,7 +41,7 @@
   </thead>
 
   <tbody>
-  <% @books.each do |book| %>
+  <% @books.sorted("book").each do |book| %>
     <tr>
       <td><%= book.votes.count %></td>
       <td><%= link_to book.title, work_path(book) %></td>
@@ -69,7 +69,7 @@
   </thead>
 
   <tbody>
-  <% @movies.each do |movie| %>
+  <% @movies.sorted("movie").each do |movie| %>
     <tr>
       <td><%= movie.votes.count  %></td>
       <td><%= link_to movie.title, work_path(movie) %></td>

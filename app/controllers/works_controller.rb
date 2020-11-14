@@ -6,9 +6,7 @@ class WorksController < ApplicationController
     @works = Work.all
   end
 
-  def show
-    ;
-  end
+  def show ; end
 
   def new
     @work = Work.new
@@ -27,9 +25,7 @@ class WorksController < ApplicationController
     end
   end
 
-  def edit
-    ;
-  end
+  def edit ; end
 
   def update
     if @work.update(work_params)

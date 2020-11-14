@@ -1,0 +1,63 @@
+valid_work:
+  category: movie
+  title: Clue
+  creator: Will Smith
+  publication_year: 1996
+  description: best movie ever
+valid_work_1:
+  category: movie
+  title: Pulp Fiction
+  creator: Will Smith
+  publication_year: 1996
+  description: best movie ever
+valid_work_2:
+  category: movie
+  title: Selena
+  creator: Will Smith
+  publication_year: 1996
+  description: best movie ever
+valid_work_3:
+  category: movie
+  title: Toy Story
+  creator: Will Smith
+  publication_year: 1996
+  description: best movie ever
+valid_work_4:
+  category: movie
+  title: Wolf of Wall Street
+  creator: Will Smith
+  publication_year: 1996
+  description: best movie ever
+valid_work_5:
+  category: movie
+  title: The Departed
+  creator: Will Smith
+  publication_year: 1996
+  description: best movie ever
+valid_work_6:
+  category: movie
+  title: Finding Nemo
+  creator: Will Smith
+  publication_year: 1996
+  description: best movie ever
+valid_work_7:
+  category: movie
+  title: The Big Short
+  creator: Will Smith
+  publication_year: 1996
+  description: best movie ever
+valid_work_8:
+  category: movie
+  title: Moonlight
+  creator: Will Smith
+  publication_year: 1996
+  description: best movie ever
+valid_work_9:
+  category: movie
+  title: Scream
+  creator: Will Smith
+  publication_year: 1996
+  description: best movie ever
+valid_book:
+  category: book
+  title: the worst book ever

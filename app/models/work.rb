@@ -15,7 +15,14 @@ class Work < ApplicationRecord
    works.sort_by do |work|
      work.votes.count
     end.reverse.first(10)
-    end
+  end
+
+  def self.total_lists(category:)
+    works = Work.all.where(category: category)
+    works.sort_by do |work|
+      work.votes.count
+    end.reverse
+  end
 end
 
 

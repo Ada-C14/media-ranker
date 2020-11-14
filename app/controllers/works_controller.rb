@@ -1,11 +1,17 @@
 class WorksController < ApplicationController
   def index
     @works = Work.all
+    #NEED TO DRY THIS ISH UP >>
+    @all_movies = Work.total_lists(category: "movie")
+    @all_books = Work.total_lists(category: "book")
+    @all_albums = Work.total_lists(category: "album")
   end
 
   def show
     work_id = params[:id].to_i
     @work = Work.find_by(id: work_id)
+    #just added the user portion below
+    @user = User.find_by(id: session[:user_id])
 
     if @work.nil?
       head :not_found
@@ -65,6 +71,7 @@ class WorksController < ApplicationController
   def upvote
     @work = Work.find_by(id: params[:id])
     @user = User.find_by(id: session[:user_id])
+
     if @user.nil?
       flash.now[:error] = "Must be logged in to vote."
       render :show
@@ -75,6 +82,7 @@ class WorksController < ApplicationController
       redirect_to(works_path)
     else
       Vote.create!(work: @work, user: @user)
+
       # @work.votes.create!(user: @user)
     render :show
     end

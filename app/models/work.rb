@@ -15,4 +15,10 @@ class Work < ApplicationRecord
     return works.min_by { |work| work.publication_year}
   end
 
+  def upvote
+    # user is the current session
+    user = User.find_by(id: session[:user_id])
+    return Vote.new(user: user, work: self)
+  end
+
 end

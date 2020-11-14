@@ -62,19 +62,42 @@ describe Work do
     end
 
     it "can return the top rated work" do
+      expected = works(:test1_book).id
       wave_2_spotlight = Work.spotlight
-      expect(wave_2_spotlight).must_equal 5
+      expect(wave_2_spotlight).must_equal expected
 
     end
   end
 
   describe "top media" do
-    it "can instantiate a random sample (up to 10) of media/works" do
-      works.each do |work|
-        expect(work).must_be_instance_of Work
+      it "returns an array of work instances" do
+        media = %w[book movie album]
+        media.each do |category|
+          top_media = Work.top_works(category)
+          expect(top_media).must_be_instance_of Array
+          top_media.each do |medium|
+            expect(medium).must_be_instance_of Work
+          end
+        end
       end
-      # TODO: future waves, incorporate top votes
-    end
-  end
 
+    it "returns correct number of works" do
+      count = 3
+      media = %w[book movie album]
+      media.each do |category|
+        top_media = Work.top_works(category, count)
+        expect(top_media.length).must_equal count
+      end
+    end
+
+
+      it "the first work has the most votes" do
+        top_media = works(:test1_book)
+        most_votes = top_media.votes.length
+        expect(Work.top_works('book').first).must_equal top_media
+        expect(Work.top_works('book').first.votes.count).must_equal most_votes
+      end
+
+
+    end
 end

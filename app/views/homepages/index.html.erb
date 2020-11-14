@@ -1,5 +1,5 @@
 <main>
-  <% if @works.any? %>
+  <% if @works.any? && !@votes.nil? %>
     <section class="spotlight">
       <h2 class="spotlight__header">
         <span class="spotlight__header--prefix">🔦Media Spotlight:</span>
@@ -37,8 +37,10 @@
       </section>
     </section>
   <% else %>
+    <h2>👾🧨👾🧨👾🧨👾🧨👾🧨👾🧨👾🧨👾🧨👾🧨👾🧨👾🧨👾🧨👾🧨👾</h2>
     <h2>🔥🤯🔥🤯🔥🤯🔥🤯🔥🤯🔥🤯🔥🤯🔥🤯🔥🤯🔥🤯🔥🤯🔥🤯🔥🤯🔥</h2>
     <h1>No Media!</h1>
     <h2>🔥🤯🔥🤯🔥🤯🔥🤯🔥🤯🔥🤯🔥🤯🔥🤯🔥🤯🔥🤯🔥🤯🔥🤯🔥🤯🔥</h2>
+    <h2>👾🧨👾🧨👾🧨👾🧨👾🧨👾🧨👾🧨👾🧨👾🧨👾🧨👾🧨👾🧨👾🧨👾</h2>
   <% end %>
 </main>

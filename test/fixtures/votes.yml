@@ -1,21 +1,27 @@
 test1_vote:
-  user_id: 3
-  work_id: 5
+  user: dustry
+  work: test1_book
 test2_vote:
-  user_id: 1
-  work_id: 5
+  user: gio
+  work: test1_book
 test3_vote:
-  user_id: 6
-  work_id: 5
+  user: imre
+  work: test1_book
 test4_vote:
-  user_id: 1
-  work_id: 1
+  user: onyx
+  work: test3_book
 test5_vote:
-  user_id: 1
-  work_id: 2
+  user: winter
+  work: test2_book
 test6_vote:
-  user_id: 3
-  work_id: 2
+  user: carmen
+  work: test3_book
 test7_vote:
-  user_id: 6
-  work_id: 2
+  user: romeo
+  work: test1_movie
+test8_vote:
+  user: rafael
+  work: test2_movie
+test9_vote:
+  user: kirra
+  work: test1_album

@@ -101,28 +101,6 @@ class WorksController < ApplicationController
     return sorted_list.first
   end
 
-
-  def upvote
-    user = User.find_by(id: session[:user_id])
-    work = Work.find_by(id: params[:work_id])
-
-    if user.nil?
-      flash.now[:error] = "You must be logged in to vote on works"
-      render work_path(work.id)
-    end
-
-    vote = Vote.new
-    vote.user_id = user.id
-    vote.work_id = work.id
-
-    if vote.save
-
-    end
-
-
-  end
-
-
   private
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)

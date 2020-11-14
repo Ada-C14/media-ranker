@@ -13,7 +13,8 @@
 
   <div class="new-work-form">
     <%= f.label :category, "Category" %>
-    <%= f.select :category, Work.all.map { |work| work.category }.uniq,{}, class: "form-control"%>
+    <%#= f.select :category, Work.all.map { |work| work.category }.uniq,{}, class: "form-control"%>
+    <%= f.select :category, ["album", "book", "movie"], {}, class: "form-control" %>
     <br>
     <%= f.label :title, "Title" %>
     <%= f.text_field :title, class:"form-control" %>

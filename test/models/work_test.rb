@@ -43,6 +43,7 @@ describe Work do
       result = @work.valid?
 
       expect(result).must_equal false
+      expect(@work.errors.messages).must_include :title
 
     end
 

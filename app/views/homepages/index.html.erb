@@ -10,3 +10,8 @@
 
 <hr class="root__hr">
 
+<%= render partial: "top_10", locals: { category: "Movies", works: @movies } %>
+
+<%= render partial: "top_10", locals: { category: "Books", works: @books } %>
+
+<%= render partial: "top_10", locals: { category: "Albums", works: @albums } %>

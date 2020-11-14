@@ -1,0 +1,15 @@
+_  <section class="alert__container">
+      <% flash[:success].each do |name, message| %>
+      <div class="alert alert-success">
+        <span><%= name %>: <%= message %></span>
+      </div>
+      <% end %>
+      <% flash[:error].each do |name, message| %>
+      <div class="alert alert-warning">
+        <span><%= name %>: <%= message %></span>
+      </div>
+    <% end %>
+  </section>
+
+
+

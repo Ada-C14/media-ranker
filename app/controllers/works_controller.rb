@@ -1,7 +1,7 @@
 class WorksController < ApplicationController
 
   def index
-    @works = Work.all
+    @works = Work.order("votes_count DESC, created_at")
   end
 
   def show
@@ -24,7 +24,8 @@ class WorksController < ApplicationController
       redirect_to work_path(@work), success: "Successfully created #{@work.category} #{@work.id}"
       return
     else
-      flash.now[:error] = "Something happened. Work not added."
+      flash.now[:error] = ["A problem occurred: Could not create #{@work.category}"]
+      flash.now[:error] << @work.format_errors
       render :new, status: :bad_request
       return
     end
@@ -48,7 +49,8 @@ class WorksController < ApplicationController
       redirect_to work_path(@work), success: "Successfully updated #{@work.category} #{@work.id}"
       return
     else # update failed
-      flash.now[:error] = "Something happened, Work not updated"
+      flash.now[:error] = ["A problem occurred: Could not update #{@work.category}"]
+      flash.now[:error] << @work.format_errors
       render :edit, status: :bad_request
       return
     end

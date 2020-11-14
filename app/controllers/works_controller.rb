@@ -57,8 +57,8 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
 
     if @work
-      # TO DO: also need to have that successfully updated thing pop up
       @work.destroy
+      flash[:success] = "Successfully destroyed #{@work.category} #{@work.id}"
     end
     redirect_to root_path
      
@@ -80,6 +80,10 @@ class WorksController < ApplicationController
           # TODO: you also cant vote for something twice...
         redirect_back(fallback_location: root_path)
         flash[:error] = "A problem occurred: Could not upvote"
+        raise
+        # this is the wrong error message...
+        bulk_error_message = vote.errors.messages[:user_id][0]
+        flash[:error_message] = "user: #{bulk_error_message}"
         # maybe below will capture error message from validation
         # raise
         # flash[:error_message] = 

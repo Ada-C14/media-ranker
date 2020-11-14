@@ -64,18 +64,21 @@ describe WorksController do
       expect(new_work.title).must_equal second_work_hash[:work][:title]
       expect(new_work.creator).must_equal second_work_hash[:work][:creator]
       expect(new_work.description).must_equal second_work_hash[:work][:description]
+      expect(flash[:success]).must_equal "Successfully created #{new_work.category} #{new_work.id}"
       must_redirect_to work_url(new_work.id)
     end
 
     it "wont create a work without a title" do
       second_work_hash[:work][:title] = nil
       expect {post works_url, params: second_work_hash}.wont_change 'Work.count'
+      expect(flash[:error_message]).must_equal "title: can't be blank"
       must_respond_with :redirect
     end
 
     it "wont create a work with a duplicated title" do
       second_work_hash[:work][:title] = "test"
       expect {post works_url, params: second_work_hash}.wont_change 'Work.count'
+      expect(flash[:error_message]).must_equal "title: has already been taken"
       must_respond_with :redirect
     end
   end
@@ -133,11 +136,14 @@ describe WorksController do
   describe "destroy" do
 
     it "can destroy a model" do
+      category = @work.category
+      id = @work.id
 
       expect {delete work_url(@work.id)}.must_change "Work.count", -1
 
       work = Work.find_by(title: "Test")
       expect(work).must_be_nil
+      expect(flash[:success]).must_equal "Successfully destroyed #{category} #{id}"
 
       must_redirect_to root_url
     end

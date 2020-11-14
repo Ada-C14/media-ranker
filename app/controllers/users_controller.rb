@@ -16,22 +16,6 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  # def login
-  #   @user = User.new(user_params)
-  #
-  #   if @user
-  #     session[:user_id] = @user.id
-  #     flash[:success] = "Successfully logged in as #{@user.name}!"
-  #   else
-  #     @user = User.create(user_params)
-  #     session[:user_id] = @user.id
-  #     flash[:success] = "A problem occurred: could not create user"
-  #   end
-  #
-  #   redirect_to root_path
-  #   return
-  # end
-
   def login
     user = User.find_by(name: params[:user][:name])
 
@@ -49,7 +33,7 @@ class UsersController < ApplicationController
     end
 
     session[:user_id] = user.id
-    redirect_to root_path
+    redirect_to user_path(session[:user_id])
   end
 
   def logout
@@ -76,7 +60,7 @@ class UsersController < ApplicationController
 
     unless @current_user
       flash[:error] = "You must be logged in to vote"
-      redirect_to root_path
+      redirect_back(fallback_location: root_path)
       return
     end
   end

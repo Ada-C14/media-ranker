@@ -6,7 +6,7 @@
   <h3> <%=type.titleize%>s </h3>
 
   <ul class="work-list">
-    <% @works.each do |work| %>
+    <% @ranked_works.each do |work| %>
       <% if work.category == type %>
         <li><b><%= link_to work.title.upcase, work_path(work.id) %></b> - <%= work.category %> - <%= work.creator %> - <%= work.publication_year %> -- <%= work.votes.count %> votes</li>
       <% end %>

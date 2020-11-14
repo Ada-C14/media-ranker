@@ -1,6 +1,7 @@
 class WorksController < ApplicationController
   def index
     @works = Work.all
+    @ranked_works = rank(@works)
   end
 
   def show
@@ -47,7 +48,7 @@ class WorksController < ApplicationController
       return
     elsif @work.update(work_params)
       flash[:success] = "Successfully updated #{@work.category} #{@work.id}!"
-      redirect_to work_path(@work.id)
+      redirect_back(fallback_location: root_path)
       return
     else # save failed :(
       flash.now[:error] = "A problem occurred: could not update #{@work.category}"
@@ -76,7 +77,7 @@ class WorksController < ApplicationController
   def homepage
     @works = Work.all
 
-    @spotlight = top_rated(@works)
+    @spotlight = rank(@works).first
 
     @books = Work.where(category: "book")
     @ranked_books = rank10(@books)
@@ -95,10 +96,10 @@ class WorksController < ApplicationController
 
   end
 
-  def top_rated(work_list)
+  def rank(work_list)
     sorted_list = work_list.sort_by { |work| work.votes.count }.reverse
 
-    return sorted_list.first
+    return sorted_list
   end
 
   private

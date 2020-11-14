@@ -12,7 +12,7 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: work_id)
     #just added the user portion below
     @user = User.find_by(id: session[:user_id])
-
+    @users = User.all
     if @work.nil?
       head :not_found
     end

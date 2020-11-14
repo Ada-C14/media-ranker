@@ -34,5 +34,26 @@ describe Work do
     end
 
     #custom methods: none yet
+    describe "top_ten custom method" do
+      it 'returns 10 items when the list of works is greater than 20' do
+        25.times do
+          work = Work.create(category: "movie", title: "s", creator: "r", publication_year: "1990", description: "u")
+        end
+        top_ten = Work.top_ten("album")
+        expect(top_ten.length).must_equal 10
+      end
+
+      it 'returns a list of length Work.count / 2, when Work.count < 10' do
+        top_ten = Work.top_ten("album")
+        expect(top_ten.length).must_equal 2
+      end
+    end
+
+    describe "spotlight method" do
+      it 'returns a Work object' do
+        spotlight = Work.spotlight
+        expect(spotlight).must_be_instance_of Work
+      end
+    end
   end
 end

@@ -8,7 +8,8 @@ class WorksController < ApplicationController
 
     if @work.nil?
       render :file => "#{Rails.root}/public/404.html",  layout: false, status: :not_found
-    end
+      return
+    end    
   end
 
   def new
@@ -23,8 +24,6 @@ class WorksController < ApplicationController
       redirect_to work_path(@work)
       return
     else
-      # if no title is provided + errors.message on view
-      # title is sensitive to up/lowercase, but up/lowercase are two different works. Different category couldn't share the same title.
       flash.now[:error] = "A problem occurred: Could not create #{ params[:work][:category] }"
       render :new, status: :bad_request 
       return
@@ -63,8 +62,10 @@ class WorksController < ApplicationController
       render :file => "#{Rails.root}/public/404.html",  layout: false, status: :not_found
       return
     end
-
+    
+    # To destroy the work and the votes!
     @work.destroy
+    @work.votes.destroy_all
     flash[:success] = "Successfully destroyed #{ @work.category } #{ @work.id }"
     redirect_to root_path
     return
@@ -79,17 +80,18 @@ class WorksController < ApplicationController
 
     vote = @work.votes.new(user_id: session[:user_id], work_id: @work.id, date: Time.now.strftime("%b %d, %Y"))
     
-    if only_vote_once(@work)
-      flash[:error] = "A problem occurred: Could not upvote"
-      redirect_to work_path(@work.id) 
+    if session[:user_id].nil?
+      flash[:error] = "A problem occurred: You must log in to do that"
+      # Redirect to the original page if upvote is failed.
+      redirect_back(fallback_location: root_path)
       return
     elsif vote.save
       flash[:success] = "Successfully upvoted!"
-      redirect_to work_path(@work.id) 
+      redirect_back(fallback_location: root_path)
       return  
     else
-      flash[:error] = "A problem occurred: You must log in to do that"
-      redirect_to work_path(@work.id) 
+      flash[:error] = "A problem occurred: Could not upvote"
+      redirect_back(fallback_location: root_path)
       return
     end
   end
@@ -98,12 +100,5 @@ class WorksController < ApplicationController
 
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
-  end
-
-  def only_vote_once(work)
-    Vote.where(work_id: work.id).each do |vote|
-      return true if vote.user_id == session[:user_id]
-    end
-    return false
   end
 end

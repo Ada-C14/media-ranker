@@ -102,7 +102,7 @@ describe Work do
         Vote.create!(user_id: user.id, work_id: work.id)
       end
 
-      top_works = Work.select_top_ten("albums")
+      top_works = Work.select_top_ten("album")
       expect(top_works.length).must_equal 10
       expect(top_works.include?(@work)).must_equal false
       expect(top_works.map{|work| work.votes.length}.all? {|votes| votes == 1}).must_equal true
@@ -111,14 +111,14 @@ describe Work do
     it "returns nil in the case of no votes" do
       @vote.destroy
       expect(Vote.count).must_equal 0
-      expect(Work.select_top_ten("albums")).must_be_nil
+      expect(Work.select_top_ten("album")).must_be_nil
     end
 
     it "chooses alphabetically in the chance of ties" do
       Vote.create!(user_id: second_user.id, work_id: second_work.id)
       expect(Vote.count).must_equal 2
-      expect(Work.select_top_ten("albums")[0]).must_equal second_work
-      expect(Work.select_top_ten("albums")[1]).must_equal @work
+      expect(Work.select_top_ten("album")[0]).must_equal second_work
+      expect(Work.select_top_ten("album")[1]).must_equal @work
     end
   end
 

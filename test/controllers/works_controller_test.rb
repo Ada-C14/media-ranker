@@ -70,13 +70,13 @@ describe WorksController do
     it "wont create a work without a title" do
       second_work_hash[:work][:title] = nil
       expect {post works_url, params: second_work_hash}.wont_change 'Work.count'
-      must_respond_with :success
+      must_respond_with :redirect
     end
 
     it "wont create a work with a duplicated title" do
       second_work_hash[:work][:title] = "test"
       expect {post works_url, params: second_work_hash}.wont_change 'Work.count'
-      must_respond_with :success
+      must_respond_with :redirect
     end
   end
 

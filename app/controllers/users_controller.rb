@@ -19,7 +19,6 @@ class UsersController < ApplicationController
 
 
   def login
-    # raise
     name = params[:user][:name]
     user = User.find_by(name: name)
 

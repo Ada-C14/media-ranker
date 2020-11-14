@@ -92,13 +92,13 @@ describe Work do
 
     describe 'top_one' do
       it 'top_one return the work with the most votes' do
-        20.times {|i| Vote.create(user: User.new(name: "usr#{i}"), work: @work)}
+        7.times {|i| Vote.create!(user: User.new(name: "usr#{i}"), work: @work)}
         expect(Work.top_one.title).must_equal "Dead Alive"
       end
 
       it 'if there is a tie, top_one returns first in alphabetical order' do
-        20.times {|i| Vote.create(user: User.new(name: "usr#{i}"), work: @work)}
-        20.times {|i| Vote.create(user: User.new(name: "usr#{i}"), work: works(:aguirre))}
+        7.times {|i| Vote.create!(user: User.new(name: "usr#{i}"), work: works(:dead_alive))}
+        7.times {|i| Vote.create!(user: User.new(name: "usrr#{i}"), work: works(:aguirre))}
         expect(Work.top_one.title).must_equal "Aguirre, the Wrath of God"
       end
 
@@ -110,19 +110,22 @@ describe Work do
 
     describe 'top_ten' do
       it 'top_ten("category")[0] has the most votes' do
-        20.times {|i| Vote.create(user: User.new(name: "usr#{i}"), work: @work)}
+        Vote.delete_all
+        20.times {|i| Vote.create!(user: User.new(name: "usr#{i}"), work: @work)}
+
         expect(Work.top_ten("movie")[0].title).must_equal "Dead Alive"
       end
 
       it 'top_ten("category")[9] has the least votes out of the ten' do
-        works.each{|work| Vote.create(user: users(:me), work: work) unless work.id == 2}
+        works.select{|work| work.category == "movie"}.each{|work| Vote.create!(user: users(:me), work: work) unless work.id == 2}
 
         expect(Work.top_ten("movie")[9].title).must_equal "Aguirre, the Wrath of God"
       end
 
       it 'will work if number of works is < 10' do
-        works.each{|work| work.delete unless(work.id == 2 || work.id == 3)}
-        20.times {|i| Vote.create(user: User.new(name: "usr#{i}"), work: works(:aguirre))}
+        works.select{|work| work.category == "movie"}.each{|work| work.delete unless(work.id == 2 || work.id == 3)}
+        20.times {|i| Vote.create!(user: User.new(name: "usr#{i}"), work: works(:aguirre))}
+
         expect(Work.top_ten("movie")[0].title).must_equal "Aguirre, the Wrath of God"
         expect(Work.top_ten("movie")[1].title).must_equal "Movie A"
       end
@@ -136,7 +139,7 @@ describe Work do
       end
 
       it 'will list alphabetically if there is a tie' do
-        works.each{|work| Vote.create(user: users(:me), work: work)}
+        works.select{|work| work.category == "movie"}.each {|work| Vote.create!(user: users(:me), work: work)}
 
         expect(Work.top_ten("movie")[0].title).must_equal "Aguirre, the Wrath of God"
         expect(Work.top_ten("movie")[9].title).must_equal "Vertigo"

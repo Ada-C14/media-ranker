@@ -34,6 +34,7 @@ describe User do
       expect(repeated_user.errors.messages[:name][0]).must_equal "has already been taken"
     end
 
+
     it 'will be invalid if name is blank' do
       @user.name = nil
 

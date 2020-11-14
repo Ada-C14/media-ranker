@@ -64,7 +64,7 @@ class WorksController < ApplicationController
     else
       #TODO flash displays after a redirect + another request
 
-      # flash[:success] = "Successfully deleted #{@work.category} #{@work.id}"
+      flash[:success] = "Successfully deleted #{@work.category} #{@work.id}"
       @work.destroy
       redirect_to root_path
     end

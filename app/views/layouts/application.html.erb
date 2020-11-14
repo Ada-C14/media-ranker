@@ -12,14 +12,14 @@
   <body>
     <%= render 'shared/header' %>
 
-    <% if flash %>
-      <%= render partial: 'shared/flash' %>
-    <% elsif @work %>
+    <% if @work %>
       <%= render partial: 'shared/flash', :locals => { :errors => @work.errors } %>
     <% elsif @user %>
       <%= render partial: 'shared/flash', :locals => { :errors => @user.errors } %>
     <% elsif @vote %>
       <%= render partial: 'shared/flash', :locals => { :errors => @vote.errors } %>
+    <% else %>
+      <%= render partial: 'shared/flash' %>
     <% end %>
     <main>
       <%= yield %>

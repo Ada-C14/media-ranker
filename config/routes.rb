@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   root to: "homepages#index"
   resources :homepages, only:[:index]
+  resources :users, only:[:index, :show]
   resources :works do
     post "/upvote", to: "votes#upvote"
   end

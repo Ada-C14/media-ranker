@@ -1,0 +1,19 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Votes</th>
+      <th>Joined</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.sort_by {|u| -u.votes.count }.each do |user| %>
+      <tr>
+        <td><%= link_to "#{user.name}", user_path(id: user.id) %></td>
+        <td><%= user.votes.count %></td>
+        <td><%= user.created_at.strftime("%B %-d, %Y") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= button_to "Back to Media List", root_path, method: :get, :class => "btn btn-secondary" %>

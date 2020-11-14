@@ -23,14 +23,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # Login verification used across controller actions
   def verify_login
     @user = User.find_by(id: session[:user_id])
-
-    unless @user
-      authentication_notice
-      redirect_back(fallback_location: root_path)
-      return
-    end
+    return @user
   end
 end

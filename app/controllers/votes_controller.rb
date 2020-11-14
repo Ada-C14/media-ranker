@@ -8,21 +8,30 @@ class VotesController < ApplicationController
     flash[:notice] = 'Something went wrong there - please try again.'
   end
 
+  def already_voted
+    flash[:notice] = "Looks like you've already voted for this work!"
+  end
+
   #########################################################
 
   def create
-    verify_login
+    @user = verify_login
 
-    # some user vote check here
-    raise
-    # if params[:work_id]
-    #   vote = Vote.new(vote_params)
-    #   vote.save ? successful_upvote : unsuccessful_upvote
-    # else
-    #
-    # end
+    unless @user
+      authentication_notice
+      redirect_back(fallback_location: root_path)
+      return
+    end
+
+    if @user.includes_work?(params[:work_id])
+      already_voted
+    else
+      vote = Vote.new(vote_params)
+      vote.save ? successful_upvote : unsuccessful_upvote
+    end
 
     redirect_back(fallback_location: root_path)
+    return
   end
 
   private

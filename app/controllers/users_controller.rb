@@ -32,29 +32,32 @@ class UsersController < ApplicationController
   def login
     if params[:username].present?
       username = params[:username]
-      user = User.find_by(username: username)
-
-      if user
-        successful_login('existing', user)
-      else
-        user = User.new(user_params)
-        if user.save
-          successful_login('new', user)
-        else
-          not_saved_error_notice('create')
-          render :login_form
-          return
-        end
-      end
-
-      session[:user_id] = user.id
-      redirect_to root_path
-      return
+    elsif params[:user]
+      username = user_params[:username]
     else
       not_saved_error_notice('create')
       render :login_form
       return
     end
+
+    user = User.find_by(username: username)
+
+    if user
+      successful_login('existing', user)
+    else
+      user = User.new(user_params)
+      if user.save
+        successful_login('new', user)
+      else
+        not_saved_error_notice('create')
+        render :login_form
+        return
+      end
+    end
+
+    session[:user_id] = user.id
+    redirect_to root_path
+    return
   end
 
   def logout
@@ -70,7 +73,13 @@ class UsersController < ApplicationController
   end
 
   def current
-    verify_login
+    @user = verify_login
+
+    unless @user
+      authentication_notice
+      redirect_back(fallback_location: root_path)
+      return
+    end
   end
 
   private

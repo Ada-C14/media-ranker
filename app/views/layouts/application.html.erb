@@ -25,6 +25,11 @@
       <%#=link_to "All Users", work_path %>
       <%#=link_to "Add New User", work_path %>
     </nav>
+    <section class="=flash" style="color:purple;text-align:center">
+      <% flash.each do |name, message| %>
+        <div class=""<%=name%><%=message%></div>
+      <% end %>
+    </section>
   </header>
   <body>
     <%= yield %>

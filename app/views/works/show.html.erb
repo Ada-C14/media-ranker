@@ -1,17 +1,17 @@
-<h2><strong><%=@work.title %></strong></h2>
+<h2><strong><%=@work.title.titleize %></strong></h2>
 
 <section class="show_details">
   <div>
     ID:  <%=@work.id %>
   </div>
   <div>
-    Creator: <%=@work.creator %>
+    Creator: <%=@work.creator.titleize %>
   </div>
   <div>
     Published: <%=@work.publication_year %>
   </div>
   <div>
-    Description: <%=@work.description %>
+    Description: <%=@work.description%>
   </div>
   <div>
     Category: <%=@work.category %>

@@ -6,9 +6,9 @@
   </div>
 </section>
 
-
 <!--# Render votes view partials info here?-->
 
-
-<%=link_to "Edit Media", edit_work_path(@work.id) %>
-<%=link_to "Delete Media", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"} %>
+<nav>
+  <%=link_to "Edit Media", edit_work_path(@work.id) %>
+  <%=link_to "Delete Media", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"} %>
+</nav>

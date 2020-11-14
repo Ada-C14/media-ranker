@@ -18,9 +18,11 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
     if @work.save
+      flash[:success] = "#{@work.title.titleize} was successfully created :)"
       redirect_to work_path(@work.id)
       return
     else
+      flash.new[:error] = "#{@work.title.titleize} was successfully created :)"
       render :new #, status: :not_found
       return
     end

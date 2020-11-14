@@ -77,8 +77,31 @@ class WorksController < ApplicationController
     @works = Work.all
     @spotlight = Work.all.sample(1)[0]
     @books = Work.where(category: "book")
+    @ranked_books = rank10(@books)
     @albums = Work.where(category: "album")
+    @ranked_albums = rank10(@albums)
     @movies = Work.where(category: "movie")
+    @ranked_movies = rank10(@movies)
+  end
+
+  def rank10(work_list)
+    sorted_list = work_list.sort_by { |work| work.votes.count }.reverse
+
+    return sorted_list.first(10)
+
+  end
+
+
+  def upvote
+    user = User.find_by(id: session[:user_id])
+    work = Work.find_by(id: params[:work_id])
+
+    if user.nil?
+      flash.now[:error] = "You must be logged in to vote on works"
+      render
+    end
+
+
   end
 
 

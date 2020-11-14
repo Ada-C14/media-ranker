@@ -8,7 +8,7 @@
   <p> No books to show </p>
 <% end %>
 <ol class="work-list">
-  <% @books.sample(10).each do |work| %>
+  <% @ranked_books.each do |work| %>
       <li><b><%= link_to work.title.upcase, work_path(work.id) %></b> - <%= work.category %> - <%= work.creator %> - <%= work.publication_year %> - <%= work.votes.count %> votes</li>
   <% end %>
 </ol>
@@ -18,7 +18,7 @@
   <p> No albums to show </p>
 <% end %>
 <ol class="work-list">
-  <% @albums.sample(10).each do |work| %>
+  <% @ranked_albums.each do |work| %>
     <li><b><%= link_to work.title.upcase, work_path(work.id) %></b> - <%= work.category %> - <%= work.creator %> - <%= work.publication_year %> - <%= work.votes.count %> votes</li>
   <% end %>
 </ol>
@@ -28,7 +28,7 @@
   <p> No movies to show </p>
 <% end %>
 <ol class="work-list">
-  <% @movies.sample(10).each do |work| %>
+  <% @ranked_movies.each do |work| %>
     <li><b><%= link_to work.title.upcase, work_path(work.id) %></b> - <%= work.category %> - <%= work.creator %> - <%= work.publication_year %> - <%= work.votes.count %> votes</li>
   <% end %>
 </ol>

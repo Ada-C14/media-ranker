@@ -1,4 +1,4 @@
-<h2><strong><%=@user.title %></strong></h2>
+<h2><strong><%=@user.name %></strong></h2>
 
 <section class="show_details">
   <div>
@@ -9,6 +9,4 @@
 <!--# Render votes view partials info here?-->
 
 <nav>
-  <%=link_to "Edit Media", edit_work_path(@work.id) %>
-  <%=link_to "Delete Media", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"} %>
 </nav>

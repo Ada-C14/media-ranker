@@ -33,15 +33,15 @@ class UsersController < ApplicationController
 
   def login
     user = User.find_by(name: params[:user][:name])
-    if user
-      session[:user_id] = user.id
-      flash[:success] = "Successfully logged in as returning user #{user.name}"
-    else
-      user = User.create(name: params[:user][:name])
       if user
-      session[:user_id] = user.id
-      flash[:success] = "Successfully logged in as new user #{user.name}"
-    end
+        session[:user_id] = user.id
+        flash[:success] = "Successfully logged in as returning user #{user.name}"
+      else
+        user = User.create(name: params[:user][:name])
+        if user
+        session[:user_id] = user.id
+        flash[:success] = "Successfully logged in as new user #{user.name}"
+      end
     # if @user.nil?
     #   user = User.new(name: params[:user][:name])
     #   if ! user.save
@@ -52,10 +52,20 @@ class UsersController < ApplicationController
     # else
     #   flash[:welcome] = "Welcome back #{user.name}"
     # end
-    session[:user_id] = user.id
-    redirect_to root_path
+      session[:user_id] = user.id
+      redirect_to root_path
+    end
   end
-end
+
+  def current
+    @current_user = User.find_by(id: session[:user_id])
+    unless @current_user
+      flash[:error] = "You must be logged in to see this page"
+      redirect_to root_path
+      return
+    end
+  end
+
   # def logout
   #   if session[:user_id]
   #     user = User.find_by(id: session[:user_id])

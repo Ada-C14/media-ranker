@@ -21,13 +21,13 @@
         <%=link_to "View All Users", users_path %>
       </div>
 
-      <%=link_to "LOGIN", login_path%>
+      <button type="button" class="btn btn-dark"><%=link_to "LOGIN", login_path%></button>
       <%#=link_to "All Users", work_path %>
       <%#=link_to "Add New User", work_path %>
     </nav>
     <section class="=flash" style="color:purple;text-align:center">
       <% flash.each do |name, message| %>
-        <div class=""<%=name%><%=message%></div>
+        <div class=<%=name%>><%=message%></div>
       <% end %>
     </section>
   </header>

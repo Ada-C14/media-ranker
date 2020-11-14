@@ -62,7 +62,33 @@ class WorksController < ApplicationController
     end
   end
 
-  # def
+
+  # def upvote
+  #   @work = Work.find(params[:id])
+  #
+  #   if @work.votes.create(user_id: current_user.id)
+  #     flash[:notice] =  "Thank you for upvoting!"
+  #     redirect_to(works_path)
+  #   else
+  #     flash[:notice] =  "You have already upvoted this!"
+  #     redirect_to(works_path)
+  #   end
+  # end
+
+  # def vote
+  #   @work = Work.find_by(id: params[:id])
+  #   if @work.nil?
+  #     head :not_found
+  #     return
+  #   elsif
+  #   @work.update(
+  #       completed_at: DateTime.now,
+  #       )
+  #     redirect_to tasks_path
+  #     return
+  #   end
+  # end
+
 
   private
   def work_params

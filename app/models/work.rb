@@ -7,7 +7,7 @@ class Work < ApplicationRecord
   # validates :creator, presence: true
   # validates :publication_year, numericality: { only_integer: true }
   # validates :description, presence: true
-  #
+
   def self.top_ten(category)
     works = Work.all.where(category:category)
     return works.max_by(10) { |work| work.votes.count }

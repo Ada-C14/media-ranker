@@ -1,0 +1,26 @@
+
+<section class="spotlight">
+  <% if Vote.any? %>
+    <% feat = Work.spotlight %>
+    <h2 class="spotlight__header">
+      <span class="spotlight__header--prefix">
+        Media Spotlight:
+      </span>
+      <%= link_to "#{feat.title}", work_path(id: feat.id), :class => "spotlight__link-to" %> by <%= feat.creator %>
+    </h2>
+    <p class="spotlight__description">
+      <%= pluralize(feat.votes.count, "vote") %> - <%= feat.description %>
+    </p>
+  <% end %>
+</section>
+<section class="top-ten__container">
+  <section class="top-ten__list-container">
+    <%= render partial: "top", locals: { header: "Top Albums", works: @albums } %>
+  </section>
+  <section class="top-ten__list-container">
+    <%= render partial: "top", locals: { header: "Top Books", works: @books } %>
+  </section>
+  <section class="top-ten__list-container">
+    <%= render partial: "top", locals: { header: "Top Movies", works: @movies } %>
+  </section>
+</section>

@@ -13,12 +13,21 @@ require "csv"
 CSV.open("db/works_seeds.csv", "w", :write_headers => true,
                                     :headers => ["category", "title", "creator", "publication_year", "description"]) do |csv|
   25.times do
-    category = %w(album book).sample
+    category = %w(album book movie).sample
     title = Faker::Coffee.blend_name
     creator = Faker::Name.name
     publication_year = rand(Date.today.year - 100..Date.today.year)
     description = Faker::Lorem.sentence
 
     csv << [category, title, creator, publication_year, description]
+  end
+end
+
+CSV.open("db/users_seeds.csv", "w", :write_headers => true, :headers => ["username", "join_date"]) do |csv|
+
+  25.times do
+    username = Faker::Internet.username(specifier: 3..16)
+
+    csv << [username]
   end
 end

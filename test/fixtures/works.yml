@@ -1,0 +1,15 @@
+book:
+  title: Test Book
+  category: book
+  publication_year: 2020
+  creator: Test Author
+album:
+  title: Test Album
+  category: album
+  publication_year: 2000
+  creator: Test Artist
+movie:
+  title: Test Movie
+  category: movie
+  publication_year: 2009
+  creator: Test Director

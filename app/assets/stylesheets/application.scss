@@ -1,0 +1,230 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+
+/* Custom bootstrap variables must be set or imported *before* bootstrap. */
+@import "bootstrap";
+
+@import "**/*";
+
+body, h1, h2, h3, h4, h5 {
+   font-family: "Gudea", sans-serif;
+ }
+ body {
+   margin: 0;
+   font-size: 1rem;
+   font-weight: 400;
+   line-height: 1.5;
+   color: #212529;
+   text-align: left;
+   background-color: #fff;
+ }
+ *, *::before, *::after {
+   box-sizing: border-box;
+ }
+ .app-header__header {
+   max-width: 100%;
+   background-color: #B2DFDB;
+   margin-bottom: 0.5rem;
+   padding: 2rem 1rem 0.5rem 1rem;
+ }
+ .app-header__header h1 a {
+   color: #FF5722;
+   padding-right: 25px;
+   margin-right: 15px;
+   border-right: white 2px solid;
+ }
+ .app-header__header h1 small {
+   color: white;
+ }
+ article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+   display: block;
+ }
+ .app-header__header h1 {
+   text-align: center;
+   margin: 25px auto 40px auto;
+ }
+ h1, h2, h3, h4, h5 {
+   font-weight: bold;
+ }
+ h1, .h1 {
+   font-size: 2.5rem;
+ }
+ h1 {
+   display: block;
+   margin-block-start: 0.67em;
+   margin-block-end: 0.67em;
+   margin-inline-start: 0;
+   margin-inline-end: 0;
+ }
+ .app-header__nav {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+ }
+ .nav {
+   display: flex;
+   flex-wrap: wrap;
+   padding-left: 0;
+   margin-bottom: 0;
+   list-style: none;
+ }
+ ol, ul, dl {
+   margin-top: 0;
+ }
+ .app-header__site-nav-container .app-header__nav_item {
+   margin-right: 2rem;
+ }
+ .app-header__nav_item {
+   margin-top: 1rem;
+ }
+ li {
+   display: list-item;
+   text-align: -webkit-match-parent;
+ }
+ .app-header__nav_item .nav-link {
+   color: #00796B;
+ }
+ .app-header__user-nav-container .nav-item {
+   margin-left: 2rem;
+ }
+ .btn:not(:disabled):not(.disabled) {
+   cursor: pointer;
+ }
+ .btn-primary {
+   background-color: #26A69A;
+   color: white;
+   border-color: #26A69A;
+ }
+ main {
+   padding: 2rem;
+ }
+ p {
+   margin-top: 0;
+   margin-bottom: 1rem;
+ }
+ .works-votes__container {
+   margin-top: 2rem;
+ }
+ .btn-primary {
+   background-color: #26A69A;
+   color: white;
+   border-color: #26A69A;
+ }
+ .table {
+   width: 100%;
+   margin-bottom: 1rem;
+   background-color: transparent;
+ }
+ table {
+   border-collapse: collapse;
+ }
+ form {
+   display: block;
+   margin-top: 0em;
+ }
+ input, button, select, optgroup, textarea {
+   margin: 0;
+   font-family: inherit;
+   font-size: inherit;
+   line-height: inherit;
+ }
+ button, input {
+   overflow: visible;
+ }
+ .form-group {
+   margin-bottom: 1rem;
+ }
+ .top-ten__header {
+   color: #26A69A;
+   border-bottom: 2px solid;
+   border-bottom-color: #B2DFDB;
+ }
+ .root__hr {
+   margin: 0px auto 3rem auto;
+   color: #EEEEEE;
+ }
+ hr {
+   box-sizing: content-box;
+   height: 0;
+   overflow: visible;
+ }
+ .list-group-item:first-child {
+   border-top-left-radius: 0.25rem;
+   border-top-right-radius: 0.25rem;
+ }
+ .list-group-item {
+   position: relative;
+   display: block;
+   padding: 0.75rem 1.25rem;
+   margin-bottom: -1px;
+   background-color: #fff;
+ }
+
+  .alert__container {
+   margin: 2rem 0 1rem 0
+ }
+
+  .top-ten__container {
+   display: grid;
+   grid-template-columns: 1fr 1fr 1fr;
+   grid-column-gap: 2em
+ }
+
+ main {
+    padding: 2rem;
+  }
+  .spotlight {
+    padding: 0 2rem 2rem 2rem;
+  }
+  .spotlight__header {
+    color: #26A69A;
+  }
+  .spotlight__header--prefix {
+    color: #424242;
+  }
+  .spotlight__link-to {
+    border-bottom: 2px solid;
+  }
+  a, h2, h3 {
+    color: #26A69A;
+  }
+  .spotlight__description {
+    margin-bottom: 0;
+  }
+  .root__hr {
+    margin: 0px auto 3rem auto;
+    color: #EEEEEE;
+  }
+  .top-ten__container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap: 2em;
+  }
+  .top-ten__header {
+    color: #26A69A;
+    border-bottom: 2px solid;
+    border-bottom-color: #B2DFDB;
+  }
+  .top-ten__list {
+    list-style-type: none;
+    margin-left: 0;
+    padding-left: 0;
+  }
+  .list-group-item:first-child {
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+  }
+  .list-group-item {
+    border: none;
+  }

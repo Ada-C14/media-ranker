@@ -13,6 +13,7 @@ class VotesController < ApplicationController
         flash[:success] = "Successfully Upvoted"
       else
         flash[:error] = "A problem occurred: Could not upvote"
+        flash[:problem] = "user: has already voted for this work"
       end
 
     end

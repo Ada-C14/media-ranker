@@ -3,8 +3,6 @@ require "test_helper"
 describe Work do
   describe "relations" do
     before do
-      @spacejam = works(:spacejam)
-      @practicalmagic = works(:practicalmagic)
       @lathe = works(:lathe)
       @user = users(:testuser)
     end
@@ -22,7 +20,6 @@ describe Work do
     before do
       @spacejam = works(:spacejam)
       @practicalmagic = works(:practicalmagic)
-      @lathe = works(:lathe)
     end
 
   it "requires title field must not be blank" do

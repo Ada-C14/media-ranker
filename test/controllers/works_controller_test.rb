@@ -88,10 +88,10 @@ describe WorksController do
       {
         work: {
           category: "Book",
-          title: "Harry Potter and the Chamber of Secrets",
+          title: "The Cuckoo's Calling",
           creator: "JK Rowling",
-          publication_year: "1999",
-          description: "Harry returns to hogwarts to face the Chamber of Secrets"
+          publication_year: "2013",
+          description: "The Cuckoo's Calling is a 2013 crime fiction novel by J. K. Rowling, published under the pseudonym Robert Galbraith."
         }
       }
     }
@@ -100,9 +100,10 @@ describe WorksController do
         patch work_path(works(:hp1)), params: update_hash
       }.wont_differ "Work.count"
 
-      hp2 = Work.find_by(title: "Harry Potter and the Chamber of Secrets")
+      hp2 = Work.find_by(title: update_hash[:work][:title])
       must_respond_with :redirect
       must_redirect_to work_path(hp2)
+
       expect(flash[:success]).wont_be_nil
 
       expect(hp2.category).must_equal update_hash[:work][:category]
@@ -137,8 +138,7 @@ describe WorksController do
       expect {
         delete work_path(works(:hp1))
       }.must_differ "Work.count", -1
-
-
+      
       must_respond_with :redirect
       must_redirect_to works_path
       expect(flash[:success]).wont_be_nil

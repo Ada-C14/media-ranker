@@ -23,15 +23,15 @@
     </thead>
 
     <tbody>
-<% if @work.votes.count > 0 %>
-<% @work.votes.each do |vote| %>
-          <tr>
-            <td><%= link_to vote.user.username, user_path(vote.user) %></td>
-            <td><%= vote.created_at %></td>
-          </tr>
+      <% if @work.votes.count > 0 %>
+        <% @work.votes.each do |vote| %>
+                  <tr>
+                    <td><%= link_to vote.user.username, user_path(vote.user) %></td>
+                    <td><%= vote.created_at.strftime("%b %m, %Y") %></td>
+                  </tr>
 
-<% end %>
-<% end %>
+        <% end %>
+      <% end %>
     </tbody>
 
   </table>

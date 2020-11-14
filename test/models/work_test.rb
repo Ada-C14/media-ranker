@@ -42,55 +42,22 @@ describe Work do
       expect(@work.errors.messages[:title][0]).must_equal "can't be blank"
     end
 
-    it 'will be invalid with non-string title' do
-      @work.title = 0
-
-      expect(@work.valid?).must_equal false
-      expect(@work.errors.messages).must_include :title
-      expect(@work.errors.messages[:title][0]).must_equal "must be a string"
-    end
-
     it "will be invalid without category" do
-      @work.title = nil
+      @work.category = nil
 
       expect(@work.valid?).must_equal false
       expect(@work.errors.messages).must_include :category
       expect(@work.errors.messages[:category][0]).must_equal "can't be blank"
     end
 
-    it 'will be invalid with non-string category' do
-      @work.title = 0
-
-      expect(@work.valid?).must_equal false
-      expect(@work.errors.messages).must_include :category
-      expect(@work.errors.messages[:category][0]).must_equal "must be a string"
-    end
-
-
     it "will be valid with blank creator" do
       @work.creator = nil
       expect(@work.valid?).must_equal true
     end
 
-    it 'will be invalid with non-string creator' do
-      @work.creator = 0
-
-      expect(@work.valid?).must_equal false
-      expect(@work.errors.messages).must_include :creator
-      expect(@work.errors.messages[:creator][0]).must_equal "must be a string"
-    end
-
     it "will be valid with blank description" do
       @work.description = nil
       expect(@work.valid?).must_equal true
-    end
-
-    it 'will be invalid with non-string description' do
-      @work.description = 0
-
-      expect(@work.valid?).must_equal false
-      expect(@work.errors.messages).must_include :description
-      expect(@work.errors.messages[:description][0]).must_equal "must be a string"
     end
 
     it "will be valid with blank publication_date" do
@@ -103,9 +70,24 @@ describe Work do
 
       expect(@work.valid?).must_equal false
       expect(@work.errors.messages).must_include :publication_date
-      expect(@work.errors.messages[:publication_date][0]).must_equal "must be an integer"
+      expect(@work.errors.messages[:publication_date][0]).must_equal "is not a number"
     end
 
+    it 'will be invalid if publication_date is < 0' do
+      @work.publication_date = -1984
+
+      expect(@work.valid?).must_equal false
+      expect(@work.errors.messages).must_include :publication_date
+      expect(@work.errors.messages[:publication_date][0]).must_equal "must be greater than 0"
+    end
+
+    it 'will be invalid if publication_date is > 2100' do
+      @work.publication_date = 3000
+
+      expect(@work.valid?).must_equal false
+      expect(@work.errors.messages).must_include :publication_date
+      expect(@work.errors.messages[:publication_date][0]).must_equal "must be less than or equal to 2100"
+    end
   end
 
   describe 'custom methods' do
@@ -151,11 +133,15 @@ describe Work do
         expect(Work.top_ten("album")).must_equal []
       end
 
+      it 'will return empty array if category doesnt match any works' do
+        expect(Work.top_ten("anime")).must_equal []
+      end
+
       it 'will list alphabetically if there is a tie' do
         works.each{|work| Vote.create(user: users(:me), work: work)}
 
         expect(Work.top_ten("movie")[0].title).must_equal "Aguirre, the Wrath of God"
-        expect(Work.top_ten("movie")[8].title).must_equal "Aguirre, the Wrath of God"
+        expect(Work.top_ten("movie")[9].title).must_equal "Vertigo"
       end
     end
   end

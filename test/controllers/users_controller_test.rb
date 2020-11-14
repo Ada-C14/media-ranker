@@ -45,4 +45,5 @@ describe UsersController do
       expect(session[:user_id]).must_be_nil
     end
   end
+
 end

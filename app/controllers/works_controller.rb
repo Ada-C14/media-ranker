@@ -14,6 +14,8 @@ class WorksController < ApplicationController
 
   def show
     @work = Work.find_by(id: params[:id])
+    @user = User.find_by(id: session[:user_id])
+    @username = @user.username
 
     if @work.nil?
       redirect_to work_path

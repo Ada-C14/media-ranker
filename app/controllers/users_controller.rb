@@ -14,21 +14,6 @@ class UsersController < ApplicationController
     end
   end
 
-  # def new
-  #   @user = User.new
-  # end
-  #
-  # def create
-  #   @user = User.new(users_param)
-  #
-  #   if @user.save
-  #     redirect_to root_path
-  #     return
-  #   else
-  #     render :new
-  #   end
-  # end
-
   def login_form
     @user = User.new
   end

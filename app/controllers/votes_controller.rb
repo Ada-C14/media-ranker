@@ -22,7 +22,7 @@ class VotesController < ApplicationController
     if @vote.save
       flash[:success] = "Successfully upvoted"
     else
-      flash[:error] = ["Aproblem occured: user has already voted for this work"]
+      flash[:error] = "Aproblem occurred: user has already voted for this work"
     end
     redirect_to works_path
   end

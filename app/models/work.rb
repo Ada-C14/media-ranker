@@ -3,7 +3,7 @@ class Work < ApplicationRecord
   has_many :votes
 
   validates :category, presence: true
-  validates :title, presence: true, uniqueness: { case_sensitive: false }
+  validates :title, presence: true, uniqueness: { case_sensitive: false, scope: :category}
   # validates :creator, presence: true
   # validates :publication_year, numericality: { only_integer: true }
   # validates :description, presence: true

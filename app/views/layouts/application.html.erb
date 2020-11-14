@@ -35,12 +35,16 @@
       </nav>
   </header>
   
-    <section>
-      <%= flash[:error] %>
-      <% if flash[:error_message] %>
-        <ul>
-          <li><%= flash[:error_message] %></li>
-        </ul>
+    <section class="alert__container">
+      <% if flash[:error] %>
+      <div class="alert alert-warning">
+        <span><%= flash[:error] %></span>
+        <% if flash[:error_message] %>
+          <ul>
+            <li><%= flash[:error_message] %></li>
+          </ul>
+        <% end %>
+      </div>
       <% end %>
     </section>
       <%= yield %>

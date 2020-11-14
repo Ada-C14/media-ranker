@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   end
 
   def login
+    username = params[:user][:username]
     @user = User.find_by(user_params)
 
     if @user
@@ -28,7 +29,8 @@ class UsersController < ApplicationController
         session[:user_id] = @user.id
         flash[:success] = "Successfully logged in as new user #{@user.username}"
       else
-        render :login_form
+        flash.now[:error] = "A problem occurred: Could not log in"
+        render :login_form, status: :bad_request
         return
       end
     end

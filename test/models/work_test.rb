@@ -1,6 +1,23 @@
 require "test_helper"
 
 describe Work do
+  describe "relations" do
+    before do
+      @spacejam = works(:spacejam)
+      @practicalmagic = works(:practicalmagic)
+      @lathe = works(:lathe)
+      @user = users(:testuser)
+    end
+
+    it "has votes" do
+      vote = Vote.create!(user_id: @user.id, work_id: @lathe.id)
+      expect(@lathe).must_respond_to :votes
+      @lathe.votes.each do |vote|
+        expect(vote).must_be_instance_of Vote
+      end
+    end
+  end
+
   describe "validations" do
     before do
       @spacejam = works(:spacejam)

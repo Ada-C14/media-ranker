@@ -15,8 +15,7 @@
       <td><%= link_to "#{medium.title}", works_path %></td>
       <td><%= "#{medium.creator}" %></td>
       <td><%= "#{medium.publication_year}" %></td>
-      <%# TODO: change link below %>
-      <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/790/upvote">Upvote</a></td>
+      <td> <%= link_to "Upvote", work_votes_path(work_id: "#{medium.id}"), method: :post, class: "btn btn-primary" %></td>
     </tr>
   <% end %>
   </tbody>

@@ -22,16 +22,18 @@
     </div>
   </article>
   <article class="who-vote-table">
-    <h4><%= "X Votes for this" %> <%= @work.category.capitalize %></h4>
+    <h4><%= "#{ @work.total_votes(@work) } Votes for this" %> <%= @work.category.capitalize %></h4>
     <table class="show-table">
       <tr>
         <th>User</th>
         <th>Date</th>
       </tr>
-      <tr>
-        <th>need to figure out</th>
-        <th>work.vote.each do |vote| for vote.username & vote.date....order in vote.date</th>
-      </tr>  
+      <% @work.votes.order(created_at: :desc).each do |vote| %>
+        <tr>
+          <th><%= link_to vote.user.username, user_path(vote.user) %></th>
+          <th><%= vote.date %></th>
+        </tr>
+      <% end %>    
     </table>
   </article>
 </section>

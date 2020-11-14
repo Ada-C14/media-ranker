@@ -1,1 +1,31 @@
-<h2>User Summary</h2>
+<h2>User Summary: <%= @user.name %></h2>
+<p>Joined site <%= @user.created_at.strftime("%B %-d, %Y") %></p>
+<section class="votes-container">
+  <h3>Votes</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Media Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Category</th>
+        <th>Voted On</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @user.votes.each do |vote| %>
+        <tr>
+          <td><%= link_to "#{Work.find_by(id: vote[:work_id]).title}", work_path(id: vote[:work_id]) %></td>
+          <td><%= Work.find_by(id: vote[:work_id]).creator %></td>
+          <td><%= Work.find_by(id: vote[:work_id]).publication_year %></td>
+          <td><%= Work.find_by(id: vote[:work_id]).category %></td>
+          <td><%= vote[:created_at].strftime("%B %-d, %Y") %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</section>
+<section class="button-container">
+  <%= button_to "See all Users", users_path, method: :get, :class => "btn btn-secondary" %>
+  <%= button_to "Back to Media List", works_path, method: :get, :class => "btn btn-primary" %>
+</section>

@@ -70,6 +70,36 @@ class WorksController < ApplicationController
     end
   end
 
+  def upvote
+    @work = Work.find_by(id: params[:id])
+    if @work.nil?
+      flash[:warning] = "A problem occurred: Work not found"
+      redirect_to work_path(params[:id])
+      return
+    end
+    user = User.find_by(id: session[:user_id])
+    if user.nil?
+      flash[:warning] = "A problem occurred: You must log in to do that"
+      redirect_to work_path(@work.id)
+      return
+    end
+    @vote = Vote.new(user_id: user.id, work_id: @work.id)
+    # @work.votes << @vote
+
+    if @vote.save
+      flash[:success] = "Successfully upvoted!"
+      redirect_to work_path(@work.id)
+      return
+    else
+      flash[:warning] = "A problem occurred: Could not upvote"
+      p "ERRORS" # TODO: REMOVE
+      # @work.errors[:messages] << { :user => [ "has already voted for this work" ] }
+      p @vote.errors # TODO: REMOVE
+      redirect_to work_path(@work.id)
+      return
+    end
+  end
+
   private
 
   def work_params

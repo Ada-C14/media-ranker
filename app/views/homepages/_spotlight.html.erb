@@ -4,7 +4,7 @@
     <a class="spotlight"><%= link_to work.title, work_path(work), :class => 'spotlight' %></a> by <%= work.creator %>
   </h2>
   <p>
-    12 votes - <%= work.description %>
+    <%= work.votes.length %> votes - <%= work.description %>
   </p>
 </section>
 <hr>

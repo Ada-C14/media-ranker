@@ -82,16 +82,13 @@ describe WorksController do
 
   describe "show" do
     it "must get show" do
-      get works_url(@work.id)
+      get work_url(@work.id)
       must_respond_with :success
     end
 
     it "redirects to error page for invalid work" do
-      # skip
-      get works_url(bad_work)
+      get work_url(bad_work)
       must_respond_with :not_found
-      # must_render_template layout: "#{Rails.root}/public/404"
-      # must_render :"#{Rails.root}/public/404"
     end
   end
 
@@ -103,9 +100,8 @@ describe WorksController do
     end
 
     it "redirects to error page when attempting to edit a nonexistent work" do
-      skip
       get edit_work_url(bad_work)
-      # must redirect somewhereeeeee
+      must_respond_with :not_found
     end
   end
 
@@ -121,10 +117,15 @@ describe WorksController do
     work = Work.find_by(id: @work.id)
     expect(work.category).must_equal update_work_hash[:work][:category]
     expect(work.description).must_equal update_work_hash[:work][:description]
+    # expect(flash[:success]).must_equal "Successfully updated #{@work.category} #{@work.id}"
     end
 
     it "will redirect for invalid work" do
-      skip
+      expect{
+        patch work_url(bad_work), params: update_work_hash
+    }.wont_change "Work.count"
+
+    must_respond_with :not_found
     end
   end
 

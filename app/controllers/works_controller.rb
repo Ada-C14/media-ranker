@@ -12,11 +12,6 @@ class WorksController < ApplicationController
     if @work.nil?
       content_not_found
     end
-
-    # TODO:
-    # if @work.nil?
-    #   # here need to redirect to an error page
-    # end
   end
 
   def new
@@ -41,22 +36,19 @@ class WorksController < ApplicationController
   def edit
     @work = Work.find_by(id: params[:id])
 
-    # TODO:
-    # if @work.nil?
-    #   # here need to redirect to an error page
-    # end
+    if @work.nil?
+      content_not_found
+    end
   end
 
   def update
     @work = Work.find_by(id: params[:id])
 
     if @work.nil?
-      # TODO:
-      # here need to redirect to an error page
-      # return
-      puts "redirect to that same error page as above"
+      content_not_found
+      return
     elsif @work.update(work_params)
-      # TO DO: also need to have that successfully updated thing pop up
+      flash[:success] = "Successfully updated #{@work.category} #{@work.id}"
       redirect_to work_path(@work.id)
     end
   end

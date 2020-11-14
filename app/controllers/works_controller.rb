@@ -8,6 +8,10 @@ class WorksController < ApplicationController
 
   def show
     @work = Work.find_by(id: params[:id])
+    
+    if @work.nil?
+      content_not_found
+    end
 
     # TODO:
     # if @work.nil?

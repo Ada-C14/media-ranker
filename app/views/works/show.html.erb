@@ -1,4 +1,16 @@
 <section>
+  <article class="form-border">  
+    <% if @work.errors.any? %>
+      <ul class="alert alert-warning" role="alert">
+        <% @work.errors.each do |column, message| %>
+          <li>
+            <%= column %> <%= message %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </article>
+
   <article class="work-info">
     <h2><%= @work.title %></h2>
     <p>Created by: <%= @work.creator %></p>
@@ -22,7 +34,7 @@
     </div>
   </article>
   <article class="who-vote-table">
-    <h4><%= "#{ @work.total_votes(@work) } Votes for this" %> <%= @work.category.capitalize %></h4>
+    <h4><%= "#{ @work.total_votes } Votes for this" %> <%= @work.category.capitalize %></h4>
     <table class="show-table">
       <tr>
         <th>User</th>

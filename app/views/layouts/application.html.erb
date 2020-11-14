@@ -32,9 +32,9 @@
       </header>
       <section class="flash-msg__section">
         <% flash.each do |name, message| %>
-          <p class="<%= name %>">
+          <div class="alart <%= flash_class(name) %>" role="alert">
             <%= message %>
-          </p>
+          </div>
         <% end %>
       </section>
 

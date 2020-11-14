@@ -1,7 +1,7 @@
 <section>
   <article class="form-border">  
     <% if @work.errors.any? %>
-      <ul class="errors">
+      <ul class="alert alert-warning" role="alert">
         <% @work.errors.each do |column, message| %>
           <li>
             <%= column %> <%= message %>

@@ -11,7 +11,7 @@
       <% @users.order(joined: :desc).each do |user|  %>
         <tr>
           <th><%= link_to user.username, user_path(user) %></th>
-          <th><%= user.each_user_votes(user) %></th>
+          <th><%= user.each_user_votes %></th>
           <th><%= user.joined %></th>
         </tr>  
       <% end %>

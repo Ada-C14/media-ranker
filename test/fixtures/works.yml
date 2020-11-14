@@ -12,3 +12,10 @@ joe_book:
   creator: Blaise Lesch
   publication_year: 1968
   description: Voluptatem adipisci qui velit.
+blue_book:
+  id: 3
+  category: album
+  title: Blue Breaker
+  creator: Dr. Sarai Langosh
+  publication_year: 1949
+  description: Et et expedita non aut quo.  

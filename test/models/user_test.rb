@@ -2,17 +2,12 @@ require "test_helper"
 
 describe User do
   describe 'validations' do
-    before do
+    it 'is valid when all fields are present' do
       # Arrange
       user = users(:john)
-      @user = User.new(username: user.username, joined: user.joined)
-    end
 
-    it 'is valid when all fields are present' do
       # Act
-      @user.username = "Sia"
-
-      result = @user.valid?
+      result = user.valid?
 
       # Assert
       expect(result).must_equal true
@@ -20,28 +15,28 @@ describe User do
 
     it 'is invalid without a username' do
       # Arrange
-      @user.username = nil
+      user = users(:john)
+      user.username = nil
     
       # Act
-      result = @user.valid?
+      result = user.valid?
     
       # Assert
       expect(result).must_equal false
-      expect(@user.errors.messages).must_include :username
+      expect(user.errors.messages).must_include :username
     end
 
     it 'is invalid with a non-unique username' do
       # Arrange
       unique_user = User.create!(username: 'Registered user', joined: "Nov 13, 2020")
-      @user.username = unique_user.username
+      users(:john).username = unique_user.username
 
       # Act
-      result = @user.valid?
+      result = users(:john).valid?
 
       # Assert
       expect(result).must_equal false
-      expect(@user.errors.messages).must_include :username
-
+      expect(users(:john).errors.messages).must_include :username
     end
   end
 

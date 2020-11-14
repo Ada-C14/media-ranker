@@ -1,6 +1,6 @@
-user1_work1:
+user1_work3:
   user_id: 1
-  work_id: 1
+  work_id: 3
   date: Nov 12, 2020
 user1_work2:
   user_id: 1

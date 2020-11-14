@@ -5,7 +5,8 @@ describe Work do
     it 'is valid when all fields are present' do
       # Act
       work = works(:kreb_album)
-
+      
+      # Arrange
       result = work.valid?
 
       # Assert
@@ -25,24 +26,23 @@ describe Work do
       expect(work.errors.messages).must_include :title
     end
 
-    it 'is invalid with a non-unique username' do
+    it 'is invalid with a non-unique title' do
       # Arrange
-      non_uniq_work = Work.new(
+      uniq_work = Work.create!(
         category: "book",
         title: "Mitsubachi to Enrai",
         creator: "Blaise Lesch",
         publication_year: 1968,
         description: "Voluptatem adipisci qui velit."
-        )
-
-      non_uniq_work.title = works(:kreb_album).title
+      )
+      works(:kreb_album).title = uniq_work.title
 
       # Act
-      result = non_uniq_work.valid?
+      result = works(:kreb_album).valid?
 
       # Assert
       expect(result).must_equal false
-      expect(non_uniq_work.errors.messages).must_include :title
+      expect(works(:kreb_album).errors.messages).must_include :title
     end
   end
 

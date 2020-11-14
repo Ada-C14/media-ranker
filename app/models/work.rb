@@ -1,5 +1,8 @@
 class Work < ApplicationRecord
 
+  has_many :votes
+  has_many :users, through: :votes
+
   validates :title, :creator, :description, presence: true
   validates :category, presence: true, inclusion: { in: %w[movie book album],
               message: 'Category must be a movie, book, or album.'}

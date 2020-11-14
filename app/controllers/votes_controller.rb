@@ -1,5 +1,6 @@
 class VotesController < ApplicationController
   before_action :require_login, only: [:create]
+
   def index
     @votes = Vote.all
   end

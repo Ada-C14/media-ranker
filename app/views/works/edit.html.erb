@@ -1,14 +1,14 @@
 <h2>Edit This <%= @work.category.capitalize %></h2>
 <%= form_with model: @work, class: 'create-work' do |f|%>
   <%= f.label :category %>
-  <%= f.select :category, %w[album book movie] %>
+  <%= f.select :category, %w[album book movie], {}, { :class => "form-control" } %>
   <%= f.label :title %>
-  <%= f.text_field :title %>
+  <%= f.text_field :title, class: "form-control" %>
   <%= f.label :creator %>
-  <%= f.text_field :creator %>
+  <%= f.text_field :creator, class: "form-control" %>
   <%= f.label :publication_year %>
-  <%= f.text_field :publication_year %>
+  <%= f.text_field :publication_year, class: "form-control" %>
   <%= f.label :description %>
-  <%= f.text_field :description %>
-  <%= f.submit "Update Work", class: "work-button" %>
+  <%= f.text_field :description, class: "form-control"%>
+  <%= f.submit "Update Work", class: "btn btn-primary" %>
 <% end %>

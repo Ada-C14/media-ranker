@@ -11,7 +11,7 @@
             <%= link_to "#{work.title}", work_path(work) %>
             <small class="top-ten__creator">by <%= work.creator %></small>
           </h4>
-          <p><%= work.votes.count %> votes</p>
+          <p><%= work.single_or_plural_votes %></p>
         </li>
       <% end %>
     <% end %>

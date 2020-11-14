@@ -4,14 +4,14 @@
   <p>Published: <%= @work.publication_year %>
   <p><%= @work.description %></p>
   <section>
-    <%= link_to "Back to Media Ranks", works_path, class: "btn btn-primary" %>
+    <%= link_to "Back to Media Ranks", root_path, class: "btn btn-primary" %>
     <%= link_to "Edit", edit_work_path(@work), class: "btn btn-primary" %>
-    <%= link_to "Upvote", work_votes_path(@work), class: "btn btn-primary", method: :post %>
+    <%= link_to "Upvote", work_upvote_path(@work), class: "btn btn-primary", method: :post %>
     <%= link_to "Delete", work_path(@work), data: {confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %>
   </section>
 </section>
 <section>
-  <h3><%= @work.votes.count %> Votes for this <%= @work.category %></h3>
+  <h3><%= @work.single_or_plural_votes %> for this <%= @work.category %></h3>
   <section class="media-table">
       <table class="table">
         <thead>

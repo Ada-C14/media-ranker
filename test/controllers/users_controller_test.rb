@@ -22,18 +22,6 @@ describe UsersController do
     end
   end
 
-  # describe "current" do
-  #   it "returns 200 OK for a logged-in user" do
-  #     # Arrange
-  #     perform_login
-  #     # Act
-  #     get current_user_path
-  #
-  #     # Assert
-  #     must_respond_with :success
-  #   end
-  # end
-
   describe "login form" do
     it "can get to the login form" do
       get login_path

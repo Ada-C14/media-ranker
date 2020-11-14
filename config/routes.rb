@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :homepages
   resources :users, only: [:index, :show, :new, :create]
 
-  @work = Work.find_by(id: params[:id])
+
 
 
 

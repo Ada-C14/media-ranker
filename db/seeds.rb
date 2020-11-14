@@ -47,3 +47,22 @@ end
 
 puts "Added #{User.count} user records"
 puts "#{user_failures.length} users failed to save"
+
+VOTE_FILE = Rails.root.join('db', 'seed_data', 'votes_seeds.csv')
+
+vote_failures = []
+CSV.foreach(VOTE_FILE, :headers => true) do |row|
+  vote = Vote.new
+  vote.user_id = row['user_id']
+  vote.work_id = row['work_id']
+  successful = vote.save
+  if !successful
+    vote_failures << vote
+    puts "Failed to save vote: #{vote.inspect}"
+  else
+    puts "Created vote: #{vote.inspect}"
+  end
+end
+
+puts "Added #{Vote.count} vote records"
+puts "#{vote_failures.length} votes failed to save"

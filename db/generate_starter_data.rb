@@ -22,11 +22,20 @@ require "csv"
 #     csv << [category, title, creator, publication_year, description]
 #   end
 # end
+#
+# CSV.open("db/users_seeds.csv", "w", :write_headers => true,
+#          :headers => ["username"]) do |csv|
+#   20.times do
+#     username = Faker::Name.first_name + rand(1-100).to_s
+#     csv << [username]
+#   end
+# end
 
-CSV.open("db/users_seeds.csv", "w", :write_headers => true,
-         :headers => ["username"]) do |csv|
-  20.times do
-    username = Faker::Name.first_name + rand(1-100).to_s
-    csv << [username]
+CSV.open("db/votes_seeds.csv", "w", :write_headers => true,
+         :headers => ["user_id", "work_id"]) do |csv|
+  100.times do
+    user_id = rand(1-20)
+    work_id = rand(1-40)
+    csv << [user_id, work_id]
   end
 end

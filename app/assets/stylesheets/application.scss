@@ -42,7 +42,14 @@ a {
 
 }
 
-#login, #logout {
+#login, #logout, #loggedin-user {
     color: white !important;
+}
+
+.justify-content-between {
+    display: inline-block;
+    margin-top: 10px;
+    margin-right: 15px;
+
 }
 

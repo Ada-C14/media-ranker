@@ -34,13 +34,13 @@ h1 small {
     font-weight: 400;
 }
 
-.btn:hover, #logout {
+.btn:hover, #logout, #loggedin-user {
 
     background-color: #00796B !important;
     color: white;
 }
 
-.login-btn, #logout {
+.login-btn, #logout, #loggedin-user {
     background-color: #26969a !important;
     float: right;
 

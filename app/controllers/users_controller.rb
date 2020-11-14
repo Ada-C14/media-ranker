@@ -40,6 +40,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User
+  end
+
 private
 
 def user_params

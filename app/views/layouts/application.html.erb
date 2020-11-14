@@ -34,13 +34,15 @@
       </ul>
     </nav>
   </header>
-  <section class="flash-msg__section">
-    <% flash.each do |name, message| %>
-      <strong class="<%= name %>">
-        <%= message %>
-      </strong>
+  <% if flash.any? %>
+    <section class="alert__container">
+      <% flash.each do |name, message| %>
+        <div class="alert alert-<%= name %>">
+          <%= message %>
+      </div>
     <% end %>
   </section>
+  <% end %>
   <main>  <%= yield %> </main>
   </body>
 </html>

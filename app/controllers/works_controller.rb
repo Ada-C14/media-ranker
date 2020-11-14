@@ -1,16 +1,4 @@
 class WorksController < ApplicationController
-  # Helper Methods
-  def not_found_error_notice
-    flash[:notice] = "Uh oh! That work does not exist... Please try again."
-    redirect_to works_path
-  end
-
-  def not_saved_error_notice
-    flash.now[:notice] = "Uh oh! That did not save correctly. Please try again."
-  end
-
-  #########################################################
-
   def index
     @works = Work.all
   end
@@ -35,7 +23,7 @@ class WorksController < ApplicationController
       redirect_to work_path(@work.id)
       return
     else
-      not_saved_error_notice
+      not_saved_error_notice('create')
       render :new
       return
     end
@@ -61,7 +49,7 @@ class WorksController < ApplicationController
       redirect_to work_path
       return
     else
-      not_saved_error_notice
+      not_saved_error_notice('update')
       render :edit
       return
     end
@@ -85,5 +73,4 @@ class WorksController < ApplicationController
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
   end
-
 end

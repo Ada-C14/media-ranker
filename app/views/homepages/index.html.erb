@@ -11,7 +11,7 @@
     </h2>
     <p class="spotlight-desc">
       <% if Work.media_spotlight %>
-        Num votes - <%= Work.media_spotlight.description %>
+        <%= Work.media_spotlight.votes.count %> votes - <%= Work.media_spotlight.description %>
       <% else %>
         What're you waiting for? Get to voting!
       <% end %>

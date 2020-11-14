@@ -1,4 +1,6 @@
 class Work < ApplicationRecord
+  has_many :votes, dependent: :destroy
+  has_many :users, through: :votes
 
   validates :category,
             presence: true,
@@ -19,11 +21,14 @@ class Work < ApplicationRecord
             }
 
   def self.media_spotlight
-    Work.all.limit(1)[0]
+    Work.all.sort_by { |work| work.votes.count }.reverse[0]
   end
 
   def self.top_ten(category)
-    Work.where(category: category).limit(10)
+    Work.where(category: category).sort_by { |work| work.votes.count }.reverse[0..9]
   end
 
+  def self.sort_by_votes(category)
+    Work.where(category: category).sort_by { |work| work.votes.count }.reverse
+  end
 end

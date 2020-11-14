@@ -113,15 +113,26 @@ tr {
   border-color: inherit;
 }
 
+th {
+  display: table-cell;
+  vertical-align: inherit;
+  font-weight: bold;
+  //text-align: -internal-center;
+}
+
 table thead th {
   vertical-align: bottom;
   border-bottom: 2px solid #dee2e6;
 }
 
-table th, .table td {
+table td {
+  vertical-align: middle;
+}
+
+table th, table td {
   padding: 0.75rem;
-  vertical-align: top;
   border-top: 1px solid #dee2e6;
+  vertical-align: middle !important;
 }
 
 ol, ul, dl {
@@ -162,7 +173,7 @@ a.button {
   color: white;
 }
 
-.button:hover, .button.delete:hover {
+.button:hover, .button.delete:hover, .button.btn-secondary:hover {
   background-color: #007a6b;
 }
 
@@ -331,7 +342,7 @@ label {
   margin-bottom: 0.5rem;
 }
 
-#work_category, #work_title, #work_creator, #work_publication_year, #work_description, #user_username {
+#work_category, #work_title, #work_creator, #work_publication_year, #work_description, #user_username, #username {
   display: block;
   width: 100%;
   height: calc(2.25rem + 2px);
@@ -356,9 +367,9 @@ textarea#work_description {
 
 .flash-alert {
   margin: 0;
+  margin-bottom: 1rem;
   position: relative;
   padding: 0.75rem 1.25rem;
-  margin-bottom: 1rem;
   border: 1px solid transparent;
   border-radius: 0.25rem;
 }
@@ -370,7 +381,8 @@ textarea#work_description {
 }
 
 .flash-msg__section .notice {
-  color: #6a040f;
-  background-color: #FCB0B8;
-  border-color: #FB9DA6;
+  color: #856404;
+  background-color: #fff3cd;
+  border-color: #ffeeba;
 }
+

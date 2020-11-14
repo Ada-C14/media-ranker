@@ -32,4 +32,22 @@ end
 puts "Added #{Work.count} work records"
 puts "#{work_upload_failures.size} works failed to save"
 
+user_upload_failures = []
+20.times do |num|
+  user = User.new
+
+  user.username = "user#{num}"
+
+  successful = user.save
+  if !successful
+    user_upload_failures << user
+    puts "Failed to save user: #{user.inspect}"
+  else
+    puts "Created user: #{user.inspect}"
+  end
+end
+
+puts "Added #{User.count} user records"
+puts "#{user_upload_failures.size} users failed to save"
+
 puts "done"

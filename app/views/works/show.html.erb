@@ -7,25 +7,24 @@
     <section>
       <%= link_to "Back to media ranks", root_path, class: 'button' %>
       <%= link_to "Edit", edit_work_path(@work.id), class: 'button' %>
-<!--      TO:DO: link to the actual upvote path-->
-      <%= link_to "Upvote", works_path, class: 'button' %>
+      <%= link_to "Upvote", work_votes_path(@work.id), class: 'button', method: :post %>
       <%= link_to "Delete", work_path(@work.id), method: :delete, data: { confirm: "Please confirm deletion." }, class: 'button delete' %>
     </section>
   </section>
   <section class="votes">
-    <h3 class="votes-header">NUM Votes for this <%= @work.category %></h3>
+    <h3 class="votes-header"><%= @work.votes.count %> Votes for this <%= @work.category.capitalize %></h3>
     <table>
       <thead>
         <th>User</th>
         <th>Date</th>
       </thead>
       <tbody>
+      <% @work.users.each do |user| %>
         <tr>
-<!--          SOME LOOP HERE TO GET ALL VOTES-->
-          <td>LINK TO USER</td>
-          <td>VOTE DATE</td>
+          <td><%= link_to user.username, user_path(user.id) %></td>
+          <td><%= Vote.find_by(user_id: user.id).created_at.strftime("%b %-d, %Y") %></td>
         </tr>
-        <tr></tr>
+      <% end %>
       </tbody>
     </table>
   </section>

@@ -19,8 +19,9 @@
           <li><%= link_to "View all users", users_path%></li>
         </ul>
         <ul>
-<!--          <li><%#= link_to "logged in as [insert name]" user_path(id) %></li>-->
+
           <% if session[:user_id] %>
+            <li><%= link_to "logged in as #{User.find_by(id: session[:user_id]).username}", user_path(session[:user_id]), class: "btn btn-primary" %> </li>
             <li><%= link_to "Log Out", logout_path, class: "btn btn-primary", method: :post %></li>
           <% else %>
             <li><%= link_to "Log In", login_path, class: "btn btn-primary" %></li>
@@ -29,15 +30,26 @@
       </nav>
     </header>
 
-    <% if flash.any? %>
-      <section class="alert__container">
-        <% flash.each do |name, message| %>
+    <section class="alert__container">
+      <% if flash[:success] %>
           <div class="alert alert-success">
-            <span><%= message %></span>
+            <span> <%= flash[:success] %></span>
           </div>
-        <% end %>
-      </section>
-    <% end %>
+
+      <% elsif flash[:error] %>
+          <div class="alert alert-warning">
+            <span><%= flash[:error].first %></span>
+            <% if flash[:error].count > 1 %>
+            <ul>
+              <% flash[:error].last.each do |message| %>
+                <li><%= message %></li>
+              <% end %>
+            </ul>
+              <% end %>
+          </div>
+      <% end %>
+    </section>
+
 
     <main>
       <%= yield %>

@@ -1,5 +1,8 @@
 class Work < ApplicationRecord
 
+  has_many :votes
+  has_many :users, through: :votes
+
   CATEGORIES = %w(album book movie) # For checkboxes on form partials // validations
 
   validates :category,  presence: true,

@@ -1,4 +1,5 @@
-<p>Spotlight: <%= @works.select_spotlight.title %></p>
+<p>Media Spotlight: <%= @works.select_spotlight.title %> By: <%= @works.select_spotlight.creator %></p>
+<%= @works.select_spotlight.description %>
 
 <ul>
   <% if @works.length > 0 %>

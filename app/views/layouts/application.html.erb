@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Media Ranker - Ting-Yi</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="main-container">
+      <header class="app-header__header">
+        <h1><%= link_to "Media Ranker", root_path %><small> Ranking the Best of Everything</small></h1>
+        <nav class="app-header__nav">
+          <ul class="nav app-header__site-nav-container">
+            <li class="nav-item app-header__nav_item"><%= link_to "View top media", root_path, class: "nav-link" %></li>
+            <li class="nav-item app-header__nav_item"><%= link_to "View all media", works_path, class: "nav-link" %></li>
+            <li class="nav-item app-header__nav_item"><%= link_to "Add a new work", new_work_path, class: "nav-link" %></li>
+            <li class="nav-item app-header__nav_item"><%= link_to "View all users", users_path, class: "nav-link" %></li>
+          </ul>  
+          <ul class="nav app-header__user-nav-container">
+            <% if User.find_by(id: session[:user_id]) %>
+              <li class="nav-item app-header__nav_item"><%= button_to "Logged in as #{ User.find_by(id: session[:user_id]).username }", user_path(id: session[:user_id]), method: :get, class: 'btn btn-primary' %></li>
+              <li class="nav-item app-header__nav_item"><%= button_to "Log Out", logout_path, method: :post, class: 'btn btn-primary' %></li>
+            <% else %>
+              <li class="nav-item app-header__nav_item"><%= button_to "Log In", login_path, method: :get, class: 'btn btn-primary', rel: "nofollow" %></li>  
+            <% end %>
+          </ul>
+        </nav>
+      </header>
+      <main class="main-margin">
+        <section class="alert_container">
+          <% flash.each do |name, message| %>
+            <div class="alart <%= flash_class(name) %>" role="alert">
+              <span><%= message %></span>
+            </div>
+          <% end %>
+        </section>
+
+
+        <%= yield %>
+      </main>
+      <footer>
+        <p>Copyright 2020 Ting-Yi @Ada Developers Academy</p>
+      </footer>
+    </div>  
+  </body>
+</html>

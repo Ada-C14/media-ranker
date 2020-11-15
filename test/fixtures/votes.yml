@@ -1,0 +1,12 @@
+user1_work3:
+  user_id: 1
+  work_id: 3
+  created_at: Nov 12, 2020
+user1_work2:
+  user_id: 1
+  work_id: 2
+  created_at: Nov 8, 2020
+user2_work2:
+  user_id: 2
+  work_id: 2
+  created_at: Nov 14, 2020

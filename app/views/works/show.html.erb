@@ -1,0 +1,60 @@
+<section>
+  <article class="form-border">  
+    <% if @work.errors.any? %>
+      <ul class="alert alert-info" role="alert">
+        <% @work.errors.each do |column, message| %>
+          <li>
+            <%= column %> <%= message %>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </article>
+  
+  <article class="work-info">
+    <h2><%= @work.title %></h2>
+    <p>Created by: <%= @work.creator %></p>
+    <p>Published <%= @work.publication_year %></p>
+    <% if @work.description %>
+      <p><%= @work.description %></p>
+    <% end %>  
+  </article>
+  <article>
+    <ul class="nav app-header__user-nav-container">
+      <li class="nav-item app-header__nav_item">
+        <%= button_to "Back to media ranks", root_path, method: :get, class: "btn btn-primary" %>
+      </li>
+      <li class="nav-item app-header__nav_item">
+        <%= button_to "Edit", edit_work_path(@work), method: :get, class: "btn btn-primary" %>
+      </li>
+      <li class="nav-item app-header__nav_item">
+        <%= button_to "Upvote", upvote_work_path(@work), class: "btn btn-primary", rel: "nofollow" %>
+      </li>
+      <li class="nav-item app-header__nav_item">
+        <%= button_to "Delete", work_path(@work), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger", rel: "nofollow" %>
+      </li>    
+    </ul>
+  </article>
+  <article class="works-votes__container">
+    <h3 class="works-votes__header"><%= "#{ @work.total_votes } Votes for this" %> <%= @work.category.capitalize %></h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>User</th>
+          <th>Date</th>
+        </tr>
+      </thead>  
+      <% @work.votes.order(created_at: :desc).each do |vote| %>
+        <tbody>
+          <tr>
+            <th><%= link_to vote.user.username, user_path(vote.user) %></th>
+            <th><%= vote.date %></th>
+          </tr>
+        </tbody>  
+      <% end %>    
+    </table>
+  </article>
+</section>
+
+
+

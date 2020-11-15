@@ -1,0 +1,43 @@
+<section>
+  <article class="work-info">
+    <h2>User Summary: <%= @user.username %></h2>
+    <p>Joined site <%= @user.joined %></p>
+  </article>
+  
+  <article class="user-votes__container">
+    <h3 class="user-votes__header">Votes</h3>
+    <table class="table">
+      <tr>
+        <th>Media Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Category</th>
+        <th>Voted On</th>
+      </tr>
+      <% @user.order_voted_works.each do |vote| %>
+        <tr>
+        vote
+          <th><%= link_to vote.work.title, work_path(vote.work.id) %></th>
+          <th><%= vote.work.creator %></th>
+          <th><%= vote.work.publication_year %></th>
+          <th><%= vote.work.category %></th>
+          <th><%= vote.date %></th>  
+        </tr>
+      <% end %>    
+    </table>
+  </article>
+
+  <article>
+    <ul class="nav app-header__user-nav-container">
+      <li class="nav-item app-header__nav_item">
+        <%= button_to "See all Users", users_path, method: :get, class: "btn btn-secondary" %>
+      </li>
+      <li class="nav-item app-header__nav_item">
+        <%= button_to "Back to Media List", root_path, method: :get, class: "btn btn-primary" %>
+      </li>  
+    </ul>
+  </article>
+</section>
+
+
+

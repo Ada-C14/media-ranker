@@ -1,0 +1,26 @@
+<h2>List of Users</h2>
+
+<section> 
+  <article>
+    <table class="table">
+      <tr>
+        <th>Username</th>
+        <th>Votes</th>
+        <th>Joined</th>
+      </tr>  
+      <% User.index_order.each do |user|  %>
+        <tr>
+          <th><%= link_to user.username, user_path(user) %></th>
+          <th><%= user.each_user_votes %></th>
+          <th><%= user.joined %></th>
+        </tr>  
+      <% end %>
+    </table>  
+  </article> 
+</section>
+
+<section>
+  <div>
+    <p><%= button_to "Back to Media List", root_path, method: :get, class: "btn btn-secondary" %></p>
+  </div>
+</section>  

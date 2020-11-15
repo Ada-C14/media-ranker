@@ -33,8 +33,18 @@ describe Vote do
     describe "connect work and user" do
       it "returns vote object given a work_id and user_id" do
         work_id = works(:hp1).id
-        user_id = User.new(username: "Hermione").id
-        expect(Vote.connect_work_user(work_id, user_id)).must_be_instance_of Vote
+        user_id = User.create!(username: "Hermione").id
+        pre_vote = Vote.connect_work_user(work_id, user_id)
+
+        expect(pre_vote).must_be_instance_of Vote
+        expect(pre_vote.valid?).must_equal true
+      end
+
+      it "returns something if one or both of the fields are empty" do
+        work_id = works(:hp1).id
+        # expect(Vote.connect_work_user(work_id, -1)).must_be_instance_of Vote
+        vote =  Vote.connect_work_user(work_id, -1)
+        expect(vote.valid?).must_equal false
       end
     end
 

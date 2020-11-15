@@ -14,7 +14,6 @@
       </tr>
       </thead>
       <tbody>
-      <% @user.votes.each do |vote| %>
         <% unless vote.work.nil? %>
           <tr>
             <td><%= link_to "#{vote.work.title }", work_path(vote.work)%></td>

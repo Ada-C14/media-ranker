@@ -13,21 +13,21 @@
 <section>
   <h3><%= @work.single_or_plural_votes %> for this <%= @work.category %></h3>
   <section class="media-table">
-      <table class="table">
-        <thead>
+    <table class="table">
+      <thead>
         <tr>
           <th>User</th>
           <th>Date</th>
         </tr>
-        </thead>
-        <tbody>
+      </thead>
+      <tbody>
         <% @work.votes.each do |vote| %>
           <tr>
             <td><%= link_to "#{vote.user.username}", user_path(vote.user) %></td>
             <td><%= vote.format_date %></td>
           </tr>
         <% end %>
-        </tbody>
-      </table>
+      </tbody>
+    </table>
   </section>
 </section>

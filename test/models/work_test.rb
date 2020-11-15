@@ -176,7 +176,7 @@ describe Work do
       expect(result).must_equal works(:book1)
     end
 
-    it "alphabetical order if there ties for highest vote" do
+    it "tie breaker, returns the work that comes first by ascending order of title" do
 
       result = Work.spotlight
       expect(result.title).must_equal "Red Bean"

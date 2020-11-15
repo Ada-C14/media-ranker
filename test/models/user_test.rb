@@ -10,12 +10,23 @@ describe User do
 
   describe 'relationships' do
     it 'can have many votes' do
-      # user = users(:annakim)
-      # expect(user.votes.count).must_equal 2
+      user = User.first
+
+      expect(user.votes.count).must_equal 2
+
+      user.votes.each do |vote|
+        expect(vote).must_be_instance_of Vote
+      end
     end
 
     it 'can have many works through votes' do
+      user = User.first
 
+      expect(user.works.count).must_equal 2
+
+      user.works.each do |work|
+        expect(work).must_be_instance_of Work
+      end
     end
   end
 

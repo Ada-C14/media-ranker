@@ -8,7 +8,19 @@ class Work < ApplicationRecord
   validates :title, uniqueness: { scope: :category, message: "has already been taken"}
 
   def self.spotlight
-    return self.all.sample
+    if self.count == 0
+      return nil
+    elsif Vote.count == 0
+      return self.all.sample
+    else
+      popular_stuff = []
+      Work.all.each do |work|
+        if work.votes.any?
+          popular_stuff << work
+        end
+      end
+      return popular_stuff.sample
+    end
   end
 
   def self.top_ten(media)
@@ -23,6 +35,6 @@ class Work < ApplicationRecord
 
   def self.category_desc_by_vote_count(media)
     category_subset = self.where(category: media)
-    return category_subset.sort_by { |work| work.votes.count }.reverse
+    return category_subset.max_by(category_subset.length) { |work| work.votes.count }
   end
 end

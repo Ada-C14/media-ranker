@@ -1,63 +1,48 @@
-valid_work:
+kida:
+  category: album
+  title: Kid A
+  creator: Radiohead
+  publication_year: "2000"
+  description: never too much
+amnesiac:
+  category: album
+  title: Amnesiac
+  creator: Radiohead
+  publication_year: "2001"
+  description: everything in its right place
+tkol:
+  category: album
+  title: The King Of Limbs
+  creator: Radiohead
+  publication_year: "2012"
+  description: in full bloom
+in_rainbows:
+  category: album
+  title: In Rainbows
+  creator: Radiohead
+  publication_year: "2007"
+  description: parrots don't speak
+starwars:
   category: movie
-  title: Clue
-  creator: Will Smith
-  publication_year: 1996
-  description: best movie ever
-valid_work_1:
-  category: movie
-  title: Pulp Fiction
-  creator: Will Smith
-  publication_year: 1996
-  description: best movie ever
-valid_work_2:
-  category: movie
-  title: Selena
-  creator: Will Smith
-  publication_year: 1996
-  description: best movie ever
-valid_work_3:
-  category: movie
-  title: Toy Story
-  creator: Will Smith
-  publication_year: 1996
-  description: best movie ever
-valid_work_4:
-  category: movie
-  title: Wolf of Wall Street
-  creator: Will Smith
-  publication_year: 1996
-  description: best movie ever
-valid_work_5:
-  category: movie
-  title: The Departed
-  creator: Will Smith
-  publication_year: 1996
-  description: best movie ever
-valid_work_6:
-  category: movie
-  title: Finding Nemo
-  creator: Will Smith
-  publication_year: 1996
-  description: best movie ever
-valid_work_7:
-  category: movie
-  title: The Big Short
-  creator: Will Smith
-  publication_year: 1996
-  description: best movie ever
-valid_work_8:
-  category: movie
-  title: Moonlight
-  creator: Will Smith
-  publication_year: 1996
-  description: best movie ever
-valid_work_9:
-  category: movie
-  title: Scream
-  creator: Will Smith
-  publication_year: 1996
-  description: best movie ever
-valid_book:
+  title: Star Wars
+  creator: George Lucas
+  publication_year: "2000"
+  description: she speaks!
+trickmirror:
   category: book
-  title: the worst book ever
+  title: Trick Mirror
+  creator: Jia Tolentino
+  publication_year: "2019"
+  description: alright
+httt:
+  category: album
+  title: Hail To The Thief
+  creator: Radiohead
+  publication_year: "2003"
+  description: "just keep goin'"
+okc:
+  category: album
+  title: OK Computer
+  creator: Radiohead
+  publication_year: "1997"
+  description: at last

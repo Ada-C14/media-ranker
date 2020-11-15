@@ -33,8 +33,8 @@ describe Work do
       expect(validity).must_equal false
     end
 
-    #custom methods: none yet
-    describe "top_ten custom method" do
+    #custom methods => top_ten
+    describe "top_ten method" do
       it 'returns 10 items when the list of works is greater than 20' do
         25.times do
           work = Work.create(category: "movie", title: "s", creator: "r", publication_year: "1990", description: "u")
@@ -50,9 +50,47 @@ describe Work do
     end
 
     describe "spotlight method" do
-      it 'returns a Work object' do
-        spotlight = Work.spotlight
-        expect(spotlight).must_be_instance_of Work
+      it 'returns nil if Work.count == 0' do
+        Vote.destroy_all
+        Work.destroy_all
+        assert_nil(Work.spotlight)
+      end
+
+      it 'returns a random work if Votes.count == 0' do
+        Vote.destroy_all
+        expect(Work.spotlight).must_be_instance_of Work
+      end
+
+      it 'returns a voted-on work when votes are present' do
+        assert_operator Work.spotlight.votes.count, :>, 0
+      end
+    end
+
+    describe 'category_desc_by_vote_count method' do
+      before do
+        @best_albums = Work.category_desc_by_vote_count("album")
+      end
+
+      it 'returns a list of all works in a given category ordered by vote count' do
+        expect(@best_albums.length).must_equal 6
+        expect(@best_albums[0].title).must_equal "OK Computer"
+      end
+
+      it 'orders by vote count, and breaks ties by alphabetizing by title' do
+        expect(@best_albums[1].title).must_equal "Hail To The Thief"
+        expect(@best_albums[2].title).must_equal "Kid A"
+      end
+
+      it 'also includes titles with zero votes' do
+        expect(@best_albums[-1].votes.count).must_equal 0
+      end
+
+      it 'returns nil if Work.count = 0' do
+        Vote.destroy_all
+        Work.destroy_all
+        Work::CATEGORIES.each do |media|
+          assert_nil(Work.category_desc_by_vote_count("media"))
+        end
       end
     end
   end

@@ -1,0 +1,22 @@
+book:
+  category: "book"
+  title: "The Book"
+  creator: "The Author"
+  publication_year: 2020
+  description: "The Description"
+
+new_work:
+  category: "movie"
+  title: "Mulan"
+
+worka:
+  category: 'book'
+  title: 'chicken soap for the soul'
+
+workb:
+  category: 'book'
+  title: 'Weathering Heights'
+
+workc:
+  category: 'album'
+  title: 'The Hunchback of Notre Dame'

@@ -74,12 +74,31 @@ class UsersController < ApplicationController
     end
 
     @vote = Vote.create(work_id: params[:work_id], user_id: user.id)
-    if not @vote.valid?
+
+    if @vote.valid?
+      flash[:success] = "Successfully upvoted!"
+      redirect_to work_path @vote.work.id
+    else
       flash[:error] = "You can't vote more than once for each media"
+      redirect_back(fallback_location: root_path)
+      return
     end
 
-    redirect_back(fallback_location: root_path)
   end
+
+
+  ##########
+  # @work = Work.new(work_params)
+  # if @work.save
+  #   flash[:success] = "#{@work.title} was successfully created!"
+  #   redirect_to work_path @work.id
+  #   return
+  # else
+  #   flash.now[:error] = "#{@work.title} was NOT added"
+  #   render :new, status: :bad_request #shows a new work form again
+  #   return
+  # end
+  #########
 
 
   private

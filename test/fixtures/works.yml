@@ -46,3 +46,27 @@ yeezuz:
   creator: Kanye West
   publication_year: "1997"
   description: at last
+dropout:
+  category: album
+  title: The College Dropout
+  creator: Kanye West
+  publication_year: "2004"
+  description: never let me down
+late_registration:
+  category: album
+  title: Late Registration
+  creator: Kanye West
+  publication_year: "2005"
+  description: everything in its right place
+dropout:
+  category: album
+  title: The College Dropout
+  creator: Kanye West
+  publication_year: "2004"
+  description: never let me down
+late_registration:
+  category: album
+  title: Late Registration
+  creator: Kanye West
+  publication_year: "2005"
+  description: everything in its right place

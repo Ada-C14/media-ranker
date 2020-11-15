@@ -1,7 +1,11 @@
-<section class="homepage">
-  <article class="hp-spotlight">  
-    <h2 class="spotlight__header">Media Spotlight: <%= link_to Work.top_ten_helper(Work.spotlight[0]).title, work_path(Work.top_ten_helper(Work.spotlight[0])) %> by <%= Work.top_ten_helper(Work.spotlight[0]).creator %></h2>
-    <p class="spotlight__description"><%= Work.spotlight[1] %> votes - <%= Work.top_ten_helper(Work.spotlight[0]).description %></p>
+<section>
+  <article class="spotlight">
+    <% if Work.count != 0%>  
+      <h2 class="spotlight__header--prefix">Media Spotlight: <%= link_to Work.top_ten_helper(Work.spotlight[0]).title, work_path(Work.top_ten_helper(Work.spotlight[0]), class: "spotlight__link-to") %> by <%= Work.top_ten_helper(Work.spotlight[0]).creator %></h2>
+      <p class="spotlight__description"><%= Work.spotlight[1] %> votes - <%= Work.top_ten_helper(Work.spotlight[0]).description %></p>
+    <% else %>
+      <h2 class="spotlight__header--prefix">Media Spotlight</h2>
+    <% end %>  
   </article>
   <hr class="root__hr">
   <article class="top-ten__container">
@@ -10,7 +14,7 @@
       <ul class="list-group top-ten__list">
         <% Work.top_ten("movie").each do |work|  %>
             <li class="list-group-item">
-              <h4><%= link_to Work.top_ten_helper(work[0]).title, work_path(Work.top_ten_helper(work[0])) %> <%= "by #{ Work.top_ten_helper(work[0]).creator }" %></h4>
+              <h4><%= link_to Work.top_ten_helper(work[0]).title, work_path(Work.top_ten_helper(work[0])) %> <small class="top-ten__creator"><%= "by #{ Work.top_ten_helper(work[0]).creator }" %></small></h4>
               <p><%= work[1] %> votes</p>
             </li>  
         <% end %>
@@ -21,7 +25,7 @@
       <ul class="list-group top-ten__list">
         <% Work.top_ten("book").each do |work|  %>
           <li class="list-group-item">
-            <h4><%= link_to Work.top_ten_helper(work[0]).title, work_path(Work.top_ten_helper(work[0])) %> <%= "by #{ Work.top_ten_helper(work[0]).creator }" %></h4>
+            <h4><%= link_to Work.top_ten_helper(work[0]).title, work_path(Work.top_ten_helper(work[0])) %> <small class="top-ten__creator"><%= "by #{ Work.top_ten_helper(work[0]).creator }" %></small></h4>
             <p><%= work[1] %> votes</p>
           </li>  
         <% end %>
@@ -32,7 +36,7 @@
       <ul class="list-group top-ten__list">
         <% Work.top_ten("album").each do |work|  %>
           <li class="list-group-item">
-            <h4><%= link_to Work.top_ten_helper(work[0]).title, work_path(Work.top_ten_helper(work[0])) %> <%= "by #{ Work.top_ten_helper(work[0]).creator }" %></h4>
+            <h4><%= link_to Work.top_ten_helper(work[0]).title, work_path(Work.top_ten_helper(work[0])) %> <small class="top-ten__creator"><%= "by #{ Work.top_ten_helper(work[0]).creator }" %></small></h4>
             <p><%= work[1] %> votes</p>
           </li>  
         <% end %>

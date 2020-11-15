@@ -32,6 +32,15 @@ describe UsersController do
 
       expect(session[:user_id]).must_equal user.id
     end
+
+   # it "can't login if username is blank" do
+   #   user = User.new(username: nil)
+   #   user.username = nil
+   #   post login_path
+
+   #   # must_respond_with :redirect
+   #   expect(flash[:error]).must_equal "Username can't be blank."
+   # end
   end
 
   describe "logging out" do
@@ -43,10 +52,6 @@ describe UsersController do
 
       expect(session[:user_id]).must_be_nil
     end
-
-  #  it "can notify user if they can't log out" do
-  #
-  # end
   end
 
   describe "current user" do

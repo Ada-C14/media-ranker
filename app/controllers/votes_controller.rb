@@ -1,24 +1,29 @@
 class VotesController < ApplicationController
 
-  before_action :require_login, only [:new, :create]
+  # before_action :require_login, only [:new, :create]
 
   def index
     @votes = Vote.all
   end
 
-  def new
-    @vote = Vote.new
-  end
 
   def create
-    work = Work.find_by(id: params[:work_id])
-    user = User.find_by(id: session[:user_id])
-
-    @upvote = Vote.new(work_id: @work_id, user_id@current_user.id)
-
-
+    @work = Work.find_by(id: params[:work_id])
+    @vote = Vote.new(
+        user_id: session[:user_id],
+        work_id: @work.id
+    )
+    if @vote.save
+      flash[:success] = "Successfully upvoted!"
+      redirect_to work_path(@work.id)
+      return
+    else
+      flash.now[:error] = "A problem occurred: Could not upvote"
+      render :show
+      return
 
   end
+end
 
 
 end

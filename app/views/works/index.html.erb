@@ -10,7 +10,7 @@
           <%= link_to "Edit", edit_work_path(work[:id]) %> |
           <%= link_to "Delete", destroy_work_path(work[:id]), method: :delete, data: {confirm: "Are you sure?"} %>
         <%= link_to "Upvote", vote_work_path(work[:id]), method: :post %></li>
-          Votes: <%= work.votes.count %>
+          <li> Votes: <%= work.votes.count %></li>
           <% end %>
       <% end %>
     </ul>
@@ -22,7 +22,9 @@
       <% if work.category == "movie" %>
        <li><%= link_to work.title, work_path(work) %> |
          <%= link_to "Edit", edit_work_path(work[:id]) %> |
-         <%= link_to "Delete", destroy_work_path(work[:id]), method: :delete, data: {confirm: "Are you sure?"} %></li>
+         <%= link_to "Delete", destroy_work_path(work[:id]), method: :delete, data: {confirm: "Are you sure?"} %>
+         <%= link_to "Upvote", vote_work_path(work[:id]), method: :post %></li>
+         <li> Votes: <%= work.votes.count %></li>
           <% end %>
       <% end %>
     </ul>
@@ -34,8 +36,10 @@
         <% if work.category == "album" %>
         <li><%= link_to work.title, work_path(work) %> |
           <%= link_to "Edit", edit_work_path(work[:id]) %> |
-          <%= link_to "Delete", destroy_work_path(work[:id]), method: :delete, data: {confirm: "Are you sure?"} %></li>
-          <% end %>
+          <%= link_to "Delete", destroy_work_path(work[:id]), method: :delete, data: {confirm: "Are you sure?"} %>
+          <%= link_to "Upvote", vote_work_path(work[:id]), method: :post %></li>
+          <li> Votes: <%= work.votes.count %></li>
+        <% end %>
       <% end %>
       <li></li>
     </ul>

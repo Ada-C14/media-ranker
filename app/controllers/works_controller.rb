@@ -81,11 +81,14 @@ class WorksController < ApplicationController
     @user = User.find_by(id: session[:user_id])
     if @work.nil?
       flash[:error] = "Not a valid work"
+      redirect_to root_path
     end
     if @user.nil?
       flash[:error] = "You must be logged in to vote"
+      redirect_to root_path
+      return
     end
-    @vote = Vote.new(params[user_id: @user.id, work_id: @work.id])
+    @vote = Vote.new(user_id: @user.id, work_id: @work.id)
     if @vote.save
       flash[:success] = "Your vote was counted"
       redirect_to work_path

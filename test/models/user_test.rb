@@ -24,7 +24,7 @@ describe User do
       expect(users(:user2).votes.last).must_be_instance_of Vote
       expect(users(:user2).votes.count).must_equal 2
       expect(votes(:vote2).work).must_be_instance_of Work
-      expect(votes(:vote2).work).must_equal works(:work2)
+      expect(votes(:vote2).work).must_equal works(:work3)
 
     end
   end

@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   def current_user
     @current_user = User.find(session[:user_id])
+    # add flash something broke redirect to login
   end
 
   def require_login

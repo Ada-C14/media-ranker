@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/users/current', to: 'users#current', as: 'current_user'
 
   get '/works/top', to: 'works#top'
-
+  get '/works/:id/upvote', to: 'works#upvote'
 
   resources :works
   resources :users

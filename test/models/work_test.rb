@@ -86,15 +86,27 @@ describe Work do
     end
 
     it 'spotlight should return only 1 valid work' do
-      Work.spotlight
+      spotlight = Work.spotlight
 
-      value(spotlight).must_be :valid?
+      expect(spotlight).must_equal 'The very hungary caterpillar'
     end
 
-    it 'top_10 should return random 10 works' do
-      Work.spotlight
+    it 'top_10 books should return random 10 books' do
+      top_10 = Work.top_10("book")
 
-      value(spotlight).must_be :valid?
+      expect(top_10.count).must_equal 10
+    end
+
+    it 'top_10 albums should return random 10 albums' do
+      top_10 = Work.top_10("albums")
+
+      expect(top_10.count).must_equal 10
+    end
+
+    it 'top_10 movies should return random 10 movies' do
+      top_10 = Work.top_10("movies")
+
+      expect(top_10.count).must_equal 10
     end
 
   end

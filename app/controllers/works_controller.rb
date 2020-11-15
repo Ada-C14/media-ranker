@@ -1,5 +1,5 @@
 class WorksController < ApplicationController
-  before_action :find_work, only: [:show, :edit, :update, :destroy]
+  before_action :find_work, only: [:show, :edit, :update, :destroy, :upvote]
 
   def index
     # @works = Work.all
@@ -36,9 +36,7 @@ class WorksController < ApplicationController
   end
 
   def edit
-    if @work.nil?
-      redirect_to root_path
-    end
+    redirect_to root_path if @work.nil?
   end
 
   def update
@@ -63,7 +61,23 @@ class WorksController < ApplicationController
     end
   end
 
-  def top; end
+  def upvote
+    if @work.nil?
+      redirect_to root_path
+      return
+    elsif !Work.exists?(work_id)
+      redirect_to root_path
+      flash[:error] = "This work does not exist."
+      return
+    elsif Vote.exists?(session[:user_id], work_id)
+      redirect_to root_path
+      flash[:error] = "You have already voted for this work."
+    else
+      @vote = Vote.new(user_id: session[:user_id], work_id: work_id)
+      @vote.save
+      render :show
+      end
+  end
 
   private
 
@@ -72,7 +86,7 @@ class WorksController < ApplicationController
   end
 
   def find_work
-    @work = Work.find_by_id(params[:id])
+    @work = current_user.works.find(params[:id])
   end
 
 end

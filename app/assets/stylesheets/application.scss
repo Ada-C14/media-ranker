@@ -99,8 +99,21 @@ color:white
 margin-bottom:5px
 }
 
-.alert__container{
-margin:2rem 0 1rem 0
+// .alert__container{
+// margin:2rem 0 1rem 0
+// }
+
+.alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    list-style-type: none;
+}
+
+.alert-warning {
+    color: #856404;
+    background-color: #fff3cd;
+    border-color: #ffeeba;
 }
 
 .spotlight{
@@ -191,7 +204,7 @@ text-decoration:none
 }
 
 .alert{
-margin:0
+margin: auto;
 }
 
 .btn-primary{

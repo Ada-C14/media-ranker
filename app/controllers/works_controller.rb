@@ -20,8 +20,8 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
 
-    #TODO: Add various flash messages
     if @work.save
+      flash[:success] = "Successfully created #{@work.category} #{@work.id}"
       redirect_to work_path(@work)
     else
       render :new, status: :bad_request
@@ -31,7 +31,6 @@ class WorksController < ApplicationController
   def edit
     @work = Work.find_by(id: params[:id])
 
-    #TODO: Add various flash messages
     if @work.nil?
       head :not_found
       return
@@ -41,11 +40,11 @@ class WorksController < ApplicationController
   def update
     @work = Work.find_by(id: params[:id])
 
-    #TODO: Add various flash messages
     if @work.nil?
       head :not_found
       return
     elsif @work.update(work_params)
+      flash[:success] = "Successfully updated #{@work.category} #{@work.id}"
       redirect_to work_path(@work)
       return
     else
@@ -58,8 +57,9 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
 
     @work.destroy
+    flash[:success] = "Successfully destroyed #{@work.category} #{@work.id}"
 
-    #TODO: Add various flash messages
+    #TODO: If work not found
     redirect_to root_path
   end
 
@@ -69,13 +69,13 @@ class WorksController < ApplicationController
 
     if @work && @user
       vote = Vote.create(user_id: @user.id, work_id: @work.id)
-      flash[:message] = "Successfully upvoted!"
+      flash[:success] = "Successfully upvoted!"
       redirect_to work_path(@work)
     elsif @work.nil?
       head :not_found
       return
     elsif @user.nil? #TODO: Somehow this doesn't work
-      flash[:message] = "A problem occurred: You must log in to do that"
+      flash[:success] = "A problem occurred: You must log in to do that"
       return
     end
   end

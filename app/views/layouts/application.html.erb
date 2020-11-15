@@ -46,6 +46,16 @@
     </nav>
   </header>
 
+  <section class="alert__container">
+      <% if flash[:success] %>
+        <% flash.each do |name, message| %>
+        <div class="alert alert-success">
+          <li><%= message %></li>
+        </div>
+        <% end %>
+      <% end %>
+  </section>
+
     <%= yield %>
   </body>
 </html>

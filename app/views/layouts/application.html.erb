@@ -13,8 +13,8 @@
     <header class="app-header__header">
       <h1><a href="">Media Ranker</a>
       <small>Ranking the Best of Everthing</small>
-        <div></div>
       </h1>
+
       <nav class="app-header__nav">
         <ul class="nav app-header__site-nav-container">
           <li class="nav-item app-header__nav_item"><a class="nav-link" href="/">View top media</a></li>
@@ -24,22 +24,34 @@
         </ul>
 
         <ul class="nav app-header__user-nav-container">
-          <% if session[:user_id] %>
-            <button class="btn btn-primary"><%= link_to "Logged in as #{ User.find_by(id: session[:user_id]).username }", current_user_path(session[:user_id])%></button>
-              <button class="btn btn-primary"><%= link_to "Log Out", logout_path, method: :post%></button>
-            <% else %>
-            <button class="btn btn-primary"><%= link_to "Log In", login_path %></button>
-            <% end %>
-        </ul>
+        <li class="nav-item app-header__nav_item"> <% if session[:user_id] %>
+           <%= link_to "Logged in as #{ User.find_by(id: session[:user_id]).username }", current_user_path(session[:user_id]), class: "button"%></li>
+            <li class="nav-item app-header__nav_item"> <%= link_to "Log Out", logout_path, method: :post, class: "button"%>
+          <% else %>
+            <%= link_to "Log In", login_path, class: "button"%>
+          <% end %></li>
+          </ul>
       </nav>
     </header>
-
-
-     <% if flash[:notice] %>
-      <div class="notice"><%= flash[:notice] %></div>
-     <% end %>
-
     <main>
+
+      <% if flash[:notice] %>
+        <div class="alert alert-warning"><%= flash[:notice] %>
+          <% if @work.errors.any? %>
+            <ul class="errors">
+              <% @work.errors.each do |column, message| %>
+                <li>
+                  <strong><%= column.capitalize %></strong> <%= message %>
+                </li>
+              <% end %>
+            </ul>
+          <% end %>
+        </div>
+      <% end %>
+
+      <% if flash[:success] %>
+        <div class="alert alert-success"><%= flash[:success] %></div>
+      <% end %>
       <%= yield %>
     </main>
   </body>

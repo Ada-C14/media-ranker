@@ -1,20 +1,20 @@
 <main>
   <section class="spotlight">
-    <h2>
-      <span>Media Spotlight</span>
+    <h2 class="spotlight__header">
+      <span class="spotlight__header--prefix">Media Spotlight:</span>
       <% if @media_spotlight %>
-          <%= link_to @media_spotlight.title, work_path(@media_spotlight.id), class: "spotlight-title" %>
+          <%= link_to @media_spotlight.title, work_path(@media_spotlight.id), class: "spotlight_link_to" %>
           by <%= @media_spotlight.creator %>
       <% else %>
-          Please vote to see the most popular media items!
+          Please vote to see the most popular media here!
       <% end %>
     </h2>
 
     <p class="spotlight__description">
-      <% if @media_spotlight %>
-          Number votes - <%= @media_spotlight.description %>
+      <% if @media_spotlight%>
+        <%= @media_spotlight.votes.count %> votes - <%=@media_spotlight.description %>
       <% else %>
-          Please vote!
+        Please vote!
       <% end %>
     </p>
   </section>
@@ -30,4 +30,5 @@
     <div id = "rightbox">
       <%= render partial: "top_ten", locals: {category: "Movies", works: @movies} %>
     </div>
+ </section>
 </main>

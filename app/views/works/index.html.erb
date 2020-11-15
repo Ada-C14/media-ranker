@@ -1,88 +1,16 @@
+<main>
 <h2>List of Works</h2>
-<% if flash[:notice] %>
-  <div class="notice"><%= flash[:notice] %></div>
-<% end %>
-
-
+<section
+  class="media-table">  <%= render partial: "media", locals: {category: "Albums", works: @albums} %>
+</section>
 <section class="media-table">
-  <h4> Albums</h4>
-  <table class="table">
-    <thead>
-      <tr>
-        <th width="80">Votes</th>
-        <th>Title</th>
-        <th>Created By</th>
-        <th>Published</th>
-        <th>Upvote</th>
-      </tr>
-    </thead>
-    <tbody>
-    <% @albums.each do |album| %>
-      <tr>
-        <td><%= album.votes.count %></td>
-        <td><%= link_to album.title, work_path(album.id)%></td>
-        <td><%= album.creator%></td>
-        <td><%= album.publication_year%></td>
-        <td><%= link_to "vote" , upvote_path(album.id), method: :post %></td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+  <%= render partial: "media", locals: {category: "Books", works: @books} %>
+</section>
+<section class="media-table">
+  <%= render partial: "media", locals: {category: "Movies", works: @movies} %>
 </section>
 
-<section class="media-table">
-  <h4>Books</h4>
-  <table class="table">
-    <thead>
-      <tr>
-        <th width="80">Votes</th>
-        <th>Title</th>
-        <th>Created By</th>
-        <th width="100">Published</th>
-        <th width="100">Upvote</th>
-      </tr>
-    </thead>
-    <tbody>
-    <% @books.each do |book| %>
-      <tr>
-        <td><%= book.votes.count %></td>
-        <td><%= link_to book.title %></a></td>
-        <td><%= book.creator %></td>
-        <td><%= book.publication_year%></td>
-        <td><%= link_to "vote" , upvote_path(book.id), method: :post %></td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+  <%= link_to "View top media", root_path, class: "button btn-secondary" %>
+  <%= link_to "Add a new work",  new_work_path, class: "button" %>
 
-</section>
-
-<section class="media-table">
-  <h4>Movies</h4>
-  <table class="table">
-    <thead>
-    <tr>
-      <th width="80">Votes</th>
-      <th>Title</th>
-      <th>Created By</th>
-      <th width="100">Published</th>
-      <th width="100">Upvote</th>
-    </tr>
-    </thead>
-    <tbody>
-    <% @movies.each do |movie| %>
-    <tr>
-      <td><%= movie.votes.count %></td>
-      <td><a href="/works"><%= movie.title %></a></td>
-      <td><%= movie.creator%></td>
-      <td><%= movie.publication_year%></td>
-      <td><%= link_to "vote" , upvote_path(movie.id), method: :post %></td>
-    </tr>
-    <% end %>
-    </tbody>
-  </table>
-
-</section>
-
-<a class="btn btn-secondary" href="/">View top media</a>
-<a class="btn btn-primary" href="/works/new">Add a new work</a>
+</main>

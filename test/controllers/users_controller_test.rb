@@ -6,6 +6,14 @@ describe UsersController do
     @user = User.create!(name: "test user")
   end
 
+  let (:bad_user){
+    -99999
+  }
+
+  # let (:second_user){
+  #   User.new(name: "second test user")
+  # }
+
   describe "index" do
     it "must get index" do
       get users_url
@@ -26,9 +34,9 @@ describe UsersController do
       must_respond_with :success
     end
 
-    it "redirects to error page for invalid show" do
-      skip
-      # must redirect somewhereeeeee
+    it "redirects to error page for invalid user" do
+      get user_url(bad_user)
+      must_respond_with :not_found
     end
   end
 
@@ -41,15 +49,24 @@ describe UsersController do
 
   describe "login" do
 
-    it "can login" do
-      perform_login
+    it "can login an existing user" do
+      perform_login(@user)
+      expect(flash[:success]).must_equal "Successfully logged in as existing user #{@user.name}"
+    end
+
+    it "can login a new user" do
+      second_user = perform_login
+      expect(flash[:success]).must_equal "Successfully created new user #{second_user.name} with ID #{second_user.id}"
     end
 
   end
 
   describe "logout" do
     it "can logout" do
-      skip
+      post logout_url
+      expect(session[:user_id]).must_be_nil
+      expect(flash[:success]).must_equal "Successfully logged out"
+      must_redirect_to root_url
     end
   end
 

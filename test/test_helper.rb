@@ -19,17 +19,34 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
   def perform_login(user = nil)
-    user ||= User.first
 
-    login_data = {
-      user: {
-        name: user.name
+    unless user
+      new_user = User.new(name: "second test user")
+      login_data = {
+        user: {
+          name: new_user.name
+        }
       }
-    }
+    else
+      login_data = {
+        user: {
+          name: user.name
+        }
+      }
+    end
+
     post login_url, params: login_data
 
-    expect(session[:user_id]).must_equal user.id
-    return user
+    unless user
+      new_user = User.find_by(name: "second test user")
+      expect(session[:user_id]).must_equal new_user.id
+      return new_user
+    else
+      expect(session[:user_id]).must_equal user.id
+      return user
+    end
+
   end
+  
 
 end

@@ -7,10 +7,9 @@ class UsersController < ApplicationController
   def show
     @user = User.find_by(id: params[:id])
 
-    # TODO:
-    # if @user.nil?
-    #   # here need to redirect to an error page
-    # end
+    if @user.nil?
+      content_not_found
+    end
   end
 
   def login_form

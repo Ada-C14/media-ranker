@@ -1,0 +1,29 @@
+<% if @users.count == 0 %>
+  <h2>No users in database!</h2>
+<% else %>
+  <h2>List of Users</h2>
+  <table class="table">
+
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Votes</th>
+        <th>Joined</th>
+      </tr>
+    </thead>
+
+    <tbody>
+    <% @users.order(created_at: :desc).each do |user| %>
+      <tr>
+        <td><%= link_to user.username, user_path(user) %></td>
+        <td><%= user.votes.count %></td>
+        <td><%= standardize_date(user.created_at) %></td>
+      </tr>
+    <% end %>
+    </tbody>
+
+  </table>
+<% end %>
+
+<%= link_to "Back to Media List", root_path, class: "btn btn-secondary" %>
+

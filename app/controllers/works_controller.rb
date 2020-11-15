@@ -1,16 +1,19 @@
 class WorksController < ApplicationController
 
+  before_action :find_work, only: [:destroy, :update, :edit, :show ]
+  before_action :require_login, only: [:new, :create, :update, :edit, :destroy, :upvote ]
+
   # Helper Methods
   def not_found_error_notice
     flash[:notice] = "That media does not exist."
   end
 
   def not_saved_error_notice
-    flash.now[:notice] = "A problem occurred: Could not create #{@work.category} "
+    flash.now[:notice] = "A problem occurred: Could not create #{@work.category}"
   end
 
   def saved_notice
-    flash[:success] = "Successfully created #{@work.category}"
+    flash[:success] = "Successfully created #{@work.category} with ID #{@work.id}"
   end
 
   def already_voted_notice
@@ -29,10 +32,6 @@ class WorksController < ApplicationController
     flash[:success] = "Successfully destroyed #{@work.category}"
   end
 
-  def work_params
-    return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
-  end
-
   #########################################################
 
   def index
@@ -42,9 +41,6 @@ class WorksController < ApplicationController
   end
 
   def show
-    work_id = params[:id].to_i
-    @work = Work.find_by_id(work_id)
-
     if @work.nil?
       not_found_error_notice
       return
@@ -70,9 +66,6 @@ class WorksController < ApplicationController
   end
 
   def edit
-    work_id = params[:id].to_i
-    @work = Work.find_by_id(work_id)
-
     if @work.nil?
       not_found_error_notice
       return
@@ -80,8 +73,6 @@ class WorksController < ApplicationController
   end
 
   def update
-    @work = Work.find_by(id: params[:id])
-
     if @work.nil?
       not_found_error_notice
       return
@@ -98,8 +89,6 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    @work = Work.find_by(id: params[:id])
-
     if @work.nil?
       not_found_error_notice
       return
@@ -132,5 +121,15 @@ class WorksController < ApplicationController
     end
 
     redirect_to work_path
+  end
+
+  private
+
+  def work_params
+    return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+  end
+
+  def find_work
+    @work = Work.find_by(id: params[:id])
   end
 end

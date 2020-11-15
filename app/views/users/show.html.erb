@@ -1,6 +1,6 @@
 <main>
   <section>
-    <h2>User Summary: <%= @user.title%></h2>
+    <h2>User Summary: <%= @user.username%></h2>
     <p>Joined site <%= @user.created_at.strftime('%b %d, %Y') %></p>
   </section>
   <section class="user-votes">
@@ -19,7 +19,7 @@
       <% @user.votes.each do|vote| %>
         <tr>
           <td >
-            <%= link_to vote.work.title, work_path(vote.work.id) %>
+            <%= link_to vote.work.title, work_path(vote.work_id) %>
           </td>
           <td >
             <%= vote.work.creator %>
@@ -27,11 +27,15 @@
           <td>
             <%= vote.work.publication_year%>
           </td>
+          <td>
+            <%= vote.work.category.capitalize %>
+          </td>
           <td >
             <%= vote.created_at.strftime('%b %d, %Y')%>
           </td>
         </tr>
       <% end %>
       </tbody>
+    </table>
   </section>
 </main>

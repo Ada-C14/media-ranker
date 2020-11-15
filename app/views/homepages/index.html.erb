@@ -10,14 +10,14 @@
       </p>
     <% end %>
   </section>
-
+  <hr>
   <section class="top-ten-container">
     <section class="list">
       <h2 class="top-ten-header">Top Movies</h2>
-      <ul>
+      <ul class="top-list">
         <% @top_movies.each do |work| %>
-          <li>
-            <div><%= link_to work.title, work_path(work.id)%> by <%= work.creator %>
+          <li class="list-item">
+            <h4><%= link_to work.title, work_path(work.id)%><small class="small"> by <%= work.creator %></small></h4>
             </div>
             <div><%= work.votes.count %> votes</div>
           </li>
@@ -25,30 +25,28 @@
       </ul>
     </section>
 
-    <section class="list">
+    <section class="top-list">
       <h2 class="top-ten-header">Top Books</h2>
-      <ul>
+      <ul class="top-list">
         <% @top_books.each do |work| %>
-          <li>
-            <div><%= link_to work.title, work_path(work.id)%> by <%= work.creator %>
-            </div>
+          <li class="list-item">
+            <h4><%= link_to work.title, work_path(work.id)%><small class="small"> by <%= work.creator %></small></h4>
             <div><%= work.votes.count %> votes</div>
           </li>
         <% end %>
       </ul>
     </section>
 
-    <section class="list">
-    <h2 class="top-ten-header">Top Albums</h2>
-    <ul>
-      <% @top_albums.each do |work| %>
-        <li>
-        <div><%= link_to work.title, work_path(work.id)%> by <%= work.creator %>
-        </div>
-          <div><%= work.votes.count %> votes</div>
-        </li>
-      <% end %>
-    </ul>
+    <section class="top-list">
+      <h2 class="top-ten-header">Top Albums</h2>
+      <ul class="top-list">
+        <% @top_albums.each do |work| %>
+          <li class="list-item">
+            <h4><%= link_to work.title, work_path(work.id)%><small class="small"> by <%= work.creator %></small></h4>
+            <div><%= work.votes.count %> votes</div>
+          </li>
+        <% end %>
+      </ul>
     </section>
   </section>
 </main>

@@ -14,13 +14,15 @@
     </thead>
 
     <tbody>
-    <%# @users.each do |user| %>
-<!--      <tr>-->
-<!--        <td><%#= link_to user.name, user_path(user.id)%></td>-->
-<!--        <td><%#= rand(25) %></td>-->
-<!--        <td><%#= user.created_at.strftime("%b %d, %Y") %></td>-->
-<!--      </tr>-->
-    <%# end %>
+    <% @user.votes.each do |user| %>
+      <tr>
+        <td><%= link_to user.work.title, work_path(user.work.id)%></td>
+        <td><%= user.work.creator%></td>
+        <td><%= user.work.publication_date%></td>
+        <td><%= user.work.category%></td>
+        <td><%= user.work.created_at.strftime("%b %d, %Y") %></td>
+      </tr>
+    <% end %>
     </tbody>
   </table>
 </section>

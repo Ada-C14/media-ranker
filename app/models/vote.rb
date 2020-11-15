@@ -4,5 +4,4 @@ class Vote < ApplicationRecord
 
   validates :work_id, uniqueness: { scope: :user_id, message: "user cannot vote twice on same work" }
 
-
 end

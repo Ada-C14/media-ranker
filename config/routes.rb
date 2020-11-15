@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  get 'votes/index'
+  get 'votes/show'
+  get 'votes/create'
+  get 'votes/edit'
+  get 'votes/new'
+  get 'votes/destroy'
+  get 'votes/update'
   # get 'homepages/index'
   root to: "homepages#index"
 

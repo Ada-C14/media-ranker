@@ -2,9 +2,9 @@ class Vote < ApplicationRecord
   belongs_to :user
   belongs_to :work
 
-  #GOOGLE rails model validation uniqueness scope ?????
-  validates :user, :uniqueness => {:scope => :user}
-  # checks that user hasn't voted before
-  #validates :user, uniqueness: true
+  # check that user hasn't voted before
+  #GOOGLE rails model validation uniqueness scope
+  #validates :work, :uniqueness => {:scope => :user}
+  validates :work_id, uniqueness: {scope: user_id}
 
 end

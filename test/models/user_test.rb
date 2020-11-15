@@ -14,7 +14,14 @@ describe User do
   end
 
   describe 'relationships' do
+    it 'can have many votes' do
+      user
 
+    end
+
+    it 'can have many works through votes' do
+
+    end
   end
 
   describe 'validations' do

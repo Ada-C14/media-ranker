@@ -72,6 +72,19 @@ class WorksController < ApplicationController
     end
   end
 
+  def upvote
+    # pull the user_id out of the session
+
+    # find / load the user with that id from the database
+
+    # if that doesnt work, return error
+
+    # if it does, you know that somebody is logged in
+    # so you can go ahead and create a vote
+
+    #(google: validation and scope)
+  end
+
   private
 
   def work_params

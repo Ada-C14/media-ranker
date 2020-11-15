@@ -6,4 +6,7 @@ class Work < ApplicationRecord
   validates :creator, presence: true
   validates :publication_year, presence: true
   validates :description, presence: true
+
+
+  # work method to figure out top 10 for each
 end

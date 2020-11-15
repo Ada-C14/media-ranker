@@ -2,7 +2,6 @@ class HomepagesController < ApplicationController
 
   skip_before_action :require_login
 
-
   def index
     #@works is an array
     @works = Work.all

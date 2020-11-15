@@ -61,7 +61,8 @@ class WorksController < ApplicationController
     if @work.nil?
       render file: "#{Rails.root}/public/404.html",  layout: false, status: :not_found
       return
-    elsif @work.destroy
+    elsif @work.delete
+      @work.votes.each {|vote| vote.delete}
       redirect_to works_path, success: "Successfully deleted #{@work.category} #{@work.id}"
       return
     end

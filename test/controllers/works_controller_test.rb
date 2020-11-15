@@ -150,6 +150,15 @@ describe WorksController do
       expect(flash[:success]).wont_be_nil
     end
 
+    it "decreases associated user's vote count by 1" do
+      user = users(:harry)
+
+      expect {
+        delete work_path(works(:hp1))
+      }.must_differ "user.votes.count", -1
+
+    end
+
     it "will redirect to index if invalid id" do
       expect {
         delete work_path(-1)

@@ -1,0 +1,48 @@
+rare:
+  category: album
+  title: Rare
+  creator: Selena Gomez
+  publication_year: 2020
+  description: An album about Justin Bieber
+chromatica:
+  category: album
+  title: Chromatica
+  creator: Lady Gaga
+  publication_year: 2020
+  description: Rain on Me
+folklore:
+  category: album
+  title: Folklore
+  creator: Taylor Swift
+  publication_year: 2020
+  description: Taylor Swift New Age
+titanic:
+  category: movie
+  title: Titanic
+  creator: James Cameron
+  publication_year: 1997
+  description: There was room for two...
+ace:
+  category: movie
+  title: Ace Ventura Pet Detective
+  creator: Tom Shadyac
+  publication_year: 1994
+  description: Alrighty then
+onward:
+  category: movie
+  title: Onward
+  creator: Dan Scanlon
+  publication_year: 2020
+  description: An animation film about two blue brothers
+becoming:
+  category: book
+  title: Becoming
+  creator: Michelle Obama
+  publication_year: 2018
+  description: Written by the best first lady of the United States
+it:
+  category: book
+  title: It
+  creator: Stephen King
+  publication_year: 1985
+  description: A book about scary clowns

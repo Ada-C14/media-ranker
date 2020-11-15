@@ -1,0 +1,60 @@
+vote1:
+  user_id: bob
+  work_id: rare
+vote2:
+  user_id: bob
+  work_id: chromatica
+vote3:
+  user_id: bob
+  work_id: folklore
+vote4:
+  user_id: bob
+  work_id: titanic
+vote5:
+  user_id: bob
+  work_id: ace
+vote6:
+  user_id: bob
+  work_id: onward
+vote7:
+  user_id: bob
+  work_id: becoming
+vote8:
+  user_id: bob
+  work_id: it
+vote9:
+  user_id: linda
+  work_id: rare
+vote10:
+  user_id: louise
+  work_id: rare
+vote11:
+  user_id: gene
+  work_id: rare
+vote12:
+  user_id: tina
+  work_id: rare
+vote13:
+  user_id: mort
+  work_id: rare
+vote14:
+  user_id: teddy
+  work_id: rare
+vote15:
+  user_id: louise
+  work_id: folklore
+vote16:
+  user_id: gene
+  work_id: folklore
+vote17:
+  user_id: tina
+  work_id: folklore
+vote18:
+  user_id: mort
+  work_id: folklore
+vote19:
+  user_id: teddy
+  work_id: folklore
+vote20:
+  user_id: louise
+work_id: becoming

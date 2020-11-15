@@ -9,7 +9,7 @@
   <tbody>
   <tr>
     <% @users.each do |user| %>
-        <td><%= user.username %> </td>
+        <td><%= link_to user.username, user_path(user.id) %> </td>
         <td><%= user.votes.count %> </td>
 
 

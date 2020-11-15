@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   end
 
   resources :works
-  resources :users
+  resources :users, only: [:index, :show]
 
   root to: 'works#top'
 end

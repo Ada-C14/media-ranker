@@ -11,8 +11,15 @@ class WorksController < ApplicationController
   end
 
   def create
-    @work = Work.create(work_params)
-    action_success_check(@work, work_path(@work), destination_view: :new, success_msg: "Successfully created #{@work.category} #{@work.id}")
+    @work = Work.new(work_params)
+
+    save = @work.save
+
+    redirect_path = save ? work_path(@work.id) : works_path
+
+    @category = params[:work][:category] ? params[:work][:category] : "work"
+
+    action_success_check(save, redirect_path, destination_view: :new, success_msg: "Successfully created #{@work.category} #{@work.id}", error_msg: @work.errors.messages)
   end
 
   def show
@@ -41,8 +48,8 @@ class WorksController < ApplicationController
       flash[:error] = "A problem occurred: You must log in to do that"
       redirect_to request.referrer and return
     end
-
-    action_success_check(Vote.create(user: @current_user, work: @work), works_path, success_msg: "Successfully upvoted!")
+    vote = Vote.new(user: @current_user, work: @work)
+    action_success_check(vote.save, works_path, success_msg: "Successfully upvoted!")
   end
 
   private
@@ -54,5 +61,6 @@ class WorksController < ApplicationController
   def find_work
     @work = Work.find_by(id: params[:id].to_i)
   end
+
 
 end

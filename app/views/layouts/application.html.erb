@@ -47,12 +47,25 @@
   <body>
     <section class="alert__container">
       <% flash.each do |name, message| %>
-        <div class="alert alert-success">
-          <span>
-            <%= message %>
-          </span>
-        </div>
-      <% end %>
+        <%if(name == "error") %>
+          <div class="alert alert-warning">
+            <span>A problem occurred: could not create <%=@category%></span>
+            <ul>
+              <%message.each do |type, msg|%>
+                <%unless(msg.empty?) %>
+                <li><%=type%>: <%=msg.join(' ')%></li>
+                <%end%>
+              <%end %>
+            </ul>
+          </div>
+        <%else%>
+          <div class="alert alert-success">
+            <span>
+              <%= message %>
+            </span>
+          </div>
+        <%end%>
+      <%end%>
     </section>
 
     <%= yield %>

@@ -28,7 +28,7 @@ describe User do
       work.votes.each do |vote|
         expect(vote).must_be_instance_of Vote
       end
-      expect(work.votes.count).must_equal 2
+      expect(work.votes.count).must_equal 3
     end
   end
 

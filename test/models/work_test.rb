@@ -1,7 +1,7 @@
 require "test_helper"
 
 describe Work do
-
+  
   let (:new_work) {
     Work.create(
         category: "book",
@@ -29,7 +29,14 @@ describe Work do
   end
 
   describe "relations" do
+    it 'can have many Votes' do
+      work = works(:album)
 
+      work.votes.each do |vote|
+        expect(vote).must_be_instance_of Vote
+      end
+      expect(work.votes.count).must_equal 3
+    end
   end
 
   describe "validations" do
@@ -83,12 +90,14 @@ describe Work do
     end
   end
 
-  describe 'custom methods' do
+  describe 'spotlight' do
 
-    it 'must spotlight method select the top voted item' do
-      @work
-
-      expect(Work.spotlight).must_equal @work
+    it 'returns one work that has the most votes' do
+      top_album = works(:album)
+      top_votes = top_album.votes.count
+      expect(Work.spotlight).must_be_instance_of Work
+      expect(Work.spotlight).must_equal top_album
+      expect(Work.spotlight.votes.count).must_equal top_votes
     end
 
     it "returns nil if there are no works" do
@@ -97,23 +106,41 @@ describe Work do
       expect(Work.spotlight).must_be_nil
     end
 
-    it' must top_ten(category) method get the top ten item in each category' do
+  end
 
-      50.times do
-        Work.create(
-            category: ["album", "book", "movie"].sample,
-            title: "Test Title",
-            creator: "Test Creator",
-            publication_year: 2020,
-            description: "Test Description"
-        )
+  describe 'top_ten' do
+    it 'returns up to 10 records from a category' do
+      top_movies = Work.top_ten("movie")
+      top_books = Work.top_ten("book")
+      top_albums = Work.top_ten("album")
+
+      expect(top_movies.length).must_be :<=, 10
+      expect(top_books.length).must_be :<=, 10
+      expect(top_albums.length).must_be :<=, 10
+      top_movies.each do |movie|
+        expect(movie.category).must_equal "movie"
       end
-
-      top_ten = Work.top_ten("book")
-      expect(top_ten.size).must_equal 10
+      top_books.each do |book|
+        expect(book.category).must_equal "book"
+      end
+      top_albums.each do |album|
+        expect(album.category).must_equal "album"
+      end
     end
 
+    it "returns empty array if there are no works" do
+      Work.all.each do |work|
+        work.destroy
+      end
 
+      top_movies = Work.top_ten("movie")
+      top_books = Work.top_ten("book")
+      top_album = Work.top_ten("album")
+
+      expect(top_movies.length).must_equal 0
+      expect(top_books.length).must_equal 0
+      expect(top_album.length).must_equal 0
+    end
   end
 
 

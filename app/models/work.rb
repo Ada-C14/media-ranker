@@ -8,11 +8,12 @@ class Work < ApplicationRecord
 
 
   def self.spotlight
-    Work.all.limit(1)[0]
+    works = Work.all.max_by { |work| work.votes.count}
   end
 
   def self.top_ten(category)
-    Work.where(category: category).limit(10)
+    works = Work.all.where(category: category)
+    return works.max_by(10) { |work| work.votes.count}
   end
 
 

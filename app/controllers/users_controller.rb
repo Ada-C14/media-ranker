@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
   def index
     @users = User.all
-    @user = User.find_by(id: session[:user_id])
-    @username = @user.username
   end
 
   def show
@@ -23,12 +21,17 @@ class UsersController < ApplicationController
 
     if @user.nil?
       @user = User.create(username: params[:user][:username])
-      if ! @user.save
+      unless @user.save
         flash[:error] = "Unable to log in."
         redirect_to root_path
         return
       end
       flash[:welcome] = "Welcome #{@user.username}!"
+    #  Not sure this elsif is valid. Saying user can't leave login field blank
+    # elsif session[:user_id].blank?
+    #   flash[:error] = "Username can't be blank."
+    #   redirect_to login_path
+    #   return
     else
       flash[:welcome] = "Welcome back #{@user.username}"
     end
@@ -54,7 +57,7 @@ class UsersController < ApplicationController
 
   def current
     @user = User.find_by(id: session[:user_id])
-    @username = @user.username
+    # @username = @user.username
 
     if @user.nil?
       flash[:error] = "You must be logged in to view this page."

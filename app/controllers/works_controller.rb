@@ -1,11 +1,11 @@
 class WorksController < ApplicationController
+  before_action :find_work, except: [:index, :new]
+
   def index
     @works = Work.all
   end
 
   def show
-    @work = Work.find_by(id: params[:id])
-
     if @work.nil?
       render :file => "#{Rails.root}/public/404.html",  layout: false, status: :not_found
       return
@@ -17,8 +17,6 @@ class WorksController < ApplicationController
   end
 
   def create
-    @work = Work.new(work_params)
-
     if @work.save
       flash[:success] = "Successfully created #{ @work.category } #{ @work.id }"
       redirect_to work_path(@work)
@@ -31,8 +29,6 @@ class WorksController < ApplicationController
   end
   
   def edit
-    @work = Work.find_by(id: params[:id])
-
     if @work.nil?
       render :file => "#{Rails.root}/public/404.html",  layout: false, status: :not_found
       return
@@ -40,7 +36,6 @@ class WorksController < ApplicationController
   end
 
   def update
-    @work = Work.find_by(id: params[:id])
     if @work.nil?
       render :file => "#{Rails.root}/public/404.html",  layout: false, status: :not_found
       return
@@ -56,8 +51,6 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    @work = Work.find_by(id: params[:id])
-
     if @work.nil? 
       render :file => "#{Rails.root}/public/404.html",  layout: false, status: :not_found
       return
@@ -72,7 +65,6 @@ class WorksController < ApplicationController
   end
 
   def upvote
-    @work = Work.find_by(id: params[:id])
     if @work.nil? 
       render :file => "#{Rails.root}/public/404.html", layout: false, status: :not_found
       return
@@ -100,5 +92,9 @@ class WorksController < ApplicationController
 
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+  end
+
+  def find_work
+    @work = Work.find_by(id: params[:id])
   end
 end

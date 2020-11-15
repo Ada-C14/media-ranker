@@ -5,6 +5,7 @@ class Work < ApplicationRecord
 
   validates :title, presence: true
 
+  validates :publication_year, presence: true, numericality: { greater_than: 1900, less_than:  Date.current.year + 1 }
   def self.albums
     where(category: "album")
   end
@@ -18,11 +19,10 @@ class Work < ApplicationRecord
   end
 
   def self.media_spotlight
-    Work.all.limit(1)[0]
+    Work.all.sort_by { |work| work.votes.count }.reverse[0]
   end
 
   def self.top_ten(category)
-    Work.where(category: category).limit(10)
+    Work.where(category: category).sort_by { |work| work.votes.count }.reverse[0..9]
   end
-
 end

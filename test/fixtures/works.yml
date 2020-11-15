@@ -1,0 +1,20 @@
+metallica:
+  category: album
+  title: Load
+  creator: J.Hetfield
+  publication_date: 1996
+  description: Load is the sixth studio album by the American heavy metal band Metallica, released on June 4, 1996 by Elektra Records in the United States and by Vertigo Records internationally. The album showed more of a hard rock side of Metallica than the band's typical thrash metal style, which alienated much of the band's fanbase
+
+prodigy:
+  category: album
+  title: Experience
+  creator: Liam Howlett
+  publication_date: 1992
+  description: Experience (also known as The Prodigy Experience) is the debut studio album by English electronic music group the Prodigy. It was first released on 28 September 1992 by XL Recordings in the United Kingdom and by Elektra Records in the United States.
+
+adele:
+  category: album
+  title: 25
+  creator: Adele
+  publication_date: 2015
+  description: 25 is the third studio album by English singer-songwriter Adele, released on 20 November 2015 by XL Recordings and Columbia Records.

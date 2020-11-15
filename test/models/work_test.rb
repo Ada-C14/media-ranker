@@ -107,5 +107,13 @@ describe Work do
   end
 
   describe "relations" do
+    it "has many votes" do
+      work = works(:metallica)
+      user = users(:incognito)
+      user_2 = users(:bruce_lee)
+      vote_1 = Vote.create(work_id: work.id, user_id: user.id)
+      vote_2 = Vote.create(work_id: work.id, user_id: user_2.id)
+      expect(work.votes.length).must_equal 2
+    end
   end
 end

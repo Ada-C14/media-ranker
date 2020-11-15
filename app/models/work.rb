@@ -14,10 +14,20 @@ class Work < ApplicationRecord
 
   end
 
-  #for now, the spotlight is based on the oldist publication year
   def self.spotlight
-    works = self.all.filter {|work| !(work.publication_year.nil?)}
-    return works.min_by { |work| work.publication_year}
+
+    if self.all.empty?
+      return nil
+    end
+
+    spotlight = self.all.sort_by { |x| [-x.votes.count, x.title]}.first
+
+    if spotlight.votes.count == 0
+      return nil
+    else
+      return spotlight
+    end
+
   end
 
   def upvote(current_user_id)

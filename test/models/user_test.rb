@@ -14,19 +14,13 @@ describe User do
   end
 
   describe "relationships" do
-    before do
-      @new_work = Work.create(category: "album", title: "The Album")
-      @new_work2 = Work.create(category: "album", title: "The Other Album")
-      @vote_1 = Vote.create(user_id: users(:user).id, work_id: @new_work.id)
-      @vote_2 = Vote.create(user_id: users(:user).id, work_id: @new_work2.id)
-    end
     it "can have many votes" do
       # arrange
 
       # Assert
       expect(users(:user).votes.count).must_equal 2
-      expect(@vote_1.work).must_equal @new_work
-      expect(@vote_2.work).must_equal @new_work2
+      expect(votes(:vote).work).must_equal works(:book)
+      expect(votes(:vote2).work).must_equal works(:workAA)
       users(:user).votes.each do |vote|
         expect(vote).must_be_instance_of Vote
         expect(vote.user_id).must_equal users(:user).id
@@ -36,8 +30,8 @@ describe User do
       # Assert
       expect(users(:user).works.count).must_equal 2
       # check info
-      expect(users(:user).works.find_by(title: "The Album")).must_equal @new_work
-      expect(users(:user).works.find_by(title: "The Other Album")).must_equal @new_work2
+      expect(users(:user).works.find_by(title: "The Book")).must_equal works(:book)
+      expect(users(:user).works.find_by(title: "A")).must_equal works(:workAA)
       users(:user).works.each do |work|
         expect(work).must_be_instance_of Work
       end

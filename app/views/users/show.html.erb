@@ -15,13 +15,15 @@
       </thead>
       <tbody>
       <% @user.votes.each do |vote| %>
-        <tr>
-          <td><%= vote.work.title %></td>
-          <td><%= vote.work.creator %></td>
-          <td><%= vote.work.publication_year %></td>
-          <td><%= vote.work.category %></td>
-          <td><%= vote.format_date %></td>
-        </tr>
+        <% unless vote.work.nil? %>
+          <tr>
+            <td><%= vote.work.title %></td>
+            <td><%= vote.work.creator %></td>
+            <td><%= vote.work.publication_year %></td>
+            <td><%= vote.work.category %></td>
+            <td><%= vote.format_date %></td>
+          </tr>
+        <% end %>
       <% end %>
       </tbody>
     </table>

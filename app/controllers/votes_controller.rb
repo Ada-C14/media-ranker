@@ -19,7 +19,7 @@ class VotesController < ApplicationController
     end
   end
 
-  def request_controller
-    params[:controller]
-  end
+  # def request_controller
+  #   params[:controller]
+  # end
 end

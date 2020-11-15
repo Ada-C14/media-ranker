@@ -61,7 +61,7 @@ class WorksController < ApplicationController
     if @work.nil?
       render file: "#{Rails.root}/public/404.html",  layout: false, status: :not_found
       return
-    elsif @work.delete
+    elsif @work.destroy
       redirect_to works_path, success: "Successfully deleted #{@work.category} #{@work.id}"
       return
     end

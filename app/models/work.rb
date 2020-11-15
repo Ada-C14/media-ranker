@@ -1,8 +1,10 @@
 class Work < ApplicationRecord
   validates :category, presence: true
   validates :title, presence: true, uniqueness: true
-  has_many :votes, dependent: :destroy
+  has_many :votes
   has_many :users, through: :votes
+
+
 
   def self.spotlight
     return order("votes_count DESC, created_at").first
@@ -19,4 +21,10 @@ class Work < ApplicationRecord
       return "#{votes_count} Votes"
     end
   end
+
+  private
+
+  # def destroy_votes
+  #   votes.delete_all
+  # end
 end

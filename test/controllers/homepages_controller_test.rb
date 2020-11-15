@@ -8,7 +8,7 @@ describe HomepagesController do
     end
 
     it "successfully loads root path even if there are no works" do
-      works(:hp1).delete
+      Work.all.each {|work| work.delete}
       expect(Work.count).must_equal 0
       get root_path
       must_respond_with :success

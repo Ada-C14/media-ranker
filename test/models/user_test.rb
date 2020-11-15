@@ -25,4 +25,5 @@ describe User do
           expect(user.votes.length).must_equal 2
     end
   end
+
 end

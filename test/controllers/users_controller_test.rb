@@ -50,6 +50,7 @@ describe UsersController do
       expect(session[:user_id]).must_be_nil
     end
   end
+
   describe "current user" do
     it "can return the page if the user us logged in" do
       #arrange
@@ -67,6 +68,17 @@ describe UsersController do
       #assert
       must_respond_with :redirect
       expect(flash[:error]).must_equal "You must be logged in to view this page"
+    end
+
+    it "returns 200 OK for a logged-in user" do
+      # Arrange
+      login
+
+      # Act
+      get current_user_path
+
+      # Assert
+      must_respond_with :success
     end
   end
 end

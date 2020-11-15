@@ -34,4 +34,19 @@ class ActiveSupport::TestCase
   end
 
   # Add more helper methods to be used by all tests here...
+  # def perform_login(user = nil)
+  #     user ||= User.first
+  #
+  #     login_data = {
+  #       user: {
+  #         name: user.name,
+  #       },
+  #     }
+  #     post login_path, params: login_data
+  #
+  #     # Verify the user ID was saved - if that didn't work, this test is invalid
+  #     expect(session[:user_id]).must_equal user.id
+  #
+  #     return user
+  #   end
 end

@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
   # verb "path", to: "controller#action"
+  get "/users/current", to: "users#current", as: "current_user"
   resources :works
   resources :users
   get "/login", to: "users#login_form", as: "login"
   post "/login", to: "users#login"
   post "/logout", to: "users#logout", as: "logout"
   #allow user to visit this page of they logged in
-  get "/users/current", to: "users#current", as: "current_user"
   root to:'works#top'
   post "/users/vote", to: "users#vote", as: "vote"
   # get 'users/login'

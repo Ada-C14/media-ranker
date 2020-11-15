@@ -1,12 +1,11 @@
 class WorksController < ApplicationController
+  before_action :find_work, only: [:show, :edit, :update, :destroy, :upvote]
+
   def index
     @works = Work.all
   end
 
   def show
-    work_id = params[:id].to_i
-    @work = Work.find_by(id: work_id)
-
     if @work.nil?
       redirect_to works_path
       return
@@ -30,8 +29,6 @@ class WorksController < ApplicationController
   end
 
   def edit
-    @work = Work.find_by(id: params[:id])
-
     if @work.nil?
       head :not_found
       return
@@ -39,8 +36,6 @@ class WorksController < ApplicationController
   end
 
   def update
-    @work = Work.find_by(id: params[:id])
-
     if @work.nil?
       head :not_found
       return
@@ -56,8 +51,6 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    @work = Work.find_by(id: params[:id])
-
     if @work.nil?
       head :not_found
       return
@@ -69,22 +62,19 @@ class WorksController < ApplicationController
   end
 
   def upvote
-    @work = Work.find_by(id: params[:id])
-
     if @work.nil?
       flash[:warning] = "A problem occurred: Work not found"
       redirect_back(fallback_location: work_path(params[:id]))
       return
     end
 
-    user = User.find_by(id: session[:user_id])
-    if user.nil?
+    if @current_user.nil?
       flash[:warning] = "A problem occurred: You must log in to do that"
       redirect_back(fallback_location: work_path(@work.id))
       return
     end
 
-    @vote = Vote.new(user_id: user.id, work_id: @work.id)
+    @vote = Vote.new(user_id: @current_user.id, work_id: @work.id)
 
     if @vote.save
       flash[:success] = "Successfully upvoted!"
@@ -101,5 +91,9 @@ class WorksController < ApplicationController
 
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+  end
+
+  def find_work
+    @work = Work.find_by_id(params[:id])
   end
 end

@@ -11,8 +11,8 @@
       <%= link_to "View all users", users_path, :class => 'nav-item' %>
     </section>
     <section class="nav-submit-button">
-      <% if session[:user_id] %>
-        <%= button_to "Logged in as #{User.find_by(id: session[:user_id]).name}", user_path(id: session[:user_id]), method: :get, :class => 'btn btn-primary'%>
+      <% if @current_user %>
+        <%= button_to "Logged in as #{@current_user.name}", user_path(id: @current_user.id), method: :get, :class => 'btn btn-primary'%>
         <%= button_to "Log Out", logout_path, method: :post, :class => 'btn btn-primary'%>
       <% else %>
         <%= button_to "Log In", login_path, method: :get, :class => 'btn btn-primary'%>

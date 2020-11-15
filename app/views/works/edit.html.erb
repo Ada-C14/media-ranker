@@ -1,0 +1,31 @@
+<h2>Edit this <%=@work.category %></h2>
+
+<%= form_with model: @works, class: 'edit-work' do |f| %>
+  <p>Please make changes:</p>
+  <div>
+    <%= f.label :category %>
+    <%= f.select :category, [["movie","movie"], ["album","album"], ["book","book"], ] %> <!--#books genre select creates drop down list-->
+  </div>
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div>
+
+  <div>
+    <%= f.label :creator %>
+    <%= f.text_field :creator %>
+  </div>
+
+  <div>
+    <%= f.label :publication_year %>
+    <%= f.text_field :publication_year%>
+  </div>
+
+  <div>
+    <%= f.label :description %>
+    <%= f.text_field :description%>
+  </div>
+
+
+  <%= f.submit "Update Work", class: "work-button" %>
+<% end %>

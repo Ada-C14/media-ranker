@@ -1,0 +1,13 @@
+
+
+<div>
+  <h1><%= @work.title %></h1>
+  <h2><%= @work.publication_year %></h2>
+  <h2><%= @work.description %></h2>
+  <%= link_to "Back to media ranks", root_path %>
+  <%= link_to "Edit", edit_work_path(@work) %>
+  <%= link_to "Upvote", work_path(@work) %>
+  <%= link_to "Delete", work_path(@work), method: :delete, data: {confirm: "Are you sure?"}%>
+</div>
+<p>Votes for this album</p>
+#table of votes for user

@@ -1,0 +1,95 @@
+<h2>List of all the works page</h2>
+<h2>List of all the works by category</h2>
+
+<section>
+  <h4>Albums</h4>
+<table id='albums-table' class="table table-hover">
+  <thead class="thead-light">
+<!--  <tr <%# link_to path(@work.) %> >-->
+  <tr>
+    <th>Votes</th>
+    <th>Title</th>
+    <th>Created By</th>
+    <th>Published</th>
+    <th>Upvote</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% albums = @works.filter {|work| work.category == 'album'} %>
+  <%albums.each do |work| %>
+    <tr>
+<!--      change first row to number of votes -->
+      <td><%=rand(25)%></td>
+      <td><%=link_to work.title, work_path(work.id)%></td>
+      <td><%=work.creator%></td>
+      <td><%=work.publication_year%></td>
+      <td><button type="button" class="btn btn-info">Upvote</button></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+</section>
+
+
+<section>
+  <h4>Books</h4>
+  <table id='books-table' class="table table-hover">
+    <thead class="thead-light">
+    <!--  <tr <%# link_to path(@work.) %> >-->
+    <tr>
+      <th>Votes</th>
+      <th>Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+      <th>Upvote</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% books = @works.filter {|work| work.category == 'book'} %>
+    <%albums.each do |work| %>
+      <tr>
+        <!--      change first row to number of votes -->
+        <td><%=rand(25)%></td>
+        <td><%=link_to work.title, work_path(work.id)%></td>
+        <td><%=work.creator%></td>
+        <td><%=work.publication_year%></td>
+        <td><button type="button" class="btn btn-info">Upvote</button></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</section>
+
+
+<section>
+  <h4>Movies</h4>
+  <table id='movies-table' class="table table-hover">
+    <thead class="thead-light">
+    <!--  <tr <%# link_to path(@work.) %> >-->
+    <tr>
+      <th>Votes</th>
+      <th>Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+      <th>Upvote</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    <% movies = @works.filter {|work| work.category == 'movie'} %>
+    <%movies.each do |work| %>
+      <tr>
+        <!--      change first row to number of votes -->
+        <td><%=rand(25)%></td>
+        <td><%=link_to work.title, work_path(work.id)%></td>
+        <td><%=work.creator%></td>
+        <td><%=work.publication_year%></td>
+        <td><button type="button" class="btn btn-info">Upvote</button></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</section>
+

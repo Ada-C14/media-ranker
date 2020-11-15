@@ -44,7 +44,17 @@ class UsersController < ApplicationController
       flash[:error] = "You must be logged in to logout"
     end
     redirect_to root_path
-
   end
+
+  # def index
+  #   @users = User.all
+  # end
+  #
+  # def show
+  #   if @user.nil?
+  #     head :not_found
+  #     return
+  #   end
+  # end
 
 end

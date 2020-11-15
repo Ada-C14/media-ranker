@@ -1,6 +1,6 @@
 class WorksController < ApplicationController
 
-  skip_before_action :require_login, except: [:upvote]
+  skip_before_action :require_login , except: [:upvote]
 
   before_action :find_work, only: [:show, :update, :edit, :destroy]
 
@@ -67,12 +67,17 @@ class WorksController < ApplicationController
 
   def upvote
     # pull the user_id out of the session
-
+    if session[:user_id]
     # find / load the user with that id from the database
-
+      user = User.find_by(id: session[:user_id])
+      @vote = Vote.create(user: user)
     # if that doesnt work, return error
-
+    else
+      flash.now[:error] = "Something happened. User not found or not logged in."
+      render :new, status: :bad_request
+      return
     # if it does, you know that somebody is logged in
+    end
     # so you can go ahead and create a vote
 
     #(google: validation and scope)

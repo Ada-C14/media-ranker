@@ -17,6 +17,8 @@ class Work < ApplicationRecord
   def single_or_plural_votes
     if votes_count == 1
       return "1 Vote"
+    elsif votes_count == nil
+      return "0 Votes"
     else
       return "#{votes_count} Votes"
     end

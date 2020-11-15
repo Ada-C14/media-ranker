@@ -35,6 +35,7 @@ class UsersController < ApplicationController
       end
     end
 
+
     redirect_to root_path
     return
   end

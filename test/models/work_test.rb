@@ -1,7 +1,7 @@
 require "test_helper"
 
 describe Work do
-  
+
   let (:new_work) {
     Work.create(
         category: "book",

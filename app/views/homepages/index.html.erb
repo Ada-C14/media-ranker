@@ -7,7 +7,7 @@
       <%= link_to @work_first.title, work_path(@work_first)%> by <%= @work_first.creator %>
     </h2>
     <p class="spotlight__description">
-      <%= @work_first.votes %> votes
+      <%= @work_first.votes.length %> votes
     </p>
   </section>
 
@@ -25,7 +25,7 @@
               <%= link_to movie.title, work_path(movie) %>
               <small class="top-ten__creator">by <%= movie.creator %></small>
             </h4>
-            <p><%=movie.votes %> votes</p>
+            <p><%=movie.votes.length %> votes</p>
           </li>
         <% end %>
 
@@ -43,7 +43,7 @@
               <%= link_to book.title, work_path(book) %>
               <small class="top-ten__creator">by <%= book.creator %></small>
             </h4>
-            <p><%=book.votes %> votes</p>
+            <p><%=book.votes.length %> votes</p>
           </li>
         <% end %>
 
@@ -61,7 +61,7 @@
               <%= link_to album.title, work_path(album) %>
               <small class="top-ten__creator">by <%= album.creator %></small>
             </h4>
-            <p><%=album.votes %> votes</p>
+            <p><%=album.votes.length %> votes</p>
           </li>
         <% end %>
 

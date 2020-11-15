@@ -40,7 +40,7 @@
           </li>
         <%else %>
             <li class="nav-item app-header__nav_item">
-              <%= link_to "Logged in as #{current_user.username}" %>
+              <%= link_to "Logged in as #{@current_user.username}" %>
             </li>
             <li class="nav-item app-header__nav_item">
               <a class="btn btn-primary" rel="nofollow" data-method="post" href="/logout">Log Out</a>
@@ -50,6 +50,15 @@
       </ul>
     </nav>
   </header>
+
+  <section class="flash-msg__section">
+    <% flash.each do |name, message| %>
+      <strong class="<%= name %>">
+        <%= message %>
+      </strong>
+    <% end %>
+  </section>
+
 
 
   <div>

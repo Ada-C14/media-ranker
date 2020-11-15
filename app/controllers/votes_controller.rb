@@ -10,29 +10,32 @@ class VotesController < ApplicationController
   end
 
   def create
+
+
     @vote = Vote.new(user_id: session[:user_id], work_id: params[:id])
     if @vote.save
       flash[:success] = "Successfully upvoted!"
 
       if @vote.work.votes == nil
-        @vote.work.votes = 0
+        @vote.work.votes = []
       else
-        @vote.work.votes += 1
+        @vote.work.votes << @vote
       end
 
-      @vote.work.save
+      @vote.work.save ##### Is save necessary here????????
 
       redirect_to work_path(@vote.work_id)
       return
     else
       flash.now[:error] = "Sorry, upvote failed."
-      render status: :bad_request
+      #render status: :bad_request
     end
   end
 
   def require_login
     if current_user.nil?
-      flash.now[:error] = "A problem occurred: You must log in to do that"
+      flash[:error] = "A problem occurred: You must log in to do that"
+      redirect_to login_path
       return
     end
   end

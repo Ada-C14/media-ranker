@@ -1,0 +1,27 @@
+<%#index.html.erb%>
+
+<h2>List of Users</h2>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Username</th>
+    <th>Votes</th>
+    <th>Joined</th>
+  </tr>
+  </thead>
+
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= link_to user.username, user_path(user.id) %></td>
+      <td><%= user.votes.length %></td>
+      <td><%= user.created_at %>></td>
+    </tr>
+  <% end %>
+
+</table>
+
+<% link_to "View top media", root_path, class: "btn-secondary"%>
+<% link_to "Add a new work", new_work_path, class: "btn-primary" %>
+
+

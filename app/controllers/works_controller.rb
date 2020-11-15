@@ -26,7 +26,7 @@ class WorksController < ApplicationController
       redirect_to root_path
       return
     else
-      flash.now[:error] = "Oops, something went wrong. #{@work.title} not added.ㄟ(▔︹▔ㄟ) "
+      flash.now[:error] = "Oops, something went wrong. Work not added.ㄟ(▔︹▔ㄟ) "
       render :new, status: :bad_request
       return
     end
@@ -49,10 +49,11 @@ class WorksController < ApplicationController
       return
     elsif @work.update(work_params)
       flash[:success] = "#{@work.title} has been updated. ㄟ(▔▽▔ㄟ)"
-      redirect_to works_path
+      redirect_to work_path(@work)
       return
     else
       flash.now[:error] = "Something went wrong. #{@work.title} not updated. ㄟ(▔︹▔ㄟ)"
+
     end
   end
 

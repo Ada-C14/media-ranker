@@ -13,13 +13,13 @@ class UsersController < ApplicationController
     @votes = Vote.find(@user.votes.ids)
     if @user == nil
       flash.now[:failure]
-      render 'layouts/invalid_page', status: :not_found
+      render status: :not_found    # 'layouts/invalid_page' ??,
     end
   end
 
   def create
-    filtered_user_params = user_params()
-    @user = User.new(filtered_user_params)
+    # filtered_user_params = user_params()
+    @user = User.new(user_params)
 
     if @user.save
       session[:user_id] = @user.id

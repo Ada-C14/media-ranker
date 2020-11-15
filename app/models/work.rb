@@ -13,7 +13,10 @@ class Work < ApplicationRecord
   end
 
   def self.top_ten(category)
-    return Work.where(category: category).order("votes_count DESC, title").limit(10)
+    works = Work.where(category: category)
+    works_nil_votes = works.where(votes_count: nil).order(:title)
+    works_no_nil_votes = works.where.not(votes_count: nil).order("votes_count DESC, title")
+    return (works_no_nil_votes + works_nil_votes).first(10)
   end
 
   def single_or_plural_votes

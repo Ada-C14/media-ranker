@@ -29,13 +29,9 @@ class WorksController < ApplicationController
     end
   end
 
-  def show
+  def show; end
 
-  end
-
-  def edit
-
-  end
+  def edit; end
 
   def update
     if @work.update(works_params)

@@ -58,4 +58,33 @@ describe Vote do
   end
 
 
+  describe 'relations' do
+
+    it "has a user" do
+      vote = votes(:vote1)
+      expect(vote.user).must_equal users(:user1)
+
+      expect(vote.user).must_be_instance_of User
+    end
+
+    it "has a work" do
+      vote = votes(:vote1)
+      expect(vote.work).must_equal works(:book1)
+
+      expect(vote.work).must_be_instance_of Work
+    end
+
+    it "can set the user" do
+      vote = Vote.new
+      vote.user = users(:user1)
+      expect(vote.user_id).must_equal users(:user1).id
+    end
+
+    it "can set the work" do
+      vote = Vote.new
+      vote.work = works(:book2)
+      expect(vote.work_id).must_equal works(:book2).id
+    end
+  end
+
 end

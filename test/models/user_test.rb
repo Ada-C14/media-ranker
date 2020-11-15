@@ -1,7 +1,19 @@
 require "test_helper"
 
 describe User do
-  # it "does a thing" do
-  #   value(1+1).must_equal 2
-  # end
+    describe 'validations' do
+      before do
+        # Arrange
+        @user = User.new(username: 'testperson')
+      end
+
+      it 'is valid when all fields are present' do
+        # Act
+        result = @user.valid?
+
+        # Assert
+        expect(result).must_equal true
+      end
+    end
 end
+

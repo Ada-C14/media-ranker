@@ -40,6 +40,13 @@ class WorksController < ApplicationController
       head :not_found
       return
     end
+    if @work.save
+      redirect_to works_path
+      flash[:success] = "#{@work.title} was successfully updated!"
+    else
+      flash.now[:error] = "Something happened. Media not updated."
+      render :new, status: :bad_request
+    end
   end
 
   def update
@@ -78,8 +85,8 @@ class WorksController < ApplicationController
     if @user.nil?
       flash[:error] = "You must be logged in to vote"
     end
-    vote = Vote.new(params[user_id: @user, work_id: @work])
-    if vote.save
+    @vote = Vote.new(params[user_id: @user.id, work_id: @work.id])
+    if @vote.save
       flash[:success] = "Your vote was counted"
       redirect_to work_path
     else

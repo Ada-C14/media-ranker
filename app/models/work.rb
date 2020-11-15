@@ -1,16 +1,14 @@
 require 'pry'
 
 class Work < ApplicationRecord
+  has_many :votes
+
   validates :creator, presence: true
   validates :title, presence: true
   validates :title, uniqueness: { scope: :category, message: "has already been taken"}
 
   def self.spotlight
     return self.all.sample
-  end
-
-  def votes
-    return rand(1..10)
   end
 
   def self.top_ten(media)
@@ -23,4 +21,8 @@ class Work < ApplicationRecord
     end
   end
 
+  def self.category_desc_by_vote_count(media)
+    category_subset = self.where(category: media)
+    return category_subset.sort_by { |work| work.votes.count }.reverse
+  end
 end

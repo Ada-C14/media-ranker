@@ -1,6 +1,6 @@
 class WorksController < ApplicationController
-  before_action :find_work, only: [:show, :edit, :update, :destroy]
-  before_action :if_work_missing, only: [:show, :edit, :destroy]
+  before_action :find_work, only: [:show, :edit, :update, :upvote, :destroy]
+  before_action :if_work_missing, only: [:show, :edit, :upvote, :destroy]
 
   def index
     @works = Work.all
@@ -44,6 +44,23 @@ class WorksController < ApplicationController
       flash[:success] = "Successfully destroyed #{@work.category} #{@work.id}"
       redirect_to root_path
       return
+    end
+  end
+
+  def upvote
+    if session[:user_id].nil?
+      flash[:warning] = "A problem occurred: You must log in to do that"
+      redirect_to work_path(@work)
+      return
+    else
+      if @work.votes.find_by(user_id: session[:user_id])
+        flash[:warning] = "A problem occurred: user has already voted for this work."
+        redirect_to work_path(@work)
+        return
+      end
+      Vote.create(user_id: session[:user_id], work_id: params[:id])
+      flash[:success] = "Successfully upvoted!"
+      redirect_to work_path(@work)
     end
   end
 

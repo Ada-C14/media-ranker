@@ -1,6 +1,6 @@
 <section class="alert__container">
-  <br>
   <% if @user.errors.any? %>
+    <br>
     <div class="alert alert-warning">
       <% @user.errors.each do |column, message| %>
         <strong><%= column.capitalize %></strong> <%= message %>

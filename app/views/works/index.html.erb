@@ -1,15 +1,15 @@
-<h1>List of Works</h1>
+<h2>List of Works</h2>
 
-<section class="table-border"> 
-  <article>
-    <h3>Albums</h3>
-    <table class="list-table">
+<section> 
+  <article class="media-table">
+    <h4>Albums</h4>
+    <table class="table">
       <tr>
-        <th>Votes</th>
+        <th width="80">Votes</th>
         <th>Title</th>
         <th>Created By</th>
-        <th>Published</th>
-        <th>Upvote</th>
+        <th width="100">Published</th>
+        <th width="100">Upvote</th>
       </tr>  
       <% Work.index_order("album").each do |work|  %>
         <tr>
@@ -17,20 +17,20 @@
           <th><%= link_to Work.top_ten_helper(work[0]).title, work_path(Work.top_ten_helper(work[0])) %></th>
           <th><%= Work.top_ten_helper(work[0]).creator %></th>
           <th><%= Work.top_ten_helper(work[0]).publication_year %></th>
-          <th><%= button_to "Upvote", upvote_work_path(Work.top_ten_helper(work[0])), class: "btn btn-info" %></th>
+          <th><%= button_to "Upvote", upvote_work_path(Work.top_ten_helper(work[0])), class: "btn btn-primary", rel: "nofollow" %></th>
         </tr>  
       <% end %>
     </table>  
   </article> 
-  <article>
-    <h3>Books</h3>
-    <table class="list-table">
+  <article class="media-table">
+    <h4>Books</h4>
+    <table class="table">
       <tr>
-        <th>Votes</th>
+        <th width="80">Votes</th>
         <th>Title</th>
         <th>Created By</th>
-        <th>Published</th>
-        <th>Upvote</th>
+        <th width="100">Published</th>
+        <th width="100">Upvote</th>
       </tr>  
       <% Work.index_order("book").each do |work|  %>
         <tr>
@@ -38,20 +38,20 @@
           <th><%= link_to Work.top_ten_helper(work[0]).title, work_path(Work.top_ten_helper(work[0])) %></th>
           <th><%= Work.top_ten_helper(work[0]).creator %></th>
           <th><%= Work.top_ten_helper(work[0]).publication_year %></th>
-          <th><%= button_to "Upvote", upvote_work_path(Work.top_ten_helper(work[0])), class: "btn btn-info" %></th>
+          <th><%= button_to "Upvote", upvote_work_path(Work.top_ten_helper(work[0])), class: "btn btn-primary", rel: "nofollow" %></th>
         </tr>  
       <% end %>
     </table>  
   </article>
-  <article>
-    <h3>Movies</h3>
-    <table class="list-table">
+  <article class="media-table">
+    <h4>Movies</h4>
+    <table class="table">
       <tr>
-        <th>Votes</th>
+        <th width="80">Votes</th>
         <th>Title</th>
         <th>Created By</th>
-        <th>Published</th>
-        <th>Upvote</th>
+        <th width="100">Published</th>
+        <th width="100">Upvote</th>
       </tr>  
       <% Work.index_order("movie").each do |work|  %>
         <tr>
@@ -59,18 +59,20 @@
           <th><%= link_to Work.top_ten_helper(work[0]).title, work_path(Work.top_ten_helper(work[0])) %></th>
           <th><%= Work.top_ten_helper(work[0]).creator %></th>
           <th><%= Work.top_ten_helper(work[0]).publication_year %></th>
-          <th><%= button_to "Upvote", upvote_work_path(Work.top_ten_helper(work[0])), class: "btn btn-info" %></th>
+          <th><%= button_to "Upvote", upvote_work_path(Work.top_ten_helper(work[0])), class: "btn btn-primary", rel: "nofollow" %></th>
         </tr>  
       <% end %>
     </table>  
   </article>   
 </section>
 
-<section>
-  <div>
-    <p><%= button_to "View top media", root_path, method: :get, class: "btn btn-secondary" %></p>
-  </div>
-  <div class="index">
-    <p><%= button_to "Add a new work", new_work_path, method: :get, class: "btn btn-info" %></p>
-  </div> 
+<section class="media-table">
+  <ul class="nav app-header__user-nav-container">
+    <li class="nav-item app-header__nav_item">
+      <%= button_to "View top media", root_path, method: :get, class: "btn btn-secondary" %>
+    </li>
+    <li class="nav-item app-header__nav_item">
+      <%= button_to "Add a new work", new_work_path, method: :get, class: "btn btn-primary" %>
+    </li>
+  </ul>
 </section>  

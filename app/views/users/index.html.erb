@@ -14,7 +14,7 @@
       <tr>
         <td><strong><%=link_to user.name.titleize, user_path(user.id) %></strong></td>
         <td><%=user.votes.count %></td>
-        <td><%=user.created_at%></td>
+        <td><%=user.created_at.to_date%></td>
       </tr>
     <%end %>
     </tbody>

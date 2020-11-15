@@ -2,11 +2,33 @@
 
 <section class="show_details">
   <div>
-    Name:  <%=@user.id %>
+    ID:  <%=@user.id%>
+    Votes: <%=@user.votes.count %>
+
+
   </div>
 </section>
 
-<!--# Render votes view partials info here?-->
+<!--<h3>Votes</h3>-->
 
-<nav>
-</nav>
+<!--<div>-->
+<!--  <table class="table">-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--      <th>Work(s)</th>-->
+<!--      <th>Vote(s)</th>-->
+<!--      <th>Date</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--      <tr>-->
+<!--        <td><%#=@user.work %></td>-->
+<!--        <td><%#=@user.votes.count %></td>-->
+<!--        <td><%#=@user.votes.created_at.to_date%></td>-->
+<!--      </tr>-->
+<!--    </tbody>-->
+<!--  </table>-->
+<!--</div>-->
+
+<!--How to access users work vote data?-->
+<!--# Render votes view partials info here?-->

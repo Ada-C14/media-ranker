@@ -24,7 +24,7 @@ class WorksController < ApplicationController
       redirect_to work_path(@work.id)
       return
     else
-      flash.new[:error] = "#{@work.title.titleize} was successfully created :)"
+      flash.new[:error] = "#{@work.title.titleize} was NOT successfully created :("
       render :new #, status: :not_found
       return
     end

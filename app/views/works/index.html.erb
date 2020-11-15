@@ -17,7 +17,7 @@
           <% @works.where(category: category).each do |item| %>
             <tr>
               <td> <%= rand(1..50) %> </td>
-              <td> <%= item.title %> </td>
+              <td> <%= link_to "#{item.title}", work_path(item.id) %> </td>
               <td> <%= item.creator %></td>
               <td> <%= item.publication_year %></td>
               <td>Upvote button</td>

@@ -1,46 +1,41 @@
 <h1>Edit This work</h1>
 <section>
   <%= form_with model: @work do |f|%>
-    <%# if @work.errors.any? %>
-    <!--      <ul>-->
-    <%# @work.errors.each do |column, message| %>
-    <!--          <li>-->
-    <!--            <strong><%#= column.capitalize %></strong> <%#= message %>-->
-    <!--          </li>-->
-    <%# end %>
-    <!--      </ul>-->
-    <%# end %>
+    <% if @work.errors.any? %>
+          <ul>
+    <% @work.errors.each do |column, message| %>
+              <li>
+                <strong><%= column.capitalize %></strong> <%= message %>
+              </li>
+    <% end %>
+          </ul>
+    <% end %>
 
     <p>Please provide the following information to add your new media to our database:</p>
     <div>
-      select category
-      <%#= f.label :category %>
-      <%#= f.select(:work, :category, [['Album', 1], ['Book', 2], ['Movie', 3]]) %>
+      <%= f.label :category %>
+      <%= f.select :category, [['album'], ['book'], ['movie']] %>
     </div>
 
     <div>
-      enter title
-      <%#= f.label :title %>
-      <%#= f.text_area :title %>
+      <%= f.label :title %>
+      <%= f.text_area :title %>
     </div>
 
     <div>
-      enter creator
-      <%#= f.label :creator %>
-      <%#= f.text_area :creator %>
+      <%= f.label :creator %>
+      <%= f.text_area :creator %>
     </div>
 
     <div>
-      enter year published
-      <%#= f.label :publication_year %>
-      <%#= f.text_area :publication_year %>
+      <%= f.label :publication_year %>
+      <%= f.text_area :publication_year %>
     </div>
 
     <div>
-      enter description
-      <%#= f.label :description%>
-      <%#= f.text_area :description %>
+      <%= f.label :description%>
+      <%= f.text_area :description %>
     </div>
-    <%= f.submit "Create Work", class: "task-button" %>
+    <%= f.submit "Update Work", class: "task-button" %>
   <% end %>
 </section>

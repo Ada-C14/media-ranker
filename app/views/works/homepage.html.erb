@@ -20,9 +20,10 @@
       <% else %>
         <% @works.where(category: category).each do |item| %>
           <li>
-            <h3 class="top-title">
-              <%= item.title %>
-            </h3>
+            <p class="top-title">
+              <%= link_to "#{item.title}", work_path(item.id) %> by
+              <%= item.creator %>
+            </p>
             <p> <%= rand(1..50) %> votes </p>
           </li>
         <% end %>

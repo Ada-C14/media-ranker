@@ -1,21 +1,17 @@
 <section>
-  <h1>Work Title Goes Here</h1>
-  <p>Created by: <%#= %> </p>
-  <p>Published: <%#= %> </p>
-  <p>description text goes here <%#= %> </p>
+  <h1><%= link_to "#{@work.title}", work_path(@work.id) %></h1>
+  <p>Created by: <%= @work.creator %> </p>
+  <p>Published: <%= @work.publication_year %> </p>
+  <p> <%= @work.description %> </p>
 </section>
 <section>
-  <button>Back</button>
-  <button>Edit</button>
-  <button>Vote</button>
-  <button>Delete</button>
-  <%#= button_to "Back to media ranks", path goes here, {class: , method: } %>
-  <%#= button_to "Edit", path goes here, {class: , method: } %>
+  <%= button_to "Back to media ranks", root_path, { method: :get } %>
+  <%= button_to "Edit", edit_work_path(@work.id), { method: :get } %>
   <%#= button_to "Upvote", path goes here, {class: , method: } %>
-  <%#= button_to "Delete", path goes here, {class: , method: } %>
+  <%= button_to "Delete", work_path(@work.id), {method: :delete} %>
 </section>
 <section>
-  <h2><%##= ___%> Votes for this <%#= category goes here%></h2>
+  <h2><%= rand(1..50) %> Votes for this <%= @work.category.capitalize %></h2>
   <table>
     <thead>
     <tr>
@@ -24,7 +20,7 @@
     </tr>
     </thead>
     <tbody>
-      <%# loop for the categories %>
+      <%# loop for the users who voted %>
         <tr>
           <td>User link <%#= link_to "#{username goes here}", path goes here(user id goes here)%></td>
           <td>Date <%#= date voted %></td>

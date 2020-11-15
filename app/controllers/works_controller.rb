@@ -18,8 +18,8 @@ class WorksController < ApplicationController
   end
 
   def create
-    work = Work.new(work_params)
-    return work.save ? (redirect_to work_path(work)) : (render :new, status: :bad_request)
+    @work = Work.new(work_params)
+    return @work.save ? (redirect_to work_path(@work.id)) : (render :new, status: :bad_request)
   end
 
   def edit
@@ -47,7 +47,7 @@ class WorksController < ApplicationController
       return
     else
       work.destroy
-      redirect_to drivers_path
+      redirect_to works_path
     end
   end
 

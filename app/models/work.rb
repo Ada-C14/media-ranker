@@ -1,14 +1,10 @@
 class Work < ApplicationRecord
-  # belongs_to
-  # validates :title, presence: true,
+  has_many :votes
+  has_many :users, through: :votes
+  validates :title, presence: true
+  validates :category, presence: true
+  validates :publication_year, presence: true
+  validates :creator, presence: true
 
-#   def all_books
-#     books = []
-#     @works.each do |work|
-#       if work.category == "book"
-#         books << work
-#       end
-#     end
-#     return books
-#   end
+
 end

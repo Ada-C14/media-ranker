@@ -69,6 +69,25 @@ class WorksController < ApplicationController
     end
   end
 
+  def vote
+    work = Work.find_by(id: params[:id])
+    user = User.find_by(id: session[:user_id])
+    if work.nil?
+      flash[:error] = "Not a valid work"
+    end
+    if user.nil?
+      flash[:error] = "You must be logged in to vote"
+    end
+    vote = Vote.new(params[user_id: user, work_id: work])
+    if vote.save
+      flash[:success] = "Your vote was counted"
+      redirect_to work_path
+    else
+      flash[:error] = "You have already voted"
+      redirect_to work_path
+    end
+  end
+
   private
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)

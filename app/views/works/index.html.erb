@@ -8,7 +8,8 @@
         <% if work.category == "book" %>
         <li> <%= link_to work.title, work_path(work) %> |
           <%= link_to "Edit", edit_work_path(work[:id]) %> |
-          <%= link_to "Delete", destroy_work_path(work[:id]), method: :delete, data: {confirm: "Are you sure?"} %></li>
+          <%= link_to "Delete", destroy_work_path(work[:id]), method: :delete, data: {confirm: "Are you sure?"} %>
+        <%= link_to "Upvote", vote_work_path(work[:id]), method: :post %></li>
           <% end %>
       <% end %>
     </ul>

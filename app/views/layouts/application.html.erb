@@ -19,10 +19,10 @@
       <li><%= link_to "All Media", works_path%></li>
       <li><%= link_to "New Media", new_work_path %></li>
       <li><%= link_to "New User", login_path  %></li>
-    <% if @current_user %>
-      <li><%= link_to "Log out", login_path %></li>
+    <% if session[:user_id] %>
+      <li><%= link_to "Logout", logout_path, method: :post %></li>
         <% else  %>
-      <li><%= link_to "Log in", logout_path, method: :post %></li>
+      <li><%= link_to "Login", login_path %></li>
         <% end %>
       <li><%= link_to "Current User", current_user_path %></li>
     </ul>

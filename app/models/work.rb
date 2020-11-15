@@ -92,8 +92,7 @@ class Work < ApplicationRecord
 
   def self.spotlight(sorted_hash)
     if Vote.none?
-      # flash.now[:warning] = "There aren't works with votes, yet. Start voting!"
-      return Work.all.sample(10)
+      return nil
     else
       top_works = []
       sorted_hash.each do |category, works|

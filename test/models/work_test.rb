@@ -4,9 +4,11 @@ describe Work do
   describe "relation" do
     it "has many votes" do
       dune = works(:dune)
-      vote_for_dune = votes(:pooh_dune)
+      pooh_vote_dune = votes(:pooh_dune)
+      tigger_vote_dune = votes(:tigger_dune)
 
-      expect(dune.votes.include?(vote_for_dune)).must_equal true
+      expect(DUNE.votes.include?(pooh_vote_dune)).must_equal true
+      expect(dune.votes.include?(tigger_vote_dune)).must_equal true
     end
   end
 

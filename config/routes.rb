@@ -1,17 +1,25 @@
 Rails.application.routes.draw do
-  get 'votes/index'
-  get 'votes/show'
-  get 'votes/create'
-  get 'votes/edit'
-  get 'votes/new'
-  get 'votes/destroy'
-  get 'votes/update'
+  # get 'votes/index'
+  # get 'votes/show'
+  # get 'votes/create'
+  # get 'votes/edit'
+  # get 'votes/new'
+  # get 'votes/destroy'
+  # get 'votes/update'
+
+  resources :votes
+
   # get 'homepages/index'
   root to: "homepages#index"
 
-  post '/works/:id/upvote', to: 'works#upvote', as: 'upvote_work'
+  # with no votes controller
+  # post '/works/:id/upvote', to: 'works#upvote', as: 'upvote_work'
 
-  resources :works
+  # with a votes controller; and with the original works controller
+  resources :works do
+    resources :votes, only: [:create, :destroy]
+  end
+
   # resources :users, only: [:index, :show]
 
   get "/login", to: "users#login_form", as: "login"

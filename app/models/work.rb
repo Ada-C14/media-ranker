@@ -7,7 +7,7 @@ class Work < ApplicationRecord
 
 
   def self.spotlight
-    return order("votes_count DESC, created_at").first
+    return where.not(votes_count: nil).order("votes_count DESC, created_at").first
   end
 
   def self.top_ten(category)

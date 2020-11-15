@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get '/users/current', to: 'users#current', as: 'current_user'
 
   root to: 'pages#index'
+  resources :pages, only: [:index]
   resources :works do
     post 'upvote'
   end

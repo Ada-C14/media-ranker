@@ -92,11 +92,7 @@ describe Work do
       end
     end
   end
-  # def self.spotlight
-  #     works = Work.all
-  #     max = works.max_by { |work| work.votes.count }
-  #     return max
-  #   end
+
   describe 'spotlight' do
     it 'returns the work with the most votes' do
       works = Work.all

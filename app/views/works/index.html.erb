@@ -1,86 +1,8 @@
 <main>
   <h2>List of Works</h2>
-  <section class="media-table">
-    <h4>Albums</h4>
-    <table class="table">
-  <thead>
-    <tr>
-      <th width="80">Votes</th>
-      <th>Title</th>
-      <th>Created By</th>
-      <th width="100">Published</th>
-      <th width="100">Upvote</th>
-    </tr>
-  </thead>
-
-  <tbody>
-      <% @albums.sorted("album").each do |album| %>
-        <tr>
-          <td><%= album.votes.count %></td>
-          <td><%= link_to album.title, work_path(album) %></td>
-          <td><%= album.creator %></td>
-          <td><%= album.publication_year %></td>
-          <td><button class="btn btn-primary"><%= link_to "Upvote", upvote_work_path(album), method: :post %></button></td>
-        </tr>
-  <% end %>
-  </tbody>
-</table>
-  </section>
-
-  <section class="media-table">
-    <h4>Books</h4>
-    <table class="table">
-  <thead>
-  <tr>
-    <th width="80">Votes</th>
-    <th>Title</th>
-    <th>Created By</th>
-    <th width="100">Published</th>
-    <th width="100">Upvote</th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @books.sorted("book").each do |book| %>
-    <tr>
-      <td><%= book.votes.count %></td>
-      <td><%= link_to book.title, work_path(book) %></td>
-      <td><%= book.creator %></td>
-      <td><%= book.publication_year %></td>
-      <td><button class="btn btn-primary"><%= link_to "Upvote", upvote_work_path(book), method: :post %></button></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
-  </section>
-
-  <section class="media-table">
-    <h4>Movies</h4>
-
-  <table class="table">
-  <thead>
-  <tr>
-    <th width="80">Votes</th>
-    <th>Title</th>
-    <th>Created By</th>
-    <th width="100">Published</th>
-    <th width="100">Upvote</th>
-  </tr>
-  </thead>
-
-  <tbody>
-  <% @movies.sorted("movie").each do |movie| %>
-    <tr>
-      <td><%= movie.votes.count  %></td>
-      <td><%= link_to movie.title, work_path(movie) %></td>
-      <td><%= movie.creator %></td>
-      <td><%= movie.publication_year %></td>
-      <td><button class="btn btn-primary"><%= link_to "Upvote", upvote_work_path(movie), method: :post %></button></td>
-    </tr>
-  <% end %>
-  </tbody>
-</table>
-  </section>
+  <%= render partial: "table", locals: { works: @albums, category: "album" } %>
+  <%= render partial: "table", locals: { works: @books, category: "book" } %>
+  <%= render partial: "table", locals: { works: @movies, category: "movie" } %>
   <button class="btn btn-secondary"><%= link_to "View top media", root_path %></button>
   <button class="btn btn-primary"><%= link_to "Add a new work", new_work_path %></button>
 </main>

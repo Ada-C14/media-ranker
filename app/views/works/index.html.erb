@@ -1,0 +1,17 @@
+<main>
+  <h2> List of Works </h2>
+
+  <section class="media-table">
+    <%= render partial: "table", locals: { work_title: "Albums", works: @albums } %>
+    <%= render partial: "table", locals: { work_title: "Books", works: @books } %>
+    <%= render partial: "table", locals: { work_title: "Movies", works: @movies } %>
+  </section>
+
+  <section class="btn-group">
+    <%= button_to "View top media", root_path, method: :get, class: "btn btn-secondary" %>
+    <%= button_to "Add a new work", new_work_path, method: :get, class: "btn btn-primary" %>
+  </section>
+
+  </main>
+  
+    

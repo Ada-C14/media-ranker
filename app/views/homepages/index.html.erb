@@ -1,0 +1,29 @@
+<main>
+
+  <section class="spotlight">
+    <h2 class="spotlight__header">
+      <% feat = Work.select_spotlight%>
+      <% if feat %>
+        <span class="spotlight__header--prefix">Media Spotlight: <%= link_to feat.title,  work_path(feat.id), class: "spotlight__link-to" %> by <%= feat.creator %> </span>
+      <% else %>
+        <span class="spotlight__header--prefix">Media Spotlight: No Media Voted For :(</span>
+      <% end %>
+    </h2>
+    <% if feat %>
+      <p class="spotlight__description"><%= feat.description %></p>
+    <% end %>
+  </section>
+
+  <hr class="root__hr">
+
+  <section class="top-ten__container">
+      <% top_movies = Work.select_top_ten("movie") %>
+      <%= render partial: "table", locals: {category: "Movies", top_works: top_movies} %>
+
+      <% top_books = Work.select_top_ten("book") %>
+      <%= render partial: "table", locals: {category: "Books", top_works: top_books} %>
+
+      <% top_albums = Work.select_top_ten("album") %>
+      <%= render partial: "table", locals: {category: "Albums", top_works: top_albums} %>
+  </section>
+</main>

@@ -28,25 +28,27 @@ describe User do
 
   describe "validations" do
 
-    it "can create a user with a username" do
-      @user = User.create!(username: "boop")
+    it "can create a new user with a username" do
+      @new_user = User.new(username: "boop")
 
-      result = @user.valid?
+      result = @new_user.valid?
       expect(result).must_equal true
-      expect(@user.username).must_equal "boop"
     end
 
     it "will not create a user with a duplicate username" do
-      @new_user = User.create!(username: "boop")
+      @bad_user = User.create(username: "Sophie")
 
-      result = @new_user.valid?
+      expect(@bad_user.errors).must_include "username"
+
+      result = @bad_user.valid?
       expect(result).must_equal false
     end
 
-    it "must have a username" do
-      @user = User.create(username: nil)
+    it "user must have a username" do
+      @user = User.new(username: nil)
 
       result = @user.valid?
+      expect(result).must_equal false
       expect(@user.errors).must_include :username
     end
   end

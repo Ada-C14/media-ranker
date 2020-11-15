@@ -6,7 +6,7 @@ book:
   description: "The Description"
 
 work1:
-  category: "movie"
+  category: "album"
   title: "Mulan"
 
 work2:

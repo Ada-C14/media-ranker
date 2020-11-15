@@ -31,7 +31,7 @@ class WorksController < ApplicationController
       redirect_to work_path(@work.id)
       return
     else
-      flash.now[:error] = "Oops! Media was not added."
+      flash.now[:error] = "Oops! Media already exists."
       render :new
       return
     end

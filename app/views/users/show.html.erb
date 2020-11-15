@@ -17,7 +17,7 @@
       <% @user.votes.each do |vote| %>
         <% unless vote.work.nil? %>
           <tr>
-            <td><%= vote.work.title %></td>
+            <td><%= link_to "#{vote.work.title }", work_path(vote.work)%></td>
             <td><%= vote.work.creator %></td>
             <td><%= vote.work.publication_year %></td>
             <td><%= vote.work.category %></td>

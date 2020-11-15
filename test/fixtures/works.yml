@@ -1,36 +1,36 @@
 mov_one:
   title: The Goonies
   description: A good movie.
-  publication_date: 1985
+  published: 1985
   creator: Steven Spielberg
   category: movie
 mov_two:
   title: Alien
   description: A scary movie.
-  publication_date: 1979
+  published: 1979
   creator: Ridley Scott
   category: movie
 album_one:
   title: Clear
   description: It will get you moving.
-  publication_date: 1990
+  published: 1990
   creator: Cybotron
   category: album
 album_two:
   title: Obaa Sima
   description: It will get you bopping.
-  publication_date: 1994
+  published: 1994
   creator: Ata Kak
   category: album
 book_one:
   title: Circe
   description: It will make you ponder solitude.
-  publication_date: 2018
+  published: 2018
   creator: Madeline Miller
   category: book
 book_two:
   title: The Song of Achilles
   description: It gets steamy.
-  publication_date: 2011
+  published: 2011
   creator: Madeline Miller
   category: book

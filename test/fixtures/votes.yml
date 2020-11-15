@@ -1,0 +1,12 @@
+vote1:
+  work: mov_one
+  user: user1
+vote2:
+  work: book_one
+  user: user2
+vote3:
+  work: album_one
+  user: user3
+vote4:
+  work: album_two
+  user: user2

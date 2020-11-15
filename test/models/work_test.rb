@@ -7,8 +7,8 @@ describe Work do
       pooh_vote_dune = votes(:pooh_dune)
       tigger_vote_dune = votes(:tigger_dune)
 
-      expect(DUNE.votes.include?(pooh_vote_dune)).must_equal true
-      expect(dune.votes.include?(tigger_vote_dune)).must_equal true
+      expect(dune.votes).must_include pooh_vote_dune
+      expect(dune.votes).must_include tigger_vote_dune
     end
   end
 

@@ -19,7 +19,16 @@ class WorksController < ApplicationController
 
   def create
     @work = Work.new(work_params)
-    return @work.save ? (redirect_to work_path(@work.id)) : (render :new, status: :bad_request)
+    if @work.save
+      flash[:success] = "#{@work.title} was successfully added!"
+      redirect_to work_path(@work.id)
+      return
+    else
+      flash.now[:error] = "#{@work.title} was not successfully added!"
+      render :new, status: :bad_request
+      return
+    end
+
   end
 
   def edit
@@ -28,12 +37,12 @@ class WorksController < ApplicationController
   end
 
   def update
-    work = Work.find_by(id: params[:id])
-    if work.nil?
+    @work = Work.find_by(id: params[:id])
+    if @work.nil?
       head :not_found
       return
-    elsif work.update(work_params)
-      redirect_to work_path(work.id)
+    elsif @work.update(work_params)
+      redirect_to work_path(@work.id)
       return
     else
       redirect_to root_path
@@ -41,12 +50,13 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    work = Work.find_by(id: params[:id])
-    if work.nil?
+    @work = Work.find_by(id: params[:id])
+    if @work.nil?
       head :not_found
       return
     else
-      work.destroy
+      @work.destroy
+      flash[:success] = "#{@work.title} was successfully deleted!"
       redirect_to works_path
     end
   end

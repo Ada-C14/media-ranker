@@ -1,0 +1,24 @@
+first_work:
+  category: movie
+  title: FirstWork
+  creator: FirstWork Creator
+  description: a description of the first work
+  publication_year: 2021
+second_work:
+  category: movie
+  title: SecondWork
+  creator: SecondWork Creator
+  description: a description of the second work
+  publication_year: 2022
+third_work:
+  category: album
+  title: ThirdWork
+  creator: ThirdWork Creator
+  description: a description of the third work
+  publication_year: 2023
+forth_work:
+  category: book
+  title: FourthtWork
+  creator: FourthWork Creator
+  description: a description of the fourth work
+  publication_year: 2024

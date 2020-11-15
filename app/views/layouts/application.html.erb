@@ -25,6 +25,13 @@
           <%#= button_to 'log in' %>
         <%# end %>
       </nav>
+      <section class="flash">
+        <% flash.each do |name, message| %>
+          <div class="<%= name %>">
+            <%= message %>
+          </div>
+        <% end %>
+      </section>
     </header>
     <%= yield %>
   </body>

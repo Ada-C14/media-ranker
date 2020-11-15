@@ -1,15 +1,69 @@
-rubber_soul:
+album1:
   category: album
-  title: Rubber Soul
-  creator: The Beatles
-  publication_year: 1965
-bedlam:
+  title: Album One
+  created_at: Sun, 15 Nov 2020 05:33:00 UTC +00:00
+album2:
+  category: album
+  title: Album Two
+  created_at: Sun, 15 Nov 2020 04:33:00 UTC +00:00
+album3:
+  category: album
+  title: Album Three
+  created_at: Sun, 15 Nov 2020 03:33:00 UTC +00:00
+album4:
+  category: album
+  title: Album Four
+  created_at: Sun, 15 Nov 2020 02:33:00 UTC +00:00
+album5:
+  category: album
+  title: Album Five
+  created_at: Sun, 15 Nov 2020 01:33:00 UTC +00:00
+
+book1:
   category: book
-  title: The Bedlam Stacks
-  creator: Natasha Pulley
-fifth_season:
+  title: Book One
+  created_at: Sun, 15 Nov 2020 06:01:00 UTC +00:00
+book2:
   category: book
-  title: The Fifth Season
-  creator: N.K. Jemisin
-  publication_year: 2015
-  description: 2016 Hugo Award Winner for Best Novel
+  title: Book Two
+  created_at: Sun, 15 Nov 2020 06:02:00 UTC +00:00
+book3:
+  category: book
+  title: Book Three
+  created_at: Sun, 15 Nov 2020 06:03:00 UTC +00:00
+book4:
+  category: book
+  title: Book Four
+  created_at: Sun, 15 Nov 2020 06:04:00 UTC +00:00
+book5:
+  category: book
+  title: Book Five
+  created_at: Sun, 15 Nov 2020 06:05:00 UTC +00:00
+book6:
+  category: book
+  title: Book Six
+  created_at: Sun, 15 Nov 2020 06:06:00 UTC +00:00
+book7:
+  category: book
+  title: Book
+  created_at: Sun, 15 Nov 2020 06:07:00 UTC +00:00
+book8:
+  category: book
+  title: Book Eight
+  created_at: Sun, 15 Nov 2020 06:08:00 UTC +00:00
+book9:
+  category: book
+  title: Book Nine
+  created_at: Sun, 15 Nov 2020 06:09:00 UTC +00:00
+book10:
+  category: book
+  title: Book Ten
+  created_at: Sun, 15 Nov 2020 06:10:00 UTC +00:00
+book11:
+  category: book
+  title: Book Eleven
+  created_at: Sun, 15 Nov 2020 06:11:00 UTC +00:00
+book12:
+  category: book
+  title: Book Twelve
+  created_at: Sun, 15 Nov 2020 06:12:00 UTC +00:00

@@ -3,8 +3,8 @@ require "test_helper"
 describe Vote do
   describe "relationships" do
     before do
-      @work = works(:rubber_soul)
-      @user = users(:ringolingo)
+      @work = works(:book2)
+      @user = users(:testuser)
       @vote = Vote.new(user_id: @user.id, work_id: @work.id)
     end
 

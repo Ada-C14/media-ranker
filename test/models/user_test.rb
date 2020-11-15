@@ -32,8 +32,8 @@ describe User do
 
   describe "relationships" do
     before do
-      @user = User.first
-      @work = Work.first
+      @work = works(:book12)
+      @user = users(:testuser)
       @vote = Vote.new(user: @user, work: @work)
     end
 

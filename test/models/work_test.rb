@@ -73,6 +73,34 @@ describe Work do
 
       expect(spotlight).must_be_instance_of Work
     end
+
+    it "returns the work with the most votes in any category" do
+      spotlight = Work.spotlight
+
+      expect(spotlight).must_equal works(:book3)
+    end
+
+    it "returns earliest-added work if no works have votes" do
+      all_votes = Vote.all
+      all_votes.each do |vote|
+        vote.destroy
+      end
+
+      spotlight = Work.spotlight
+
+      expect(spotlight).must_equal works(:album5)
+    end
+
+    it "returns earliest-added of winners if there's a tie for most votes" do
+      work = Work.find_by(title: "Book Two")
+      user = User.find_by(username: "user1")
+      tie_vote = Vote.new(work_id: work.id, user_id: user.id)
+      tie_vote.save
+
+      spotlight = Work.spotlight
+
+      expect(spotlight).must_equal works(:book2)
+    end
   end
 
   describe "top_ten" do

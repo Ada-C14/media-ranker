@@ -27,7 +27,7 @@ class VotesController < ApplicationController
       end
 
     else
-      head :not_found
+      render :file => "#{Rails.root}/public/404.html",  layout: false, status: :not_found
       return
     end
   end

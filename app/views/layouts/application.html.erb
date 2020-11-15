@@ -52,36 +52,35 @@
     </header>
 
 
-    <% if flash.any? %>
+    <% if flash[:success] %>
     <section class="alert__container">
       <div class="alert alert-success">
-
+        <% flash.each do |name, message| %>
+          <span class="<%= name %>"><%= message %></span>
+        <% end %>
       </div>
     </section>
     <% end %>
 
-    <% if flash.any? %>
+    <% if flash[:error] %>
       <section class="alert__container">
         <div class="alert alert-warning">
-
           <% flash.each do |name, message| %>
 
             <% if name == "validation" %>
               <ul>
                 <% flash[:validation].each do |column, message| %>
+                  <% unless message.empty? %>
                   <li>
                     <%= column %>: <%= message.first %>
                   </li>
+                  <% end %>
                 <% end %>
               </ul>
 
             <% else %>
               <span class="<%= name %>"><%= message %></span>
             <% end %>
-
-<!--            <div class="alert alert-success">-->
-<!--              <span>Successfully upvoted!</span>-->
-<!--            </div>-->
           <% end %>
         </div>
       </section>

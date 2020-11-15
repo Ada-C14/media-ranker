@@ -35,7 +35,7 @@ class UsersController < ApplicationController
       user = User.find_by(id: session[:user_id])
       if user
         session[:user_id] = nil
-        flash[:notice] = "Successfully logged out"
+        flash[:success] = "Successfully logged out"
       else
         session[:user_id] = nil
         flash[:error] = "Error Unknown User"
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id].to_i)
 
     if @user.nil?
-      head :not_found
+      render :file => "#{Rails.root}/public/404.html",  layout: false, status: :not_found
       return
     end
   end

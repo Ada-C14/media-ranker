@@ -8,7 +8,7 @@
 
 <%= form_with model: @work, class: 'form' do |f| %>
   <%= f.label :category %>
-  <%= f.select :category, Work.all.map{ |auth| [auth.category, auth.id] } %>
+  <%= f.select :category, [["album"], ["book"], ["movie"]] %>
 
   <%= f.label :title %>
   <%= f.text_field :title %>

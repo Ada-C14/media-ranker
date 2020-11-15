@@ -145,7 +145,6 @@ describe WorksController do
     it "does not edit a work if the form data violates work validations, and responds with a redirect" do
       work_id = work.id
 
-      # Set up the form data so that it violates passenger validations
       edited_work_hash = {
           work: {
               category: "",
@@ -153,14 +152,10 @@ describe WorksController do
           }
       }
 
-      # Act-Assert
-      # Ensure that there is no change in Passenger.count
       expect {
         patch work_path(work_id), params: edited_work_hash
       }.wont_change "Work.count"
 
-      # Assert
-      # Check that the controller redirects
       must_respond_with :bad_request
     end
   end

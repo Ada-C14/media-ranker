@@ -1,7 +1,13 @@
 require "test_helper"
 
 describe WorksController do
-  # it "does a thing" do
-  #   value(1+1).must_equal 2
-  # end
+  describe "upvote" do
+    it "can upvote" do
+      login
+      media = works(:treat)
+
+      post work_upvote_path(media.id)
+      expect(media.votes.count).must_equal 1
+    end
+  end
 end

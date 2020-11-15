@@ -5,13 +5,12 @@ Rails.application.routes.draw do
   post "/login", to: "users#login"
   post "/logout", to: "users#logout", as: "logout"
   get "users/id", to: "users#show", as: "user_path"
-  post "/works/id", to: "votes#create", as: "create_vote"
 
   root to: 'homepages#index', as: 'homepage'
 
   resources :works do
-    post "/upvote", to: "votes#create"
-
+    post '/upvote', to: "votes#create"
+  end
   resources :homepages
   resources :users, only: [:index, :show, :new, :create]
 

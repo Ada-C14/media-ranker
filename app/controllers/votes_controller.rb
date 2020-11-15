@@ -15,11 +15,11 @@ class VotesController < ApplicationController
     )
     if @vote.save
       flash[:success] = "Successfully upvoted!"
-      redirect_to work_path(@work.id)
+      redirect_to work_path(@work)
       return
     else
-      flash.now[:error] = "A problem occurred: Could not upvote"
-      render :show
+      flash[:error] = "A problem occurred: Could not upvote"
+      redirect_to work_path(@work)
       return
 
   end

@@ -39,7 +39,7 @@
 
   <section class="flash-msg">
     <% flash.each do |name, message| %>
-      <div class="<%= name %>">
+      <div class="alert alert-<%= name %>">
         <%= message %>
       </div>
     <% end %>

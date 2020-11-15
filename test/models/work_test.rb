@@ -1,9 +1,34 @@
 require "test_helper"
 
 describe Work do
+
+  before do
+    @user1 = users(:user1)
+    @user2 = users(:user2)
+    @user3 = users(:user3)
+
+    @book1 = works(:book1)
+    @book2 = works(:book2)
+    @book3 = works(:book3)
+    @book4 = works(:book4)
+
+    @movie1 = works(:movie1)
+    @movie2 = works(:movie2)
+    @movie3 = works(:movie3)
+    @movie4 = works(:movie4)
+    @movie5 = works(:movie5)
+    @movie6 = works(:movie6)
+    @movie7 = works(:movie7)
+    @movie8 = works(:movie8)
+    @movie9 = works(:movie9)
+    @movie10 = works(:movie10)
+    @movie11 = works(:movie11)
+    @movie12 = works(:movie12)
+  end
+
   describe "validations" do
 
-    it "is valid when all fields are filled" do
+    it "is valid when title and category fields are filled" do
       work = Work.first
       result = work.valid?
       expect(result).must_equal true
@@ -30,31 +55,10 @@ describe Work do
       expect(result).must_equal false
     end
 
-    it "must have a creator" do
-      work = Work.first
-
-      work.creator = nil
-      result = work.valid?
-      expect(result).must_equal false
-    end
-
-    it "must have a description" do
-      work = Work.first
-
-      work.description = nil
-      result = work.valid?
-      expect(result).must_equal false
-    end
-
-
-    it "fails validation when the title already exists" do
-      skip
+    it "fails validation when the title already exists in same category" do
       @new_movie = Work.new(
-          title: @test_movie.title,
-          creator: @test_movie.creator,
-          description: @test_movie.description,
-          category: @test_movie.category,
-          published: @test_movie.published
+          title: @movie1.title,
+          category: @movie1.category,
       )
       result = @new_movie.valid?
       expect(result).must_equal false
@@ -66,61 +70,77 @@ describe Work do
 
     it "can produce a list of media for each category" do
       @movies = Work.movies
-      @movies.each do |movie|
-        expect.(movie.category).must_equal "movie"
+      @movies.each do |work|
+        expect(work.category).must_equal "movie"
       end
 
       @books = Work.books
-      @books.each do |book|
-        expect.(book.category).must_equal "book"
+      @books.each do |work|
+        expect(work.category).must_equal "book"
       end
 
       @albums = Work.albums
       @albums.each do |album|
-        expect.(album.category).must_equal "album"
+        expect(album.category).must_equal "album"
       end
     end
   end
 
   describe "top 10" do
 
-    it "(Wave 1) can produce a random list of up to 10 books for top_books" do
-      @top_books = Work.top_books
-      @top_books.each do |book|
-        expect.(book.category).must_equal "book"
-      end
-
-      if Work.books.length < 10
-        expect(@top_books.length).must_equal Work.books.length
-      else
-        expect(@top_books.length).must_equal 10
-      end
-    end
-
-    it "(Wave 1) can produce a random list of up to 10 movies for top_movies" do
+    it "can produce a list of 10 movies for top 10" do
       @top_movies = Work.top_movies
-      @top_movies.each do |movie|
-        expect.(movie.category).must_equal "movie"
+      @top_movies.each do |work|
+        expect(work.category).must_equal "movie"
       end
 
-      if Work.movies.length < 10
-        expect(@top_movies.length).must_equal Work.movies.length
-      else
-        expect(@top_movies.length).must_equal 10
-      end
+      expect(@top_movies.length).must_equal 10
+      expect(@top_movies.first.title).must_equal "The Goonies"
     end
 
-    it "(Wave 1) can produce a random list of up to 10 albums for top_albums" do
-      @top_albums = Work.top_albums
-      @top_albums.each do |album|
-        expect.(album.category).must_equal "album"
+    it "can produce a list of less than 10 books for top 10, if category has less than 10" do
+      @top_books = Work.top_books
+      @top_books.each do |work|
+        expect(work.category).must_equal "book"
       end
 
-      if Work.albums.length < 10
-        expect(@top_albums.length).must_equal Work.albums.length
-      else
-        expect(@top_albums.length).must_equal 10
-      end
+      expect(@top_books.length).must_equal 4
+      expect(@top_books.first.title).must_equal "Circe"
+    end
+
+    it "can produce a list of 0 albums when no albums in db" do
+      @top_albums = Work.top_albums
+      expect(@top_albums.length).must_equal 0
+    end
+
+    it "can sort by votes count" do
+      @top_books = Work.top_books
+
+      expect(@top_books.first.votes.count).must_equal 4
+      expect(@top_books[1].votes.count).must_equal 2
+      expect(@top_books.last.votes.count).must_equal 0
+
+      @top_movies = Work.top_movies
+
+      expect(@top_movies.first.votes.count).must_equal 3
+
+    end
+
+    it "can sort ties alphabetically by title" do
+      @top_movies = Work.top_movies
+
+      expect(@top_movies[4].title).must_equal "AAAAAA"
+      expect(@top_movies[4].votes.count).must_equal 0
+
+      expect(@top_movies.last.title).must_equal "MMMM"
+      expect(@top_movies.last.votes.count).must_equal 0
+    end
+  end
+
+  describe "spotlight" do
+    it "can find the highest voted work" do
+      @spotlight = Work.spotlight
+      expect(@spotlight.title).must_equal "Circe"
     end
   end
 end

@@ -1,7 +1,6 @@
 class Work < ApplicationRecord
-  validates :title, :creator, :description, presence: true
-  validates :category, presence: true, inclusion: { in: %w(book movie album) }
-  validates :published, presence: true, numericality: true
+  validates :title, presence: true, uniqueness: { scope: :category }
+  validates :category, inclusion: { in: %w(book movie album) }
 
   has_many :votes
 
@@ -23,13 +22,8 @@ class Work < ApplicationRecord
 
 
   def self.top_10(media)
-    media_list = categories(media).sort_by { |work| work.votes.count }.reverse
-
-    if media_list.length >= 10
-      return media_list.first(10)
-    else
-      return media_list
-    end
+    media_list = categories(media).sort_by { |work| [-work.votes.count, work.title] }[0..9]
+    return media_list
   end
 
   def self.top_books
@@ -47,7 +41,4 @@ class Work < ApplicationRecord
   def self.spotlight
     all.max_by { |work| work.votes.count }
   end
-
-
-
 end

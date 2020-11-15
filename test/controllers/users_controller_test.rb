@@ -9,14 +9,14 @@ describe UsersController do
 
   describe "logging in" do
     before do
-      @val_user = User.create(username: "Valentine")
+      @existing_user = User.create!(username: "Valentine")
     end
 
     it "can login a new user" do
       user = nil
 
       expect {
-        user = login()
+        user = login("Sophie")
       }.must_differ "User.count", 1
 
       must_respond_with :redirect
@@ -29,16 +29,16 @@ describe UsersController do
     it "can login an existing user" do
 
       expect {
-        login(@val_user.username)
+        login("Valentine")
       }.wont_change "User.count"
 
-      expect(session[:user_id]).must_equal user.id
+      expect(session[:user_id]).must_equal @existing_user.id
     end
   end
 
   describe "logout" do
     it "can logout an existing user" do
-      login()
+      login("Sophie")
       expect(session[:user_id]).wont_be_nil
 
       post logout_path
@@ -49,7 +49,7 @@ describe UsersController do
 
   describe "current user" do
     it "can return the page if the user is logged in" do
-      login()
+      login("Sophie")
       get current_user_path
       must_respond_with :success
     end

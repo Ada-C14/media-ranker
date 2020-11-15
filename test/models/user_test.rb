@@ -1,6 +1,31 @@
 require "test_helper"
 
 describe User do
+
+  before do
+    @user1 = users(:user1)
+    @user2 = users(:user2)
+    @user3 = users(:user3)
+
+    @book1 = works(:book1)
+    @book2 = works(:book2)
+    @book3 = works(:book3)
+    @book4 = works(:book4)
+
+    @movie1 = works(:movie1)
+    @movie2 = works(:movie2)
+    @movie3 = works(:movie3)
+    @movie4 = works(:movie4)
+    @movie5 = works(:movie5)
+    @movie6 = works(:movie6)
+    @movie7 = works(:movie7)
+    @movie8 = works(:movie8)
+    @movie9 = works(:movie9)
+    @movie10 = works(:movie10)
+    @movie11 = works(:movie11)
+    @movie12 = works(:movie12)
+  end
+
   describe "validations" do
 
     it "can create a user with a username" do
@@ -19,23 +44,18 @@ describe User do
     end
 
     it "must have a username" do
-      @user = User.create!(username: nil)
+      @user = User.create(username: nil)
 
       result = @user.valid?
-      expect(result).must_equal false
-      # expect error message must be "Username has already been taken"
+      expect(@user.errors).must_include :username
     end
   end
 
   describe "relationships" do
 
     it "user can have many votes" do
-      vote_1 = Vote.create!(username: user1, work: :book_one)
-      vote_2 = Vote.create!(username: user1, work: :book_two)
-
-      expect(vote_1.valid?).must_equal true
-      expect(vote_2.valid?).must_equal true
-      expect(user1.votes.count).must_equal 3
+      expect(@user1.votes.count).must_equal 7
     end
+
   end
 end

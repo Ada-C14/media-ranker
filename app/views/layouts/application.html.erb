@@ -10,6 +10,22 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+      <section class="title"><h1>Media Ranker</h1></section>
+      <nav>
+        <ul>
+          <li><a href="/works">All Works</a></li>
+          <li><a href="/users">All Users</a></li>
+          <li>New Work</li>
+          <li><a href="/homepages">Top Media</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <%= yield %>
+    </main>
+    <footer>
+      <p> All Rights Reserved. Sophia Donan 2020.</p>
+    </footer>
   </body>
 </html>

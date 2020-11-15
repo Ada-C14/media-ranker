@@ -1,0 +1,22 @@
+book:
+  category: "book"
+  title: "Ruby on Rails"
+  creator: "Jane Do"
+  publication_year: 2019
+  description: "A book that talks in details about ruby on rails"
+
+work1:
+  category: "album"
+  title: "Mulan"
+
+work2:
+  category: 'book'
+  title: 'chicken soap for the soul'
+
+work3:
+  category: 'book'
+  title: 'Weathering Heights'
+
+work4:
+  category: 'album'
+  title: 'The Hunchback of Notre Dame'

@@ -29,8 +29,8 @@ class WorksController < ApplicationController
       redirect_to work_path(@work.id)
       return
     else
-      flash.now[:error] = " Please make sure to add title. Media not added."
-      render :new, status: :bad_request
+      flash.now[:error] = " Please make sure to add an unique title. Media not added."
+      render :new
       return
     end
   end

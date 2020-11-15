@@ -2,3 +2,11 @@ john:
   id: 1
   username: Elton John
   joined: Nov 12, 2020
+adele:
+  id: 2
+  username: Adele
+  joined: Nov 14, 2020
+sia:
+  id: 3
+  username: Sia
+  joined: Nov 16, 2020

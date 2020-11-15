@@ -9,7 +9,7 @@ class Work < ApplicationRecord
   end
 
   def self.index_order(category)
-    return self.joins("LEFT JOIN votes on votes.work_id = works.id").where(category: category).group("works.id").order("count_votes_work_id desc, works.created_at desc").count("votes.work_id")
+    return self.joins("LEFT JOIN votes on votes.work_id = works.id").where(category: category).group("works.id").order("count_votes_work_id desc, works.updated_at desc").count("votes.work_id")
   end
 
   def self.spotlight

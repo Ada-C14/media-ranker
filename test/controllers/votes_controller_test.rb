@@ -1,8 +1,18 @@
 require "test_helper"
 
 describe VotesController do
-  it 'create: will redirect if a user is not signed in' do
 
+  let (:vote_hash) {
+    {
+        vote: {
+            user_id: @user.id,
+            work_id: params[:work_id]
+        }
+    }
+  }
+
+  it "create: won't create vote and will redirect if a user is not signed in" do
+    expect { post votes_path, params:  }.wont_change 'Vote.count'
   end
 
   it 'create: will redirect and flash message if user tries to vote for same work multiple time' do

@@ -1,4 +1,5 @@
 annakim:
   username: annakim
-goybean:
-  username:goybean
+  vote:
+    - vote1
+    - vote2

@@ -45,8 +45,24 @@ describe Work do
       expect(new_work_2.errors.messages).must_include :title
       expect(new_work_2.errors.messages[:title]).must_equal ["has already been taken"]
     end
-
   end
 
+  describe 'relations' do
+    it 'has many votes' do
+      work = works(:gods)
+      vote = Vote.create!(work_id: 1, user_id: 4)
+
+      expect(work.votes.first).must_be_instance_of Vote
+      expect(work.votes.count > 1).must_equal true
+    end
+
+    it 'has many users through votes' do
+      work = works(:gods)
+      vote = Vote.create!(work_id: 1, user_id: 4)
+
+      expect(work.users.first).must_be_instance_of User
+      expect(work.users.count > 1).must_equal true
+    end
+  end
 
 end

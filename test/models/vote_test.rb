@@ -36,10 +36,68 @@ describe Vote do
       # Assert
       expect(duplicate_vote.valid?).must_equal false
       expect(duplicate_vote.errors.messages).must_include :work_id
-      expect(duplicate_vote.errors.messages[:work_id]).must_equal ["User cannot upvote work more than once"]
     end
-
-
   end
 
+  describe 'relations' do
+    it 'can set the user through user' do
+      # Create two models
+      user = User.create!(name: "test user")
+      vote = Vote.new(work_id: 1, user_id: 4)
+
+      # Make the models relate to one another
+      vote.user = user
+
+      # author_id should have changed accordingly
+      expect(vote.user).must_equal user
+    end
+
+    it 'can set the user through "user_id"' do
+      # Create two models
+      user = User.create!(name: "test user")
+      vote = Vote.new(work_id: 1, user_id: 4)
+
+      # Make the models relate to one another
+      vote.user_id = user.id
+
+      # author_id should have changed accordingly
+      expect(vote.user_id).must_equal user.id
+    end
+
+    it 'can set the work through work' do
+      # Create two models
+      work = works(:world)
+      vote = Vote.new(work_id: 1, user_id: 4)
+
+      # Make the models relate to one another
+      vote.work = work
+
+      # author_id should have changed accordingly
+      expect(vote.work).must_equal work
+    end
+
+    it 'can set the work through "work_id"' do
+      # Create two models
+      work = works(:world)
+      vote = Vote.new(work_id: 1, user_id: 4)
+
+      # Make the models relate to one another
+      vote.work_id = work.id
+
+      # author_id should have changed accordingly
+      expect(vote.work_id).must_equal work.id
+    end
+
+    it "belongs to one user" do
+      vote = votes(:first)
+      expect(vote.user).must_be_instance_of User
+      expect(vote.user).must_equal users(:harry)
+    end
+
+    it "belongs to one work" do
+      vote = votes(:first)
+      expect(vote.work).must_be_instance_of Work
+      expect(vote.work).must_equal works(:gods)
+    end
+  end
 end

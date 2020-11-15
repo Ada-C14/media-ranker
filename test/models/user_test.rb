@@ -40,4 +40,21 @@ describe User do
     end
   end
 
+  describe 'relations' do
+    it 'has many votes' do
+      user = users(:harry)
+      vote = Vote.create!(work_id: 3, user_id: 1)
+
+      expect(user.votes.first).must_be_instance_of Vote
+      expect(user.votes.count > 1).must_equal true
+    end
+
+    it 'has many users through votes' do
+      user = users(:harry)
+      vote = Vote.create!(work_id: 3, user_id: 1)
+
+      expect(user.works.first).must_be_instance_of Work
+      expect(user.works.count > 1).must_equal true
+    end
+  end
 end

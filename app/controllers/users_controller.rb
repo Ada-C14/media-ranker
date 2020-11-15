@@ -5,7 +5,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = user.find_by(id: params[:user][:id].to_i)
+    @user = User.find_by(id: params[:id].to_i)
+    redirect_to works_path and return if @user.nil?
   end
 
   def login_form
@@ -43,14 +44,6 @@ class UsersController < ApplicationController
     redirect_to root_path
     return
   end
-
-  # def current
-  #   unless @current_user
-  #     flash[:error] = "You must be logged in to see this page"
-  #     redirect_to root_path
-  #     return
-  #   end
-  # end
 
 
 

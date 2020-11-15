@@ -1,14 +1,6 @@
 class VotesController < ApplicationController
-  # def index
-  #   @votes = Vote.all
-  # end
-  #
-  # def show
-  #   if @vote.nil?
-  #     head :not_found
-  #     return
-  #   end
-  # end
+
+  skip_before_action :require_login
 
   def create
     work = Work.find_by(id: params[:work_id])
@@ -26,7 +18,7 @@ class VotesController < ApplicationController
       if @vote.save
         flash[:success] = "Upvoted succesfully"
         redirect_to work_path(work.id)
-        returng
+        return
       else
         flash.now[:error] = "You may only vote once per work"
         redirect_to work_path(work.id)
@@ -35,15 +27,26 @@ class VotesController < ApplicationController
     end
   end
 
+  # def index
+  #   @votes = Vote.all
+  # end
+
+  # def show
+  #   if @vote.nil?
+  #     head :not_found
+  #     return
+  #   end
+  # end
+
   # def edit
   # end
-  #
+
   # def new
   # end
-  #
+
   # def destroy
   # end
-  #
+
   # def update
   # end
 end

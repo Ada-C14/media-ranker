@@ -3,8 +3,9 @@
 <h2>Work: <%= @work.title%></h2>
 
 <div class="edit-delete">
-  <!--  <p><%#= link_to "Upvote", upvote_work_path(@work.id) %></p>-->
-  <p><%= button_to "Upvote", upvote_work_path(@work.id), method: :post %></p>
+<!--  <p><%#= button_to "Upvote", upvote_work_path(@work.id), method: :post %></p>-->
+  <p><%= button_to "Upvote", work_votes_path(@work.id), method: :post %></p>
+
   <p>Other actions:</p>
   <p><%= link_to "Edit #{@work.title}", edit_work_path(@work.id) %></p>
   <p><%= link_to "Delete #{@work.title}", work_path(@work.id), method: :delete, data:{confirm: 'Please confirm you would like to delete this works.'} %></p>
@@ -17,4 +18,5 @@
   <p>Publication Year: <%= @work.publication_year %></p>
   <p>Description: <%= @work.description %></p>
 </div>
+
 

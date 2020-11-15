@@ -1,15 +1,7 @@
 Rails.application.routes.draw do
-  # get 'votes/index'
-  # get 'votes/show'
-  # get 'votes/create'
-  # get 'votes/edit'
-  # get 'votes/new'
-  # get 'votes/destroy'
-  # get 'votes/update'
 
   resources :votes
 
-  # get 'homepages/index'
   root to: "homepages#index"
 
   # with no votes controller
@@ -20,7 +12,10 @@ Rails.application.routes.draw do
     resources :votes, only: [:create, :destroy]
   end
 
-  # resources :users, only: [:index, :show]
+  resources :users, only: [:index, :show] do
+    resources :votes, only: [:create]
+  end
+
 
   get "/login", to: "users#login_form", as: "login"
   post "/login", to: "users#login"

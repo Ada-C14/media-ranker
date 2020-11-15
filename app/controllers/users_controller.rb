@@ -46,15 +46,26 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
-  # def index
-  #   @users = User.all
-  # end
-  #
-  # def show
-  #   if @user.nil?
-  #     head :not_found
-  #     return
-  #   end
+  def index
+    @users = User.all
+  end
+
+  def show
+    @user = User.find_by(id: params[:id])
+    if @user.nil?
+      head :not_found
+      return
+    end
+  end
+
+  private
+
+  def users_params
+    return params.require(:user).permit(:username)
+  end
+
+  # def find_user
+  #   @user = User.find_by(id: session[:user_id])
   # end
 
 end

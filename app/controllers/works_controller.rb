@@ -1,5 +1,7 @@
 class WorksController < ApplicationController
 
+  before_action :find_work, only: [:edit, :update, :destroy]
+
   def index
     @albums = Work.all.where(category: "album")
     @books = Work.all.where(category: "book")
@@ -34,7 +36,6 @@ class WorksController < ApplicationController
   end
 
   def edit
-    @work = Work.find_by(id: params[:id])
 
     if @work.nil?
       content_not_found
@@ -42,7 +43,6 @@ class WorksController < ApplicationController
   end
 
   def update
-    @work = Work.find_by(id: params[:id])
 
     if @work.nil?
       content_not_found
@@ -54,7 +54,6 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    @work = Work.find_by(id: params[:id])
 
     if @work
       @work.destroy
@@ -90,5 +89,9 @@ class WorksController < ApplicationController
 
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+  end
+
+  def find_work
+    @work = Work.find_by(id: params[:id])
   end
 end

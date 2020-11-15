@@ -13,6 +13,15 @@ class VotesController < ApplicationController
     @vote = Vote.new(user_id: session[:user_id], work_id: params[:id])
     if @vote.save
       flash[:success] = "Successfully upvoted!"
+
+      if @vote.work.votes == nil
+        @vote.work.votes = 0
+      else
+        @vote.work.votes += 1
+      end
+
+      @vote.work.save
+
       redirect_to work_path(@vote.work_id)
       return
     else
@@ -23,8 +32,8 @@ class VotesController < ApplicationController
 
   def require_login
     if current_user.nil?
-      flash[:error] = "A problem occurred: You must log in to do that"
-      redirect_to work_path(params[:id])
+      flash.now[:error] = "A problem occurred: You must log in to do that"
+      return
     end
   end
 

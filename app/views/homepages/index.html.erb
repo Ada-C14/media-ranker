@@ -19,7 +19,7 @@
         Top Movies
       </h2>
       <ul class="list-group top-ten__list">
-        <% @movies.first(10).each do |movie| %>
+        <% @movies.each do |movie| %>
           <li class="list-group-item">
             <h4>
               <%= link_to movie.title, work_path(movie) %>
@@ -37,7 +37,7 @@
         Top Books
       </h2>
       <ul class="list-group top-ten__list">
-        <% @books.sample(10).each do |book| %>
+        <% @books.each do |book| %>
           <li class="list-group-item">
             <h4>
               <%= link_to book.title, work_path(book) %>
@@ -55,7 +55,7 @@
         Top Albums
       </h2>
       <ul class="list-group top-ten__list">
-        <% @albums.sample(10).each do |album| %>
+        <% @albums.each do |album| %>
           <li class="list-group-item">
             <h4>
               <%= link_to album.title, work_path(album) %>

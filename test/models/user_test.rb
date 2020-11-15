@@ -8,7 +8,7 @@ describe User do
         }
     )
   end
-  
+
   it "has the required field" do
     @user.save
     user = User.find_by(username: "Mona")

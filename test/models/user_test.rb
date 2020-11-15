@@ -2,21 +2,16 @@ require "test_helper"
 
 describe User do
 
-  let (:user) {
-    User.create(username: 'annakim')
-  }
-
   it 'can be instantiated with the required fields' do
-    expect(user.valid?).must_equal true
-
     user = User.first
+    expect(user.valid?).must_equal true
     expect(user).must_respond_to :username
   end
 
   describe 'relationships' do
     it 'can have many votes' do
-      user
-
+      # user = users(:annakim)
+      # expect(user.votes.count).must_equal 2
     end
 
     it 'can have many works through votes' do
@@ -26,14 +21,14 @@ describe User do
 
   describe 'validations' do
     it 'must have a username' do
+      user = User.first
       user.username = nil
       expect(user.valid?).must_equal false
       expect(user.errors.messages).must_include :username
     end
 
     it 'must have a unique username' do
-      user
-      user2 = User.create(username: 'annakim')
+      user2 = User.create(username: 'goybean')
 
       expect(user2.valid?).must_equal false
       expect(user2.errors.messages).must_include :username

@@ -21,11 +21,23 @@ class UsersController < ApplicationController
     name = params[:user][:name]
     user = User.find_by(name: name)
 
+    if user
+      session[:user_id] = user.id
+      flash[:success] = "Welcome back, #{name}."
+    else
+      user = User.new(name: name)
+      user.save
+      session[:user_id] = user.id
+      flash[:success] = "Successfully logged in as #{name}."
+    end
+
+    redirect_to root_path
   end
 
   def logout
-
+    session[:user_id] = nil
+    flash[:warning] = "Successfully logged out."
+    redirect_to root_path
   end
-
 
 end

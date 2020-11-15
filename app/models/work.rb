@@ -7,7 +7,7 @@ class Work < ApplicationRecord
   validates :title, presence: true
   validates :title, uniqueness: { scope: :category, message: "has already been taken"}
 
-  CATEGORY = ["album", "movie", "book"]
+  CATEGORIES = ["album", "movie", "book"]
 
   def self.spotlight
     if self.count == 0
@@ -29,15 +29,15 @@ class Work < ApplicationRecord
     return nil if self.count == 0
     category_subset = self.where(category: media)
     if category_subset.count > 20
-      return category_subset.max_by(10) { |x| x.votes.count}
+      return category_subset.left_joins(:votes).group(:id).order(Arel.sql('COUNT(votes.id) DESC, title')).first(10)
     else
-      return category_subset.max_by(category_subset.count / 2) { |x| x.votes.count}
+      return category_subset.left_joins(:votes).group(:id).order(Arel.sql('COUNT(votes.id) DESC, title')).first(category_subset.length / 2)
     end
   end
 
   def self.category_desc_by_vote_count(media)
     return nil if self.count == 0
     category_subset = self.where(category: media)
-    return category_subset.max_by(category_subset.length) { |work| work.votes.count }
+    return category_subset.left_joins(:votes).group(:id).order(Arel.sql('COUNT(votes.id) DESC, title'))
   end
 end

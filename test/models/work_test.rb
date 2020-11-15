@@ -12,7 +12,6 @@ describe Work do
   it "will have the required fields" do
     new_work.save
     work = Work.first
-    puts work.title
     fields = [:category, :title, :creator, :publication_year, :description]
 
     fields.each do |field|
@@ -68,22 +67,26 @@ describe Work do
 
     #custom methods => top_ten
     describe "top_ten method" do
+      before do
+        @top_ten = Work.top_ten("album")
+      end
+
       it 'returns 10 items when the list of works is greater than 20' do
         30.times do
           work = Work.create(category: "movie", title: "s", creator: "r", publication_year: "1990", description: "u")
         end
-        top_ten = Work.top_ten("album")
-        expect(top_ten.length).must_equal 10
+        @top_10 = Work.top_ten("album")
+        expect(@top_10.length).must_equal 10
       end
 
       it 'returns a list of length Work.count / 2, when Work.count < 10' do
-        top_10 = Work.top_ten("album")
-        expect(top_10.length).must_equal 2
+        @top_10 = Work.top_ten("album")
+        expect(@top_10.length).must_equal 2
       end
 
       it 'returns a list sorted by vote count' do
-        top_10 = Work.top_ten("album")
-        assert_operator top_10.first.votes.count, :>, top_10.last.votes.count
+        @top_10 = Work.top_ten("album")
+        assert_operator @top_10.first.votes.count, :>, @top_10.last.votes.count
       end
 
       it 'returns works with a tied number of votes in alphabetical order by title' do
@@ -116,8 +119,9 @@ describe Work do
       end
 
       it 'returns a list of all works in a given category ordered by vote count' do
-        expect(@best_albums.length).must_equal 6
+        expect(@best_albums.length).must_equal 4
         expect(@best_albums[0].title).must_equal "OK Computer"
+        expect(@best_albums[-1].title).must_equal "Amnesiac"
       end
 
       it 'orders by vote count, and breaks ties by alphabetizing by title' do
@@ -132,7 +136,7 @@ describe Work do
       it 'returns nil if Work.count = 0' do
         Vote.destroy_all
         Work.destroy_all
-        Work::CATEGORY.each do |work|
+        Work::CATEGORIES.each do |work|
           assert_nil(Work.category_desc_by_vote_count("work"))
         end
       end

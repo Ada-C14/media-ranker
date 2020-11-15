@@ -2,15 +2,17 @@
 <table class="table">
   <thead>
   <tr>
-    <th>Username</th>
-    <th>Joined</th>
+    <th> Username </th>
+    <th> Votes </th>
+    <th> Joined </th>
   </tr>
   </thead>
   <tbody>
   <% @users.each do |user| %>
     <tr>
-      <td><%= link_to user.username, user_path(user.id) %></td>
-      <td><%= readable_date(user.created_at) %></td>
+      <td> <%= link_to user.username, user_path(user.id) %> </td>
+      <td> <%= user.votes.count %> </td>
+      <td> <%= readable_date(user.created_at) %> </td>
     </tr>
   <% end %>
   </tbody>

@@ -4,7 +4,14 @@ class WorksController < ApplicationController
   end
 
   def show
-    @work = Work.find(params[:id])
+    work_id = params[:id]
+    @work = Work.find_by(id: work_id)
+
+    if @work.nil?
+      flash[:warning] = "Invalid Media."
+      redirect_to works_path
+      return
+    end
   end
 
   def new
@@ -30,7 +37,7 @@ class WorksController < ApplicationController
   end
 
   def update
-    @work = Work.find(params[id])
+    @work = Work.find_by(params[id])
     if @work.update(work_params)
       redirect_to work_path(@work.id)
       return
@@ -55,7 +62,7 @@ class WorksController < ApplicationController
       redirect_to works_path
       return
     else
-      flash[:warning] = "Cannot delete media."
+      flash[:warning] = "Cannot delete Media."
       redirect_to works_path
     end
   end

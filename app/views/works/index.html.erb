@@ -1,10 +1,10 @@
 <td><%= button_to "Add New Work", new_work_path, method: :get %></td>
 
 <h3>Books</h3>
-<%= render partial: "table", locals: { variable: @books } %>
+<%= render partial: "table", locals: { media: @books } %>
 
 <h3>Movies</h3>
-<%= render partial: "table", locals: { variable: @movies } %>
+<%= render partial: "table", locals: { media: @movies } %>
 
 <h3>Albums</h3>
-<%= render partial: "table", locals: { variable: @albums } %>
+<%= render partial: "table", locals: { media: @albums } %>

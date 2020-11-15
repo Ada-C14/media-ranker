@@ -1,0 +1,6 @@
+<span class="top_10">
+  <h4><strong><%= name %></strong></h4>
+    <% media.each do |work| %>
+      <p><strong><%= link_to work.title, work_path(work.id) %></strong> by <%= work.creator %> <br> <%= work.votes.count %> Votes </p>
+    <% end %>
+</span>

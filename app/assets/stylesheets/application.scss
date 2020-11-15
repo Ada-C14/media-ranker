@@ -16,3 +16,11 @@
 @import "bootstrap";
 
 @import "**/*";
+
+.flexbox {
+  display: flex;
+}
+
+.flexbox .top_10 {
+  flex: 1;
+}

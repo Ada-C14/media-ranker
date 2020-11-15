@@ -3,34 +3,9 @@ require "test_helper"
 describe Work do
   describe "validations" do
 
-    before do # should i put these into a .yml file?
-    @test_book = Work.new(
-        title: "test_book",
-        creator: "test_author",
-        description: "a good book",
-        category: "book",
-        published: 2020
-    )
-
-    @test_movie = Work.new(
-        title: "test movie",
-        creator: "test moviemaker",
-        description: "a good movie",
-        category: "movie",
-        published: 2020
-    )
-
-    @test_album = Work.new(
-        title: "test_album",
-        creator: "test_musician",
-        description: "a good album",
-        category: "album",
-        published: 2020
-    )
-    end
-
     it "is valid when all fields are filled" do
-      result = @test_book.valid?
+      work = Work.first
+      result = work.valid?
       expect(result).must_equal true
     end
 
@@ -47,17 +22,27 @@ describe Work do
       expect(result).must_equal false
     end
 
-    it "fails validation when any required text field is not present" do
-      @test_album.title = nil
-      result = @test_album.valid?
-      expect(result).must_equal false
+    it "must have a title" do
+      work = Work.first
 
-      @test_movie.creator = nil
-      result = @test_movie.valid?
+      work.title = nil
+      result = work.valid?
       expect(result).must_equal false
+    end
 
-      @test_book.description = nil
-      result = @test_book.valid?
+    it "must have a creator" do
+      work = Work.first
+
+      work.creator = nil
+      result = work.valid?
+      expect(result).must_equal false
+    end
+
+    it "must have a description" do
+      work = Work.first
+
+      work.description = nil
+      result = work.valid?
       expect(result).must_equal false
     end
 

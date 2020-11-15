@@ -4,6 +4,15 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def show
+    @user = find_by_id
+
+    if @user.nil?
+      head :not_found
+      return
+    end
+  end
+
   def login_form
     @user = User.new
   end
@@ -45,11 +54,17 @@ class UsersController < ApplicationController
 
   def current
     @user = User.find_by(id: session[:user_id])
+
     if @user.nil?
       flash[:error] = "You must be logged in to view this page"
-      redirect_to root_path
+      redirect_to login_path
       return
     end
+  end
+
+  def find_by_id
+    user_id = params[:id].to_i
+    user = User.find_by(id: user_id)
   end
 
   private

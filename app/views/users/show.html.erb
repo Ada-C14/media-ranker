@@ -1,4 +1,4 @@
-<h4><strong>Current User: </strong><%= @user.username %></h4>
+<h4><strong>User: </strong><%= @user.username %></h4>
 <p><%= @user.votes.count %> Votes</p>
 <p>Active since <%= @user.created_at.to_date %></p>
 
@@ -10,7 +10,6 @@
     <th>Published</th>
     <th>Category</th>
     <th>Voted On</th>
-    <th>Downvote</th>
   </tr>
   </thead>
 
@@ -20,9 +19,8 @@
       <td><%= link_to vote.work.title, work_path(vote.work.id) %></td>
       <td><%= vote.work.creator %></td>
       <td><%= vote.work.published %></td>
-      <td><%= vote.work.category.capitalize %></td>
+      <td><%= vote.work.category %></td>
       <td><%= vote.work.created_at.to_date %></td>
-      <td><%= button_to "Downvote", vote_path(vote.id), method: :delete %></td>
     </tr>
   <% end %>
   </tbody>

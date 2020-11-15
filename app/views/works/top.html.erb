@@ -1,16 +1,11 @@
 
 <% unless @spotlight.nil? %>
-  <h4><strong>Spotlight: </strong><%= @spotlight.title %></h4>
-  <p><%= "#{rand(10)} Votes - #{@spotlight.description}" %></p>
+  <h4><strong>Spotlight: </strong><%= link_to @spotlight.title, work_path(@spotlight.id) %> by <%= @spotlight.creator %> </h4>
+  <p><%= @spotlight.votes.count %> Votes - <%= @spotlight.description %></p>
 <% end %>
 
-<h3>Top Books</h3>
-<%= render partial: "table", locals: { variable: @top_books } %>
-
-
-<h3>Top Movies</h3>
-<%= render partial: "table", locals: { variable: @top_movies } %>
-
-
-<h3>Top Albums</h3>
-<%= render partial: "table", locals: { variable: @top_albums } %>
+<div class="flexbox">
+  <%= render partial: "top_list", locals: { media: @top_books, name: "Top Books" } %>
+  <%= render partial: "top_list", locals: { media: @top_movies, name: "Top Movies" } %>
+  <%= render partial: "top_list", locals: {media: @top_albums, name: "Top Albums" } %>
+</div>

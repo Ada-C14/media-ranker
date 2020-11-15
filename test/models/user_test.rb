@@ -1,7 +1,6 @@
 require "test_helper"
 
 describe User do
-
   it 'can be instantiated with the required fields' do
     user = User.first
     expect(user.valid?).must_equal true
@@ -49,15 +48,21 @@ describe User do
 
   describe 'custom methods' do
     it 'includes_work? returns true if user voted for work' do
-
+      user = User.first
+      expect(user.includes_work?(works(:ctrl).id)).must_equal true
     end
 
     it 'includes_work? returns false if user did not vote for work' do
-
+      user = User.first
+      expect(user.includes_work?(works(:no_dream).id)).must_equal false
     end
 
-    it 'sorted_votes_user_creation: will sort by vote count; then by created_at' do
-
+    it 'sort_users: will sort by vote count; then by created_at' do
+      sorted_users = User.sort_users
+      p sorted_users
+      expect(sorted_users[0].username).must_equal 'goybean'
+      expect(sorted_users[1].username).must_equal 'chlobofosho'
+      expect(sorted_users[2].username).must_equal 'annakim'
     end
   end
 end

@@ -16,7 +16,8 @@ class User < ApplicationRecord
     return false
   end
 
-  def self.sorted_votes_user_creation
-    User.all.sort_by { |user| [user.votes.count, user.created_at] }.reverse
+  def self.sort_users
+    # User.all.sort_by { |user| [user.votes.count, user.created_at] }.reverse
+    User.order('votes_count DESC, created_at')
   end
 end

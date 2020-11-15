@@ -21,14 +21,14 @@ class Work < ApplicationRecord
             }
 
   def self.media_spotlight
-    Work.all.sort_by { |work| work.votes.count }.reverse[0]
+    Work.order('votes_count DESC, created_at')[0].votes_count.blank? ? nil : Work.order('votes_count DESC, created_at')[0]
   end
 
   def self.top_ten(category)
-    Work.where(category: category).sort_by { |work| work.votes.count }.reverse[0..9]
+    Work.where(category: category).order('votes_count DESC, created_at')[0..9]
   end
 
   def self.sort_by_votes(category)
-    Work.where(category: category).sort_by { |work| work.votes.count }.reverse
+    Work.where(category: category).order('votes_count DESC, created_at')
   end
 end

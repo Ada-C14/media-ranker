@@ -215,7 +215,6 @@ describe Work do
           total_works += array.length
           array.each {|work| expect(work.category).must_equal cat.to_s.chop}
         end
-        puts work_hash
         expect(total_works).must_equal Work.all.count
       end
     end

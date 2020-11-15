@@ -6,8 +6,9 @@ class Work < ApplicationRecord
   # has_many :users, through: :votes -- which users voted for what?
 
   def self.spotlight
-    works = Work.all
-    works.max_by { |work| work.votes.length }
+    return nil if self.nil?
+    top_work = self.all
+    return top_work.max_by { |work| work.votes.count }
   end
 
   def self.top_ten(media)

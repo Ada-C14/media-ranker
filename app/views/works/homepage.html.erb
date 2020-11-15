@@ -1,23 +1,30 @@
-<body>
-<header>
-  <h2> Welcome to Media Ranker</h2>
-  <nav>
-    <ul>
-      <li><%= link_to "Add a New Media", new_work_path%></li>
-      <li><%= link_to "Return to Media List", works_path %></li>
+<!--<body>-->
+<!--<header>-->
+<!--  <h2> Welcome to Media Ranker</h2>-->
+<!--  <nav>-->
+<!--    <ul>-->
+<!--      <li><%#= link_to "Add a New Media", new_work_path%></li>-->
+<!--      <li><%#= link_to "Return to Media List", works_path %></li>-->
+      <%# if session[:user_id] %>
+<!--          <li><%#= link_to "Logout", logout_path, method: :post %></li>-->
+          <%#else %>
+<!--          <li><%#=link_to "Log in", login_path %></li>-->
+          <%#end %>
+<!--        </ul>-->
+<!--        </nav>-->
+<!--    </header>-->
 
-      <% if session[:user_id] %>
-          <li><%= link_to "Logout", logout_path, method: :post %></li>
-          <%else %>
-          <li><%=link_to "Log in", login_path %></li>
-          <%end %>
-        </ul>
-        </nav>
-    </header>
+<section class="spotlight">
+  <h2 class="spotlight__header"><span class="spotlight__header--prefix">Media Spotlight:</span> </h2>
+  <span> Title: <% feature =Work.spotlight %>
+    <%= link_to feature.title, work_path(feature.id), class: "spotlight__link-to" %> <br>Creator: <%= feature.created_by%>
+    <p class="spotlight__description"><%= feature.votes.count %> votes</p>
+</span>
 
+
+</section>
 
 <!--<p>-->
   <%#= spotlight. %>
 <!--</p>-->
 
-    </body>

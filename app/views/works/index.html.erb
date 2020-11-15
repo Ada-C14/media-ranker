@@ -1,14 +1,14 @@
 
-  <nav>
-    <%= button_to "View top media", root_path, method: :get %>
-    <%= button_to "View all media", works_path, method: :get %>
-    <%= button_to "Add new work", new_work_path, method: :get %>
-    <% if session[:user_id] %>
-      <%= button_to "Logout", logout_path, method: :post %>
-    <%else %>
-      <%=button_to "Log in", login_path, method: :get %>
-    <%end %>
-  </nav>
+<!--  <nav>-->
+    <%#= button_to "View top media", root_path, method: :get %>
+    <%#= button_to "View all media", works_path, method: :get %>
+    <%#= button_to "Add new work", new_work_path, method: :get %>
+    <%# if session[:user_id] %>
+      <%#= button_to "Logout", logout_path, method: :post %>
+    <%#else %>
+      <%#=button_to "Log in", login_path, method: :get %>
+    <%#end %>
+<!--  </nav>-->
 
   <h2>List of Works</h2>
 <section class= "Album">

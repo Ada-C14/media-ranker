@@ -1,7 +1,10 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  name: MyString
+user1:
+  username: Test User1
 
-two:
-  name: MyString
+user2:
+  username: Test User2
+
+user_not_found:
+  username:

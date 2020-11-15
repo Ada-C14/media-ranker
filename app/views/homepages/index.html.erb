@@ -6,7 +6,7 @@
       <%= link_to @work.title, work_path(@work.id), class: "spotlight__link-to" %> by <%= @work.creator %>
     </h2>
     <p class="spotlight__description">
-      <%= @work.votes.count%> - <%= @work.description%>
+      <%= @work.votes.count%> votes - <%= @work.description%>
     </p>
   </section>
 

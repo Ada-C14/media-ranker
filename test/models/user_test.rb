@@ -1,6 +1,10 @@
 require "test_helper"
 
 describe User do
+  before do
+    @user = users(:user1)
+  end
+
   let (:new_user) {
     User.new(username: "user")
   }
@@ -18,7 +22,14 @@ describe User do
   end
 
   describe "relations" do
+    it 'can have many Votes' do
+      work = works(:album)
 
+      work.votes.each do |vote|
+        expect(vote).must_be_instance_of Vote
+      end
+      expect(work.votes.count).must_equal 2
+    end
   end
 
   describe "validations" do
@@ -30,6 +41,11 @@ describe User do
       expect(new_user.valid?).must_equal false
       expect(new_user.errors.messages).must_include :username
       expect(new_user.errors.messages[:username]).must_equal ["can't be blank"]
+    end
+
+    it 'must have the required fields present' do
+      result = @user.valid?
+      expect(result).must_equal true
     end
   end
 end

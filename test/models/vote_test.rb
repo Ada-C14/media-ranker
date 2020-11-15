@@ -1,6 +1,10 @@
 require "test_helper"
 
 describe Vote do
+  before do
+    @vote = votes(:vote1)
+  end
+
   let (:new_user) {
     User.create(username: "user")
   }
@@ -27,9 +31,7 @@ describe Vote do
   end
 
   describe 'relations' do
-    before do
-      @vote = votes(:vote1)
-    end
+
     it 'belongs to one user' do
       expect(@vote.user).must_be_instance_of User
       expect(@vote.user).must_equal users(:user1)
@@ -43,9 +45,6 @@ describe Vote do
 
 
   describe 'validations' do
-    before do
-      @vote = votes(:vote1)
-    end
 
     it 'prevents multiple votes for a work by the same user' do
       vote3 = Vote.create(work_id: @vote.work_id, user_id: @vote.user_id)

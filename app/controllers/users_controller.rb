@@ -27,9 +27,9 @@ class UsersController < ApplicationController
         redirect_to root_path
         return
       end
-      flash[:welcome] = "Welcome #{@user.username}"
+      flash[:welcome] = "Welcome, #{@user.username}"
     else
-      flash[:welcome] = "Welcome back #{@user.username}"
+      flash[:welcome] = "Welcome back, #{@user.username}"
     end
 
     session[:user_id] = @user.id
@@ -41,10 +41,10 @@ class UsersController < ApplicationController
       @user = User.find_by(id: session[:user_id])
       unless @user.nil?
         session[:user_id] = nil
-        flash[:notice] = "Goodbye #{@user.username}"
+        flash[:notice] = "Goodbye, #{@user.username}"
       else
         session[:user_id] = nil
-        flash[:notice] = "Error Unknown user"
+        flash[:notice] = "Error: Unknown user"
       end
     else
       flash[:error] = "You must be logged in to log out"

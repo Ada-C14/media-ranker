@@ -22,5 +22,6 @@
   </tbody>
 </table>
 
+<%= button_to "Upvote", upvote_path(@work.id) %>
 <%= button_to "Edit", edit_work_path, method: :get %>
 <%= button_to "Delete", work_path, method: :delete, data: {confirm: "Are you sure you want to delete this #{@work.category}?" }%>

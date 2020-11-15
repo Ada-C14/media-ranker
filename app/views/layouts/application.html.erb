@@ -14,27 +14,28 @@
     <%= link_to "Media Ranker", root_path %>
   </h1>
 
-  <nav class="header">
+  <nav>
 
-    <ul class="header nav">
-      <li>
-        <%= link_to "View all media", works_path %>
-      </li>
-      <li>
-        <%= link_to "View top media", root_path %>
-      </li>
-      <li>
-        <%= link_to "Add a new work", new_work_path %>
-      </li>
-      <li>
-        <%= link_to "View all users", users_path %>
-      </li>
-    </ul>
+    <div>
+      <ul class="nav">
+        <li>
+          <%= link_to "View all media", works_path %>
+        </li>
+        <li>
+          <%= link_to "View top media", root_path %>
+        </li>
+        <li>
+          <%= link_to "Add a new work", new_work_path %>
+        </li>
+        <li>
+          <%= link_to "View all users", users_path %>
+        </li>
+      </ul>
+    </div>
 
-    <div class="header login">
+    <div class="login">
       <% if session[:user_id] %>
-        <%= link_to "Logged in as #{User.find_by(id: session[:user_id]).username}", current_user_path %>
-
+        <%= button_to "Hello, #{User.find_by(id: session[:user_id]).username}", current_user_path, method: :get %>
         <%= button_to "Logout", logout_path, method: :post %>
       <% else %>
         <%= button_to "Login", login_path, method: :get %>
@@ -45,9 +46,9 @@
 
   <section class="flash">
     <% flash.each do |name, message| %>
-      <strong class="<%=name%>"%>
+      <p class="flash"%>
         <%= message %>
-      </strong>
+      </p>
     <% end %>
   </section>
 
@@ -55,7 +56,7 @@
     <% if @work && @work.errors.any? %>
       <ul>
         <% @work.errors.each do |column, message| %>
-            <li><%= column %> <%= message %></li>
+          <li><%= column %> <%= message %></li>
         <% end %>
       </ul>
     <% end %>
@@ -64,6 +65,8 @@
 </header>
 
 <body>
-<%= yield %>
+<main>
+  <%= yield %>
+</main>
 </body>
 </html>

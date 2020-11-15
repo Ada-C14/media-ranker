@@ -5,8 +5,9 @@ class UsersController < ApplicationController
   end
 
   def show
-
+    @user = user.find_by(id: params[:user][:id].to_i)
   end
+
   def login_form
     @user = User.new
   end

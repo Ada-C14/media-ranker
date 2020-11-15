@@ -6,7 +6,6 @@ describe Work do
     @work = works(:dead_alive)
   end
 
-
   #have 9 works, see if it works with, 9, add one (no votes) , see if it is last
   describe 'relationships' do
     it 'can be added to a vote' do

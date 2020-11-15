@@ -1,4 +1,5 @@
 class WorksController < ApplicationController
+  skip_before_action :find_work, only: [:new]
   def home
     @works = Work.all
     @all_works = Work.list_all_works
@@ -34,9 +35,6 @@ class WorksController < ApplicationController
     )
   end
 
-  def find_work
-    @work = Work.find_by(id: params[:id])
-  end
 
   def find_work_votes
     @work_votes = Work.find_by(id: params[:id]).votes

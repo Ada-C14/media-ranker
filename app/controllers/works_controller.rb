@@ -3,19 +3,30 @@ class WorksController < ApplicationController
   # Helper Methods
   def not_found_error_notice
     flash[:notice] = "That media does not exist."
-    redirect_to works_path
   end
 
   def not_saved_error_notice
-    flash.now[:notice] = "Something happened. Media not added. Please try again."
+    flash.now[:notice] = "A problem occurred: Could not create #{@work.category} "
   end
 
   def saved_notice
-    flash[:success] = "Media added successfully"
+    flash[:success] = "Successfully created #{@work.category}"
   end
 
-  def already_voted
-    flash[:notice] = "You already voted to this media"
+  def already_voted_notice
+    flash[:notice] = "user: has already voted for this work"
+  end
+
+  def successful_upvote_notice
+    flash[:success] = "Successfully upvoted!"
+  end
+
+  def update_work_notice
+    flash[:success] = "Successfully updated #{@work.category}"
+  end
+
+  def destroyed_notice
+    flash[:success] = "Successfully destroyed #{@work.category}"
   end
 
   def work_params
@@ -76,11 +87,12 @@ class WorksController < ApplicationController
       return
     elsif
       @work.update(work_params)
+      update_work_notice
       redirect_to work_path
       return
     else
       not_saved_error_notice
-      render edit
+      render :edit
       return
     end
   end
@@ -93,7 +105,8 @@ class WorksController < ApplicationController
       return
     else
       @work.destroy
-      redirect_to work_path
+      destroyed_notice
+      redirect_to works_path
       return
     end
   end
@@ -112,11 +125,12 @@ class WorksController < ApplicationController
       return
     end
     if Vote.find_by(user:@user, work:@work)
-      already_voted
+      already_voted_notice
     else
       Vote.create!(user:@user, work:@work)
+      successful_upvote_notice
     end
 
-    redirect_to works_path
+    redirect_to work_path
   end
 end

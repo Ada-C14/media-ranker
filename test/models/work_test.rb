@@ -136,7 +136,7 @@ describe Work do
       expect((Work.top_ten(category: "album")).last.title).must_equal "Holiday Choice"
     end
   end
-  describe 'top ten' do
+  describe 'total list' do
     it 'will rank the work from most votes to least votes' do
       # works = Work.all
       expect((Work.total_lists(category: "album")).first.title).must_equal "Kreb-Full-o Been"

@@ -49,6 +49,8 @@ class WorksController < ApplicationController
       head :not_found
       return
     elsif  @work.update(work_params)
+      flash[:success] = "This work was updated successfully"
+      #added this ^^
       redirect_to work_path
       return
     else
@@ -76,13 +78,16 @@ class WorksController < ApplicationController
       flash.now[:error] = "Must be logged in to vote."
       render :show
       return
+    elsif @work.votes.any? { |vote| vote.user_id == @user.id}
+      flash.now[:error] = "Cannot vote for the same work twice."
+      render :show
+      return
     end
 
     if @work.nil?
       redirect_to(works_path)
     else
       Vote.create!(work: @work, user: @user)
-
       # @work.votes.create!(user: @user)
     render :show
     end

@@ -13,9 +13,9 @@
     <%= link_to "Edit", edit_work_path(@work) %> |
     <%= link_to " Delete", work_path(@work), method: :delete, data: {confirm: "Are you sure you want to delete?"}%>
     <td><%= pluralize(@work.votes.count, "vote") %></td>
-    <% unless (@user != nil) && @work.votes.any? { |vote| vote.user_id == @user.id} %>
+    <%# unless (@user != nil) && @work.votes.any? { |vote| vote.user_id == @user.id} %>
     <td><%= button_to 'Upvote', upvote_work_path(@work), method: :post %></td>
-    <% end %>
+    <%# end %>
 
 
   <p> <strong> Users that voted for this work </strong></p>

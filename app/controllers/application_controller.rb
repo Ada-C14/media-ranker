@@ -19,8 +19,8 @@ class ApplicationController < ActionController::Base
 
   def error_flash(failed_action,errors = nil)
     error_flsh = Hash.new
-    error_flsh[:failed_action] = failed_action
-    error_flsh[:errors] = errors ? errors.messages.map{|error_type, msg| "#{error_type.to_s.gsub('_', ' ')}: #{msg.join(" ")}" unless msg.empty?} : []
+    error_flsh["failed_action"] = failed_action
+    error_flsh["errors"] = errors ? errors.messages.map{|error_type, msg| "#{error_type.to_s.gsub('_', ' ')}: #{msg.join(" ")}" unless msg.empty?} : []
     error_flsh
   end
 end

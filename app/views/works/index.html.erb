@@ -18,6 +18,7 @@
     <table class= "table">
       <thead>
       <tr>
+        <th> Votes: </th>
         <th> Title: </th>
         <th> Creator: </th>
         <th> Publication: </th>
@@ -27,6 +28,7 @@
       <tbody>
       <% @albums.each do |album| %>
         <tr>
+          <td><%= album.votes.length %></td>
           <td><%= link_to album.title, work_path(album) %></td>
           <td><%= album.created_by %></td>
           <td><%= album.published %></td>
@@ -46,6 +48,7 @@
     <table class= "table">
       <thead>
       <tr>
+        <th> Votes: </th>
         <th> Title: </th>
         <th> Creator: </th>
         <th> Publication: </th>
@@ -55,6 +58,7 @@
       <tbody>
       <% @books.each do |book| %>
         <tr>
+          <td><%= book.votes.length %></td>
           <td><%= link_to book.title, work_path(book) %></td>
           <td><%= book.created_by %></td>
           <td><%= book.published %></td>
@@ -74,6 +78,7 @@
     <table class= "table">
       <thead>
       <tr>
+        <th> Votes: </th>
         <th> Title: </th>
         <th> Creator: </th>
         <th> Publication: </th>
@@ -83,6 +88,7 @@
       <tbody>
       <% @movies.each do |movie| %>
         <tr>
+          <td><%= movie.votes.length %></td>
           <td><%= link_to movie.title, work_path(movie) %></td>
           <td><%= movie.created_by %></td>
           <td><%= movie.published %></td>

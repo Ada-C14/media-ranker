@@ -1,38 +1,38 @@
 <section class="homepage">
   <article class="hp-spotlight">  
-    <h2>Media Spotlight: a popular work today (voted the most)</h2>
+    <h2>Media Spotlight: <%= link_to Work.top_ten_helper(Work.spotlight[0]).title, work_path(Work.top_ten_helper(Work.spotlight[0])) %> by <%= Work.top_ten_helper(Work.spotlight[0]).creator %></h2>
     <div>
-      <p>its votes</p>
+      <p><%= Work.spotlight[1] %> votes</p>
     </div>
     <div>
-      <p>its description</p>
+      <p><%= Work.top_ten_helper(Work.spotlight[0]).description %></p>
     </div>
   </article>
   <article class="hp-top10">
     <div class="hp-movie">
       <h2>Top Movies</h2>
       <div>
-        <% @works.where(category: "movie").sample(10).each do |work|  %>
-            <h4><%= link_to work.title, work_path(work) %> <%= "by #{work.creator}" %></h4>
-            <p># votes</p>
+        <% Work.top_ten("movie").each do |work|  %>
+            <h4><%= link_to Work.top_ten_helper(work[0]).title, work_path(Work.top_ten_helper(work[0])) %> <%= "by #{ Work.top_ten_helper(work[0]).creator }" %></h4>
+            <p><%= work[1] %> votes</p>
         <% end %>
       </div>  
     </div>
     <div class="hp-book">
       <h2>Top Books</h2>
       <div>
-        <% @works.where(category: "book").sample(10).each do |work|  %>
-            <h4><%= link_to work.title, work_path(work) %> <%= "by #{work.creator}" %></h4>
-            <p># votes</p>
+        <% Work.top_ten("book").each do |work|  %>
+          <h4><%= link_to Work.top_ten_helper(work[0]).title, work_path(Work.top_ten_helper(work[0])) %> <%= "by #{ Work.top_ten_helper(work[0]).creator }" %></h4>
+          <p><%= work[1] %> votes</p>
         <% end %>
       </div> 
     </div>
     <div class="hp-album">
       <h2>Top Albums</h2>
       <div>
-        <% @works.where(category: "album").sample(10).each do |work|  %>
-            <h4><%= link_to work.title, work_path(work) %> <%= "by #{work.creator}" %></h4>
-            <p># votes</p>
+        <% Work.top_ten("album").each do |work|  %>
+          <h4><%= link_to Work.top_ten_helper(work[0]).title, work_path(Work.top_ten_helper(work[0])) %> <%= "by #{ Work.top_ten_helper(work[0]).creator }" %></h4>
+          <p><%= work[1] %> votes</p>
         <% end %>
       </div> 
     </div>

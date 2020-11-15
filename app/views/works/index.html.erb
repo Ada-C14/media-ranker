@@ -11,13 +11,13 @@
         <th>Published</th>
         <th>Upvote</th>
       </tr>  
-      <% @works.where(category: "album").each do |work|  %>
+      <% Work.index_order("album").each do |work|  %>
         <tr>
-          <th><%= work.total_votes %></th>
-          <th><%= link_to work.title, work_path(work) %></th>
-          <th><%= work.creator %></th>
-          <th><%= work.publication_year %></th>
-          <th><%= button_to "Upvote", upvote_work_path(work), class: "btn btn-info" %></th>
+          <th><%= work[1] %></th>
+          <th><%= link_to Work.top_ten_helper(work[0]).title, work_path(Work.top_ten_helper(work[0])) %></th>
+          <th><%= Work.top_ten_helper(work[0]).creator %></th>
+          <th><%= Work.top_ten_helper(work[0]).publication_year %></th>
+          <th><%= button_to "Upvote", upvote_work_path(Work.top_ten_helper(work[0])), class: "btn btn-info" %></th>
         </tr>  
       <% end %>
     </table>  
@@ -32,13 +32,13 @@
         <th>Published</th>
         <th>Upvote</th>
       </tr>  
-      <% @works.where(category: "book").each do |work|  %>
+      <% Work.index_order("book").each do |work|  %>
         <tr>
-          <th><%= work.total_votes %></th>
-          <th><%= link_to work.title, work_path(work) %></th>
-          <th><%= work.creator %></th>
-          <th><%= work.publication_year %></th>
-          <th><%= button_to "Upvote", upvote_work_path(work), class: "btn btn-info" %></th>
+          <th><%= work[1] %></th>
+          <th><%= link_to Work.top_ten_helper(work[0]).title, work_path(Work.top_ten_helper(work[0])) %></th>
+          <th><%= Work.top_ten_helper(work[0]).creator %></th>
+          <th><%= Work.top_ten_helper(work[0]).publication_year %></th>
+          <th><%= button_to "Upvote", upvote_work_path(Work.top_ten_helper(work[0])), class: "btn btn-info" %></th>
         </tr>  
       <% end %>
     </table>  
@@ -53,13 +53,13 @@
         <th>Published</th>
         <th>Upvote</th>
       </tr>  
-      <% @works.where(category: "movie").each do |work|  %>
+      <% Work.index_order("movie").each do |work|  %>
         <tr>
-          <th><%= work.total_votes %></th>
-          <th><%= link_to work.title, work_path(work) %></th>
-          <th><%= work.creator %></th>
-          <th><%= work.publication_year %></th>
-          <th><%= button_to "Upvote", upvote_work_path(work), class: "btn btn-info" %></th>
+          <th><%= work[1] %></th>
+          <th><%= link_to Work.top_ten_helper(work[0]).title, work_path(Work.top_ten_helper(work[0])) %></th>
+          <th><%= Work.top_ten_helper(work[0]).creator %></th>
+          <th><%= Work.top_ten_helper(work[0]).publication_year %></th>
+          <th><%= button_to "Upvote", upvote_work_path(Work.top_ten_helper(work[0])), class: "btn btn-info" %></th>
         </tr>  
       <% end %>
     </table>  

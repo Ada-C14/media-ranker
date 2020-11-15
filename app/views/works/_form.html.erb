@@ -1,0 +1,38 @@
+<% if @work.errors.any? %>
+  <ul>
+    <% @work.errors.each do |column, message| %>
+      <li>
+        <strong><%= column.capitalize %></strong> <%= message %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @work do |f|%>
+  <p>Please provide the following information to add your new media to our database:</p>
+  <div>
+    <%= f.label :category %>
+    <%= f.select :category, options_for_select([['album'], ['book'], ['movie']]) %>
+  </div>
+
+  <div>
+    <%= f.label :title %>
+    <%= f.text_area :title %>
+  </div>
+
+  <div>
+    <%= f.label :creator %>
+    <%= f.text_area :creator %>
+  </div>
+
+  <div>
+    <%= f.label :publication_year %>
+    <%= f.text_area :publication_year %>
+  </div>
+
+  <div>
+    <%= f.label :description %>
+    <%= f.text_area :description %>
+  </div>
+  <%= f.submit "#{action_name}", class: "task-button" %>
+<% end %>

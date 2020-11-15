@@ -8,7 +8,7 @@ describe Vote do
     # Arrange
     vote = Vote.first
     # Assert
-    expect(Vote.count).must_equal 1
+    expect(Vote.count).must_equal 2
     expect(vote).must_respond_to :user_id
     expect(vote).must_respond_to :work_id
   end

@@ -46,14 +46,47 @@ class WorksController < ApplicationController
       return
     else
       @work.destroy 
+      flash.now[:notice] = "You have successfully deleted #{work.title}"
       redirect_to works_path
       return
     end
   end
 
-  def 
+  # Custom method
+  def upvote
+    if session[:user_id]
+      user = current_user
+      @vote = Vote.new(user_id: user.id, work_id: @work.id)
+      if @vote.save
+        flash[:success] = "Your vote for #{@work.title} was successfully recorded."
+        redirect_to works_path
+        return
+      else 
+        flash[:danger] = "Voting for the same work is currently disallowed" 
+        redirect_to works_path
+        return
+      end
+    elsif session[:user_id].nil?
+      flash[:danger] = "User must log in to vote"
+      redirect_to works_path
+    end
+
+  end
+  
   private
-    
+  
+    # Share common setups/constraints between actions
+    def set_work
+      @work = Work.find(params[:id])
+
+      if @work.nil?
+        head :not_found
+        return
+      end
+
+    end
+
+    # Only permit trusted parameters to be passed in. 
     def work_params
       return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
     end

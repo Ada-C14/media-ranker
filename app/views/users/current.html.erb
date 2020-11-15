@@ -1,6 +1,6 @@
 <h2>You are currently logged in as <%= @current_user.username %></h2>
 <h2> The works you've voted for are:</h2>
-<ul> <% user.works_voted_for.map {|w| w.title }.each do |w|%>
+<ul> <% @current_user.works.map {|w| w.title }.each do |w|%>
 <li><%= w %></li>
 <% end %>
 </ul>

@@ -70,15 +70,15 @@ class WorksController < ApplicationController
   end
 
   def vote
-    work = Work.find_by(id: params[:id])
-    user = User.find_by(id: session[:user_id])
-    if work.nil?
+    @work = Work.find_by(id: params[:id])
+    @user = User.find_by(id: session[:user_id])
+    if @work.nil?
       flash[:error] = "Not a valid work"
     end
-    if user.nil?
+    if @user.nil?
       flash[:error] = "You must be logged in to vote"
     end
-    vote = Vote.new(params[user_id: user, work_id: work])
+    vote = Vote.new(params[user_id: @user, work_id: @work])
     if vote.save
       flash[:success] = "Your vote was counted"
       redirect_to work_path

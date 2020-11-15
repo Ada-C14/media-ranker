@@ -4,12 +4,6 @@ rare:
   creator: Selena Gomez
   publication_year: 2020
   description: An album about Justin Bieber
-chromatica:
-  category: album
-  title: Chromatica
-  creator: Lady Gaga
-  publication_year: 2020
-  description: Rain on Me
 folklore:
   category: album
   title: Folklore
@@ -46,3 +40,21 @@ it:
   creator: Stephen King
   publication_year: 1985
   description: A book about scary clowns
+us:
+  category: movie
+  title: Us
+  creator: Jordan Peele
+  publication_year: 2019
+  description: Lupita Nyong'o
+getout:
+  category: movie
+  title: Get Out
+  creator: Jordan Peele
+  publication_year: 2017
+  description: A movie about a crazy family
+keanu:
+  category: movie
+  title: Keanu
+  creator: Peter Atencio
+  publication_year: 2016
+  description: A story about a badass cat

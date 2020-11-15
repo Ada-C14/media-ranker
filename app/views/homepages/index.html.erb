@@ -6,7 +6,7 @@
       <h2> <span>Media Spotlight: </span><%= link_to @spotlight.title, work_path(@spotlight) %> by  <%= @spotlight.creator %>
       </h2>
       <p>
-        <%= @spotlight.description %>
+        <%= @spotlight.votes.count %> votes - <%= @spotlight.description %>
       </p>
     <% end %>
   </section>

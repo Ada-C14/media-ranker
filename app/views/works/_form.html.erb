@@ -1,9 +1,18 @@
+<main><% if @work.errors.any? %>
+  <ul class="errors">
+    <% @work.errors.each do |column, message| %>
+      <li>
+        <strong><%= column.capitalize %></strong> <%= message %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
 
 <section>
   <%= form_with model: @work do |f|  %>
     <div class="form-group">
       <%= f.label :category %>
-      <%= f.select :category, options_for_select(Work.all.map(&:category).uniq) %>
+      <%= f.select :category, ["album", "book", "movie"] %>
     </div>
 
     <div class="form-group">
@@ -31,3 +40,4 @@
     </div>
     <% end %>
 </section>
+</main>

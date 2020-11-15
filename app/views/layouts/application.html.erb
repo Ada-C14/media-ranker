@@ -25,7 +25,7 @@
 
         <ul class="nav app-header__user-nav-container">
         <li class="nav-item app-header__nav_item"> <% if session[:user_id] %>
-           <%= link_to "Logged in as #{ User.find_by(id: session[:user_id]).username }", current_user_path(session[:user_id]), class: "button"%></li>
+           <%= link_to "Logged in as #{ User.find_by(id: session[:user_id]).username }", user_path(session[:user_id]), class: "button"%></li>
             <li class="nav-item app-header__nav_item"> <%= link_to "Log Out", logout_path, method: :post, class: "button"%>
           <% else %>
             <%= link_to "Log In", login_path, class: "button"%>
@@ -36,22 +36,13 @@
     <main>
 
       <% if flash[:notice] %>
-        <div class="alert alert-warning"><%= flash[:notice] %>
-          <% if @work.errors.any? %>
-            <ul class="errors">
-              <% @work.errors.each do |column, message| %>
-                <li>
-                  <strong><%= column.capitalize %></strong> <%= message %>
-                </li>
-              <% end %>
-            </ul>
-          <% end %>
-        </div>
+        <div class="alert alert-warning"><%= flash[:notice] %></div>
       <% end %>
 
       <% if flash[:success] %>
         <div class="alert alert-success"><%= flash[:success] %></div>
       <% end %>
+
       <%= yield %>
     </main>
   </body>

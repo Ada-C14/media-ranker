@@ -15,33 +15,8 @@ class Work < ApplicationRecord
     return users
   end
 
-  def self.top_ten
-    # array of the three category words
-    # each through the array
-    # for each category
-    # find the top ten for that category
-    # (what if the ten-cut off point comes in the middle of a range of
-    # same number votes?)
-    # like if nine, ten, and eleven all have one vote
-    # which one gets left out?
-    # (by spotlight logic, that would be the one added to the db most recently)
-    # how applicable is that?
-    #
-    @top_albums = Work.where(category: "album").sample(10)
-    @top_books = Work.where(category: "book").sample(10)
-    @top_movies = Work.where(category: "movie").sample(10)
-
-
-    chart_toppers = {
-        albums: @top_albums,
-        books: @top_books,
-        movies: @top_movies
-    }
-
-    return chart_toppers
-    # TODO this will be replaced with the top ten vote getters
-    # in each category
-    # once votes are things that exist
+  def self.top_ten(category)
+    return Work.where(category: category).order(votes_count: :desc, created_at: :asc).first(10)
   end
 
   def self.spotlight

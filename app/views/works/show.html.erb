@@ -21,15 +21,17 @@
       </tr>
       </thead>
       <tbody>
-      <% @work.votes.each do|vote| %>
-        <tr>
-          <td width=50%>
-            <%= link_to vote.user.username, user_path(vote.user_id) %>
-          </td>
-          <td width="1000">
-            <%= vote.created_at.strftime('%b %d, %Y') %>
-          </td>
-        </tr>
+      <% if @work.votes.any? %>
+        <% @work.votes.each do|vote| %>
+          <tr>
+            <td width=50%>
+              <%= link_to vote.user.username, user_path(vote.user_id) %>
+            </td>
+            <td width="1000">
+              <%= vote.created_at.strftime('%b %d, %Y') %>
+            </td>
+          </tr>
+        <% end %>
       <% end %>
       </tbody>
   </section>

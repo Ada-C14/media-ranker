@@ -70,10 +70,16 @@ class WorksController < ApplicationController
       return
     end
 
-    @work.destroy
+    @work.votes.each { |vote| vote.destroy}
 
-    redirect_to works_path
-    return
+    if @work.destroy
+      redirect_to works_path
+      return
+    else #if .destroy fails
+      redirect_to work_path(@work.id)
+      return
+    end
+
   end
 
   private

@@ -46,23 +46,13 @@ class Work < ApplicationRecord
 
   def self.spotlight
     return nil if Work.all.empty?
+
     if Vote.all.empty?
       @spotlight = Work.order(:created_at).first
+    else
+      @spotlight = Work.order(votes_count: :desc, created_at: :asc).first
     end
 
-    # sort works by # of votes - what's highest #?
-    # find all works with that # of votes
-    # if one, return it
-    # if more than one, sort by earliest created_at
-    # return that one
-    #
-    # alternatively, look into adding a cache counter
-    # that feels more...programmy, pro-level
-
-    # this is the original placeholder method
-    # works = Work.all
-    # @spotlight = works.sample
-    # TODO this will be replaced with the top vote getter
-    # once votes are things that exist
+    return @spotlight
   end
 end

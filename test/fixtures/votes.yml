@@ -1,37 +1,62 @@
 vote_1:
-  id: 1
-  work_id: 1
-  user_id: 1
+  work: hp1
+  user: harry
 vote_2:
-  id: 2
-  work_id: 1
-  user_id: 2
+  work: hp2
+  user: john
 vote_3:
-  id: 3
-  work_id: 1
-  user_id: 3
+  work: hp1
+  user: justin
 vote_4:
-  id: 4
-  work_id: 2
-  user_id: 1
+  work: hp2
+  user: harry
 
 vote_5:
-  id: 5
-  work_id: 4
-  user_id: 4
+  work: hp2
+  user: mark
 vote_6:
-  id: 6
-  work_id: 12
-  user_id: 8
+  work: mulan
+  user: julia
 vote_7:
-  id: 7
-  work_id: 12
-  user_id: 7
+  work: mulan
+  user: nikki
 vote_8:
-  id: 8
-  work_id: 13
-  user_id: 6
+  work: up
+  user: quinn
 vote_9:
-  id: 9
-  work_id: 14
-  user_id: 5
+  work: hp2
+  user: julia
+vote_10:
+  work: hp3
+  user: julia
+vote_11:
+  work: hp4
+  user: julia
+vote_12:
+  work: hp5
+  user: julia
+vote_13:
+  work: hp6
+  user: julia
+vote_14:
+  work: hp7
+  user: julia
+vote_15:
+  work: sandman
+  user: julia
+vote_16:
+  work: murderbot1
+  user: julia
+
+vote_17:
+  work: DFZ1
+  user: julia
+vote_18:
+  work: DFZ2
+  user: julia
+vote_19:
+  work: moana
+  user: julia
+vote_20:
+  work: dragon
+  user: julia

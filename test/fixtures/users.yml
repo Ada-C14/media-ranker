@@ -1,24 +1,16 @@
 harry:
-  id: 1
   username: Harry
 john:
-  id: 2
   username: John
 justin:
-  id: 3
   username: Justin
 mark:
-  id: 4
   username: Mark
 julia:
-  id: 5
   username: Julia
 nikki:
-  id: 6
   username: Nikki
 quinn:
-  id: 7
   username: Quinn
 erin:
-  id: 8
   username: Erin

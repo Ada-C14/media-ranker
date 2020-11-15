@@ -6,6 +6,12 @@ describe WorksController do
       get works_path
       must_respond_with :success
     end
+
+    it "can get index even if no works" do
+      Work.all.each {|work| work.delete}
+      get works_path
+      must_respond_with :success
+    end
   end
 
   describe "show" do

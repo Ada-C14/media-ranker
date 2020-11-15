@@ -7,6 +7,12 @@ describe UsersController do
       get users_path
       must_respond_with :success
     end
+
+    it "can get index even when there are no users" do
+      User.all.each {|work| work.delete}
+      get users_path
+      must_respond_with :success
+    end
   end
 
   describe "show" do

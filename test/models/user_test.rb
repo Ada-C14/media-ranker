@@ -22,7 +22,7 @@ describe User do
   end
 
   describe "custom methods" do
-    describe "format_created_date" do
+    describe "format_date" do
       it "returns a formatted data string for the created_at column" do
         date = Date.today.strftime("%b %d, %Y")
         user = User.create!(username: "test user")

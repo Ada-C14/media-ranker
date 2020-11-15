@@ -2,7 +2,7 @@
 <% if @spotlight %>
   <section class="spotlight">
     <h2 class="spotlight__header">
-      <span class="spotlight__header--prefix">Media Spotlight:</span>
+      <span class="spotlight__header--prefix">Media Spotlight</span>
       <%= link_to "#{@spotlight.title}", work_path(@spotlight) %>
     </h2>
     <p class="spotlight__description"><%= @spotlight.single_or_plural_votes %> - <%= @spotlight.description %></p>

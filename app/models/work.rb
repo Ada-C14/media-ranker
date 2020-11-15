@@ -5,11 +5,11 @@ class Work < ApplicationRecord
   has_many :users, through: :votes
 
   def self.spotlight
-    return Work.order("votes_count DESC, created_at").first
+    return order("votes_count DESC, created_at").first
   end
 
   def self.top_ten(category)
-    return Work.where(category: category).order("votes_count DESC, created_at").limit(10)
+    return Work.where(category: category).order("votes_count DESC, title").limit(10)
   end
 
   def single_or_plural_votes

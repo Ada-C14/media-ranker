@@ -27,8 +27,8 @@ describe Vote do
       vote_copy = Vote.new(work_id: work.id, user_id: user.id)
       expect(vote_copy.valid?).must_equal false
     end
-
   end
+
   describe "custom methods" do
     describe "connect work and user" do
       it "returns vote object given a work_id and user_id" do
@@ -38,20 +38,34 @@ describe Vote do
       end
     end
 
-    describe "date" do
-
+    describe "format_date" do
+      it "returns a formatted date string based on the created by date" do
+        date = Date.today.strftime("%b %d, %Y")
+        user = User.create!(username: "test date")
+        work = works(:hp1)
+        vote = Vote.create!(work_id: work.id , user_id: user.id )
+        expect(vote.format_date).must_equal date
+        expect(vote.format_date).must_be_instance_of String
+      end
     end
 
   end
   describe "relationships" do
+    before do
+      @user = User.create!(username: "user")
+      @work = works(:hp2)
+      @vote = Vote.create!(work_id: @work.id, user_id: @user.id)
+    end
+
     it "belongs to a user" do
-      vote = votes(:vote_1)
-      expect(vote.user).must_be_instance_of User
+      expect(@vote.user).must_be_instance_of User
+      expect(@vote.user).must_equal @user
+
     end
 
     it "it belongs to a work" do
-      vote = votes(:vote_2)
-      expect(vote.work).must_be_instance_of Work
+      expect(@vote.work).must_be_instance_of Work
+      expect(@vote.work).must_equal @work
     end
   end
 end

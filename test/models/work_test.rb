@@ -44,12 +44,20 @@ describe Work do
 
       expect(success).must_equal false
     end
+
+    it "tracks number of votes in votes_counter" do
+      @work.save
+      @user = users(:testuser)
+      @vote = Vote.create!(work: @work, user: @user)
+
+      expect(@work.votes_count).must_equal 1
+    end
   end
 
   describe "relationships" do
     before do
-      @user = User.first
-      @work = Work.first
+      @user = users(:testuser)
+      @work = works(:book12)
       @vote = Vote.new(user: @user, work: @work)
     end
 

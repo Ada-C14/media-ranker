@@ -23,12 +23,11 @@ describe Vote do
 
   describe "validations" do
     before do
-      @user = User.first
-      @work = Work.first
+      @user = users(:testuser)
+      @work = works(:book1)
     end
 
     it "creates a vote when given a user and work" do
-      # vote = Vote.new(user_id: @user.id, work_id: @work.id)
       vote = Vote.new(user: @user, work: @work)
 
       success = vote.valid?

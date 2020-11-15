@@ -1,8 +1,29 @@
-<% @user = User.all %>
+
 
 <h1>List of Users</h1>
-<% if @user.empty? %>
+<% if @users.empty? %>
 <h4>No users yet!</h4>
-
+<% else %>
+  <div class="row">
+    <div class="col-sm-12">
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">Username</th>
+          <th scope="col">Votes</th>
+          <th scope="col"> Joined</th>
+        </tr>
+        </thead>
+        <tbody>
+        <% @users.each do |user|  %>
+          <tr>
+            <td><%= link_to user.username, user_path(user.id)  %></td>
+            <td> <%= user.votes.size %> </td>
+            <td><%= user.created_at.strftime("%b %d, %Y") %></td>
+        <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
 <% end %>

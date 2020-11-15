@@ -5,6 +5,10 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def index
+    @users = User.all
+  end
+
   def login
     user = User.find_by(username: params[:user][:username])
     if user.nil?
@@ -42,7 +46,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User
+    @user = User.find_by(id: params[:id])
+    if @user.nil?
+      redirect_to root_path, status: :not_found
+      return
+    end
   end
 
 private

@@ -1,5 +1,7 @@
 class WorksController < ApplicationController
 
+  skip_before_action :require_login, except: [:upvote]
+
   before_action :find_work, only: [:show, :update, :edit, :destroy]
 
   def index

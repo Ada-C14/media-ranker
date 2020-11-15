@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  skip_before_action :require_login, except: [:current_user]
+
   def login_form
     @user = User.new
   end
@@ -42,15 +44,7 @@ class UsersController < ApplicationController
       flash[:error] = "You must be logged in to logout"
     end
     redirect_to root_path
-    # session[:user_id] = nil
-    # flash[:success] = "Successfully logged out."
-    # redirect_to root_path
-    # return
-  end
 
-  # private
-  # def user_params
-  #   return params.require(:user).permit(:username)
-  # end
+  end
 
 end

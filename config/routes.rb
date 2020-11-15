@@ -9,8 +9,10 @@ Rails.application.routes.draw do
 
   get '/works/top', to: 'works#top'
 
+
   resources :works
   resources :users
+  resources :votes
 
   root to: 'homepages#index'
 end

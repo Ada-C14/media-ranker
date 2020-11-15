@@ -1,22 +1,32 @@
 <%= form_with model: @work, class: 'create-work' do |f| %>
   <p>Please provide the following information to add new Media:</p>
 
-<div>
-  <%= f.label :media %>
-  <%= f.select :media, [ ["album"], ["movie"], ["book"] ] %>
 
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+<section>
+  <div class="form-group">
+    <%= f.label :media %>
+    <%= f.select :media, [ ["album"], ["movie"], ["book"] ] %>
+  </div>
 
-  <%= f.label :created_by %>
-  <%= f.text_field :created_by %>
+  <div class="form-group">
+    <%= f.label :title %> <%= f.text_field :title, class: "form-control"%>
+  </div>
 
-  <%= f.label :published %>
-  <%= f.text_field :published %>
+  <div class="form-group">
+    <%= f.label :created_by %>
+    <%= f.text_field :created_by, class: "form-control"%>
+  </div>
 
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-</div>
+  <div class = "form-group">
+    <%= f.label :published %>
+    <%= f.text_field :published, class: "form-control" %>
+  </div>
+  <div class = "form-group">
+    <%= f.label :description %>
+    <%= f.text_field :description, class: "form-control" %>
+  </div>
+
+</section>
 
   <%= f.submit "#{action_name}", class: "work-button" %>
 <% end %>

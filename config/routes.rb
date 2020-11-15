@@ -1,3 +1,13 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  # login stuff will go here
+
+  root to: "homepages#index"
+
+  resources :homepages, only: [:index]
+  resources :works
+
+  # resources :votes  << nested in works?
+
+  resources :users, except: [:edit, :update, :destroy]
 end

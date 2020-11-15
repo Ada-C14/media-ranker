@@ -7,22 +7,20 @@ class Work < ApplicationRecord
 
   def self.spotlight
     works = Work.all
-    works.max_by { |work| work.votes.count }
+    works.max_by { |work| work.votes.length }
   end
 
   def self.top_ten(media)
     return nil  if self.nil?
 
-    all_results = Work.where(media: media.to_s)
-    unless all_results == []
-      return all_results.max_by(10) { |work| work.votes.count }
-    else
-      return []
+    top_media = Work.where(media: media.to_s)
+    unless top_media == []
+      return top_media.max_by(10) { |work| work.votes.length }
     end
   end
-
-  def vote_count
-    return self.votes.count
-  end
+  #
+  # def vote_count
+  #   return self.votes.count
+  # end
 
 end

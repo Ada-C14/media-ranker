@@ -5,6 +5,7 @@
     <ul>
       <li><%= link_to "Add a New Media", new_work_path%></li>
       <li><%= link_to "Return to Media List", works_path %></li>
+
       <% if session[:user_id] %>
           <li><%= link_to "Logout", logout_path, method: :post %></li>
           <%else %>

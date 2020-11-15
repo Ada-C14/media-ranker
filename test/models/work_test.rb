@@ -266,5 +266,15 @@ describe Work do
       expect(top_ten).must_be_empty
     end
   end
+
+  describe "vote date" do
+    it "returns the date a work was voted for in the correct format" do
+      new_work.save
+      new_user = User.create!(username: "test user")
+      vote = Vote.create!(work_id: new_work.id, user_id: new_user.id )
+
+      expect(new_work.vote_date).must_equal vote.created_at.strftime("%b %d, %Y")
+    end
+  end
 end
 

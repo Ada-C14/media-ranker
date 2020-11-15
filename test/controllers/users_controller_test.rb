@@ -68,15 +68,15 @@ describe UsersController do
     end
 
     it "can log in a new user and redirect to the root path" do
-      user = nil
-
+      # Act/Assert
       expect {
-        perform_login(user)
+        perform_login
       }.must_differ "User.count", 1
 
-      expect(user).wont_be_nil
-      expect(session[:user_id]).must_equal user.id
+      # expect(user).wont_be_nil
+      # expect(session[:user_id]).must_equal user.id
       must_respond_with :redirect
+      must_redirect_to root_path
     end
   end
 
@@ -113,6 +113,7 @@ describe UsersController do
 
       # Assert
       expect(session[:user_id]).must_be_nil
+      expect(flash[:success]).must_equal "Successfully logged out"
       must_respond_with :redirect
       must_redirect_to root_path
     end

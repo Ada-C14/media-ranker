@@ -212,10 +212,10 @@ describe WorksController do
         post upvote_work_path(@work.id)
       }.wont_change "Vote.count"
 
-      expect(flash[:error]).must_equal "A problem occurred: You must log in to do that"
+      expect(flash[:error]).must_equal "A problem occurred: You must be logged in to do that"
 
       must_respond_with :redirect
-      must_redirect_to works_path
+      must_redirect_to login_path
     end
 
     it "cannot upvote a work if the work cannot be found" do

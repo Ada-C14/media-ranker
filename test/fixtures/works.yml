@@ -1,4 +1,5 @@
 gods:
+  id: 1
   title: American Gods
   creator: Neil Gaiman
   publication_year: 2001
@@ -7,6 +8,7 @@ gods:
 
 
 stardust:
+  id: 2
   title: Stardust
   creator: Neil Gaiman
   publication_year: 1997
@@ -14,6 +16,7 @@ stardust:
   description: cute movie, good book
 
 world:
+  id: 3
   title: Seeking a Friend for the End of the World
   creator: Lorene Scafaria
   publication_year: 2012

@@ -1,10 +1,15 @@
 class WorksController < ApplicationController
+
+  def order_list(category)
+    return Work.where(category: category).order(votes_count: :desc, created_at: :asc)
+  end
+
   def index
     @works = Work.all
 
-    @albums = Work.where(category: "album")
-    @books = Work.where(category: "book")
-    @movies = Work.where(category: "movie")
+    @albums = order_list("album")
+    @books = order_list("book")
+    @movies = order_list("movie")
   end
 
   def show

@@ -107,23 +107,45 @@ describe Work do
   end
 
   describe "top_ten" do
-    it "returns a hash with one pair per category" do
-      tops = Work.top_ten
-      categories = [:albums, :books, :movies]
+    before do
+      @top_albums = Work.top_ten("album")
+      @top_books = Work.top_ten("book")
+      @top_movies = Work.top_ten("movies")
+    end
 
-      expect(tops.count).must_equal 3
-      expect(tops.keys).must_equal categories
+    it "returns works for a given category" do
+      top_book = @top_books.first
+
+      expect(top_book).must_be_instance_of Work
+      expect(top_book.category).must_equal "book"
     end
 
     it "returns up to ten of each category of work" do
-      tops = Work.top_ten
-      album = tops[:albums]
-      book = tops[:books]
-      movie = tops[:movies]
+      expect(@top_albums.count).must_be :<=,10
+      expect(@top_books.count).must_be :<=,10
+      expect(@top_movies.count).must_be :<=,10
+    end
 
-      expect(album.count).must_be :<=,10
-      expect(book.count).must_be :<=,10
-      expect(movie.count).must_be :<=,10
+    it "returns nothing if there are no works in a category" do
+      status = @top_movies.empty?
+
+      expect(status).must_equal true
+    end
+
+    it "orders works from most to least votes" do
+      top_book = @top_books.first
+      last_book = @top_books.last
+
+      expect(top_book).must_equal works(:book3)
+      expect(last_book.votes_count).must_equal 1
+    end
+
+    it "orders works with same votes by creation date" do
+      oldest_entry = @top_albums.first.created_at
+      newest_entry = @top_albums.last.created_at
+
+      status = oldest_entry < newest_entry
+      expect(status).must_equal true
     end
   end
 end

@@ -7,6 +7,8 @@ class Work < ApplicationRecord
   validates :title, presence: true
   validates :title, uniqueness: { scope: :category, message: "has already been taken"}
 
+  CATEGORY = ["album", "movie", "book"]
+
   def self.spotlight
     if self.count == 0
       return nil
@@ -34,6 +36,7 @@ class Work < ApplicationRecord
   end
 
   def self.category_desc_by_vote_count(media)
+    return nil if self.count == 0
     category_subset = self.where(category: media)
     return category_subset.max_by(category_subset.length) { |work| work.votes.count }
   end

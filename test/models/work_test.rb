@@ -1,7 +1,40 @@
 require "test_helper"
 
 describe Work do
-  #relations: no relations yet
+  let (:new_work) {
+    Work.new(title: "AMSP", creator: "Radiohead", publication_year: "2016")
+  }
+
+  it "can be instantiated" do
+    expect(new_work.valid?).must_equal true
+  end
+
+  it "will have the required fields" do
+    new_work.save
+    work = Work.first
+    puts work.title
+    fields = [:category, :title, :creator, :publication_year, :description]
+
+    fields.each do |field|
+      expect(work).must_respond_to field
+    end
+  end
+
+  describe "relationships" do
+    it "can have many votes" do
+      work = works(:httt)
+      expect(work.votes.count).must_equal 2
+      expect(work.votes.first).must_be_instance_of Vote
+      expect(work.votes.last).must_be_instance_of Vote
+    end
+
+    it "can register additional votes" do
+      work = works(:httt)
+      new_vote = Vote.create(work: works(:httt), user: users(:a))
+      expect(work.votes.count).must_equal 3
+      expect(work.votes).must_include new_vote
+    end
+  end
 
   describe "validations" do
     before do
@@ -36,7 +69,7 @@ describe Work do
     #custom methods => top_ten
     describe "top_ten method" do
       it 'returns 10 items when the list of works is greater than 20' do
-        25.times do
+        30.times do
           work = Work.create(category: "movie", title: "s", creator: "r", publication_year: "1990", description: "u")
         end
         top_ten = Work.top_ten("album")
@@ -44,9 +77,20 @@ describe Work do
       end
 
       it 'returns a list of length Work.count / 2, when Work.count < 10' do
-        top_ten = Work.top_ten("album")
-        expect(top_ten.length).must_equal 2
+        top_10 = Work.top_ten("album")
+        expect(top_10.length).must_equal 2
       end
+
+      it 'returns a list sorted by vote count' do
+        top_10 = Work.top_ten("album")
+        assert_operator top_10.first.votes.count, :>, top_10.last.votes.count
+      end
+
+      it 'returns works with a tied number of votes in alphabetical order by title' do
+
+      end
+
+      #how does it handle works with no votes
     end
 
     describe "spotlight method" do
@@ -88,8 +132,8 @@ describe Work do
       it 'returns nil if Work.count = 0' do
         Vote.destroy_all
         Work.destroy_all
-        Work::CATEGORIES.each do |media|
-          assert_nil(Work.category_desc_by_vote_count("media"))
+        Work::CATEGORY.each do |work|
+          assert_nil(Work.category_desc_by_vote_count("work"))
         end
       end
     end

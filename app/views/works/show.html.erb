@@ -1,15 +1,36 @@
 <main>
-  <h2><%= @work.title%></h2>
   <section>
-    <div class="work-info">
-      <div>Category: <%= @work.category %></div>
-      <div>Created by: <%= @work.creator %></div>
-      <div>Published: <%= @work.publication_year %></div>
-      <div><%= @work.description %></div>
-      <%= button_to "Edit", edit_work_path(@work), method: :get %>
-      <%= button_to "Upvote", work_votes_path(@work.id) %>
-      <%= button_to "Delete", work_path(@work), method: :delete, data: {confirm: "Are you sure?"}%>
-    </div>
+    <h2><%= @work.title%></h2>
+    <p>Created by: <%= @work.creator %></p>
+    <p>Published: <%= @work.publication_year %></p>
+    <p><%= @work.description %></p>
+    <section class="button-container">
+      <%= button_to "Back to media rank", root_path, class: "btn btn-primary" %>
+      <%= button_to "Edit", edit_work_path(@work), method: :get, class: "btn btn-primary" %>
+      <%= button_to "Upvote", work_votes_path(@work.id), class: "btn btn-primary" %>
+      <%= button_to "Delete", work_path(@work), method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger"%>
+    </section>
   </section>
-
+  <section class="work-votes">
+    <h3><%=@work.votes.count%> votes for this <%= @work.category %></h3>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>User</th>
+        <th>Date</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @work.votes.each do|vote| %>
+        <tr>
+          <td width=50%>
+            <%= vote.user.username %>
+          </td>
+          <td width="1000">
+            <%= vote.created_at.strftime('%b %d, %Y') %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+  </section>
 </main>

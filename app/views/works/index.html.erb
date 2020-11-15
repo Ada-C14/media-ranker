@@ -15,19 +15,20 @@
       <tbody>
       <% @albums.each do|work| %>
         <tr>
-          <td>
+          <td width="100">
 <!--            consider creating a method for votes?-->
             <%= work.votes.count %>
           </td>
-          <td> <%= link_to work.title, work_path(work.id) %>
+          <td width="1000">
+            <%= link_to work.title, work_path(work.id) %>
           </td>
           <td>
             <%= work.creator%>
           </td>
-          <td>
+          <td width="100">
             <%= work.publication_year%>
           </td>
-          <td>
+          <td width="100">
             <%= button_to "Upvote", work_votes_path(work.id) %>
           </td>
         </tr>
@@ -50,18 +51,20 @@
       <tbody>
       <% @books.each do|work| %>
         <tr>
-          <td>
+          <td width="100">
+            <!--            consider creating a method for votes?-->
             <%= work.votes.count %>
           </td>
-          <td> <%= link_to work.title, work_path(work.id) %>
+          <td width="1000">
+            <%= link_to work.title, work_path(work.id) %>
           </td>
           <td>
             <%= work.creator%>
           </td>
-          <td>
+          <td width="100">
             <%= work.publication_year%>
           </td>
-          <td>
+          <td width="100">
             <%= button_to "Upvote", work_votes_path(work.id) %>
           </td>
         </tr>
@@ -82,18 +85,20 @@
       <tbody>
       <% @movies.each do|work| %>
         <tr>
-          <td>
+          <td width="100">
+            <!--            consider creating a method for votes?-->
             <%= work.votes.count %>
           </td>
-          <td> <%= link_to work.title, work_path(work.id) %>
+          <td width="1000">
+            <%= link_to work.title, work_path(work.id) %>
           </td>
           <td>
             <%= work.creator%>
           </td>
-          <td>
+          <td width="100">
             <%= work.publication_year%>
           </td>
-          <td>
+          <td width="100">
             <%= button_to "Upvote", work_votes_path(work.id) %>
           </td>
         </tr>

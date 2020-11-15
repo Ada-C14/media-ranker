@@ -106,6 +106,40 @@ label {
   margin-bottom: 1rem;
 }
 
+.btn-primary {
+  background-color: #26A69A;
+  color: white;
+  border-color: #26A69A;
+  margin-right: .2rem;
+}
+
+.button-container {
+  display: flex;
+}
+
+p {
+  margin-bottom: 1rem;
+}
+
+h1, h2, h3, h4 {
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.work-votes {
+  margin-top: 2rem;
+}
+
+.work-votes h3 {
+  color: black;
+}
+
+.table th {
+  padding: 1rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+}
+
 
 
 

@@ -14,3 +14,24 @@ vote_4:
   id: 4
   work_id: 2
   user_id: 1
+
+vote_5:
+  id: 5
+  work_id: 4
+  user_id: 4
+vote_6:
+  id: 6
+  work_id: 12
+  user_id: 8
+vote_7:
+  id: 7
+  work_id: 12
+  user_id: 7
+vote_8:
+  id: 8
+  work_id: 13
+  user_id: 6
+vote_9:
+  id: 9
+  work_id: 14
+  user_id: 5

@@ -45,13 +45,14 @@
     </nav>
   </header>
   <body>
+  <%#raise%>
     <section class="alert__container">
       <% flash.each do |name, message| %>
         <%if(name == "error") %>
           <div class="alert alert-warning">
-            <span><%=message.failed_action%></span>
+            <span><%=message[:failed_action]%></span>
             <ul>
-              <%message.error_messages.each do |msg|%>
+              <%message[:errors].each do |msg|%>
                 <%unless(msg.empty?) %>
                 <li><%=msg%></li>
                 <%end%>

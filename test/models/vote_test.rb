@@ -24,8 +24,8 @@ describe Vote do
       repeated_vote = Vote.new(work: works(:lot_49), user: users(:me))
 
       expect(repeated_vote.valid?).must_equal false
-      expect(repeated_vote.errors.messages).must_include :work_id
-      expect(repeated_vote.errors.messages[:work_id][0]).must_equal "user cannot vote twice on same work"
+      expect(repeated_vote.errors.messages).must_include :user
+      expect(repeated_vote.errors.messages[:user][0]).must_equal "has already voted for this work"
     end
 
     it 'will be valid if same user votes on different work' do

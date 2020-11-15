@@ -19,7 +19,7 @@ class WorksController < ApplicationController
 
     category = params[:work][:category] ? params[:work][:category] : "work"
 
-    error_flash = ErrorFlash.new("create #{category}", @work.errors)
+    error_flash = error_flash("could not create #{category}", @work.errors)
 
     action_success_check(save, redirect_path, destination_view: :new, success_msg: "Successfully created #{@work.category} #{@work.id}", error_msg: error_flash)
   end
@@ -34,7 +34,14 @@ class WorksController < ApplicationController
 
   def update
     redirect_to works_path and return if @work.nil?
-    action_success_check(@work.update(work_params), work_path, destination_view: :edit, success_msg: "Successfully updated #{@work.category} #{@work.id}")
+
+    update = @work.update(work_params)
+
+    category = params[:work][:category] ? params[:work][:category] : "work"
+
+    error_flash = error_flash("could not update #{category}", @work.errors)
+
+    action_success_check(update, work_path, destination_view: :edit, success_msg: "Successfully updated #{@work.category} #{@work.id}", error_msg: error_flash)
   end
 
   def destroy
@@ -47,11 +54,16 @@ class WorksController < ApplicationController
     redirect_to works_path and return if @work.nil?
 
     if @current_user.nil?
-      flash[:error] = "A problem occurred: You must log in to do that"
+      flash[:error] = error_flash("you must log in to do that")
       redirect_to request.referrer and return
     end
     vote = Vote.new(user: @current_user, work: @work)
-    action_success_check(vote.save, works_path, success_msg: "Successfully upvoted!")
+
+    save = vote.save
+
+    error_flash = error_flash("A problem occurred: Could not upvote", vote.errors)
+
+    action_success_check(save, works_path, success_msg: "Successfully upvoted!", error_msg: error_flash)
   end
 
   private

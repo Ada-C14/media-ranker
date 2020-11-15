@@ -16,12 +16,13 @@ class ApplicationController < ActionController::Base
   def set_current_user
     @current_user = User.find_by(id: session[:user_id])
   end
-end
 
-class ErrorFlash
-  attr_reader :failed_action, :error_messages
-  def initialize(failed_action,errors)
-    @failed_action = "A problem occurred. could not #{failed_action}"
-    @error_messages = errors.messages.map{|error_type, msg| "#{error_type}: #{msg.join(" ")}" unless msg.empty?}
+  def error_flash(failed_action,errors = nil)
+    error_flsh = Hash.new
+    error_flsh[:failed_action] = failed_action
+    error_flsh[:errors] = errors ? errors.messages.map{|error_type, msg| "#{error_type.to_s.gsub('_', ' ')}: #{msg.join(" ")}" unless msg.empty?} : []
+    error_flsh
   end
 end
+
+

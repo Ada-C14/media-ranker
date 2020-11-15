@@ -1,5 +1,5 @@
 class WorksController < ApplicationController
-  before_action :find_work, except: [:index, :new]
+  before_action :find_work, except: [:index, :new, :create]
 
   def index
     @works = Work.all
@@ -17,6 +17,7 @@ class WorksController < ApplicationController
   end
 
   def create
+    @work = Work.new(work_params)
     if @work.save
       flash[:success] = "Successfully created #{ @work.category } #{ @work.id }"
       redirect_to work_path(@work)

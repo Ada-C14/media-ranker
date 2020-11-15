@@ -14,7 +14,7 @@
         <th>Category</th>
         <th>Voted On</th>
       </tr>
-      <% @user.votes.order(created_at: :desc).each do |vote| %>
+      <% @user.user_order_for_a_work.each do |vote| %>
         <tr>
         vote
           <th><%= link_to vote.work.title, work_path(vote.work.id) %></th>

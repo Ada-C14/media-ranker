@@ -7,4 +7,12 @@ class User < ApplicationRecord
   def each_user_votes
     return self.votes.count
   end
+  
+  def user_order_for_a_work
+    return self.votes.order(date: :desc, created_at: :desc)
+  end
+
+  def self.index_order
+    return self.order(joined: :desc)
+  end
 end

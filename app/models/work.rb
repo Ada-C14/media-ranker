@@ -9,15 +9,15 @@ class Work < ApplicationRecord
   end
 
   def self.index_order(category)
-    return self.where(category: category).joins(:votes).group("works.id").order("count_all desc, works.updated_at desc").count
+    return self.joins("LEFT JOIN votes on votes.work_id = works.id").where(category: category).group("works.id").order("count_votes_work_id desc, works.created_at desc").count("votes.work_id")
   end
 
   def self.spotlight
-    return self.joins(:votes).group("works.id").order("count_all desc, works.updated_at desc").count.first
+    return self.joins("LEFT JOIN votes on votes.work_id = works.id").group("works.id").order("count_votes_work_id desc, works.created_at desc").count("votes.work_id").first
   end
   
   def self.top_ten(category)
-    return self.where(category: category).joins(:votes).group("works.id").order("count_all desc, works.created_at desc").count.take(10)
+    return self.joins("LEFT JOIN votes on votes.work_id = works.id").where(category: category).group("works.id").order("count_votes_work_id desc, works.created_at desc").count("votes.work_id").take(10)
   end
 
   def self.top_ten_helper(work_id)

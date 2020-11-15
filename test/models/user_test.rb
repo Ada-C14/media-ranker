@@ -48,12 +48,4 @@ describe User do
     end
   end
 
-  describe "format created at time" do
-
-    it "can format created at time" do
-      @user.created_at = hard_coded_time
-      expect(@user.format_created_at_time).must_equal "Jun 21, 2008"
-    end
-  end
-
 end

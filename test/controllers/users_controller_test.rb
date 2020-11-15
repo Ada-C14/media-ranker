@@ -22,9 +22,7 @@ describe UsersController do
   end
 
   describe "login" do
-    before do
-      @user = User.create(username: "squash")
-    end
+
     it "can get the login form" do
       get "/login"
 
@@ -32,46 +30,46 @@ describe UsersController do
     end
 
     it "can successfully login a new user" do
-      new_user = {
-        user: {
-            username: "test user"
-        }
-      }
-
+      user = nil
       expect {
-        post login_path, params: new_user
+        user = login()
       }.must_differ "User.count", 1
 
       must_redirect_to root_path
-
-      user = User.find_by(username: new_user[:user][:username])
 
       expect(user).wont_be_nil
       expect(session[:user_id]).must_equal user.id
     end
 
     it "can login an existing user" do
-      session[:user_id] = nil
+      user = User.create(username: "squash")
 
       expect {
-        post login_path, params: @user.username
+        login(user.username)
       }.wont_change "User.count"
 
-      session[:user_id] = @user.id
-      p session[:user_id]
-
-      expect(@user).wont_be_nil
-      expect(session[:user_id]).must_equal @user.id
+      expect(session[:user_id]).must_equal user.id
     end
   end
 
   describe "logout" do
     it "can logout a user" do
+      login()
+      expect(session[:user_id]).wont_be_nil
 
+      post logout_path
+
+      expect(session[:user_id]).must_be_nil
     end
   end
 
-  describe "current_user" do
+  describe "current_user" do #error with user/show page
+    it "can get the current user who is logged in" do
+      login()
 
+      get current_user_path
+
+      must_respond_with :success
+    end
   end
 end

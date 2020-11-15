@@ -19,9 +19,5 @@ class Work < ApplicationRecord
       return top_media.max_by(10) { |work| work.votes.length }
     end
   end
-  #
-  # def vote_count
-  #   return self.votes.count
-  # end
 
 end

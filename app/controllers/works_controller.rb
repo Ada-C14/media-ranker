@@ -29,7 +29,7 @@ class WorksController < ApplicationController
       redirect_to work_path(@work.id)
       return
     else
-      flash.now[:error] = "Something happened. Media not added."
+      flash.now[:error] = " Please make sure to add title. Media not added."
       render :new, status: :bad_request
       return
     end
@@ -51,6 +51,7 @@ class WorksController < ApplicationController
       redirect_to work_path
       return
     elsif @work.update(work_params)
+      flash[:success] = "You have successfully updated #{@work.title}"
       redirect_to work_path(@work)
       return
     else

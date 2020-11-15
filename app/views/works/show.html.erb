@@ -6,12 +6,12 @@
 
 <p>Description: <%= @work.description %></p>
 
-<!--<section>-->
-<%#= button_to "Back to media Ranks", root_path, method: :get %>
-<%#= button_to "Edit", edit_work_path(@work), method: :get %>
-<%#= button_to "Upvote", upvote_path(@work.id), method: :post %>
-<%#= button_to "Delete Media", work_path(@work), method: :delete, data: { confirm: "Are you sure"}  %>
-<!--</section>-->
+<section>
+<%= button_to "Back to media Ranks", root_path, method: :get %>
+<%= button_to "Edit", edit_work_path(@work), method: :get %>
+<%= button_to "Upvote", upvote_path(@work.id), method: :post %>
+<%= button_to "Delete", work_path(@work), method: :delete, data: { confirm: "Are you sure"}  %>
+</section>
 
 <section class="works-votes__container">
   <h3 class="works-votes__header"><%= @work.votes.size %> Votes for this <%= @work.media %></h3>
@@ -32,4 +32,5 @@
     <% end %>
   </table>
 </section>
+
 

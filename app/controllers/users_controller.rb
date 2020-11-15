@@ -16,14 +16,17 @@ class UsersController < ApplicationController
       user = User.new(username:params[:user][:username])
       if user.save
         flash[:welcome] = "Welcome #{user.username}"
+      else
+        render :new, status: :bad_request
+        return
       end
-      #else what if the user doesnt save?
-    else
+      else
       flash[:welcome] = "Welcome back #{user.username}"
     end
     session[:user_id] = user.id
     redirect_to root_path
   end
+
 
   def logout
     if session[:user_id]

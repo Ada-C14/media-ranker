@@ -11,8 +11,6 @@
     <% @users.each do |user| %>
         <td><%= link_to user.username, user_path(user.id) %> </td>
         <td><%= user.votes.count %> </td>
-
-
       </tr>
       <% end %>
     </tbody>

@@ -106,5 +106,10 @@
       </tbody>
     </table>
   </section>
-  <%= link_to "Add a new work", new_work_path %>
+
+  <section class="button-container">
+    <%= button_to "View top media", root_path, class: "btn btn-secondary", method: :get %>
+    <%= button_to "Add a new work", new_work_path, class: "btn btn-primary", method: :get %>
+  </section>
+
 </main>

@@ -24,7 +24,7 @@ describe User do
 
     it "can register additional votes" do
       user = users(:a)
-      new_vote = Vote.create(work: works(:httt), user: users(:a))
+      new_vote = Vote.create(work: works(:mbdtf), user: users(:a))
       expect(user.votes.count).must_equal 4
       expect(user.votes).must_include new_vote
     end

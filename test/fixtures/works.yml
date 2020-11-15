@@ -1,26 +1,26 @@
-kida:
+dropout:
   category: album
-  title: Kid A
-  creator: Radiohead
-  publication_year: "2000"
-  description: never too much
-amnesiac:
+  title: The College Dropout
+  creator: Kanye West
+  publication_year: "2004"
+  description: never let me down
+late_registration:
   category: album
-  title: Amnesiac
-  creator: Radiohead
-  publication_year: "2001"
+  title: Late Registration
+  creator: Kanye West
+  publication_year: "2005"
   description: everything in its right place
-tkol:
+graduation:
   category: album
-  title: The King Of Limbs
-  creator: Radiohead
-  publication_year: "2012"
-  description: in full bloom
-in_rainbows:
-  category: album
-  title: In Rainbows
-  creator: Radiohead
+  title: Graduation
+  creator: Kanye West
   publication_year: "2007"
+  description: in full bloom
+tlop:
+  category: album
+  title: The Life of Pablo
+  creator: Kanye West
+  publication_year: "2016"
   description: parrots don't speak
 starwars:
   category: movie
@@ -34,15 +34,15 @@ trickmirror:
   creator: Jia Tolentino
   publication_year: "2019"
   description: alright
-httt:
+mbdtf:
   category: album
-  title: Hail To The Thief
-  creator: Radiohead
+  title: My Beautiful Dark Twisted Fantasy
+  creator: Kanye West
   publication_year: "2003"
   description: "just keep goin'"
-okc:
+yeezuz:
   category: album
-  title: OK Computer
-  creator: Radiohead
+  title: Yeezus
+  creator: Kanye West
   publication_year: "1997"
   description: at last

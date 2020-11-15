@@ -2,7 +2,7 @@ require "test_helper"
 
 describe Work do
   let (:new_work) {
-    Work.new(title: "AMSP", creator: "Radiohead", publication_year: "2016")
+    Work.new(title: "LTOP", creator: "Kanye West", publication_year: "2016")
   }
 
   it "can be instantiated" do
@@ -21,15 +21,15 @@ describe Work do
 
   describe "relationships" do
     it "can have many votes" do
-      work = works(:httt)
+      work = works(:mbdtf)
       expect(work.votes.count).must_equal 2
       expect(work.votes.first).must_be_instance_of Vote
       expect(work.votes.last).must_be_instance_of Vote
     end
 
     it "can register additional votes" do
-      work = works(:httt)
-      new_vote = Vote.create(work: works(:httt), user: users(:a))
+      work = works(:mbdtf)
+      new_vote = Vote.create(work: works(:mbdtf), user: users(:a))
       expect(work.votes.count).must_equal 3
       expect(work.votes).must_include new_vote
     end
@@ -68,20 +68,21 @@ describe Work do
     #custom methods => top_ten
     describe "top_ten method" do
       before do
-        @top_ten = Work.top_ten("album")
+        @top_10 = Work.top_ten("album")
       end
 
       it 'returns 10 items when the list of works is greater than 20' do
         30.times do
           work = Work.create(category: "movie", title: "s", creator: "r", publication_year: "1990", description: "u")
         end
-        @top_10 = Work.top_ten("album")
-        expect(@top_10.length).must_equal 10
+
+        expanded_pool_top_10 = Work.top_ten("album")
+        expect(expanded_pool_top_10.length).must_equal 10
       end
 
       it 'returns a list of length Work.count / 2, when Work.count < 10' do
         @top_10 = Work.top_ten("album")
-        expect(@top_10.length).must_equal 2
+        expect(@top_10.length).must_equal 3
       end
 
       it 'returns a list sorted by vote count' do
@@ -90,10 +91,18 @@ describe Work do
       end
 
       it 'returns works with a tied number of votes in alphabetical order by title' do
-
+        assert_operator @top_10[1].title, :>, @top_10[2].title
       end
 
       #how does it handle works with no votes
+      it 'returns nil if Work.count = 0' do
+        Vote.destroy_all
+        Work.destroy_all
+
+        Work::CATEGORIES.each do |media|
+          assert_nil(Work.category_desc_by_vote_count("media"))
+        end
+      end
     end
 
     describe "spotlight method" do
@@ -119,14 +128,13 @@ describe Work do
       end
 
       it 'returns a list of all works in a given category ordered by vote count' do
-        expect(@best_albums.length).must_equal 4
-        expect(@best_albums[0].title).must_equal "OK Computer"
-        expect(@best_albums[-1].title).must_equal "Amnesiac"
+        expect(@best_albums.length).must_equal 6
+        expect(@best_albums[0].title).must_equal "My Beautiful Dark Twisted Fantasy"
       end
 
       it 'orders by vote count, and breaks ties by alphabetizing by title' do
-        expect(@best_albums[1].title).must_equal "Hail To The Thief"
-        expect(@best_albums[2].title).must_equal "Kid A"
+        expect(@best_albums[1].title).must_equal "The College Dropout"
+        expect(@best_albums[2].title).must_equal "Graduation"
       end
 
       it 'also includes titles with zero votes' do

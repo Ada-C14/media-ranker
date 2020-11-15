@@ -27,17 +27,19 @@ class Work < ApplicationRecord
 
   def self.top_ten(media)
     return nil if self.count == 0
-    category_subset = self.where(category: media)
-    if category_subset.count > 20
-      return category_subset.left_joins(:votes).group(:id).order(Arel.sql('COUNT(votes.id) DESC, title')).first(10)
+
+    specific_category = self.where(category: media)
+
+    if specific_category.count > 20
+      return specific_category.left_joins(:votes).group(:id).order(Arel.sql('COUNT(votes.id) DESC, title')).first(10)
     else
-      return category_subset.left_joins(:votes).group(:id).order(Arel.sql('COUNT(votes.id) DESC, title')).first(category_subset.length / 2)
+      return specific_category.left_joins(:votes).group(:id).order(Arel.sql('COUNT(votes.id) DESC, title')).first(specific_category.length / 2)
     end
   end
 
   def self.category_desc_by_vote_count(media)
     return nil if self.count == 0
-    category_subset = self.where(category: media)
-    return category_subset.left_joins(:votes).group(:id).order(Arel.sql('COUNT(votes.id) DESC, title'))
+    specific_category = self.where(category: media)
+    return specific_category.left_joins(:votes).group(:id).order(Arel.sql('COUNT(votes.id) DESC, title'))
   end
 end

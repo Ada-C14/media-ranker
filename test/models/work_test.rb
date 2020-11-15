@@ -20,15 +20,14 @@ describe Work do
   describe "relationships" do
     before do
       # Arrange
-      @new_user = User.create(username: "User")
-      @new_user2 = User.create(username: "User2")
-      @vote_1 = Vote.create(user_id: @new_user.id, work_id: works(:book).id)
-      @vote_2 = Vote.create(user_id: @new_user2.id, work_id: works(:book).id)
+      # @new_user = User.create(username: "User")
+      # @new_user2 = User.create(username: "User2")
+      # @vote_1 = Vote.create(user_id: @new_user.id, work_id: works(:book).id)
+      # @vote_2 = Vote.create(user_id: @new_user2.id, work_id: works(:book).id)
     end
     it "can have many votes" do
-      expect(works(:book).votes.count).must_equal 2
-      expect(@vote_1.user).must_equal @new_user
-      expect(@vote_2.user).must_equal @new_user2
+      expect(works(:book).votes.count).must_equal 1
+      expect(votes(:vote).user).must_equal users(:user)
       works(:book).votes.each do |vote|
         expect(vote).must_be_instance_of Vote
         expect(vote.work_id).must_equal works(:book).id
@@ -36,10 +35,9 @@ describe Work do
     end
     it "can get information of users that voted for the work" do
       # Assert
-      expect(works(:book).users.count).must_equal 2
+      expect(works(:book).users.count).must_equal 1
       # check info
-      expect(works(:book).users.find_by(username: "User")).must_equal @new_user
-      expect(works(:book).users.find_by(username: "User2")).must_equal @new_user2
+      expect(works(:book).users.find_by(username: "user")).must_equal users(:user)
       works(:book).users.each do |user|
         expect(user).must_be_instance_of User
       end
@@ -128,6 +126,9 @@ describe Work do
     end
 
     describe "spotlight" do
+      before do
+        Vote.delete_all # for this particular section we need to manipulate votes a certain way
+      end
       it "returns nil if there are no works" do
         Work.delete_all
         assert_nil(Work.spotlight)
@@ -184,6 +185,7 @@ describe Work do
       end
 
       it "sorts works with the same number of votes in ABC order" do
+        Vote.delete_all # need to clear votes so all have same number
         # two book entries
 
         # get sorted array
@@ -191,7 +193,7 @@ describe Work do
 
         expect(sorted_books.length).must_equal Work.where(category: 'book').count
         expect(sorted_books.first).must_equal works(:workBA)
-        expect(sorted_books.first.id).must_equal  works(:workBA).id
+        expect(sorted_books.first.id).must_equal works(:workBA).id
         expect(sorted_books.first.votes.count).must_equal 0
         expect(sorted_books.last.votes.count).must_equal 0
       end

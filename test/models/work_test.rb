@@ -19,22 +19,36 @@ describe Work do
       expect(media.errors.messages).must_include :category
       expect(media.errors.messages[:category]).must_equal ["can't be blank"]
     end
-  end
-  # describe "relationships" do
-  #   it "can have many users" do
-  #     media = Work.first
-  #     user = User.first
-  #     user_two = User.last
-  #   end
-  # end
 
-  # describe "spotlight" do
-  #   it "selects a media to spotlight" do
-  #     spotlight = Work.select_spotlight
-  #
-  #     expect(spotlight.title).must_equal works.title
-  #   end
-  # end
+    it "validates that a work must be unique" do
+      media = works(:treat)
+      media2 = Work.create(title: media.title)
+
+      expect(media2.valid?).must_equal false
+      expect(media2.errors.messages[:title]).must_equal ["has already been taken"]
+    end
+  end
+
+  describe "relationships" do
+    it "can have many votes" do
+      media = works(:treat)
+      user = users(:nagai)
+      user_two = users(:peach)
+      expect(media.votes.count).must_equal 0
+
+      vote = Vote.create(work_id: media, user_id: user)
+      vote2 = Vote.create(work_id:  media, user_id: user_two)
+      expect(media.votes.count).must_equal 2
+    end
+  end
+
+  describe "spotlight" do
+    it "selects a media to spotlight" do
+      spotlight = Work.select_spotlight.title
+
+      expect(spotlight).must_equal "Joe Treat"
+    end
+  end
 
   describe "top ten media" do
     it "can select top ten" do

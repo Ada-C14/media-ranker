@@ -31,9 +31,9 @@ describe WorksController do
     it "creates a work with valid input and redirects" do
       valid_work_hash = {
         work: {
-          category: "album",
-          title: "In Return",
-          creator: "Odesza",
+          category: "category",
+          title: "title",
+          creator: "creator",
           publication_year: 2014,
           description: "Et et expedita non aut quo."
         }
@@ -43,7 +43,7 @@ describe WorksController do
         post works_path, params: valid_work_hash
       }.must_change "Work.count", 1
 
-      created_work = Work.find_by(title: "In Return")
+      created_work = Work.find_by(title: "title")
 
       expect(created_work.category).must_equal valid_work_hash[:work][:category]
       expect(created_work.creator).must_equal valid_work_hash[:work][:creator]
@@ -54,7 +54,6 @@ describe WorksController do
     end
 
     it "does not create a work without a title" do
-      skip
       invalid_work_hash = {
         work: {
           title: nil
@@ -65,7 +64,7 @@ describe WorksController do
         post works_path, params: invalid_work_hash
       }.wont_change "Work.count"
 
-      must_respond_with :render
+      must_respond_with :bad_request
       assert_template :new
     end
   end
@@ -142,8 +141,7 @@ describe WorksController do
     end
 
     it "does not update an existing work if form data violates Work validations" do
-      skip
-      work = work(:dune)
+      work = works(:dune)
       title = work.title
 
       invalid_hash = {
@@ -160,7 +158,7 @@ describe WorksController do
 
       expect(work.title).must_equal title
 
-      must_respond_with :render
+      must_respond_with :bad_request
       assert_template :edit
     end
   end

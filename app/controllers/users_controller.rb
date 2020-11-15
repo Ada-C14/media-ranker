@@ -1,40 +1,59 @@
 class UsersController < ApplicationController
   def index
-    @users = User.order # list all users in order
+    @users = User.all # list all users in order
   end
 
   def show
-    @user = current_user
+    user_id = params[:id]
+    @user = User.find_by(id: user_id)
     if @user.nil?
       redirect_to users_path
       return
     end
   end
 
-  # def create
-  #   @user = current_user
-  #   if @user.nil?
-  #     redirect_to users_path
-  #     return
-  #   elsif @
-  #   end
-
-
-  # end
-
-  def new
+  def login_form
     @user = User.new
   end
 
-  def destroy
+  def current
+    @current_user = User.find_by(id: session[:user_id])
+    unless @current_user
+      flash[:error] = "You must be logged in to see this page"
+      redirect_to root_path
+      return
+    end
+  end
+
+  def login
+    name = params[:name][:name]
+    user = User.find_by(name: name)
+    if user
+      session[:user_id] = user.id
+      flash[:success] = "Welcome back #{name}"
+    else
+      user = User.create(name: name)
+      session[:user_id] = user.id
+      flash[:success] = "#{name} You have successfully logged in as new user"
+    end
+    
+    session[:name] = user.name
+    redirect_to root_path
+    return
+  end
+
+  def logout
+    session[:user_id] = nil
+    flash[:success] = "Successfully logged out"
+    redirect_to root_path
+    return
+  end
+
+  private
+
+  def user_params
+    return params.require(:user).permit(:username)
   end
   
 end
 
-# .string "name"
-#     t.string "creator"
-#     t.string "category"
-#     t.string "description"
-#     t.datetime "created_at", precision: 6, null: false
-#     t.datetime "updated_at", precision: 6, null: false
-#     t.integer "publication_year"

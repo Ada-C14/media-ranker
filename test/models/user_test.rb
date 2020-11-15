@@ -1,7 +1,11 @@
 require "test_helper"
 
 describe User do
-  # it "does a thing" do
-  #   value(1+1).must_equal 2
-  # end
+  it "will have the required fields" do
+    # Arrange
+    user = User.first
+    # Assert
+    expect(user).must_respond_to :username
+  end
+
 end

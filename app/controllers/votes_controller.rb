@@ -1,4 +1,5 @@
 class VotesController < ApplicationController
+  skip_before_action :find_work, except: [:create, :destroy]
 
   def create
     case @work.vote_button(@current_user)
@@ -19,9 +20,9 @@ class VotesController < ApplicationController
   def destroy
     @vote = Vote.find_by(id: params[:id].to_i)
     case @work.vote_button(@current_user)
-    when "Upvote!"
+    when "Vote!"
       flash[:warning] = "Vote not deleted. You haven't yet upvoted this work."
-    when "Remove Upvote"
+    when "Remove Vote"
       if @vote.destroy
         flash[:success] = "Successfully removed upvote!"
       else

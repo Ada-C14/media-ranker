@@ -14,6 +14,13 @@ describe Work do
           publication_year: 2003,
           description: "blah blah"
       )
+      @work2 = Work.new(
+          category: "movie",
+          title: "test work2",
+          creator: "test creator2",
+          publication_year: 2010,
+          description: "blah blah blah"
+      )
     end
 
     it 'is valid when all fields are present' do
@@ -134,5 +141,57 @@ describe Work do
 
       expect(spotlight).must_be_nil
     end
+
+    it "should be nil if all works have 0 votes" do
+      # delete all works
+      Work.delete_all
+
+      # create new works with no votes
+      work = Work.create(
+          category: "movie",
+          title: "test work",
+          creator: "lalala",
+          publication_year: 2010,
+          description: "blah blah"
+      )
+
+      work2 = Work.create(
+          category: "movie",
+          title: "test work2",
+          creator: "test creator2",
+          publication_year: 2010,
+          description: "blah blah blah"
+      )
+
+      expect(work.votes.count).must_equal 0
+      expect(work2.votes.count).must_equal 0
+
+      expect(Work.spotlight).must_be_nil
+
+    end
+
+    it "returns the highest voted work" do
+      result = Work.spotlight
+      expect(result.votes.count).must_equal 5
+      expect(result).must_equal works(:book1)
+    end
+
+    it "alphabetical order if there ties for highest vote" do
+
+      result = Work.spotlight
+      expect(result.title).must_equal "Red Bean"
+      expect(result.votes.count).must_equal 5
+      expect(result).must_equal works(:book1)
+
+      # added a vote to book5 to bring vote count to 5
+      Vote.create(user: users(:user5), work: works(:book5))
+      result = Work.spotlight
+      expect(result.title).must_equal "Attack of the Meatball"
+      expect(result.votes.count).must_equal 5
+      expect(result).must_equal works(:book5)
+
+    end
+
+
   end
 end

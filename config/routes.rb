@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'works#homepage'
-  resources :works
+  resources :works do
+    resources :votes, only: [:create]
+  end
   get '/works/homepage', to: 'works#homepage', as: 'homepage'
 
   get "/users", to: "users#index", as: "users"
@@ -11,5 +13,5 @@ Rails.application.routes.draw do
   post "/logout", to: "users#logout", as: "logout"
   get "/users/current", to: "users#current", as: "current_user"
 
-
+  post "/works/:id/vote", to: "votes#create", as: "vote"
 end

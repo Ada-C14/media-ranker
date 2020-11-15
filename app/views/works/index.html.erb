@@ -6,6 +6,8 @@
     <% @works.category_filter("Book").each do |book| %>
       <li>
         <%= link_to book.title, work_path(id: book[:id]), class: "link" %>
+<!--        <p>Voted on <%#= book.votes.count %> times</p>-->
+        <%= link_to "Vote", vote_path(id: book[:id]), method: :post, class: "link" %>
       </li>
     <% end %>
   </ul>

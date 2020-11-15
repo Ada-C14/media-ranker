@@ -18,4 +18,10 @@ class ApplicationController < ActionController::Base
   end
 end
 
-
+class ErrorFlash
+  attr_reader :failed_action, :error_messages
+  def initialize(failed_action,errors)
+    @failed_action = "A problem occurred. could not #{failed_action}"
+    @error_messages = errors.messages.map{|error_type, msg| "#{error_type}: #{msg.join(" ")}" unless msg.empty?}
+  end
+end

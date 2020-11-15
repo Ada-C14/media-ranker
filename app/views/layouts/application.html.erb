@@ -49,11 +49,11 @@
       <% flash.each do |name, message| %>
         <%if(name == "error") %>
           <div class="alert alert-warning">
-            <span>A problem occurred: could not create <%=@category%></span>
+            <span><%=message.failed_action%></span>
             <ul>
-              <%message.each do |type, msg|%>
+              <%message.error_messages.each do |msg|%>
                 <%unless(msg.empty?) %>
-                <li><%=type%>: <%=msg.join(' ')%></li>
+                <li><%=msg%></li>
                 <%end%>
               <%end %>
             </ul>

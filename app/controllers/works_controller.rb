@@ -17,9 +17,11 @@ class WorksController < ApplicationController
 
     redirect_path = save ? work_path(@work.id) : works_path
 
-    @category = params[:work][:category] ? params[:work][:category] : "work"
+    category = params[:work][:category] ? params[:work][:category] : "work"
 
-    action_success_check(save, redirect_path, destination_view: :new, success_msg: "Successfully created #{@work.category} #{@work.id}", error_msg: @work.errors.messages)
+    error_flash = ErrorFlash.new("create #{category}", @work.errors)
+
+    action_success_check(save, redirect_path, destination_view: :new, success_msg: "Successfully created #{@work.category} #{@work.id}", error_msg: error_flash)
   end
 
   def show

@@ -10,7 +10,6 @@ class UsersController < ApplicationController
   def login
     @user = User.find_by(username: params[:user][:username])
 
-
     if @user.nil?
       @user = User.new(users_params)
       if @user.save

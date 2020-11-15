@@ -1,4 +1,6 @@
 class WorksController < ApplicationController
+  before_action :find_work, only: [:show, :edit, :update, :destroy]
+
   def index
     @works = Work.all
 
@@ -28,30 +30,15 @@ class WorksController < ApplicationController
   end
 
   def show
-    @work = Work.find_by(id: params[:id].to_i)
 
-    if @work.nil?
-      render :file => "#{Rails.root}/public/404.html",  layout: false, status: :not_found
-      return
-    end
   end
 
   def edit
-    @work = Work.find_by(id: params[:id].to_i)
 
-    if @work.nil?
-      render :file => "#{Rails.root}/public/404.html",  layout: false, status: :not_found
-      return
-    end
   end
 
   def update
-    @work = Work.find_by(id: params[:id].to_i)
-
-    if @work.nil?
-      render :file => "#{Rails.root}/public/404.html",  layout: false, status: :not_found
-      return
-    elsif @work.update(works_params)
+    if @work.update(works_params)
       flash[:success] = "Successfully updated #{@work.category} #{@work.id}"
       redirect_to work_path(@work)
       return
@@ -64,12 +51,7 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    @work = Work.find_by(id: params[:id].to_i)
-
-    if @work.nil?
-      render :file => "#{Rails.root}/public/404.html",  layout: false, status: :not_found
-      return
-    elsif @work.destroy
+    if @work.destroy
       flash[:success] = "Successfully destroyed #{@work.category} #{@work.id}"
       redirect_to works_path
       return
@@ -80,10 +62,18 @@ class WorksController < ApplicationController
     end
   end
 
-
   private
 
   def works_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+  end
+
+  def find_work
+    @work = Work.find_by(id: params[:id].to_i)
+
+    if @work.nil?
+      render :file => "#{Rails.root}/public/404.html",  layout: false, status: :not_found
+      return
+    end
   end
 end

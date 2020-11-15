@@ -3,9 +3,12 @@ class Work < ApplicationRecord
   has_many :votes
   has_many :users, through: :votes
 
-
   validates :title, presence: true
-  validates :publication_year, presence: true, numericality: { greater_than: 1900, less_than:  Date.current.year + 1 }
+
+  validates :category, presence: true
+
+  validates :publication_year, presence: true,
+             numericality: { greater_than: 1800, less_than:  Date.current.year + 1 }
 
 
   def self.albums

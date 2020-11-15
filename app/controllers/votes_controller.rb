@@ -1,7 +1,6 @@
 class VotesController < ApplicationController
   def upvote
 
-
     if params[:work_id]
       @work = Work.find_by(id: params[:work_id])
 

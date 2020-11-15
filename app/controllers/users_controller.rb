@@ -8,7 +8,8 @@ class UsersController < ApplicationController
   end
 
   def login
-    @user = User.find_by(username: params[:username])
+    @user = User.find_by(username: params[:user][:username])
+
 
     if @user.nil?
       @user = User.new(users_params)
@@ -24,6 +25,7 @@ class UsersController < ApplicationController
     else
       session[:user_id] = @user.id
       flash[:success] = "Successfully logged in as existing user #{@user.username}"
+
     end
 
     redirect_to root_path

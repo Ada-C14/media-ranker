@@ -28,6 +28,8 @@ class ActiveSupport::TestCase
 
     post login_path, params: login_data
 
+    user = User.find_by(username: username)
+
     return user
   end
 

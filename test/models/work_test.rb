@@ -29,13 +29,13 @@ describe Work do
   end
 
   describe "custom methods" do
-    # The counter cache doesn't get updated for fixtures, have to manually create votes & then reload the works
+
     before do
 
       Vote.all.each do |vote|
         vote.delete
       end
-
+      # The counter cache doesn't get updated for fixtures, have to manually create votes
       Vote.create!(work_id: works(:hp1).id, user_id: users(:harry).id)
       Vote.create!(work_id: works(:hp2).id, user_id: users(:john).id)
       Vote.create!(work_id: works(:hp1).id, user_id: users(:justin).id)
@@ -99,7 +99,7 @@ describe Work do
         expect(Work.spotlight).must_be_nil
       end
 
-      it "returns the only work if there's only one" do
+      it "if there's one work but no votes, features the work" do
         Work.all.each { |work| work.delete }
         Work.create!(category: "album", title: "test title")
         expect(Work.spotlight.title).must_equal "test title"

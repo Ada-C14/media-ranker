@@ -7,7 +7,9 @@ class Work < ApplicationRecord
 
 
   def self.spotlight
-    return where.not(votes_count: nil).order("votes_count DESC, created_at").first
+    work_no_nil = where.not(votes_count: nil).order("votes_count DESC, created_at")
+    work_yes_nil = where(votes_count: nil).order(:created_at)
+    return work_no_nil.empty? ? work_yes_nil.first : work_no_nil.first
   end
 
   def self.top_ten(category)

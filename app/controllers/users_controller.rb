@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(name: params[:user][:name])
+    @user = User.new(user_params)
     if @user.save
       flash[:success] = "#{@user.name} was successfully created :)"
       redirect_to user_path(@user.id)
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   end
 
   def login
-    user = User.find_by(name: params[:user][:name])
+    user = User.find_by(user_params)
     if user
       session[:user_id] = user.id
       flash[:success] = "Successfully logged in as returning user #{user.name}"
@@ -74,4 +74,10 @@ class UsersController < ApplicationController
     session[:user_id] = nil
     redirect_to root_path
   end
+
+  private
+  def user_params
+    return params.require(:user).permit(:name)
+  end
+
 end

@@ -68,36 +68,24 @@ class WorksController < ApplicationController
   def upvote
     @work = Work.find_by(id: params[:id])
     @user = User.find_by(id: session[:user_id])
-
-    # vote = @work.votes.new(user: @user)
-    vote = Vote.new(work: @work, user: @user)
-    if vote.save
-      flash[:notice] =  "Thank you for upvoting!"
-      redirect_to(works_path)
+    if @user.nil?
+      flash[:notice] = "You must be logged in!"
+      redirect_to(login_path)
     else
-      flash[:notice] =  "You have already upvoted this!"
-      redirect_to(works_path)
+    # vote = @work.votes.new(user: @user)
+      vote = Vote.new(work: @work, user: @user)
+      if vote.save
+        flash[:notice] =  "Thank you for upvoting!"
+        redirect_to(works_path)
+      else
+        flash[:notice] =  "You have already upvoted this!"
+        redirect_to(works_path)
+      end
     end
   end
 
   # form relation/link between user & work
   # create a new vote and save it with usr_id and work_id
-
-
-  # def vote
-  #   @work = Work.find_by(id: params[:id])
-  #   if @work.nil?
-  #     head :not_found
-  #     return
-  #   elsif
-  #   @work.update(
-  #       completed_at: DateTime.now,
-  #       )
-  #     redirect_to tasks_path
-  #     return
-  #   end
-  # end
-
 
   private
   def work_params

@@ -120,8 +120,9 @@ describe Work do
       vote1 = Vote.create(work_id: recent_work.id, user_id: user1.id)
       vote2 = Vote.create(work_id: recent_work.id, user_id: user2.id)
       # vote3 = Vote.create(work_id: recent_work.id, user_id: user3.id)
-
       works = Work.all
+      pp works.last
+
       expect((works.spotlight).title).must_equal "New Work Title"
     end
   end

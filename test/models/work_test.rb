@@ -1,11 +1,25 @@
 require "test_helper"
 
 describe Work do
+  describe "relations" do
+    before do
+      @lathe = works(:lathe)
+      @user = users(:testuser)
+    end
+
+    it "has votes" do
+      vote = Vote.create!(user_id: @user.id, work_id: @lathe.id)
+      expect(@lathe).must_respond_to :votes
+      @lathe.votes.each do |vote|
+        expect(vote).must_be_instance_of Vote
+      end
+    end
+  end
+
   describe "validations" do
     before do
       @spacejam = works(:spacejam)
       @practicalmagic = works(:practicalmagic)
-      @lathe = works(:lathe)
     end
 
   it "requires title field must not be blank" do
@@ -56,8 +70,10 @@ describe Work do
 
   describe "custom methods" do
     before do
+      @spacejam = works(:spacejam)
       @practicalmagic = works(:practicalmagic)
       @lathe = works(:lathe)
+      @user = users(:testuser)
     end
 
     it "self.by_category gathers works of a specific category" do
@@ -73,19 +89,27 @@ describe Work do
       expect(Work.by_category("book")).must_be_kind_of String
     end
 
-    it "self.media_spotlight pulls a random work to spotlight" do #TODO: update for wave 2+
+    it "self.media_spotlight pulls the top voted work" do
 
       # positive nominal
+      Vote.create!(user_id: @user.id, work_id: @lathe.id)
       expect(Work.media_spotlight).must_be_instance_of Work
+      expect(Work.media_spotlight.votes_count).must_equal Work.maximum(:votes_count)
+
+      # pulls first if ties
+      Vote.create!(user_id: @user.id, work_id: @practicalmagic.id)
+      expect(Work.media_spotlight).must_be_instance_of Work
+      expect(Work.media_spotlight.votes_count).must_equal Work.maximum(:votes_count)
+      expect(Work.media_spotlight).must_equal @lathe
 
       # displays a message if no works exist
       Work.destroy_all
-      expect(Work.by_category("book")).must_be_kind_of String
+      expect(Work.media_spotlight).must_be_kind_of String
     end
 
-    it "self.top_ten pulls up to ten works" do #TODO: update for wave 2+
+    it "self.top_ten pulls up to ten works" do
 
-    # pulls ten randomly if ten+ available TODO: I don't know why it pulls only nine here...10 in yml?
+    # pulls top ten if ten+ available TODO: Why wouldn't it let me name stuff4 in .yml 'd' ??? Had to be 'de'??
     all_movies = Work.all.find_all { |work| work.category == "movie" }
     expect(Work.top_ten("movie").count).must_equal all_movies.length
 
@@ -95,7 +119,7 @@ describe Work do
 
     # displays a message if no works exist
     Work.destroy_all
-    expect(Work.by_category("book")).must_be_kind_of String
+    expect(Work.top_ten("book")).must_be_kind_of String
     end
   end
 end

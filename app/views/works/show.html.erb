@@ -5,4 +5,19 @@
 
   <%= link_to "Back to media ranks", root_path, class: "button" %>
   <%= link_to "Edit", edit_work_path(@work), class: "button" %>
+ <%= link_to "Upvote", upvote_path(@work), method: :post, class: "button" %>
   <%= link_to "Delete", work_path(@work), class: "alert button", method: "delete", data: { confirm: "Are you sure?" } %>
+
+ <h3><%= @work.votes_count.nil? ? "0" : @work.votes_count %> Votes for this <%= @work.category %></h3>
+ <table>
+   <tr>
+     <th>User</th>
+     <th>Date</th>
+   </tr>
+   <% @work.votes.each do |vote| %>
+     <tr>
+       <td><%= link_to vote.user.username, user_path(vote.user) %></td>
+       <td><%= vote.created_at %></td>
+     </tr>
+   <% end %>
+ </table>

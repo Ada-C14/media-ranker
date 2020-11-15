@@ -63,6 +63,23 @@ class WorksController < ApplicationController
     redirect_to root_path
   end
 
+  def upvote
+    @work = Work.find_by(id: params[:id])
+    @user = User.find(session[:user_id])
+
+    if @work && @user
+      vote = Vote.create(user_id: @user.id, work_id: @work.id)
+      flash[:message] = "Successfully upvoted!"
+      redirect_to work_path(@work)
+    elsif @work.nil?
+      head :not_found
+      return
+    elsif @user.nil? #TODO: Somehow this doesn't work
+      flash[:message] = "A problem occurred: You must log in to do that"
+      return
+    end
+  end
+
   private
   def work_params
     params.require(:work).permit(:title, :category, :creator, :description, :publication_year)

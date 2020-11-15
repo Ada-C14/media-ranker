@@ -192,6 +192,16 @@ describe Work do
 
     end
 
+    describe 'relations' do
+
+      it "has vote(s)" do
+        work = works(:book1)
+        votes = work.votes
+
+        expect(votes.first).must_be_instance_of Vote
+        expect(votes.count).must_equal 5
+      end
+    end
 
   end
 end

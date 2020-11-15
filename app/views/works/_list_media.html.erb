@@ -11,10 +11,10 @@
   <tbody>
   <% media.each do |medium| %>
     <tr>
-      <td><%= "count" %></td>
-      <td><%= link_to "#{medium.title}", works_path %></td>
-      <td><%= "#{medium.creator}" %></td>
-      <td><%= "#{medium.publication_year}" %></td>
+      <td><%= medium.votes.length  %></td>
+      <td><%= link_to "#{medium.title}", work_path(medium.id) %></td>
+      <td><%= medium.creator %></td>
+      <td><%= medium.publication_year %></td>
       <td> <%= link_to "Upvote", work_votes_path(work_id: "#{medium.id}"), method: :post, class: "btn btn-primary" %></td>
     </tr>
   <% end %>

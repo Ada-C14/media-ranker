@@ -28,27 +28,18 @@ describe Vote do
     end
   end
 
-  # describe "validations" do
-  #   it "must have a title" do
-  #     # Arrange
-  #     new_work.title = nil
-  #
-  #     # Assert
-  #     expect(new_work.valid?).must_equal false
-  #     expect(new_work.errors.messages).must_include :title
-  #     expect(new_work.errors.messages[:title]).must_equal ["can't be blank"]
-  #   end
-  #
-  #   it "must have a unique title" do
-  #     new_work.save
-  #     new_work_2 = Work.new(category: "book", title: "BFG", creator: "Roald Dahl", publication_year: "1982", description: "duplicate entry")
-  #     new_work_2.save
-  #
-  #     expect(new_work_2.valid?).must_equal false
-  #     expect(new_work_2.errors.messages).must_include :title
-  #     expect(new_work_2.errors.messages[:title]).must_equal ["has already been taken"]
-  #   end
-  #
-  # end
+  describe "validations" do
+    it "will not let user vote for work more than once" do
+      # Arrange
+      duplicate_vote = Vote.create(work_id: 1, user_id: 1)
+
+      # Assert
+      expect(duplicate_vote.valid?).must_equal false
+      expect(duplicate_vote.errors.messages).must_include :work_id
+      expect(duplicate_vote.errors.messages[:work_id]).must_equal ["User cannot upvote work more than once"]
+    end
+
+
+  end
 
 end

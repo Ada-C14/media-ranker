@@ -177,6 +177,7 @@ describe WorksController do
       expect{post upvote_work_path(@work.id)}.must_differ "Vote.count", 1
       expect{post upvote_work_path(@work.id)}.wont_change "Vote.count"
       expect(flash[:error]).must_equal "A problem occurred: Could not upvote"
+      expect(flash[:error_message]).must_equal "user: has already voted for this work"
     end
   end
 

@@ -8,33 +8,47 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
   end
 
-  def login_form # ???
+  def login_form
     @user = User.new
   end
 
   def login
-    @user = User.find_by(id: params[:id])
-    if @user.nil?
-      @user = User.new(username: params[:user][:username])
-      if @user.save
-        flash[:success] = "Welcome #{@user.username}! You'll love it here!"
-        # redirect_to root_path
-      else
-        flash.now[:error] = "Hmm..something went wrong. You're username wasn't saved. Try again later!"
-        # redirect_to login_path
-      end
+    username = params[:user][:username]
+    @user = User.find_by(username: username)
+    if @user
+      session[:user_id] = @user.id
+      flash[:success] = "Welcome back, #{username}!"
     else
-      flash[:success] = "Welcome back #{@user.username}!"
+      @user = User.create(username: username)
+      if @user.save
+        session[:user_id] = @user.id
+        flash[:success] = "Welcome, #{username}! You'll love it here!"
+      else
+        flash[:error] = "Error! Username can't be left blank"
+        redirect_to login_path
+        return
+      end
     end
-    session[:user_id] = @user.id
     redirect_to root_path
   end
 
   def logout
-
+    if session[:user_id]
+      @user = User.find_by(id: session[:user_id])
+      unless @user.nil?
+        session[:user_id] = nil
+        flash[:notice] = "See you later, #{@user.username}!"
+      else
+        session[:user_id] = nil
+        flash[:error] = "Hmm..something went wrong"
+      end
+    else
+      flash[:error] = "You must be logged in order to logout"
+    end
+    redirect_to root_path
   end
 
   def current_user
-
+    @current_user = User.find_by(id: params[:id])
   end
 end

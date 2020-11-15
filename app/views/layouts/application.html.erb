@@ -9,7 +9,32 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <header>
+    <h1>Welcome to Media Ranker!</h1>
+    <h2>The best place to rate cool stuff</h2>
+    <%= link_to "Home", root_path, class: "link" %>
+    <%= link_to "New Media", new_work_path, class: "link" %>
+    <%= link_to "All Media", works_path, class: "link" %>
+    <%= link_to "All Users", users_path, class: "link" %>
+    <% if session[:user_id].nil? %>
+      <%= link_to "Login", login_path, class: "link" %>
+    <% else %>
+      <%# link_to "Logged in as #{@current_user}", user_path(@current_user.id), class: "link" %>
+      <%= link_to "Logout", logout_path, method: :post, class: "link" %>
+    <% end %>
+  </header>
+
+  <section class="flash-message">
+    <% flash.each do |name, message| %>
+      <strong class="<%= name %>">
+        <%= message %>
+      </strong>
+    <% end %>
+  </section>
+
   <body>
     <%= yield %>
   </body>
+
+  <footer>Copyright 2020 Taylor Tompkins</footer>
 </html>

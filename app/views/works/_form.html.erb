@@ -1,14 +1,9 @@
-<header>
-  <% if action_name == "Edit" %>
-    <h1>Edit Work - <%= @work.title %></h1>
-  <% else %>
-    <h1>Create a New Work</h1>
-  <% end %>
-  <%= link_to "Home", root_path, class: "link" %>
-  <%= link_to "All Media", works_path, class: "link" %>
-  <%= link_to "All Users", users_path, class: "link" %>
-  <%= link_to "Login", login_path, class: "link" %>
-</header>
+
+<% if action_name == "Edit" %>
+  <h1>Edit Work - <%= @work.title %></h1>
+<% else %>
+  <h1>Create a New Work</h1>
+<% end %>
 
 <%= form_with model: @work, class: 'new-or-edit-work' do |f| %>
 

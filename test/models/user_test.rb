@@ -27,4 +27,15 @@ describe User do
     end
   end
 
+  describe 'relations' do
+
+    it "has vote(s)" do
+      user = users(:user1)
+      votes = user.votes
+
+      expect(votes.first).must_be_instance_of Vote
+      expect(votes.count).must_equal 3
+    end
+  end
+
 end

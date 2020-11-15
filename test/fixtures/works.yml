@@ -1,0 +1,21 @@
+gods:
+  title: American Gods
+  creator: Neil Gaiman
+  publication_year: 2001
+  category: book
+  description: old and new gods duke it out
+
+
+stardust:
+  title: Stardust
+  creator: Neil Gaiman
+  publication_year: 1997
+  category: book
+  description: cute movie, good book
+
+world:
+  title: Seeking a Friend for the End of the World
+  creator: Lorene Scafaria
+  publication_year: 2012
+  category: movie
+  description: keira knightley and steve carell make me cry every time

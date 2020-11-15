@@ -2,9 +2,6 @@
 
 <section class="show_details">
   <div>
-    ID:  <%=@work.id %>
-  </div>
-  <div>
     Creator: <%=@work.creator.titleize %>
   </div>
   <div>
@@ -17,7 +14,7 @@
     Category: <%=@work.category %>
   </div>
 </section>
-
+<h3>Votes: <%= @work.votes.count%></h3>
 
 <!--# Render votes view partials info here?-->
 

@@ -1,4 +1,5 @@
 class WorksController < ApplicationController
+  before_action :find_work, only: [:show, :edit, :update, :destroy, :upvote]
 
   def order_list(category)
     return Work.where(category: category).order(votes_count: :desc, created_at: :asc)
@@ -13,8 +14,6 @@ class WorksController < ApplicationController
   end
 
   def show
-    @work = Work.find_by(id: params[:id])
-
     if @work.nil?
       flash[:error] = "Work not found"
       redirect_to works_path and return
@@ -38,8 +37,6 @@ class WorksController < ApplicationController
   end
 
   def edit
-    @work = Work.find_by(id: params[:id])
-
     if @work.nil?
       flash[:error] = "Work not found"
       redirect_to works_path and return
@@ -47,8 +44,6 @@ class WorksController < ApplicationController
   end
 
   def update
-    @work = Work.find_by(id: params[:id])
-
     if @work.nil?
       flash[:error] = "Work not found"
       redirect_to works_path and return
@@ -62,8 +57,6 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    @work = Work.find_by(id: params[:id])
-
     if @work
       @work.destroy
       flash[:success] = "The work has been deleted"
@@ -75,7 +68,6 @@ class WorksController < ApplicationController
   end
 
   def upvote
-    @work = Work.find_by(id: params[:id])
     @user = User.find_by(id: session[:user_id])
     if @user.nil?
       flash[:error] = "Please log in to vote"
@@ -100,5 +92,9 @@ class WorksController < ApplicationController
 
   def works_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+  end
+
+  def find_work
+    @work = Work.find_by(id: params[:id])
   end
 end

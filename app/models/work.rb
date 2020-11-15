@@ -10,7 +10,6 @@ class Work < ApplicationRecord
     works_by_category = self.where(category: category)
     # top 10 order by number of votes
     # ties? alphabetical order by title
-    # if all 0 votes, none will be listed
     return works_by_category.sort_by { |x| [-x.votes.count, x.title]}.first(10)
 
   end

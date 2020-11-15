@@ -89,6 +89,41 @@ describe Work do
 
       expect(albums.count).must_equal 0
     end
+
+    it 'list works even if there are no votes' do
+      Vote.delete_all
+
+      category = "book"
+
+      books = Work.top_10(category)
+
+      expect(books.count).must_equal 10
+    end
+
+    it 'list top 10 by number of votes' do
+
+      category = "book"
+
+      books = Work.top_10(category)
+
+      expect(books.first).must_equal works(:book1)
+      expect(books.first.votes.count).must_equal 5
+
+    end
+
+    it 'list top 10 in alphabetical order for ties in votes' do
+
+      category = "book"
+
+      books = Work.top_10(category)
+
+      expect(books[1].title).must_equal "Attack of the Meatball"
+      expect(books[1].votes.count).must_equal 4
+      expect(books[2].title).must_equal "Unicorns are magical"
+      expect(books[2].votes.count).must_equal 4
+
+    end
+
   end
 
   describe "spotlight" do

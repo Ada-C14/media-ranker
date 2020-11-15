@@ -1,4 +1,6 @@
 class WorksController < ApplicationController
+  before_action :find_work, only: [:show, :edit, :update, :destroy]
+
   def index
     # @works = Work.all
     @albums = Work.albums
@@ -8,8 +10,6 @@ class WorksController < ApplicationController
   end
 
   def show
-    work_id = params[:id].to_i
-    @work = Work.find_by(id: work_id)
     if @work.nil?
       redirect_to works_path
       return
@@ -27,24 +27,21 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params) #instantiate a new work
     if @work.save # save returns true if the database insert succeeds
+      flash[:success] = "Book added successfully"
       redirect_to work_path(@work.id) # go to the index so we can see the work in the list
-      return
     else # save failed :(
+      flash.now[:error] = "Something happened. Book not added."
       render :new # show the new work form view again
-      return
     end
   end
 
   def edit
-    @work = Work.find_by id: params[:id]
     if @work.nil?
       redirect_to root_path
-      return
     end
   end
 
   def update
-    @work = Work.find_by id: params[:id]
     if @work.nil?
       redirect_to root_path
       return
@@ -58,13 +55,11 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    @work = Work.find_by(id: params[:id])
     if @work
       @work.destroy
       redirect_to root_path
     else
       head :not_found
-      return
     end
   end
 
@@ -74,6 +69,10 @@ class WorksController < ApplicationController
 
   def work_params
     return params.require(:work).permit(:title, :description, :creator, :publication_date, :category)
+  end
+
+  def find_work
+    @work = Work.find_by_id(params[:id])
   end
 
 end

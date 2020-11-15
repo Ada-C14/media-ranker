@@ -1,7 +1,7 @@
 <section>
   <article class="spotlight">
-    <% if Work.count != 0%>  
-      <h2 class="spotlight__header--prefix">Media Spotlight: <%= link_to Work.top_ten_helper(Work.spotlight[0]).title, work_path(Work.top_ten_helper(Work.spotlight[0]), class: "spotlight__link-to") %> by <%= Work.top_ten_helper(Work.spotlight[0]).creator %></h2>
+    <% if Work.count != 0 %>  
+      <h2 class="spotlight__header"><span class="spotlight__header--prefix">Media Spotlight</span> <%= link_to Work.top_ten_helper(Work.spotlight[0]).title, work_path(Work.top_ten_helper(Work.spotlight[0])), class: "spotlight__link-to" %> by <%= Work.top_ten_helper(Work.spotlight[0]).creator %></h2>
       <p class="spotlight__description"><%= Work.spotlight[1] %> votes - <%= Work.top_ten_helper(Work.spotlight[0]).description %></p>
     <% else %>
       <h2 class="spotlight__header--prefix">Media Spotlight</h2>

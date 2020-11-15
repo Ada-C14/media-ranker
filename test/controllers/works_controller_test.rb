@@ -171,8 +171,6 @@ describe WorksController do
     end
 
     it "can't be voted for more than once by same user" do
-      skip
-      # skipping because idk about my flash thing
       perform_login(user)
       expect{post upvote_work_path(@work.id)}.must_differ "Vote.count", 1
       expect{post upvote_work_path(@work.id)}.wont_change "Vote.count"

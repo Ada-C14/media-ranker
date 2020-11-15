@@ -35,7 +35,14 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by(id: params[:])
+    @user = User.find_by(id: params[:id])
+
+    if @user.nil?
+      head :not_found
+      return
+    end
+
+    @votes = Vote.where(user_id: @user.id)
   end
 
 end

@@ -2,3 +2,23 @@
 
 <p>Joined site <%= @user.created_at.strftime("%b %d, %Y") %></p>
 
+<h4>Votes</h4>
+<table>
+  <tr>
+    <th>Media Title</th>
+    <th>Created By</th>
+    <th>Published</th>
+    <th>Category</th>
+    <th>Voted On</th>
+  </tr>
+
+  <tr>
+    <% @user.votes.each do |vote| %>
+      <td><%= vote.work.title %></td>
+      <td><%= vote.work.creator %></td>
+      <td><%= vote.work.publication_year %></td>
+      <td><%= vote.work.category.capitalize %></td>
+      <td><%= vote.created_at.strftime("%b %d, %Y") %></td>
+    <% end %>
+  </tr>
+</table>

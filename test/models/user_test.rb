@@ -6,8 +6,7 @@ describe User do
   end
 
   it "will have the required fields" do
-    user = User.first
-    expect(user).must_respond_to :username
+    expect(users(:user1)).must_respond_to :username
   end
 
   describe "can be validated" do

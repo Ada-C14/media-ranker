@@ -17,3 +17,7 @@ vote4:
 vote5:
   user: user2
   work: work4
+
+vote6:
+  user: user1
+  work: work1

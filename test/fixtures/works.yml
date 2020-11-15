@@ -1,9 +1,9 @@
 book:
   category: "book"
-  title: "The Book"
-  creator: "The Author"
-  publication_year: 2020
-  description: "The Description"
+  title: "Ruby on Rails"
+  creator: "Jane Do"
+  publication_year: 2019
+  description: "A book that talks in details about ruby on rails"
 
 work1:
   category: "album"

@@ -3,7 +3,7 @@
     <% if @spotlight.nil? %>
       <h2><span>Media Spotlight:</span></h2>
     <% else %>
-      <h2> <%= link_to @spotlight.title, work_path(@spotlight) %> by  <%= @spotlight.creator %>
+      <h2> <span>Media Spotlight: </span><%= link_to @spotlight.title, work_path(@spotlight) %> by  <%= @spotlight.creator %>
       </h2>
       <p>
         <%= @spotlight.description %>

@@ -1,9 +1,9 @@
 class WorksController < ApplicationController
 
   def index
-    @books = Work.where(category: 'book')
-    @albums = Work.where(category: 'album')
-    @movies = Work.where(category: 'movie')
+    @books = Work.where(category: 'book').sort_by { |x| -x.votes.count}
+    @albums = Work.where(category: 'album').sort_by { |x| -x.votes.count}
+    @movies = Work.where(category: 'movie').sort_by { |x| -x.votes.count}
   end
 
   def show

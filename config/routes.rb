@@ -9,4 +9,5 @@ Rails.application.routes.draw do
 
   get "/users/current", to: "users#current", as: "current_user"
   get "/users/:id", to: "users#show", as: "user"
+  get '/users/', to: 'users#index', as: 'users'
 end

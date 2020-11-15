@@ -16,7 +16,7 @@
       <%= link_to "View top media", root_path %>
       <%= link_to "View all Media", works_path %>
       <%= link_to "Add a new work", new_work_path %>
-      <%#= link_to "View all users", users_path %>
+      <%= link_to "View all users", users_path %>
 
       <% if session[:user_id] %>
         <%= link_to "Logged in as #{User.find_by(id: session[:user_id]).username}", user_path(session[:user_id])%>

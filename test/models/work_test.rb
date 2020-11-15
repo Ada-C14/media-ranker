@@ -79,7 +79,6 @@ describe Work do
 
     it "chooses alphabetically in the chance of ties" do
       Vote.create!(user_id: @user.id, work_id: second_work.id)
-
       expect(@work.votes.length).must_equal 1
       expect(second_work.votes.length).must_equal 1
       expect(Work.select_spotlight).must_equal second_work
@@ -87,10 +86,16 @@ describe Work do
 
     it "returns nil in the case of no votes" do
       @vote.destroy
-
       expect(Vote.count).must_equal 0
       expect(Work.select_spotlight).must_be_nil
     end
+
+    it "returns nil in the case of no works" do
+      @work.destroy
+      expect(Work.count).must_equal 0
+      expect(Work.select_spotlight).must_be_nil
+    end
+
   end
 
   describe "select top 10 media" do
@@ -111,6 +116,12 @@ describe Work do
     it "returns nil in the case of no votes" do
       @vote.destroy
       expect(Vote.count).must_equal 0
+      expect(Work.select_top_ten("album")).must_be_nil
+    end
+
+    it "returns nil in the case of no works" do
+      @work.destroy
+      expect(Work.count).must_equal 0
       expect(Work.select_top_ten("album")).must_be_nil
     end
 

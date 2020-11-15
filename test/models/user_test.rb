@@ -9,12 +9,12 @@ describe User do
       @odesza = works(:odesza)
 
       @pooh_vote_dune = votes(:pooh_dune)
-      @pooh_votes_odesza = votes(:pooh_odesza)
+      @pooh_vote_odesza = votes(:pooh_odesza)
     end
 
     it "has many votes" do
-      expect(@pooh.votes).must_include @pooh_votes_dune
-      expect(@pooh.votes).must_include @pooh_votes_odesza
+      expect(@pooh.votes).must_include @pooh_vote_dune
+      expect(@pooh.votes).must_include @pooh_vote_odesza
     end
 
     it "has many works through votes" do

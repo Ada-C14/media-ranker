@@ -1,6 +1,6 @@
 <section class="top-ten__list-container">
   <h2 class="top-ten__header">Top <%= action_name %>s</h2>
-  <ul>
+  <ul class="list-group top-ten__list">
     <% top_ten = Work.top_ten(action_name) %>
     <% if top_ten.empty? %>
       <li class="list-group-item">No <%= action_name %>s Available</li>

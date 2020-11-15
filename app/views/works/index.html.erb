@@ -1,0 +1,30 @@
+<h1>Media List</h1>
+<p>Albums</p>
+<% @works.each do %>
+  <% @albums.each do |album| %>
+    <div>
+      <%= link_to album.title, work_path(album) %>
+      <%= album.creator %>
+      <%= album.publication_year%>
+    </div>
+  <% end %>
+
+  <p>Books</p>
+  <% @books.each do |book| %>
+    <div>
+      <%= link_to book.title, work_path(book) %>
+      <%= book.creator %>
+      <%= book.publication_year%>
+    </div>
+  <% end %>
+
+  <p>Movies</p>
+  <% @movies.each do |movie| %>
+    <div>
+      <%= link_to movie.title, work_path(movie) %>
+      <%movie.creator %>
+      <%= movie.publication_year %>
+    </div>
+  <% end %>
+
+<% end %>

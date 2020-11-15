@@ -22,7 +22,13 @@ class WorksController < ApplicationController
   end
 
   def edit
+    @work = Work.find_by(id: params[:id])
 
+    if @work.nil?
+      flash[:warning] = "Invalid request. Media not found."
+      redirect_to works_path
+      return
+    end
   end
 
   def create

@@ -1,0 +1,8 @@
+<h1>Users</h1>
+
+<div>
+  <% @users.each do |user| %>
+      <%= link_to user.name, user_path(user) %>
+      <%= (user.created_at).to_date %>
+</div>
+  <%end%> 

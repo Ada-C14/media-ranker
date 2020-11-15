@@ -4,7 +4,6 @@
   <p>Created by <%= @work.creator %></p>
   <p>Published <%= @work.publication_year %></p>
   <p><%= @work.description %></p>
-  <p><strong>Votes: </strong></p>
 </section>
 <section>
   <p class="btn btn-primary"><%= link_to "Back to Media Rank", root_path %></p>
@@ -13,9 +12,10 @@
   <p class="btn btn-danger"><%= link_to "Delete", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"} %></p>
 </section>
 
+
 <section>
   <h3><%= @work.votes.count %> Votes for this <%= @work.category.capitalize %></h3>
-
+  <% if @work.votes.count > 0 %>
   <table>
     <tr>
       <th width = 50%>User</th>
@@ -30,4 +30,5 @@
       <% end %>
       </tbody>
   </table>
+  <% end %>
 </section>

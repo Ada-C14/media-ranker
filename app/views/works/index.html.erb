@@ -7,7 +7,7 @@
     <%= render partial: "table", locals: { work_title: "Movies", works: @movies } %>
   </section>
 
-  <section class="test">
+  <section class="btn-group">
     <%= button_to "View top media", root_path, method: :get, class: "btn btn-secondary" %>
     <%= button_to "Add a new work", new_work_path, method: :get, class: "btn btn-primary" %>
   </section>

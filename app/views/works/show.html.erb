@@ -5,7 +5,7 @@
     <p>Created by: <%= @work.creator %></p>
     <p>Published: <%= @work.publication_year %></p>
     <p><%= @work.description %> </p>
-    <section class="test">
+    <section class="btn-group">
       <%= button_to "Back to media ranks", root_path, method: :get, class: "btn btn-primary" %>
       <%= button_to "Edit", edit_work_path(@work.id), method: :get, class: "btn btn-primary" %>
       <%= button_to "Upvote", upvote_work_path(@work.id), class: "btn btn-primary" %>

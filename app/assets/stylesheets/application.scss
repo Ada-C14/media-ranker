@@ -7908,13 +7908,7 @@ Styling copied from Ada Developer's Academy
  main {
   padding:2rem
  }
- 
 
- .test {
-   display: flex;
-  //  padding:100px
- }
- .test btn-secondary {
-   margin: 100px
-
- }
+ .btn-group {
+  gap: 3px;
+}

@@ -93,7 +93,7 @@ header {
     display: block;
 }
 
-*, ::before, ::after {
+*, *::before, *::after {
     box-sizing: border-box;
 }
 
@@ -110,6 +110,7 @@ ul {
     list-style-type: none;
    }
 
+// Nav Bar
 .app-header-nav {
     display: flex;
     flex-direction: row;

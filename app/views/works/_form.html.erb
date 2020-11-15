@@ -1,0 +1,35 @@
+<section>
+  <%= form_with model: @work, class: 'create-work' do |f| %>
+    <div class="form-group">
+      <label><%= f.label :category %></label>
+      <%= f.select(:category, ['album', 'book', 'movie'], {}, {class: "form-control"})%>
+    </div>
+
+    <div class="form-group">
+      <label><%= f.label :title %></label>
+      <%= f.text_field(:title,{class: "form-control"} )%>
+    </div>
+
+    <div class="form-group">
+      <label><%= f.label :creator %></label>
+      <%= f.text_field(:creator,{class: "form-control"} )%>
+    </div>
+
+    <div class="form-group">
+      <label><%= f.label :publication_year %></label>
+      <%= f.text_field(:publication_year,{class: "form-control"} )%>
+    </div>
+
+    <div class="form-group">
+      <label><%= f.label :description %></label>
+      <%= f.text_area(:description,{class: "form-control"} )%>
+    </div>
+    <div class="form-group">
+      <% if action_name.downcase == 'new' %>
+        <%= f.submit "Create Work", class: "btn btn-primary" %>
+      <% else %>
+        <%= f.submit "Update Work", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  <% end %>
+</section>

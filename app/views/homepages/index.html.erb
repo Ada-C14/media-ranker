@@ -1,0 +1,31 @@
+<main>
+  <section class="spotlight">
+    <h2 class="spotlight__header">
+      <span class="spotlight__header--prefix">Media Spotlight</span>
+      <% if !@spotlight.nil? %>
+      <%= link_to "#{@spotlight.title}", work_path(@spotlight.id), method: :get, class: "spotlight__link-to"%> by <%= @spotlight.creator%>
+      <% end %>
+    </h2>
+    <p class="spotlight__description">
+      <% if !@spotlight.nil? %>
+      <%= @spotlight.votes.count %> votes - <%=@spotlight.description%>
+      <% end %>
+    </p>
+  </section>
+
+  <hr class="root__hr" />
+
+  <section class="top-ten__container">
+    <%@work_hash.each do |category,list| %>
+      <section class="top-ten__list-container">
+        <h2 class="top-ten__header">
+          Top <%= category.capitalize %>
+        </h2>
+        <%= render partial: 'table', locals: { works: list.first(10) } %>
+        <!-- <a href="/works.movies">View More Movies</a> -->
+      </section>
+    <% end %>
+  </section>
+
+</main>
+

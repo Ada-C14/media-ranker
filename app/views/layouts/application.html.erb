@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Media Ranker 2.0</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <link rel="stylesheet" media="screen" href="/assets/application-23e0d10ed2d885fab99a6549bc004eca19f49cf694e045afebe16b6e9bf1345a.css" />
+    <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Gudea:400,700|Hammersmith+One" />
+  </head>
+
+  <body>
+  <header class="app-header__header">
+    <h1>
+      <%= link_to "Media Ranker", root_path, method: :get %>
+      <small>Ranking the Best of Everything</small>
+    </h1>
+    <nav class="app-header__nav">
+      <ul class="nav app-header__site-nav-container">
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "View top media", root_path, method: :get, class: "nav-link" %>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "View all media", works_path, method: :get, class: "nav-link" %>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "Add a new work", new_work_path, method: :get, class: "nav-link" %>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "View all users", users_path, method: :get, class: "nav-link" %>
+        </li>
+      </ul>
+      <ul class="nav app-header__user-nav-container">
+        <% if session[:user_id ].nil? %>
+          <li class="nav-item app-header__nav_item">
+            <%= link_to "Log In", login_path, method: :get, class: "btn btn-primary"%>
+          </li>
+        <% else %>
+          <li class="nav-item app-header__nav_item">
+            <a class="btn btn-primary" href="/users/913">Logged in as <%="#{User.find_by(id: session[:user_id]).username}"%></a>
+          </li>
+          <li class="nav-item app-header__nav_item">
+            <%= link_to "Log Out", logout_path, method: :post, class: "btn btn-primary"%>
+          </li>
+        <% end  %>
+      </ul>
+    </nav>
+  </header>
+  <section class="alert__container">
+    <% flash.each do |name, message| %>
+      <%if name != 'error_messages' %>
+        <div class='<%= name == 'success' ? "alert alert-#{name}" : "alert alert-warning" %>'>
+        <span><%= message %></span>
+        <% if action_name.downcase != 'destroy' %>
+            <%if !@work.nil? %>
+              <ul>
+                <% @work.errors.each do |column, message| %>
+                  <li> <%= column %>: <%= message %></li>
+                <% end %>
+              </ul>
+            <% elsif !@user.nil? %>
+              <ul>
+                <% @user.errors.each do |column, message| %>
+                  <li> <%= column %>: <%= message %></li>
+                <% end %>
+              </ul>
+           <% end %>
+        <% end %>
+      <% end %>
+      <%if flash.key?(:error_messages) %>
+          <ul>
+            <% flash[:error_messages].each do |error, message| %>
+              <li><%= error %>: <%= message[0] %></li>
+            <% end %>
+          </ul>
+      <% end %>
+    <% end %>
+    </div>
+  </section>
+    <%= yield %>
+  </body>
+</html>

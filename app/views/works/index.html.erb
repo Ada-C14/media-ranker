@@ -1,0 +1,11 @@
+<main>
+  <h2>List of Works</h2>
+  <% @work_hash.each do |category, list| %>
+    <section class="media-table">
+      <h4><%= category.capitalize %></h4>
+      <%= render partial: 'table', locals: { works: list } %>
+    </section>
+  <% end %>
+  <%= link_to "View top media", root_path, method: :get, class: "btn btn-secondary" %>
+  <%= link_to "Add a new work", new_work_path, method: :get, class: "btn btn-primary" %>
+</main>

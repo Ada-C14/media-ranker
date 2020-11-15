@@ -1,5 +1,5 @@
 class WorksController < ApplicationController
-  # before_action :set_work, only: [:show, :edit, :update, :destroy, :upvote]
+  before_action :set_work, only: [:edit, :update, :destroy, :upvote]
 
   def index
     @books = Work.books

@@ -3,7 +3,7 @@
     Top <%= category %>
   </h2>
   <ul class="list-group top-ten__list">
-    <% works.order_by_votes.each do |work| %>
+    <% works.top_10.each do |work| %>
       <li class="list-group-item">
         <h4>
           <%= link_to work.title, work_path(work) %>

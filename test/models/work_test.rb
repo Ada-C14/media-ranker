@@ -2,13 +2,24 @@ require "test_helper"
 
 describe Work do
   describe "relation" do
-    it "has many votes" do
-      dune = works(:dune)
-      pooh_vote_dune = votes(:pooh_dune)
-      tigger_vote_dune = votes(:tigger_dune)
+    before do
+      @dune = works(:dune)
 
-      expect(dune.votes).must_include pooh_vote_dune
-      expect(dune.votes).must_include tigger_vote_dune
+      @pooh = users(:pooh)
+      @tigger = users(:tigger)
+
+      @pooh_vote_dune = votes(:pooh_dune)
+      @tigger_vote_dune = votes(:tigger_dune)
+    end
+
+    it "has many votes" do
+      expect(@dune.votes).must_include @pooh_vote_dune
+      expect(@dune.votes).must_include @tigger_vote_dune
+    end
+
+    it "has many users through votes" do
+      expect(@dune.users).must_include @pooh
+      expect(@dune.users).must_include @tigger
     end
   end
 

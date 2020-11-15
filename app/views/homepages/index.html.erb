@@ -10,19 +10,10 @@
 <p><%= spotlight_work.description unless spotlight_work.nil? %></p>
 
 <h3>Top Albums</h3>
-<% Work.top_ten("album").each do |album| %>
-  <%= link_to album.title, work_path(album) %>
-  <br/>
-<% end %>
+<%= render partial: "table", locals: { category: "album" } %>
 
 <h3>Top Books</h3>
-<% Work.top_ten("book").each do |book| %>
-  <%= link_to book.title, work_path(book) %>
-  <br/>
-<% end %>
+<%= render partial: "table", locals: { category: "book" } %>
 
 <h3>Top Movies</h3>
-<% Work.top_ten("movie").each do |movie| %>
-  <%= link_to movie.title, work_path(movie) %>
-  <br/>
-<% end %>
+<%= render partial: "table", locals: { category: "movie" } %>

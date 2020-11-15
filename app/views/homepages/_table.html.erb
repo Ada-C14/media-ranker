@@ -1,0 +1,4 @@
+<% Work.top_ten(category).each do |work| %>
+  <%= link_to work.title, work_path(work) %> by <%= work.creator %>
+  <p><%= work.votes_count %> votes</p>
+<% end %>

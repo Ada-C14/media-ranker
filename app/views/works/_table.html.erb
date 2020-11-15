@@ -7,7 +7,7 @@
     <th>Upvote</th>
   </tr>
 
-  <% variable.each do |work| %>
+  <% category.each do |work| %>
     <tr>
       <td><%= work.votes.count %></td>
       <td><%= link_to work.title, work_path(work) %></td>

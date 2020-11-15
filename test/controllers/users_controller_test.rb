@@ -3,16 +3,12 @@ require "test_helper"
 describe UsersController do
 
   before do
-    @user = User.create!(name: "test user")
+    @user = users(:test_user)
   end
 
   let (:bad_user){
     -99999
   }
-
-  # let (:second_user){
-  #   User.new(name: "second test user")
-  # }
 
   describe "index" do
     it "must get index" do
@@ -22,6 +18,7 @@ describe UsersController do
 
     it "doesnt break when there are no users" do
       @user.destroy
+      users(:second_test_user).destroy
       get users_url
       expect(User.count).must_equal 0
       must_respond_with :success

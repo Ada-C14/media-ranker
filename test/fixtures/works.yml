@@ -4,3 +4,10 @@ test_work:
   creator: "The Testor"
   publication_year: 2020
   description: "We love a good test"
+
+second_test_work:
+  category: "album"
+  title: "create_test"
+  creator: "The Testor"
+  publication_year: 2020
+  description: "We love a good create test"

@@ -9,6 +9,18 @@ describe WorksController do
     -99999
   }
 
+  let (:user){
+    users(:test_user)
+  }
+
+  let (:second_work){
+    works(:second_test_work)
+  }
+
+  let (:second_user){
+    users(:second_test_user)
+  }
+
   let (:update_work_hash){
       {
         work: {
@@ -18,21 +30,18 @@ describe WorksController do
     }
   }
 
-  let (:second_work_hash){
+  let (:third_work_hash){
       {
       work: {
         category: "album",
-        title: "create_test",
+        title: "the third test album",
         creator: "The Testor",
         publication_year: 2020,
-        description: "We love a good create test"
+        description: "This is the only album not stored in a fixture"
       }
     }
   }
 
-  let (:user){
-    User.create!(name: "test user")
-  }
 
   describe "index" do
     it "must get index" do
@@ -42,6 +51,7 @@ describe WorksController do
 
     it "doesnt break when there are no works" do
       @work.destroy
+      second_work.destroy
       expect(Work.count).must_equal 0
       get works_url
       must_respond_with :success
@@ -58,26 +68,26 @@ describe WorksController do
   describe "create" do
 
     it "can create a work" do
-      expect {post works_url, params: second_work_hash}.must_differ 'Work.count', 1
+      expect {post works_url, params: third_work_hash}.must_differ 'Work.count', 1
 
-      new_work = Work.find_by(title: second_work_hash[:work][:title])
-      expect(new_work.title).must_equal second_work_hash[:work][:title]
-      expect(new_work.creator).must_equal second_work_hash[:work][:creator]
-      expect(new_work.description).must_equal second_work_hash[:work][:description]
+      new_work = Work.find_by(title: third_work_hash[:work][:title])
+      expect(new_work.title).must_equal third_work_hash[:work][:title]
+      expect(new_work.creator).must_equal third_work_hash[:work][:creator]
+      expect(new_work.description).must_equal third_work_hash[:work][:description]
       expect(flash[:success]).must_equal "Successfully created #{new_work.category} #{new_work.id}"
       must_redirect_to work_url(new_work.id)
     end
 
     it "wont create a work without a title" do
-      second_work_hash[:work][:title] = nil
-      expect {post works_url, params: second_work_hash}.wont_change 'Work.count'
+      third_work_hash[:work][:title] = nil
+      expect {post works_url, params: third_work_hash}.wont_change 'Work.count'
       expect(flash[:error_message]).must_equal "title: can't be blank"
       must_respond_with :redirect
     end
 
     it "wont create a work with a duplicated title" do
-      second_work_hash[:work][:title] = "test"
-      expect {post works_url, params: second_work_hash}.wont_change 'Work.count'
+      third_work_hash[:work][:title] = "test"
+      expect {post works_url, params: third_work_hash}.wont_change 'Work.count'
       expect(flash[:error_message]).must_equal "title: has already been taken"
       must_respond_with :redirect
     end
@@ -158,7 +168,7 @@ describe WorksController do
   describe "upvote" do
 
     it "can upvote for a logged in user" do
-      perform_login(user)
+      perform_login(second_user)
 
       expect{post upvote_work_path(@work.id)}.must_differ "Vote.count", 1
       expect(user.votes.length).must_equal 1
@@ -171,7 +181,7 @@ describe WorksController do
     end
 
     it "can't be voted for more than once by same user" do
-      perform_login(user)
+      perform_login(second_user)
       expect{post upvote_work_path(@work.id)}.must_differ "Vote.count", 1
       expect{post upvote_work_path(@work.id)}.wont_change "Vote.count"
       expect(flash[:error]).must_equal "A problem occurred: Could not upvote"

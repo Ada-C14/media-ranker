@@ -3,8 +3,8 @@ require "test_helper"
 describe Vote do
   before do
     @work = works(:test_work)
-    @user = User.create!(name: "test user")
-    @vote = Vote.create!(user_id: @user.id, work_id: @work.id)
+    @user = users(:test_user)
+    @vote = votes(:test_vote)
   end
 
   let (:hard_coded_time){

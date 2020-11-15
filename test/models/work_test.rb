@@ -4,22 +4,17 @@ describe Work do
 
   before do
     @work = works(:test_work)
-    @user = User.create!(name: "test user")
-    @vote = Vote.create!(user_id: @user.id, work_id: @work.id)
+    @user = users(:test_user)
+    @vote = votes(:test_vote)
   end
+
   let (:second_work){
-    Work.create!(
-      category: "album",
-      title: "second test",
-      creator: "The Testor",
-      publication_year: 2020,
-      description: "We love a good create test")
+    works(:second_test_work)
     }
-    let (:second_user){
-      User.create!(
-        name: "second test user"
-      )
-    }
+
+  let (:second_user){
+    users(:second_test_user)
+  }
 
   describe "instantiation" do
     it "can be instantiated" do
@@ -92,6 +87,7 @@ describe Work do
 
     it "returns nil in the case of no works" do
       @work.destroy
+      second_work.destroy
       expect(Work.count).must_equal 0
       expect(Work.select_spotlight).must_be_nil
     end
@@ -121,6 +117,7 @@ describe Work do
 
     it "returns nil in the case of no works" do
       @work.destroy
+      second_work.destroy
       expect(Work.count).must_equal 0
       expect(Work.select_top_ten("album")).must_be_nil
     end

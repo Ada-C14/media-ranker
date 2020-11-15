@@ -3,22 +3,18 @@ require "test_helper"
 describe User do
   before do
     @work = works(:test_work)
-    @user = User.create!(name: "test user")
-    @vote = Vote.create!(user_id: @user.id, work_id: @work.id)
+    @user = users(:test_user)
+    @vote = votes(:test_vote)
   end
 
   let (:second_work){
-    Work.create!(
-      category: "album",
-      title: "second test",
-      creator: "The Testor",
-      publication_year: 2020,
-      description: "We love a good create test")
+    works(:second_test_work)
     }
 
   let (:hard_coded_time){
     Time.parse("2008-06-21 13:30:00 UTC")
     }
+    
   describe "instantiation" do
     it "can be instantiated" do
       expect(@user.valid?).must_equal true

@@ -21,7 +21,7 @@ class ActiveSupport::TestCase
   def perform_login(user = nil)
 
     unless user
-      new_user = User.new(name: "second test user")
+      new_user = User.new(name: "third test user")
       login_data = {
         user: {
           name: new_user.name
@@ -38,7 +38,7 @@ class ActiveSupport::TestCase
     post login_url, params: login_data
 
     unless user
-      new_user = User.find_by(name: "second test user")
+      new_user = User.find_by(name: "third test user")
       expect(session[:user_id]).must_equal new_user.id
       return new_user
     else

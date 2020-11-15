@@ -5,18 +5,18 @@ book:
   publication_year: 2020
   description: "The Description"
 
-new_work:
+work1:
   category: "movie"
   title: "Mulan"
 
-worka:
+work2:
   category: 'book'
   title: 'chicken soap for the soul'
 
-workb:
+work3:
   category: 'book'
   title: 'Weathering Heights'
 
-workc:
+work4:
   category: 'album'
   title: 'The Hunchback of Notre Dame'

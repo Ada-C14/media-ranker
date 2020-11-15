@@ -6,7 +6,7 @@
       <div>Created by: <%= @work.creator %></div>
       <div>Published: <%= @work.publication_year %></div>
       <div><%= @work.description %></div>
-      <%= button_to "Edit", edit_work_path(@work) %>
+      <%= button_to "Edit", edit_work_path(@work), method: :get %>
       <%= button_to "Upvote", work_votes_path(@work.id) %>
       <%= button_to "Delete", work_path(@work), method: :delete, data: {confirm: "Are you sure?"}%>
     </div>

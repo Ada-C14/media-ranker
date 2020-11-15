@@ -45,7 +45,7 @@ describe User do
 
   describe "validations" do
 
-    it "cant be created without a username" do
+    it "is invalid without a username" do
       @user.name = nil
       result = @user.valid?
       expect(result).must_equal false

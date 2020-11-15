@@ -40,7 +40,7 @@ describe Vote do
     end
   end
 
-  describe "format created attime" do
+  describe "format created at time" do
 
     it "can format created at time" do
       @vote.created_at = hard_coded_time

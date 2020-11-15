@@ -5,7 +5,7 @@ require "test_helper"
 # New? Create?
 
 describe Work do
-  it "is valid when all required fields are present" do
+  it "can be instantiated and is valid when all required fields are present" do
     # Arrange
     @work = Work.new(title: "Long", category: "Movie")
 

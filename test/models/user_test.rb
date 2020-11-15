@@ -5,7 +5,12 @@ require "test_helper"
 # New? Create?
 
 describe User do
-  it "is valid when all required fields are present" do
+  it "can be instantiated" do
+    # Arrange
+
+  end
+
+  it "can be instantiated and is valid when all required fields are present" do
     # Arrange
     @user = User.new(user_name: "me")
 

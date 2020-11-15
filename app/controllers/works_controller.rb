@@ -62,7 +62,6 @@ class WorksController < ApplicationController
       flash[:failure] = "Work #{@work.title} not destroyed."
       redirect_back fallback_location: root_path
     end
-    end
   end
 
   private

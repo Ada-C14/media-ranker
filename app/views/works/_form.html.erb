@@ -20,10 +20,15 @@
   </article>
 
   <article>
-    <%= form_with model: @work, class: 'edit-form' do |f| %>
+    <%= form_with model: @work do |f| %>
       <div class="form-group">
         <%= f.label :category %>
-        <%= f.select :category, ["album", "book", "movie"], class: "form-control" %>
+        <!-- collection_select with category model would be a better choice, but haven't figured out how to upload local database to heruko -->
+        <select class="form-control">
+          <option>album</option>
+          <option>book</option>
+          <option>movie</option>
+        </select>
       </div>  
       <div class="form-group">
         <%= f.label :title %>

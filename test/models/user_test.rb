@@ -25,7 +25,13 @@ describe User do
   end
 
   describe "validations" do
-    it "must have a name" do
+    it "user is valid if name is present" do
+      new_user = User.create(name: "Leeroy Jenkins")
+
+      expect(new_user.valid?).must_equal true
+    end
+
+    it "user is not valid if name is nil" do
       @user1.name = nil
 
       expect(@user1.valid?).must_equal false
@@ -36,17 +42,10 @@ describe User do
 
   describe "relationships" do
     it "user can have many votes" do
-      expect(@user1.votes.count).must_equal 6
+      assert_operator @user1.votes.count, :>, 1
 
       @user1.votes.each do |vote|
         expect(vote).must_be_instance_of Vote
-      end
-    end
-
-    it "user can vote for different works" do
-      @user1.votes.each do |vote|
-        expect(Work.find_by(id: vote[:work_id])).must_be_instance_of Work
-        expect(Work.find_by(id: vote[:work_id]).valid?).must_equal true
       end
     end
   end

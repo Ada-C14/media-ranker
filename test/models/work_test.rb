@@ -30,7 +30,18 @@ describe Work do
   end
 
   describe "validations" do
-    it "must have a title" do
+    it "work is valid if title exists" do
+      new_work = Work.create(
+          title: "The Alchemist",
+          category: "book",
+          publication_year: 1988,
+          creator: "Paolo Coelho"
+      )
+
+      expect(new_work.valid?).must_equal true
+    end
+
+    it "work is invalid if title is nil" do
       @work1.title = nil
 
       expect(@work1.valid?).must_equal false
@@ -41,18 +52,10 @@ describe Work do
 
   describe "relationships" do
     it "can have many votes" do
-      expect(@work1.votes.count).must_equal 5
+      assert_operator @work1.votes.count, :>, 1
 
       @work1.votes.each do |vote|
         expect(vote).must_be_instance_of Vote
-      end
-    end
-
-    it "works can be upvoted by many users" do
-      expect(@work1.votes.count).must_equal 5
-
-      @work1.votes.each do |vote|
-        expect(User.find_by(id: vote[:user_id])).must_be_instance_of User
       end
     end
   end
@@ -66,6 +69,12 @@ describe Work do
       expect(Work.get_spotlight.publication_year).must_equal works(:rare).publication_year
     end
 
+    it "There is no spotlight if there are no works" do
+      Work.destroy_all
+
+      expect(Work.get_spotlight).must_be_nil
+    end
+
     it "can get the top 10 (or less) of a category, and sort by number of votes, then alphabetically" do
       top_movies = Work.get_top_ten("movie")
 
@@ -76,6 +85,30 @@ describe Work do
 
       expect(top_movies.first.title).must_equal works(:ace).title
       expect(top_movies.last.title).must_equal works(:us).title
+    end
+
+    it "if category has more than 10 works, method only returns the first 10" do
+      album_1 = works(:rare)
+      album_2 = works(:folklore)
+      album_3 = works(:album3)
+      album_4 = works(:album4)
+      album_5 = works(:album5)
+      album_6 = works(:album6)
+      album_7 = works(:album7)
+      album_8 = works(:album8)
+      album_9 = works(:album9)
+      album_10 = works(:album10)
+      album_11 = works(:album11)
+      book_1 = works(:becoming)
+      top_albums = Work.get_top_ten("album")
+
+      expect(top_albums.length).must_equal 10
+    end
+
+    it "if category has no works, get_top_ten returns nil" do
+      Work.destroy_all
+
+      expect(Work.all.length).must_equal 0
     end
   end
 end

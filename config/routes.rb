@@ -6,6 +6,13 @@ Rails.application.routes.draw do
 
   resources :users
   resources :works
-  # resources :votes
+  # resources :votes (probably)
 
+  get "/login", to: "users#login_form", as: "login"
+  post "/login", to: "users#login"
+  post "/logout", to: "users#logout", as: "logout"
+
+
+  # reference
+  # get '/works/:id', to 'works#show'
 end

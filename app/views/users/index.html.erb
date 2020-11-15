@@ -12,7 +12,7 @@
         <%= user.id%>
       </td>
       <td>
-        <%= user.username %>
+        <%= link_to "#{user.username}", user_path(user.id)%>
       </td>
     </tr>
   <% end %>

@@ -3,7 +3,7 @@ class Vote < ApplicationRecord
   belongs_to :work
 
   # check that user hasn't voted before
-  validates :work_id, presence: true, uniqueness: {scope: user_id}
+  validates :work.id, presence: true, uniqueness: {scope: user.id}
 
   # validates :user_id, presence: true
 

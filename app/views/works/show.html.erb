@@ -10,8 +10,8 @@
     <%= link_to "Delete", work_path(@work), data: {confirm: "Are you sure?" }, method: :delete, class: "btn btn-danger" %>
   </section>
 </section>
-<section>
-  <h3><%= @work.single_or_plural_votes %> for this <%= @work.category %></h3>
+<section class="works-votes__container">
+  <h3 class="works-votes__header"><%= @work.single_or_plural_votes %> for this <%= @work.category %></h3>
   <section class="media-table">
     <table class="table">
       <thead>

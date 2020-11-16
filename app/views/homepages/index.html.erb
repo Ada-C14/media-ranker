@@ -1,4 +1,5 @@
 <main>
+  <% if Work.spotlight %>
   <section class="spotlight">
     <h2 class="spotlight__header">
       <span class="spotlight__header--prefix">Media Spotlight:</span>
@@ -6,6 +7,10 @@
     <p class="spotlight__description"><%= Work.spotlight.votes.count %> votes - <%= Work.spotlight.description %></p>
   </section>
    <hr class="root__hr">
+    <% else %>
+    <h2 class="spotlight__header"><span class="spotlight__header--prefix">Media Spotlight:</span>
+      <p>No media spotlight available</p></h2>
+    <% end %>
   <section class="top-ten__container">
     <%= render partial: "topten", locals: { top_ten_works: @movies, category: "movie" } %>
     <%= render partial: "topten", locals: { top_ten_works: @books, category: "book" } %>

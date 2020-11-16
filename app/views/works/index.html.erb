@@ -6,7 +6,7 @@
 <% albums = @works.select{ |work| work[:category] == "album"} %>
 <% albums.each do |album| %>
   <li>
-  <%= album[:title] %> <%= album[:creator] %> <%= album[:publication_year] %>
+  <%= link_to album.title, work_path(album) %> <%= album[:creator] %> <%= album[:publication_year] %>
   </li>
 <% end %>
 
@@ -19,7 +19,7 @@
 <% books = @works.select{ |book| book[:category] == "book"} %>
 <% books.each do |book| %>
   <li>
-  <%= book[:title] %> <%= book[:creator] %> <%= book[:publication_year] %>
+  <%= link_to book.title, work_path(book) %> <%= book[:creator] %> <%= book[:publication_year] %>
   </li>
 <% end %>
 

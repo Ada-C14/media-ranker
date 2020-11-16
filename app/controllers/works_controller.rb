@@ -4,6 +4,12 @@ class WorksController < ApplicationController
   end
 
   def show
+    work_id = params[:id].to_i
+    @work = Work.find_by(id: work_id)
+    if @work.nil?
+      head :not_found
+      return
+    end
   end
 
   def new
@@ -22,6 +28,23 @@ class WorksController < ApplicationController
       return
     end
   end
+
+  def update
+    if @work.nil?
+      head :not_found
+      return
+    elsif @work.update(work_params)
+      flash[:success] = "Work updated successfully"
+      redirect_to works_path  
+      return
+    else  
+      flash.now[:error] = "Something happened. Work not updated."
+      render :edit, status: :bad_request  
+      return
+    end
+  end
+
+
 
   private
 

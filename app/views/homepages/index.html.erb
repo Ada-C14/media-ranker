@@ -2,35 +2,47 @@
     <div>
         <h3> Spotlight Media!
           <% if @works.empty? %>
-            <p> The most loved media will go here!</p>
+            <p> The most loved piece of media will go here!</p>
             <% else %>
           <%= @works.spotlight.title %>
             <% end %>
         </h3>
     </div>
     <div>
-      <h4>
-        Top 10 Books!
+      <h4> Top 10 Books! </h4>
+        <% if @works.empty? %>
+          <p> The top 10 books will go here! </p>
+          <% else %>
         <% @works.top_ten_books.each do |work|  %>
           <% if work.category == "book" %>
             <li> <%= link_to work.title, work_path(work) %></li>
+              <% end %>
           <% end %>
         <% end %>
-      </h4>
-      <h4>
-        Top 10 Movies!
+
+      <h4> Top 10 Movies! </h4>
+        <% if @works.empty? %>
+        <p> The top 10 movies will go here! </p>
+        <% elsif %>
+      <% @works.top_ten_movies.empty? %>
+        <p> Vote on some movies to list the best here! </p>
+        <% else %>
         <% @works.top_ten_movies.each do |work|  %>
           <% if work.category == "movie" %>
             <li> <%= link_to work.title, work_path(work) %></li>
           <% end %>
         <% end %>
-        <h4>
-          Top 10 Albums!
+      <% end %>
+
+        <h4> Top 10 Albums! </h4>
+        <% if @works.empty? %>
+        <p> The top 10 albums will go here! </p>
+        <% else %>
           <% @works.top_ten_albums.each do |work|  %>
             <% if work.category == "album" %>
               <li> <%= link_to work.title, work_path(work) %></li>
             <% end %>
+           <% end %>
           <% end %>
-        </h4>
-      </h4>
+
     </div>

@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   has_many :votes, dependent: :destroy
 
-  validates :username, presence: true, uniqueness: { case_sensitive: false }
+  validates :name, presence: true, uniqueness: { case_sensitive: false }
 
   def user_votes
     if self.votes.size != 1

@@ -11,6 +11,7 @@ class WorksController < ApplicationController
 
   def index
     @works = Work.all
+    @all_works = Work.list_all_works
   end
 
   def new

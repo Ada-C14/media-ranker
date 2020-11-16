@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user_id] = @user.id
-      flash[:success] = "User #{@user.username} has successfully signed up and logged in!"
+      flash[:success] = "User #{@user.name} has successfully signed up and logged in!"
       redirect_to root_path
     else
       flash.now[:failure] = "Error: user could not be saved."
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
 
   def user_params
     return params.require(:user).permit(
-        :username
+        :name
     )
   end
   def find_user_works

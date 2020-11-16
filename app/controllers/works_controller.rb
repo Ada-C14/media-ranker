@@ -56,8 +56,7 @@ class WorksController < ApplicationController
       head :not_found
       return
     elsif @work.update(work_params)
-      redirect_to works_path
-      return
+      # redirect_to works_path
       render :edit
       return
     end

@@ -6,16 +6,16 @@ Rails.application.routes.draw do
 
   get '/homepages', to: 'homepages#index', as: 'homepages'
 
-  # get '/works', to: 'works#index', as: 'works'
-  # get '/works/new', to: 'works#new', as: 'new_work'
-  # post '/works', to: 'works#create'
-  # get '/works/:id/edit', to: 'works#edit', as: 'edit_work'
-  # patch '/works/:id', to: 'works#update'
-  # get '/works/:id', to: 'works#show', as: 'work'
-  # delete '/works/:id', to: 'works#destroy', as: 'destroy_work'
+  get '/works', to: 'works#index', as: 'works'
+  get '/works/new', to: 'works#new', as: 'new_work'
+  post '/works', to: 'works#create'
+  get '/works/:id/edit', to: 'works#edit', as: 'edit_work'
+  patch '/works/:id', to: 'works#update'
+  get '/works/:id', to: 'works#show', as: 'work'
+  delete '/works/:id', to: 'works#destroy'
   post 'works/:id', to: 'works#vote', as: 'vote_work'
 
-  resources :works
+  # resources :works
 
   get "/login", to: "users#login_form", as: "login"
   get '/users', to: 'users#index', as: 'users'

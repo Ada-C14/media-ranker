@@ -67,8 +67,14 @@ nav div.login .button_to {
   margin-bottom: 6px;
 }
 
-.flash {
+.success {
   color: mediumseagreen;
+  padding-top: 12px;
+  margin-bottom: 0;
+}
+
+.failure {
+  color: red;
   padding-top: 12px;
   margin-bottom: 0;
 }

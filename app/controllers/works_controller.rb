@@ -31,7 +31,7 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
 
     if @work.save
-      flash[:success] = "#{@work.category.capitalize} was successfully added!"
+      flash[:success] = "#{@work.title} was successfully added!"
       redirect_to work_path(@work)
       return
     else

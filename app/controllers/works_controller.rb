@@ -1,4 +1,6 @@
 class WorksController < ApplicationController
+  before_action :find_work, only: [:show, :edit, :update, :destroy]
+
   def homepage
     @works = Work.all
     @sample_work = @works.sample
@@ -9,7 +11,6 @@ class WorksController < ApplicationController
   end
 
   def show
-    @work = Work.find_by(id: params[:id])
     return :not_found if @work.nil?
   end
 
@@ -32,12 +33,10 @@ class WorksController < ApplicationController
   end
 
   def edit
-    @work = Work.find_by(id: params[:id])
     return redirect_to root_path if @work.nil?
   end
 
   def update
-    @work = Work.find_by(id: params[:id])
     if @work.nil?
       head :not_found
       return
@@ -50,7 +49,6 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    @work = Work.find_by(id: params[:id])
     if @work.nil?
       head :not_found
       return
@@ -71,5 +69,9 @@ class WorksController < ApplicationController
         :publication_year,
         :description,
         :user_ids)
+  end
+
+  def find_work
+    @work = Work.find_by(id: params[:id])
   end
 end

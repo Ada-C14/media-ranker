@@ -57,7 +57,7 @@ describe Work do
   describe 'validation' do
      it "must have a title" do
        work = works(:first_work)
-       expect(work.title).must_equal authors(:FirstWork)
+       expect(work.title).must_equal works(:first_work).title
     end
 
     it "title must be unique" do

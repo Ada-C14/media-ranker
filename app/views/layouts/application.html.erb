@@ -18,12 +18,11 @@
         <%= link_to 'View all media', works_path %>
         <%= link_to 'Add a new work', new_work_path %>
         <%= link_to 'View all users', users_path %>
-        <%# if log in do some things %>
-          <%#= button_to 'user that is logged in' %>
-          <%#= button_to 'log out' %>
-        <%# else %>
-          <%#= button_to 'log in' %>
-        <%# end %>
+        <% if session[:user_id] %>
+          <%= button_to 'logout', logout_path, method: :post %>
+        <% else %>
+          <%= button_to 'login', login_path, method: :get %>
+        <% end %>
       </nav>
       <section class="flash">
         <% flash.each do |name, message| %>

@@ -1,0 +1,26 @@
+<body>
+<main>
+  <h2>List of Users</h2>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Username</th>
+      <th>Votes</th>
+      <th>Joined</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @ordered_users = @users.sort_by {|user| user.votes.length} %>
+    <% @ordered_users.reverse.each do |user| %>
+      <tr>
+        <td><%= link_to user.name, user_path(user) %></td>
+        <td><%= user.votes.count %></td>
+        <td><%= (user.created_at).to_date %></td>
+      </tr>
+    <%end%>
+    </tbody>
+  </table>
+
+  <a class="btn btn-secondary" href="/">Back to Media List</a>
+</main>
+</body>

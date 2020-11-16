@@ -1,0 +1,19 @@
+vote1:
+  user_id: 10
+  work_id: 50
+
+vote2:
+  user_id: 20
+  work_id: 40
+
+vote3:
+  user_id: 30
+  work_id: 50
+
+vote4:
+  user_id: 40
+  work_id: 20
+
+vote5:
+  user_id: 50
+  work_id: 50

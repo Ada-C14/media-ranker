@@ -1,0 +1,27 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Created by</th>
+    <th>Published</th>
+    <th>Votes</th>
+    <% if session[:user_id] %>
+      <th>Upvote</th>
+    <% end %>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% media.each do |work| %>
+    <tr>
+      <td><%= link_to "#{work.title}", work_path(work.id) %></td>
+      <td><%= work.creator %></td>
+      <td><%= work.published %></td>
+      <td><%= work.votes.count %></td>
+      <% if session[:user_id] %>
+        <td><%= button_to "Upvote", upvote_path(work.id) %></td>
+      <% end %>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

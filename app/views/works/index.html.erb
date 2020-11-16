@@ -1,0 +1,10 @@
+<%= button_to "Add New Work", new_work_path, method: :get %>
+
+<h3>Books</h3>
+<%= render partial: "table", locals: { media: @books } %>
+
+<h3>Movies</h3>
+<%= render partial: "table", locals: { media: @movies } %>
+
+<h3>Albums</h3>
+<%= render partial: "table", locals: { media: @albums } %>

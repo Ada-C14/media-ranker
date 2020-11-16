@@ -1,0 +1,94 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+
+/* Custom bootstrap variables must be set or imported *before* bootstrap. */
+@import "bootstrap";
+
+@import "**/*";
+@import url('https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+* {
+  font-family: Karla;
+}
+
+header {
+  background: white;
+  width: 100%;
+  padding: 30px;
+}
+
+main {
+  background: #efefef 75%;
+  padding: 30px 30px 60px 30px;
+}
+
+main .button_to {
+  display: inline;
+}
+
+p, th, td, li, .button_to, .btn, .submit, {
+  font-weight: 400;
+}
+
+h1, h2, h3, h4 {
+  margin-top: 28px;
+  font-weight: 700;
+}
+a:hover{
+  text-decoration: none;
+}
+
+nav {
+  display: flex;
+}
+
+header .button_to {
+  padding-right: 6px;
+  display: inline;
+}
+
+li {
+  padding-right: 28px;
+}
+
+nav div.login .button_to {
+  float: right;
+  margin-bottom: 6px;
+}
+
+.success, .welcome {
+  color: mediumseagreen;
+  padding-top: 12px;
+  margin-bottom: 0;
+}
+
+.failure, .error {
+  color: red;
+  padding-top: 12px;
+  margin-bottom: 0;
+}
+
+.flexbox {
+  display: flex;
+}
+
+.flexbox .top_10 {
+  flex: 1;
+  padding-right: 28px;
+}
+
+.table {
+  max-width: 900px;
+}
+

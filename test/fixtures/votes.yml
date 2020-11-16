@@ -1,0 +1,43 @@
+vote1:
+  work: movie1
+  user: user1
+vote2:
+  work: movie1
+  user: user2
+vote3:
+  work: movie1
+  user: user3
+vote4:
+  work: movie2
+  user: user1
+vote5:
+  work: movie2
+  user: user2
+vote6:
+  work: movie3
+  user: user1
+vote7:
+  work: movie4
+  user: user1
+
+vote8:
+  work: book1
+  user: user1
+vote9:
+  work: book1
+  user: user2
+vote10:
+  work: book1
+  user: user4
+vote11:
+  work: book1
+  user: user3
+vote12:
+  work: book2
+  user: user1
+vote13:
+  work: book2
+  user: user2
+vote14:
+  work: book3
+  user: user1

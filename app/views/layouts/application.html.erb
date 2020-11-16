@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MediaRanker</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<header>
+  <h1>
+    <%= link_to "Media Ranker", root_path %>
+  </h1>
+
+  <nav>
+
+    <div>
+      <ul class="nav">
+        <li>
+          <%= link_to "View all media", works_path %>
+        </li>
+        <li>
+          <%= link_to "View top media", root_path %>
+        </li>
+        <li>
+          <%= link_to "Add a new work", new_work_path %>
+        </li>
+        <li>
+          <%= link_to "View all users", users_path %>
+        </li>
+      </ul>
+    </div>
+
+    <div class="login">
+      <% if session[:user_id] %>
+        <%= button_to "Hello, #{User.find_by(id: session[:user_id]).username}", current_user_path, method: :get %>
+        <%= button_to "Logout", logout_path, method: :post %>
+      <% else %>
+        <%= button_to "Login", login_path, method: :get %>
+      <% end %>
+    </div>
+
+  </nav>
+
+  <section class="flash">
+    <% flash.each do |name, message| %>
+      <p class="<%= name %>"%>
+        <%= message %>
+      </p>
+    <% end %>
+  </section>
+
+  <section class="errors">
+    <% if @work && @work.errors.any? %>
+      <ul>
+        <% @work.errors.each do |column, message| %>
+          <li><%= column %> <%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
+  </section>
+
+</header>
+
+<body>
+<main>
+  <%= yield %>
+</main>
+</body>
+</html>

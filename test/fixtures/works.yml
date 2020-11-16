@@ -1,0 +1,49 @@
+movie1: # 3 votes
+  title: The Goonies
+  category: movie
+movie2: # 2 votes
+  title: Alien
+  category: movie
+movie3: # 1 votes
+  title: Signs
+  category: movie
+movie4: # 1 votes
+  title: Clueless
+  category: movie
+movie5: # 0 votes
+  title: Blue Planet
+  category: movie
+movie6: # 0 votes
+  title: Idiocracy
+  category: movie
+movie7: # 0 votes
+  title: DDDD
+  category: movie
+movie8: # 0 votes
+  title: Big Fish
+  category: movie
+movie9: # 0 votes
+  title: AAAAAA
+  category: movie
+movie10: # 0 votes
+  title: Synechdoche New York
+  category: movie
+movie11: # 0 votes
+  title: ZZZZZ
+  category: movie
+movie12: # 0 votes
+  title: MMMM
+  category: movie
+
+book1: # 3 votes
+  title: Circe
+  category: book
+book2: # 2 votes
+  title: The Song of Achilles
+  category: book
+book3: # 1 votes
+  title: Life of Pi
+  category: book
+book4: # 0 votes
+  title: Reservation Blues
+  category: book

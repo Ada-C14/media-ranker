@@ -1,0 +1,35 @@
+<%= form_with model: @work do |f| %>
+
+  <div>
+    <%= f.label :title %>
+    <br>
+    <%= f.text_field :title %>
+  </div>
+  <br>
+  <div>
+    <%= f.label :creator %>
+    <br>
+    <%= f.text_field :creator %>
+  </div>
+  <br>
+  <div>
+    <%= f.label :year_published %>
+    <br>
+    <%= f.text_field :published %>
+  </div>
+  <br>
+  <div>
+    <%= f.label :category %>
+    <br>
+    <%= f.select :category, options_for_select(%w[book movie album]) %>
+  </div>
+  <br>
+  <div>
+    <%= f.label :description %>
+    <br>
+    <%= f.text_area :description %>
+  </div>
+  <br>
+  <%= f.submit action_name %>
+
+<% end %>

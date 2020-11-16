@@ -1,0 +1,19 @@
+<h3>All Users</h3>
+
+<table class="table">
+  <thead>
+  <tr>
+    <th>Username</th>
+    <th>Votes</th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @users.each do |user| %>
+    <tr>
+      <td><%= link_to user.username, user_path(user.id) %></td>
+      <td><%= user.votes.count %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

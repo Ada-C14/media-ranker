@@ -30,7 +30,7 @@ class UsersController < ApplicationController
         flash[:success] = "Successfully logged in as new user #{name}"
       else
         flash[:error] = error_flash("A problem occurred: Could not login", user.errors)
-        redirect_to request.referrer and return
+        redirect_to login_path and return
       end
     end
 

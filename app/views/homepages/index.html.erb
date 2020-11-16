@@ -5,12 +5,12 @@
   <section class="spotlight">
     <h2 class="spotlight__header">
       <span class="spotlight__header--prefix">Media Spotlight</span>
-      <a class="spotlight__link-to" href="/works/913">We're Doomed....</a> by Doomed
+      <% spotlit_work = Work.spotlight %>
+      <%= link_to spotlit_work.title, work_path(spotlit_work.id), class: "spotlight__link-to" %> by <%= spotlit_work.creator %>
     </h2>
     <p class="spotlight__description">
-      15 votes - Doooooomed.....
+      <%= spotlit_work.description %>
     </p>
-  </section>
 
   <hr class="root__hr">
 

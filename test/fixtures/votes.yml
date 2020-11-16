@@ -1,0 +1,43 @@
+vote1:
+  user: user1
+  work: movie1.id
+
+vote2:
+  user: user2
+  work: movie2.id
+
+vote3:
+  user: user3
+  work: album1.id
+
+vote4:
+  user: user4
+  work: album1.id
+
+vote5:
+  user: user5
+  work: book1.id
+
+vote6:
+  user: user6
+  work: book2.id
+
+vote7:
+  user: user7
+  work: movie1.id
+
+vote8:
+  user: user8
+  work: movie1.id
+
+vote9:
+  user: user9
+  work: album1.id
+
+vote10:
+  user: user10
+  work: album1.id
+
+vote11:
+  user: user11
+  work: album1.id

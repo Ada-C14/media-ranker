@@ -1,0 +1,45 @@
+git
+movie1:
+  title: the little mermaid
+  created_by: walt diseny studios
+  published: 1989
+  description: the mermaid falls in love with human prince
+  media: book
+
+movie2:
+  title: finding nemo
+  created_by: walt disney
+  published: 2010
+  description: two clownfish on an adventure
+  media: book
+
+album1:
+  title: dakiti
+  created_by: bad bunny
+  published: 2020
+  description: latin party song
+  media: album
+
+album2:
+  title: hawaii
+  created_by: maluma
+  published: 2020
+  description: another latin party song
+  media: album
+
+book1:
+  title: becoming
+  created_by: michelle obama
+  published: 2019
+  description: memoir by michelle obama
+  media: book
+
+book2:
+  title: citizen
+  created_by: claudia rakine
+  published: 2019
+  description: poems
+  media: book
+
+
+

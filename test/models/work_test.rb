@@ -75,28 +75,33 @@ describe Work do
     describe "top_by_category" do
       it "returns 2 works when asked for 10" do
         #arrange
-        work_1 = Work.create(category: "album", title: "Yellow submarine", creator: "Beetles", publication_date: "1967", description: "Legendary album")
-        work_2 = Work.create(category: "album", title: "Master of Puppets", creator: "Metallica", publication_date: "1998", description: "Best album ever")
+        work_1 = Work.create(category: "movie", title: "Yellow submarine", creator: "Beetles", publication_date: "1967", description: "Legendary album")
+        work_2 = Work.create(category: "movie", title: "Master of Puppets", creator: "Metallica", publication_date: "1998", description: "Best album ever")
         #act+assert
-        expect(Work.top_by_category("album")).must_equal [work_1, work_2]
+        expect(Work.top_by_category("movie")).must_equal [work_1, work_2]
       end
 
       it "return empty array when there is no work of particular type" do
         #act+assert
-        expect(Work.top_by_category("album")).must_be_empty
+        expect(Work.top_by_category("movie")).must_be_empty
       end
     end
 
     describe "spotlight" do
-      it "returns nil when work is empty" do
-        #arrange
-        #act+assert
-        expect(Work.spotlight).must_equal nil
-      end
+      # it "returns nil when work is empty" do
+      #   #arrange
+      #   #act+assert
+      #   expect(Work.spotlight).must_equal nil
+      # end
 
-      it "return empty array when there is no work of particular type" do
+      it "return work with max votes" do
         #arrange
-        work = Work.create(category: "album", title: "Master of Puppets", creator: "Metallica", publication_date: "1998", description: "Best album ever")
+        work = Work.create(category: "book", title: "Master of Puppets", creator: "Metallica", publication_date: "1998", description: "Best album ever")
+        user = User.create(name: "Test User")
+        user_2 = User.create(name: "Test User")
+        vote_1 = Vote.create(work_id: work.id, user_id: user.id)
+        vote_2 = Vote.create(work_id: work.id, user_id: user_2.id)
+
 
         #act+assert
         expect(Work.spotlight).must_equal work
@@ -110,7 +115,7 @@ describe Work do
     it "has many votes" do
       work = works(:metallica)
       user = users(:incognito)
-      user_2 = users(:bruce_lee)
+      user_2 = users(:naruto)
       vote_1 = Vote.create(work_id: work.id, user_id: user.id)
       vote_2 = Vote.create(work_id: work.id, user_id: user_2.id)
       expect(work.votes.length).must_equal 2

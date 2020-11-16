@@ -1,7 +1,18 @@
 category,title,creator,publication_year,description
+
+movie, Sleepless in Seattle, Nora Ephron, 1993, We live in a society...
+movie, The Joker,  Todd Phillips, 2019, We live in a society...
+movie, Titanic, James Cameron, 1997, Voluptatem adipisci qui velit.
+movie, Jurassic World, Colin Trevorrow ,2015,Voluptatem adipisci qui velit.
+movie, Star Wars: The Force Awakens, J.J Abrams, 2015 ,Voluptatem adipisci qui velit.
+movie, Guardians of the Galaxy, James Gunn, 2014, Voluptatem adipisci qui velit.
+movie, Avatar, James Cameron,2009,Voluptatem adipisci qui velit.
+movie, A Street Cat Named Bob, Roger Spottiswoode, 2016, Voluptatem adipisci qui velit.
+movie, You've Got Mail, Nora Ephron, 1998, Voluptatem adipisci qui velit.
+movie, The Replacements, Dylan Sellers, 2000, Voluptatem adipisci qui velit.
 album,Blue Breaker,Dr. Sarai Langosh,1949,Et et expedita non aut quo.
 book,Joe Treat,Blaise Lesch,1968,Voluptatem adipisci qui velit.
-album,Kreb-Full-o Been,Ms. Trevion Buckridge,2016,Vero consectetur delectus consequatur id aut accusantium unde excepturi.
+album,Kreb-Full-o Been,Ms. Trevion Buckridge,2016,Vero consectetur delectus consequatur id aut accusantium unde excepturi
 album,Wake-up Pie,Timmy Streich I,1919,Voluptatem consequatur qui consectetur nisi officiis culpa.
 album,Major Cup,Jayde Bartoletti,1944,Quis recusandae cum est facere consequatur minima magni et.
 book,Summer Select,Ms. Gwendolyn Ortiz,1946,Et molestiae eos nam odit aut sed.
@@ -23,3 +34,4 @@ album,Blue Treat,Eliseo Gorczany,1979,Sit est quis veniam saepe.
 book,Hello Town,Laury Walter,2005,Est sed ut asperiores sed fugiat.
 album,Blacktop Choice,Casey Feil,2008,Temporibus ex maxime labore quam et natus quia ipsum.
 book,Huggy Star,Nigel Lesch DVM,1962,Voluptatem ea aspernatur nesciunt ipsa quis error corporis placeat.
+

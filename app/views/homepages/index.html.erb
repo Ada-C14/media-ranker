@@ -7,26 +7,24 @@
     <ul class="nav app-header__site-nav-container">
       <li class="nav-item app-header__nav_item">
         <a class="nav-link" href="index.html">View top media</a>
-      </li>
+    </li>
       <li class="nav-item app-header__nav_item">
         <a class="nav-link" href="works.html">View all media</a>
       </li>
       <li class="nav-item app-header__nav_item">
-        <a class="nav-link" href="works/new.html">Add a new work</a>
+        <%= link_to 'Add a new work', new_work_path, class: "nav-link" %>
       </li>
       <li class="nav-item app-header__nav_item">
         <a class="nav-link" href="users.html">View all users</a>
       </li>
     </ul>
     <ul class="nav app-header__user-nav-container">
-
       <li class="nav-item app-header__nav_item">
         <a class="btn btn-primary" href="login.html">Log In</a>
       </li>
     </ul>
   </nav>
 </header>
-
 <main>
   <section class="spotlight">
     <h2 class="spotlight__header">
@@ -42,21 +40,40 @@
   <hr class="root__hr" />
   <section class="top-ten__container">
     <section class="top-ten__list-container">
-      <h2 class="top-ten__header">
+    <h2 class="top-ten__header">
         Top Movies
       </h2>
+      <ul class =  "media-list">
+      <% @movies.each do |work| %>
+        <li>
+          <%= link_to work.title, work_path(work)%> by <%= work.creator%>
+        </li>
+      <% end %>
+      </ul>
     </section>
-
       <section class="top-ten__list-container">
         <h2 class="top-ten__header">
           Top Books
         </h2>
+        <ul class =  "media-list">
+          <% @books.each do |work| %>
+            <li>
+              <%= link_to work.title, work_path(work)%> by <%= work.creator%>
+            </li>
+          <% end %>
+        </ul>
       </section>
-
         <section class="top-ten__list-container">
           <h2 class="top-ten__header">
             Top Albums
           </h2>
+          <ul class =  "media-list">
+            <% @albums.each do |work| %>
+              <li>
+                <%= link_to work.title, work_path(work)%> by <%= work.creator%>
+              </li>
+            <% end %>
+          </ul>
         </section>
   </section>
 </main>

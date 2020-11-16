@@ -38,15 +38,16 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
     if @work.nil?
       head :not_found
+      flash[:error] = "Cannot find the media"
       return
     end
-    if @work.save
-      redirect_to works_path
-      flash[:success] = "#{@work.title} was successfully updated!"
-    else
-      flash.now[:error] = "Something happened. Media not updated."
-      render :new, status: :bad_request
-    end
+    # if @work.save
+    #   redirect_to works_path
+    #
+    # else
+    #
+    #   render :new, status: :bad_request
+    # end
   end
 
   def update
@@ -54,9 +55,11 @@ class WorksController < ApplicationController
 
     if @work.nil?
       head :not_found
+      flash.now[:error] = "Something happened. Media not updated."
       return
     elsif @work.update(work_params)
-      # redirect_to works_path
+      flash[:success] = "#{@work.title} was successfully updated!"
+      redirect_to works_path
       render :edit
       return
     end

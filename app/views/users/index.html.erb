@@ -1,7 +1,10 @@
 <h2>All Users</h2>
 
-<ul>
+<ul> <% if @users.count > 0 %>
    <% @users.each do |user|%>
     <li> <%= user.username %> </li>
     <% end %>
+    <% else %>
 </ul>
+<h2> No users yet! Create a user <%= link_to "here", login_path %>.</h2>
+<% end %>

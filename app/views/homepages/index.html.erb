@@ -1,7 +1,11 @@
 <body>
     <div>
         <h3> Spotlight Media!
+          <% if @works.empty? %>
+            <p> The most loved media will go here!</p>
+            <% else %>
           <%= @works.spotlight.title %>
+            <% end %>
         </h3>
     </div>
     <div>

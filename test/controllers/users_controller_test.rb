@@ -21,12 +21,13 @@ describe UsersController do
         user = perform_login
       }.must_change "User.count", 1
 
-      must_respond_with :redirect
-      must_redirect_to root_path
-
       expect(user).wont_be_nil
       expect(session[:user_id]).must_equal user.id
       expect(user.username).must_equal "beauttie"
+
+      expect(flash[:success]).must_equal "Successfully logged in as new user beauttie"
+      must_respond_with :redirect
+      must_redirect_to root_path
     end
 
     it "can log in an existing user" do
@@ -38,6 +39,10 @@ describe UsersController do
 
       expect(session[:user_id]).must_equal user.id
       expect(user.username).must_equal "anonymous"
+
+      expect(flash[:success]).must_equal "Successfully logged in as returning user anonymous"
+      must_respond_with :redirect
+      must_redirect_to root_path
     end
   end
 
@@ -48,6 +53,10 @@ describe UsersController do
 
       post logout_path
       expect(session[:user_id]).must_be_nil
+
+      expect(flash[:success]).must_equal "Successfully logged out"
+      must_respond_with :redirect
+      must_redirect_to root_path
     end
   end
 

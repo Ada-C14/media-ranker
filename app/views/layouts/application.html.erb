@@ -47,7 +47,13 @@
       </nav>
     </header>
 
-<!--    Add Code to display flash messages-->
+    <section class="alert">
+      <% flash.each do |name, message| %>
+        <strong class="<%= name %>">
+          <%= message %>
+        </strong>
+      <% end %>
+    </section>
 
 <!--    Where the view is placed inside the layout template-->
     <%= yield %>

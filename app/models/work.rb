@@ -7,19 +7,19 @@ class Work < ApplicationRecord
   has_many :votes
   has_many :users, through: :votes
 
-  def top_10_albums
-    albums = Work.where(category: "album")
-    return albums.order(votes: :desc).limit(10)
-  end
-
-  def top_10_books
-    books = Work.where(category: "book")
-    return books.order(votes: :desc).limit(10)
-  end
-
-  def top_10_movies
-    movies = Work.where(category: "movie")
-    return movies.order(votes: :desc).limit(10)
-  end
+  # def top_10_albums
+  #   albums = Work.where(category: "album")
+  #   return albums.order(votes: :desc).limit(10)
+  # end
+  #
+  # def top_10_books
+  #   books = Work.where(category: "book")
+  #   return books.order(votes: :desc).limit(10)
+  # end
+  #
+  # def top_10_movies
+  #   movies = Work.where(category: "movie")
+  #   return movies.order(votes: :desc).limit(10)
+  #end
 
 end

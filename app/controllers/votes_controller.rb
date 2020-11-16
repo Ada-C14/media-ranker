@@ -42,7 +42,7 @@ class VotesController < ApplicationController
   end
 
   def require_login
-    if current_user.nil?
+    if @current_user.nil?
       flash[:error] = "A problem occurred: You must log in to do that"
       redirect_to login_path
       return

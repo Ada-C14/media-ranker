@@ -34,7 +34,7 @@
       </ul>
 
       <ul class="nav app-header__user-nav-container">
-        <% if session[:user_id].nil? %>
+        <% if session[:user_id].nil? || @current_user.nil?%>
           <li class="nav-item app-header__nav_item">
             <a class="btn btn-primary" href="/login">Log In</a>
           </li>

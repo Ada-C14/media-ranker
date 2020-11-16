@@ -23,5 +23,16 @@ class VoteTest < ActiveSupport::TestCase
       expect(valid_vote).must_respond_to :user_id
       expect(valid_vote).must_respond_to :work_id
     end
+    
+    describe "relationships" do
+      it "should have a user and work" do
+        # Arrange
+        valid_vote = votes(:vote1)
+        # Assert
+        expect(valid_vote.work).must_be_instance_of Work
+        expect(valid_vote.user).must_be_instance_of User
+      end
+    end
+
   end
 end

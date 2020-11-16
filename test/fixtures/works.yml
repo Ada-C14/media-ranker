@@ -1,0 +1,49 @@
+hp1:
+  category: book
+  title: Harry Potter and the Sorcerer's Stone
+  creator: JK Rowling
+  publication_year: 1998
+  description: An orphaned child finds out that he's a wizard
+hp2:
+  category: book
+  title: Harry Potter and the Chamber of Secrets
+hp3:
+  category: book
+  title: Harry Potter and the Prisoner of Azkaban
+hp4:
+  category: book
+  title: Harry Potter and the Goblet of Fire
+hp5:
+  category: book
+  title: Harry Potter and the Order of the Phoenix
+hp6:
+  category: book
+  title: Harry Potter and the Half-Blood Prince
+hp7:
+  category: book
+  title: Harry Potter and the Deathly Hallows
+sandman:
+  category: book
+  title: Sandman
+murderbot1:
+  category: book
+  title: All Systems Red
+DFZ1:
+  category: book
+  title: Minimum Wage Magic
+DFZ2:
+  category: book
+  title: Part-time Gods
+
+mulan:
+  category: movie
+  title: Mulan
+up:
+  category: movie
+  title: Up
+dragon:
+  category: movie
+  title: How to Train your Dragon
+moana:
+  category: movie
+  title: Moana

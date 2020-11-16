@@ -1,0 +1,30 @@
+<section class="media-table">
+  <h4><%= action_name.capitalize %>s</h4>
+
+  <% if Work.order_by_votes(action_name).empty? %>
+    <p>No <%= action_name %>s Available</p>
+  <% else %>
+    <table class="table">
+      <thead>
+      <tr>
+        <th width="80">Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th width="100">Published</th>
+        <th width="100">Upvote</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% Work.order_by_votes(action_name).each do |work| %>
+        <tr>
+          <td><%= work.votes.count %></td>
+          <td><%= link_to "#{work.title}", work_path(work) %></td>
+          <td><%= work.creator %></td>
+          <td><%= work.publication_year %></td>
+          <td><%= link_to "Upvote", work_upvote_path(work), class: "btn btn-primary", method: :post%></td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  <% end %>
+</section>

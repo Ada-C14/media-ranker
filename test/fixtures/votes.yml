@@ -1,0 +1,62 @@
+vote_1:
+  work: hp1
+  user: harry
+vote_2:
+  work: hp2
+  user: john
+vote_3:
+  work: hp1
+  user: justin
+vote_4:
+  work: hp2
+  user: harry
+
+vote_5:
+  work: hp2
+  user: mark
+vote_6:
+  work: mulan
+  user: julia
+vote_7:
+  work: mulan
+  user: nikki
+vote_8:
+  work: up
+  user: quinn
+vote_9:
+  work: hp2
+  user: julia
+vote_10:
+  work: hp3
+  user: julia
+vote_11:
+  work: hp4
+  user: julia
+vote_12:
+  work: hp5
+  user: julia
+vote_13:
+  work: hp6
+  user: julia
+vote_14:
+  work: hp7
+  user: julia
+vote_15:
+  work: sandman
+  user: julia
+vote_16:
+  work: murderbot1
+  user: julia
+
+vote_17:
+  work: DFZ1
+  user: julia
+vote_18:
+  work: DFZ2
+  user: julia
+vote_19:
+  work: moana
+  user: julia
+vote_20:
+  work: dragon
+  user: julia

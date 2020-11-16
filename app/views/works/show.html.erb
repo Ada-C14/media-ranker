@@ -14,13 +14,14 @@
       <% end %>
     <%= @work.creator %>
   </h3>
-  </div>
   <h3>
     <%= "Published: #{@work.publication_year}" %>
   </h3>
   <h3>
     <%= "Description: #{@work.description}" %>
   </h3>
+    <button> <%= link_to "Upvote", vote_work_path(@work[:id]), method: :post %> </button>
+  </div>
     <h3> Users Who Have Voted for <%= @work.title %> </h3>
     <div>
       <ul>

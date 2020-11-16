@@ -6,6 +6,9 @@ user1:
 user2:
   username: Test User2
 
+user3:
+  username: Test User3
+
 # Lessons recommend not putting bad data in fixtures since rails will never run validations against fixture data
 user_not_found:
   username:

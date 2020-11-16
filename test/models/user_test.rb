@@ -5,7 +5,7 @@ class UserTest < ActiveSupport::TestCase
   #   assert true
   # end
   describe User do
-    let (:user) {
+    let (:user){
       users(:user1)
     }
     it "can be instantiated" do

@@ -7,6 +7,20 @@ movie:
   publication_year: 2000
   description: Test movie description
 
+movie2:
+  category: movie
+  title: movie test2
+  creator: movie test creator2
+  publication_year: 2002
+  description: Test movie description2
+
+movie3:
+  category: movie
+  title: movie test3
+  creator: movie test creator3
+  publication_year: 2003
+  description: Test movie description3
+
 album:
   category: album
   title: album test

@@ -21,8 +21,21 @@ body, h1, h2, h3, h4, h5 {
   font-family: "Gudea", sans-serif;
 }
 
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+  display: block;
+}
+
 a, h2, h3 {
   color: #26A69A;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: bold;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
 }
 
 a:hover{
@@ -155,4 +168,37 @@ main {
 .small {
   font-size: 80%;
   font-weight: 400;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.user-votes__header {
+  color: black;
+}
+
+.table {
+  width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dee2e6;
+}
+
+.btn-primary {
+  background-color: #26A69A;
+  color: white;
+  border-color: #26A69A;
+}
+
+.works-votes__header {
+  color: black;
+}
+
+.works-votes__container {
+  margin-top: 2rem;
 }

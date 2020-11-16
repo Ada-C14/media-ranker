@@ -95,6 +95,6 @@ class WorksController < ApplicationController
 
     # Only permit trusted parameters to be passed in. 
     def work_params
-      return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+      return params.require(:work).permit(:category, :title, :creator, :publication_year, :description, :votes_count)
     end
 end

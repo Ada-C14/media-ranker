@@ -40,7 +40,7 @@ describe Vote do
       new_movie = Work.new(category: "movie", title: "Us and Them", creator: "Rene Liu", publication_year: 2018, description: "Chinese romantic drama film")
       @new_vote.work = new_movie
 
-      expect(@new_vote.work_id).must_equal new_work.id
+      expect(@new_vote.work_id).must_equal new_movie.id
     end
 
     it "belongs to a user" do

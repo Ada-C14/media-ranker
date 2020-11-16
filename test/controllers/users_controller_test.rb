@@ -53,8 +53,8 @@ describe UsersController do
 
   describe "index" do
     it "responds with success when there are many users saved" do
-      anon
-      expect(User.count).must_equal 1
+      # data from users.yml
+      expect(User.count).must_equal 3
 
       get users_path
 
@@ -62,6 +62,7 @@ describe UsersController do
     end
 
     it "responds with success when there are no users saved" do
+      User.delete_all
       expect(User.count).must_equal 0
 
       get users_path

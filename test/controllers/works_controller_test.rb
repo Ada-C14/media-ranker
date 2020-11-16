@@ -7,8 +7,8 @@ describe WorksController do
 
   describe "index" do
     it "responds with success when there are many works saved" do
-      work
-      expect(Work.count).must_equal 1
+      # data from works.yml
+      expect(Work.count).must_equal 14
 
       get works_path
 
@@ -16,6 +16,7 @@ describe WorksController do
     end
 
     it "responds with success when there are no works saved" do
+      Work.delete_all
       expect(Work.count).must_equal 0
 
       get works_path

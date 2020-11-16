@@ -108,7 +108,7 @@ describe Work do
 
       it "returns the top works in a category with less than ten works" do
         top_10_albums = Work.top_10("album")
-        
+
         expect(top_10_albums.length).must_equal 2
         expect(top_10_albums.first).must_equal works(:album)
         expect(top_10_albums.last).must_equal works(:album2)

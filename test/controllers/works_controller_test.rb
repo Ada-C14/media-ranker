@@ -2,24 +2,16 @@ require 'test_helper'
 
 describe WorksController do
 
-  let (:work) {
-    Work.create(
-      category: 'album',
-      title: 'ctrl',
-      creator: 'sza',
-      publication_year: 2017,
-      description: 'Top Dawg Entertainment and RCA Records'
-    )
-  }
+  let (:work) { Work.first }
 
   let (:work_hash) {
     {
       work: {
         category: 'album',
-        title: 'ctrl',
-        creator: 'sza',
-        publication_year: 2017,
-        description: 'Top Dawg Entertainment and RCA Records'
+        title: 'We Cool?',
+        creator: 'Jeff Rosenstock',
+        publication_year: 2015,
+        description: 'more emo-ish tracks'
       }
     }
   }
@@ -28,10 +20,10 @@ describe WorksController do
     {
       work: {
         category: 'album',
-        title: 'ctrl',
-        creator: 'sza',
-        publication_year: -1600,
-        description: 'Top Dawg Entertainment and RCA Records'
+        title: 'We Cool?',
+        creator: 'Jeff Rosenstock',
+        publication_year: -2015,
+        description: 'more emo-ish tracks'
       }
     }
   }
@@ -106,20 +98,17 @@ describe WorksController do
 
   describe 'update' do
     it 'can update an existing work with valid information and redirect' do
-      work
-      new_work = Work.first
-
       expect {
-        patch work_path(new_work.id), params: work_hash
+        patch work_path(work.id), params: work_hash
       }.wont_change 'Work.count'
 
-      new_work.reload
+      work.reload
 
-      expect(new_work.category).must_equal work_hash[:work][:category]
-      expect(new_work.title).must_equal work_hash[:work][:title]
-      expect(new_work.creator).must_equal work_hash[:work][:creator]
-      expect(new_work.publication_year).must_equal work_hash[:work][:publication_year]
-      expect(new_work.description).must_equal work_hash[:work][:description]
+      expect(work.category).must_equal work_hash[:work][:category]
+      expect(work.title).must_equal work_hash[:work][:title]
+      expect(work.creator).must_equal work_hash[:work][:creator]
+      expect(work.publication_year).must_equal work_hash[:work][:publication_year]
+      expect(work.description).must_equal work_hash[:work][:description]
 
       must_respond_with :redirect
       must_redirect_to work_path(work.id)

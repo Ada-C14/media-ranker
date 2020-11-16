@@ -2,10 +2,6 @@ require "test_helper"
 
 describe UsersController do
 
-  let (:new_user) {
-    User.create(username: 'annakim')
-  }
-
   it "can get the login form" do
     get login_path
     must_respond_with :success
@@ -13,25 +9,23 @@ describe UsersController do
 
   describe 'index' do
     it 'responds with success when there are users saved' do
-      new_user
       get users_path
       must_respond_with :success
     end
 
-    it 'responds with success when there are no users saved' do
-      get users_path
-      must_respond_with :success
-    end
+    # it 'responds with success when there are no users saved' do
+    #   get users_path
+    #   must_respond_with :success
+    # end
   end
 
   describe 'show' do
-    it "responds with success when showing an existing valid work" do
-      new_user
-      get user_path(new_user.id)
+    it "responds with success when showing an existing valid user" do
+      get user_path(User.first.id)
       must_respond_with :success
     end
 
-    it "will redirect when passed an invalid work id" do
+    it "will redirect when passed an invalid user id" do
       get user_path(-1)
       must_respond_with :redirect
     end
@@ -49,10 +43,8 @@ describe UsersController do
     end
 
     it "can log in an existing user" do
-      user = User.create(username: 'annabanana')
-
-      expect { login(user.username) }.wont_change 'User.count'
-      expect(session[:user_id]).must_equal user.id
+      expect { login(users(:goybean).username) }.wont_change 'User.count'
+      expect(session[:user_id]).must_equal users(:goybean).id
     end
   end
 

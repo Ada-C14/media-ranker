@@ -53,7 +53,8 @@ class WorksController < ApplicationController
       render file: "#{Rails.root}/public/404.html", status: :not_found
       return
     elsif @work.update(work_params)
-      redirect_to works_path # go to the index so we can see the work in the list
+      redirect_to work_path(@work.id)
+      flash[:success] = "Successfully updated #{@work.category} #{@work.id}"
       return
     else # save failed :(
       flash.now[:error] = "A problem occurred: Could not edit #{@work.category}"

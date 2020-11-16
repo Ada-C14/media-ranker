@@ -24,7 +24,7 @@ class WorksController < ApplicationController
       redirect_to work_path(@work.id)
       return
     else
-      flash.now[:failure] = "Failed to create #{@work.category}"
+      flash.now[:failure] = "Failed to create work"
       render :new, status: :bad_request
       return
     end
@@ -46,7 +46,7 @@ class WorksController < ApplicationController
       redirect_to work_path(@work.id)
       return
     else
-      flash.now[:failure] = "Failed to update #{@work.category}"
+      flash.now[:failure] = "Failed to update work"
       render :edit, status: :bad_request
       return
     end

@@ -70,6 +70,7 @@ describe WorksController do
       expect(new_work.publication_year).must_equal album_hash[:work][:publication_year]
       expect(new_work.description).must_equal album_hash[:work][:description]
 
+      expect(flash[:success]).must_equal "Successfully created album"
       must_respond_with :redirect
       must_redirect_to work_path(new_work.id)
     end
@@ -86,6 +87,7 @@ describe WorksController do
         post works_path, params: work_hash
       }.wont_change "Work.count"
 
+      expect(flash.now[:failure]).must_equal "Failed to create work"
       must_respond_with :bad_request
     end
   end
@@ -124,6 +126,7 @@ describe WorksController do
       expect(edited_work.category).must_equal edited_work_hash[:work][:category]
       expect(edited_work.title).must_equal edited_work_hash[:work][:title]
 
+      expect(flash[:success]).must_equal "Successfully updated album"
       must_respond_with :redirect
       must_redirect_to work_path(work_id)
     end
@@ -157,6 +160,7 @@ describe WorksController do
         patch work_path(work_id), params: edited_work_hash
       }.wont_change "Work.count"
 
+      expect(flash[:failure]).must_equal "Failed to update work"
       must_respond_with :bad_request
     end
   end
@@ -173,6 +177,7 @@ describe WorksController do
 
       expect(deleted_work).must_be_nil
 
+      expect(flash[:success]).must_equal "Successfully deleted book"
       must_respond_with :redirect
       must_redirect_to works_path
     end

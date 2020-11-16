@@ -17,7 +17,11 @@ class WorksController < ApplicationController
 
     redirect_path = save ? work_path(@work.id) : works_path
 
-    category = params[:work][:category] ? params[:work][:category] : "work"
+    category = "work"
+
+    if (params[:work][:category].is_a? String)
+      category = params[:work][:category] unless params[:work][:category].empty?
+    end
 
     error_flash = error_flash("could not create #{category}", @work.errors)
 
@@ -37,7 +41,11 @@ class WorksController < ApplicationController
 
     update = @work.update(work_params)
 
-    category = params[:work][:category] ? params[:work][:category] : "work"
+    category = "work"
+
+    if (params[:work][:category].is_a? String)
+      category = params[:work][:category] unless params[:work][:category].empty?
+    end
 
     error_flash = error_flash("could not update #{category}", @work.errors)
 
@@ -64,7 +72,7 @@ class WorksController < ApplicationController
 
     error_flash = error_flash("A problem occurred: Could not upvote", vote.errors)
 
-    action_success_check(save, works_path, success_msg: "Successfully upvoted!", error_msg: error_flash)
+    action_success_check(save, work_path(@work.id), success_msg: "Successfully upvoted!", error_msg: error_flash)
   end
 
   private

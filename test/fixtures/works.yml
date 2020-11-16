@@ -1,0 +1,110 @@
+rare:
+  category: album
+  title: Rare
+  creator: Selena Gomez
+  publication_year: 2020
+  description: An album about Justin Bieber
+folklore:
+  category: album
+  title: Folklore
+  creator: Taylor Swift
+  publication_year: 2020
+  description: Taylor Swift New Age
+titanic:
+  category: movie
+  title: Titanic
+  creator: James Cameron
+  publication_year: 1997
+  description: There was room for two...
+ace:
+  category: movie
+  title: Ace Ventura Pet Detective
+  creator: Tom Shadyac
+  publication_year: 1994
+  description: Alrighty then
+onward:
+  category: movie
+  title: Onward
+  creator: Dan Scanlon
+  publication_year: 2020
+  description: An animation film about two blue brothers
+becoming:
+  category: book
+  title: Becoming
+  creator: Michelle Obama
+  publication_year: 2018
+  description: Written by the best first lady of the United States
+it:
+  category: book
+  title: It
+  creator: Stephen King
+  publication_year: 1985
+  description: A book about scary clowns
+us:
+  category: movie
+  title: Us
+  creator: Jordan Peele
+  publication_year: 2019
+  description: Lupita Nyong'o
+getout:
+  category: movie
+  title: Get Out
+  creator: Jordan Peele
+  publication_year: 2017
+  description: A movie about a crazy family
+keanu:
+  category: movie
+  title: Keanu
+  creator: Peter Atencio
+  publication_year: 2016
+  description: A story about a badass cat
+album3:
+  category: album
+  title: Album 3
+  creator: Artist 3
+  publication_year: 2020
+album4:
+  category: album
+  title: Album 4
+  creator: Artist 4
+  publication_year: 2020
+album5:
+  category: album
+  title: Album 5
+  creator: Artist 5
+  publication_year: 2020
+album6:
+  category: album
+  title: Album 6
+  creator: Artist 6
+  publication_year: 2020
+album7:
+  category: album
+  title: Album 7
+  creator: Artist 7
+  publication_year: 2020
+album8:
+  category: album
+  title: Album 8
+  creator: Artist 8
+  publication_year: 2020
+album9:
+  category: album
+  title: Album 9
+  creator: Artist 9
+  publication_year: 2020
+album10:
+  category: album
+  title: Album 10
+  creator: Artist 10
+  publication_year: 2020
+album11:
+  category: album
+  title: Album 11
+  creator: Artist 11
+  publication_year: 2020
+album12:
+  category: album
+  title: Album 12
+  creator: Artist 12
+  publication_year: 2020

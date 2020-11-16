@@ -1,0 +1,14 @@
+<section>
+  <h2>
+    <span class="text-black">Media Spotlight: </span>
+    <% if work %>
+      <a class="spotlight"><%= link_to work.title, work_path(work), :class => 'spotlight' %></a> by <%= work.creator %>
+    <% end %>
+  </h2>
+  <% if work %>
+    <p>
+      <%= work.votes.length %> votes - <%= work.description %>
+    </p>
+  <% end %>
+</section>
+<hr>

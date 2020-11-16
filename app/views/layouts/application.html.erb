@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= render 'shared/header' %>
+
+    <% if @vote %>
+      <%= render partial: 'shared/flash', :locals => { :errors => @vote.errors } %>
+    <% elsif @user %>
+      <%= render partial: 'shared/flash', :locals => { :errors => @user.errors } %>
+    <% elsif @work %>
+      <%= render partial: 'shared/flash', :locals => { :errors => @work.errors } %>
+    <% else %>
+      <%= render partial: 'shared/flash' %>
+    <% end %>
+    <main>
+      <%= yield %>
+    </main>
+  </body>
+</html>

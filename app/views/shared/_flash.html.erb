@@ -1,0 +1,16 @@
+<section class="flash-message">
+  <% flash.each do |name, message| %>
+    <div class="alert alert-<%=name%>">
+      <%= message %>
+      <% if defined?(errors) && errors.any? %>
+        <ul>
+          <% errors.each do |column, message| %>
+            <li>
+              <p><%= column %> <%= message %></p>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+    </div>
+  <% end %>
+</section>

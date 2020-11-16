@@ -1,0 +1,33 @@
+vote1:
+  user: bob
+  work: rare
+vote2:
+  user: linda
+  work: rare
+vote3:
+  user: gene
+  work: rare
+vote4:
+  user: louise
+  work: rare
+vote5:
+  user: tina
+  work: rare
+vote6:
+  user: bob
+  work: folklore
+vote7:
+  user: bob
+  work: becoming
+vote8:
+  user: bob
+  work: onward
+vote9:
+  user: bob
+  work: it
+vote10:
+  user: bob
+  work: titanic
+vote11:
+  user: louise
+  work: ace

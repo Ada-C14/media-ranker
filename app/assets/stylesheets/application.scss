@@ -1,0 +1,192 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+
+/* Custom bootstrap variables must be set or imported *before* bootstrap. */
+@import "bootstrap";
+
+@import "**/*";
+
+@import url('https://fonts.googleapis.com/css2?family=Gudea:ital,wght@0,400;0,700;1,400&display=swap');
+
+$primary-color: #26a69a;
+$nav-link-color: #00796B;
+$header-color: #B2DFDB;
+$logo-color: #FF5722;
+$primary-font: 'Gudea', sans-serif;
+
+main {
+  padding: 2em;
+}
+
+.btn-primary {
+  background-color: $primary-color;
+  border-color: $primary-color;
+
+  &:focus, &:hover {
+    background-color: #00796B;
+    border-color: #00796B;
+  }
+}
+
+.btn-secondary:hover {
+  background-color: $nav-link-color;
+  border-color: $nav-link-color;
+}
+
+a.text-primary {
+  color: $primary-color !important;
+
+  &:hover {
+    color: $nav-link-color !important;
+  }
+}
+
+header {
+  background-color: $header-color;
+  text-align: center;
+  max-width: 100%;
+  padding: 2rem 1rem 0.5rem 1rem;
+
+  h1 {
+    margin: 25px auto 40px auto;
+
+    .logo {
+      color: $logo-color;
+      font-weight: bold;
+      border-right: white 2px solid;
+      padding-right: 25px;
+      margin-right: 15px;
+    }
+
+    a:hover {
+      color: $logo-color;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    small {
+      color: white;
+    }
+  }
+
+  a {
+    color: $nav-link-color;
+  }
+
+  a:hover {
+    color: #0056b3;
+  }
+}
+
+* {
+  font-family: $primary-font;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-top: 1rem;
+}
+
+h2, h3, h4, .work-title {
+  color: $primary-color;
+  font-weight: bold;
+}
+
+.work-title {
+  font-size: 1.5rem;
+}
+
+.work-title + small {
+  color: slategrey;
+  font-size: 19.2px;
+  line-height: 1.2;
+}
+
+.list-group-item {
+  border: none;
+}
+
+.spotlight {
+  border-bottom: 2px solid;
+}
+
+.work-title:hover, .spotlight:hover {
+  color: #00796B;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.spotlight h2 span {
+  color: #424242;
+}
+
+.button-container {
+  display: flex;
+  gap: 5px;
+}
+
+.nav-links {
+  display: flex;
+
+  .nav-item {
+    padding: 5px 20px;
+    text-decoration: none;
+
+    &:hover {
+      color: $nav-link-color;
+    }
+  }
+}
+
+.top10-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 2em;
+}
+
+.top10-header {
+  border-bottom: 2px solid;
+  border-bottom-color: #B2DFDB;
+}
+
+.work-category-header, .login-note {
+  color: rgb(33, 37, 41);
+}
+
+.alert-warning {
+  width: 100%;
+}
+
+.flash-message {
+  margin-top: 2rem;
+}
+
+.spotlight {
+  color: $primary-color;
+}
+
+.votes-container {
+  margin-top: 2rem;
+}
+
+.nav-submit-button {
+  display: flex;
+  gap: 2rem;
+}
+
+.text-black {
+  color: black !important;
+}

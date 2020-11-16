@@ -2,14 +2,29 @@
 
   <% categories = %w[book album movie] %>
 
-  <% categories.each do |type| %>
+<% categories.each do |type| %>
   <h3> <%=type.titleize%>s </h3>
-
-  <ul class="work-list">
+  <table class = "table">
+    <thead>
+      <tr>
+        <th scope="col"> Votes </th>
+        <th scope="col"> Title </th>
+        <th scope="col"> Created By </th>
+        <th scope="col"> Published </th>
+        <th scope="col"> Upvote </th>
+      </tr>
+    </thead>
     <% @ranked_works.each do |work| %>
       <% if work.category == type %>
-        <li><b><%= link_to work.title.upcase, work_path(work.id) %></b> - <%= work.category %> - <%= work.creator %> - <%= work.publication_year %> -- <%= work.votes.count %> votes</li>
+        <tr>
+          <td> <%= work.votes.count %> </td>
+          <td> <%= link_to work.title.upcase, work_path(work.id) %> </td>
+          <td> <%= work.creator %> </td>>
+          <td> <%= work.publication_year %> </td>
+          <td> <%= button_to "Upvote", work_votes_path(work.id), method: :post, form: {style: 'display:inline-block;'}, class: "btn btn-primary"  %></td>
+        </tr>
       <% end %>
     <% end %>
-  </ul>
+  </table>
 <% end %>
+

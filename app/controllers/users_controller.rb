@@ -44,10 +44,10 @@ class UsersController < ApplicationController
         flash[:success] = 'Successfully logged out'
       else
         session[:user_id] = nil
-        flash[:notice] = 'ERROR unknown user'
+        flash[:warning] = 'ERROR unknown user'
       end
     else
-      flash[:error] = 'You must be logged in to log out'
+      flash[:warning] = 'You must be logged in to log out'
       redirect_to root_path
       return
     end

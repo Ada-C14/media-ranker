@@ -25,7 +25,7 @@ class WorksController < ApplicationController
       redirect_to work_path(@work.id)
       return
     else
-      flash.now[:error] = "A problem occurred: could not create #{@work.category}"
+      flash.now[:warning] = "A problem occurred: could not create #{@work.category}"
       render :new, status: :bad_request
       return
     end
@@ -51,7 +51,7 @@ class WorksController < ApplicationController
       redirect_back(fallback_location: root_path)
       return
     else # save failed :(
-      flash.now[:error] = "A problem occurred: could not update #{@work.category}"
+      flash.now[:warning] = "A problem occurred: could not update #{@work.category}"
       render :edit, status: :bad_request
       return
     end
@@ -61,7 +61,7 @@ class WorksController < ApplicationController
     @work = Work.find_by(id: params[:id])
 
     if @work.nil?
-      flash[:error] = "A problem occurred: could not update #{@work.category}"
+      flash[:warning] = "A problem occurred: could not update #{@work.category}"
       redirect_to works_path, head: :temporary_redirect
       return
     end

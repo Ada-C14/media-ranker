@@ -7,13 +7,13 @@ class VotesController < ApplicationController
     session[:return_to] = request.referer
 
     if user.nil?
-      flash[:error] = "You must be logged in to vote on works"
+      flash[:warning] = "You must be logged in to vote on works"
       redirect_back(fallback_location: root_path)
       return
     end
 
     if work.nil?
-      flash[:error] = "Could not locate work"
+      flash[:danger] = "Could not locate work"
       redirect_back(fallback_location: root_path)
       return
     end
@@ -29,7 +29,7 @@ class VotesController < ApplicationController
       redirect_back(fallback_location: root_path)
       return
     else
-      flash[:error] = "A problem occurred: could not upvote. User can only upvote a work once"
+      flash[:warning] = "A problem occurred: could not upvote. User can only upvote a work once"
       redirect_back(fallback_location: root_path)
       return
     end

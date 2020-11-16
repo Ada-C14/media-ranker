@@ -1,5 +1,6 @@
 class WorksController < ApplicationController
   before_action :find_work, only: [:show, :edit, :update, :destroy, :upvote]
+  before_action :current_user, only: [:upvote]
 
   def order_list(category)
     return Work.where(category: category).order(votes_count: :desc, created_at: :asc)
@@ -76,7 +77,7 @@ class WorksController < ApplicationController
   end
 
   def upvote
-    @user = User.find_by(id: session[:user_id])
+    # @user = current_user
     if @user.nil?
       flash[:warning] = "Please log in to vote"
       redirect_to work_path(@work) and return

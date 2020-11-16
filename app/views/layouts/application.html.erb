@@ -41,17 +41,16 @@
       </nav>
     </header>
 
+    <section class="alert__container">
+      <% flash.each do |name, message| %>
+        <div class="alert alert-<%= name %>">
+          <span><%= message %></span>
+        </div>
+      <% end %>
+    </section>
+
     <main>
-      <section class="alert__container">
-        <% flash.each do |name, message| %>
-          <div class="alert alert-<%= name %>">
-            <span><%= message %></span>
-          </div>
-        <% end %>
-      </section>
-
-    <%= yield %>
-
+      <%= yield %>
     </main>
   </body>
 </html>

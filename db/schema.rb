@@ -24,10 +24,10 @@ ActiveRecord::Schema.define(version: 2020_11_15_043257) do
   create_table "votes", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.bigint "works_id"
-    t.bigint "users_id"
-    t.index ["users_id"], name: "index_votes_on_users_id"
-    t.index ["works_id"], name: "index_votes_on_works_id"
+    t.bigint "work_id"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_votes_on_user_id"
+    t.index ["work_id"], name: "index_votes_on_work_id"
   end
 
   create_table "works", force: :cascade do |t|
@@ -40,4 +40,6 @@ ActiveRecord::Schema.define(version: 2020_11_15_043257) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  add_foreign_key "votes", "users"
+  add_foreign_key "votes", "works"
 end

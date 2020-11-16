@@ -33,22 +33,15 @@ class UsersController < ApplicationController
   end
 
   def logout
-    if session[:user_id]
-      @user = User.find_by(id: session[:user_id])
-      unless @user.nil?
-        session[:user_id] = nil
-        flash[:notice] = "See you later, #{@user.username}!"
-      else
-        session[:user_id] = nil
-        flash[:error] = "Hmm..something went wrong"
-      end
-    else
-      flash[:error] = "You must be logged in order to logout"
-    end
+    @user = User.find_by(id: session[:user_id])
+    session[:user_id] = nil
+    flash[:success] = "See you later, #{@user.username}!"
     redirect_to root_path
+    return
   end
 
   def current_user
-    @current_user = User.find_by(id: params[:id])
+    @current_user = User.find_by(id: session[:user_id])
+    return @current_user
   end
 end

@@ -1,47 +1,37 @@
 <h1>All media</h1>
 
-<section>
-  <h3>Books</h3>
+<div class="col-1">
+  <h1>Books</h1>
   <ul>
-    <% @works.category_filter("Book").each do |book| %>
+    <% @works.category_filter("book").each do |book| %>
       <li>
         <%= link_to book.title, work_path(id: book[:id]), class: "link" %>
-<!--        <p>Voted on <%#= book.votes.count %> times</p>-->
-        <%= link_to "Vote", vote_path(id: book[:id]), method: :post, class: "link" %>
+        <p><%= link_to "Vote", vote_path(id: book[:id]), method: :post, class: "link" %></p>
       </li>
     <% end %>
   </ul>
-</section>
+</div>
 
-<section>
-  <h3>Shows</h3>
+<div class="col-2">
+  <h1>Movies</h1>
   <ul>
-    <% @works.category_filter("Show").each do |show| %>
-      <li>
-        <%= link_to show.title, work_path(id: show[:id]), class: "link" %>
-      </li>
-    <% end %>
-  </ul>
-</section>
-
-<section>
-  <h3>Movies</h3>
-  <ul>
-    <% @works.category_filter("Movie").each do |movie| %>
+    <% @works.category_filter("movie").each do |movie| %>
       <li>
         <%= link_to movie.title, work_path(id: movie[:id]), class: "link" %>
+        <p><%= link_to "Vote", vote_path(id: movie[:id]), method: :post, class: "link" %></p>
       </li>
     <% end %>
   </ul>
-</section>
+</div>
 
-<section>
-  <h3>Albums</h3>
+<div class="col-3">
+  <h1>Albums</h1>
   <ul>
-    <% @works.category_filter("Album").each do |album| %>
+    <% @works.category_filter("album").each do |album| %>
       <li>
         <%= link_to album.title, work_path(id: album[:id]), class: "link" %>
+        <p><%= link_to "Vote", vote_path(id: album[:id]), method: :post, class: "link" %></p>
       </li>
     <% end %>
   </ul>
-</section>
+</div>

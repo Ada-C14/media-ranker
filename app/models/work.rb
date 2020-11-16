@@ -1,5 +1,5 @@
 class Work < ApplicationRecord
-  has_many :votes
+  has_many :votes #, through: :users
 
   validates :title, presence: true, uniqueness: true
   validates :creator, presence: true
@@ -11,11 +11,22 @@ class Work < ApplicationRecord
   end
 
   def self.spotlight
-    top10 = []
-    10.times do
-      top10 << Work.all.sample
+    @works = Work.all
+
+    max_voted = @works.max_by { |work| work.votes.count}
+    return max_voted
+  end
+
+  def self.top10(category)
+    @works = Work.all
+    category_works = @works.category_filter(category)
+
+    sorted = category_works.sort_by { |work| work.votes.count }.reverse
+    if sorted.length < 10
+      return sorted
+    else
+      return sorted[0..9]
     end
-    return top10
   end
 
 end

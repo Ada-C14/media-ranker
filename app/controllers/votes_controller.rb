@@ -1,19 +1,15 @@
 class VotesController < ApplicationController
 
+  before_action :require_login
+
   def create
     @vote = Vote.create(work_id: params[:id],user_id: session[:user_id])
     if session[:user_id] && @vote.valid?
-      flash[:success] = "Successfully upvoted!"
+      flash[:success] = "Thanks for voting for this work!"
       redirect_back(fallback_location: :back)
     elsif @vote.valid? == false
-      flash[:warning] = "You have already voted for this work"
+      flash[:error] = "You've already voted for this work!"
       redirect_back(fallback_location: :back)
     end
-  end
-
-  private
-
-  def vote_params
-    return params.require(:vote).permit(:work_id, :user_id)
   end
 end

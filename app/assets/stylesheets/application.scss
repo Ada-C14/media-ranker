@@ -22,13 +22,17 @@ body {
 }
 
 header {
-  background-color: #0f6674;
-  padding: 60px;
+  background-color: #83d7c6;
+  padding: 40px;
 }
 
 header h1 {
-  color: #9fcdff;
-  font-size: 65px;
+  color: white;
+  //font-size: 65px;
+}
+
+header strong {
+  color: #c82333;
 }
 
 header h2 {
@@ -37,25 +41,54 @@ header h2 {
 
 header .link {
   padding: 20px;
+  color: teal;
 }
 
 .link {
   color: #8fd19e;
 }
 //why is css so complicated!!!
-section {
-  display: grid;
+//section {
+//  display: grid;
+//
+//}
 
-}
-
-//section #float-left {
+//section .col-1 {
 //  float: left;
 //}
 //
-//section #float-right {
-//  float: right;
+//section .col-2 {
+//  float: middle;
 //}
 
-//section ul {
-//  text-align: left;
-//}
+div ul {
+  font-size: larger;
+  width: max-content;
+}
+
+div h1 {
+  width: max-content;
+  padding-left: 65px;
+  padding-top: 30px;
+}
+
+
+.col-1 {
+  display: inline-block;
+  float: left;
+
+}
+
+.col-2 {
+  display: inline-block;
+
+}
+
+.col-3 {
+  display: inline-block;
+  float: right;
+
+}
+
+
+

@@ -28,6 +28,34 @@ class WorkTest < ActiveSupport::TestCase
       end
     end
 
+    describe "relationships" do
+      it "can have many votes" do
+        # Arrange
+        valid_movie_work = works(:movie)
+        valid_album_work = works(:album)
+        valid_book_work = works(:book)
+
+        valid_user = users(:user1)
+        valid_user2 = users(:user2)
+
+
+        # Act
+        valid_vote1 = Vote.create(user: valid_user, work: valid_movie_work)
+        valid_vote2 = Vote.create(user: valid_user, work: valid_album_work)
+        valid_vote3 = Vote.create(user: valid_user, work: valid_book_work)
+        # Two votes for book
+        valid_vote4 = Vote.create(user: valid_user2, work: valid_book_work)
+
+        # Assert
+        [valid_vote1, valid_vote2, valid_vote3, valid_vote4].each do |vote|
+          expect(vote).must_be_instance_of Vote
+        end
+
+        expect(valid_movie_work.votes.count).must_equal 1
+        expect(valid_album_work.votes.count).must_equal 1
+        expect(valid_book_work.votes.count).must_equal 2
+      end
+    end
 
     describe "custom methods" do
       describe "spotlight" do

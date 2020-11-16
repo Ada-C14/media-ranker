@@ -39,4 +39,14 @@ describe Work do
     expect(created_work).must_equal false
     expect(@work.errors.messages).must_include :category
   end
+
+  it "returns a spotlight work" do
+    expect(Work.spotlight).must_be_instance_of Work
+  end
+
+  it "returns nil when database is empty" do
+    Work.delete_all
+    expect(Work.count).must_equal 0
+    expect(Work.spotlight).must_be_nil
+  end
 end

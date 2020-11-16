@@ -43,25 +43,11 @@ padding: 2rem;
   color: white;
 }
 
-.app-header__header h1 small {
-  color: white;
-}
-
-a {
-  text-decoration: none;
-}
-
 nav {
   display: flex;
   flex-wrap: wrap;
-  list-style: none;
 }
 
-.app-header__nav {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
 
 .app-header__nav_item {
   margin-right: 15px;

@@ -1,66 +1,58 @@
-<!--Convert this to a form.-->
-<!--ADD CLASS TO FORM?-->
-<div>
+<!--ADD MORE CLASSES-->
+<section>
 
   <%= form_with model: @work do |f| %>
 
-    <%# if @work.errors.any? %>
-<!--      <ul class="errors">-->
-        <%# @work.errors.each do |column, message| %>
-<!--          <li>-->
-<!--            <p><%#= column %> <%#= message %></p>-->
-<!--          </li>-->
-        <%# end %>
-<!--      </ul>-->
-    <%# end %>
+    <% if @work.errors.any? %>
+      <ul class = "alert">
+        <% @work.errors.each do |column, message| %>
+          <li>
+            <p><%= column %> <%= message %></p>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
 
-    <div>
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+    <div class = "form-group">
+      <%= f.label :category %>
+      <br>
+      <%= f.select :category, ["album", "book", "movie"] %>
     </div>
     <br>
 
-    <div>
-      <%= f.label :phone_num %>
-      <%= f.text_field :phone_num %>
+    <div class = "form-group">
+      <%= f.label :title %>
+      <br>
+      <%= f.text_field :title %>
     </div>
     <br>
 
-    <%= f.submit action_name, class: "button" %>
+    <div class = "form-group">
+      <%= f.label :creator %>
+      <br>
+      <%= f.text_field :creator %>
+    </div>
+    <br>
+
+    <div class = "form-group">
+      <%= f.label :publication_year %>
+      <br>
+      <%= f.date_select :publication_year, start_year: 1900, end_year: 2020, discard_day: true, discard_month: true %>
+    </div>
+    <br>
+
+    <div class = "form-group">
+      <%= f.label :description %>
+      <br>
+      <%= f.text_field :description %>
+    </div>
+    <br>
+
+    <div class = "form-group">
+    <%= f.submit action_name, class: "btn btn-primary" %>
+    </div>
 
   <% end %>
-</div>
+</section>
 
-<section>
-  <form action="/works" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="ru1vwETTAb6raUrvtw+Ut//W14VgISz/G+hTOpBEwkyL7cu4ilMQiwN3hhj5xeeQB55K0/ykR30JyElQvNzHvQ==">
-    <div class="form-group">
-      <label>Category</label>
-      <select class="form-control" name="work[category]"><option value="album">album</option>
-        <option value="book">book</option>
-        <option value="movie">movie</option></select>
-    </div>
 
-    <div class="form-group">
-      <label>Title</label>
-      <input class="form-control" type="text" name="work[title]">
-    </div>
-
-    <div class="form-group">
-      <label>Creator</label>
-      <input class="form-control" type="text" name="work[creator]">
-    </div>
-
-    <div class="form-group">
-      <label>Publication year</label>
-      <input class="form-control" type="text" name="work[publication_year]">
-    </div>
-
-    <div class="form-group">
-      <label>Description</label>
-      <textarea class="form-control" name="work[description]"></textarea>
-    </div>
-
-    <div class="form-group">
-      <input type="submit" name="commit" value="Create Work" class="btn btn-primary" data-disable-with="Create Work">
-    </div>
-  </form></section>

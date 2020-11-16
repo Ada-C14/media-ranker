@@ -6,8 +6,29 @@
   <li>Description: <%= @work.description %></li>
 </ul>
 
-<div class="button"><%= link_to "Back to Media Ranks", works_path %></div>
-<div class="button"><%= link_to "Edit", edit_work_path(@work.id) %></div>
-<div class="button"><%= link_to "Upvote", upvote_path(@work), method: :post %></div>
-<div class="button"><%= link_to "Delete", work_path(@work.id),
-                                method: :delete, data: { confirm: "Are you sure you want to delete this work?" } %></div>
+<%= link_to "Back to Media Ranks", root_path %>
+<%= link_to "Edit", edit_work_path(@work.id) %>
+<%= link_to "Upvote", upvote_path(@work), method: :post %>
+<%= link_to "Delete", work_path(@work.id),
+            method: :delete, data: { confirm: "Are you sure you want to delete this work?" } %>
+
+<section class="works-votes__container">
+  <h3><%= @work.votes.count %> Votes for this <%= @work.category.capitalize %></h3>
+  <table>
+    <thead>
+      <tr>
+        <th>User</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @work.votes.each do |vote| %>
+      <tr>
+        <td><%= link_to vote.user.username, user_path(vote.user_id) %></td>
+        <td><%= vote.created_at.strftime("%b %d, %Y") %></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</section>
+

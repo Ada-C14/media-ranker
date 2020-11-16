@@ -1,11 +1,10 @@
-<% if @spotlight %>
+<% if !(@spotlight.nil?) %>
   <div class="row">
     <div class="col-sm-12">
       <section class="spotlight">
         <h2 class="spotlight__header">
           <span id="spotlight_font">
             Media Spotlight: <span id="title_link"><%= link_to @spotlight.title, work_path(@spotlight.id) %></span><span id="spotlight_by"> by <%= @spotlight.creator %></span></span>
-        </span>
         </h2>
         <p class="spotlight__description">
           <%= @spotlight.votes.size %> votes - <%= @spotlight.description %>
@@ -58,6 +57,8 @@
         </section>
       </div>
     </div>
+  <% else %>
+  <p> No media items yet!</p>
 <% end %>
 
 

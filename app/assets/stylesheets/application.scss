@@ -169,10 +169,14 @@ nav ul {
 
 nav ul li {
   display: block;
-  padding: 0.25rem 2rem;
+  padding: 0.25rem 1.5rem;
   color: #00796B;
   align-self: center;
 
+}
+
+nav ul > li:nth-child(4) {
+  margin-right: auto;
 }
 
 h3.vote-header {

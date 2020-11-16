@@ -29,6 +29,7 @@ class UsersController < ApplicationController
         flash[:success] = "Successfully created new user #{username} with ID #{@user.id}"
       else
         flash.now[:error] = "A problem occurred: Could not log in"
+        flash.now[:problem] = @user.errors
         render :login_form, status: :bad_request
         return
       end

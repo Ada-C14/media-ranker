@@ -27,7 +27,7 @@ class ActiveSupport::TestCase
 
     post login_path, params: user_hash
 
-    user = User.find_by(username: username])
+    user = User.find_by(username: username)
     return user
   end
 end

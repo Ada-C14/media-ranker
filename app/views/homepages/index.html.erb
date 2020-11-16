@@ -1,5 +1,16 @@
-<h1>HOME</h1>
 <main>
+
+  <section class="spotlight">
+    <h2 class="spotlight-header">
+      <span class="spotlight-subheading">Media Spotlight</span>
+      <% spotlight_work = Work.spotlight %>
+      <%= link_to spotlight_work.title, work_path(spotlight_work.id), class: "spotlight__link-to" %>
+      by <%= spotlight_work.creator %>
+    </h2>
+    <p class="spotlight-description">
+      <%= spotlight_work.description %>
+    </p>
+  </section>
 
   <section class="top_ten">
     <h2>ALBUMS</h2>

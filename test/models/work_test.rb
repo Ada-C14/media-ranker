@@ -81,9 +81,14 @@ describe Work do
   end
 
   describe "to_ten method" do
-    it "returns ten top works in each category" do
-      top_books = Work.top_ten("book")
-      expect(top_books.count).must_equal 10
+    it "returns (max)ten top works in each category" do
+      category = "book"
+      top_books = Work.top_ten(category)
+      expect(top_books.count).must_be :<=, 10
+      expect(top_books.count).must_equal 2
+
+      check_votes_num = top_books[0].votes.count >= top_books[1].votes.count
+      expect(check_votes_num).must_equal true
     end
   end
 end

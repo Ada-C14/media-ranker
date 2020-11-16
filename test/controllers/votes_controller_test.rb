@@ -6,22 +6,21 @@ describe VotesController do
 
   let (:vote_hash) {
     {
-        vote: {
-            user_id: User.first.id,
-            work_id: works(:no_dream).id
-        }
+      vote: {
+        user_id: User.first.id,
+        work_id: works(:no_dream).id
+      }
     }
   }
 
   let (:invalid_vote_hash) {
     {
-        vote: {
-            user_id: Vote.first.user_id,
-            work_id: Vote.first.work_id
-        }
+      vote: {
+        user_id: Vote.first.user_id,
+        work_id: Vote.first.work_id
+      }
     }
   }
-
 
   it "create: won't create vote and will redirect if a user is not signed in" do
     expect { post work_votes_path(works(:no_dream).id), params: vote_hash }.wont_change 'Vote.count'
@@ -32,6 +31,8 @@ describe VotesController do
   it 'create: will redirect and flash message if user tries to vote for same work multiple time' do
     login(user.username)
     expect { post work_votes_path(works(:ctrl).id), params: invalid_vote_hash }.wont_change 'Vote.count'
+    expect(flash[:notice]).must_equal "Problem occurred: could not upvote.
+                      Looks like you've already voted for this work!"
     must_respond_with :redirect
     expect(user.votes_count).must_equal 2
   end

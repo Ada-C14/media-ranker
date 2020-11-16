@@ -7,15 +7,21 @@ class Work < ApplicationRecord
   validates :publication_year, presence: true
   validates :creator, presence: true
 
-#   def top_10
-#     top_10 = []
-#     count = 0
-#     until top_10.length == 10
-#       @works.each do |work|
-#         if work[count].vote.count >
-#
-#         end
-#       end
-#     end
-#
+  def self.sort_votes
+    work = Work.all
+    sorted_work = work.sort_by{|work| work.votes.count}.reverse
+    return sorted_work
+  end
+
+  def self.spotlight
+    work = Work.all
+    spotlight = work.sort_votes.first
+    return spotlight
+  end
+
+  def self.top_ten
+    work = Work.all
+    top_ten = work.sort_votes
+    return top_ten
+  end
 end

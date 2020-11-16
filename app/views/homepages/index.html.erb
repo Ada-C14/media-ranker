@@ -1,15 +1,13 @@
 <body>
     <div>
         <h3> Spotlight Media!
-          <% @work = @works.sample(1) %>
-          <% spotlight = @work[2] %>
-          <%= spotlight %>
+          <%= @works.spotlight.title %>
         </h3>
     </div>
     <div>
       <h4>
         Top 10 Books!
-        <% @works.each do |work|  %>
+        <% @works.top_ten[0..10].each do |work|  %>
           <% if work.category == "book" %>
             <li> <%= link_to work.title, work_path(work) %></li>
           <% end %>

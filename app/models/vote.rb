@@ -2,7 +2,7 @@ class Vote < ApplicationRecord
   belongs_to :work
   belongs_to :user
 
-  # validates :work_id, uniqueness: true
+  validates_uniqueness_of :user_id, scope: :work_id
 
   def self.votes_by_user(user)
     vote_list = Vote.find_by(user_id: user).votes

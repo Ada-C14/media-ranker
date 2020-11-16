@@ -82,6 +82,7 @@ class WorksController < ApplicationController
     if @work.nil?
       flash[:error] = "Not a valid work"
       redirect_to root_path
+      return
     end
     if @user.nil?
       flash[:error] = "You must be logged in to vote"

@@ -1,0 +1,20 @@
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Votes</th>
+        <th>Date Joined</th>
+      </tr>
+     </thead>
+    <tbody>
+    <% @users.each do |user|%>
+      <tr>
+        <td><strong><%=link_to user.name.titleize, user_path(user.id) %></strong></td>
+        <td><%=user.votes.count %></td>
+        <td><%=user.created_at.to_date%></td>
+      </tr>
+    <%end %>
+    </tbody>
+  </table>
+</div>

@@ -56,6 +56,16 @@ describe Work do
 
       assert_equal(2, filtered_works.count)
     end
+
+    it "will return 0 if passed an invalid parameter" do
+      Work.create(category: "Book", title: "Bluebeard", creator: "Kurt Vonnegut", publication_year: 1979, description: "haven't finished this one yet")
+      Work.create(category: "Book", title: "test book", creator: "me", publication_year: 2020, description: "uninteresting")
+      Work.create(category: "Album", title: "Currents", creator: "Tame Impala", publication_year: 2015, description: "Cool songs and stuff")
+
+      filtered_works = Work.all.category_filter("test")
+
+      assert_equal(0, filtered_works.count)
+    end
   end
 
   describe "spotlight" do

@@ -1,4 +1,6 @@
-<h1>This week's spotlight : <%= @works.spotlight.title %> By: <%= @works.spotlight.creator %></h1>
+<% if @works.nil? == false %>
+  <h1>This week's spotlight : <%= @works.spotlight.title %> By: <%= @works.spotlight.creator %></h1>
+<% end %>
 
 <div class="col-1">
   <h1>Top Books</h1>

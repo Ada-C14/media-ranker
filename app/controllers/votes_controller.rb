@@ -19,7 +19,7 @@ class VotesController < ApplicationController
       redirect_to work_path(@work.id)
       return
     else
-      flash[:error] = "There was an error with the vote"
+      flash[:warning] = "Problem occurred: user has already voted for this work."
       redirect_to work_path
       return
     end

@@ -11,11 +11,6 @@ describe Vote do
     expect(new_vote.valid?).must_equal true
   end
 
-  describe "validations" do
-
-    it "a user cannot vote for the same media twice"
-  end
-
   describe "relationships" do
     before do
       @vote = votes(:vote4)

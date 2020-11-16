@@ -7,13 +7,18 @@
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet"
+          href="https://fonts.googleapis.com/css?family=Gudea"/>
   </head>
 
   <body>
-  <header>
-    <h1>Media Ranker</h1>
+  <header class="app-header__header">
+    <h1>
+      <%= link_to "Media Ranker", root_path%>
     <small>Ranking the Best of Everything</small>
-    <nav>
+    </h1>
+
+    <nav class="app-header__nav">
       <ul>
         <li><%= link_to "View top media", root_path%></li>
         <li><%= link_to "View all media", works_path%></li>
@@ -23,7 +28,7 @@
       <ul>
         <% if session[:user_id] %>
 <!--          it's a link not a button!-->
-        <li><%= link_to "Logout", logout_path, method: :post, class: "btn btn-primary" %></li>
+        <li><%= link_to "Logout", logout_path, method: :post, class: "btn btn-info" %></li>
           <% else %>
         <li><a href="/login"><button type="button" class="btn btn-info">Log in</button></a></li>
           <% end %>
@@ -31,13 +36,32 @@
     </nav>
   </header>
 
-  <section class="flash-msg__section">
-    <% flash.each do |name, message| %>
-      <strong class="<%= name %>">
-        <%= message %>
-      </strong>
-    <% end %>
-  </section>
+<!--  <section class="flash-msg__section">-->
+    <%# flash.each do |name, message| %>
+<!--      <strong class="<%#= name %>">-->
+        <%#= message %>
+<!--      </strong>-->
+    <%# end %>
+<!--  </section>-->
+
+  <%if !!flash[:error] %>
+    <section class="alert alert-danger">
+      <%= flash[:error] %>
+    </section>
+  <%end %>
+
+  <%if !!flash[:notice] %>
+    <section class="alert alert-warning">
+      <%= flash[:notice] %>
+    </section>
+  <%end %>
+
+  <%if !!flash[:success] %>
+    <section class="alert alert-success">
+      <%= flash[:success] %>
+    </section>
+  <%end %>
+
 
   <%= yield %>
 

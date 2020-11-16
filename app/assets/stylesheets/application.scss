@@ -16,3 +16,105 @@
 @import "bootstrap";
 
 @import "**/*";
+
+*,
+*::before,
+*::after {
+ box-sizing:border-box;
+  font-family: "Gudea", sans-serif
+}
+
+html {
+ font-family:sans-serif;
+ line-height:1.15;
+ -webkit-text-size-adjust:100%;
+ -ms-text-size-adjust:100%;
+//  -ms-overflow-style:scrollbar;
+ -webkit-tap-highlight-color:transparent
+}
+
+@-ms-viewport {
+ width:device-width
+}
+
+article,
+aside,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+main,
+nav,
+section {
+ display:block
+}
+
+body {
+ margin:0;
+ font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+ font-size:1rem;
+ font-weight:400;
+ line-height:1.5;
+ color:#212529;
+ text-align:left;
+ background-color:#fff
+}
+
+hr {
+  box-sizing:content-box;
+  height:0;
+  overflow:visible
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top:0;
+  margin-bottom:0.5rem
+}
+
+p {
+  margin-top:0;
+  margin-bottom:1rem
+}
+
+strong {
+  font-weight:bolder
+}
+small {
+  font-size:80%;
+  color: #ffffff
+}
+
+.app-header__header {
+    max-width: 100%;
+    background-color: #B2DFDB;
+    margin-bottom: 0.5rem;
+    padding: 2rem 1rem 0.5rem 1rem;
+    display: block;
+    color: #FF5722
+}
+
+h1, h2, h3, h4, h5 {
+    font-weight: bold;
+}
+.app-header__header h1 {
+    text-align: center;
+    margin: 25px auto 40px auto;
+    color: #FF5722;
+    padding-right: 25px;
+    margin-right: 15px;
+    border-right: white 2px solid;
+}
+
+
+body {
+font-family: "Gudea", sans-serif;
+}
+
+main {
+ padding:2rem
+}
+
+
+li {
+}

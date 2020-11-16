@@ -7,7 +7,10 @@ describe Work do
   end
 
   it "will have the required fields" do
-    # Your code here
+    work = works(:test_book)
+    [:category, :title, :creator, :publication_year, :description].each do |check|
+      expect(work).must_respond_to check
+    end
   end
 
   describe "relationships" do
@@ -15,7 +18,31 @@ describe Work do
   end
 
   describe "validations" do
-    # Your tests go here
+    let work = works(:test_book)
+    it 'must have a title' do
+      work.title = nil
+
+      expect(work.valid?).must_equal false
+      expect(work.errors.messages).must_include :vin
+      expect(work.errors.messages[:title]).must_equal ["can't be blank"]
+
+    end
+
+    it 'must have a category' do
+
+    end
+
+    it 'must have a creator' do
+
+    end
+
+    it 'must have a publication year' do
+
+    end
+
+    it 'must have a description' do
+
+    end
   end
 
   # Tests for methods you create should go here

@@ -22,17 +22,11 @@
       <h3 class="works-votes__header"><%= @work.votes.count%> Votes for this Album</h3>
       <table class="table">
         <thead>
-          <tr>
-            <th>User</th>
-            <th>Date</th>
-          </tr>
+          <%= render partial: "table_headers", locals: { headers: %w[User Date]}%>
         </thead>
         <tbody>
           <%@work.votes.each do |vote|%>
-            <tr>
-              <td><%=link_to(vote.user.name, user_path(vote.user))%></td>
-              <td><%=vote.created_at.to_s(:short_date)%></td>
-            </tr>
+            <%= render partial: "table_data", locals: { data: [link_to(vote.user.name, user_path(vote.user)), vote.created_at.to_s(:short_date)]}%>
           <%end%>
         </tbody>
       </table>

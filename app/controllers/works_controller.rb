@@ -1,14 +1,21 @@
 class WorksController < ApplicationController
-  before_action :set_work, only: [:edit, :update, :destroy, :upvote]
+  before_action :set_work, only: [:show, :edit, :update, :destroy, :upvote]
 
   def index
-    @books = Work.books
-    @albums = Work.albums
-    @movies = Work.movies
+    @works = Work.all
+    @albums = Work.select{ |work| work.category == 'album'}
+    @books = Work.select { |work| work.category == "book" }
+    @movies = Work.select{ |work| work.category == 'movie'}
+  end
+
+  def show
   end
 
   def new
     @work = Work.new
+  end
+
+  def edit
   end
 
   def create

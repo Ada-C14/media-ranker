@@ -46,6 +46,12 @@ li {
   display: list-item;
   }
 
+.list-group-item:first-child {
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+  }
+
+
 h1, h2, h3, h4, h5 {
     font-family: "Gudea", sans-serif;
     font-weight: bold;

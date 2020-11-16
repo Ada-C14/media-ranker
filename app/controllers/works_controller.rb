@@ -1,5 +1,7 @@
 class WorksController < ApplicationController
 
+  before_action :find_by_id, only:[:show, :edit, :update, :destroy]
+
   def top
     @spotlight = Work.spotlight
     @top_books = Work.top_books
@@ -15,8 +17,6 @@ class WorksController < ApplicationController
   end
 
   def show
-    @work = find_by_id
-
     if @work.nil?
       head :not_found
       return
@@ -42,8 +42,6 @@ class WorksController < ApplicationController
   end
 
   def edit
-    @work = find_by_id
-
     if @work.nil?
       redirect_to works_path
       return
@@ -51,8 +49,6 @@ class WorksController < ApplicationController
   end
 
   def update
-    @work = find_by_id
-
     if @work.nil?
       head :not_found
       return
@@ -68,8 +64,6 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    @work = find_by_id
-
     if @work.nil?
       head :not_found
       return
@@ -79,13 +73,11 @@ class WorksController < ApplicationController
     end
   end
 
-  # helper method
-  def find_by_id
-    work_id = params[:id].to_i
-    work = Work.find_by(id: work_id)
-  end
-
   private
+
+  def find_by_id
+    @work = Work.find_by(id: params[:id])
+  end
 
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :published, :description)

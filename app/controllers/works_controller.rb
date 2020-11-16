@@ -1,19 +1,15 @@
 class WorksController < ApplicationController
-  before_action :find_work, only: [:show, :edit, :update, :destroy, :upvote]
+  before_action :find_work, only: [:show, :edit, :update, :destroy]
 
   def index
-    # @works = Work.all
     @albums = Work.albums
     @movies = Work.movies
     @books = Work.books
-
   end
 
   def show
     if @work.nil?
-      redirect_to works_path
-      return
-    elsif !Work.exists?(work_id)
+      flash[:warning] = "This particular work does not exist"
       redirect_to root_path
       return
     end
@@ -27,56 +23,49 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params) #instantiate a new work
     if @work.save # save returns true if the database insert succeeds
-      flash[:success] = "Book added successfully"
+      flash[:success] = "#{@work.category.capitalize} has been added successfully"
       redirect_to work_path(@work.id) # go to the index so we can see the work in the list
     else # save failed :(
-      flash.now[:error] = "Something happened. Book not added."
+      flash.now[:error] = "Oops! Something went wrong. #{@work.category.capitalize} was not added"
       render :new # show the new work form view again
     end
   end
 
   def edit
-    redirect_to root_path if @work.nil?
+    if @work.nil?
+      flash[:warning] = "This particular work does not exist"
+      redirect_to root_path
+      return
+    end
   end
 
   def update
     if @work.nil?
+      flash[:warning] = "This particular work does not exist"
       redirect_to root_path
       return
     elsif @work.update(work_params)
-      redirect_to work_path(@work.id)
+      flash[:success] = "#{@work.category.capitalize} updated!"
+      redirect_to work_path
       return
     else
+      flash.now[:failure] = "Oops! Something went wrong. Update failed #{@work.category}"
       render :edit
       return
     end
   end
 
   def destroy
-    if @work
-      @work.destroy
-      redirect_to root_path
-    else
-      head :not_found
-    end
-  end
-
-  def upvote
     if @work.nil?
+      flash[:warning] = "This particular work does not exist"
       redirect_to root_path
       return
-    elsif !Work.exists?(work_id)
-      redirect_to root_path
-      flash[:error] = "This work does not exist."
-      return
-    elsif Vote.exists?(session[:user_id], work_id)
-      redirect_to root_path
-      flash[:error] = "You have already voted for this work."
     else
-      @vote = Vote.new(user_id: session[:user_id], work_id: work_id)
-      @vote.save
-      render :show
-      end
+      @work.destroy
+      flash[:success] = "#{@work.category.capitalize} successfully deleted"
+      redirect_to works_path
+      return
+    end
   end
 
   private

@@ -9,15 +9,15 @@ class Work < ApplicationRecord
   validates :publication_year, numericality: { only_integer: true, message: "Enter the year in mumaric value" }
 
   def self.albums
-    Work.where(category: "album")
+    Work.where(category: "album").sort_by_vote_count
   end
 
   def self.movies
-    Work.where(category: "movie")
+    Work.where(category: "movie").sort_by_vote_count
   end
 
   def self.books
-    Work.where(category: "book")
+    Work.where(category: "book").sort_by_vote_count
   end
 
   def self.spotlight

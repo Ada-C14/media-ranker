@@ -15,4 +15,10 @@ class Work < ApplicationRecord
     top_ten = works.all.sort_by{ |work| [work.votes.count, work.title]}.last(10)
     return top_ten.reverse!
   end
+
+  def self.sort_media(category)
+    works = Work.where(category: category)
+    sorted_work = works.all.sort_by { |work| work.votes.count }
+    return sorted_work.reverse!
+  end
 end

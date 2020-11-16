@@ -1,15 +1,9 @@
 class WorksController < ApplicationController
   before_action :find_work, only: [:show, :edit, :update, :destroy]
+  before_action :require_login, only: [:create, :update, :destroy, :upvote]
 
   def index
     @works = Work.all
-    @books = Work.where(category: "book")
-    @albums = Work.where(category: "album")
-    @movies = Work.where(category: "movie")
-
-    @top_books = @books.top_ten('book')
-    @top_albums = @albums.top_ten('album')
-    @top_movies = @movies.top_ten('movie')
   end
 
   def show

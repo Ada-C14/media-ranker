@@ -106,18 +106,20 @@ describe Work do
   end
 
   describe "Custom methods" do
-    #
-    # it "can get the top 10 items by category" do
-    #
-    #   top_ten_albums = Work.top_ten("album")
-    #   expect(top_ten_albums.length).must_equal 10
-    #   expect(top_ten_albums).must_be_instance_of Work
-    #   # top_ten_albums.each do |album|
-    #   #   expect(album.category).must_equal "album"
-    #   end
-    #   # expect(top_ten_albums.first).must_equal new_work_1
-    #   # expect(top_ten_albums.last).must_equal new_work_2
-    # end
+
+    it "can get the top 10 items by category" do
+      40.times do
+        Work.create(
+            category: ["album", "book", "movie"].sample,
+            title: "title",
+            creator: "creator",
+            publication_year: 2020,
+            description: "description"
+        )
+      end
+      top_ten = Work.top_ten("album")
+      expect(top_ten.size).must_equal 10
+    end
 
       it "returns the most voted work" do
         new_work_1.save

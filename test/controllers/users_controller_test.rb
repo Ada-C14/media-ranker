@@ -45,6 +45,18 @@ describe UsersController do
       returning_user = perform_login
       expect(User.find_by(id: returning_user.id)).wont_be_nil
     end
+
+    it "will not log in if input is not valid" do
+      login_data = {
+          user: {
+              username: ""
+          }
+      }
+      expect {
+        post login_path, params: login_data
+      }.wont_differ "User.count"
+      expect(flash[:error]).wont_be_nil
+    end
   end
 
   describe "logout" do

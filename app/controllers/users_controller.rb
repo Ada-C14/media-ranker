@@ -23,9 +23,16 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       flash[:success] = "Successfully logged in as returning user #{username}"
     else
-      user = User.create(username: username)
-      session[:user_id] = user.id
-      flash[:success] = "Successfully logged in as a new user #{username}"
+      user = User.new(username: username)
+      if user.save
+        session[:user_id] = user.id
+        flash[:success] = "Successfully logged in as a new user #{username}"
+      else
+        flash[:error] = ["A problem occured: Could not log in"]
+        flash[:error] << user.format_errors
+        render :login_form
+        return
+      end
     end
 
     redirect_to root_path

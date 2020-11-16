@@ -14,7 +14,8 @@ class Work < ApplicationRecord
   validates :description, length: {maximum: 140}
 
   def self.sort(array_of_works)
-    array_of_works.sort! { |work, next_work|
+    array_of_works.sort! {
+        |work, next_work|
       [next_work.number_of_votes,
        next_work.most_recent_vote_time,
        work.title,

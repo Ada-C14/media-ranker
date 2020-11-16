@@ -1,5 +1,6 @@
 class WorksController < ApplicationController
-  skip_before_action :find_work, except: [:show, :edit, :update, :destroy]
+  before_action :find_work, only: [:show, :edit, :update, :destroy]
+  before_action :find_work_votes, only: :show
 
   def home
     @works = Work.all
@@ -79,5 +80,13 @@ class WorksController < ApplicationController
 
   def find_work_votes
     @work_votes = Work.find_by(id: params[:id]).votes
+  end
+
+  def find_work
+    @work = Work.find_by(id: params[:work_id].to_i)
+    if @work.nil?
+      flash.now[:warning] = "Not found! Try again?"
+      render :notfound, status: :not_found
+    end
   end
 end

@@ -1,6 +1,6 @@
 <section class = "main-content">
   <h2 class="main-content-header">List of Works</h2>
-  <% @works_hash.each do |category, works| %>
+  <% @all_works.each do |category, works| %>
     <h3 class="pt-2 d-inline"><%= category.capitalize %>s
       <% if works.size == 0 %>
         <div class="empty-category d-inline ml-5 px-3 badge badge-warning"><%= "No #{category}s yet!" %></div></h3>
@@ -23,16 +23,16 @@
               <td class="col-1"><%= work.print_number_of_votes %></td>
               <td class="col-4"><%= link_to work.title, work_path(work.id), class: "text-info" %></td>
               <td class="col-3"><%= work.creator %></td>
-              <td class="col-2"><%= work.publication %></td>
+              <td class="col-2"><%= work.publication_year %></td>
               <td class="col-2">
-                <% case work.upvote_button(@current_user) %>
-                <% when "Upvote!" %>
-                  <%= link_to "Upvote!", work_votes_path(work.id), method: :post, class: "btn btn-outline-info btn-sm", role: "button"%></td>
+                <% case work.vote_button(@current_user) %>
+                <% when "Vote!" %>
+                  <%= link_to "Vote!", work_votes_path(work.id), method: :post, class: "btn btn-outline-info btn-sm", role: "button"%>
                 <% when "Remove Upvote" %>
                   <% vote = work.votes.find_by(user_id: @current_user.id) %>
-                  <%= link_to "Remove Upvote", work_vote_path(work.id, vote.id), method: :delete, class: "btn btn-danger btn-sm", role: "button" %></td>
+                  <%= link_to "Remove Upvote", work_vote_path(work.id, vote.id), method: :delete, class: "btn btn-danger btn-sm", role: "button" %>
                 <% when nil %>
-                  <div class="text-muted">Please log in to upvote.</div>
+                  <div class="text-muted">Please log in to vote.</div>
                 <% end %>
                 </td>
                 </tr>

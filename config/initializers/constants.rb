@@ -1,1 +1,1 @@
-VALID_CATEGORIES = %w(album book)
+VALID_CATEGORIES = %w[album book].freeze

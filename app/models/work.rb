@@ -8,6 +8,7 @@ class Work < ApplicationRecord
 
   def sum_votes
     return 0 if Vote.all.empty?
+    return 0 if Work.all.empty?
     work_id = self.id
     total_votes = Vote.where(work_id: work_id).count
     if total_votes.nil?

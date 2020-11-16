@@ -55,6 +55,17 @@ describe Work do
     end
   end
 
+  describe 'sum_votes' do
+    it 'sums the votes for a work' do
+      expect(works(:test1_book).sum_votes).must_equal 3
+    end
+
+    it 'returns zero if there are no votes for a work' do
+      expect(works(:test3_movie).sum_votes).must_equal 0
+    end
+
+  end
+
   describe 'spotlight' do
     it 'is an instance of work' do
       wave_1_spotlight = works(:test3_book)

@@ -2,16 +2,15 @@ require "test_helper"
 
 describe User do
 
-  describe "initiate" do
+  describe "validations" do
+
     it "can be instantiated" do
       # test each entry from users.yml file:
       users.each do |user|
         expect(user.valid?).must_equal true
       end
     end
-  end
 
-  describe "validations" do
     it "requires username (field)" do
       users.each do |user|
         expect(user).must_respond_to :username

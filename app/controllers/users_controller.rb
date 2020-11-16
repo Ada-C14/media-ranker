@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   def login_form
     @user = User.new
   end
@@ -12,7 +13,7 @@ class UsersController < ApplicationController
     else
       user = User.create(username: username)
       session[:user_id] = user.id
-      flash[:success] = "Successfully logged in as new user #{username}"
+      flash[:success] = "Successfully created new user #{username} with ID #{user.id}"
     end
 
     redirect_to root_path

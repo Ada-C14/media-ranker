@@ -6,11 +6,13 @@ class Work < ApplicationRecord
   has_many :users, through: :votes
 
   def self.sort_by_votes
-
+    # in descending order
+    # what about media with same votes? is there tie breaker?
+    return self.all.sort_by { |work| -work.votes.count }
   end
 
   def self.top_10(category)
-
+    return self.where(category: category).sort_by_votes.first(10)
   end
 
   def self.spotlight

@@ -2,9 +2,9 @@
   <div class="col-sm-12">
     <div class="show-item">
 
-      <h2><%= @work.title %></h2>
+      <h2 id="title"><%= @work.title %></h2>
 
-      <ul class="title-info">
+      <ul class="title-info works_show">
         <li>Created by: <%= @work.creator %></li>
         <li>Published: <%= @work.publication_year %> </li>
         <% unless @work.description.nil? %>

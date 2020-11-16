@@ -2,63 +2,54 @@
 
 <!--Media Spotlight Banner at Top-->
 <main>
-  <section class="spotlight">
-    <h2 class="spotlight__header">
-      <span class="spotlight__header--prefix">Media Spotlight</span>
-      <% spotlit_work = Work.spotlight %>
-      <%= link_to spotlit_work.title, work_path(spotlit_work.id), class: "spotlight__link-to" %> by <%= spotlit_work.creator %>
-    </h2>
-    <p class="spotlight__description">
-      <%= spotlit_work.description %>
-    </p>
+<!--  <section class="spotlight">-->
+<!--    <h2 class="spotlight__header">-->
+<!--      <span class="spotlight__header--prefix">Media Spotlight</span>-->
+      <%# spotlit_work = Work.spotlight %>
+      <%#= link_to spotlit_work.title, work_path(spotlit_work.id), class: "spotlight__link-to" %>
+<!--      by <%#= spotlit_work.creator %>-->
+<!--    </h2>-->
+<!--    <p class="spotlight__description">-->
+      <%#= spotlit_work.description %>
+<!--    </p>-->
+<!--  </section>-->
 
   <hr class="root__hr">
-
-<!--  Table for Top Movies, Top Books & Top Albums-->
   <section class="top-ten__container">
     <section class="top-ten__list-container">
       <h2 class="top-ten__header">
         Top Movies
       </h2>
       <ul class="list-group top-ten__list">
-<!--        Examples of how the top works are listed. Alter to call on custom model method-->
+        <% top_movies = Work.top_ten("movie") %>
+        <% top_movies.each do |top_movie| %>
         <li class="list-group-item">
           <h4>
-            <a href="/works/913">We're Doomed....</a>
-            <small class="top-ten__creator">by Doomed</small>
+            <%= link_to top_movie.title, work_path(top_movie.id) %>
+            <small class="top-ten__creator">by <%= top_movie.creator %></small>
           </h4>
-          <p>15 votes</p>
+<!--          Come back to when added votes <p>15 votes</p>-->
         </li>
-        <li class="list-group-item">
-          <h4>
-            <a href="/works/930">Don't Panic</a>
-            <small class="top-ten__creator">by Rubén Galindo Jr.</small>
-          </h4>
-          <p>4 votes</p>
-        </li>
+        <% end %>
       </ul>
     </section>
+
 
     <section class="top-ten__list-container">
       <h2 class="top-ten__header">
         Top Books
       </h2>
       <ul class="list-group top-ten__list">
-        <!--        Examples of how the top works are listed. Alter to call on custom model method-->
-        <li class="list-group-item">
-          <h4>
-            <a href="/works/746">What a girl wants</a>
-            <small class="top-ten__creator">by Amanda Bynes</small>
-          </h4>
-          <p>6 votes</p>
-        </li>
-        <li class="list-group-item">
-          <h4>
-            <a href="/works/807">The Life-Changing Magic of Tidying Up</a>
-            <small class="top-ten__creator">by Marie Kondo</small>
-          </h4>
-          <p>3 votes</p>
-        </li>
+        <% top_books = Work.top_ten("book") %>
+        <% top_books.each do |top_book| %>
+          <li class="list-group-item">
+            <h4>
+              <%= link_to top_book.title, work_path(top_book.id) %>
+              <small class="top-ten__creator">by <%= top_book.creator %></small>
+            </h4>
+            <!--          Come back to when added votes <p>15 votes</p>-->
+          </li>
+        <% end %>
       </ul>
     </section>
 
@@ -67,13 +58,211 @@
         Top Albums
       </h2>
       <ul class="list-group top-ten__list">
-        <!--        Examples of how the top works are listed. Alter to call on custom model method-->
+        <% top_albums = Work.top_ten("album") %>
+        <% top_albums.each do |top_album| %>
+          <li class="list-group-item">
+            <h4>
+              <%= link_to top_album.title, work_path(top_album.id) %>
+              <small class="top-ten__creator">by <%= top_album.creator %></small>
+            </h4>
+            <!--          Come back to when added votes <p>15 votes</p>-->
+          </li>
+        <% end %>
+      </ul>
+    </section>
+  </section>
+</main>
+
+<main>
+<!--  <section class="spotlight">-->
+<!--    <h2 class="spotlight__header">-->
+<!--      <span class="spotlight__header--prefix">Media Spotlight</span>-->
+<!--      <a class="spotlight__link-to" href="/works/913">We're Doomed....</a> by Doomed-->
+<!--    </h2>-->
+<!--    <p class="spotlight__description">-->
+<!--      18 votes - Doooooomed.....description here-->
+<!--    </p>-->
+<!--  </section>-->
+
+  <hr class="root__hr">
+
+  <section class="top-ten__container">
+    <section class="top-ten__list-container">
+      <h2 class="top-ten__header">
+        Top Movies
+      </h2>
+      <ul class="list-group top-ten__list">
+        <li class="list-group-item">
+          <h4>
+            <a href="/works/913">We're Doomed....</a>
+            <small class="top-ten__creator">by Doomed</small>
+          </h4>
+          <p>18 votes</p>
+        </li>
+        <li class="list-group-item">
+          <h4>
+            <a href="/works/930">Don't Panic</a>
+            <small class="top-ten__creator">by Rubén Galindo Jr.</small>
+          </h4>
+          <p>4 votes</p>
+        </li>
+        <li class="list-group-item">
+          <h4>
+            <a href="/works/925">Freaky </a>
+            <small class="top-ten__creator">by Christopher Landon</small>
+          </h4>
+          <p>3 votes</p>
+        </li>
+        <li class="list-group-item">
+          <h4>
+            <a href="/works/922">Hoot done it?!?!?!</a>
+            <small class="top-ten__creator">by </small>
+          </h4>
+          <p>3 votes</p>
+        </li>
+        <li class="list-group-item">
+          <h4>
+            <a href="/works/912">I am the movie killer</a>
+            <small class="top-ten__creator">by HOOT</small>
+          </h4>
+          <p>3 votes</p>
+        </li>
+        <li class="list-group-item">
+          <h4>
+            <a href="/works/921">SAVE THE MOVIES SAVE THE WORLD!</a>
+            <small class="top-ten__creator">by SAVIOR</small>
+          </h4>
+          <p>2 votes</p>
+        </li>
+        <li class="list-group-item">
+          <h4>
+            <a href="/works/929">Love Actually</a>
+            <small class="top-ten__creator">by Richard Curtis</small>
+          </h4>
+          <p>2 votes</p>
+        </li>
+        <li class="list-group-item">
+          <h4>
+            <a href="/works/926">Guardians of the Galaxy</a>
+            <small class="top-ten__creator">by James Gunn</small>
+          </h4>
+          <p>2 votes</p>
+        </li>
+        <li class="list-group-item">
+          <h4>
+            <a href="/works/924">Paranormal</a>
+            <small class="top-ten__creator">by Majid Al Ansari, Amr Salama </small>
+          </h4>
+          <p>2 votes</p>
+        </li>
+        <li class="list-group-item">
+          <h4>
+            <a href="/works/927">The Climb</a>
+            <small class="top-ten__creator">by Michael Angelo Covino</small>
+          </h4>
+          <p>1 votes</p>
+        </li>
+      </ul>
+      <!-- <a href="/works.movies">View More Movies</a> -->
+    </section>
+
+    <section class="top-ten__list-container">
+      <h2 class="top-ten__header">
+        Top Books
+      </h2>
+      <ul class="list-group top-ten__list">
+        <li class="list-group-item">
+          <h4>
+            <a href="/works/746">What a girl wants</a>
+            <small class="top-ten__creator">by Amanda Bynes</small>
+          </h4>
+          <p>8 votes</p>
+        </li>
+        <li class="list-group-item">
+          <h4>
+            <a href="/works/807">The Life-Changing Magic of Tidying Up</a>
+            <small class="top-ten__creator">by Marie Kondo</small>
+          </h4>
+          <p>4 votes</p>
+        </li>
+        <li class="list-group-item">
+          <h4>
+            <a href="/works/961">Lemonade</a>
+            <small class="top-ten__creator">by </small>
+          </h4>
+          <p>1 votes</p>
+        </li>
+        <li class="list-group-item">
+          <h4>
+            <a href="/works/783">A history of South Africa</a>
+            <small class="top-ten__creator">by </small>
+          </h4>
+          <p>0 votes</p>
+        </li>
+        <li class="list-group-item">
+          <h4>
+            <a href="/works/880">miss vanjie</a>
+            <small class="top-ten__creator">by </small>
+          </h4>
+          <p>0 votes</p>
+        </li>
+        <li class="list-group-item">
+          <h4>
+            <a href="/works/738">Marocco</a>
+            <small class="top-ten__creator">by hannah</small>
+          </h4>
+          <p>0 votes</p>
+        </li>
+        <li class="list-group-item">
+          <h4>
+            <a href="/works/742">temp</a>
+            <small class="top-ten__creator">by </small>
+          </h4>
+          <p>0 votes</p>
+        </li>
+        <li class="list-group-item">
+          <h4>
+            <a href="/works/938">test book</a>
+            <small class="top-ten__creator">by </small>
+          </h4>
+          <p>0 votes</p>
+        </li>
+        <li class="list-group-item">
+          <h4>
+            <a href="/works/969">the great gatsby</a>
+            <small class="top-ten__creator">by non fiction</small>
+          </h4>
+          <p>0 votes</p>
+        </li>
+        <li class="list-group-item">
+          <h4>
+            <a href="/works/905">hello there</a>
+            <small class="top-ten__creator">by </small>
+          </h4>
+          <p>0 votes</p>
+        </li>
+      </ul>
+      <!-- <a href="/works.books">View More Books</a> -->
+    </section>
+
+    <section class="top-ten__list-container">
+      <h2 class="top-ten__header">
+        Top Albums
+      </h2>
+      <ul class="list-group top-ten__list">
         <li class="list-group-item">
           <h4>
             <a href="/works/797">College Park is Always Ready to Partayyy</a>
             <small class="top-ten__creator">by Mirah Yom Tov Zeitlyn</small>
           </h4>
-          <p>12 votes</p>
+          <p>16 votes</p>
+        </li>
+        <li class="list-group-item">
+          <h4>
+            <a href="/works/861">Lemonade</a>
+            <small class="top-ten__creator">by Beyonce</small>
+          </h4>
+          <p>9 votes</p>
         </li>
         <li class="list-group-item">
           <h4>
@@ -82,7 +271,59 @@
           </h4>
           <p>7 votes</p>
         </li>
+        <li class="list-group-item">
+          <h4>
+            <a href="/works/693">Back to the Future</a>
+            <small class="top-ten__creator">by </small>
+          </h4>
+          <p>6 votes</p>
+        </li>
+        <li class="list-group-item">
+          <h4>
+            <a href="/works/812">tooot</a>
+            <small class="top-ten__creator">by tooot</small>
+          </h4>
+          <p>5 votes</p>
+        </li>
+        <li class="list-group-item">
+          <h4>
+            <a href="/works/822">test this again</a>
+            <small class="top-ten__creator">by </small>
+          </h4>
+          <p>3 votes</p>
+        </li>
+        <li class="list-group-item">
+          <h4>
+            <a href="/works/843">test book</a>
+            <small class="top-ten__creator">by </small>
+          </h4>
+          <p>3 votes</p>
+        </li>
+        <li class="list-group-item">
+          <h4>
+            <a href="/works/758">I'm not even logged in muahahhaa</a>
+            <small class="top-ten__creator">by </small>
+          </h4>
+          <p>3 votes</p>
+        </li>
+        <li class="list-group-item">
+          <h4>
+            <a href="/works/708">Harry Potter 2</a>
+            <small class="top-ten__creator">by </small>
+          </h4>
+          <p>2 votes</p>
+        </li>
+        <li class="list-group-item">
+          <h4>
+            <a href="/works/680">Kreb-Full-o Been !</a>
+            <small class="top-ten__creator">by jj</small>
+          </h4>
+          <p>2 votes</p>
+        </li>
       </ul>
+      <!-- <a href="/works.albums">View More Albums</a> -->
     </section>
+
   </section>
+
 </main>

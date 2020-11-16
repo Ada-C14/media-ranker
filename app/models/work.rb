@@ -13,8 +13,10 @@ class Work < ApplicationRecord
   #   return Work.all.max_by {|work| work.votes.count}
   # end
 
-  def self.top_ten
-    return Work.all.sample(10)
+  def self.top_ten(cat)
+    works = Work.all.where(category: cat)
+    return works.sample(10)
   end
 
 end
+

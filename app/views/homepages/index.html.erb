@@ -7,7 +7,7 @@
     <div>
       <h4>
         Top 10 Books!
-        <% @works.top_ten[0..10].each do |work|  %>
+        <% @works.top_ten_books.each do |work|  %>
           <% if work.category == "book" %>
             <li> <%= link_to work.title, work_path(work) %></li>
           <% end %>
@@ -15,14 +15,14 @@
       </h4>
       <h4>
         Top 10 Movies!
-        <% @works.each do |work|  %>
+        <% @works.top_ten_movies.each do |work|  %>
           <% if work.category == "movie" %>
             <li> <%= link_to work.title, work_path(work) %></li>
           <% end %>
         <% end %>
         <h4>
           Top 10 Albums!
-          <% @works.each do |work|  %>
+          <% @works.top_ten_albums.each do |work|  %>
             <% if work.category == "album" %>
               <li> <%= link_to work.title, work_path(work) %></li>
             <% end %>

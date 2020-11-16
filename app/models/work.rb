@@ -8,8 +8,8 @@ class Work < ApplicationRecord
   validates :creator, presence: true
 
   def self.sort_votes
-    work = Work.all
-    sorted_work = work.sort_by{|work| work.votes.count}.reverse
+    works = Work.all
+    sorted_work = works.sort_by{|work| work.votes.count}.reverse
     return sorted_work
   end
 
@@ -19,9 +19,39 @@ class Work < ApplicationRecord
     return spotlight
   end
 
-  def self.top_ten
+  def self.top_ten_books
     work = Work.all
-    top_ten = work.sort_votes
-    return top_ten
+    books = []
+    work.each do |work|
+      if work.category == "book"
+        books << work
+      end
+    end
+    top_ten = books.sort_by{|work| work.votes.count}.reverse
+    return top_ten[0...10]
+  end
+
+  def self.top_ten_albums
+    work = Work.all
+    by_category = []
+    work.each do |work|
+      if work.category == "albums"
+        books << work
+      end
+    end
+    top_ten = by_category.sort_by{|work| work.votes.count}.reverse
+    return top_ten[0...10]
+  end
+
+  def self.top_ten_movies
+    work = Work.all
+    by_category = []
+    work.each do |work|
+      if work.category == "movies"
+        books << work
+      end
+    end
+    top_ten = by_category.sort_by{|work| work.votes.count}.reverse
+    return top_ten[0...10]
   end
 end

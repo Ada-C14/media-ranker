@@ -17,7 +17,7 @@
   <%= f.select :category, VALID_CATEGORIES, selected: selected_category %>
 
   <%= f.label :publication, 'Publication Year' %>
-  <%= f.text_field :publication_year, type: :number, placeholder: publication_placeholder, required: true, min: 1000, max: Date.today.year, maxlength: 4 %>
+  <%= f.text_field :publication_year, type: :number, placeholder: publication_year_placeholder, required: true, min: 1000, max: Date.today.year, maxlength: 4 %>
 
   <%= f.submit button_title, class: "#{this_model}-button btn btn-primary", role: "button" %>
 <% end %>

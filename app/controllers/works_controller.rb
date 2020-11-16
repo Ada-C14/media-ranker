@@ -39,18 +39,18 @@ class WorksController < ApplicationController
 
 
   def update
-    work_id = params[:id]
-    @work = Work.find_by(id: work_id)
+    # work_id = params[:id]
+    # @work = Work.find_by(id: work_id)
 
     if @work.nil?
       head :not_found
       return
     elsif @work.update(work_params)
-      flash[:success] = "Your #{work.category} #{work.title} has been successfully updated."
+      flash[:success] = "Your #{@work.category} #{@work.title} has been successfully updated."
       redirect_to work_path(@work.id)
       return
     else
-      flash.now[:warning] = "There was a problem. We couldn't update your #{work.category}."
+      flash.now[:warning] = "There was a problem. We couldn't update your #{@work.category}."
       render :edit
       return
     end
@@ -58,7 +58,15 @@ class WorksController < ApplicationController
   end
 
   def destroy
+    if @work.nil?
+      head :not_found
+      return
+    end
 
+    @work.destroy
+    flash[:success] = "Successfully destroyed #{@work.category} #{@work.id}"
+    redirect_to works_path
+    return
   end
 
   private

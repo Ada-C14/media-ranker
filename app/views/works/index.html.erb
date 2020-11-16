@@ -1,17 +1,17 @@
 <h2>List of Works</h2>
 
-  <% categories = %w[book album movie] %>
+<% categories = %w[book album movie] %>
 
 <% categories.each do |type| %>
-  <h3> <%=type.titleize%>s </h3>
+  <h3> <%= type.titleize %>s </h3>
   <table class = "table">
     <thead>
       <tr>
-        <th scope="col"> Votes </th>
-        <th scope="col"> Title </th>
-        <th scope="col"> Created By </th>
-        <th scope="col"> Published </th>
-        <th scope="col"> Upvote </th>
+        <th width="80"> Votes </th>
+        <th> Title </th>
+        <th> Created By </th>
+        <th width="100"> Published </th>
+        <th width="100"> Upvote </th>
       </tr>
     </thead>
     <% @ranked_works.each do |work| %>
@@ -19,7 +19,7 @@
         <tr>
           <td> <%= work.votes.count %> </td>
           <td> <%= link_to work.title.upcase, work_path(work.id) %> </td>
-          <td> <%= work.creator %> </td>>
+          <td> <%= work.creator %> </td>
           <td> <%= work.publication_year %> </td>
           <td> <%= button_to "Upvote", work_votes_path(work.id), method: :post, form: {style: 'display:inline-block;'}, class: "btn btn-primary"  %></td>
         </tr>

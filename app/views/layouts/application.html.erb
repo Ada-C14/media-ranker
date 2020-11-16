@@ -10,11 +10,11 @@
   </head>
 
   <body>
-    <header><h1><%= link_to "Media Ranker", root_path %> | Ranking the Best of Everything</h1>
-      <nav> <%= link_to "View top media", root_path %>  --
-        <%= link_to "View all media", works_path %>  --
-        <%= link_to "Add a new work", new_work_path %>  --
-        <%= link_to "View all users", users_path %>  --
+    <header class = "app-header" style="background-color: #e3f2fd"><h1><%= link_to "Media Ranker", root_path %> | Ranking the Best of Everything</h1>
+      <nav class="navbar navbar-light" style="background-color: #e3f2fd;"> <%= link_to "View top media", root_path %>
+        <%= link_to "View all media", works_path %>
+        <%= link_to "Add a new work", new_work_path %>
+        <%= link_to "View all users", users_path %>
         <% if session[:user_id] == nil %>
           <%= button_to "Log In", login_path, method: :get, form: {style: 'display:inline-block;'}, class: "btn btn-primary"  %>
         <% elsif session[:user_id] != nil %>
@@ -23,12 +23,12 @@
         <% end %>
       </nav>
       <hr>
-      <section class="flash">
-        <% flash.each do |name, message| %>
-          <div class="alert-<%=name%>"><%= message %></div>
-        <% end %>
-      </section>
     </header>
+    <section class="flash">
+      <% flash.each do |name, message| %>
+        <div class="alert-<%=name%>"><%= message %></div>
+      <% end %>
+    </section>
     <%= yield %>
   </body>
 </html>

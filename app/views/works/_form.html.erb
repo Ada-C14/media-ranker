@@ -1,4 +1,4 @@
-<%= form_with model: @work, class: 'work-form' do |f| %>
+<%= form_with model: @work, class: 'form-group' do |f| %>
   <%= f.label :category %>
   <%= f.select :category, %w[album book movie] %>
 
@@ -14,5 +14,5 @@
   <%= f.label :description %>
   <%= f.text_area :description%>
 
-  <%= f.submit "Save", class: "button" %>
+  <%= f.submit "Save", class: "btn btn-primary" %>
 <% end %>

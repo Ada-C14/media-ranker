@@ -3,8 +3,8 @@
 <p>Joined site <%= @current_user.created_at %></p>
 
 <section>
-  <%= button_to "Back to media list", root_path, method: :get, form: {style: 'display:inline-block;'} %>
-  <%= button_to "View all users", users_path, method: :get, form: {style: 'display:inline-block;'} %>
+  <%= button_to "Back to media list", root_path, method: :get, form: {style: 'display:inline-block;'}, class: "btn btn-secondary" %>
+  <%= button_to "View all users", users_path, method: :get, form: {style: 'display:inline-block;'}, class: "btn btn-primary" %>
 </section>
 
 <section>

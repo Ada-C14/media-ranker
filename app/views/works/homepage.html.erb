@@ -1,34 +1,41 @@
-<h3> Media Spotlight: <%= link_to @spotlight.title.titleize, work_path(@spotlight.id) %> by <%= @spotlight.creator %> </h3>
-<p> <%= @spotlight.votes.count %> votes -- <%= @spotlight.description %></p>
-
+<h3> Media Spotlight:
+  <% if @works.count == 0 %>
+    No works to show
+  <% else %>
+    <%= link_to @spotlight.title.titleize, work_path(@spotlight.id) %> by <%= @spotlight.creator %> </h3>
+    <p> <%= @spotlight.votes.count %> votes -- <%= @spotlight.description %></p>
+  <% end %>
 <hr>
 
 <h3> Top Books </h3>
 <% if @books.count == 0 %>
   <p> No books to show </p>
+<%else %>
+  <ol class="work-list">
+    <% @ranked_books.each do |work| %>
+        <li><b><%= link_to work.title.upcase, work_path(work.id) %></b> - <%= work.category %> - <%= work.creator %> - <%= work.publication_year %> - <%= work.votes.count %> votes</li>
+    <% end %>
+  </ol>
 <% end %>
-<ol class="work-list">
-  <% @ranked_books.each do |work| %>
-      <li><b><%= link_to work.title.upcase, work_path(work.id) %></b> - <%= work.category %> - <%= work.creator %> - <%= work.publication_year %> - <%= work.votes.count %> votes</li>
-  <% end %>
-</ol>
 
 <h3> Top Albums </h3>
 <% if @albums.count == 0 %>
   <p> No albums to show </p>
+<% else %>
+  <ol class="work-list">
+    <% @ranked_albums.each do |work| %>
+      <li><b><%= link_to work.title.upcase, work_path(work.id) %></b> - <%= work.category %> - <%= work.creator %> - <%= work.publication_year %> - <%= work.votes.count %> votes</li>
+    <% end %>
+  </ol>
 <% end %>
-<ol class="work-list">
-  <% @ranked_albums.each do |work| %>
-    <li><b><%= link_to work.title.upcase, work_path(work.id) %></b> - <%= work.category %> - <%= work.creator %> - <%= work.publication_year %> - <%= work.votes.count %> votes</li>
-  <% end %>
-</ol>
 
 <h3> Top Movies </h3>
 <% if @movies.count == 0 %>
   <p> No movies to show </p>
+<% else %>
+  <ol class="work-list">
+    <% @ranked_movies.each do |work| %>
+      <li><b><%= link_to work.title.upcase, work_path(work.id) %></b> - <%= work.category %> - <%= work.creator %> - <%= work.publication_year %> - <%= work.votes.count %> votes</li>
+    <% end %>
+  </ol>
 <% end %>
-<ol class="work-list">
-  <% @ranked_movies.each do |work| %>
-    <li><b><%= link_to work.title.upcase, work_path(work.id) %></b> - <%= work.category %> - <%= work.creator %> - <%= work.publication_year %> - <%= work.votes.count %> votes</li>
-  <% end %>
-</ol>

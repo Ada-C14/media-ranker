@@ -72,6 +72,7 @@ describe Work do
         expect(sorted_media.first).must_equal works(:book)
         expect(sorted_media.first.votes.count).must_equal 3
 
+        expect(sorted_media.last).must_equal works(:movie)
         expect(sorted_media.last.votes.count).must_equal 0
       end
 

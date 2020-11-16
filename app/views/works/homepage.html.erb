@@ -1,7 +1,11 @@
 <main>
   <section>
-    <h2>Media Spotlight: <%= link_to Work.spotlight.title, work_path(Work.spotlight)%></h2>
-    <p><%= Work.spotlight.votes.count %> - <%= Work.spotlight.description %></p>
+    <% if Work.spotlight.nil? %>
+      <h2>No media spotlight. Go vote!</h2>
+    <% else %>
+      <h2>Media Spotlight: <%= link_to Work.spotlight.title, work_path(Work.spotlight)%></h2>
+      <p><%= Work.spotlight.votes.count %> - <%= Work.spotlight.description %></p>
+    <% end %>
   </section>
 
   <% ["movie", "book", "album"].each do |category| %>

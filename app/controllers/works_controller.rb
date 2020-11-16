@@ -13,7 +13,8 @@ class WorksController < ApplicationController
 
   def show
     if @work.nil?
-      head :not_found
+      flash[:warning] = "Work not found--this item may have been deleted"
+      redirect_to homepage_path
       return
     end
   end
@@ -47,6 +48,7 @@ class WorksController < ApplicationController
       head :not_found
       return
     elsif @work.update(work_params)
+      flash[:success] = "Successfully updated #{@work.category} #{@work.id}"
       redirect_to work_path
       return
     else
@@ -57,12 +59,13 @@ class WorksController < ApplicationController
 
   def destroy
     if @work.nil?
-      head :not_found
+      flash[:warning] = "Work not found"
+      redirect_to homepage_path
       return
     else
-      @work.destroy
+      @work.delete
       flash[:success] = "Successfully destroyed #{@work.category} #{@work.id}"
-      redirect_to homepage_path
+      redirect_to works_path
       return
     end
   end

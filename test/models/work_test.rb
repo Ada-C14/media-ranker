@@ -60,26 +60,17 @@ describe Work do
 
       spotlight = Work.spotlight
       expect(spotlight).must_be_kind_of Work
-
-      # user = User.find_by(username: "lola")
-      # #FIXTURE? maybe with user = users :lola
+      #FIXTURES --> not sure I am using them correctly?
+      # user = User.find_by(username: "user1")
       # work = Work.find_by(title: "finding nemo")
-      # #FIXTURE? work = works :album1
-      # Vote.create(user_id: lola.id, work_id: finding_nemo.id)
-      # expect Work.spotlight = finding_nemo
     end
 
-    it "will return an error if there are none" do
+    it "will return nil if there are no works" do
 
       Work.destroy_all
       spotlight = Work.spotlight
       expect(spotlight).must_equal nil
-
     end
-
-    it "if theres a tie, it gets the first alphabetical work"
-
-    it "if there is a tie between two types of media it will default to movie"
   end
 
   describe "relationships" do
@@ -89,13 +80,24 @@ describe Work do
     #   @vote = Vote.create(user_id: @user.id, work_id: @work.id)
     # end
 
-    it "can  have many votes"
+    it "can  have many votes" do
 
-    #   user = User :lola
-    #
-    #   expect(@work.votes.length).must_equal 2
-    #   expect(@work.votes[0]).must_be_kind_of Vote
-    #
-    # end
+      album = Work.find_by(title: "album1")
+
+      album.votes << vote3
+      album.votes << vote4
+
+      expect(album.votes.length).must_equal 2
+    end
   end
+
+  describe "top ten works " do
+
+    it "will provide us with the top 10 of media category" do
+      results = Work.top_ten('album')
+      expect(results.length).must_equal 10
+    end
+
+  end
+
 end

@@ -32,13 +32,15 @@ describe Work do
   describe "relationships" do
     it "can have many votes" do
       media = works(:treat)
-      user = users(:nagai)
-      user_two = users(:peach)
-      expect(media.votes.count).must_equal 0
-
+      user = User.create(username: "Hugo")
+      user_two = User.create(username: "Brian")
+      # expect(media.votes.count).must_equal 0
+      #
       vote = Vote.create(work_id: media, user_id: user)
       vote2 = Vote.create(work_id:  media, user_id: user_two)
       expect(media.votes.count).must_equal 2
+
+      # expect(media.votes.count).must_equal 2
     end
   end
 

@@ -30,6 +30,37 @@ class WorksController < ApplicationController
     end
   end
 
+  def edit
+    if @work.nil?
+      head :not_found
+      return
+    end
+  end
+
+
+  def update
+    work_id = params[:id]
+    @work = Work.find_by(id: work_id)
+
+    if @work.nil?
+      head :not_found
+      return
+    elsif @work.update(work_params)
+      flash[:success] = "Your #{work.category} #{work.title} has been successfully updated."
+      redirect_to work_path(@work.id)
+      return
+    else
+      flash.now[:warning] = "There was a problem. We couldn't update your #{work.category}."
+      render :edit
+      return
+    end
+
+  end
+
+  def destroy
+
+  end
+
   private
 
   def work_params

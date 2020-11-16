@@ -28,7 +28,7 @@ class UsersController < ApplicationController
       end
       flash[:welcome] = "Welcome #{@user.username}!"
     #  Not sure this elsif is valid. Saying user can't leave login field blank
-    # elsif session[:user_id].blank?
+    # elsif session[:user_id] = nil
     #   flash[:error] = "Username can't be blank."
     #   redirect_to login_path
     #   return

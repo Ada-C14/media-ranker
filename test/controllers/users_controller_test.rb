@@ -37,7 +37,7 @@ describe UsersController do
    #   user = User.new(username: nil)
    #   user.username = nil
    #   post login_path
-
+   #
    #   # must_respond_with :redirect
    #   expect(flash[:error]).must_equal "Username can't be blank."
    # end

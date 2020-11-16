@@ -7,6 +7,20 @@ Description: <%= @work.description %>
 <br>
 
 <h3><%= @work.votes.count %> Votes for this <%= @work.category %></h3>
+<div class="votes-table">
+  <table class="table">
+    <tr>
+      <th>User</th>
+      <th>Date</th>
+    </tr>
+    <% @work.users.each do |user| %>
+      <tr>
+        <td><%= user.username %></td>
+        <td><%= user.created_at.strftime("%b %d, %Y") %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
 
 <%= link_to "Back to Media Ranks", works_path, class:"btn btn-primary" %>
 <%= link_to "Edit", edit_work_path, class:"btn btn-primary" %>

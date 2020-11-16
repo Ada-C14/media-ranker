@@ -8,7 +8,7 @@ describe User do
       @bad_user = User.create(username: "")
     end
 
-    it "must have username to be valid " do
+    it "must have username to be valid " do  #Passing
       result = @user.valid?
 
       expect(result).must_equal true
@@ -29,11 +29,11 @@ describe User do
     expect(new_user.valid?).must_equal false
   end
 
-  describe "relationships" do
-
-  end
-
-  it "can have many votes" do
-
-  end
+  # describe "relationships" do
+  #
+  # end
+  #
+  # it "can have many votes" do
+  #
+  # end
 end

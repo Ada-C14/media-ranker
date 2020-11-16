@@ -60,7 +60,6 @@ class WorksController < ApplicationController
         errors[column] = message
       end
       flash[:warning] = errors
-      # flash[:warning] = "Sorry, your work was not updated"
       render :edit, status: :bad_request and return
     end
   end

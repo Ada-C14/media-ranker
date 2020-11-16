@@ -1,0 +1,12 @@
+<!--<section class="largest-container">-->
+  <section class="top-ten-container">
+    <h2 class="top-ten-header"> <%= title %></h2>
+    <ul class="top-ten-list">
+
+      <% works.each do |work| %>
+        <li class = "list-group-item"> <%= link_to work.title, work_path(work) %> <small class="creator"> <br> by <%= work.creator%>
+          <br> <%= work.votes.count %> votes </small> </li>
+      <% end %>
+    </ul>
+  </section>
+<!--</section>-->

@@ -3,6 +3,7 @@ require 'test_helper'
 describe Work do
 
   let (:work) { Work.first }
+  let (:work2) { Work.find_by(title: works(:worry).title) }
 
   it 'can be instantiated with the required fields' do
     expect(work.valid?).must_equal true
@@ -13,7 +14,21 @@ describe Work do
   end
 
   describe 'relationships' do
+    it 'can have many votes' do
+      expect(work2.votes.count).must_equal 2
 
+      work.votes.each do |vote|
+        expect(vote).must_be_instance_of Vote
+      end
+    end
+
+    it 'can have many users through votes' do
+      expect(work2.users.count).must_equal 2
+
+      work2.users.each do |user|
+        expect(user).must_be_instance_of User
+      end
+    end
   end
 
   describe 'validations' do

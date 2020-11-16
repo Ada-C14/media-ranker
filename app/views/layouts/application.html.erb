@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <header class="app-header__header">
+    <h1>
+      <a href="/">Media Ranker</a>
+      <small>Ranking the Best of Everything</small>
+    </h1>
+    <nav>
+      <ul>
+        <li>
+          <a class="nav-link" href="/">View top media</a>
+        </li>
+        <li>
+          <a class="nav-link" href="/works">View all media</a>
+        </li>
+        <li>
+          <a class="nav-link" href="/works/new">Add a new work</a>
+        </li>
+        <li>
+          <a class="nav-link" href="/users">View all users</a>
+        </li>
+      </ul>
+      <ul class="nav app-header__user-nav-container">
+        <%if(@current_user)%>
+          <li class="nav-item app-header__nav_item">
+            <%=link_to("Logged in as #{@current_user.name}", user_path(@current_user.id), class: "btn btn-primary") %>
+          </li>
+          <li class="nav-item app-header__nav_item">
+            <%=link_to("Logout", logout_path, class: "btn btn-primary", method: :post) %>
+          </li>
+        <%else%>
+          <li class="nav-item app-header__nav_item">
+            <%=link_to( "Login", login_path, class: "btn btn-primary") %>
+          </li>
+        <%end%>
+      </ul>
+    </nav>
+  </header>
+  <body>
+  <%#raise%>
+    <section class="alert__container">
+      <% flash.each do |name, message| %>
+        <%if(name == "error") %>
+          <div class="alert alert-warning">
+            <span><%=message["failed_action"]%></span>
+            <ul>
+              <%message["errors"].each do |msg|%>
+                <%unless(msg.empty?) %>
+                <li><%=msg%></li>
+                <%end%>
+              <%end %>
+            </ul>
+          </div>
+        <%else%>
+          <div class="alert alert-success">
+            <span>
+              <%= message %>
+            </span>
+          </div>
+        <%end%>
+      <%end%>
+    </section>
+
+    <%= yield %>
+
+  </body>
+</html>

@@ -1,0 +1,26 @@
+<main>
+  <h2>User Summary: <%=link_to(@user.name, user_path(@user))%></h2>
+  <p>Joined site <%=@user.created_at.to_s(:short_date)%></p>
+
+  <section class="user-votes__container">
+    <h3 class="user-votes__header">Votes</h3>
+    <table class="table">
+      <thead>
+        <%= render partial: "table_headers", locals: { headers: ['Media Title', 'Created By', 'Published', 'Category', 'Voted On']}%>
+      </thead>
+      <tbody>
+        <%@user.works.each do |work| %>
+            <%= render partial: "table_data", locals: { data: [link_to(work.title, work_path(work)),
+                                                               display_detail(work.creator),
+                                                               display_detail(work.publication_date),
+                                                               display_detail(work.category),
+                                                                     @user.votes.find_by(work_id: work.id).created_at.to_s(:short_date)]}%>
+        <%end%>
+      </tbody>
+    </table>
+  </section>
+
+  <a class="btn btn-secondary" href="/users">See all Users</a>
+  <a class="btn btn-primary" href="/">Back to Media List</a>
+
+</main>

@@ -1,0 +1,49 @@
+
+<main>
+  <section class="spotlight">
+    <h2 class="spotlight__header">
+      <span class="spotlight__header--prefix">Media Spotlight:</span>
+      <%if(Work.top_one)%>
+        <%=link_to(Work.top_one.title, work_path(Work.top_one), class: "spotlight__link-to")%>
+        <%=display_creator(Work.top_one.creator, nil)%>
+      <%else%>
+        <p>No works available - add one!</p>
+      <%end%>
+    </h2>
+    <p class="spotlight__description">
+      <%if(Work.top_one)%>
+        <%=display_votes(Work.top_one.votes.count)%>
+        <%=" - #{Work.top_one.description}"%>
+      <%else%>
+        <p></p>
+    <%end%>
+    </p>
+  </section>
+
+  <hr class="root__hr">
+
+  <section class="top-ten__container">
+    <% categories.each do |category|%>
+      <section class="top-ten__list-container">
+      <h2 class="top-ten__header">
+        <%="Top #{category}s" %>
+      </h2>
+        <%Work.top_ten(category).each do |work|%>
+        <ul class="list-group top-ten__list">
+          <li class="list-group-item">
+            <h4>
+              <%=link_to(work.title, work_path(work.id))%>
+              <%=display_creator(work.creator, 'top-ten__creator')%>
+            </h4>
+            <p>
+              <%=display_votes(work.votes.count)%>
+            </p>
+          </li>
+          </ul>
+        <%end%>
+      </section>
+    <% end %>
+  </section>
+</main>
+
+

@@ -1,5 +1,5 @@
 <main>
-  <h2>User Summary: <%= link_to @user.username, user_path(@user) %>></h2>
+  <h2>User Summary: <%= link_to @user.username, user_path(@user) %></h2>
   <p>Joined site <%= @user.created_at.to_date %></p>
 
   <section class="user-votes__container">
@@ -16,15 +16,17 @@
       </thead>
       <tbody>
 
-      <% @votes.each do |vote| %>
-        <tr>
-          <% work = vote.work %>
-          <td><%= link_to work.title, work_path(work.id) %></td>
-          <td><%= work.creator %></td>
-          <td><%= work.publication_year %></td>
-          <td><%= work.category %></td>
-          <td><%= vote.created_at.to_date %></td>
-        </tr>
+      <%if @votes %>
+        <% @votes.each do |vote| %>
+          <tr>
+            <% work = vote.work %>
+            <td><%= link_to work.title, work_path(work.id) %></td>
+            <td><%= work.creator %></td>
+            <td><%= work.publication_year %></td>
+            <td><%= work.category %></td>
+            <td><%= vote.created_at.to_date %></td>
+          </tr>
+        <%end %>
       <%end %>
       </tbody>
     </table>

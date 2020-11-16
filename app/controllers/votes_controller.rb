@@ -12,10 +12,11 @@ class VotesController < ApplicationController
       if @vote.save
         flash[:success] = "Successfully Upvoted"
       else
+        redirect_back fallback_location: root_path
         flash[:error] = "A problem occurred: Could not upvote"
-        flash[:problem] = "user: has already voted for this work"
+        flash[:problem] = { user: "has already voted for this work"}
+        return
       end
-
     end
       redirect_back fallback_location: root_path
     return

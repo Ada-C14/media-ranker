@@ -30,6 +30,7 @@ class WorksController < ApplicationController
       return
     else # save failed :(
       flash.now[:error] = "A problem occurred: Could not create #{@work.category}"
+      flash.now[:problem] = @work.errors
       render :new, status: :bad_request
       return
     end

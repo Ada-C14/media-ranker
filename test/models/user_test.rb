@@ -1,30 +1,31 @@
 require "test_helper"
 
 describe User do
-  let(:user){
-    User.new(username: "AliceB")
+
+  let (:new_user) {
+    User.create(username: "Alice")
   }
 
-  let (:work) {
-    Work.new(category: "movie", title: "Holidate", creator: "Alice B.", publication_year: 2020, description: "A love history")
+  let (:new_work) {
+    Work.create(category: "album", title: "Samba", creator: "Alice B.", publication_year: 2020, description: "Brazilian Samba")
   }
 
-  let (:vote_1){
-    Vote.create(user_id: user.id, work_id: work.id)
+  let (:vote_1) {
+    Vote.create(user_id: new_user.id, work_id: new_work.id)
   }
 
-  let (:vote_2){
-    Vote.create(user_id: user.id, work_id: work.id)
+  let (:vote_2) {
+    Vote.create(user_id: new_user.id, work_id: new_work.id)
   }
 
   it "can be instantiated" do
     #Assert
-    expect(user.valid?).must_equal true
+    expect(new_user.valid?).must_equal true
   end
 
-  it "will have the requeired fields" do
+  it "will have the requered fields" do
     # Arrange
-    user.save
+    new_user.save
     user = User.first
     [:username].each do |field|
 
@@ -33,54 +34,27 @@ describe User do
     end
   end
 
-  # describe "relationships" do
-  #   it "can have many votes" do
-  #     # Arrange
-  #     user.save!
-  #     vote_1
-  #     vote_2
-  #
-  #     # Assert
-  #     expect(user.votes.count).must_equal 2
-  #     user.votes.each do |vote|
-  #       expect(vote).must_be_instance_of User
-  #     end
-  #   end
-  # end
-
-  # describe 'relations' do
-  #   it 'can set the works through votes' do
-  #     # Create two models
-  #     user = User.create!(username: "test username")
-  #     work = Work.new(title: "test work")
-  #
-  #     # Make the models relate to one another
-  #     work.user=user
-  #
-  #     # author_id should have changed accordingly
-  #     expect(work.user_id).must_equal user.id
-  #   end
-  #
-  #   it 'can set the user through "user_id"' do
-  #     # Create two models
-  #     user = User.create!(username: "test username")
-  #     work = Work.new(title: "test work")
-  #
-  #     # Make the models relate to one another
-  #
-  #     work.user_id = user.id
-  #
-  #     # author should have changed accordingly
-  #     expect(work.user).must_equal user
-  #   end
-  # end
-
   describe "validations" do
     it "It must to have a username" do
-      user.username = nil
-      expect(user.valid?).must_equal false
-      expect(user.errors.messages).must_include :username
-      expect(work.errors.messages[:username]).must_equal ["can't be blank"]
+      new_user.username = nil
+
+      expect(new_user.valid?).must_equal false
+      expect(new_user.errors.messages).must_include :username
+    end
+  end
+
+  describe "custom methods" do
+    it "total votes: returns 0 if no votes" do
+      new_user
+      expect(new_user.votes.count).must_equal 0
+    end
+
+    it "total of votes: returns total if valid votes" do
+      new_user
+      vote_1
+      vote_2
+
+      expect(new_user.votes.count).must_equal 2
     end
   end
 end

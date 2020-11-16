@@ -18,12 +18,7 @@ class WorksController < ApplicationController
     @work = Work.new()
   end
 
-  def show
-    if @work.nil?
-      flash.now[:failure] = "Not found! Try again?"
-      redirect_to work_path
-    end
-  end
+  def show; end
 
   def create
     @work = Work.new(work_params)
@@ -84,7 +79,7 @@ class WorksController < ApplicationController
   end
 
   def find_work
-    @work = Work.find_by(id: params[:work_id].to_i)
+    @work = Work.find_by(id: params[:id])
     if @work.nil?
       flash.now[:warning] = "Not found! Try again?"
       render :notfound, status: :not_found

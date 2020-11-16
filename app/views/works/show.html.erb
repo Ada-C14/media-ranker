@@ -15,7 +15,7 @@ Description: <%= @work.description %>
     </tr>
     <% @work.users.each do |user| %>
       <tr>
-        <td><%= user.username %></td>
+        <td><%= link_to user.username, user_path(user.id) %></td>
         <td><%= user.created_at.strftime("%b %d, %Y") %></td>
       </tr>
     <% end %>

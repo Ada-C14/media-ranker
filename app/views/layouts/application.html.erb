@@ -47,13 +47,13 @@
     <section class="flash">
       <% flash.each do |name, message| %>
         <% if name == "problem" %>
-          <ul>
+          <ul class="alert alert-problem">
             <% message.each do |attribute, error| %>
-            <li> <%= attribute.capitalize %>: <%= error %></li>
+            <li > <%= attribute.capitalize %>: <%= error %></li>
             <% end %>
           </ul>
         <% else %>
-          <div class="<%= name %>"><%= message %></div>
+          <div class="alert alert-<%= name %>"><%= message %></div>
         <% end %>
       <% end %>
     </section>

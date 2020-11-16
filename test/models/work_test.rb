@@ -41,12 +41,26 @@ describe Work do
   end
 
   it "returns a spotlight work" do
-    expect(Work.spotlight).must_be_instance_of Work
+    spotlit = Work.spotlight
+
+    expect(spotlit).must_be_instance_of Work
   end
 
-  it "returns nil when database is empty" do
+  it "returns nil for spotlight when database is empty" do
     Work.delete_all
     expect(Work.count).must_equal 0
     expect(Work.spotlight).must_be_nil
+  end
+
+  it "returns an array for top 10" do
+    top_books = Work.top_ten("book")
+
+    expect(top_books).must_be_instance_of Array
+  end
+
+  it "returns an array of 10 books for top 10 method" do
+    top_books = Work.top_ten("book")
+
+    expect(top_books.length).must_equal 10
   end
 end

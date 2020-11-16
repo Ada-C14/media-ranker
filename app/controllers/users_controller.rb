@@ -17,12 +17,23 @@ class UsersController < ApplicationController
   end
 
   def login
-    @user = User.new(user_params)
-    if @user.save
-      redirect_to user_path(@user.id)
+    @user = User.find_by(username: params[:user][:username])
+
+    if @user.nil?
+      @user = User.new(user_params)
+      if @user.save
+        flash[:welcome] = "Welcome #{@user.username}"
+      else
+        flash[:error] = "Unable to login"
+        redirect_to root_path
+        return
+      end
     else
-      render :login_form, status: :bad_request
+      flash[:welcome] = "Welcome back #{@user.username}"
     end
+
+    session[:user_id] = @user.id
+    redirect_to root_path
   end
 
   def logout

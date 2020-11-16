@@ -10,36 +10,40 @@
   </head>
 
   <body>
-  <header class = "header">
+  <header class = "app-header__header">
     <h1>
-      <a href="/" >Media Ranker</a> <small> | Ranking the Best of Everything</small>
+      <a href="/" >Media Ranker</a> <small>  Ranking the Best of Everything</small>
     </h1>
-    <nav class ="main-nav">
-      <ul class="nav nav_container">
-        <li class="nav-item">
+    <nav class ="app-main__nav">
+      <ul class="nav app-header__site-nav-container">
+        <li class="nav-item app-header__nav_item">
           <%= link_to "View top Media", root_path, class:"nav-link" %>
         </li>
-        <li class="nav-item">
+        <li class="nav-item app-header__nav_item">
           <%= link_to "View all Media", works_path, class:"nav-link" %>
         </li>
-        <li class="nav-item">
+        <li class="nav-item app-header__nav_item">
           <%= link_to "Add a new work", new_work_path, class:"nav-link" %>
         </li>
-        <li class="nav-item">
+        <li class="nav-item app-header__nav_item">
           <%= link_to "View all users", users_path, class:"nav-link"%>
         </li>
-        <li class = "nav-item">
-          <% if session[:user_id] %>
-          <li class = "nav-item"><%= button_to "Logout", logout_path, method: :post, class: "btn btn-primary" %>
-        <%else %>
-          <%=button_to "Log in", login_path, method: :get %>
-        <%end %>
-        </li>
       </ul>
+
+        <ul class = "nav app-header__user-nav-container">
+          <% if session[:user_id] %>
+          <li class = "nav-item app-header__nav_item">
+            <%= button_to "Logout", logout_path, method: :post, class: "btn btn-primary" %>
+          </li>
+        <%else %>
+            <li class = "nav-item app-header__nav_item">
+          <%=button_to "Log in", login_path, method: :get %>
+            </li>
+        <%end %>
+        </ul>
     </nav>
   </header>
   </body>
-
 
 
   <section class="flash-msg__section">

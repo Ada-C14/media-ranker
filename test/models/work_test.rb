@@ -43,17 +43,14 @@ describe Work do
 
     end
 
-
-
-    it "it's valid when title is unique" do
+    it "it's valid when title is unique" do  #PASSING
 
       movie1 = Work.create(media: "movie", title: "The Little Mermaid", created_by: "Walt Disney Studios", published: "1989", description: "A mermaid princess makes a bargain to become human and win a prince's love.")
       #Act
       results1 = movie1.valid?
-      # results2 = movie2.valid?
+
       # Assert
       expect(results1).must_equal false
-      # expect(results2).must_equal true
     end
   end
 
@@ -62,17 +59,17 @@ describe Work do
     it "will select the top media with highest votes" do
 
 
-      finding_nemo = Work.find_by(title: "finding nemo")
-      lola = User.find_by(username: "lola")
 
-      all_users = User.first.username
-      print all_users
-
-      works = Work.first.title
-      print works
-
+      user = User.find_by(username: "lola")
+      # user = users :lola
+      work = Work.find_by(title: "finding nemo")
+      # work = works :album1
+      # all_users = User.first.username
+      # print all_users
+      #
+      # works = Work.first.title
+      # print works
       Vote.create(user_id: lola.id, work_id: finding_nemo.id)
-
       expect Work.spotlight = finding_nemo
 
     end

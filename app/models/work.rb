@@ -7,7 +7,6 @@ class Work < ApplicationRecord
   def self.spotlight
     works = Work.all
     max = works.max_by { |work| work.votes.count }
-    # Work.where
     return max
   end
 
@@ -23,7 +22,7 @@ class Work < ApplicationRecord
     works = works.sort_by do |work|
       work.votes.count
     end.reverse
-    limit ? works.first(limit) : works
+    limit ? works.first(limit) : works #limit will evaluate to false if it is nil
   end
 end
 

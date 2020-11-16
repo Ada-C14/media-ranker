@@ -4,7 +4,6 @@ class WorksController < ApplicationController
 
   def index
     @works = Work.all
-    #NEED TO DRY THIS UP >>
     @all_movies = Work.total_lists(category: "movie")
     @all_books = Work.total_lists(category: "book")
     @all_albums = Work.total_lists(category: "album")
@@ -13,7 +12,6 @@ class WorksController < ApplicationController
   def show
     work_id = params[:id].to_i
     @work = Work.find_by(id: work_id)
-    #just added the user portion below
     @user = User.find_by(id: session[:user_id])
     @users = User.all
     if @work.nil?
@@ -39,7 +37,6 @@ class WorksController < ApplicationController
   end
 
   def edit
-    # @work = Work.find_by(id: params[:id])
     if @work.nil?
       redirect_to works_path
       return
@@ -47,7 +44,6 @@ class WorksController < ApplicationController
   end
 
   def update
-    # @work = Work.find_by(id: params[:id])
     if @work.nil?
       head :not_found
       return
@@ -61,8 +57,6 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    # work_id = params[:id]
-    # @work = Work.find_by(id: params[:id])
     if @work.nil?
       head :not_found
       return
@@ -73,7 +67,6 @@ class WorksController < ApplicationController
   end
 
   def upvote
-    # @work = Work.find_by(id: params[:id])
     @user = User.find_by(id: session[:user_id])
 
     if @user.nil?
@@ -90,7 +83,6 @@ class WorksController < ApplicationController
       redirect_to(works_path)
     else
       Vote.create!(work: @work, user: @user)
-      # @work.votes.create!(user: @user)
     render :show
     end
 

@@ -28,8 +28,8 @@ describe User do
       user = User.all.first
       user_works = user.works
       user_works.each do |work|
-          expect(work).must_be_instance_of Work
-          expect(work.title).must_equal "Kreb-Full-o Been"
+        expect(work).must_be_instance_of Work
+        expect(work.title).must_equal "Kreb-Full-o Been"
       end
     end
   end

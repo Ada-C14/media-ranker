@@ -20,7 +20,7 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
     if @work.save
       flash[:success] = "Work added successfully"
-      redirect_to root_path
+      redirect_to work_path(@work.id)
       return
     else
       flash.now[:error] = "Something happened. Work not added."
@@ -44,7 +44,13 @@ class WorksController < ApplicationController
     end
   end
 
-
+  def edit
+    @work = Work.find_by(id: params[:id])
+    if @work.nil?
+      redirect_to works_path
+      return
+    end
+  end
 
   private
 

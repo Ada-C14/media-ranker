@@ -7,10 +7,11 @@ class WorksController < ApplicationController
 
   def show
     @work = Work.find(params[:id])
-     if @work.nil?
+    if @work.nil?
+      # redirect_to works_path
       head :not_found
-      return
-     end
+    return
+   end
   end
 
   def new
@@ -24,7 +25,7 @@ class WorksController < ApplicationController
       redirect_to work_path(@work.id)
       return
     else
-      flash.new[:error] = "#{@work.title.titleize} was NOT successfully created :("
+      flash[:error] = "#{@work.title.titleize} was NOT successfully created :( Please fill in ALL fields."
       render :new #, status: :not_found
       return
     end
@@ -41,7 +42,7 @@ class WorksController < ApplicationController
   def update
     @work = Work.find_by(id: params[:id])
     if @work.nil?
-      flash[:error] = "#{@work.title.titleize} was NOT successfully edited :("
+      flash.now[:error] = "#{@work.title.titleize} was NOT successfully edited :("
       head :not_found
       return
     elsif @work.update(work_params)
@@ -49,7 +50,7 @@ class WorksController < ApplicationController
       redirect_to work_path(@work.id)
       return
     else
-      flash[:error] = "You need to enter data in all fields"
+      flash.now[:error] = "You need to enter data in all fields"
       render :edit
     end
   end

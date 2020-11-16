@@ -1,5 +1,4 @@
 <h2><strong><%=@work.title.titleize %></strong></h2>
-
 <section class="show_details">
   <div>
     Creator: <%=@work.creator.titleize %>
@@ -10,14 +9,34 @@
   <div>
     Description: <%=@work.description%>
   </div>
-  <div>
-    Category: <%=@work.category %>
-  </div>
 </section>
-<h3>Votes: <%= @work.votes.count%></h3>
+<nav class="nav">
+  <%=button_to"Back to media ranks", root_path, method: :get %>
+  <%=button_to "Edit Media", edit_work_path(@work.id), method: :get %>
+  <%=button_to "Upvote", upvote_path(@work.id), method: :patch%>
+  <%=button_to "Delete Media", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"} %>
+</nav>
+
+<h3><%= @work.votes.count%> Vote(s) for this <%=@work.category %></h3>
+
+<div>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Voted On</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @work.votes.each do |vote| %>
+      <% user = User.find_by(id: vote.user_id) %>
+      <tr>
+        <td><%=link_to "#{user.name.titleize}", user_path(user.id)%></td>
+        <td><%=vote.created_at.to_date%></td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>
 
 <!--# Render votes view partials info here?-->
-
-
-<%=link_to "Edit Media", edit_work_path(@work.id) %>
-<%=link_to "Delete Media", work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"} %>

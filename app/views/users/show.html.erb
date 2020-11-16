@@ -1,33 +1,29 @@
 <h2><strong><%=@user.name %></strong></h2>
 
-<section class="show_details">
-
-</section>
-
 <h3>Votes: <%=@user.votes.count %></h3>
 
 <div>
   <table class="table">
     <thead>
-    <tr>
-      <th>Work(s)</th>
-      <th>Creator</th>
-      <th>Published</th>
-      <th>Category</th>
-      <th>Voted On</th>
-    </tr>
+      <tr>
+        <th>Work(s)</th>
+        <th>Creator</th>
+        <th>Published</th>
+        <th>Category</th>
+        <th>Voted On</th>
+      </tr>
     </thead>
     <tbody>
     <% @user.votes.each do |vote| %>
-    <% work = Work.find_by(id: vote.work_id) %>
-      <tr>
-        <td><%=work.title.titleize %></td>
-        <td><%=work.creator.titleize %></td>
-        <td><%=work.publication_year %></td>
-        <td><%=work.category.capitalize %></td>
-        <td><%=vote.created_at.to_date%></td>
-      </tr>
-    <% end %>
+      <% work = Work.find_by(id: vote.work_id) %>
+        <tr>
+          <td><%=work.title.titleize%></td>
+          <td><%=work.creator.titleize%></td>
+          <td><%=work.publication_year %></td>
+          <td><%=work.category.capitalize %></td>
+          <td><%=vote.created_at.to_date%></td>
+        </tr>
+      <% end %>
     </tbody>
   </table>
 </div>

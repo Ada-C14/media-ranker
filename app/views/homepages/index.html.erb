@@ -1,15 +1,18 @@
 <section class="spotlight"><% spotlight_work = Work.spotlight %>
 
-<h2 class="spotlight__header">
-  <span class="spotlight__header--prefix">Media Spotlight</span>
-  <% if spotlight_work.nil? %>
-    <%= link_to "Add new works and upvote them!", new_work_path, class: "spotlight__link-to" %>
-  <% else %>
-    <%= link_to spotlight_work.title, work_path(spotlight_work), class: "spotlight__link-to" %>
-    by <%= spotlight_work.creator %>
+  <h2 class="spotlight__header">
+    <span class="spotlight__header--prefix">Media Spotlight</span>
+      <% if spotlight_work.nil? %>
+        <%= link_to "Add new works and upvote them!", new_work_path, class: "spotlight__link-to" %>
+      <% else %>
+        <%= link_to spotlight_work.title, work_path(spotlight_work), class: "spotlight__link-to" %>
+        by <%= spotlight_work.creator %>
+      <% end %>
+  </h2>
+
+  <% unless spotlight_work.nil? %>
+    <p class="spotlight__description"><%= spotlight_work.votes_count %> votes - <%= spotlight_work.description %></p>
   <% end %>
-</h2>
-<p class="spotlight__description"><%= spotlight_work.votes_count %> votes - <%= spotlight_work.description unless spotlight_work.nil? %></p>
 </section>
 
 <hr class="root__hr">

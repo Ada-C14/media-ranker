@@ -30,11 +30,15 @@ class UsersController < ApplicationController
       render :new, status: 400
     end
   end
+
   private
 
   def user_params
     return params.require(:user).permit(
         :username
     )
+  end
+  def find_user_works
+    @user_votes = User.find_by(id: params[:id]).votes
   end
 end

@@ -2,20 +2,11 @@ require 'test_helper'
 
 describe Work do
 
-  let (:work) {
-    Work.create(
-        category: 'album',
-        title: 'ctrl',
-        creator: 'sza',
-        publication_year: 2017,
-        description: 'Top Dawg Entertainment and RCA Records'
-    )
-  }
+  let (:work) { Work.first }
 
   it 'can be instantiated with the required fields' do
     expect(work.valid?).must_equal true
 
-    work = Work.first
     %i[category title creator publication_year description].each do |field|
       expect(work).must_respond_to field
     end

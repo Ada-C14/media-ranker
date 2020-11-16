@@ -1,16 +1,16 @@
 require "test_helper"
 
 describe User do
+
+  let (:user) { User.first }
+
   it 'can be instantiated with the required fields' do
-    user = User.first
     expect(user.valid?).must_equal true
     expect(user).must_respond_to :username
   end
 
   describe 'relationships' do
     it 'can have many votes' do
-      user = User.first
-
       expect(user.votes.count).must_equal 2
 
       user.votes.each do |vote|
@@ -19,8 +19,6 @@ describe User do
     end
 
     it 'can have many works through votes' do
-      user = User.first
-
       expect(user.works.count).must_equal 2
 
       user.works.each do |work|
@@ -31,7 +29,6 @@ describe User do
 
   describe 'validations' do
     it 'must have a username' do
-      user = User.first
       user.username = nil
       expect(user.valid?).must_equal false
       expect(user.errors.messages).must_include :username
@@ -48,12 +45,10 @@ describe User do
 
   describe 'custom methods' do
     it 'includes_work? returns true if user voted for work' do
-      user = User.first
       expect(user.includes_work?(works(:ctrl).id)).must_equal true
     end
 
     it 'includes_work? returns false if user did not vote for work' do
-      user = User.first
       expect(user.includes_work?(works(:no_dream).id)).must_equal false
     end
 

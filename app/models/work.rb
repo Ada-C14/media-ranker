@@ -21,6 +21,7 @@ class Work < ApplicationRecord
   def self.spotlight
     return nil if self.all.empty?
     votes = Vote.all
+    return self.first.id if votes.length == 0
     vote_count = {}
     count = 0
     votes.each do |vote|

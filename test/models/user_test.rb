@@ -14,7 +14,14 @@ describe User do
 
     it 'can access work thru user' do
       vote = Vote.create(work: works(:vertigo), user: @user)
-      expect(vote.user.works[0].title).must_equal "Vertigo"
+      expect(vote.user.works.all.map{|work| work.title}).must_include "Vertigo"
+    end
+
+    it 'deleting user will delete related vote' do
+      Vote.create(work: works(:vertigo), user: @user)
+      expect{
+        User.destroy(@user.id)
+      }.must_change "Vote.count", -1
     end
   end
 

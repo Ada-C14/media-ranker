@@ -19,6 +19,13 @@ describe Work do
         Vote.create(work: @work, user: users(:me))
       }.must_change "@work.users.count", 1
     end
+
+    it 'deleting work will delete related vote' do
+      Vote.create(work: @work, user: users(:me))
+      expect{
+        Work.destroy(@work.id)
+      }.must_change "Vote.count", -1
+    end
   end
 
   describe 'validations' do

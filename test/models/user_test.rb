@@ -34,6 +34,18 @@ describe User do
     end
   end
 
+  describe "relationships" do
+    it "can have many votes" do
+      # Arrange
+      new_user.save
+      vote_1
+      vote_2
+
+      # Assert
+      expect(new_user.votes.count).must_equal 2
+      end
+    end
+
   describe "validations" do
     it "It must to have a username" do
       new_user.username = nil

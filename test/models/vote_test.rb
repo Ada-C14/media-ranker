@@ -16,6 +16,20 @@ describe Vote do
 
   describe "relationships" do
 
+    it "belongs to a user and a work" do
+      # Arrange
+      new_user.save
+      new_work.save
+      vote_1
+
+      # Assert
+      expect(User.find_by(id: vote_1.user_id)).must_be_instance_of User
+      expect(Work.find_by(id: vote_1.work_id)).must_be_instance_of Work
+    end
+  end
+
+  describe "validations" do
+
     it " is valid with a user and work" do
       result = vote_1.valid?
       expect(result).must_equal true

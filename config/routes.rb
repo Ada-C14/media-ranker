@@ -5,8 +5,12 @@ Rails.application.routes.draw do
   root to:'homepages#index'
 
   resources :users
-  resources :works
   resources :votes
+  resources :works
+
+  resources :works do
+    resources :votes
+  end
 
   get "/login", to: "users#login_form", as: "login"
   post "/login", to: "users#login"
@@ -14,6 +18,6 @@ Rails.application.routes.draw do
   get "/users/current", to: "users#current", as: "current_user"
 
 
-  # reference
+# reference
   # get '/works/:id', to 'works#show'
 end

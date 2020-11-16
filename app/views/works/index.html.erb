@@ -1,30 +1,89 @@
-<h1>Media List</h1>
-<p>Albums</p>
-<% @works.each do %>
-  <% @albums.each do |album| %>
-    <div>
-      <%= link_to album.title, work_path(album) %>
-      <%= album.creator %>
-      <%= album.publication_year%>
-    </div>
-  <% end %>
+<body>
+<main>
+  <h2>List of Works</h2>
 
-  <p>Books</p>
-  <% @books.each do |book| %>
-    <div>
-      <%= link_to book.title, work_path(book) %>
-      <%= book.creator %>
-      <%= book.publication_year%>
-    </div>
-  <% end %>
+  <section class="media-table">
+    <h4>Albums</h4>
+    <table class="table">
+      <thead>
+      <tr>
+        <th width="80">Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th width="100">Published</th>
+        <th width="100">Upvote</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @ordered_albums = @albums.sort_by {|album| album.votes.length} %>
+      <% @ordered_albums.reverse.each do |album| %>
+        <tr>
+          <td><%= album.votes.length %></td>
+          <td><%= link_to album.title, work_path(album) %></td>
+          <td><%= album.creator %></td>
+          <td><%= album.publication_year%></td>
+          <td><a class="btn btn-primary" <%= link_to "Upvote", work_votes_path(album.id), method: :post %></a></td>
+        </tr>
+      <%end%>
+      </tbody>
+    </table>
+  </section>
 
-  <p>Movies</p>
-  <% @movies.each do |movie| %>
-    <div>
-      <%= link_to movie.title, work_path(movie) %>
-      <%movie.creator %>
-      <%= movie.publication_year %>
-    </div>
-  <% end %>
+  <section class="media-table">
+    <h4>Books</h4>
+    <table class="table">
+      <thead>
+      <tr>
+        <th width="80">Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th width="100">Published</th>
+        <th width="100">Upvote</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @ordered_books = @books.sort_by {|book| book.votes.length} %>
+      <% @ordered_books.reverse.each do |book| %>
+        <tr>
+          <td><%= book.votes.length%></td>
+          <td><%= link_to book.title, work_path(book) %></td>
+          <td><%= book.creator %></td>
+          <td><%= book.publication_year%></td>
+          <td><a class="btn btn-primary" <%= link_to "Upvote", work_votes_path(book.id), method: :post %></a></td>
+        </tr>
+      <%end%>
+      </tbody>
+    </table>
+  </section>
 
-<% end %>
+  <section class="media-table">
+    <h4>Movies</h4>
+    <table class="table">
+      <thead>
+      <tr>
+        <th width="80">Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th width="100">Published</th>
+        <th width="100">Upvote</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @ordered_movies = @movies.sort_by {|movie| movie.votes.length} %>
+      <% @ordered_movies.reverse.each do |movie| %>
+        <tr>
+          <td><%= movie.votes.length%></td>
+          <td><%= link_to movie.title, work_path(movie)%></td>
+          <td><%= movie.creator %></td>
+          <td><%= movie.publication_year%></td>
+          <td><a class="btn btn-primary" <%= link_to "Upvote", work_votes_path(movie.id), method: :post %></a></td>
+        </tr>
+      <%end%>
+      </tbody>
+    </table>
+  </section>
+
+  <a class="btn btn-secondary" href="/">View top media</a>
+  <a class="btn btn-primary" href="/works/new">Add a new work</a>
+</main>
+</body>

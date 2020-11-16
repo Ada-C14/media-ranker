@@ -63,28 +63,44 @@ describe UsersController do
       # Assert
       expect(new_user).wont_be_nil
       expect(session[:user_id]).must_equal new_user.id
+      expect(flash[:success]).must_equal "Successfully logged in as existing user test user"
       must_respond_with :redirect
       must_redirect_to root_path
     end
 
     it "can log in a new user and redirect to the root path" do
       # Act/Assert
+      user = nil
+
       expect {
-        perform_login
+        perform_login(user)
       }.must_differ "User.count", 1
 
-      # expect(user).wont_be_nil
+      expect(user).wont_be_nil
       # expect(session[:user_id]).must_equal user.id
       must_respond_with :redirect
       must_redirect_to root_path
     end
   end
+    # it "can log in a user and redirect to the root path" do
+    #   # Arrange
+    #   new_user.save
+    #
+    #
+    #   perform_login(new_user)
+    #
+    #   # Assert
+    #   expect(new_user).wont_be_nil
+    #   expect(session[:user_id]).must_equal new_user.id
+    #   must_respond_with :redirect
+    #   must_redirect_to root_path
+    # end
 
   describe "current" do
     it "returns 200 OK for a logged-in user" do
       # Arrange
       new_user.save
-      perform_login
+      perform_login(new_user)
 
       # Act
       get current_user_path
@@ -119,3 +135,4 @@ describe UsersController do
     end
   end
 end
+

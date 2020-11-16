@@ -20,7 +20,7 @@ class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
   def perform_login(user = nil)
     user ||= User.first
-
+    # p user.id
     login_data = {
         user: {
             username: user.username,
@@ -28,6 +28,7 @@ class ActiveSupport::TestCase
     }
     post login_path, params: login_data
 
+    # print user.id
     expect(session[:user_id]).must_equal user.id
 
     return user

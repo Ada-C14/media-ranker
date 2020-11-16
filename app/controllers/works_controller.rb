@@ -1,6 +1,10 @@
 class WorksController < ApplicationController
   def index
     @works = Work.all
+
+    @albums = @works.select { |w| w.category == "album" }
+    @books = @works.select { |w| w.category == "book" }
+    @movies = @works.select { |w| w.category == "movie" }
   end
 
   def show
@@ -45,8 +49,10 @@ class WorksController < ApplicationController
       return
     elsif @work.update(work_params)
       redirect_to work_path(@work.id)
+      flash[:success] = "Updated #{@work.title}"
       return
     else
+      flash.now[:error] = "Something happened. Not added"
       render :edit, status: :bad_request
       return
     end

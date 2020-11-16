@@ -3,7 +3,6 @@
     <a href="/">Media Ranker</a>
     <small>Ranking the Best of Everything</small>
   </h1>
-
   <nav class="app-header__nav">
     <ul class="nav app-header__site-nav-container">
       <li class="nav-item app-header__nav_item">
@@ -26,42 +25,38 @@
     </ul>
   </nav>
 </header>
-
 <main>
   <h2>Add a new work</h2>
   <section>
-    <form action="/works" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="1xSvX1ElAZD7U/LiGFB9NyJ4O7+kTgEbO0dHd0dHuTLHTDEgCji6vd3tAGpx+RRLUhjx5yW4eOUX5PS6QYOdpQ==" />
-      <div class="form-group">
-        <label>Category</label>
-        <select class="form-control" name="work[category]"><option value="album">album</option>
-          <option value="book">book</option>
-          <option value="movie">movie</option></select>
-      </div>
+    <%= form_with model: @work do |f| %>
+    <div class="form-group">
+      <%= f.label :category, 'Category'%>
+      <%= f.select :category, options_for_select([['album'], ['book'], ['movie']]), {}, { :class => "form-control" } %>
+    </div>
 
-      <div class="form-group">
-        <label>Title</label>
-        <input class="form-control" type="text" name="work[title]" />
-      </div>
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control" %>
+    </div>
 
-      <div class="form-group">
-        <label>Creator</label>
-        <input class="form-control" type="text" name="work[creator]" />
-      </div>
+    <div class="form-group">
+      <%= f.label :creator %>
+      <%= f.text_field :creator, class: "form-control" %>
+    </div>
 
-      <div class="form-group">
-        <label>Publication year</label>
-        <input class="form-control" type="text" name="work[publication_year]" />
-      </div>
+    <div class="form-group">
+      <%= f.label :publication_year, "Publication Year" %>
+      <%= f.text_field :publication_year, class: "form-control" %>
+    </div>
 
-      <div class="form-group">
-        <label>Description</label>
-        <textarea class="form-control" name="work[description]">
-</textarea>
-      </div>
-      <div class="form-group">
-        <input type="submit" name="commit" value="Create Work" class="btn btn-primary" data-disable-with="Create Work" />
-      </div>
-    </form>
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_field :description, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.submit "Create Work", class: "btn btn-primary"%>
+    </div>
+    <% end %>
   </section>
 </main>
 

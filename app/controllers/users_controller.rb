@@ -12,15 +12,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def new_login
-    @user = User.new
-  end
-
-  # login method
-  # def login
-  #
-  # end
-
-  # logout method
-
 end
+
+

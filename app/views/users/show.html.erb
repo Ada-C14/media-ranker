@@ -1,47 +1,39 @@
-<% if session[:user_id] %>
-<% @user = User.find(session[:user_id]) %>
-  <h2>User Summary: <%= link_to "#{@user.username}", current_user_path %></h2>
-  <p>Joined site <%= @user.created_at %></p>
-  <section class="user-votes__container">
-    <h3 class="user-votes__header">Votes</h3>
-    <table class="table">
-      <thead>
+<h2>User Summary: <%= link_to "#{@user.username}", current_user_path %></h2>
+<p>Joined site <%= @user.created_at %></p>
+<section class="user-votes__container">
+  <h3 class="user-votes__header">Votes</h3><table class="table">
+  <thead>
+  <tr>
+    <th>Media Title</th>
+    <th>Created By</th>
+    <th>Published</th>
+    <th>Category</th>
+    <th>Voted On</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% if @user.votes %>
+    <% @user.votes.each do |vote| %>
       <tr>
-        <th>Media Title</th>
-        <th>Created By</th>
-        <th>Published</th>
-        <th>Category</th>
-        <th>Voted On</th>
+        <td><%= link_to vote.work.title, work_path(vote) %></td>
+        <td><%= vote.work.creator %></td>
+        <td><%= vote.work.publication_year %></td>
+        <td><%= vote.work.category %></td>
+        <td><%= vote.created_at %></td>
       </tr>
-      </thead>
-      <tbody>
-      <% if @user.votes %>
-        <% @user.votes.each do |vote| %>
-        <tr>
-          <td><%= link_to vote.work.title, work_path(vote) %></td>
-          <td><%= vote.work.creator %></td>
-          <td><%= vote.work.publication_year %></td>
-          <td><%= vote.work.category %></td>
-          <td><%= vote.created_at %></td>
-        </tr>
-        <% end %>
-        <% else %>
-        <tr>
-          <h3><%= "#{@user.username} has not voted for any media 👾" %></h3>
-        </tr>
-      <% end %>
-      </tbody>
-    </table>
-  </section>
-<% else %>
-  <div class="emoji">
+    <% end %>
+  <% else %>
+    <tr>
+      <h3><%= "#{@user.username} has not voted for any media 👾" %></h3>
+    </tr>
     <h1>🎩</h1>
     <h1>👀</h1>
     <h1>👃</h1>
     <h1>👄</h1>
-    <h1>️👔🤚</h1>
+    <h1>️👔</h1>
     <h1>👖</h1>
     <h1>🩰</h1>
-    <p>(you must be logged in to see this page)</p>
-  </div>
-<% end %>
+  <% end %>
+  </tbody>
+</table>
+</section>

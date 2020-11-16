@@ -8,6 +8,7 @@ class Work < ApplicationRecord
 
   def sum_votes
     return 0 if Vote.all.empty?
+    return 0 if Work.all.empty?
     work_id = self.id
     total_votes = Vote.where(work_id: work_id).count
     if total_votes.nil?
@@ -18,7 +19,7 @@ class Work < ApplicationRecord
   end
 
   def self.spotlight
-    return 1 if Vote.all.empty?
+    return nil if self.all.empty?
     votes = Vote.all
     vote_count = {}
     count = 0
@@ -33,7 +34,7 @@ class Work < ApplicationRecord
   end
 
   def self.top_works(category, num = 10)
-    #return "🤔" if Work.all.empty?
+    return nil if self.all.empty?
     # returns array of works, sorted by highest votes, in descending order (high to low)
     return Work.where(category: category).max_by(num) do |work|
       work.votes.length

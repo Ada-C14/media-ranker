@@ -1,0 +1,19 @@
+<% if @top_work %>
+  <section class="spotlight">
+    <h2 class="spotlight__header"><span class="spotlight__header--prefix">Media Spotlight</span>
+      <% @top_work %>
+      <%= link_to @top_work.title, work_path(@top_work), method: :get %>
+      by <%= @top_work.creator %>
+    </h2>
+    <p><%= @top_work.votes.count %> votes - <%= @top_work.description %></p>
+  </section>
+<% else %>
+  <h2 class="spotlight__header"><span class="spotlight__header--prefix">Media Spotlight</span>
+  <p>top work is not available</p>
+<% end %>
+
+<section class="top-ten__container">
+  <%= render partial: "top_ten", locals: { category: "Movies", works: @movies_top_ten } %>
+  <%= render partial: "top_ten", locals: { category: "Books", works: @books_top_ten } %>
+  <%= render partial: "top_ten", locals: { category: "Albums", works: @albums_top_ten } %>
+</section>

@@ -1,0 +1,22 @@
+<!--<div class="alert">-->
+  <%# if @user.errors.any? %>
+<!--    <span>A problem occurred, could not update <%#= @user.category %></span>-->
+<!--    <ul>-->
+      <%# @user.errors.each do |column, message| %>
+<!--        <div class="error-message red">-->
+<!--          <li>-->
+<!--            <p><%#= column %> <%#= message %></p>-->
+<!--          </li>-->
+<!--        </div>-->
+      <%# end %>
+<!--    </ul>-->
+  <%# end %>
+<!--</div>-->
+
+<%= form_with model: @user, url: login_path do |f| %>
+  <div>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+  </div>
+  <%= f.submit "Login", class: "btn btn-primary" %>
+<% end %>

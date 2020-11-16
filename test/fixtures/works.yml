@@ -1,0 +1,122 @@
+album0:
+  title: AlbumA
+  category: album
+  creator: Creator0
+  publication: 1976
+  description: Work0 description
+album1:
+  title: AlbumB
+  category: album
+  creator: Creator1
+  publication: 1993
+  description: Work1 description
+album2:
+  title: AlbumC
+  category: album
+  creator: Creator2
+  publication: 1949
+  description: Work2 description
+album3:
+  title: AlbumD
+  category: album
+  creator: Creator3
+  publication: 1947
+  description: Work3 description
+album4:
+  title: AlbumE
+  category: album
+  creator: Creator4
+  publication: 2002
+  description: Work4 description
+album5:
+  title: AlbumF
+  category: album
+  creator: Creator5
+  publication: 1923
+  description: Work5 description
+album6:
+  title: AlbumG
+  category: album
+  creator: Creator6
+  publication: 2007
+  description: Work6 description
+album7:
+  title: AlbumH
+  category: album
+  creator: Creator7
+  publication: 1994
+  description: Work7 description
+album8:
+  title: AlbumI
+  category: album
+  creator: Creator8
+  publication: 2002
+  description: Work8 description
+album9:
+  title: AlbumJ
+  category: album
+  creator: Creator9
+  publication: 2007
+  description: Work9 description
+album10:
+  title: AlbumK
+  category: album
+  creator: Creator10
+  publication: 2019
+  description: Work10 description
+album11:
+  title: AlbumL
+  category: album
+  creator: Creator11
+  publication: 1903
+  description: Work11 description
+album12:
+  title: AlbumM
+  category: album
+  creator: Creator12
+  publication: 1926
+  description: Work12 description
+album13:
+  title: AlbumN
+  category: album
+  creator: Creator13
+  publication: 1938
+  description: Work13 description
+album14:
+  title: AlbumO
+  category: album
+  creator: Creator14
+  publication: 1934
+  description: Work14 description
+
+book0:
+  title: Book0
+  category: book
+  creator: Creator0
+  publication: 2009
+  description: Work0 description
+book1:
+  title: Book1
+  category: book
+  creator: Creator1
+  publication: 1940
+  description: Work1 description
+book2:
+  title: Book2
+  category: book
+  creator: Creator2
+  publication: 1984
+  description: Work2 description
+book3:
+  title: Book3
+  category: book
+  creator: Creator3
+  publication: 1901
+  description: Work3 description
+book4:
+  title: Book4
+  category: book
+  creator: Creator4
+  publication: 1906
+  description: Work4 description
+

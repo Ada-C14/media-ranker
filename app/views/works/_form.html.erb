@@ -1,0 +1,43 @@
+<%= form_with model: @work, class: 'edit-work' do |f| %>
+
+
+  <%# if @work.errors.any? %>
+<!--    A problem occurred, could not update <%#= @work.category %>-->
+<!--    <ul>-->
+      <%# @work.errors.each do |column, message| %>
+<!--        <div class="error-message red">-->
+<!--          <li>-->
+<!--            <p><%#= column %> <%#= message %></p>-->
+<!--          </li>-->
+<!--        </div>-->
+      <%# end %>
+<!--    </ul>-->
+  <%# end %>
+
+  <div class="form-group">
+    <%= f.label :Category %>
+    <%= f.select :category, %w[album book movie], include_blank: false, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :Title %>
+    <%= f.text_area :title, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :Creator %>
+    <%= f.text_area :creator, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :"Publication year" %>
+    <%= f.text_area :publication, :class => "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :Description %>
+    <%= f.text_area :description, :class => "form-control" %>
+  </div>
+
+  <div class="form-group"><%= f.submit "#{action_name} Work", class: "btn btn-primary" %></div>
+<% end %>

@@ -1,0 +1,51 @@
+vote0:
+  user: user0
+  work: album0
+vote1:
+  user: user1
+  work: album1
+vote2:
+  user: user2
+  work: album2
+vote3:
+  user: user3
+  work: album3
+vote4:
+  user: user4
+  work: album4
+vote5:
+  user: user0
+  work: album4
+vote6:
+  user: user1
+  work: album4
+vote7:
+  user: user2
+  work: album4
+vote8:
+  user: user3
+  work: album4
+vote9:
+  user: user4
+  work: album4
+vote10:
+  user: user0
+  work: album3
+vote11:
+  user: user1
+  work: album3
+vote12:
+  user: user2
+  work: album3
+vote13:
+  user: user3
+  work: album3
+vote14:
+  user: user0
+  work: album2
+vote15:
+  user: user1
+  work: album2
+vote16:
+  user: user2
+  work: album2

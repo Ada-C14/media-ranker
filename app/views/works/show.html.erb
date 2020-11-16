@@ -19,4 +19,33 @@
   <p>Description: <%= @work.description %></p>
 </div>
 
+<table>
+  <tr>
+    <th>Vote ID</th>
+    <th>User ID</th>
+    <th>Username</th>
 
+    <% vote_count_for_work = 0 %>
+
+  </tr>
+  <% @work.votes.each do |vote| %>
+
+    <tr>
+      <td>
+        <%= vote.id %>
+      </td>
+      <td>
+        <%= vote.user_id %>
+      </td>
+      <td>
+        <%= vote.user.username %>
+      </td>
+      <td>
+        <%= vote.work.title %>
+      </td>
+    </tr>
+    <% vote_count_for_work += 1 %>
+  <%end %>
+
+</table>
+<p>Total Number of Votes for <%= @work.title %>: <%=vote_count_for_work %></p>

@@ -27,16 +27,16 @@ class VotesController < ApplicationController
     end
   end
 
-  # def index
-  #   @votes = Vote.all
-  # end
+  def index
+    @votes = Vote.all
+  end
 
-  # def show
-  #   if @vote.nil?
-  #     head :not_found
-  #     return
-  #   end
-  # end
+  def show
+    if @vote.nil?
+      head :not_found
+      return
+    end
+  end
 
   # def edit
   # end
@@ -49,4 +49,5 @@ class VotesController < ApplicationController
 
   # def update
   # end
+
 end

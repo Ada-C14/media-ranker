@@ -11,5 +11,4 @@ class Work < ApplicationRecord
   validates :description, presence: true
 
 
-  # work method to figure out top 10 for each
 end

@@ -2,9 +2,8 @@ class Vote < ApplicationRecord
   belongs_to :user
   belongs_to :work
 
-  # check that user hasn't voted before
-  validates :work.id, presence: true, uniqueness: {scope: user.id}
+  validates :work_id, presence: true
+  validates :user_id, presence: true, uniqueness: {scope: :work_id, message: "You may only vote once"}
 
-  # validates :user_id, presence: true
 
 end

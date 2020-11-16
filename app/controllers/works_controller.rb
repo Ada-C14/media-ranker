@@ -70,6 +70,10 @@ class WorksController < ApplicationController
       @vote = Vote.new(work_id: params[:id], user_id: session[:user_id])
       if @vote.save
         flash[:success] = "Successfully upvoted"
+      else
+        @vote.errors.each do |column, message|
+          flash[:error] = message
+        end
       end
     else
       flash[:error] = "You must be logged in to upvote!"

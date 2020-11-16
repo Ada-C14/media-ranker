@@ -1,12 +1,71 @@
-<h2> This is a great time to be an Adie </h2>
-<h3> Works Page </h3>
 
-<% if @works.length > 0 %>
-  <ul>
-    <% @works.each do |work| %>
-    <li> <%= work[:title] %> by <%= work[:author] %></li>
-    <% end %>
-  </ul>
-<% else %>
-<h3> No works in the system! </h3>
-<% end %>
+<main>
+  <h2>List of Works!</h2>
+
+  <section class="media-table">
+    <h4>ALBUMS</h4>
+      <table class="table">
+        <tr>
+          <th>Votes</th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th>Published</th>
+          <th>Upvote</th>
+        </tr>
+        <% @albums.each do |work| %>
+            <tr>
+              <td> "vote_count" </td>
+              <td><%= link_to work.title, works_path(work.id) %></td>
+              <td><%= work.creator %></td>
+              <td><%= work.publication_year %></td>
+              <td><%= button_to "Upvote/brokenLink", works_path(work.id), class: "btn btn-primary" %></td>
+            </tr>
+        <% end %>
+      </table>
+  </section>
+
+  <section class="media-table">
+    <h4>BOOKS</h4>
+    <table class="table">
+      <tr>
+        <th>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Upvote</th>
+      </tr>
+      <% @books.each do |work| %>
+        <tr>
+          <td> "vote_count" </td>
+          <td><%= link_to work.title, works_path(work.id) %></td>
+          <td><%= work.creator %></td>
+          <td><%= work.publication_year %></td>
+          <td><%= button_to "Upvote/brokenLink", works_path(work.id), class: "btn btn-primary" %></td>
+        </tr>
+      <% end %>
+    </table>
+  </section>
+
+  <section class="media-table">
+    <h4>MOVIES</h4>
+    <table class="table">
+      <tr>
+        <th>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Upvote</th>
+      </tr>
+      <% @movies.each do |work| %>
+        <tr>
+          <td> "vote_count" </td>
+          <td><%= link_to work.title, works_path(work.id) %></td>
+          <td><%= work.creator %></td>
+          <td><%= work.publication_year %></td>
+          <td><%= button_to "Upvote/brokenLink", works_path(work.id), class: "btn btn-primary" %></td>
+        </tr>
+      <% end %>
+    </table>
+  </section>
+
+</main>

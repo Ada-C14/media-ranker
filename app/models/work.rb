@@ -1,2 +1,4 @@
+
 class Work < ApplicationRecord
+
 end

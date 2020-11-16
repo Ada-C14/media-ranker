@@ -1,0 +1,147 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ */
+
+/* Custom bootstrap variables must be set or imported *before* bootstrap. */
+@import "bootstrap";
+
+@import "**/*";
+
+*,
+*::before,
+*::after {
+ box-sizing:border-box;
+}
+
+html {
+ font-family:sans-serif;
+ line-height:1.15;
+ -webkit-text-size-adjust:100%;
+ -ms-text-size-adjust:100%;
+//  -ms-overflow-style:scrollbar;
+ -webkit-tap-highlight-color:transparent
+}
+
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+ display:block
+}
+
+body {
+ margin:0;
+ font-family: "Gudea", sans-serif;
+ font-size:1rem;
+ font-weight:400;
+ line-height:1.5;
+ color:#212529;
+ text-align:left;
+ background-color:#fff;
+  font-weight: normal;
+}
+
+hr {
+  box-sizing:content-box;
+  height:0;
+  overflow:visible
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin-top:0;
+  margin-bottom:0.5rem
+}
+
+p {
+  margin-top:0;
+  margin-bottom:1rem
+}
+
+strong {
+  font-weight:bolder
+}
+small {
+  font-size:80%;
+  color: #ffffff
+}
+
+.app-header__header {
+    max-width: 100%;
+    background-color: #B2DFDB;
+    margin-bottom: 0.5rem;
+    padding: 2rem 1rem 0.5rem 1rem;
+    display: block;
+    color: #FF5722;
+}
+
+h1, h2, h3, h4, h5 {
+    font-weight: bold;
+}
+.app-header__header h1 {
+     color: #FF5722;
+    text-align: center;
+    margin: 25px auto 40px auto;
+    padding-right: 25px;
+    margin-right: 15px;
+    border-right: white 2px solid;
+    text-decoration: none;
+    box-sizing: border-box;
+    text-align: center;
+    line-height: 1.2;
+    font-size: 2.5rem;
+}
+
+main {
+ padding:2rem
+}
+
+ol, ul, dl {
+  margin-top:0;
+  margin-bottom:1rem
+}
+ol ol, ul ul, ol ul, ul ol {
+  margin-bottom:0
+}
+
+
+li {
+  text-decoration:none;
+}
+
+.list-inline-item {
+  display:inline-block;
+  text-decoration:none
+}
+//
+//a:link {
+//  color: #26A69A;
+//}
+//
+//a:visited {
+//  color: #26A69A;
+//}
+//
+//a:hover {
+//  color: #00796B;
+//  text-decoration:none
+//}
+//
+//a:active {
+//  color: #00796B;
+//}
+
+.header_button {
+  display:inline-block;
+  text-decoration:none
+}
+
+
+
+

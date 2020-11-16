@@ -50,7 +50,7 @@ describe Vote do
 
     describe "format_date" do
       it "returns a formatted date string based on the created by date" do
-        date = Date.today.strftime("%b %d, %Y")
+        date = DateTime.now.utc.strftime("%b %d, %Y")
         user = User.create!(username: "test date")
         work = works(:hp1)
         vote = Vote.create!(work_id: work.id , user_id: user.id )

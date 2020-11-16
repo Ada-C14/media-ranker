@@ -1,12 +1,11 @@
 class WorksController < ApplicationController
 
+  before_action :find_work, only: [:show, :edit, :update, :destroy]
   def index
     @works = Work.order("votes_count DESC, created_at")
   end
 
   def show
-    @work = Work.find_by(id: params[:id])
-
     if @work.nil?
       render file: "#{Rails.root}/public/404.html",  layout: false, status: :not_found
       return
@@ -32,8 +31,6 @@ class WorksController < ApplicationController
   end
 
   def edit
-    @work = Work.find_by(id: params[:id])
-
     if @work.nil?
       render file: "#{Rails.root}/public/404.html",  layout: false, status: :not_found
       return
@@ -41,7 +38,6 @@ class WorksController < ApplicationController
   end
 
   def update
-    @work = Work.find_by(id: params[:id])
     if @work.nil?
       render file: "#{Rails.root}/public/404.html",  layout: false, status: :not_found
       return
@@ -57,7 +53,6 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    @work = Work.find_by(id: params[:id])
     if @work.nil?
       render file: "#{Rails.root}/public/404.html",  layout: false, status: :not_found
       return
@@ -72,5 +67,9 @@ class WorksController < ApplicationController
 
   def work_params
     return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+  end
+
+  def find_work
+    @work = Work.find_by(id: params[:id])
   end
 end

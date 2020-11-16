@@ -46,9 +46,5 @@ class UsersController < ApplicationController
     return
   end
 
-  #private
-  #
-  # def user_params
-  #   return params.require(:user).permit(:username)
-  # end
+
 end

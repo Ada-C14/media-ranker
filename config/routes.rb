@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   post "/logout", to: "users#logout", as: "logout"
   post "/works/:id/upvote", to: "works#upvote", as: "upvote"
 
-  root to: 'works#index'
+  root to: "works#homepage"
 
   resources :works
   resources :users, only: [:index, :show]

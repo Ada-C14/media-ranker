@@ -1,0 +1,24 @@
+<main>
+  <section>
+    <h2>Media Spotlight: <%= link_to Work.spotlight.title, work_path(Work.spotlight)%></h2>
+    <p><%= Work.spotlight.votes.count %> - <%= Work.spotlight.description %></p>
+  </section>
+
+  <% ["movie", "book", "album"].each do |category| %>
+    <section class="top-ten__container">
+      <section class="top-ten__list-container">
+        <h2>Top <%= category.capitalize << "s" %></h2>
+        <ul>
+          <% Work.top_10(category).each do |medium| %>
+            <li>
+              <h4><%= link_to medium.title, work_path(medium) %>
+                <small>by <%= medium.creator %></small></h4>
+              <p><%= medium.votes.count %></p>
+            </li>
+          <% end %>
+        </ul>
+      </section>
+    </section>
+  <% end %>
+</main>
+

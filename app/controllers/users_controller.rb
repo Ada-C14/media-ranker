@@ -7,7 +7,7 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
 
     if @user.nil?
-      flash[:error] = "Sorry, no such user found"
+      flash[:warning] = "Sorry, no such user found"
       redirect_to root_path and return
     end
   end
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
     @current_user = User.find_by(id: session[:user_id])
 
     unless @current_user
-      flash[:error] = "You must log in to see this page"
+      flash[:warning] = "You must log in to see this page"
       redirect_to root_path and return
     end
 

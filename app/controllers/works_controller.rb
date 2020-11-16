@@ -15,7 +15,7 @@ class WorksController < ApplicationController
 
   def show
     if @work.nil?
-      flash[:error] = "Work not found"
+      flash[:warning] = "Work not found"
       redirect_to works_path and return
     end
   end
@@ -31,27 +31,27 @@ class WorksController < ApplicationController
       flash[:success] = "Work added to the ranker"
       redirect_to work_path(@work) and return
     else
-      flash[:error] = "Sorry, the work was not saved"
+      flash[:warning] = "Sorry, the work was not saved"
       render :new, status: :bad_request and return
     end
   end
 
   def edit
     if @work.nil?
-      flash[:error] = "Work not found"
+      flash[:warning] = "Work not found"
       redirect_to works_path and return
     end
   end
 
   def update
     if @work.nil?
-      flash[:error] = "Work not found"
+      flash[:warning] = "Work not found"
       redirect_to works_path and return
     elsif @work.update(works_params)
       flash[:success] = "Your work has been updated"
       redirect_to work_path(@work) and return
     else
-      flash[:error] = "Sorry, your work was not updated"
+      flash[:warning] = "Sorry, your work was not updated"
       render :edit, status: :bad_request and return
     end
   end
@@ -62,7 +62,7 @@ class WorksController < ApplicationController
       flash[:success] = "The work has been deleted"
       redirect_to works_path and return
     else
-      flash[:error] = "The work could not be deleted"
+      flash[:warning] = "The work could not be deleted"
       redirect_to works_path and return
     end
   end
@@ -70,10 +70,10 @@ class WorksController < ApplicationController
   def upvote
     @user = User.find_by(id: session[:user_id])
     if @user.nil?
-      flash[:error] = "Please log in to vote"
+      flash[:warning] = "Please log in to vote"
       redirect_to work_path(@work) and return
     elsif @user.works.include?(@work)
-      flash[:error] = "You have already voted on this work"
+      flash[:warning] = "You have already voted on this work"
       redirect_to work_path(@work) and return
     end
 
@@ -82,7 +82,7 @@ class WorksController < ApplicationController
     if @vote.save
       flash[:success] = "Thank you, your vote has been tallied!"
     else
-      flash[:error] = "Sorry, something went wrong"
+      flash[:warning] = "Sorry, something went wrong"
     end
 
     redirect_back fallback_location: root_path and return

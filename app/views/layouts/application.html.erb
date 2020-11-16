@@ -44,7 +44,7 @@
     <main>
       <section class="alert__container">
         <% flash.each do |name, message| %>
-          <div class="<%= name %>">
+          <div class="alert alert-<%= name %>">
             <span><%= message %></span>
           </div>
         <% end %>

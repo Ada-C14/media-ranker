@@ -41,12 +41,15 @@ class WorksController < ApplicationController
   def update
     @work = Work.find_by(id: params[:id])
     if @work.nil?
+      flash[:error] = "#{@work.title.titleize} was NOT successfully edited :("
       head :not_found
       return
     elsif @work.update(work_params)
+      flash[:success] = "#{@work.title.titleize} was successfully edited :)"
       redirect_to work_path(@work.id)
       return
     else
+      flash[:error] = "You need to enter data in all fields"
       render :edit
     end
   end
@@ -60,6 +63,7 @@ class WorksController < ApplicationController
       return
     else
       @work.destroy
+      flash[:success] = "#{@work.title.titleize} was successfully deleted :)"
       redirect_to works_path
     end
   end

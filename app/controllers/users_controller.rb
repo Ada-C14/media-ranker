@@ -48,7 +48,7 @@ class UsersController < ApplicationController
         return
       end
     end
-    redirect_to root_path
+    redirect_to works_path
   end
 
   def current

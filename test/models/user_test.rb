@@ -25,18 +25,11 @@ describe User do
     end
   end
 
-  # it "is invalid if username already exists" do
-  #   new_user = User.new(username:'Username')
-  #
-  #   expect(new_user.valid?).must_equal false
-  # end
-
   describe "relationships" do
 
     it "can have many votes" do
       user1 = users(:user1)
       expect(user1.votes.count).must_equal 2
   end
-
   end
 end

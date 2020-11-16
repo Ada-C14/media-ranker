@@ -1,47 +1,47 @@
 vote1:
   user: user1
-  work: movie1.id
+  work: movie1
 
 vote2:
   user: user2
-  work: movie2.id
+  work: movie2
 
 vote3:
   user: user3
-  work: album1.id
+  work: album1
 
 vote4:
   user: user4
-  work: album1.id
+  work: album1
 
 vote5:
   user: user5
-  work: book1.id
+  work: book1
 
 vote6:
   user: user6
-  work: book2.id
+  work: book2
 
 vote7:
   user: user7
-  work: movie1.id
+  work: movie1
 
 vote8:
   user: user8
-  work: movie1.id
+  work: movie1
 
 vote9:
   user: user9
-  work: album1.id
+  work: album1
 
 vote10:
   user: user10
-  work: album1.id
+  work: album1
 
 vote11:
   user: user11
-  work: album1.id
+  work: album1
 
 vote12:
   user: user1
-  work: movie1.id
+  work: movie1

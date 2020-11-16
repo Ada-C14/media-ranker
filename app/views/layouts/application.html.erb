@@ -27,7 +27,7 @@
         </ul>
         <form class="form-inline my-2 my-lg-0">
         <% if session[:user_id] %>
-            <span class="justify-content-between"><%= link_to "Logged in as #{session["username"]}", user_path(session[:user_id]), class: "btn btn-info my-2 my-sm-0", id:"loggedin-user", method: "get" %></span>
+            <span class="justify-content-between"><%= link_to "Logged in as #{session[:username]}", user_path(session[:user_id]), class: "btn btn-info my-2 my-sm-0", id:"loggedin-user", method: "get" %></span>
             <span class="justify-content-between"> <%= link_to "Logout", logout_path, class: "btn btn-info my-2 my-sm-0", id:"logout", method: "post" %></span>
             <% else %>
             <%= link_to "Login", login_path, class: "btn btn-info my-2 my-sm-0 login-btn", id:"login", type:"submit" %>

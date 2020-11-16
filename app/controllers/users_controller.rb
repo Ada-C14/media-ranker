@@ -25,6 +25,7 @@ class UsersController < ApplicationController
     flash[:welcome] = "Successfully logged in as existing user #{user.username}"
     end
     session[:user_id] = user.id
+    session[:username] = user.username
     redirect_to homepage_path
   end
 

@@ -4,17 +4,21 @@
 <table>
   <thead>
     <tr>
+      <th>Votes</th>
       <th>Title</th>
       <th>Created By</th>
       <th>Published</th>
+      <th>Upvote</th>
     </tr>
   </thead>
   <tbody>
   <% @works.where(category: "album").each do |album| %>
     <tr>
+      <td><%= album.votes.count %></td>
       <td><%= link_to album.title, work_path(album) %></td>
       <td><%= album.creator %></td>
       <td><%= album.publication_year %></td>
+      <td><%= link_to "Upvote", upvote_path(album), method: :post %></td>
     </tr>
   <% end %>
   </tbody>
@@ -24,17 +28,21 @@
 <table>
   <thead>
   <tr>
+    <th>Votes</th>
     <th>Title</th>
     <th>Created By</th>
     <th>Published</th>
+    <th>Upvote</th>
   </tr>
   </thead>
   <tbody>
   <% @works.where(category: "book").each do |book| %>
     <tr>
+      <td><%= book.votes.count %></td>
       <td><%= link_to book.title, work_path(book) %></td>
       <td><%= book.creator %></td>
       <td><%= book.publication_year %></td>
+      <td><%= link_to "Upvote", upvote_path(book), method: :post %></td>
     </tr>
   <% end %>
   </tbody>
@@ -44,17 +52,21 @@
 <table>
   <thead>
   <tr>
+    <th>Votes</th>
     <th>Title</th>
     <th>Created By</th>
     <th>Published</th>
+    <th>Upvote</th>
   </tr>
   </thead>
   <tbody>
   <% @works.where(category: "movie").each do |movie| %>
     <tr>
+      <td><%= movie.votes.count %></td>
       <td><%= link_to movie.title, work_path(movie) %></td>
       <td><%= movie.creator %></td>
       <td><%= movie.publication_year %></td>
+      <td><%= link_to "Upvote", upvote_path(movie), method: :post %></td>
     </tr>
   <% end %>
   </tbody>

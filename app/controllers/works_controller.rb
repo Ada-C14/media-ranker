@@ -20,9 +20,11 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
 
     if @work.save
+      flash[:success] = "Successfully created #{@work.category}"
       redirect_to work_path(@work.id)
       return
     else
+      flash.now[:failure] = "Failed to create #{@work.category}"
       render :new, status: :bad_request
       return
     end
@@ -40,9 +42,11 @@ class WorksController < ApplicationController
       head :not_found
       return
     elsif @work.update(work_params)
+      flash[:success] = "Successfully updated #{@work.category}"
       redirect_to work_path(@work.id)
       return
     else
+      flash.now[:failure] = "Failed to update #{@work.category}"
       render :edit, status: :bad_request
       return
     end
@@ -51,6 +55,7 @@ class WorksController < ApplicationController
   def destroy
     if @work
       @work.destroy
+      flash[:success] = "Successfully deleted #{@work.category}"
       redirect_to works_path
       return
     else

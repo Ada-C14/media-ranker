@@ -10,6 +10,11 @@ class Work < ApplicationRecord
   validates :publication_year, presence: true
   validates :description, presence: true
 
+  def self.category(category)
+    works = Work.all.where(category:category)
+    return works
+  end
+
   def self.top_ten(category)
     works = Work.all.where(category:category).order('votes_count DESC').limit(10)
     return works

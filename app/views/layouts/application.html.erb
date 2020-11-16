@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <h1>Media Ranker</h1>
+      <nav class ="nav-links">
+        <%= link_to "View Top Media", root_path, class:"nav-buttons" %>
+        <%= link_to "View All Media", works_path, class:"nav-buttons" %>
+        <%= link_to "Add a New Work", new_work_path, class:"nav-buttons" %>
+        <%= link_to "View All Users", users_path, class:"nav-buttons" %>
+
+        <% if session[:user_id] %>
+          <% user = User.find_by(id: session[:user_id]) %>
+          <%= link_to "Logged in as #{user.username}", current_user_path, class:"btn btn-primary" %>
+          <%= link_to "Log Out", logout_path, method: :post, class:"btn btn-primary" %>
+        <% else %>
+          <%= link_to "Log In", login_path, class:"btn btn-primary" %>
+        <% end %>
+      </nav>
+      <section class="flash">
+        <% flash.each do |name, message| %>
+          <div class="flash-message"><%= message %></div>
+        <% end %>
+
+      </section>
+    </header>
+    <%= yield %>
+  </body>
+  <footer>©Ada 2020 Emily Nagai</footer>
+</html>

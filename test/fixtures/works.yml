@@ -1,0 +1,86 @@
+album1:
+  category: album
+  title: Album One
+  created_at: Sun, 15 Nov 2020 05:33:00 UTC +00:00
+  votes_count: 1
+album2:
+  category: album
+  title: Album Two
+  created_at: Sun, 15 Nov 2020 04:33:00 UTC +00:00
+  votes_count: 1
+album3:
+  category: album
+  title: Album Three
+  created_at: Sun, 15 Nov 2020 03:33:00 UTC +00:00
+  votes_count: 1
+album4:
+  category: album
+  title: Album Four
+  created_at: Sun, 15 Nov 2020 02:33:00 UTC +00:00
+  votes_count: 1
+album5:
+  category: album
+  title: Album Five
+  created_at: Sun, 15 Nov 2020 01:33:00 UTC +00:00
+  votes_count: 1
+
+book1:
+  category: book
+  title: Book One
+  created_at: Sun, 15 Nov 2020 06:01:00 UTC +00:00
+  votes_count: 1
+book2:
+  category: book
+  title: Book Two
+  created_at: Sun, 15 Nov 2020 06:02:00 UTC +00:00
+  votes_count: 2
+book3:
+  category: book
+  title: Book Three
+  created_at: Sun, 15 Nov 2020 06:03:00 UTC +00:00
+  votes_count: 3
+book4:
+  category: book
+  title: Book Four
+  created_at: Sun, 15 Nov 2020 06:04:00 UTC +00:00
+  votes_count: 1
+book5:
+  category: book
+  title: Book Five
+  created_at: Sun, 15 Nov 2020 06:05:00 UTC +00:00
+  votes_count: 1
+book6:
+  category: book
+  title: Book Six
+  created_at: Sun, 15 Nov 2020 06:06:00 UTC +00:00
+  votes_count: 1
+book7:
+  category: book
+  title: Book
+  created_at: Sun, 15 Nov 2020 06:07:00 UTC +00:00
+  votes_count: 1
+book8:
+  category: book
+  title: Book Eight
+  created_at: Sun, 15 Nov 2020 06:08:00 UTC +00:00
+  votes_count: 1
+book9:
+  category: book
+  title: Book Nine
+  created_at: Sun, 15 Nov 2020 06:09:00 UTC +00:00
+  votes_count: 1
+book10:
+  category: book
+  title: Book Ten
+  created_at: Sun, 15 Nov 2020 06:10:00 UTC +00:00
+  votes_count: 1
+book11:
+  category: book
+  title: Book Eleven
+  created_at: Sun, 15 Nov 2020 06:11:00 UTC +00:00
+  votes_count: 1
+book12:
+  category: book
+  title: Book Twelve
+  created_at: Sun, 15 Nov 2020 06:12:00 UTC +00:00
+  votes_count: 0

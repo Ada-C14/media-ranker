@@ -1,0 +1,35 @@
+<section class="spotlight"><% spotlight_work = Work.spotlight %>
+
+  <h2 class="spotlight__header">
+    <span class="spotlight__header--prefix">Media Spotlight</span>
+      <% if spotlight_work.nil? %>
+        <%= link_to "Add new works and upvote them!", new_work_path, class: "spotlight__link-to" %>
+      <% else %>
+        <%= link_to spotlight_work.title, work_path(spotlight_work), class: "spotlight__link-to" %>
+        by <%= spotlight_work.creator %>
+      <% end %>
+  </h2>
+
+  <% unless spotlight_work.nil? %>
+    <p class="spotlight__description"><%= spotlight_work.votes_count %> votes - <%= spotlight_work.description %></p>
+  <% end %>
+</section>
+
+<hr class="root__hr">
+
+<section class="top-ten__container">
+  <section class="top-ten__list-container">
+    <h2 class="top-ten__header">Top Albums</h2>
+    <%= render partial: "table", locals: { category: "album" } %>
+  </section>
+
+  <section class="top-ten__list-container">
+    <h2 class="top-ten__header">Top Books</h2>
+    <%= render partial: "table", locals: { category: "book" } %>
+  </section>
+
+  <section class="top-ten__list-container">
+    <h2 class="top-ten__header">Top Movies</h2>
+    <%= render partial: "table", locals: { category: "movie" } %>
+  </section>
+</section>

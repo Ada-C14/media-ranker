@@ -16,6 +16,9 @@ class HomepagesController < ApplicationController
 
   def spotlight
     @works = Work.all
+    if @works.nil?
+      puts "Create some works!"
+    end
     most_votes = Work.new
     @works.each do |work|
       if work.votes.size > most_votes.votes.size

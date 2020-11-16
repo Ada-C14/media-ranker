@@ -12,10 +12,10 @@ describe User do
       expect(user.valid?).must_equal true
     end
 
-    # it 'does not instantiate given an invalid user' do
-    #
-    #   expect(@invalid_user.valid?).must_equal false
-    # end
+    it 'does not instantiate given an invalid user' do
+
+      expect(User.new.valid?).must_equal false
+    end
   end
 
   describe 'relationships' do

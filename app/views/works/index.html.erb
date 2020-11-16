@@ -1,73 +1,16 @@
+<main>
 <h1> Works List</h1>
 <h2> Books </h2>
-<main>
-<table>
-  <tr class="border-bottom">
-    <th>Votes</th>
-    <th>Title</th>
-    <th>Created By</th>
-    <th>Published</th>
-    <th>Upvote</th>
-  </tr>
-  <% @all_books.each do |work| %>
-    <%# if work.category == "book" %>
-      <tr class="border-bottom">
-        <td><%= pluralize(work.votes.count, "vote") %></td>
-        <td> <%= link_to work.title, work_path(work)  %></td>
-        <td><%= work.creator %></td>
-        <td><%= work.publication_date %></td>
-        <td><%= button_to 'Upvote', upvote_work_path(work), method: :post %></td>
-    <%#end %>
-  <% end %>
-  </tr>
-</table>
+
+  <%= render partial: "table", locals: { works: @all_books} %>
+
 
 <h2> Albums </h2>
 
-<table>
-  <tr class="border-bottom">
-    <th>Votes</th>
-    <th>Title</th>
-    <th>Created By</th>
-    <th>Published</th>
-    <th>Upvote</th>
-  </tr>
-  <% @all_albums.each do |work| %>
-    <%# if work.category == "album" %>
-      <tr class="border-bottom">
-        <td><%= pluralize(work.votes.count, "vote") %></td>
-        <td> <%= link_to work.title, work_path(work) %></td>
-        <td><%= work.creator %></td>
-        <td><%= work.publication_date%></td>
-        <td><%= button_to 'Upvote', upvote_work_path(work), method: :post %></td>
-    <%#end %>
-  <% end %>
-  </tr>
-</table>
+  <%= render partial: "table", locals: { works: @all_albums} %>
 
 <h2> Movies </h2>
 
-<table>
-  <tr class="border-bottom">
-    <th>Votes</th>
-    <th>Title</th>
-    <th>Created By</th>
-    <th>Published</th>
-    <th>Upvote</th>
-  </tr>
-<!--  Need to fix uniqueness for movie titles (capitalization needs to be included)-->
-  <%# @works.each do |work| %>
-  <% @all_movies.each do |movie| %>
+  <%= render partial: "table", locals: { works: @all_movies} %>
 
-    <%# if work.category == "movie" %>
-      <tr class="border-bottom">
-        <td><%= pluralize(movie.votes.count, "vote") %></td>
-        <td> <%= link_to movie.title, work_path(movie) %></td>
-        <td><%= movie.creator %></td>
-        <td><%= movie.publication_date%></td>
-        <td><%= button_to 'Upvote', upvote_work_path(movie), method: :post %></td>
-      </tr>
-    <%#end %>
-  <% end %>
-</table>
 </main>

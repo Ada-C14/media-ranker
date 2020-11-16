@@ -8,9 +8,8 @@ describe Vote do
     end
 
     it 'cannot be instantiated when given invalid work or user id' do
-      vote = Vote.create()
-      #????????? how to make an invalid test??
-      expect(vote).must_be_nil #must_equal false
+      vote = Vote.new
+      expect(vote.valid?).must_equal false
     end
   end
   describe 'relationships' do

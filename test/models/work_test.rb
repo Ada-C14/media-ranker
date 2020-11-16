@@ -101,7 +101,7 @@ describe Work do
       expect((works.spotlight).creator).must_equal "Ms. Trevion Buckridge"
     end
 
-    it 'if there is a tie it uses the most recent work' do
+    it 'if there is a tie it uses the oldest work' do
       works = Work.all
       recent_work = Work.create(title: "New Work Title",
                                 description: "Fugit d est quam sunt porro vel rerum.",
@@ -119,7 +119,7 @@ describe Work do
       works = Work.all
       pp works.last
 
-      expect((works.spotlight).title).must_equal "New Work Title"
+      expect((works.spotlight).title).must_equal "Kreb-Full-o Been"
     end
   end
   describe 'top ten' do

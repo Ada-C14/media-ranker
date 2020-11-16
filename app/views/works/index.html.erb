@@ -1,0 +1,47 @@
+<body>
+  <h1> List of all Media</h1>
+  <div>
+  <h2>
+    Books
+  </h2>
+    <ul> <% @works.sort_votes.each do |work|  %>
+        <% if work.category == "book" %>
+        <li> <%= link_to work.title, work_path(work) %> |
+          <%= link_to "Edit", edit_work_path(work[:id]), method: :get%> |
+          <%= link_to "Delete", work_path(work[:id]), method: :delete, data: {confirm: "Are you sure?"} %>
+        <%= link_to "Upvote", vote_work_path(work[:id]), method: :post %></li>
+          <li> Votes: <%= work.votes.count %></li>
+          <% end %>
+      <% end %>
+    </ul>
+  <h2>
+    Movies
+  </h2>
+    <ul>
+      <% @works.sort_votes.each do |work| %>
+      <% if work.category == "movie" %>
+       <li><%= link_to work.title, work_path(work) %> |
+         <%= link_to "Edit", edit_work_path(work[:id]) %> |
+         <%= link_to "Delete", work_path(work[:id]), method: :delete, data: {confirm: "Are you sure?"} %>
+         <%= link_to "Upvote", vote_work_path(work[:id]), method: :post %></li>
+         <li> Votes: <%= work.votes.count %></li>
+          <% end %>
+      <% end %>
+    </ul>
+  <h2>
+    Albums
+  </h2>
+    <ul>
+      <% @works.sort_votes.each do |work| %>
+        <% if work.category == "album" %>
+        <li><%= link_to work.title, work_path(work) %>
+          <%= link_to "Edit", edit_work_path(work[:id]) %>
+          <%= link_to "Delete", work_path(work[:id]), method: :delete, data: {confirm: "Are you sure?"} %>
+          <%= link_to "Upvote", vote_work_path(work[:id]), method: :post %></li>
+          <li> Votes: <%= work.votes.count %></li>
+        <% end %>
+      <% end %>
+      <li></li>
+    </ul>
+  </div>
+  </body>

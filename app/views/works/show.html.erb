@@ -1,0 +1,37 @@
+<main>
+  <section>
+  <h2 class="title">
+    <%= "Title: #{@work.title}" %>
+  </h2>
+
+  <div>
+  <h3> <% if @work.category == "book" %>
+      <%= "Author:" %>
+    <% elsif @work.category == "movie"%>
+    <%= "Director:" %>
+      <% elsif @work.category == "album"%>
+    <%= "Performed by:" %>
+      <% end %>
+    <%= @work.creator %>
+  </h3>
+  <h3>
+    <%= "Published: #{@work.publication_year}" %>
+  </h3>
+  <h3>
+    <%= "Description: #{@work.description}" %>
+  </h3>
+    <button> <%= link_to "Upvote", vote_work_path(@work[:id]), method: :post %> </button>
+  </div>
+    <h3> Users Who Have Voted for <%= @work.title %> </h3>
+    <div>
+      <ul>
+        <% @votes = Vote.all %>
+        <% @votes.each do |vote| %>
+          <% if vote.work_id == @work.id %>
+            <li> <%= user_lookup(vote.user_id) %> </li>
+            <% end %>
+          <% end %>
+      </ul>
+    </div>
+  </section>
+</main>

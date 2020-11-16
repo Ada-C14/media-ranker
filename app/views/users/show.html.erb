@@ -1,0 +1,23 @@
+<main>
+  <section>
+    <h2>
+      <%= "User: #{@user.username}" %>
+    </h2>
+  </section>
+  <div>
+    <h3>
+      Votes
+    </h3>
+    <ul>
+      <% @votes = Vote.all %>
+      <% @votes.each do |vote| %>
+        <% if vote.user_id == @user.id %>
+        <li> <%= work_lookup(vote.work_id) %> </li>
+    <% end %>
+        <% end %>
+
+      <%# end %>
+
+    </ul>
+  </div>
+</main>

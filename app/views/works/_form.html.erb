@@ -1,0 +1,50 @@
+<% if @work.errors.any? %>
+  <section class="alert__container">
+    <div class="alert alert-error">
+      <span> A problem occurred: Could not create <%= @work.category %> </span>
+      <ul>
+        <% @work.errors.each do |column, message| %>
+          <li>
+            <%= column %> <%= message %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </section>
+<% end %>
+
+<main>
+  <% if action_name == "Create Work" %>
+    <h2>Add a new work</h2>
+  <% else %>
+    <h2>Edit This <%= @work.category.capitalize %> </h2>
+  <% end %>
+
+  <%= form_with model: @work do |f| %>
+
+    <div class="form-group">
+      <%= f.label :category %>
+      <%= f.select :category, ['album', 'book', 'movie'], {}, class: "form-control"  %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control"  %></div>
+
+    <div class="form-group">
+      <%= f.label :creator %>
+      <%= f.text_field :creator, class: "form-control"  %></div>
+
+    <div class="form-group">
+      <%= f.label :publication_year %>
+      <%= f.text_field :publication_year, class: "form-control"  %></div>
+
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_area :description, class: "form-control"  %></div>
+
+    <div class="form-group">
+      <%= f.submit action_name, class: "btn btn-primary" %></div>
+  <% end %>
+
+</main>

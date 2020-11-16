@@ -21,7 +21,7 @@ class WorksController < ApplicationController
     if @work.save
       redirect_to work_path(@work.id)
     else
-      render :new, status: :bad_request
+      render :login_form, status: :bad_request
     end
   end
 
@@ -44,7 +44,7 @@ class WorksController < ApplicationController
       return
     else # save failed :(
       flash.now[:error] = "Something happened. work not updated."
-      render :edit, status: :bad_request # show the new work form view again
+      render :edit, status: :bad_request # show the login_form work form view again
       return
     end
   end

@@ -9,7 +9,7 @@ Bundler.require(*Rails.groups)
 module MediaRanker
   class Application < Rails::Application
   config.generators do |g|
-    # Force new test files to be generated in the minitest-spec style
+    # Force login_form test files to be generated in the minitest-spec style
     g.test_framework :minitest, spec: true
   end
     # Initialize configuration defaults for originally generated Rails version.

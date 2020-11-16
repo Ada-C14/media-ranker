@@ -34,7 +34,7 @@ puts "#{work_failures.length} works failed to save"
 
 # Since we set the primary key (the ID) manually on each of the
 # tables, we've got to tell postgres to reload the latest ID
-# values. Otherwise when we create a new record it will try
+# values. Otherwise when we create a login_form record it will try
 # to start at ID 1, which will be a conflict.
 puts "Manually resetting PK sequence on each table"
 ActiveRecord::Base.connection.tables.each do |t|

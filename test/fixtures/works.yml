@@ -1,0 +1,54 @@
+test1_book:
+  category: book
+  title: test book 1
+  creator: test author 1
+  publication_year: 2011
+  description: test book description 1
+test2_book:
+  category: book
+  title: test book 2
+  creator: test author 2
+  publication_year: 2012
+  description: test book description 2
+test3_book:
+  category: book
+  title: test book 3
+  creator: test author 3
+  publication_year: 2013
+  description: test book description 3
+test1_movie:
+  category: movie
+  title: test movie 1
+  creator: test director 1
+  publication_year: 2011
+  description: test movie description 1
+test2_movie:
+  category: movie
+  title: test movie 2
+  creator: test director 2
+  publication_year: 2012
+  description: test movie description 2
+test3_movie:
+  category: movie
+  title: test movie 3
+  creator: test director 3
+  publication_year: 2013
+  description: test movie description 3
+test1_album:
+  category: album
+  title: test album 1
+  creator: test musician 1
+  publication_year: 2011
+  description: test album description 1
+test2_album:
+  category: album
+  title: test album 2
+  creator: test musician 2
+  publication_year: 2012
+  description: test album description 2
+test3_album:
+  category: album
+  title: test album 3
+  creator: test musician 3
+  publication_year: 2013
+  description: test album description 3

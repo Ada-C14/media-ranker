@@ -1,0 +1,85 @@
+// Place all the styles related to the Homepages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+.spotlight__header--prefix {
+  color: #424242;
+}
+.spotlight__header {
+  color: #26A69A;
+}
+
+.spotlight {
+  padding: 0 2rem 2rem 2rem;
+}
+
+.spotlight__description {
+  margin-bottom: 0;
+}
+
+.spotlight__link-to {
+  border-bottom: 2px solid;
+}
+
+a, h2, h3 {
+  color: #26A69A;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
+
+h2, .h2 {
+  font-size: 2rem;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: bold;
+}
+
+body, h1, h2, h3, h4, h5 {
+  font-family: "Gudea", sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: bold;
+}
+
+article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+  display: block;
+}
+
+main {
+  padding: 2rem;
+}
+
+.top-ten__header {
+  color: #26A69A;
+  border-bottom: 2px solid;
+  border-bottom-color: #B2DFDB;
+}
+
+.top-ten__creator {
+  color: slategrey;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0;
+  margin-inline-end: 0;
+}
+
+.top-ten__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 2em;
+}

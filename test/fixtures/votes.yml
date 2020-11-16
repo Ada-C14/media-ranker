@@ -1,0 +1,27 @@
+test1_vote:
+  user: dusty
+  work: test1_book
+test2_vote:
+  user: gio
+  work: test1_book
+test3_vote:
+  user: imre
+  work: test1_book
+test4_vote:
+  user: onyx
+  work: test3_book
+test5_vote:
+  user: winter
+  work: test2_book
+test6_vote:
+  user: carmen
+  work: test3_book
+test7_vote:
+  user: romeo
+  work: test1_movie
+test8_vote:
+  user: rafael
+  work: test2_movie
+test9_vote:
+  user: kirra
+  work: test1_album

@@ -24,9 +24,8 @@ describe UsersController do
 
   describe "show" do
     it "can get a valid user" do
-      user =
           # Act
-          get user_path(user.id)
+          get user_path(first.id)
 
       # Assert
       must_respond_with :success
@@ -48,9 +47,7 @@ describe UsersController do
 
       # Act-Assert
 
-      # set fixtures
-
-      must_respond_with :redirect
+      # must_respond_with :redirect
     end
   end
 

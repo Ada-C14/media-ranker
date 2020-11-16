@@ -6,19 +6,10 @@ describe Vote do
   end
 
   it "will have the required fields" do
-    # Your code here
+    vote = votes(:someone_voted)
+    [:user_id, :work_id].each do |check|
+      expect(vote).must_respond_to check
+    end
   end
 
-  describe "relationships" do
-    # Your tests go here
-  end
-
-  describe "validations" do
-    # Your tests go here
-  end
-
-  # Tests for methods you create should go here
-  describe "custom methods" do
-    # Your tests here
-  end
 end

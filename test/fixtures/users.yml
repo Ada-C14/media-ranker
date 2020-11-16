@@ -1,8 +1,8 @@
 first:
-  username: first person
+  name: first person
 
 second:
-  username: not first
+  name: not first
 
 third:
-  username: you placed, tho!
+  name: you placed, tho!

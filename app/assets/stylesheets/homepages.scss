@@ -86,8 +86,40 @@ nav a{
 
 }
 
-#spotlight-font {
+#spotlight_font {
+    font-family: "Gudea", sans-serif;
     font-weight: bold !important;
 
+}
 
+#spotlight_by {
+
+    color: #26a69a;
+    font-family: "Gudea", sans-serif;
+    font-weight: bold;
+
+}
+
+#title_link {
+    text-decoration: underline;
+    text-decoration-color: #00796B !important;
+    font-family: "Gudea", sans-serif;
+    font-weight: bold;
+}
+
+#Top_10
+{
+    color: #26a69a;
+    font-weight: bold;
+}
+
+.top_line {
+    margin-top: .5px;
+    border-color: #c5e7e4;
+    border-width: 2px;
+}
+
+#votes {
+    font-size: 16px;
+    font-weight: normal;
 }

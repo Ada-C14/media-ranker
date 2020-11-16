@@ -5,7 +5,7 @@
     <div class="col-sm-12">
       <section class="spotlight">
         <h2 class="spotlight__header">
-          <span class="spotlight__header--prefix", id="spotlight_font">Media Spotlight: <%= link_to @spotlight.title, work_path(@spotlight.id) %> by  <%= @spotlight.creator %></span>
+          <span class="spotlight__header--prefix", id="spotlight_font">Media Spotlight:</span> <span id="title_link"><%= link_to @spotlight.title, work_path(@spotlight.id) %></span><span id="spotlight_by"> by <%= @spotlight.creator %></span></span>
         </h2>
         <p class="spotlight__description">
           <%= @spotlight.votes.size %> votes - <%= @spotlight.description %>
@@ -16,42 +16,42 @@
   </div>
     <div class="row">
       <div class="col-sm-12 col-md-4">
-        <h2>Top Movies </h2>
-        <hr/>
+        <h2 id="Top_10">Top Movies </h2>
+        <hr class="top_line"/>
         <section class="hp_ls_media">
         <ul class="unordered_list">
           <% @top_movies.each do |movie|  %>
-            <%= link_to movie.title, work_path(movie.id)  %><small class="by"> by <%= movie.creator %></small>
+            <li><%= link_to movie.title, work_path(movie.id)  %><small class="by"> by <%= movie.creator %></small></li>
+            <span id="votes"><%= pluralize(movie.votes.size, 'vote', 'votes')  %></span>
             <br>
-            <%= pluralize(movie.votes.size, 'vote', 'votes')  %>
             <br>
           <% end %>
         </ul>
         </section>
       </div>
       <div class="col-sm-12 col-md-4">
-        <h2>Top Books</h2>
-        <hr/>
+        <h2 id="Top_10">Top Books</h2>
+        <hr class="top_line"/>
         <section class="hp_ls_media">
         <ul class="unordered_list">
           <% @top_books.each do |book|  %>
             <li><%= link_to book.title, work_path(book.id)%><small class="by"> by <%= book.creator %></small></li>
+            <span id="votes"><%= pluralize(book.votes.size, 'vote', 'votes') %></span>
             <br>
-            <%= pluralize(book.votes.size, 'vote', 'votes') %>
             <br>
           <% end %>
         </ul>
         </section>
       </div>
       <div class="col-sm-12 col-md-4">
-        <h2>Top Albums</h2>
-        <hr/>
+        <h2 id="Top_10">Top Albums</h2>
+        <hr class="top_line"/>
         <section class="hp_ls_media">
         <ul class="unordered_list">
           <% @top_albums.each do |album|  %>
             <li><%= link_to album.title, work_path(album.id) %><small class="by"> by <%= album.creator %></small></li>
+            <span id="votes"><%= pluralize(album.votes.size, 'vote', 'votes') %></span>
             <br>
-            <%= pluralize(album.votes.size, 'vote', 'votes') %>
             <br>
           <% end %>
         </ul>

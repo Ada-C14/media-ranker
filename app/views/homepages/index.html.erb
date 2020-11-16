@@ -5,7 +5,7 @@
     <div class="col-sm-12">
       <section class="spotlight">
         <h2 class="spotlight__header">
-          <span class="spotlight__header--prefix">Media Spotlight: <%= link_to @spotlight.title, work_path(@spotlight.id) %> by  <%= @spotlight.creator %></span>
+          <span class="spotlight__header--prefix spotlight-title">Media Spotlight: <%= link_to @spotlight.title, work_path(@spotlight.id) %> by  <%= @spotlight.creator %></span>
         </h2>
         <p class="spotlight__description">
           <%= @spotlight.votes.size %> votes - <%= @spotlight.description %>
@@ -20,9 +20,10 @@
         <hr/>
         <section class="hp_ls_media">
         <ul class="unordered_list">
-          <% @movies.each do |movie|  %>
+          <% @top_movies.each do |movie|  %>
             <%= link_to movie.title, work_path(movie.id)  %><small class="by"> by <%= movie.creator %></small>
             <br>
+            <%= pluralize(movie.votes.size, 'vote', 'votes')  %>
             <br>
           <% end %>
         </ul>
@@ -33,9 +34,10 @@
         <hr/>
         <section class="hp_ls_media">
         <ul class="unordered_list">
-          <% @books.each do |book|  %>
+          <% @top_books.each do |book|  %>
             <li><%= link_to book.title, work_path(book.id)%><small class="by"> by <%= book.creator %></small></li>
             <br>
+            <%= pluralize(book.votes.size, 'vote', 'votes') %>
             <br>
           <% end %>
         </ul>
@@ -46,9 +48,10 @@
         <hr/>
         <section class="hp_ls_media">
         <ul class="unordered_list">
-          <% @albums.each do |album|  %>
+          <% @top_albums.each do |album|  %>
             <li><%= link_to album.title, work_path(album.id) %><small class="by"> by <%= album.creator %></small></li>
             <br>
+            <%= pluralize(album.votes.size, 'vote', 'votes') %>
             <br>
           <% end %>
         </ul>

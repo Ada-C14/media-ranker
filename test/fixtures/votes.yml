@@ -1,0 +1,26 @@
+vote_w1_u1:
+  work: work_1
+  user: user_1
+
+vote_w1_u2:
+  work: work_1
+  user: user_2
+
+
+vote_w1_u3:
+  work: work_1
+  user: user_3
+
+vote_w2_u1:
+  work: work_2
+  user: user_1
+
+vote_w2_u2:
+  work: work_2
+  user: user_2
+
+vote_w2_u1:
+  work: work_3
+  user: user_1
+
+

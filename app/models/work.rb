@@ -17,7 +17,6 @@ class Work < ApplicationRecord
   end
 
   def self.top_ten(category)
-    # works = Work.all.where(category:category).order('votes_count DESC').limit(10)
     works = self.category_organized(category).limit(10)
     return works
   end

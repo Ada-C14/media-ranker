@@ -47,5 +47,10 @@ class ActiveSupport::TestCase
     return user
   end
 
-  # Add more helper methods to be used by all tests here...
+  def clear_database
+    User.delete_all
+    Work.delete_all
+    Vote.delete_all
+  end
+
 end

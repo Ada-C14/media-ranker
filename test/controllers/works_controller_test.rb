@@ -12,7 +12,7 @@ describe WorksController do
   describe "show" do
 
     it "can get a valid works" do
-      @work = Work.create(category: "book", title: "Work 1", creator: "Creator 1", publication_year: "January 1, 2020", description: "Description 1")
+      @work = Work.create(category: "book", title: "Work 1", creator: "Creator 1", publication_year: "2020", description: "Description 1")
       work_id = @work.id
       get work_path(work_id)
       must_respond_with :success
@@ -36,26 +36,26 @@ describe WorksController do
     before do
 
       @valid_hash = {
-          work: {category: "album", title: "Work 2", creator: "Creator 2", publication_year: "January 2, 2020", description: "Description 2"}
+          work: {category: "album", title: "Work 2", creator: "Creator 2", publication_year: "2020", description: "Description 2"}
       }
 
       @invalid_hash_1 = {
-          work: {category: nil, title: "Work 1", creator: "Creator 1", publication_year: "January 2020", description: "Description 1"}
+          work: {category: nil, title: "Work 1", creator: "Creator 1", publication_year: "2020", description: "Description 1"}
       }
 
       @invalid_hash_2 = {
-          work: {category: "book", title: nil, creator: "Creator 1", publication_year: "January 2020", description: "Description 1"}
+          work: {category: "book", title: nil, creator: "Creator 1", publication_year: "2020", description: "Description 1"}
       }
 
       @invalid_hash_3 = {
-          work: {category: "book", title: "Work 1", creator: nil, publication_year: "January 2020", description: "Description 1"}
+          work: {category: "book", title: "Work 1", creator: nil, publication_year: "2020", description: "Description 1"}
       }
 
       @invalid_hash_4 = {
           work: {category: "book", title: "Work 1", creator: "Creator 1", publication_year: nil, description: "Description 1"}
       }
       @invalid_hash_5 = {
-          work: {category: "book", title: "Work 1", creator: "Creator 1", publication_year: "January 2020", description: nil}
+          work: {category: "book", title: "Work 1", creator: "Creator 1", publication_year: "2020", description: nil}
       }
 
     end
@@ -118,7 +118,7 @@ describe WorksController do
   describe "edit" do
 
     before do
-      @work = Work.create(category: "book", title: "Work 1", creator: "Creator 1", publication_year: "January 1, 2020", description: "Description 1")
+      @work = Work.create(category: "book", title: "Work 1", creator: "Creator 1", publication_year: "2020", description: "Description 1")
     end
 
     it "can get the edit page for an existing works" do
@@ -135,10 +135,10 @@ describe WorksController do
   describe "update" do
 
     before do
-      @work = Work.create(category: "book", title: "Work 1", creator: "Creator 1", publication_year: "January 1, 2020", description: "Description 1")
+      @work = Work.create(category: "book", title: "Work 1", creator: "Creator 1", publication_year: "2020", description: "Description 1")
 
       @work_hash_6 = {
-          work: {category: "book", title: "Work 6", creator: "Creator 6", publication_year: "June 6, 2020", description: "Description 6"}
+          work: {category: "book", title: "Work 6", creator: "Creator 6", publication_year: "2020", description: "Description 6"}
       }
     end
 
@@ -170,7 +170,7 @@ describe WorksController do
   describe "destroy" do
 
     it "can destroy a works" do
-      @work7 = Work.create(category: "book", title: "Work 7", creator: "Creator 7", publication_year: "January 7, 2020", description: "Description 7")
+      @work7 = Work.create!(category: "book", title: "Work 7", creator: "Creator 7", publication_year: "2020", description: "Description 7")
       # @work7.save
       id = @work7.id
 

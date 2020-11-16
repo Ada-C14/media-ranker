@@ -4,7 +4,7 @@ describe User do
     describe 'validations' do
       before do
         # Arrange
-        @user = User.new(username: 'testperson')
+        @user = User.new()
       end
 
       it 'is valid when all fields are present' do

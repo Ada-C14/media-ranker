@@ -1,0 +1,20 @@
+movie:
+  category: movie
+  title: Her
+  creator: Spike Jonze
+  publication_year: 2013
+  description: Sad robot movie
+
+album:
+  category: album
+  title: Substance
+  creator: New Order
+  publication_year: 1987
+  description: cool 80's new wave album
+
+book:
+  category: book
+  title: Normal People
+  creator: Sally Rooney
+  publication_year: 2018
+  description: sad Irish people are sad

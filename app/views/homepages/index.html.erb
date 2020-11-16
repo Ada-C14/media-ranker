@@ -1,5 +1,5 @@
 <section class="spotlight">
-<h2>
+<h2 class="spotlight__header">
   <% spotlight = Work.spotlight %>
   <% if spotlight.nil? %>
     Database is empty, <%= link_to "Add media!", new_work_path %>
@@ -13,7 +13,7 @@
 </p>
 
 </section>
-<hr class="root__hr" />
+<hr class="root__hr"/>
 
 <section class="top-ten__container">
 <% Work::CATEGORIES.each do |media| %>

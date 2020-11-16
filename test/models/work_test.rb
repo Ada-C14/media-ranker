@@ -71,13 +71,14 @@ describe Work do
         @top_10 = Work.top_ten("album")
       end
 
-      it 'returns 10 items when the list of works is greater than 20' do
-        30.times do
-          @work = Work.create(category: "movie", title: "s", creator: "r", publication_year: "1990", description: "u")
-        end
+      it 'returns up to 10 records from a category' do
+        top_movies = Work.top_ten("movie")
+        top_books = Work.top_ten("book")
+        top_albums = Work.top_ten("album")
 
-        expanded_pool_top_10 = Work.top_ten("album")
-        expect(expanded_pool_top_10.length).must_equal 10
+        expect(top_movies.length).must_be :<=, 10
+        expect(top_books.length).must_be :<=, 10
+        expect(top_albums.length).must_be :<=, 10
       end
 
       it 'returns a list of length HALF size of Work.count, when Work.count < 10' do

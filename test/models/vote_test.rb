@@ -33,5 +33,12 @@ describe Vote do
       expect(vote.valid?).must_equal false
       expect(vote.errors.messages).must_include :user
     end
+
+    it "does not allow a vote to be created without logging in" do
+      user = nil
+      vote = Vote.create(user_id: user, work_id: @lathe.id)
+      expect(vote.valid?).must_equal false
+      expect(vote.errors.messages).must_include :user
+    end
   end
 end

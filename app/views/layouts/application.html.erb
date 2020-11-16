@@ -5,8 +5,8 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag "application", media: "all", 'data-turbolinks-track': "reload" %>
+    <%= javascript_pack_tag "application", 'data-turbolinks-track': "reload" %>
 
   </head>
 
@@ -22,15 +22,22 @@
 
     <nav>
         <ul>
-        <li><%= link_to "View top media" %></li>
+        <li><%= link_to "View top media", root_path %></li>
         <li><%= link_to "View all media", works_path %></li>
-        <li><%= link_to "Add a new work" %></li>
+        <li><%= link_to "Add a new work", new_work_path %></li>
         <li><%= link_to "View all users" %></li>
       </ul>
     </nav>
-
-
     </header>
+
+    <section class="flash-msg__section">
+    <% flash.each do |name, message| %>
+      <strong class="<%= name %>">
+        <%= message %>
+      </strong>
+    <% end %>
+    </section>
+
     <%= yield %>
   </body>
 </html>

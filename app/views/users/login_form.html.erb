@@ -1,0 +1,7 @@
+<%= form_with model: @user, url: login_path do |f| %>
+
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.submit "Login", class: "btn btn-primary" %>
+<% end %>

@@ -1,0 +1,19 @@
+harry:
+  id: 1
+  name: harry potter
+
+hagrid:
+  id: 2
+  name: rubeus hagrid
+
+ron:
+  id: 3
+  name: ronald weasley
+
+hermione:
+  id: 4
+  name: hermione granger
+
+malfoy:
+  id: 5
+  name: draco malfoy

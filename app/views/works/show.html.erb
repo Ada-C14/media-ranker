@@ -1,0 +1,26 @@
+<h2><%= @work.title.titleize %></h2>
+
+<p> Created by: <%= @work.creator.titleize %></p>
+<p> Published: <%= @work.publication_year %></p>
+<p> <%= @work.description %></p>
+
+
+<section>
+  <%= button_to "Back to media ranks", root_path, method: :get, form: {style: 'display:inline-block;'}, class: "btn btn-secondary" %>
+  <%= button_to "Edit", edit_work_path, method: :get, form: {style: 'display:inline-block;'}, class: "btn btn-primary"  %>
+  <%= button_to "Upvote", work_votes_path(@work.id), method: :post, form: {style: 'display:inline-block;'}, class: "btn btn-primary"  %>
+  <%= button_to "Delete", work_path(@work.id), method: :delete, form: {style: 'display:inline-block;'}, class: "btn btn-danger" , data: { confirm: "Are you sure you want to delete this #{@work.category}?" } %>
+</section>
+
+
+<section>
+  <h4> <%= @work.votes.count %> votes for this <%= @work.category %></h4>
+  <ol>
+    <% @work.votes.each do |vote| %>
+      <li><b><%= link_to vote.user.name.upcase, user_path(vote.user.id) %></b> -- <%= vote.created_at %> </li>
+    <% end %>
+  </ol>
+
+</section>
+
+<%= button_to "View top media", root_path, method: :get, form: {style: 'display:inline-block;'}, class: "btn btn-secondary" %>

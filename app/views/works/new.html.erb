@@ -1,0 +1,13 @@
+<h2>Add a new work</h2>
+
+<% if @work.errors.any? %>
+  <ul class="errors">
+    <% @work.errors.each do |column, message| %>
+      <li><strong><%= column %></strong> <%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<p>Please provide the following information to save your work:</p>
+
+<%= render partial: "form", class: "form-group", locals: { action_name: "New" } %>

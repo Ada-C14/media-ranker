@@ -70,6 +70,7 @@ class WorkTest < ActiveSupport::TestCase
         expect(work_with_nil_category.valid?).must_equal false
         expect(work_with_nil_category.errors.messages).must_include :category
         expect(work_with_nil_category.errors.messages[:category]).must_equal ["can't be blank"]
+        assert_operator work_with_nil_category.errors.count, :>, 0
       end
 
       it "must have a title" do
@@ -84,6 +85,7 @@ class WorkTest < ActiveSupport::TestCase
         expect(work_with_nil_title.valid?).must_equal false
         expect(work_with_nil_title.errors.messages).must_include :title
         expect(work_with_nil_title.errors.messages[:title]).must_equal ["can't be blank"]
+        assert_operator work_with_nil_title.errors.count, :>, 0
       end
 
 
@@ -161,7 +163,7 @@ class WorkTest < ActiveSupport::TestCase
             # Destroy all existing works
             Work.destroy_all
             expect(Work.count).must_equal 0
-            # Since Work and Votes are associated, when work is destroyed, the the associated votes should also be destroyed.
+            # Since Work and Votes are associated, when work is destroyed, the associated votes should also be destroyed.
             expect(Vote.count).must_equal 0
 
             expect(Work.top_ten("movie")).must_be_empty

@@ -51,6 +51,7 @@ class UserTest < ActiveSupport::TestCase
         expect(user_not_found.valid?).must_equal false
         expect(user_not_found.errors.messages).must_include :username
         expect(user_not_found.errors.messages[:username]).must_equal ["can't be blank"]
+        assert_operator user_not_found.errors.count, :>, 0
       end
     end
   end

@@ -23,6 +23,10 @@ class UsersController < ApplicationController
     flash[:success] = "Successfully logged out"
   end
 
+  def must_be_logged
+    flash[:error] = "A problem occurred: You must log in to do that"
+  end
+
   #########################################################
 
   def index
@@ -33,7 +37,7 @@ class UsersController < ApplicationController
     user_id = params[:id].to_i
     @user = User.find_by(id: user_id)
     if @user.nil?
-      not_found_error_notice
+      could_not_log_in_error_notice
       return
     end
   end
@@ -49,7 +53,7 @@ class UsersController < ApplicationController
       user = User.new(username: params[:user][:username])
       if !user.save
         could_not_log_in_error_notice
-        redirect_to root_path
+        redirect_to login_path
         return
       end
       successful_login
@@ -69,7 +73,6 @@ class UsersController < ApplicationController
         log_out
       else
         session[:user_id] = nil
-
       end
     else
       authentication_notice
@@ -79,6 +82,7 @@ class UsersController < ApplicationController
 
   def current
     unless @current_user
+     must_be_logged
       redirect_to root_path
       return
     end

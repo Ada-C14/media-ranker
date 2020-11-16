@@ -57,6 +57,48 @@ class WorkTest < ActiveSupport::TestCase
       end
     end
 
+    describe "validations" do
+      it "must have a category" do
+        work_with_nil_category = Work.create(
+            category: nil,
+            title: "Test movie",
+            creator: "Test movie creator",
+            publication_year: 2000,
+            description: "Test movie description"
+        )
+
+        expect(work_with_nil_category.valid?).must_equal false
+        expect(work_with_nil_category.errors.messages).must_include :category
+        expect(work_with_nil_category.errors.messages[:category]).must_equal ["can't be blank"]
+      end
+
+      it "must have a title" do
+        work_with_nil_title = Work.create(
+            category: "album",
+            title: nil,
+            creator: "Test album creator",
+            publication_year: 2001,
+            description: "Test album description"
+        )
+
+        expect(work_with_nil_title.valid?).must_equal false
+        expect(work_with_nil_title.errors.messages).must_include :title
+        expect(work_with_nil_title.errors.messages[:title]).must_equal ["can't be blank"]
+      end
+
+
+      it "doesn't have to have creator, publication year, or description" do
+        nil_creator_year_desc = Work.create(
+            category: "album",
+            title: "Test album title",
+            creator: nil,
+            publication_year: nil,
+            description: nil
+        )
+        expect(nil_creator_year_desc.valid?).must_equal true
+      end
+    end
+
     describe "custom methods" do
       describe "spotlight" do
         it "returns work with most votes" do

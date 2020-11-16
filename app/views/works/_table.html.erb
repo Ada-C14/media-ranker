@@ -1,8 +1,7 @@
 <section class="media-table">
   <h4><%= action_name.capitalize %>s</h4>
 
-  <% works_list = @works.where(category: action_name) %>
-  <% if works_list.empty? %>
+  <% if @works.order_by_votes(action_name).empty? %>
     <p>No <%= action_name %>s Available</p>
   <% else %>
     <table class="table">
@@ -16,7 +15,7 @@
       </tr>
       </thead>
       <tbody>
-      <% works_list.each do |work| %>
+      <% @works.order_by_votes(action_name).each do |work| %>
         <tr>
           <td><%= work.votes.count %></td>
           <td><%= link_to "#{work.title}", work_path(work) %></td>

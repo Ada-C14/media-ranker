@@ -31,7 +31,12 @@ class WorksController < ApplicationController
       flash[:success] = "Work added to the ranker"
       redirect_to work_path(@work) and return
     else
-      flash[:warning] = "Sorry, the work was not saved"
+      errors = {}
+      @work.errors.each do |column, message|
+        errors[column] = message
+      end
+      flash[:warning] = errors
+      # flash[:warning] = "Sorry, the work was not saved"
       render :new, status: :bad_request and return
     end
   end
@@ -51,7 +56,12 @@ class WorksController < ApplicationController
       flash[:success] = "Your work has been updated"
       redirect_to work_path(@work) and return
     else
-      flash[:warning] = "Sorry, your work was not updated"
+      errors = {}
+      @work.errors.each do |column, message|
+        errors[column] = message
+      end
+      flash[:warning] = errors
+      # flash[:warning] = "Sorry, your work was not updated"
       render :edit, status: :bad_request and return
     end
   end

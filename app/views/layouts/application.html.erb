@@ -41,13 +41,41 @@
       </nav>
     </header>
 
+<!--    <section class="alert__container">-->
+      <%# flash.each do |name, message| %>
+<!--        <div class="alert alert-<%#= name %>">-->
+<!--          <span><%#= message %></span>-->
+<!--        </div>-->
+      <%# end %>
+<!--    </section>-->
+
     <section class="alert__container">
       <% flash.each do |name, message| %>
         <div class="alert alert-<%= name %>">
-          <span><%= message %></span>
+          <% if message.class == Hash %>
+            <span>A problem occurred: Could not save media</span>
+            <ul>
+              <% message.each do |column, message| %>
+                <li><%= column %>: <%= message %></li>
+              <% end %>
+            </ul>
+          <% else %>
+            <span><%= message %></span>
+          <% end %>
         </div>
       <% end %>
     </section>
+
+<!--    <div class="alert alert-warning">-->
+      <%# if @work.errors.any? %>
+<!--        <span>A problem occurred: Could not save <%#= @work.category %></span>-->
+<!--        <ul>-->
+          <%# @work.errors.each do |column, message| %>
+<!--            <li><%#= column %>: <%#= message %></li>-->
+          <%# end %>
+<!--        </ul>-->
+      <%# end %>
+<!--    </div>-->
 
     <main>
       <%= yield %>

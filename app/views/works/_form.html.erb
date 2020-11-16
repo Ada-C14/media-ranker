@@ -1,27 +1,41 @@
-<% if @work.errors.any? %>
-  <ul class="error_message">
-    <% @work.errors.each do |column, message| %>
-      <li><%= column %> <%= message %></li>
-    <% end %>
-  </ul>
-<% end %>
+<!--<div class="alert alert-warning">-->
+  <%# if @work.errors.any? %>
+<!--    <span>A problem occurred: Could not save <%#= @work.category %></span>-->
+<!--    <ul>-->
+      <%# @work.errors.each do |column, message| %>
+<!--        <li><%#= column %>: <%#= message %></li>-->
+      <%# end %>
+<!--    </ul>-->
+  <%# end %>
+<!--</div>-->
 
 <%= form_with model: @work do |f| %>
+  <div class="form-group">
+    <%= f.label :category %>
+    <%= f.select :category, ["album", "book", "movie"], {},  { class: "form-control" } %>
+  </div>
 
-  <%= f.label :category %>
-  <%= f.select :category, ["album", "book", "movie"]%>
+  <div class="form-group">
+    <%= f.label :title %>
+    <%= f.text_field :title, class: "form-control" %>
+  </div>
 
-  <%= f.label :title %>
-  <%= f.text_field :title %>
+  <div class="form-group">
+    <%= f.label :creator %>
+    <%= f.text_field :creator, class: "form-control" %>
+  </div>
 
-  <%= f.label :creator %>
-  <%= f.text_field :creator %>
+  <div class="form-group">
+    <%= f.label :publication_year %>
+    <%= f.text_field :publication_year, class: "form-control" %>
+  </div>
 
-  <%= f.label :publication_year %>
-  <%= f.text_field :publication_year %>
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_field :description, class: "form-control" %>
+  </div>
 
-  <%= f.label :description %>
-  <%= f.text_field :description %>
-
-  <%= f.submit action_name, class: "work-button" %>
+  <div class="form-group">
+    <%= f.submit action_name, class: "btn btn-primary" %>
+  </div>
 <% end %>

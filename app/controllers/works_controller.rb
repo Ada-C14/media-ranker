@@ -5,7 +5,9 @@ class WorksController < ApplicationController
   before_action :find_work, only: [:show, :update, :edit, :destroy]
 
   def index
-    @works = Work.all
+    @books = Work.category_organized('book')
+    @albums = Work.category_organized('album')
+    @movies = Work.category_organized('movie')
   end
 
   def show
@@ -66,21 +68,15 @@ class WorksController < ApplicationController
   end
 
   def upvote
-    # pull the user_id out of the session
     if session[:user_id]
-    # find / load the user with that id from the database
       user = User.find_by(id: session[:user_id])
       @vote = Vote.create(user: user)
-    # if that doesnt work, return error
     else
       flash.now[:error] = "Something happened. User not found or not logged in."
       render :new, status: :bad_request
       return
-    # if it does, you know that somebody is logged in
     end
-    # so you can go ahead and create a vote
 
-    #(google: validation and scope)
   end
 
   private

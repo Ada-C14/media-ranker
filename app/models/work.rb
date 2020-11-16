@@ -7,8 +7,9 @@ class Work < ApplicationRecord
       message: "not a valid category" }
   validates :title, presence: true
   validates :creator, presence: true
-  validates :publication_year, presence: true
+  validates :publication_year, presence: true, numericality: { only_integer: true , greater_than: 1500 , less_than: 2100 , message: "must be valid"}
   validates :description, presence: true
+
 
   def self.category_organized(category)
     works = Work.all.where(category:category).order('votes_count DESC')
@@ -22,7 +23,7 @@ class Work < ApplicationRecord
   end
 
   def self.spotlight
-    return Work.order('votes_count DESC').limit(10)
+    return Work.order('votes_count DESC').first
   end
 
 end

@@ -4,6 +4,8 @@
   <tr>
     <th>ID Number</th>
     <th>Username</th>
+    <th>Votes</th>
+    <th>Date Joined</th>
   </tr>
 
   <% @users.each do |user| %>
@@ -13,6 +15,12 @@
       </td>
       <td>
         <%= link_to "#{user.username}", user_path(user.id)%>
+      </td>
+      <td>
+        <%= user.votes_count%>
+      </td>
+      <td>
+        <%=  %>
       </td>
     </tr>
   <% end %>

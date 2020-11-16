@@ -22,7 +22,7 @@ class VotesController < ApplicationController
         redirect_to work_path(work.id)
         return
       else
-        flash.now[:error] = "You may only vote once per work"
+        flash[:error] = "You may only vote once per work"
         redirect_to work_path(work.id)
         return
       end

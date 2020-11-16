@@ -1,0 +1,25 @@
+<main>
+  <h2>List of Users</h2>
+  <section class="user-table">
+    <h4>Albums</h4>
+    <table class="table">
+      <tr>
+        <th scope="col">Username</th>
+        <th scope="col">Votes</th>
+        <th scope="col">Joined</th>
+      </tr>
+      <% User.all.each do |user| %>
+        <% if user %>
+          <tr>
+            <td><%= link_to user.name, user_path(user.id) %></td>
+            <td><%= user.votes.length %></td>
+            <td><%= user.created_at.strftime("%b %d, %Y") %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </table>
+  </section>
+  <section>
+    <%= button_to "Back to Media List", root_path, method: :get, class: "btn btn-secondary" %>
+  </secion>
+</main>

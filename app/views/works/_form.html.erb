@@ -1,0 +1,34 @@
+<section>
+  <%= form_with model: @work do |f| %>
+    <div class="form-group">
+      <%= f.label :category %>
+      <%= f.select :category, ["album", "book", "movie"], {}, {class: "form-control"} %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :title %>
+      <%= f.text_field :title, class: "form-control"  %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :creator %>
+      <%= f.text_field :creator, class: "form-control"  %>
+    </div>
+
+
+    <div class="form-group">
+      <%= f.label :publication_year %>
+      <%= f.date_field :publication_year, discard_day: true, discard_month:true, class: "form-control"  %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :description %>
+      <%= f.text_area :description, class: "form-control"  %>
+    </div>
+
+    <div class="form-group">
+      <%= f.submit action_name, class: "btn btn-primary" %>
+    </div>
+
+  <% end %>
+</section>

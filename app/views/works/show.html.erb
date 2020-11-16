@@ -1,0 +1,35 @@
+<main>
+  <section class="work-summary">
+    <h2><%= @work.title %></h2>
+    <p>Created by: <%= @work.creator %></p>
+    <p>Published: <%= @work.publication_year.year %></p>
+    <p><%= @work.description %></p>
+    <section class="work-buttons">
+      <%= button_to "Back to media ranks", root_path, method: :get, class: "btn btn-primary" %>
+      <%= button_to "Edit", edit_work_path(@work.id), method: :get, class: "btn btn-primary" %>
+      <%= button_to "Upvote", upvote_work_path(@work.id), class: "btn btn-primary" %>
+      <%= button_to "Delete", work_path(@work.id), method: :delete, data: { confirm: "Are you sure you want to delete this #{@work.category}?" }, class: "btn btn-danger" %>
+    </section>
+  </section>
+  <br>
+  <section class="vote-list">
+    <h3 class="works-votes__header">
+      <%= @work.votes.any? ? @work.votes.length : 0 %> Votes for this <%= @work.category.capitalize %>
+    </h3>
+    <table class="table">
+      <tr>
+        <th scope="col">User</th>
+        <th scope="col">Date</th>
+      </tr>
+      <% @work.votes.each do |vote| %>
+        <% if vote %>
+          <tr>
+            <td><%= link_to vote.user.name, user_path(vote.user.id) %></td>
+            <td><%= vote.submit_date ? vote.submit_date.strftime("%b %d, %Y") : nil %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </table>
+  </section>
+
+</main>

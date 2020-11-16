@@ -7,7 +7,6 @@ class Work < ApplicationRecord
 
   def self.sort_by_votes
     # in descending order
-    # what about media with same votes? is there tie breaker?
     return self.all.sort_by { |work| -work.votes.count }
   end
 

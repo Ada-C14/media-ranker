@@ -31,7 +31,7 @@
           <%@work.votes.each do |vote|%>
             <tr>
               <td><%=link_to(vote.user.name, user_path(vote.user))%></td>
-              <td><%=vote.created_at%></td>
+              <td><%=vote.created_at.to_s(:short_date)%></td>
             </tr>
           <%end%>
         </tbody>
@@ -39,3 +39,4 @@
     </section>
   </section>
 </main>
+

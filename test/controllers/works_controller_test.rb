@@ -350,5 +350,11 @@ describe WorksController do
       must_respond_with :bad_request
     end
 
+    it "will redirect to the root page if given an invalid id" do
+      # Your code here
+      id = -1
+      post upvote_work_path(id)
+      must_redirect_to works_path
+    end
   end
 end

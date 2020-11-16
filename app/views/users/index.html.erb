@@ -13,7 +13,7 @@
         <tr>
           <td><%=link_to(user.name, user_path(user))%></td>
           <td><%=user.votes.count%></td>
-          <td><%=user.created_at%></td>
+          <td><%=user.created_at.to_s(:short_date)%></td>
         </tr>
       <%end%>
   </table>

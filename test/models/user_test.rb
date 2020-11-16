@@ -24,7 +24,7 @@ describe User do
   describe "custom methods" do
     describe "format_date" do
       it "returns a formatted data string for the created_at column" do
-        date = Date.today.strftime("%b %d, %Y")
+        date = DateTime.now.utc.strftime("%b %d, %Y")
         user = User.create!(username: "test user")
         expect(user.format_date).must_equal date
         expect(user.format_date).must_be_instance_of String

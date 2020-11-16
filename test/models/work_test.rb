@@ -47,10 +47,36 @@ describe Work do
   end
 
   describe 'relationships' do
+    describe 'Work' do
+      before do
+        @work = Work.create!(category: 'book', title: 'Test Title', creator: 'Test Creator', publication_year: 1999, description: 'Test description blah blah blah')
+      end
+      it 'can set the work using a Work' do
+        # work = Work.create!(category: 'movie', title: 'Test Work', creator: 'Test Created', publication_year: 2000, description: 'Test D blah blah blah')
+        work = @work
+        vote = Vote.new(work_id: work.id)
 
+        vote.work = work
 
+        expect(vote.work_id).must_equal work.id
+      end
 
+      it 'can set the work using an work_id' do
+        work = @work
+        vote = Vote.new(work_id: work.id)
 
+        vote.work_id = work.id
+
+        expect(vote.work).must_equal work
+      end
+    end
+
+    xdescribe 'Vote' do
+
+    end
+  end
+
+  describe 'Custom Methods' do
 
   end
 end

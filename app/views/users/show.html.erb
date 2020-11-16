@@ -17,7 +17,7 @@
     <% @user.votes.each do |vote| %>
       <% work = Work.find_by(id: vote.work_id) %>
         <tr>
-          <td><%=work.title.titleize%></td>
+          <td><strong><%=link_to work.title.titleize, work_path(work.id)%></strong></td>
           <td><%=work.creator.titleize%></td>
           <td><%=work.publication_year %></td>
           <td><%=work.category.capitalize %></td>
@@ -29,4 +29,3 @@
 </div>
 
 <!--How to access users work vote data?-->
-<!--# Render votes view partials info here?-->

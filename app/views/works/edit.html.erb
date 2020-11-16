@@ -1,0 +1,18 @@
+<section class="alert__container">
+  <% if @work.errors.any? %>
+    <br>
+    <div class="alert alert-warning">
+      <span>A problem occurred: Could not update <%= @work.category %></span>
+      <ul>
+        <% @work.errors.each do |column, message| %>
+          <li><%= column %>: <%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+</section>
+
+<main>
+<h2>Edit this <%= @work.category.singularize %></h2>
+<%= render partial: "form" %>
+</main>

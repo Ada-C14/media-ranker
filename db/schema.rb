@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2020_11_15_065218) do
     t.string "creator"
     t.integer "publication_year"
     t.string "description"
-    t.integer "votes", default: 0
+    t.integer "votes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

@@ -10,9 +10,15 @@ class VotesController < ApplicationController
   end
 
   def create
-
-
     @vote = Vote.new(user_id: session[:user_id], work_id: params[:id])
+
+    Vote.where(work_id: params[:id]).each do |vote|
+      if vote.user_id == session[:user_id]
+        flash[:error] = "Has already voted for this work"
+        return
+      end
+    end
+
     if @vote.save
       flash[:success] = "Successfully upvoted!"
 

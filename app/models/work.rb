@@ -21,7 +21,7 @@ class Work < ApplicationRecord
             }
 
   def self.media_spotlight
-    if Work.order('votes_count DESC NULLS LAST, created_at')[0].votes_count.blank?
+    if Work.all.blank? || Work.order('votes_count DESC NULLS LAST, created_at')[0].votes_count.blank?
       nil
     else
       Work.order('votes_count DESC NULLS LAST, created_at')[0]

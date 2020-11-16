@@ -5,7 +5,7 @@
 <section>
   <% hash = {"album" => "All Albums", "book" => "All Books", "movie" => "All Movies"} %>
   <% ["album", "book", "movie"].each do |category| %>
-    <% works = Work.category(category) %>
+    <% works = Work.category_organized(category) %>
     <h3><%= hash[category] %></h3>
     <table id="index-table">
       <tr>

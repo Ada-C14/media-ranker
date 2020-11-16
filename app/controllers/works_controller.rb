@@ -1,4 +1,5 @@
 class WorksController < ApplicationController
+  before_action :require_login, only: [:new, :upvote]
   def index
     @works = Work.all
     @books = Work.where(category: "book")

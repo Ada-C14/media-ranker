@@ -1,0 +1,8 @@
+<main>
+  <h2>List of Works</h2>
+  <%= render partial: "table", locals: { works: @albums, category: "album" } %>
+  <%= render partial: "table", locals: { works: @books, category: "book" } %>
+  <%= render partial: "table", locals: { works: @movies, category: "movie" } %>
+  <button class="btn btn-secondary"><%= link_to "View top media", root_path %></button>
+  <button class="btn btn-primary"><%= link_to "Add a new work", new_work_path %></button>
+</main>

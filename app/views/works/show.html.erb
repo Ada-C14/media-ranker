@@ -1,10 +1,11 @@
 <main>
   <section>
-    <h2>What a girl wants</h2>
-    <p>Created by: Amanda Bynes</p>
-    <p>Published: </p>
-    <p></p>
+    <h2><%= @work.id.title %></h2>
+    <p>Created by: <%= @work.id.creator %>></p>
+    <p>Published: <%= @work.id.publication_year %></p>
+    <p>Description: <%= @work.id.description %></p>
     <section>
+
       <a class="btn btn-primary" href="/">Back to media ranks</a>
       <a class="btn btn-primary" href="/works/746/edit">Edit</a>
       <a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/746/upvote">Upvote</a>
@@ -12,26 +13,27 @@
     </section>
   </section>
 
-  <section class="works-votes__container">
-    <h3 class="works-votes__header">6 Votes for this Book</h3>
-    <table class="table">
-      <thead>
-      <tr>
-        <th>User</th>
-        <th>Date</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td><a href="/users/887">aaa</a></td>
-        <td>Nov 15, 2020</td>
+<!--  Adapt once adding voting capability-->
+<!--  <section class="works-votes__container">-->
+<!--    <h3 class="works-votes__header">6 Votes for this Book</h3>-->
+<!--    <table class="table">-->
+<!--      <thead>-->
+<!--      <tr>-->
+<!--        <th>User</th>-->
+<!--        <th>Date</th>-->
+<!--      </tr>-->
+<!--      </thead>-->
+<!--      <tbody>-->
+<!--      <tr>-->
+<!--        <td><a href="/users/887">aaa</a></td>-->
+<!--        <td>Nov 15, 2020</td>-->
 
-      </tr><tr>
-        <td><a href="/users/988">drake</a></td>
-        <td>Nov 14, 2020</td>
+<!--      </tr><tr>-->
+<!--        <td><a href="/users/988">drake</a></td>-->
+<!--        <td>Nov 14, 2020</td>-->
 
-      </tr>
-      </tbody>
-    </table>
-  </section>
+<!--      </tr>-->
+<!--      </tbody>-->
+<!--    </table>-->
+<!--  </section>-->
 </main>

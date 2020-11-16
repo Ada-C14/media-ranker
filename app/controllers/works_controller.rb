@@ -31,6 +31,9 @@ class WorksController < ApplicationController
   end
 
   def edit
+    work_id = params[:id]
+    @work = Work.find_by(id: work_id)
+
     if @work.nil?
       head :not_found
       return
@@ -39,8 +42,8 @@ class WorksController < ApplicationController
 
 
   def update
-    # work_id = params[:id]
-    # @work = Work.find_by(id: work_id)
+    work_id = params[:id]
+    @work = Work.find_by(id: work_id)
 
     if @work.nil?
       head :not_found
@@ -58,6 +61,9 @@ class WorksController < ApplicationController
   end
 
   def destroy
+    work_id = params[:id]
+    @work = Work.find_by(id: work_id)
+
     if @work.nil?
       head :not_found
       return

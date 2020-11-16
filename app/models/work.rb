@@ -8,17 +8,17 @@ class Work < ApplicationRecord
   has_many :users, through: :votes
 
   def top_10_albums
-    albums = Work.all.where(category: "album")
+    albums = Work.where(category: "album")
     return albums.order(votes: :desc).limit(10)
   end
 
   def top_10_books
-    books = Work.all.where(category: "book")
+    books = Work.where(category: "book")
     return books.order(votes: :desc).limit(10)
   end
 
   def top_10_movies
-    movies = Work.all.where(category: "movie")
+    movies = Work.where(category: "movie")
     return movies.order(votes: :desc).limit(10)
   end
 

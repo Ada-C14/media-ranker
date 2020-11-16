@@ -15,6 +15,7 @@ class VotesController < ApplicationController
     Vote.where(work_id: params[:id]).each do |vote|
       if vote.user_id == session[:user_id]
         flash[:error] = "Has already voted for this work"
+        redirect_to work_path(params[:id])
         return
       end
     end
@@ -22,13 +23,15 @@ class VotesController < ApplicationController
     if @vote.save
       flash[:success] = "Successfully upvoted!"
 
-      if @vote.work.votes == nil
-        @vote.work.votes = []
-      else
-        @vote.work.votes << @vote
-      end
+      # if @vote.work.votes == nil
+      #   @vote.work.votes = []
+      # else
+      #   @vote.work.votes << @vote
+      # end
 
-      @vote.work.save ##### Is save necessary here????????
+      work = Work.find(@vote.work_id)
+      work.vote_count += 1
+      work.save
 
       redirect_to work_path(@vote.work_id)
       return

@@ -2,10 +2,7 @@
 
   <div>
   <%= f.label :category %>
-  <select>
-    <option value="album">album</option>
-    <option value="book">book</option>
-  </select>
+  <%= f.select :category, [["album", "album"], ["book", "book"]] %>
   </div>
   
   <div>

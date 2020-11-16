@@ -1,4 +1,14 @@
-<h2> <%= @work[:title] %> </h2>
-<h3> Author: <%= @work[:author] %> </h3>
-<h3> Total Votes: <%= @work[:votes] %> </h3>
-<p> Description: <%= @work[:description] %> </p>
+<main>
+  <section>
+    <h2><%= @work.title %></h2>
+    <h4>
+      Created by: <%= @work.creator%>
+    </h4>
+    <h4>
+      Published: <%= @work.publication_year%>
+    </h4>
+    <p>
+      <%= @work.description%>
+    </p>
+  </section>
+</main>

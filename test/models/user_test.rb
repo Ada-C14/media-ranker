@@ -59,7 +59,7 @@ describe User do
 
     it 'sort_users: will sort by vote count; then by created_at' do
       sorted_users = User.sort_users
-      p sorted_users
+
       expect(sorted_users[0].username).must_equal 'goybean'
       expect(sorted_users[1].username).must_equal 'chlobofosho'
       expect(sorted_users[2].username).must_equal 'annakim'

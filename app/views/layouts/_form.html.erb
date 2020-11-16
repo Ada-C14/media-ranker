@@ -1,0 +1,23 @@
+<h2 class="main-content-header"><%= action_name %> </h2>
+
+<%= form_with model: this_model, class: "#{this_model}-form" do |f|%>
+
+  <%= f.label :title, 'Title' %>
+  <%= f.text_field :title, placeholder: title_placeholder, required: true, maxlength: 40 %>
+
+  <%= f.label :creator, 'Creator' %>
+  <%= f.text_field :creator, placeholder: creator_placeholder, required: true, maxlength: 30 %>
+
+  <section class="description-section">
+    <%= f.label :description, 'Description' %>
+    <%= f.text_area :description, cols: 50, rows: 2, placeholder: description_placeholder, maxlength: 140 %>
+  </section>
+
+  <%= f.label :category, "Category" %>
+  <%= f.select :category, VALID_CATEGORIES, selected: selected_category %>
+
+  <%= f.label :publication, 'Publication Year' %>
+  <%= f.text_field :publication_year, type: :number, placeholder: publication_placeholder, required: true, min: 1000, max: Date.today.year, maxlength: 4 %>
+
+  <%= f.submit button_title, class: "#{this_model}-button btn btn-primary", role: "button" %>
+<% end %>

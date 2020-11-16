@@ -1,0 +1,51 @@
+album_vote1:
+  user: user1
+  work: album
+album_vote2:
+  user: user2
+  work: album
+album2_vote1:
+  user: user2
+  work: album2
+book_vote1:
+  user: user1
+  work: book
+book_vote2:
+  user: user2
+  work: book
+book_vote3:
+  user: user3
+  work: book
+movie2_vote1:
+  user: user1
+  work: movie2
+movie3_vote1:
+  user: user1
+  work: movie3
+movie4_vote1:
+  user: user1
+  work: movie4
+movie5_vote1:
+  user: user1
+  work: movie5
+movie6_vote1:
+  user: user1
+  work: movie6
+movie7_vote1:
+  user: user1
+  work: movie7
+movie8_vote1:
+  user: user1
+  work: movie8
+movie9_vote1:
+  user: user1
+  work: movie9
+movie10_vote1:
+  user: user1
+  work: movie10
+movie11_vote1:
+  user: user1
+  work: movie11
+movie11_vote2:
+  user: user2
+  work: movie11

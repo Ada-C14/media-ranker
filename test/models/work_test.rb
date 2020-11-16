@@ -2,16 +2,8 @@ require "test_helper"
 
 describe Work do
   before do
-    @new_work = Work.new(category: "movie", title: "Test Movie", creator: "Some director", publication_year: 2020, description: "NA")
+    @new_work = Work.new(category: "work", title: "Test Work", creator: "Someone", publication_year: 2020, description: "NA")
   end
-
-  let (:user1) {
-    User.create(username: "user1")
-  }
-
-  let (:user2) {
-    User.create(username: "user2")
-  }
 
   it "can be instantiated" do
     expect(@new_work.valid?).must_equal true
@@ -29,8 +21,10 @@ describe Work do
   describe "relationships" do
     it "can have many votes and many users through votes" do
       @new_work.save
-      vote_1 = Vote.create(work_id: @new_work.id, user_id: user1.id)
-      vote_2 = Vote.create(work_id: @new_work.id, user_id: user2.id)
+      user1 = users(:user1)
+      user2 = users(:user2)
+      first_vote = Vote.create(work_id: @new_work.id, user_id: user1.id)
+      second_vote = Vote.create(work_id: @new_work.id, user_id: user2.id)
 
       expect(@new_work.votes.count).must_equal 2
       @new_work.votes.each do |vote|
@@ -46,8 +40,8 @@ describe Work do
         expect(user).must_be_instance_of User
       end
 
-      expect(@new_work.users.first.id).must_equal user1.id
-      expect(@new_work.users.last.id).must_equal user2.id
+      expect(@new_work.users.first).must_equal user1
+      expect(@new_work.users.last).must_equal user2
     end
   end
 
@@ -71,29 +65,70 @@ describe Work do
 
   describe "custom methods" do
     describe "sort_by_votes" do
-      # sorts two works properly?
-      # first work is one with most votes
-      # last is one with least votes
-      #
-      # first two have zero works
-      # get minimum vote count, and verify that last element has that number of votes
+      it "can sort all works by most number of votes to least" do
+        sorted_media = Work.sort_by_votes
+
+        expect(sorted_media.length).must_equal 14
+        expect(sorted_media.first).must_equal works(:book)
+        expect(sorted_media.first.votes.count).must_equal 3
+
+        expect(sorted_media.last.votes.count).must_equal 0
+      end
+
+      it "returns an empty array if there are no works" do
+        Work.delete_all
+        sorted_media = Work.sort_by_votes
+
+        expect(sorted_media).must_be_empty
+      end
     end
 
     describe "top_10" do
-      # create 11 works
-      # vote for all but one
-      # top_10 see if it excludes the one i didn't vote for
-      #
-      # if there's no media in category
-      # less than 10 media
-      # only less than 10 of category, make sure it's of that category, are there exactly 5 results
-      #
-      # more than 10 media with equivalent rankings
-      # what about media with same votes? is there tie breaker?
+      it "returns top ten works in a category with more than ten works" do
+        top_10_movies = Work.top_10("movie")
+
+        expect(top_10_movies.length).must_equal 10
+        expect(top_10_movies.first).must_equal works(:movie11)
+        expect(top_10_movies.first.votes.count).must_equal 2
+
+        top_10_movies.each do |movie|
+          expect(movie.category).must_equal "movie"
+          expect(movie.votes.count).must_equal 1 if movie != top_10_movies.first
+        end
+
+        expect(top_10_movies).wont_include works(:movie)
+      end
+
+      it "returns an empty array if there are no works in a category" do
+        Work.delete_by(category: "movie")
+        top_10_movies = Work.top_10("movie")
+
+        expect(top_10_movies).must_be_empty
+      end
+
+      it "returns the top works in a category with less than ten works" do
+        top_10_albums = Work.top_10("album")
+        
+        expect(top_10_albums.length).must_equal 2
+        expect(top_10_albums.first).must_equal works(:album)
+        expect(top_10_albums.last).must_equal works(:album2)
+
+        top_10_albums.each do |album|
+          expect(album.category).must_equal "album"
+        end
+      end
     end
 
     describe "spotlight" do
+      it "returns the media with the most number of votes" do
+        expect(Work.spotlight).must_equal works(:book)
+      end
 
+      it "returns nil if there are no works" do
+        Work.delete_all
+
+        expect(Work.spotlight).must_be_nil
+      end
     end
   end
 end

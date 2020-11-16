@@ -37,8 +37,8 @@ describe Vote do
     end
 
     it "can set the work" do
-      new_work = Work.new(category: "movie", title: "Us and Them", creator: "Rene Liu", publication_year: 2018, description: "Chinese romantic drama film")
-      @new_vote.work = new_work
+      new_movie = Work.new(category: "movie", title: "Us and Them", creator: "Rene Liu", publication_year: 2018, description: "Chinese romantic drama film")
+      @new_vote.work = new_movie
 
       expect(@new_vote.work_id).must_equal new_work.id
     end

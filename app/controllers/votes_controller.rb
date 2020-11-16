@@ -3,10 +3,6 @@ class VotesController < ApplicationController
     @vote = Vote.new
   end
 
-  # def index
-  #   @votes = Vote.all
-  # end
-
   def create
     @vote = Vote.new(params[vote_params])
     if @vote.save

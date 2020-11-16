@@ -13,10 +13,11 @@ describe UsersController do
       must_respond_with :success
     end
 
-    # it 'responds with success when there are no users saved' do
-    #   get users_path
-    #   must_respond_with :success
-    # end
+    it 'responds with success when there are no users saved' do
+      User.delete_all()
+      get users_path
+      must_respond_with :success
+    end
   end
 
   describe 'show' do

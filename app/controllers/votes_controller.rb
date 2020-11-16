@@ -5,18 +5,20 @@ class VotesController < ApplicationController
   def create
     work = Work.find_by(id: params[:work_id])
     user = User.find_by(id: session[:user_id])
+    print "#{session[:user_id]}"
     if work.nil?
-      flash.now[:error] = "User not found"
+      flash.now[:error] = "Work not found"
       head :not_found
       return
     elsif user.nil?
-      flash.now[:error] = "Work not found"
+      flash.now[:error] = "User not found"
       head :not_found
       return
     elsif session[:user_id]
       @vote = Vote.create(work_id: work.id, user_id: user.id)
+
       if @vote.save
-        flash[:success] = "Upvoted succesfully"
+        flash[:success] = "Upvoted successfully"
         redirect_to work_path(work.id)
         return
       else

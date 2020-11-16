@@ -3,23 +3,16 @@ class HomepagesController < ApplicationController
   skip_before_action :require_login
 
   def index
-    #@works is an array
-    @works = Work.all
 
-    @albums = @works.each do |work|
-      if work[0] == "album"
-        @albums += work
-      end
-    end
-    @albums = @albums.sample(10)
+    # @works = Work.all
+    #
+    # @albums = Work.top_ten("album")
+    #
+    # @books = Work.top_ten("book")
+    #
+    # @movies = Work.top_ten("movie")
 
-    @books = @works.each do |work|
-      if work[0] == "book"
-        @books += work
-      end
-    end
-    @books = @books.sample(10)
+    @spotlights = Work.spotlight
 
-    @spotlights = @works.sample(10)
   end
 end

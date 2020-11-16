@@ -1,6 +1,7 @@
 class WorksController < ApplicationController
 
   before_action :find_by_id, only:[:show, :edit, :update, :destroy]
+  before_action :require_login, only:[:new, :edit, :create, :update]
 
   def top
     @spotlight = Work.spotlight

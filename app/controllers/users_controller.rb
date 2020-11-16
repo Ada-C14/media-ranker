@@ -1,12 +1,13 @@
 class UsersController < ApplicationController
 
+  before_action :find_by_id, only:[:show]
+  # skip_before_action :require_login, only:[:login_form, :login]
+
   def index
     @users = User.all
   end
 
   def show
-    @user = find_by_id
-
     if @user.nil?
       head :not_found
       return
@@ -41,10 +42,10 @@ class UsersController < ApplicationController
       @user = User.find_by(id: session[:user_id])
       unless @user.nil?
         session[:user_id] = nil
-        flash[:notice] = "Goodbye, #{@user.username}"
+        flash[:welcome] = "Goodbye, #{@user.username}"
       else
         session[:user_id] = nil
-        flash[:notice] = "Error: Unknown user"
+        flash[:error] = "Error: Unknown user"
       end
     else
       flash[:error] = "You must be logged in to log out"
@@ -62,12 +63,11 @@ class UsersController < ApplicationController
     end
   end
 
-  def find_by_id
-    user_id = params[:id].to_i
-    user = User.find_by(id: user_id)
-  end
-
   private
+
+  def find_by_id
+    @user = User.find_by(id: params[:id])
+  end
 
   def user_params
     return params.require(:user).permit(:username)

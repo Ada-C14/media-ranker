@@ -1,7 +1,7 @@
 <section class="spotlight">
-<h2 class="spotlight__header">
   <% spotlight = Work.spotlight %>
-  <% if spotlight.nil? %>
+<h2 class="spotlight__header">
+  <% if spotlight %>
     Database is empty, <%= link_to "Add media!", new_work_path %>
   <% else %>
     <span class="spotlight__header--prefix">Media Spotlight</span> <%= link_to spotlight.title, work_path(spotlight), class:"spotlight__link-to"%> by <%= spotlight.creator %>

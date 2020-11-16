@@ -2,7 +2,13 @@ class WorksController < ApplicationController
   before_action :find_work, only: [:destroy, :show, :edit, :update]
 
   def index
-    @works = Work.all
+    @work = Work.all
+    @movies = @work.where(category: "movie")
+    @books = @work.where(category: "book")
+    @albums = @work.where(category: "album")
+    @movies = top(@movies.size, @movies)
+    @books = top(@books.size, @books)
+    @albums = top(@albums.size, @albums)
   end
 
   def show
@@ -62,6 +68,10 @@ class WorksController < ApplicationController
   end
 
 
+  def top(number=10, media)
+    number = number.to_i
+    return media.max_by(number) { |work| work.votes.count }
+  end
 
   # def most_votes
   #   most_votes =

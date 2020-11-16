@@ -5,7 +5,7 @@
     <div class="col-sm-12">
       <section class="spotlight">
         <h2 class="spotlight__header">
-          <span class="spotlight__header--prefix spotlight-title">Media Spotlight: <%= link_to @spotlight.title, work_path(@spotlight.id) %> by  <%= @spotlight.creator %></span>
+          <span class="spotlight__header--prefix", id="spotlight_font">Media Spotlight: <%= link_to @spotlight.title, work_path(@spotlight.id) %> by  <%= @spotlight.creator %></span>
         </h2>
         <p class="spotlight__description">
           <%= @spotlight.votes.size %> votes - <%= @spotlight.description %>

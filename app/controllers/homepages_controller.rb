@@ -7,9 +7,9 @@ class HomepagesController < ApplicationController
       @books = @work.where(category: "book")
      @albums = @work.where(category: "album")
      @spotlight = spotlight
-     @top_books = top( 'book')
-     @top_movies = top('movie')
-     @top_albums = top('album')
+     @top_books = top( @books)
+     @top_movies = top(@movies)
+     @top_albums = top(@albums)
 
   end
 
@@ -25,11 +25,9 @@ class HomepagesController < ApplicationController
     return most_votes
   end
 
-  def top(number=10, category)
+  def top(number=10, media)
     number = number.to_i
-    category = category.to_s
-    works = Work.all.where(category:category)
-    return works.max_by(number) { |work| work.votes.count }
+    return media.max_by(number) { |work| work.votes.count }
   end
 
   #

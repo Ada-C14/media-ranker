@@ -1,7 +1,9 @@
 class VotesController < ApplicationController
-  def create
-    @current_user = User.find_by(id: session[:user_id])
 
+  # Controller filter method is in application controller.
+  before_action :find_user_logged_in, only: [:create]
+
+  def create
     if @current_user.nil?
       flash[:error] = "A problem occurred: You must log in to do that"
       redirect_back(fallback_location: :back)

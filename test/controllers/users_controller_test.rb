@@ -13,7 +13,8 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   describe UsersController do
     it "can get the login form" do
-
+      get users_login_form_url
+      assert_response :success
     end
   end
 

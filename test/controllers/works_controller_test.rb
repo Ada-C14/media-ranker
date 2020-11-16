@@ -2,7 +2,7 @@ require "test_helper"
 
 describe WorksController do
   let (:work) {
-    Work.create(category: "book", title: "IDK What I'm Doing", creator: "Beauttie", publication_year: 2020, description: "Story of my life")
+    Work.create(category: "book", title: "IDK How to Code", creator: "Beauttie", publication_year: 2020, description: "Story of my life")
   }
 
   describe "index" do
@@ -187,6 +187,36 @@ describe WorksController do
   end
 
   describe "upvote" do
+    it "allows logged-in user to vote for a work they haven't already voted for" do
+      perform_login
 
+      expect {
+        post upvote_path(work.id)
+      }.must_change "Vote.count", 1
+
+      expect(flash[:success]).must_equal "Successfully upvoted"
+      must_respond_with :redirect
+    end
+
+    it "does not allow a logged-in user to vote for a work they have previously voted for" do
+      perform_login
+      post upvote_path(work.id)
+
+      expect {
+        post upvote_path(work.id)
+      }.wont_change "Vote.count"
+
+      expect(flash[:error]).must_equal "User has already voted for this work"
+      must_respond_with :redirect
+    end
+
+    it "does not allow a guest user to vote if they have not logged in" do
+      expect {
+        post upvote_path(work.id)
+      }.wont_change "Vote.count"
+
+      expect(flash[:error]).must_equal "You must be logged in to upvote!"
+      must_respond_with :redirect
+    end
   end
 end

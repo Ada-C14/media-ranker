@@ -1,0 +1,18 @@
+<section  class="top-ten__list-container">
+  <h2 class="top-ten__header">
+    Top <%= category.capitalize %>s
+  </h2>
+
+  <% works = Work.top_ten("#{category}")  %>
+  <ul class="list-group top-ten__list">
+    <% works.each do |work| %>
+      <li class="list-group-item">
+        <h4>
+          <%= link_to work.title, work_path(work) %>
+          <small class="top-ten__creator"><%= "by #{work.creator}" %></small>
+        </h4>
+        <p><%= "#{work.votes.count} votes" %></p>
+      </li>
+    <% end %>
+  </ul>
+</section>

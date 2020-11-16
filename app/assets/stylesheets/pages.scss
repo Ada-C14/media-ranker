@@ -1,0 +1,80 @@
+// Place all the styles related to the Pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.spotlight {
+  padding: 0 2rem 2rem 2rem;
+}
+.spotlight_header {
+  color: #26A69A;
+}
+
+.spotlight__header--prefix {
+  color: #424242;
+}
+
+.spotlight__header--prefix::after {
+  content: ":";
+}
+
+.spotlight__link-to {
+  border-bottom: 2px solid;
+}
+
+.spotlight__description {
+  margin-bottom: 0;
+}
+
+.root__hr {
+  margin: 0px auto 3rem auto;
+  color: #EEEEEE;
+}
+
+hr {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+
+.top-ten__container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 2em;
+}
+
+.top-ten__header {
+  color: #26A69A;
+  border-bottom: 2px solid;
+  border-bottom-color: #B2DFDB;
+}
+
+.top-ten__list {
+  list-style-type: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+
+.list-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+}
+
+.list-group-item {
+  position: relative;
+  display: block;
+  padding: 0.75rem 1.25rem;
+  background-color: #fff;
+  border: none
+}
+
+
+.top-ten__creator {
+  color: slategrey;
+}
+
+small, .small {
+  font-size: 80%;
+  // font-weight: 400;
+}

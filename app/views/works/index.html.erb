@@ -3,11 +3,12 @@
 
 <!--  Albums Table Example. Add custom method-->
   <section class="media-table">
+    <% works = @works.where(category: "album") %>
     <h4>Albums</h4>
     <table class="table">
       <thead>
         <tr>
-          <th width="80">Votes</th>
+<!--          <th width="80">Votes</th>-->
           <th>Title</th>
           <th>Created By</th>
           <th width="100">Published</th>
@@ -15,31 +16,27 @@
         </tr>
       </thead>
       <tbody>
+      <% works.each do |work| %>
         <tr>
-          <td>12</td>
-          <td><a href="/works/797">College Park is Always Ready to Partayyy</a></td>
-          <td>Mirah Yom Tov Zeitlyn</td>
-          <td>0</td>
-          <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/797/upvote">Upvote</a></td>
+<!--          <td> <%#= work.votes.count %> </td>-->
+          <td> <%= link_to work.title, work_path(work.id) %> </td>
+          <td> <%= work.creator %> </td>
+          <td> <%= work.publication_year %> </td>
+<!--          <td> <%#= link_to "Upvote", class: "btn btn-primary" %> </td>-->
+<!--          Insert path for Upvote when creating this functionality-->
         </tr>
-        <tr>
-          <td>7</td>
-          <td><a href="/works/798">You Think It's Like This But Really It's Like This</a></td>
-          <td>Mirah</td>
-          <td>2000</td>
-          <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/798/upvote">Upvote</a></td>
-        </tr>
+        <% end %>
       </tbody>
     </table>
   </section>
 
-<!--  Books Table. Add custom method-->
   <section class="media-table">
+    <% works = @works.where(category: "book") %>
     <h4>Books</h4>
     <table class="table">
       <thead>
       <tr>
-        <th width="80">Votes</th>
+        <!--          <th width="80">Votes</th>-->
         <th>Title</th>
         <th>Created By</th>
         <th width="100">Published</th>
@@ -47,49 +44,44 @@
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <td>6</td>
-        <td><a href="/works/746">What a girl wants</a></td>
-        <td>Amanda Bynes</td>
-        <td></td>
-        <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/746/upvote">Upvote</a></td>
-      </tr>
-      <tr>
-        <td>3</td>
-        <td><a href="/works/807">The Life-Changing Magic of Tidying Up</a></td>
-        <td>Marie Kondo</td>
-        <td>2011</td>
-        <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/807/upvote">Upvote</a></td>
-      </tr>
+      <% works.each do |work| %>
+        <tr>
+          <!--          <td> <%#= work.votes.count %> </td>-->
+          <td> <%= link_to work.title, work_path(work.id) %> </td>
+          <td> <%= work.creator %> </td>
+          <td> <%= work.publication_year %> </td>
+          <!--          <td> <%#= link_to "Upvote", class: "btn btn-primary" %> </td>-->
+          <!--          Insert path for Upvote when creating this functionality-->
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </section>
 
-<!--      Movies Table. Add custom method-->
   <section class="media-table">
+    <% works = @works.where(category: "movie") %>
     <h4>Movies</h4>
     <table class="table">
       <thead>
-        <tr>
-          <th width="80">Votes</th>
-          <th>Title</th>
-          <th>Created By</th>
-          <th width="100">Published</th>
-          <th width="100">Upvote</th>
-        </tr>
+      <tr>
+        <!--          <th width="80">Votes</th>-->
+        <th>Title</th>
+        <th>Created By</th>
+        <th width="100">Published</th>
+        <th width="100">Upvote</th>
+      </tr>
       </thead>
       <tbody>
-      <tr>
-        <td>0</td>
-        <td><a href="/works/941">Cloudy day </a></td>
-        <td>Muscle</td>
-        <td>2020</td>
-        <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/941/upvote">Upvote</a></td>
-      </tr>
-      <tr>
-        <td>0</td>
-        <td><a href="/works/928">Wolfwalkers</a></td>
-        <td>Tomm Moore, Ross Stewart</td>
-        <td>2010</td>
-        <td><a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/928/upvote">Upvote</a></td>
-      </tr>
+      <% works.each do |work| %>
+        <tr>
+          <!--          <td> <%#= work.votes.count %> </td>-->
+          <td> <%= link_to work.title, work_path(work.id) %> </td>
+          <td> <%= work.creator %> </td>
+          <td> <%= work.publication_year %> </td>
+          <!--          <td> <%#= link_to "Upvote", class: "btn btn-primary" %> </td>-->
+          <!--          Insert path for Upvote when creating this functionality-->
+        </tr>
+      <% end %>
       </tbody>
     </table>
   </section>

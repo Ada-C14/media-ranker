@@ -41,3 +41,7 @@ vote10:
 vote11:
   user: user11
   work: album1.id
+
+vote12:
+  user: user1
+  work: movie1.id

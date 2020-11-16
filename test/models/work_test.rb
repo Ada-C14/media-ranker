@@ -40,13 +40,13 @@ describe Work do
   end
 
   describe 'relations' do
-    it "has a vote" do
+    it "has many votes" do
       skip
       #   book = books(:poodr)
       #   expect(book.author).must_equal authors(:metz)
     end
 
-    it "has a user that voted" do
+    it "has many users through votes" do
       skip
       # book = Book.new(title: "test book")
       # book.author = authors(:metz)

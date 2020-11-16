@@ -35,27 +35,26 @@ puts "#{work_failures.length} work failed to save"
 
 
 
-# PASSENGER_FILE = Rails.root.join('db', 'seed_data', 'passengers.csv')
-# puts "Loading raw passenger data from #{PASSENGER_FILE}"
-#
-# passenger_failures = []
-# CSV.foreach(PASSENGER_FILE, :headers => true) do |row|
-#   passenger = Passenger.new
-#   passenger.id = row['id']
-#   passenger.name = row['name']
-#   passenger.phone_num = row['phone_num']
-#   successful = passenger.save
-#   if !successful
-#     passenger_failures << passenger
-#     puts "Failed to save passenger: #{passenger.inspect}"
-#   else
-#     puts "Created passenger: #{passenger.inspect}"
-#   end
-# end
-#
-# puts "Added #{Passenger.count} passenger records"
-# puts "#{passenger_failures.length} passengers failed to save"
-#
+USER_FILE = Rails.root.join('db', 'seed_data', 'users-seeds.csv')
+puts "Loading raw user data from #{USER_FILE}"
+
+user_failures = []
+CSV.foreach(USER_FILE, :headers => true) do |row|
+  user = User.new
+  user.id = row['id']
+  user.name = row['name']
+  successful = user.save
+  if !successful
+    user_failures << user
+    puts "Failed to save user: #{user.inspect}"
+  else
+    puts "Created user: #{user.inspect}"
+  end
+end
+
+puts "Added #{User.count} user records"
+puts "#{user_failures.length} users failed to save"
+
 #
 #
 # TRIP_FILE = Rails.root.join('db', 'seed_data', 'trips.csv')
@@ -66,7 +65,7 @@ puts "#{work_failures.length} work failed to save"
 #   trip = Trip.new
 #   trip.id = row['id']
 #   trip.driver_id = row['driver_id']
-#   trip.passenger_id = row['passenger_id']
+#   trip.user_id = row['user_id']
 #   trip.date = Date.strptime(row['date'], '%Y-%m-%d')
 #   trip.rating = row['rating']
 #   trip.cost = row['cost']

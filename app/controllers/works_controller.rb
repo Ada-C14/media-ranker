@@ -1,5 +1,6 @@
 class WorksController < ApplicationController
-  before_action :find_work, only: [:show, :edit, :update, :destroy]
+  before_action :find_work, only: [:show, :edit, :update, :destroy, :upvote]
+  before_action :find_session, only: [:upvote] #TODO: I don't see why I would put this in app. controller if the heroku model only requires login for upvoting? So I put it here
 
   def index
     @works = Work.all
@@ -64,17 +65,9 @@ class WorksController < ApplicationController
   end
 
   def upvote
+    # find_session
 
-    @work = Work.find_by(id: params[:id])
-    user = User.find_by(id: session[:user_id])
-
-    if user.nil?
-      flash[:warning] = "A problem occurred: You must log in to do that"
-      redirect_to work_path(@work.id)
-      return
-    end
-
-    vote = Vote.create(user_id: user.id, work_id: @work.id)
+    vote = Vote.create(user_id: @user.id, work_id: @work.id)
 
     if vote.save
       flash[:success] = "Successfully upvoted!"
@@ -96,6 +89,22 @@ class WorksController < ApplicationController
 
   def find_work
     @work = Work.find_by_id(params[:id])
+    head :not_found if !@work
+    return
   end
 
+  def find_session
+    @user = User.find_by(id: session[:user_id])
+
+    if @user.nil?
+      flash[:warning] = "A problem occurred: You must log in to do that"
+      redirect_to work_path(@work.id)
+      return
+    else
+      return
+    end
+  end
+
+  #TODO: not sure why I would use a login filter when the heroku website only blocks a user from doing one action
+  # without logging in: upvoting?  Perhaps I am missing something, but seems impractical and actually NOT dry.
 end

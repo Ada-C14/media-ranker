@@ -2,27 +2,25 @@
 
 <% ["album", "book", "movie"].each do |media| %>
   <% if Work.category_desc_by_vote_count(media) == nil %>
-    <h4>
-      No <%= media.capitalize + "s" %> in database...yet. <%= link_to "Add a new work!", new_work_path %>
-    </h4>
+    <h4> No <%= media.capitalize + "s" %> in database...yet. <%= link_to "Add a new work!", new_work_path %> </h4>
   <% else %>
     <section class="media-table">
+      <h4> <%= media.capitalize + "s" %> </h4>
       <table class="table">
         <thead>
-        <tr>
-          <th scope="col"> Votes </th>
-          <th scope="col"> Title </th>
-          <th scope="col"> Created By </th>
-          <th scope="col"> Published </th>
-          <th scope="col"> Upvote </th>
-        </tr>
+          <tr>
+            <th width=80  scope="col"> Votes </th>
+            <th scope="col"> Title </th>
+            <th scope="col"> Created By </th>
+            <th width=100 scope="col"> Published </th>
+            <th width=100 scope="col"> Upvote </th>
+          </tr>
         </thead>
-
         <tbody>
         <h4><%= media.capitalize + "s" %></h4>
         <% Work.category_desc_by_vote_count(media).each do |work| %>
             <tr>
-              <th> <%=work.votes.count %> </th>
+              <td scope="row"> <%=work.votes.count %> </td>
               <td> <%= link_to work.title, work_path(work) %> </td>
               <td> <%= work.creator %> </td>
               <td> <%= work.publication_year %> </td>

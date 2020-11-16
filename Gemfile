@@ -78,3 +78,4 @@ group :test do
 end
 
 gem "faker", "~> 2.14"
+gem 'bootstrap', '~> 4.5.3'

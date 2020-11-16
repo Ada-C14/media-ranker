@@ -1,35 +1,40 @@
+<section class="spotlight">
 <h2>
   <% spotlight = Work.spotlight %>
   <% if spotlight.nil? %>
     Database is empty, <%= link_to "Add media!", new_work_path %>
   <% else %>
-    Media Spotlight <%= link_to spotlight.title, work_path(spotlight)%> by <%= spotlight.creator %>
+    <span class="spotlight__header--prefix">Media Spotlight</span> <%= link_to spotlight.title, work_path(spotlight)%> by <%= spotlight.creator %>
   <% end %>
 </h2>
 
-<p>
+<p class="spotlight__description">
   <%= spotlight.votes.count %> votes - <%= spotlight.description %>
 </p>
 
-<hr/>
+</section>
+<hr class="root__hr" />
+
+<section class="top-ten__container">
 <% Work::CATEGORIES.each do |media| %>
-  <section>
-    <h2>
+  <section class="top-ten__list-container">
+    <h2 class="top-ten__header">
       <% if Work.top_ten(media).nil? %>
         Top <%= media.capitalize + "s" %>: No works in database. <%= link_to "Add a work!", new_work_path %>
       <% else %>
         Top <%= media.capitalize + "s" %>
     </h2>
     <hr/>
-    <ul>
+    <ul class="list-group top-ten__list">
       <% Work.where(category: media).sample(10).each do |item| %>
-        <li>
+        <li class="list-group-item">
           <h4><%= link_to item.title, work_path(item) %>
-            <small> by <%= item.creator %></small>
+            <small class="top-ten__creator"> by <%= item.creator %></small>
           </h4>
           <p><%= item.votes.count %> votes</p>
         </li>
       <% end %>
+    </ul>
       <% end %>
-  </section>
+</section>
 <% end %>

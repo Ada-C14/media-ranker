@@ -5,7 +5,7 @@ module ApplicationHelper
     elsif(detail.is_a? Integer)
       return detail
     elsif detail.nil?
-      return content_tag(:span, "Not Available", class: 'not_available')
+      return content_tag(:span, "N/A", class: 'not_available')
     else
       return detail
     end

@@ -58,10 +58,21 @@ describe Work do
     expect(result).must_be_instance_of Array
     end
 
-    it 'creates an array of albums'
+    it 'creates an array of albums' do
     @works = Work.all
     result = @works.top_ten_albums
 
     expect(result).must_be_instance_of Array
+    end
+  end
+  describe 'sort_votes' do
+    it 'sorts works by votes' do
+      @work = works(:book)
+      @works = Work.all
+
+      result = @works.sort_votes
+
+      expect(result.first.title).must_be_same_as @work.title
+    end
   end
 end

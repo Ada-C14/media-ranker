@@ -24,4 +24,20 @@ describe Vote do
       expect(result).must_equal false
     end
   end
+  describe 'relationships' do
+    it 'belongs to a work' do
+    work = works(:movie)
+    user = users(:test_user)
+    @vote = Vote.new(user.id, work.id)
+
+    expect(@vote.work_id).must_be_same_as work.id
+    end
+    it 'belongs to a user' do
+      work = works(:movie)
+      user = users(:test_user)
+      @vote = Vote.new(user.id, work.id)
+
+      expect(vote.user_id).must_be_same_as user.id
+    end
+  end
 end

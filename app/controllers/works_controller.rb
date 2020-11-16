@@ -35,6 +35,7 @@ class WorksController < ApplicationController
   end
 
   def update
+    @work = Work.find_by(id: params[:id])
     if @work.nil?
       head :not_found
       return
@@ -54,6 +55,17 @@ class WorksController < ApplicationController
     if @work.nil?
       redirect_to works_path
       return
+    end
+  end
+
+  def destroy
+    @work = Work.find_by(id: params[:id])
+    if @work.nil?
+      redirect_to works_path
+      return
+    else
+      @work.destroy
+      redirect_to works_path
     end
   end
 

@@ -16,3 +16,63 @@
 @import "bootstrap";
 
 @import "**/*";
+
+body {
+    color: #22223b;
+    background-color: #f2e9e4;
+    font-family: 'Montserrat';
+}
+
+a {
+  color: #22223b
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #22223b;
+}
+
+nav li {
+    float: left;
+}
+
+nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+nav li a:hover {
+    background-color: #4a4e69;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+header h1 {
+    font-family: Impact, 'Montserrat';
+}
+
+html {
+    padding: 10px;
+}
+
+
+footer {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #22223b;
+    color: white;
+    text-align: center;
+    font-size: 12px;
+    padding: 10px;
+}

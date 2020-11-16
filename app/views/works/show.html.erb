@@ -31,10 +31,12 @@
                   data: {confirm: "Are you sure?"} %>
 
     <% @votes =  @work.votes %>
-
   </div>
 </div>
 
+<div class="show_votes">
+  <%= "#{@votes.count} votes for this #{@work.category}" %>
+</div>
 <div class="row">
   <div class="col-sm-12">
     <table class="table">

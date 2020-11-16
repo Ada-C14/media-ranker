@@ -48,10 +48,19 @@ label, select, input {
 
 .works_show {
     list-style-type: none;
+    line-height: 2.5;
 
 }
 
 #title {
     color: #26969a;
+    font-weight: bold;
+
+}
+
+.show_votes {
+
+    font-weight: bold;
+    font-size: 30px;
 
 }

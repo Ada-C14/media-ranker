@@ -16,7 +16,8 @@ header {
 
 header a:hover {
 
-    text-decoration: none;
+    text-decoration: none !important;
+
 }
 
 .MR {
@@ -26,6 +27,10 @@ header a:hover {
     padding-right: 15px;
     border-right: 2px solid white;
 
+}
+
+.MR:hover {
+    color: #ff5722 !important;
 }
 
 h1 small {

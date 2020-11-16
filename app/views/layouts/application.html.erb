@@ -11,15 +11,6 @@
   </head>
 
   <body>
-
-    <section class="flash-msg__section">
-    <% flash.each do |name, message| %>
-      <strong class="<%= name %>">
-        <%= message %>
-      </strong>
-    <% end %>
-    </section>
-
     <header>
     <h1> 
     <%= link_to "Media Ranker", root_path %>  
@@ -31,14 +22,21 @@
 
     <nav>
         <ul>
-        <li><%= link_to "View top media" %></li>
+        <li><%= link_to "View top media", root_path %></li>
         <li><%= link_to "View all media", works_path %></li>
-        <li><%= link_to "Add a new work" %></li>
+        <li><%= link_to "Add a new work", new_work_path %></li>
         <li><%= link_to "View all users" %></li>
       </ul>
     </nav>
     </header>
 
+    <section class="flash-msg__section">
+    <% flash.each do |name, message| %>
+      <strong class="<%= name %>">
+        <%= message %>
+      </strong>
+    <% end %>
+    </section>
 
     <%= yield %>
   </body>

@@ -26,4 +26,30 @@ describe Vote do
     end
   end
 
+  describe "relationships" do
+    it "must have a user" do
+      vote = votes(:vote1)
+      _(vote.user).must_equal users(:ana)
+    end
+
+    it "must have a work" do
+      vote = votes(:vote1)
+      _(vote.work).must_equal works(:bebop)
+    end
+
+    it "sets the user" do
+      vote = Vote.new(user_id: "10", work_id: "20")
+      vote.user = users(:ana)
+      _(vote.user_id).must_equal users(:ana).id
+    end
+
+    it "sets the work" do
+      vote = Vote.new(user_id: "10", work_id: "20")
+      vote.work = works(:bebop)
+      _(vote.work_id).must_equal works(:bebop).id
+    end
+  end
+
+
 end
+

@@ -10,13 +10,14 @@
       <% end %>
     </ul>
   <% end %>
+<!--  if @work is saved in the database "persisted?" will return true-->
   <div class="summary">
-    <h2> Add a New Work </h2>
+<!--    <h2> <%#= @work.persisted? ? "Edit This Form" : "Add a New Work" %></h2>-->
+    <h2> <%= action_name == "Edit" ? "Edit This Form" : "Add a New Work" %> </h2>
     <%= form_with model: @work do |f| %>
-
       <div>
         <%= f.label :category %>
-        <%= f.select :category, [:album, :book, :movie] %>
+        <%= f.select :category, [:album, :book, :movie]%>
       </div>
       <div>
         <%= f.label :title %>
@@ -34,7 +35,7 @@
         <%= f.label :description %>
         <%= f.text_field :description %>
       </div>
-      <%= f.submit "Add work" %>
+      <%= f.submit action_name == "Edit" ? "Edit this Form" : "Add a New Work" %>
     <% end %>
 
   </div>

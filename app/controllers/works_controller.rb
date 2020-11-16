@@ -69,6 +69,7 @@ class WorksController < ApplicationController
         :title,
         :creator,
         :publication_year,
-        :description)
+        :description,
+        :user_ids)
   end
 end

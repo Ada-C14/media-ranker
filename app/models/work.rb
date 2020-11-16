@@ -13,4 +13,11 @@ class Work < ApplicationRecord
   # def top_ten(array_of_works)
   #   array_of_works.select { |work| work.votes }
   # end
+  #
+  # def users_that_voted
+  #   users = []
+  #   votes.each do |vote|
+  #     users += user.votes
+  #   end
+  # end
 end

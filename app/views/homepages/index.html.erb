@@ -1,13 +1,14 @@
 <body>
-    <div>
-        <h3> Spotlight Media!
+<main>
+    <section class="spotlight">
+        <h3 class="spotlight_header"> Spotlight Media!
           <% if @works.empty? %>
             <p> The most loved piece of media will go here!</p>
             <% else %>
           <%= @works.spotlight.title %>
             <% end %>
         </h3>
-    </div>
+    </section>
     <div>
       <h4> Top 10 Books! </h4>
         <% if @works.empty? %>

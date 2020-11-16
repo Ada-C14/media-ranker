@@ -57,11 +57,18 @@ class WorksController < ApplicationController
   def destroy
     # find_work
 
-    @work.destroy
-    flash[:success] = "Successfully destroyed #{@work.category} #{@work.id}"
-
-    #TODO: If work not found
-    redirect_to root_path
+    if @work.nil?
+      redirect_to root_path
+    elsif @work.votes.any?
+      Vote.where(work_id: @work.id).destroy_all
+      @work.destroy
+      flash[:success] = "Successfully destroyed #{@work.category} #{@work.id}"
+      redirect_to root_path
+    else
+      @work.destroy
+      flash[:success] = "Successfully destroyed #{@work.category} #{@work.id}"
+      redirect_to root_path
+    end
   end
 
   def upvote

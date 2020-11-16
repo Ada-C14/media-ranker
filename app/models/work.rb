@@ -10,8 +10,7 @@ class Work < ApplicationRecord
     return Work.all.sample
   end
 
-  def self.top_ten(cat)
-    works = Work.all.where(category: cat)
+  def self.top_ten(works)
     return works.sample(10)
   end
 end

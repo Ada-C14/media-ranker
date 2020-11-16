@@ -51,23 +51,33 @@ class WorksController < ApplicationController
       flash[:success] = "Created: #{@work.category}: #{@work.title}"
       redirect_to work_path(@work.id)
       return
-    else # save failed
+    else
     flash.now[:error] = "Uh Oh! We couldn't update #{@work.category}"
     render :edit
     return
     end
   end
 
-  def destroy
+  def delete
     if @work.nil?
       flash.now[:error] = "Uh Oh! We couldn't find #{@work.category}"
       redirect_to works_path
     else
-      @work.destroy
+      @work.delete
       flash[:success] = "POOF! You have deleted: #{@work.category}: #{@work.title}"
-      redirect_to root_path
+      redirect_to works_path
       return
     end
   end
+end
+
+private
+
+def find_work
+  @work = Work.find_by(id: params[:id])
+end
+
+def work_params
+  params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
 end
 

@@ -1,0 +1,36 @@
+<main>
+
+    <%= form_with model: @work, class: 'create-work' do |f| %>
+
+      <div clss="form_group">
+        <%= f.label :category %>
+        <%= f.select :category, ["album", "book", "movie"],
+                     {include_blank: false}, {class: "form-control"}%>
+      </div>
+
+      <div clss="form_group">
+        <%= f.label :title %>
+        <%= f.text_area :title, class: "form-control" %>
+      </div>
+
+      <div clss="form_group">
+        <%= f.label :creator %>
+        <%= f.text_area :creator, class: "form-control"  %>
+      </div>
+
+      <div clss="form_group">
+        <%= f.label :publication_year %>
+        <%= f.text_area :publication_year, class: "form-control" %>
+      </div>
+
+      <div clss="form_group">
+        <%= f.label :description %>
+        <%= f.text_area :description, class: "form-control" %>
+      </div>
+      <hr>
+      <div class="form-group">
+        <%= f.submit "#{action_name}", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+
+</main>

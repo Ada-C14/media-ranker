@@ -11,4 +11,10 @@
       <%= @work.description%>
     </p>
   </section>
+
+  <section>
+    <%= link_to "MAIN", works_path, method: :get, class: "btn btn-primary"%>
+    <%= link_to "EDIT", edit_work_path, method: :get, class: "btn btn-primary"%>
+    <%= link_to "DELETE", delete_work_path, method: :delete, data: {confirm: "Are you sure?"}%>
+  </section>
 </main>

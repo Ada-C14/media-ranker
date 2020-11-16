@@ -54,6 +54,4 @@ class Work < ApplicationRecord
     top_ten = movies.sort_by{|work| work.votes.count}.reverse
     return top_ten[0...10]
   end
-
-
 end

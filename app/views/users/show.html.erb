@@ -9,11 +9,14 @@
       Votes
     </h3>
     <ul>
-      <% @user.votes_by_user.each do |vote| %>
-        <li>
-          <%= work_lookup(vote.work_id) %>
-        </li>
-      <% end %>
+      <% @votes = Vote.all %>
+      <% @votes.each do |vote| %>
+        <% if vote.user_id == @user.id %>
+        <li> <%= work_lookup(vote.work_id) %> </li>
+    <% end %>
+        <% end %>
+
+      <%# end %>
 
     </ul>
   </div>

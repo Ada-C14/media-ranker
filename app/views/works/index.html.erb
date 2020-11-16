@@ -1,0 +1,115 @@
+<main>
+  <h2>List of Works</h2>
+  <section class="media-table">
+    <h4>Albums</h4>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Votes</th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th>Published</th>
+          <th>Upvote</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% @albums.each do|work| %>
+        <tr>
+          <td width="100">
+<!--            consider creating a method for votes?-->
+            <%= work.votes.count %>
+          </td>
+          <td width="1000">
+            <%= link_to work.title, work_path(work.id) %>
+          </td>
+          <td>
+            <%= work.creator%>
+          </td>
+          <td width="100">
+            <%= work.publication_year%>
+          </td>
+          <td width="100">
+            <%= button_to "Upvote", work_votes_path(work.id) %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </section>
+  <section class="media-table">
+    <h4>Books</h4>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Upvote</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @books.each do|work| %>
+        <tr>
+          <td width="100">
+            <!--            consider creating a method for votes?-->
+            <%= work.votes.count %>
+          </td>
+          <td width="1000">
+            <%= link_to work.title, work_path(work.id) %>
+          </td>
+          <td>
+            <%= work.creator%>
+          </td>
+          <td width="100">
+            <%= work.publication_year%>
+          </td>
+          <td width="100">
+            <%= button_to "Upvote", work_votes_path(work.id) %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </section>
+  <section class="media-table">
+    <h4>Movies</h4>
+    <table class="table">
+      <tr>
+        <th>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Upvote</th>
+      </tr>
+      <tbody>
+      <% @movies.each do|work| %>
+        <tr>
+          <td width="100">
+            <!--            consider creating a method for votes?-->
+            <%= work.votes.count %>
+          </td>
+          <td width="1000">
+            <%= link_to work.title, work_path(work.id) %>
+          </td>
+          <td>
+            <%= work.creator%>
+          </td>
+          <td width="100">
+            <%= work.publication_year%>
+          </td>
+          <td width="100">
+            <%= button_to "Upvote", work_votes_path(work.id) %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="button-container">
+    <%= button_to "View top media", root_path, class: "btn btn-secondary", method: :get %>
+    <%= button_to "Add a new work", new_work_path, class: "btn btn-primary", method: :get %>
+  </section>
+
+</main>

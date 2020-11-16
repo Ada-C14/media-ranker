@@ -1,0 +1,48 @@
+<main>
+  <section>
+    <h2>User Summary: <%= @user.username%></h2>
+    <p>Joined site <%= @user.created_at.strftime('%b %d, %Y') %></p>
+  </section>
+  <section class="user-votes">
+    <h3 class="vote-header">Votes</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Media Title</th>
+          <th>Created By</th>
+          <th>Published</th>
+          <th>Category</th>
+          <th>Voted On</th>
+        </tr>
+      </thead>
+      <tbody>
+      <% if @user.votes.any? %>
+        <% @user.votes.each do|vote| %>
+          <tr>
+            <td width="50%" >
+              <%= link_to vote.work.title, work_path(vote.work_id) %>
+            </td>
+            <td >
+              <%= vote.work.creator %>
+            </td>
+            <td>
+              <%= vote.work.publication_year%>
+            </td>
+            <td>
+              <%= vote.work.category.capitalize %>
+            </td>
+            <td >
+              <%= vote.created_at.strftime('%b %d, %Y')%>
+            </td>
+          </tr>
+        <% end %>
+        <% end %>
+      </tbody>
+    </table>
+  </section>
+  <section class="button-container">
+    <%= button_to "See all Users", users_path, class: "btn btn-secondary", method: :get %>
+    <%= button_to "Back to media rank", root_path, class: "btn btn-primary", method: :get %>
+
+  </section>
+</main>

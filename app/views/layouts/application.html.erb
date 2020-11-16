@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header>
+      <h1>
+        <%= link_to "Media Ranker", root_path, class: "title-header" %> <small>Ranking the Best of Everything</small>
+      </h1>
+
+      <nav class="nav-bar-container">
+        <ul>
+          <li>
+            <%= link_to "View top media", root_path %>
+          </li>
+          <li>
+            <%= link_to "View all media", works_path %>
+          </li>
+          <li>
+            <%= link_to "Add a new work", new_work_path %>
+          </li>
+          <li>
+            <%= link_to "View all users", users_path %>
+          </li>
+          <% if session[:user_id] %>
+            <% user = User.find_by_id(session[:user_id]) %>
+            <li>
+              <%= link_to "Logged in as #{user.username}", user_path(session[:user_id]), class: "btn btn-primary" %>
+            </li>
+            <li>
+              <%= link_to "Log Out", logout_path, method: :post, class: "btn btn-primary" %>
+            </li>
+          <% else %>
+            <li><%= link_to "Log In", login_path, class: "btn btn-primary"  %>
+            </li>
+          <% end %>
+        </ul>
+      </nav>
+    </header>
+    <section class="flash">
+      <% flash.each do |name, message| %>
+        <% if name == "problem" %>
+          <ul class="alert alert-problem">
+            <% message.each do |attribute, error| %>
+            <li > <%= attribute.capitalize %>: <%= error %></li>
+            <% end %>
+          </ul>
+        <% else %>
+          <div class="alert alert-<%= name %>"><%= message %></div>
+        <% end %>
+      <% end %>
+    </section>
+    <%= yield %>
+  </body>
+</html>

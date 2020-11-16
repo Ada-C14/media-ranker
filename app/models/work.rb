@@ -19,9 +19,7 @@ class Work < ApplicationRecord
   def self.order_by_votes(category)
     works = where(category: category)
     works_nil_votes = works.where(votes_count: nil).order(title: :asc)
-    p works_nil_votes
     works_no_nil_votes = works.where.not(votes_count: nil).order("votes_count DESC, title")
-    p works_no_nil_votes
     return works_no_nil_votes + works_nil_votes
   end
 

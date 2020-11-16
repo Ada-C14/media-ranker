@@ -1,0 +1,41 @@
+<body>
+<main>
+  <h2><%=action_name%> work</h2>
+
+  <section>
+    <%= form_with model: @work do |f| %>
+      <div class="form-group">
+        <label>Category</label>
+        <select class="form-control" name="work[category]"><option value="album">album</option>
+          <option value="book">book</option>
+          <option value="movie">movie</option></select>
+      </div>
+
+      <div class="form-group">
+        <label>Title</label>
+        <%=f.text_field :title, class:"form-control"%>
+      </div>
+
+      <div class="form-group">
+        <label>Creator</label>
+        <%=f.text_field :creator, class:"form-control"%>
+      </div>
+
+      <div class="form-group">
+        <label>Publication year</label>
+        <%=f.text_field :publication_year, class:"form-control"%>
+      </div>
+
+      <div class="form-group">
+        <label>Description</label>
+        <%=f.text_field :description, class:"form-control"%>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit "#{action_name}", class:"btn btn-primary" %>
+      </div>
+    <%end%>
+
+  </section>
+</main>
+</body>

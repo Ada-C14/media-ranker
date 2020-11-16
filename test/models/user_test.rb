@@ -14,6 +14,14 @@ describe User do
         # Assert
         expect(result).must_equal true
       end
+
+      it 'is not valid when fields are not present' do
+        @user = User.new()
+
+        result = @user.valid?
+
+        expect(result).must_equal false
+      end
     end
 end
 

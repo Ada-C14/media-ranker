@@ -7,5 +7,9 @@ vote_album:
   work_id: album
 
 vote_book:
+  user_id: test_user
+  work_id: book
+
+more_votes:
   user_id: test_user_two
   work_id: book

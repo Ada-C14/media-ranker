@@ -3,9 +3,9 @@ class WorksController < ApplicationController
 
   def index
     @works = Work.all
-    @albums = Work.select{ |work| work.category == 'album'}
-    @books = Work.select { |work| work.category == "book" }
-    @movies = Work.select{ |work| work.category == 'movie'}
+    @albums = Work.sorted_media("album")
+    @books = Work.sorted_media("book")
+    @movies = Work.sorted_media("movie")
   end
 
   def show

@@ -1,9 +1,6 @@
 require 'test_helper'
 
 class VoteTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
   describe Vote do
     it "can be instantiated" do
       # Arrange

@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  skip_before_action :require_login, except: [:current]
+
   def index
     @users = User.all
   end
@@ -67,17 +69,19 @@ class UsersController < ApplicationController
 
   def current
     @user = User.find_by(id: session[:user_id])
-
-    if @user.nil?
-      flash[:error] = "You must be logged in to view this page"
-      redirect_to root_path
-      return
-    end
   end
 
   private
 
   def user_params
     return params.require(:user).permit(:name)
+  end
+
+  def require_login
+    if @user.nil?
+      flash[:error] = "You must be logged in to view this page"
+      redirect_to root_path
+      return
+    end
   end
 end

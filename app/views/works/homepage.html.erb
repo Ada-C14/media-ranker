@@ -1,0 +1,39 @@
+<% if @works.nil? == false %>
+  <h1>This week's spotlight : <%= @works.spotlight.title %> By: <%= @works.spotlight.creator %></h1>
+<% end %>
+
+<div class="col-1">
+  <h1>Top Books</h1>
+  <ul>
+    <% @works.top10("book").each do |work| %>
+      <li>
+        <%= link_to work.title, work_path(id: work[:id]), class: "link" %>
+        <p><%= work.votes.count %> votes</p>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="col-2">
+  <h1>Top Albums</h1>
+  <ul>
+    <% @works.top10("album").each do |work| %>
+      <li>
+        <%= link_to work.title, work_path(id: work[:id]), class: "link" %>
+        <p><%= work.votes.count %> votes</p>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
+<div class="col-3">
+  <h1>Top Movies</h1>
+  <ul>
+    <% @works.top10("movie").each do |work| %>
+      <li>
+        <%= link_to work.title, work_path(id: work[:id]), class: "link" %>
+        <p><%= work.votes.count %> votes</p>
+      </li>
+    <% end %>
+  </ul>
+</div>

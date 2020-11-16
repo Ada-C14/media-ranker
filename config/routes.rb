@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :works do
     post '/upvote', to: "votes#create"
   end
-  resources :homepages
+
   resources :users, only: [:index, :show, :new, :create]
 
 

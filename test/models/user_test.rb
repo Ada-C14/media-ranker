@@ -17,32 +17,6 @@ describe User do
     end
   end
 
-  describe "Validations" do
-    it 'is valid when all fields are present' do
-      @user.save
-      result = @user.valid?
-      expect(result).must_equal true
-    end
-
-    it 'is invalid without a username' do
-      @user.username = nil
-      @user.save
-      result = @user.valid?
-      expect(result).must_equal false
-      expect(@user.errors.messages).must_include :username
-      expect(@user.errors.messages[:username]).must_include "can't be blank"
-    end
-
-    it 'username validation when the title already exists' do
-      @user.save
-      test_new_user = User.new({ username: "Mona" })
-
-      test_new_user.save
-      expect(test_new_user.valid?).must_equal false
-      expect(test_new_user.errors.messages).must_include :username
-      expect(test_new_user.errors.messages[:username]).must_include "has already been taken"
-    end
-  end
   describe "relations" do
     it "has many votes" do
       test_user = users(:user_2)

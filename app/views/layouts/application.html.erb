@@ -38,6 +38,8 @@
           <li>
             <%= link_to "Logged in as #{session[:username]}", user_path(session[:user_id]), class: "btn btn-primary" %>
           </li>
+<!--adds spacing between login and logout buttons-->
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <li>
             <%= link_to "Log Out", logout_path, method: :post, class: "btn btn-primary" %>
           </li>

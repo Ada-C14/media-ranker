@@ -10,10 +10,10 @@ require "csv"
 # $ rails db:reset
 # doesn't currently check for if titles are unique against each other
 
-CSV.open("db/works_seeds.csv", "w", :write_headers => true,
+CSV.open("db/works-seeds.csv", "w", :write_headers => true,
                                     :headers => ["category", "title", "creator", "publication_year", "description"]) do |csv|
-  25.times do
-    category = %w(album book).sample
+  50.times do
+    category = %w(album book movie).sample
     title = Faker::Coffee.blend_name
     creator = Faker::Name.name
     publication_year = rand(Date.today.year - 100..Date.today.year)

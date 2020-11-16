@@ -41,7 +41,7 @@ class UsersController < ApplicationController
       end
     else
       flash[:error] = "You must be logged in to logout"
-      redirect_to homepage_path
+      redirect_to homepage=_path
     end
   end
 

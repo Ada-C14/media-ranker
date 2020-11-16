@@ -2,27 +2,33 @@ require 'test_helper'
 
 describe Work do
 
-  let (:work) {
-    Work.create(
-        category: 'album',
-        title: 'ctrl',
-        creator: 'sza',
-        publication_year: 2017,
-        description: 'Top Dawg Entertainment and RCA Records'
-    )
-  }
+  let (:work) { Work.first }
+  let (:work2) { Work.find_by(title: works(:worry).title) }
 
   it 'can be instantiated with the required fields' do
     expect(work.valid?).must_equal true
 
-    work = Work.first
     %i[category title creator publication_year description].each do |field|
       expect(work).must_respond_to field
     end
   end
 
   describe 'relationships' do
+    it 'can have many votes' do
+      expect(work2.votes.count).must_equal 2
 
+      work.votes.each do |vote|
+        expect(vote).must_be_instance_of Vote
+      end
+    end
+
+    it 'can have many users through votes' do
+      expect(work2.users.count).must_equal 2
+
+      work2.users.each do |user|
+        expect(user).must_be_instance_of User
+      end
+    end
   end
 
   describe 'validations' do
@@ -87,14 +93,8 @@ describe Work do
   end
 
   describe 'custom methods' do
-    # TO:DO: UPDATE THESE WITH THE REAL METHODS
     it 'Work.media_spotlight: can get the top voted item' do
-      work
-      expect(Work.media_spotlight).must_equal work
-    end
-
-    it 'Work.media_spotlight: responds with success hmmm idk' do
-
+      expect(Work.media_spotlight).must_equal works(:worry)
     end
 
     it 'Work.top_ten(category): can get top ten items for each category' do
@@ -108,13 +108,20 @@ describe Work do
         )
       end
 
-      top_ten = Work.top_ten('movie')
-      expect(top_ten.size).must_equal 10
+      top_ten_movies = Work.top_ten('movie')
+      expect(top_ten_movies.size).must_equal 10
+
+      top_ten_albums = Work.top_ten('album')
+      expect(top_ten_albums.size).must_equal 10
+      expect(top_ten_albums[0]).must_equal works(:worry)
+      expect(top_ten_albums[1]).must_equal works(:ctrl)
     end
 
     it 'Work.top_ten(category): can get up to 10 items if there are less than 10' do
-      work
-      expect(Work.top_ten('album')).must_equal [work]
+      top_ten_albums = Work.top_ten('album')
+      expect(top_ten_albums.size).must_equal 3
+      expect(top_ten_albums[0]).must_equal works(:worry)
+      expect(top_ten_albums[1]).must_equal works(:ctrl)
     end
   end
 end

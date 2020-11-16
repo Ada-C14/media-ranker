@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2020_11_13_044848) do
 
   create_table "users", force: :cascade do |t|
     t.string "username"
+    t.integer "votes_count"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -36,6 +37,7 @@ ActiveRecord::Schema.define(version: 2020_11_13_044848) do
     t.string "creator"
     t.integer "publication_year"
     t.string "description"
+    t.integer "votes_count"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

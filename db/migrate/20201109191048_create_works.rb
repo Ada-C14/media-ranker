@@ -6,6 +6,7 @@ class CreateWorks < ActiveRecord::Migration[6.0]
       t.string :creator
       t.integer :publication_year
       t.string :description
+      t.integer :votes_count
 
       t.timestamps
     end

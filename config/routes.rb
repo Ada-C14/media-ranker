@@ -11,11 +11,4 @@ Rails.application.routes.draw do
   post "/logout", to: "users#logout", as: :logout
   get "/users/current", to: "users#current", as: :current_user
   resources :users, only: [:index, :show]
-
-  # resources :users, only: [:index, :show] do
-  #   resources :votes, only: [:create, :destroy]
-  # end
-
-  # post '/works/:id/upvote', to: 'works#upvote', as: 'upvote_work'
-  # resources :votes, only: [:create]
 end

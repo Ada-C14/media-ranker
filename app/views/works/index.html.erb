@@ -17,12 +17,14 @@
         </thead>
         <tbody>
           <%@works.where(category: category).each do |work|%>
-           <%= render partial: "table_data", locals: { data: [work.votes.count,
-                                                             link_to(work.title, work_path(work.id)),
-                                                             work.creator,
-                                                             work.publication_date,
-                                                             link_to("Upvote", upvote_work_path(work.id), method: :post, class: "btn btn-primary")]}%>
+            <%= render partial: "table_data", locals: { data: [work.votes.count,
+                                                                   link_to(work.title, work_path(work.id)),
+                                                                   work.creator,
+                                                                   work.publication_date,
+                                                                   link_to("Upvote", upvote_work_path(work.id), method: :post, class: "btn btn-primary")]}%>
+
           <%end%>
+
         </tbody>
       </table>
     </section>

@@ -17,6 +17,8 @@
 
 @import "**/*";
 
+@import url(https://fonts.googleapis.com/css?family=Gudea);
+@import url('https://fonts.googleapis.com/css2?family=Gudea:wght@700&display=swap');
 body, h1, h2, h3, h4, h5 {
   font-family: "Gudea", sans-serif;
 }
@@ -30,7 +32,7 @@ a, h2, h3 {
 }
 
 h1, h2, h3, h4, h5 {
-  font-weight: bold;
+  font-weight: 900;
 }
 
 p {
@@ -75,6 +77,10 @@ body {
 
 .app-header__header h1 small {
   color: white;
+}
+
+.spotlight__header {
+  color: #26A69A;
 }
 
 nav {
@@ -195,10 +201,21 @@ main {
   border-color: #26A69A;
 }
 
+.btn-primary:hover {
+  background-color: #218d83;
+  border-color: #218d83;
+}
+
+
 .works-votes__header {
   color: black;
 }
 
 .works-votes__container {
   margin-top: 2rem;
+}
+
+.not_available{
+  color: red;
+  font-weight: bold;
 }

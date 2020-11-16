@@ -11,9 +11,9 @@
       <tbody>
         <%@user.works.each do |work| %>
             <%= render partial: "table_data", locals: { data: [link_to(work.title, work_path(work)),
-                                                                     work.creator,
-                                                                     work.publication_date,
-                                                                     work.category,
+                                                               display_detail(work.creator),
+                                                               display_detail(work.publication_date),
+                                                               display_detail(work.category),
                                                                      @user.votes.find_by(work_id: work.id).created_at.to_s(:short_date)]}%>
         <%end%>
       </tbody>

@@ -2,7 +2,7 @@
   <h2>List of Users</h2>
   <table class="table">
     <thead>
-        <%= render partial: "table_headers", locals: { headers: ['Username', 'Votes', 'Joined']}%>
+        <%= render partial: "table_headers", locals: { headers: %w[Username Votes Joined]}%>
     </thead>
     <tbody>
       <%@users.each do |user| %>

@@ -80,7 +80,7 @@ class WorksController < ApplicationController
       flash[:success] = "Successfully upvoted!"
       redirect_to work_path(@work)
     else
-      flash[:warning] = "Could not upvote"
+      flash[:warning] = "A problem occurred: Could not upvote"
       flash[:messages] = vote.errors.messages
       # flash[:messages] = vote.errors.messages
       redirect_back fallback_location: '/'

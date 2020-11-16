@@ -1,0 +1,98 @@
+movie1:
+  category: movie
+  title: Movie 1
+  creator: Director 1
+  publication_year: 1999
+  description: heartbreaking
+movie2:
+  category: movie
+  title: Movie 2
+  creator: Director 2
+  publication_year: 2003
+  description: hilarious
+movie3:
+  category: movie
+  title: Movie 3
+  creator: Director 3
+  publication_year: 2020
+  description: moving
+book1:
+  category: book
+  title: Book 1
+  creator: Author 1
+  publication_year: 2004
+  description: good
+book2:
+  category: book
+  title: Book 2
+  creator: Author 2
+  publication_year: 1993
+  description: better
+book3:
+  category: book
+  title: Book 3
+  creator: Author 3
+  publication_year: 2009
+  description: best
+album1:
+  category: album
+  title: Album 1
+  creator: Artist 1
+  publication_year: 2020
+  description: details
+album2:
+  category: album
+  title: Album 2
+  creator: Artist 2
+  publication_year: 2020
+  description: details
+album3:
+  category: album
+  title: Album 3
+  creator: Artist 3
+  publication_year: 2020
+album4:
+  category: album
+  title: Album 4
+  creator: Artist 4
+  publication_year: 2017
+album5:
+  category: album
+  title: Album 5
+  creator: Artist 5
+  publication_year: 2020
+album6:
+  category: album
+  title: Album 6
+  creator: Artist 6
+  publication_year: 1988
+album7:
+  category: album
+  title: Album 7
+  creator: Artist 7
+  publication_year: 2020
+album8:
+  category: album
+  title: Album 8
+  creator: Artist 8
+  publication_year: 1977
+album9:
+  category: album
+  title: Album 9
+  creator: Artist 9
+  publication_year: 1933
+album10:
+  category: album
+  title: Album 10
+  creator: Artist 10
+  publication_year: 2003
+album11:
+  category: album
+  title: Album 11
+  creator: Artist 11
+  publication_year: 2007
+album12:
+  category: album
+  title: Album 12
+  creator: Artist 12
+  publication_year: 2000

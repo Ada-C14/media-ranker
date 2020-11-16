@@ -5,6 +5,12 @@ require "test_helper"
 # New? Create?
 
 describe Work do
+  # before do
+  #
+  # end
+
+
+
   it "can be instantiated and is valid when all required fields are present" do
     # Arrange
     @work = Work.new(title: "Long", category: "Movie")
@@ -41,9 +47,10 @@ describe Work do
   end
 
   it "returns a spotlight work" do
-    spotlit = Work.spotlight
+    # spotlit = Work.spotlight
+    # @works = Work.all
 
-    expect(spotlit).must_be_instance_of Work
+    expect(Work.spotlight).must_be_instance_of Work
   end
 
   it "returns nil for spotlight when database is empty" do

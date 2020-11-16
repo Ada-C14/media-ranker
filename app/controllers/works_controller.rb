@@ -1,7 +1,6 @@
 class WorksController < ApplicationController
   before_action :find_work, only: [:destroy, :show, :edit, :update]
 
-
   def index
     @works = Work.all
   end
@@ -62,6 +61,15 @@ class WorksController < ApplicationController
     end
   end
 
+
+
+  # def most_votes
+  #   most_votes =
+  #   #If works has greatest amount of votes
+  #   # return that work
+  #   # and votes
+  #   return most_votes
+  # end
 
   private
   def work_params

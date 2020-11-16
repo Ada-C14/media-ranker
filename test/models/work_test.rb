@@ -5,6 +5,30 @@ class WorkTest < ActiveSupport::TestCase
   #   assert true
   # end
   describe Work do
+    let (:valid_work) {
+      works(:movie)
+    }
+    it "can be instantiated" do
+      expect(valid_work.valid?).must_equal true
+      expect(valid_work).must_be_instance_of Work
+    end
+
+
+    it "will have the required fields" do
+      expect(valid_work.category).wont_be_nil
+      expect(valid_work.title).wont_be_nil
+      expect(valid_work.creator).wont_be_nil
+      expect(valid_work.publication_year).wont_be_nil
+      expect(valid_work.description).wont_be_nil
+
+      work_attributes = [:category, :title, :creator, :publication_year, :description]
+
+      work_attributes.each do |attribute|
+        expect(valid_work).must_respond_to attribute
+      end
+    end
+
+
     describe "custom methods" do
       describe "spotlight" do
         it "returns work with most votes" do

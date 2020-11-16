@@ -1,12 +1,12 @@
 class WorksController < ApplicationController
+  before_action :find_work, only: [:show, :edit, :update, :destroy]
 
   def index
     @works = Work.all
   end
 
   def show
-    work_id = params[:id]
-    @work = Work.find_by(id: work_id)
+    # find_work
     if @work.nil?
       head :not_found
       return
@@ -29,7 +29,7 @@ class WorksController < ApplicationController
   end
 
   def edit
-    @work = Work.find_by(id: params[:id])
+    # find_work
 
     if @work.nil?
       head :not_found
@@ -38,7 +38,7 @@ class WorksController < ApplicationController
   end
 
   def update
-    @work = Work.find_by(id: params[:id])
+    # find_work
 
     if @work.nil?
       head :not_found
@@ -54,7 +54,7 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    @work = Work.find_by(id: params[:id])
+    # find_work
 
     @work.destroy
     flash[:success] = "Successfully destroyed #{@work.category} #{@work.id}"
@@ -90,6 +90,12 @@ class WorksController < ApplicationController
   private
   def work_params
     params.require(:work).permit(:title, :category, :creator, :description, :publication_year)
+  end
+
+  private
+
+  def find_work
+    @work = Work.find_by_id(params[:id])
   end
 
 end

@@ -1,6 +1,6 @@
 <section class="alert__container">
   <br>
-  <% if flash[:warning] %>
+  <% if flash[:warning] && flash[:messages] %>
     <div class="alert alert-warning">
       <span>A problem occurred: Could not upvote</span>
       <ul>
@@ -11,6 +11,13 @@
         <% end %>
       </ul>
     </div>
+
+  <% elsif flash[:warning] %>
+    <% flash.each do |name, message| %>
+      <div class="alert alert-warning">
+        <li><%= message %></li>
+      </div>
+    <% end %>
   <% end %>
 </section>
 

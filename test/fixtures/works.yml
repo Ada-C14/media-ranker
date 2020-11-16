@@ -1,0 +1,23 @@
+metz:
+  id: 40
+  category: book
+  title: Pure Food
+  creator: Kurt Beecher Dammeier
+  description: A Chef's Handbook for Eating Clean, with Healthy, Delicious Recipes.
+  publication_year: 2016
+
+taj:
+  id: 20
+  category: album
+  title: Martin Scorsese Presents the Blues – Taj Mahal
+  creator: Taj Mahal
+  description: An excellent overview of Taj's long and varied career.
+  publication_year: 2003
+
+bebop:
+  id: 50
+  category: movie
+  title: Cowboy Bebop - The Movie
+  creator: Shinichirō Watanabe
+  description: Cocky Spike Spiegel and the crew of his spaceship, Bebop, an intrepid band of bounty hunters, land on Mars in the year 2071 chasing an enormous cash reward. The four-person team, also including looming cyborg Jet Black, fearless Faye Valentine and tech expert Edward, are in search of ex-military officer Vincent. The former hero has become a biological terrorist with an arsenal of devastating nano-bots that he'll let loose on Alba City on the night before Halloween if his demands aren't met.
+  publication_year: 2002

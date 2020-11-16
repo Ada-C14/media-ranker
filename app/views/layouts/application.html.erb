@@ -11,7 +11,7 @@
 <header>
   <h1>Welcome to Media Ranker</h1>
 </header>
-<body class="container">
+<body>
 <header>
   <nav>
     <ul>
@@ -19,6 +19,7 @@
       <li><%= link_to "All Media", works_path%></li>
       <li><%= link_to "New Media", new_work_path %></li>
       <li><%= link_to "New User", login_path  %></li>
+      <li><%= link_to "All Users", users_path %></li>
     <% if session[:user_id] %>
       <li><%= link_to "Logout", logout_path, method: :post %></li>
         <% else  %>

@@ -4,7 +4,7 @@
   <h2>
     Books
   </h2>
-    <ul> <% @works.each do |work|  %>
+    <ul> <% @works.sort_votes.each do |work|  %>
         <% if work.category == "book" %>
         <li> <%= link_to work.title, work_path(work) %> |
           <%= link_to "Edit", edit_work_path(work[:id]) %> |
@@ -18,7 +18,7 @@
     Movies
   </h2>
     <ul>
-      <% @works.each do |work| %>
+      <% @works.sort_votes.each do |work| %>
       <% if work.category == "movie" %>
        <li><%= link_to work.title, work_path(work) %> |
          <%= link_to "Edit", edit_work_path(work[:id]) %> |
@@ -32,7 +32,7 @@
     Albums
   </h2>
     <ul>
-      <% @works.each do |work| %>
+      <% @works.sort_votes.each do |work| %>
         <% if work.category == "album" %>
         <li><%= link_to work.title, work_path(work) %> |
           <%= link_to "Edit", edit_work_path(work[:id]) %> |

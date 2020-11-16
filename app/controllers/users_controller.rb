@@ -23,19 +23,19 @@ class UsersController < ApplicationController
     if user
       session[:user_id] = user.id
       flash[:success] = "Welcome back, #{user.username}"
-    end
-
-    user = User.new(username: username)
-
-    if user.save
-      session[:user_id] = user.id
-      flash[:success] = "Welcome, new user #{user.username}"
     else
-      errors = {}
-      user.errors.each do |column, message|
-        errors[column] = message
+      user = User.new(username: username)
+
+      if user.save
+        session[:user_id] = user.id
+        flash[:success] = "Welcome, new user #{user.username}"
+      else
+        errors = {}
+        user.errors.each do |column, message|
+          errors[column] = message
+        end
+        flash[:warning] = errors
       end
-      flash[:warning] = errors
     end
 
     redirect_to root_path and return

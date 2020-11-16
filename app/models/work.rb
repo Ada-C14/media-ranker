@@ -3,7 +3,7 @@ class Work < ApplicationRecord
   validates :title, presence: true, uniqueness: true
   validates :publication_year, numericality: { only_integer: true }, allow_nil: true
 
-  has_many :votes
+  has_many :votes, dependent: :destroy
   has_many :users, through: :votes
 
   def users

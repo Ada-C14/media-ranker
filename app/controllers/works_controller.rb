@@ -36,7 +36,6 @@ class WorksController < ApplicationController
         errors[column] = message
       end
       flash[:warning] = errors
-      # flash[:warning] = "Sorry, the work was not saved"
       render :new, status: :bad_request and return
     end
   end
@@ -69,10 +68,10 @@ class WorksController < ApplicationController
   def destroy
     if @work
       @work.destroy
-      flash[:success] = "The work has been deleted"
+      flash[:success] = "#{@work.title} has been deleted"
       redirect_to works_path and return
     else
-      flash[:warning] = "The work could not be deleted"
+      flash[:warning] = "#{@work.title} could not be deleted"
       redirect_to works_path and return
     end
   end

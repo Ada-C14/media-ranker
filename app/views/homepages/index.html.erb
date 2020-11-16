@@ -12,6 +12,9 @@
       <h4> Top 10 Books! </h4>
         <% if @works.empty? %>
           <p> The top 10 books will go here! </p>
+      <% elsif %>
+        <% @works.top_ten_books.empty? %>
+        <p> Vote on some books to list the best here! </p>
           <% else %>
         <% @works.top_ten_books.each do |work|  %>
           <% if work.category == "book" %>
@@ -22,7 +25,7 @@
 
       <h4> Top 10 Movies! </h4>
         <% if @works.empty? %>
-        <p> The top 10 movies will go here! </p>
+          <p> The top 10 movies will go here! </p>
         <% elsif %>
       <% @works.top_ten_movies.empty? %>
         <p> Vote on some movies to list the best here! </p>
@@ -37,6 +40,9 @@
         <h4> Top 10 Albums! </h4>
         <% if @works.empty? %>
         <p> The top 10 albums will go here! </p>
+      <% elsif %>
+        <% @works.top_ten_albums.empty? %>
+        <p> Vote on some albums to list the best here! </p>
         <% else %>
           <% @works.top_ten_albums.each do |work|  %>
             <% if work.category == "album" %>
@@ -44,5 +50,7 @@
             <% end %>
            <% end %>
           <% end %>
-
     </div>
+    </div>
+</body>
+

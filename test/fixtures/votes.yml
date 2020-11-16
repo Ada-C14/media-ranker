@@ -1,0 +1,11 @@
+vote_movie:
+  user_id: test_user
+  work_id: movie
+
+vote_album:
+  user_id: test_user
+  work_id: album
+
+vote_book:
+  user_id: test_user_two
+  work_id: book

@@ -33,25 +33,25 @@ class Work < ApplicationRecord
 
   def self.top_ten_albums
     work = Work.all
-    by_category = []
+    albums = []
     work.each do |work|
       if work.category == "albums"
-        books << work
+        albums << work
       end
     end
-    top_ten = by_category.sort_by{|work| work.votes.count}.reverse
+    top_ten = albums.sort_by{|work| work.votes.count}.reverse
     return top_ten[0...10]
   end
 
   def self.top_ten_movies
     work = Work.all
-    by_category = []
+    movies = []
     work.each do |work|
       if work.category == "movies"
-        books << work
+        movies << work
       end
     end
-    top_ten = by_category.sort_by{|work| work.votes.count}.reverse
+    top_ten = movies.sort_by{|work| work.votes.count}.reverse
     return top_ten[0...10]
   end
 end

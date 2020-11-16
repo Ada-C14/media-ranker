@@ -4,9 +4,7 @@ describe Vote do
   describe 'validations' do
     before do
       # Arrange
-      @user = User.new(username: 'testperson')
-      @work = Work.new(category: 'album', title: 'test', creator: 'testy mc testerson', publication_year: "1900", description: 'a testy album' )
-      @vote = Vote.new(user_id: @user.id, work_id: @work.id)
+      @vote = votes(:vote_movie)
     end
 
     it 'is valid when all fields are present' do

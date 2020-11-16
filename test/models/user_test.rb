@@ -2,10 +2,6 @@ require "test_helper"
 
 describe User do
   describe 'validation' do
-    # before 'user' do
-    #   @invalid_user = User.new()
-    #
-    # end
     it "can be instantiated" do
       # Assert
       user = users(:user_one)
@@ -13,7 +9,6 @@ describe User do
     end
 
     it 'does not instantiate given an invalid user' do
-
       expect(User.new.valid?).must_equal false
     end
   end
@@ -38,5 +33,4 @@ describe User do
       end
     end
   end
-
 end

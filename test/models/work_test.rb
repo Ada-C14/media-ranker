@@ -1,9 +1,7 @@
 require "test_helper"
 
 describe Work do
-  # it "does a thing" do
-  #   value(1+1).must_equal 2
-  # end
+
   before do
     work_test = Work.new(title: 'test name')
     @work = Work.new(title: "Mean Girls", description: "high school comedy",
@@ -12,19 +10,11 @@ describe Work do
                      category: "movie")
   end
   describe 'validations' do
-    # before do
-    # work_test = Work.new(title: 'test name')
-    # @work = Work.new(title: "Mean Girls", description: "high school comedy",
-    #                  publication_date: "2003",
-    #                  creator: "Tina Fey",
-    #                  category: "movie")
-    # end
     it "is valid when all fields are filled" do
           result = @work.valid?
 
           expect(result).must_equal true
     end
-
     it "fails validation when there is no title" do
       @work.title = nil
       expect(@work.valid?).must_equal false
@@ -115,38 +105,19 @@ describe Work do
 
       vote1 = Vote.create(work_id: recent_work.id, user_id: user1.id)
       vote2 = Vote.create(work_id: recent_work.id, user_id: user2.id)
-      # vote3 = Vote.create(work_id: recent_work.id, user_id: user3.id)
       works = Work.all
       pp works.last
 
       expect((works.spotlight).title).must_equal "Kreb-Full-o Been"
     end
   end
-  describe 'top ten' do
-    it 'will rank the work from most votes to least votes' do
-      # works = Work.all
-      expect((Work.top_ten(category: "album")).first.title).must_equal "Kreb-Full-o Been"
-      # expect((works.top_ten(category: "album")).last.title).must_equal "Major Cup"
 
-    end
-
-    it 'will rank the work from most votes to least votes' do
-      # works = Work.all
-      # expect((Work.top_ten(category: "album")).first.title).must_equal "Kreb-Full-o Been"
-      expect((Work.top_ten(category: "album")).last.title).must_equal "Holiday Choice"
-    end
-  end
   describe 'total list' do
     it 'will rank the work from most votes to least votes' do
-      # works = Work.all
       expect((Work.total_lists(category: "album")).first.title).must_equal "Kreb-Full-o Been"
-      # expect((works.top_ten(category: "album")).last.title).must_equal "Major Cup"
 
     end
-
     it 'will rank the work from most votes to least votes' do
-      # works = Work.all
-      # expect((Work.top_ten(category: "album")).first.title).must_equal "Kreb-Full-o Been"
       expect((Work.total_lists(category: "album")).last.title).must_equal "Holiday Choice"
     end
   end

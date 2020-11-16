@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: media_ranker_production
-  username: media_ranker
-  password: <%= ENV['MEDIA_RANKER_DATABASE_PASSWORD'] %>
+#  username: media_ranker
+#  password: <%#= ENV['MEDIA_RANKER_DATABASE_PASSWORD'] %>

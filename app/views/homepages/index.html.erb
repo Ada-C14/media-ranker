@@ -3,7 +3,11 @@
   <section class="spotlight">
     <h2 class="spotlight__header">
       <span class="spotlight__header--prefix">Media Spotlight:</span>
-      <%=link_to(Work.top_one.title, work_path(Work.top_one), class: "spotlight__link-to")%>
+      <%if(Work.top_one)%>
+        <%=link_to(Work.top_one.title, work_path(Work.top_one), class: "spotlight__link-to")%>
+      <%else%>
+        <p>No works available - add one!</p>
+      <%end%>
     </h2>
     <p class="spotlight__description">
       <%=Work.top_one.votes.count%> votes

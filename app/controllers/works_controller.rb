@@ -54,9 +54,10 @@ class WorksController < ApplicationController
     redirect_to works_path and return if @work.nil?
 
     if @current_user.nil?
-      flash[:error] = error_flash("you must log in to do that")
+      flash[:error] = error_flash("A problem occurred: You must log in to do that")
       redirect_to request.referrer and return
     end
+
     vote = Vote.new(user: @current_user, work: @work)
 
     save = vote.save

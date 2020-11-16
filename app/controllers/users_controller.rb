@@ -28,6 +28,7 @@ class UsersController < ApplicationController
 
   def current
     @current_user = User.find_by(id: session[:user_id])
+    @votes = Vote.where(user_id: @user.id)
     unless @current_user
       flash[:error] = "A problem occurred: You must log in to do that"
       return

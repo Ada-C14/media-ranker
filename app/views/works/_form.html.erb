@@ -1,5 +1,35 @@
 <!--Convert this to a form.-->
+<!--ADD CLASS TO FORM?-->
+<div>
 
+  <%= form_with model: @work do |f| %>
+
+    <%# if @work.errors.any? %>
+<!--      <ul class="errors">-->
+        <%# @work.errors.each do |column, message| %>
+<!--          <li>-->
+<!--            <p><%#= column %> <%#= message %></p>-->
+<!--          </li>-->
+        <%# end %>
+<!--      </ul>-->
+    <%# end %>
+
+    <div>
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
+    <br>
+
+    <div>
+      <%= f.label :phone_num %>
+      <%= f.text_field :phone_num %>
+    </div>
+    <br>
+
+    <%= f.submit action_name, class: "button" %>
+
+  <% end %>
+</div>
 
 <section>
   <form action="/works" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="✓"><input type="hidden" name="authenticity_token" value="ru1vwETTAb6raUrvtw+Ut//W14VgISz/G+hTOpBEwkyL7cu4ilMQiwN3hhj5xeeQB55K0/ykR30JyElQvNzHvQ==">

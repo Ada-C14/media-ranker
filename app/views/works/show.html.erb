@@ -1,19 +1,20 @@
 <main>
   <section>
-    <h2><%= @work.id.title %></h2>
-    <p>Created by: <%= @work.id.creator %>></p>
-    <p>Published: <%= @work.id.publication_year %></p>
-    <p>Description: <%= @work.id.description %></p>
+    <h2><%= @work.title %></h2>
+    <p>Created by: <%= @work.creator %></p>
+    <p>Published: <%= @work.publication_year %></p>
+    <p>Description: <%= @work.description %></p>
     <section>
 
-      <a class="btn btn-primary" href="/">Back to media ranks</a>
-      <a class="btn btn-primary" href="/works/746/edit">Edit</a>
-      <a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/746/upvote">Upvote</a>
-      <a class="btn btn-danger" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/works/746">Delete</a>
+      <%= link_to "Back to media ranks", root_path, class: "btn btn-primary" %>
+      <%#= link_to "Edit", INSERT_PATH_WHEN_METHOD_CREATED /works/746/edit, class: "btn btn-primary" %>
+<!--      <%#= link_to "Upvote", UPVOTE PATH HERE, class: "btn btn-primary" %>  #html: <a class="btn btn-primary" rel="nofollow" data-method="post" href="/works/746/upvote">Upvote</a>-->
+<!--      <%#= link_to "Delete", DELETE PATH HERE, class: "btn btn-danger" %>   #html:   <a class="btn btn-danger" data-confirm="Are you sure?" rel="nofollow" data-method="delete" href="/works/746">Delete</a>-->
     </section>
   </section>
 
-<!--  Adapt once adding voting capability-->
+
+<!--  Adapt once adding voting capability in Wave 3-->
 <!--  <section class="works-votes__container">-->
 <!--    <h3 class="works-votes__header">6 Votes for this Book</h3>-->
 <!--    <table class="table">-->

@@ -16,6 +16,14 @@ describe User do
   end
 
   describe "relationships" do
+    it "has many votes" do
+      work = Work.create(category: "Book", title: "Bluebeard", creator: "Kurt Vonnegut", publication_year: 1979, description: "haven't finished this one yet")
+      work2 = Work.create(category: "Book", title: "Blue", creator: "Kurt Vonnegut", publication_year: 1979, description: "haven't finished this one yet")
+      user = User.create(username: "test")
+      Vote.create(work_id: work[:id],user_id: user[:id])
+      Vote.create(work_id: work2[:id],user_id: user[:id])
 
+      expect(user.votes.count).must_equal 2
+    end
   end
 end

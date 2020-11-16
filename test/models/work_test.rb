@@ -23,7 +23,15 @@ describe Work do
   end
 
   describe "relationships" do
+    it "can have many votes" do
+      work = Work.create(category: "Book", title: "Bluebeard", creator: "Kurt Vonnegut", publication_year: 1979, description: "haven't finished this one yet")
+      user = User.create(username: "test")
+      user2 = User.create(username: "test2")
+      Vote.create(work_id: work[:id],user_id: user[:id])
+      Vote.create(work_id: work[:id],user_id: user2[:id])
 
+      expect(work.votes.count).must_equal 2
+    end
   end
 
   describe "validations" do
@@ -51,8 +59,26 @@ describe Work do
   end
 
   describe "spotlight" do
-    it "will give 10 works with the highest votes" do
+    it "gives the work with the highest votes" do
+      @work = Work.create(category: "book", title: "test book", creator: "test", publication_year: 2011, description: "test")
 
+      @user = User.create(username: "test")
+
+      Vote.create(work_id: @work[:id],user_id: @user[:id])
+      expect(Work.all.spotlight.title).must_equal @work.title
+    end
+  end
+
+  describe "top10" do
+    it "will give a list of works with the highest votes" do
+      @work = Work.create(category: "book", title: "test book", creator: "test", publication_year: 2011, description: "test")
+      @work2 = Work.create(category: "book", title: "test book2", creator: "test2", publication_year: 2011, description: "test")
+      @user = User.create(username: "test")
+
+      Vote.create(work_id: @work[:id],user_id: @user[:id])
+      Vote.create(work_id: @work2[:id],user_id: @user[:id])
+
+      expect(Work.all.top10("book")).must_equal [@work2, @work]
     end
   end
 end

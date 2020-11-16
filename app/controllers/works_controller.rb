@@ -1,5 +1,6 @@
 class WorksController < ApplicationController
-  before_action :require_login, only: [:new, :upvote]
+  before_action :find_work, only: [:show, :edit, :update, :destroy]
+
   def index
     @works = Work.all
     @books = Work.where(category: "book")
@@ -12,8 +13,6 @@ class WorksController < ApplicationController
   end
 
   def show
-    @work = Work.find_by(id: params[:id])
-
     if @work.nil?
       redirect_to work_path
       return
@@ -39,8 +38,6 @@ class WorksController < ApplicationController
   end
 
   def edit
-    @work = Work.find_by(id: params[:id])
-
     if @work.nil?
       redirect_to works_path
       return
@@ -48,8 +45,6 @@ class WorksController < ApplicationController
   end
 
   def update
-    @work = Work.find_by(id: params[:id])
-
     if @work.nil?
       redirect_to works_path
       return
@@ -60,8 +55,6 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    @work = Work.find_by(id: params[:id])
-
     if @work.nil?
       redirect_to works_path
       return
@@ -91,5 +84,9 @@ class WorksController < ApplicationController
 
   def works_param
     return params.require(:work).permit(:id, :category, :title, :creator, :publication_year, :description)
+  end
+
+  def find_work
+    @work = Work.find_by(id: params[:id])
   end
 end

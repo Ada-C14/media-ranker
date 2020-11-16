@@ -164,10 +164,7 @@ describe WorksController do
       expect {
         delete work_path(id)
       }.must_change "Work.count", -1
-
-      deleted_work = Work.find_by(category: "book")
-
-      expect(deleted_work).must_be_nil
+      
       must_respond_with :redirect
       must_redirect_to works_path
     end

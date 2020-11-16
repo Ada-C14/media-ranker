@@ -10,44 +10,48 @@
   </head>
 
   <body>
+    <header class="app-header__header">
+      <h1>
+        <%= link_to "Media Ranker", root_path %>
+        <small>Ranking the Best of Everything</small>
+      </h1>
 
-  <header class="app-header__header">
-    <h1>
-      <%= link_to "Media Ranker", root_path %>
-      <small>Ranking the Best of Everything</small>
-    </h1>
-    <nav class="app-header__nav">
-      <ul class="nav app-header__site-nav-container">
-        <li class="nav-item app-header__nav_item"><%= link_to "View top media", root_path, class: "nav-link" %></li>
-        <li class="nav-item app-header__nav_item"><%= link_to "View all media", works_path, class: "nav-link" %></li>
-        <li class="nav-item app-header__nav_item"><%= link_to "Add a new work", new_work_path, class: "nav-link" %></li>
-        <li class="nav-item app-header__nav_item"><%= link_to "View all users", users_path, class: "nav-link" %></li>
-      </ul>
-      <ul class="nav app-header__user-nav-container">
-      <% @current_user = User.find_by(id: session[:user_id]) %>
-      <% if @current_user.nil? %>
-        <li class="nav-item app-header__nav_item">
-          <%= button_to "Log in", { :action => "login", :controller => "users" }, method: :get, class: "btn btn-primary" %>
-        </li>
-      <% else %>
-        <li class="nav-item app-header__nav_item">
-          <%= button_to "Logged in as #{ @current_user.username }", user_path(@current_user), method: :get, class: "btn btn-primary" %>
-        </li>
-        <li class="nav-item app-header__nav_item">
-          <%= button_to "Log out", { action: "logout", :controller => "users" }, method: :post, class: "btn btn-primary" %>
-        </li>
-      <% end %>
-      </ul>
-    </nav>
-  </header>
+      <nav class="app-header__nav">
+        <ul class="nav app-header__site-nav-container">
+          <li class="nav-item app-header__nav_item"><%= link_to "View top media", root_path, class: "nav-link" %></li>
+          <li class="nav-item app-header__nav_item"><%= link_to "View all media", works_path, class: "nav-link" %></li>
+          <li class="nav-item app-header__nav_item"><%= link_to "Add a new work", new_work_path, class: "nav-link" %></li>
+          <li class="nav-item app-header__nav_item"><%= link_to "View all users", users_path, class: "nav-link" %></li>
+        </ul>
+        <ul class="nav app-header__user-nav-container">
+          <% @current_user = User.find_by(id: session[:user_id]) %>
+          <% if @current_user.nil? %>
+            <li class="nav-item app-header__nav_item">
+              <%= button_to "Log in", { :action => "login", :controller => "users" }, method: :get, class: "btn btn-primary" %>
+            </li>
+          <% else %>
+            <li class="nav-item app-header__nav_item">
+              <%= button_to "Logged in as #{ @current_user.username }", user_path(@current_user), method: :get, class: "btn btn-primary" %>
+            </li>
+            <li class="nav-item app-header__nav_item">
+              <%= button_to "Log out", { action: "logout", :controller => "users" }, method: :post, class: "btn btn-primary" %>
+            </li>
+          <% end %>
+        </ul>
+      </nav>
+    </header>
 
-  <section class="alert__container">
-    <% flash.each do |name, message| %>
-      <div class="<%= name %>">
-        <span><%= message %></span>
-      </div>
-    <% end %>
-  </section>
+    <main>
+      <section class="alert__container">
+        <% flash.each do |name, message| %>
+          <div class="<%= name %>">
+            <span><%= message %></span>
+          </div>
+        <% end %>
+      </section>
+
     <%= yield %>
+
+    </main>
   </body>
 </html>

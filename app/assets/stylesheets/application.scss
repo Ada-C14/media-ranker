@@ -17,12 +17,21 @@
 
 @import "**/*";
 
+main {
+ padding: 2rem;
+}
+a, h2, h3 {
+ color: #26A69A;
+}
 a:hover {
  color:#00796B;
  text-decoration:none
 }
 h1, h2, h3, h4, h5 {
- font-weight: bold;
+ font-weight:bold;
+}
+section {
+ display:block
 }
 
 .app-header__header {
@@ -90,4 +99,36 @@ h1, h2, h3, h4, h5 {
 }
 .spotlight__description {
  margin-bottom:0
+}
+
+.top-ten__container {
+ display:grid;
+ grid-template-columns:1fr 1fr 1fr;
+ grid-column-gap:2em
+}
+.top-ten__header {
+ color:#26A69A;
+ border-bottom:2px solid;
+ border-bottom-color:#B2DFDB
+}
+.top-ten__list {
+ list-style-type:none;
+ margin-left:0;
+ padding-left:0
+}
+.top-ten__creator {
+ color:slategrey
+}
+.list-group {
+ display:flex;
+ flex-direction:column;
+ padding-left:0;
+ margin-bottom:0
+}
+.list-group-item {
+ position:relative;
+ display:block;
+ padding:0.75rem 1.25rem;
+ margin-bottom:-1px;
+ background-color:#fff;
 }

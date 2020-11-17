@@ -9,11 +9,44 @@
     <link href="favicon.ico?v=1.0" rel="icon" type="image/x-icon"/>
   </head>
   <body>
-  <section class ="flash">
+  <header class="app-header__header">
+    <h1>
+      <a href="index.html">Media Ranker</a>
+      <small>Ranking the Best of Everything</small>
+    </h1>
+    <nav class="app-header__nav">
+      <ul class="nav app-header__site-nav-container">
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "View top media", root_path, class: "nav-link"%>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "View all media", works_path, class: "nav-link"%>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "Add a new work", new_work_path, class: "nav-link"%>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "View all users", users_path_url, class: "nav-link"%>
+        </li>
+      </ul>
+      <ul class="nav app-header__user-nav-container">
+        <li class="nav-item app-header__nav_item">
+          <a class="btn btn-primary" href="login.html">Log In</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class ="flash alert__container ">
 <% flash.each do |name, message|  %>
-    <div class="<%= name%>"><%= message%> </div>
+    <div class="<%= name%> alert"><%= message%> </div>
     <% end %>
   </section>
+<!--  <section class="alert__container">-->
+  <!--  <div class="alert alert-success">-->
+  <!--    <span>Successfully created book 969</span>-->
+  <!--  </div>-->
+  <!--</section>-->
   <%= yield %>
   </body>
 </html>

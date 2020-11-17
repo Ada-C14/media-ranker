@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def index
-    # @users = User.order(date_joined :asc)
+    @users = User.order(date_joined :asc)
     @user = User.all
   end
 

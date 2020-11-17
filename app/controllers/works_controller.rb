@@ -1,11 +1,17 @@
 class WorksController < ApplicationController
   def index
     @works = Work.all
+    @user = session[:user_id]
 
     @albums = @works.select { |w| w.category == "album" }
     @books = @works.select { |w| w.category == "book" }
     @movies = @works.select { |w| w.category == "movie" }
+
+    p '==========='
+    p @user
+    p '==========='
   end
+
 
   def show
     @work = Work.find_by(id: params[:id])
@@ -27,6 +33,7 @@ class WorksController < ApplicationController
       redirect_to work_path(@work)
       return
     else
+      flash.now[:error] = "Something happened. Not created"
       render :new, status: :bad_request
       return
     end

@@ -5,4 +5,13 @@ class Work < ApplicationRecord
   validates :category, presence:true
   validates :title, presence: true, uniqueness: true
 
+  def self.top_ten(category)
+    work = Work.all.where(category: category)
+    return work.max_by(10){|work| work.votes.count}
+  end
+
+  def self.spotlight
+
+  end
+
 end

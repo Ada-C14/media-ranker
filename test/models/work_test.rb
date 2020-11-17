@@ -1,7 +1,10 @@
 require "test_helper"
 
 describe Work do
-  # it "does a thing" do
-  #   value(1+1).must_equal 2
-  # end
+  describe 'Relationships' do
+
+  end
+  describe 'Validations' do
+
+  end
 end

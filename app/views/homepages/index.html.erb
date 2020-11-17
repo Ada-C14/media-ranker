@@ -1,0 +1,60 @@
+<!--<h1>Homepages#index</h1>-->
+<!--<p>Find me in app/views/homepages/index.html.erb</p>-->
+<h2>Welcome - Index Page </h2>
+
+<!--<h3>Top 10 - All Work - Spotlight</h3>-->
+<!--<table id="index-table">-->
+<!--  <tr>-->
+<!--    <th>Category</th>-->
+<!--    <th>Title</th>-->
+<!--    <th>Vote Count</th>-->
+<!--    <th>Creator</th>-->
+<!--    <th>Publication Year</th>-->
+<!--    <th>Description</th>-->
+<!--  </tr>-->
+  <%# @spotlights.each do |work| %>
+<!--    <tr>-->
+<!--      <td><%#= work.category %></td>-->
+<!--      <td><%#= link_to "#{work.title}", work_path(work.id)%></td>-->
+<!--      <td><%#= work.votes_count %></td>-->
+<!--      <td><%#= work.creator %></td>-->
+<!--      <td><%#= work.publication_year %></td>-->
+<!--      <td><%#= work.description %></td>-->
+<!--    </tr>-->
+  <%#end %>
+<!--</table>-->
+
+<!--<section>-->
+  <%# hash = {"album" => "Top 10 Albums", "book" => "Top 10 Books", "movie" => "Top 10 Movies"} %>
+  <%# ["album", "book", "movie"].each do |category| %>
+    <%# works = Work.top_ten(category) %>
+<!--    <h3><%#= hash[category] %></h3>-->
+<!--    <table id="index-table">-->
+<!--      <tr>-->
+<!--        <th>Title</th>-->
+<!--        <th>Vote Count</th>-->
+<!--        <th>Creator</th>-->
+<!--        <th>Publication Year</th>-->
+<!--        <th>Description</th>-->
+<!--      </tr>-->
+      <%# works.each do |work| %>
+<!--        <tr>-->
+<!--          <td><%#= link_to "#{work.title}", work_path(work.id)%></td>-->
+<!--          <td><%#= work.votes_count %></td>-->
+<!--          <td><%#= work.creator %></td>-->
+<!--          <td><%#= work.publication_year %></td>-->
+<!--          <td><%#= work.description %></td>-->
+<!--        </tr>-->
+      <%#end %>
+<!--    </table>-->
+  <%# end %>
+<!--</section>-->
+<%= render partial: "spotlight", locals: {work: @spotlight} %>
+
+
+<%= render partial: "table_top10", locals: {header: "Albums", works: @albums} %>
+<%= render partial: "table_top10", locals: {header: "Books", works: @books} %>
+<%= render partial: "table_top10", locals: {header: "Movies", works: @movies} %>
+
+
+

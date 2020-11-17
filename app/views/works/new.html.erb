@@ -1,0 +1,7 @@
+<!--<h1>Work#new</h1>-->
+<!--<p>Find me in app/views/works/new.html.erb</p>-->
+<h2>Add New Work</h2>
+
+<%= render partial: "form", locals: { action_name: "Create" } %>
+
+<%= button_to "Cancel", root_path, method: :get, class: "cancel" %>

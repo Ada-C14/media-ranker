@@ -1,0 +1,7 @@
+<!-- app/views/users/login_form.html.erb -->
+<%= form_with model: @user, class: 'login__form', url: login_path do |f| %>
+  <%= f.label :username %>
+  <%= f.text_field :username %>
+
+  <%= f.submit "Log In" , class: "btn btn-primary"%>
+<% end %>

@@ -1,0 +1,29 @@
+<h2>All Users - Index Page </h2>
+
+<table id="index-table">
+  <tr>
+    <th>ID Number</th>
+    <th>Username</th>
+    <th>Votes</th>
+    <th>Date Joined</th>
+  </tr>
+
+  <% @users.each do |user| %>
+    <tr>
+      <td>
+        <%= user.id%>
+      </td>
+      <td>
+        <%= link_to "#{user.username}", user_path(user.id)%>
+      </td>
+      <td>
+        <%= user.votes_count%>
+      </td>
+      <td>
+        <%=  %>
+      </td>
+    </tr>
+  <% end %>
+</table>
+
+<p><%= link_to "Add User/New Login", login_path %></p>

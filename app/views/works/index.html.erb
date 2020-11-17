@@ -1,0 +1,9 @@
+<!--<h1>Work#index</h1>-->
+<!--<p>Find me in app/views/works/index.html.erb</p>-->
+<h2>All Work - Index Page </h2>
+
+<%= render partial: "table", locals: {header: "Albums", works: @albums} %>
+<%= render partial: "table", locals: {header: "Books", works: @books} %>
+<%= render partial: "table", locals: {header: "Movies", works: @movies} %>
+
+<p><%= link_to "Add Work", new_work_path %></p>

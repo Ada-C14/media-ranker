@@ -3,6 +3,8 @@
 
   <section class="media-table">
     <% works = @works.where(category: "album") %>
+    <% works = works.sort_by { |work| work.votes.count }.reverse! %>
+
     <h4>Albums</h4>
     <table class="table">
       <thead>
@@ -30,6 +32,8 @@
 
   <section class="media-table">
     <% works = @works.where(category: "book") %>
+    <% works = works.sort_by { |work| work.votes.count }.reverse! %>
+
     <h4>Books</h4>
     <table class="table">
       <thead>
@@ -57,6 +61,8 @@
 
   <section class="media-table">
     <% works = @works.where(category: "movie") %>
+    <% works = works.sort_by { |work| work.votes.count }.reverse! %>
+
     <h4>Movies</h4>
     <table class="table">
       <thead>

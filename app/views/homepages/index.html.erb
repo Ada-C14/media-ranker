@@ -3,7 +3,11 @@
   <section class="spotlight">
     <h2 class="spotlight__header">
       <span class="spotlight__header--prefix">Media Spotlight</span>
+      <% if @work %>
       <%= link_to @work.title, work_path(@work.id), class: "spotlight__link-to" %> by <%= @work.creator %>
+        <%else %>
+      <%= @spotlight_sample %>
+        <% end %>
     </h2>
     <p class="spotlight__description">
       <%= @work.votes.count%> votes - <%= @work.description%>

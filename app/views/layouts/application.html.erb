@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Gudea:wght@400;700&display=swap');
+    </style>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <header class="app-header__header">
+    <h1>
+      <%= link_to "Media Ranker", root_path %>
+      <small>Ranking the Best of Everything</small>
+    </h1>
+
+    <nav class="app-header__nav">
+      <ul class="nav app-header__site-nav-container">
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "View top media", root_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "View all media", works_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "Add new work", new_work_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "View all users", users_path, class: "nav-link" %>
+        </li>
+      </ul>
+      <ul class="nav app-header__user-nav-container">
+        <% if session[:user_id] %>
+          <li>
+            <%= link_to "Logged in as #{session[:username]}", user_path(session[:user_id]), class: "btn btn-primary" %>
+          </li>
+          <!-- adds spacing between login and logout buttons -->
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <li>
+            <%= link_to "Log Out", logout_path, method: :post, class: "btn btn-primary" %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to "Log In", login_path, class: "btn btn-primary" %>
+          </li>
+        <% end %>
+      </ul>
+    </nav>
+  </header>
+
+<!--  consider putting in application model? -->
+  <% if flash[:error] %>
+    <div class="alert alert-warning alert-container">
+      <%= flash[:error] %>
+      <% if flash[:reason] %>
+        <ul>
+          <li><%= flash[:reason] %></li>
+        </ul>
+      <% end %>
+
+      <% if @user %>
+        <% if @user.errors.any? %>
+          <ul>
+            <% @user.errors.each do |column, message| %>
+              <li> <%= column %>: <%= message %> </li>
+            <% end %>
+          </ul>
+        <% end %>
+      <% end %>
+
+      <% if @work %>
+        <% if @work.errors.any? %>
+          <ul>
+            <% @work.errors.each do |column, message| %>
+              <li> <%= column %>: <%= message %> </li>
+            <% end %>
+          </ul>
+        <% end %>
+      <% end %>
+
+    </div>
+  <% elsif flash[:success] %>
+    <div class="alert alert-success alert-container">
+      <%= flash[:success] %>
+    </div>
+  <% end %>
+
+    <%= yield %>
+  </body>
+
+</html>
+<body>
+

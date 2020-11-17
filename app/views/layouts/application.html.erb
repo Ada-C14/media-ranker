@@ -12,9 +12,22 @@
   <nav>
     <%= link_to "Home", root_path %>
     <%= link_to "All Media", works_path %>
+    <% if session[:user_id] %>
+      <%= link_to "Logout", logout_path, method: :post %>
+    <% else %>
+      <%= link_to "Login", login_path %>
+    <% end %>
   </nav>
 
   <body>
+    <section class="flash-msg_section">
+      <% flash.each do |name, message| %>
+        <strong class="<% name %>">
+          <%= message %>
+        </strong>
+      <% end %>
+    </section>
+
     <%= yield %>
   </body>
 

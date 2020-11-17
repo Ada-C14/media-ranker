@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Media Ranker 2.0</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Gudea:wght@400;700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+
+  <header class="text-center header">
+    <h1><a href="/" class="MR"><strong>Media Ranker</strong></a> <small> Ranking the Best of Everything</small></h1>
+    <nav class="navbar navbar-expand-sm">
+
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto nav-hover">
+          <%=  link_to "View top media", homepage_path, class: "nav-link" %>
+          <%=  link_to "View all media", works_path, class: "nav-link" %>
+          <%=  link_to "Add a new work", new_work_path, class: "nav-link" %>
+          <%=  link_to "View all users", users_path, class: "nav-link" %>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+        <% if session[:user_id] %>
+            <span class="justify-content-between"><%= link_to "Logged in as #{session[:username]}", user_path(session[:user_id]), class: "btn btn-info my-2 my-sm-0", id:"loggedin-user", method: "get" %></span>
+            <span class="justify-content-between"> <%= link_to "Logout", logout_path, class: "btn btn-info my-2 my-sm-0", id:"logout", method: "post" %></span>
+            <% else %>
+            <%= link_to "Login", login_path, class: "btn btn-info my-2 my-sm-0 login-btn", id:"login", type:"submit" %>
+        <% end %>
+            </form>
+      </div>
+    </nav>
+  </header>
+
+  <section class="flash-msg">
+    <% flash.each do |name, message| %>
+      <div class="alert alert-<%= name %>">
+        <%= message %>
+      </div>
+    <% end %>
+  </section>
+
+  <div class=" container-fluid">
+    <div class="mt-5"></div>
+    <%= yield %>
+  </div><!--  </div> end container-->
+  </body>
+</html>

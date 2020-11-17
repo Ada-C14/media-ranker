@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-sm-12">
+    <h1>User Summary: <%= @user.username %></h1>
+    <p>Joined site <%= @user.created_at.strftime("%b %d, %Y") %></p>
+
+    <h1>Votes</h1>
+      <div class="col-sm-12">
+        <table class="table">
+          <thead>
+          <tr>
+            <th scope="col">Media Title</th>
+            <th scope="col">Created By</th>
+            <th scope="col">Published</th>
+            <th scope="col">Category</th>
+            <th scope="col">Voted On</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% if @user.votes.count > 0 %>
+          <% @user.votes.each do |vote|  %>
+            <tr>
+              <td><%= link_to vote.work.title, work_path(vote.work.id)  %></td>
+              <td><%= vote.work.creator %></td>
+              <td><%= vote.work.publication_year %></td>
+              <td><%= vote.work.category %></td>
+              <td><%= vote.created_at.strftime("%b %d, %Y") %></td>
+            </tr>
+          <% end %>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+
+
+  </div>
+</div>

@@ -1,0 +1,66 @@
+// Place all the styles related to the Works controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+label, select, input {
+
+  margin-bottom: 15px;
+
+}
+
+#create_work {
+  background-color: #26969a !important;
+  color: white;
+
+}
+
+#create_work:hover {
+    background-color: #00796B !important;
+    color: white;
+    text-decoration: none;
+}
+
+#btn1, #btn2, #btn3, #btn5 {
+    float: left;
+    margin-right: 5px;
+    background-color: #26969a !important;
+}
+
+#btn1:hover, #btn2:hover, #btn3:hover, #btn5:hover {
+    background-color: #00796B !important;
+    color: white;
+
+}
+
+#btn4 {
+    float: left;
+}
+
+#gray_btn {
+    background-color: #6c757d;
+    border-color: #6c757d;
+    float: left;
+}
+
+.index_btn {
+    margin-right: 5px;
+}
+
+.works_show {
+    list-style-type: none;
+    line-height: 2.5;
+
+}
+
+#title {
+    color: #26969a;
+    font-weight: bold;
+
+}
+
+.show_votes {
+
+    font-weight: bold;
+    font-size: 30px;
+
+}

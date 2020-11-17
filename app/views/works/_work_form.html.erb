@@ -1,0 +1,37 @@
+<% if @work.errors.any? %>
+  <div class="errors">
+    <% @work.errors.each do |column, message| %>
+      <p>
+        Oops! Your data doesn't look quite right: <strong><%= column.capitalize %></strong> <%= message %>.
+      </p>
+    <% end %>
+  </div>
+<% end %>
+
+
+<%=form_with model: @work, class: 'work_form' do |f| %>
+
+  <div class="form-group">
+    <%= f.label :category, {for: "category_dropdown"}%>
+    <%= f.select(:category, options_for_select(%w[album book movie]), {}, {class: "form-control"}) %>
+
+  <div class="form-group">
+  <%= f.label :title, {for:"exampleFormControlInput1"} %>
+  <%= f.text_area :title, {class: "form-control", rows: "1"} %>
+  </div>
+    <div class="form-group">
+      <%= f.label :creator, {for:"exampleFormControlInput1" } %>
+      <%= f.text_area :creator, {class: "form-control", rows: "1"} %>
+    </div>
+    <div class="form-group">
+      <%= f.label :publication_year, {for:"exampleFormControlInput1" } %>
+      <%= f.text_area :publication_year, {class: "form-control", rows: "1"} %>
+    </div>
+    <div class="form-group">
+      <%= f.label :description, {for:"exampleFormControlInput1" } %>
+      <%= f.text_area :description, {class: "form-control", rows: "3"} %>
+    </div>
+  </div>
+
+  <%= f.submit "Create Work", {class: "btn btn-info"} %>
+<% end %>

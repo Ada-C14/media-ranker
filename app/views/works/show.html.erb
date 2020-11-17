@@ -1,0 +1,58 @@
+<div class="row">
+  <div class="col-sm-12">
+    <div class="show-item">
+
+      <h2 id="title"><%= @work.title %></h2>
+
+      <ul class="title-info works_show">
+        <li>Created by: <%= @work.creator %></li>
+        <li>Published: <%= @work.publication_year %> </li>
+        <% unless @work.description.nil? %>
+          <li><p><%= @work.description %></p></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12">
+    <%= button_to "Back to media ranks", homepage_path,
+                  method: "get", class: "btn btn-info", id:"btn1" %>
+
+    <%= button_to "Edit", edit_work_path(@work),
+                  method: "get", class: "btn btn-info", id:"btn2" %>
+
+    <%= button_to "Upvote", work_upvote_path(@work),
+                  method: "post", class: "btn btn-info", id:"btn3" %>
+
+    <%= button_to "Delete", work_path(@work),
+                  method: :delete, class: "btn btn-danger", id:"btn4",
+                  data: {confirm: "Are you sure?"} %>
+
+    <% @votes =  @work.votes %>
+  </div>
+</div>
+
+<div class="show_votes">
+  <%= "#{@votes.count} votes for this #{@work.category}" %>
+</div>
+<div class="row">
+  <div class="col-sm-12">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">User</th>
+        <th scope="col">Date</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @votes.each do |vote|  %>
+        <tr>
+          <td><%= link_to vote.user.username, user_path(vote.user.id)  %></td>
+          <td><%= vote.created_at.strftime("%b %d, %Y") %></td>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

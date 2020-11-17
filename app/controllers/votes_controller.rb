@@ -19,7 +19,7 @@ class VotesController < ApplicationController
       flash[:success] = "Successfully upvoted"
       redirect_to work_path(work.id)
     else
-      flash[:error] = "There was a problem with counting your vote"
+      flash[:error] = "You may only vote once for each work. Please check out our other media!"
       redirect_to work_path(work.id)
     end
 

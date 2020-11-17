@@ -24,7 +24,7 @@ class WorksController < ApplicationController
       redirect_to work_path(@work.id)
       return
     else
-      flash.now[:failure] = "Failed to create work"
+      flash.now[:danger] = "Failed to create work"
       render :new, status: :bad_request
       return
     end
@@ -46,7 +46,7 @@ class WorksController < ApplicationController
       redirect_to work_path(@work.id)
       return
     else
-      flash.now[:failure] = "Failed to update work"
+      flash.now[:danger] = "Failed to update work"
       render :edit, status: :bad_request
       return
     end
@@ -71,11 +71,11 @@ class WorksController < ApplicationController
         flash[:success] = "Successfully upvoted"
       else
         @vote.errors.each do |column, message|
-          flash[:error] = message
+          flash[:warning] = message
         end
       end
     else
-      flash[:error] = "You must be logged in to upvote!"
+      flash[:warning] = "You must be logged in to upvote!"
     end
     redirect_back fallback_location: '/'
   end

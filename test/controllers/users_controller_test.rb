@@ -1,6 +1,62 @@
 require "test_helper"
 
 describe UsersController do
+  before do
+    @user = User.create username:'test'
+  end
+
+  describe "index" do
+    it "responds with success when there are many users saved" do
+      # Arrange
+      # Ensure that there is at least one work saved
+
+      # Act
+      get users_path
+
+      # Assert
+      must_respond_with :success
+
+    end
+
+    it "responds with success when there are no users saved" do
+      # Arrange
+      # Ensure that there are zero works saved
+      @user.destroy
+
+      # Act
+      get users_path
+
+      # Assert
+      must_respond_with :success
+
+    end
+  end
+
+  describe "show" do
+    it "responds with success when showing an existing valid user" do
+      # Arrange
+      # Ensure that there is a work saved
+
+      # Act
+      get user_path(@user.id)
+
+      # Assert
+      must_respond_with :success
+
+    end
+
+    it "responds with 404 with an invalid user id" do
+      # Arrange
+      # Ensure that there is an id that points to no work
+
+      get user_path(-1)
+
+      # Assert
+      must_respond_with :redirect
+
+    end
+  end
+
   it 'can get the login form' do
     get login_path
 

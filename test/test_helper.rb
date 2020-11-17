@@ -1,6 +1,4 @@
 ENV['RAILS_ENV'] ||= 'test'
-environment ENV['RACK_ENV'] || 'development'
-
 require_relative '../config/environment'
 require 'rails/test_help'
 require 'minitest/rails'

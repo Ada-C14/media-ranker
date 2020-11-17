@@ -91,7 +91,7 @@ describe WorksController do
       # Assert
       # Find the newly created work, and check that all its attributes match what was given in the form data
       # Check that the controller redirected the user
-      new_work = work.find_by(name: work_hash[:work][:title])
+      new_work = Work.find_by(name: work_hash[:work][:title])
       expect(new_work.category).must_equal work_hash[:work][:category]
       expect(new_work.creator).must_equal work_hash[:work][:creator]
 
@@ -168,12 +168,12 @@ describe WorksController do
       # Ensure that there is no change in work.count
       expect {
         patch work_path(id), params: work_hash
-      }.wont_differ "work.count"
+      }.wont_differ "Work.count"
 
       # Assert
       # Use the local variable of an existing work's id to find the work again, and check that its attributes are updated
       # Check that the controller redirected the user
-      new_work = work.find_by(name: work_hash[:work][:title])
+      new_work = Work.find_by(name: work_hash[:work][:title])
       expect(new_work.category).must_equal work_hash[:work][:category]
       expect(new_work.creator).must_equal work_hash[:work][:creator]
 
@@ -187,18 +187,21 @@ describe WorksController do
       # Ensure there is an invalid id that points to no work
       # Set up the form data
       id = -1
-      new_data = {
-        work: {
-          name: "new name",
-          vin: "new vin"
-        }
+      work_hash = {
+          work: {
+              category: 'book',
+              title: 'test title',
+              creator: 'test author',
+              publication_year: '1984',
+              decription: 'this is a test'
+          }
       }
 
       # Act-Assert
       # Ensure that there is no change in work.count
       expect {
-        patch work_path(id), params: new_data
-      }.wont_change "work.count"
+        patch work_path(id), params: work_hash
+      }.wont_change "Work.count"
 
       # Assert
       # Check that the controller gave back a 404
@@ -218,11 +221,11 @@ describe WorksController do
       # Ensure that there is a change of -1 in work.count
       expect {
         delete work_path(id)
-      }.must_change 'work.count', -1
+      }.must_change 'Work.count', -1
 
       # Assert
       # Check that the controller redirects
-      deleted_work = work.find_by(id: id)
+      deleted_work = Work.find_by(id: id)
 
       expect(deleted_work).must_be_nil
 

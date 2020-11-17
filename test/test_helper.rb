@@ -20,9 +20,9 @@ class ActiveSupport::TestCase
   # Add more helper methods to be used by all tests here...
   def login(username = 'Ada Lovelace')
     user_hash = {
-        user: {
-            username: username
-        }
+      user: {
+        username: username
+      }
     }
 
     post login_path, params: user_hash

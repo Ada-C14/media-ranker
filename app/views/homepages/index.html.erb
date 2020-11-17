@@ -29,7 +29,7 @@
             <%= link_to top_movie.title, work_path(top_movie.id) %>
             <small class="top-ten__creator">by <%= top_movie.creator %></small>
           </h4>
-          <p> <%= top_movie.votes %> votes </p>
+          <p> <%= top_movie.votes.count %> votes </p>
         </li>
         <% end %>
       </ul>
@@ -48,7 +48,7 @@
               <%= link_to top_book.title, work_path(top_book.id) %>
               <small class="top-ten__creator">by <%= top_book.creator %></small>
             </h4>
-            <!--          Come back to when added votes <p>15 votes</p>-->
+            <p> <%= top_book.votes.count %> votes </p>
           </li>
         <% end %>
       </ul>
@@ -66,7 +66,7 @@
               <%= link_to top_album.title, work_path(top_album.id) %>
               <small class="top-ten__creator">by <%= top_album.creator %></small>
             </h4>
-            <!--          Come back to when added votes <p>15 votes</p>-->
+            <p> <%= top_album.votes.count %> votes </p>
           </li>
         <% end %>
       </ul>

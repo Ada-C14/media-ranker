@@ -1,14 +1,22 @@
-<% if @user.errors.any? %>
-  <ul class="errors">
-    <% @user.errors.each do |column, message| %>
-      <li><strong><%= column %></strong> <%= message %></li>
+<main>
+  <section>
+    <% if @user.errors.any? %>
+      <ul class="errors">
+        <% @user.errors.each do |column, message| %>
+          <li><strong><%= column %></strong> <%= message %></li>
+        <% end %>
+      </ul>
     <% end %>
-  </ul>
-<% end %>
+  </section>
 
-<%= form_with model: @user, class: 'login_form', url: login_path do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username %>
+  <section>
+    <%= form_with model: @user, class: 'login_form', url: login_path do |f| %>
+      <div class="form-group">
+        <%= f.label :username %>
+        <%= f.text_field :username, class: "form-control" %>
+      </div>
 
-  <%= f.submit "Log In" %>
-<% end %>
+      <%= f.submit "Log In", class: "btn btn-primary"%>
+    <% end %>
+  </section>
+</main>

@@ -176,3 +176,20 @@ table {
  transition:border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out
 }
 
+.btn-danger {
+ color:#fff;
+ background-color:#dc3545;
+ border-color:#dc3545
+}
+.btn-danger:hover {
+ color:#fff;
+ background-color:#c82333;
+ border-color:#bd2130
+}
+.works-votes__container {
+ margin-top:2rem
+}
+.works-votes__header {
+ color:black
+}
+

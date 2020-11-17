@@ -8,18 +8,6 @@ describe Work do
   before do
     @new_work = Work.new(category: "book", title: "Title 1", creator: "Creator 1", publication_year: "2021", description: "Description 1")
 
-    11.times do |i|
-      Work.create!(category: "book", title: "book_#{i}", creator: "Creator", publication_year: "2020", description: "Description")
-    end
-
-    11.times do |i|
-      Work.create!(category: "album", title: "album_#{i}", creator: "Creator", publication_year: "2020", description: "Description")
-    end
-
-    11.times do |i|
-      Work.create!(category: "movie", title: "movie_#{i}", creator: "Creator", publication_year: "2020", description: "Description")
-    end
-
   end
 
   it "can be instantiated" do
@@ -59,7 +47,7 @@ describe Work do
     it "must have a creator" do
       @new_work.creator = nil
       expect(@new_work.valid?).must_equal false
-      expect(@ew_work.errors.messages).must_include :creator
+      expect(@new_work.errors.messages).must_include :creator
       expect(@new_work.errors.messages[:creator]).must_equal ["can't be blank"]
     end
 
@@ -105,6 +93,26 @@ describe Work do
 
   end
 
+  describe "work model methods" do
+    before do
+      clear_database
+      @books = []
+      @albums = []
+      @movies = []
+      @users = []
+      11.times do |i|
+        @books << Work.create!(category: "book", title: "book_#{i}", creator: "Creator", publication_year: "2020", description: "Description")
+        @albums << Work.create!(category: "album", title: "album_#{i}", creator: "Creator", publication_year: "2020", description: "Description")
+        @movies << Work.create!(category: "movie", title: "movie_#{i}", creator: "Creator", publication_year: "2020", description: "Description")
+        @users << User.create!(username: "Username_#{i}")
+          i.times do |j|
+            Vote.create!(work: @books[j], user: @users[i])
+            Vote.create!(work: @albums[j], user: @users[i])
+            Vote.create!(work: @movies[j], user: @users[i])
+          end
+      end
+    end
+
   describe "category_organized" do
     it "returns empty list if there are no record for a category" do
       clear_database
@@ -128,20 +136,40 @@ describe Work do
     it "returns a list of work for the desired category" do
       result = Work.category_organized(:book)
       result.each do |work|
-      expect(work.category).must_be :book
+      expect(work.category).must_equal "book"
       end
       result_2 = Work.category_organized(:album)
       result_2.each do |work|
-      expect(work.category).must_be :album
+      expect(work.category).must_equal "album"
       end
       result_3 = Work.category_organized(:movie)
       result_3.each do |work|
-      expect(work.category).must_be :movie
+      expect(work.category).must_equal "movie"
       end
     end
 
     it "returns a list of work in descending order of number of votes" do
 
+      result = Work.category_organized(:book)
+      count = 11
+      result.each do |work|
+        expect(work.votes.count <= count).must_equal true
+        count = work.votes.count
+      end
+
+      result = Work.category_organized(:album)
+      count = 11
+      result.each do |work|
+        expect(work.votes.count <= count).must_equal true
+        count = work.votes.count
+      end
+
+      result = Work.category_organized(:movie)
+      count = 11
+      result.each do |work|
+        expect(work.votes.count <= count).must_equal true
+        count = work.votes.count
+      end
     end
 
   end
@@ -149,16 +177,18 @@ describe Work do
   describe "self.top_ten" do
     it "returns 10 work at most" do
       result = Work.top_ten(:book)
-      expect{result.size}.must_equal 10
+      expect(result.size).must_equal 10
     end
   end
 
   describe "self.spotlight" do
     it "returns 1 work at most" do
       result = Work.spotlight
-      expect{result.size}.must_equal 1
+      expect(result).wont_be_nil
     end
   end
 
+  end
 end
+
 

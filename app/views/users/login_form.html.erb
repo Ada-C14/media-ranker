@@ -1,0 +1,24 @@
+<main>
+  <section>
+    <% if @user.errors.any? %>
+      <div class="alert alert-warning">
+        <ul>
+          <% @user.errors.each do |column, message| %>
+            <li><strong><%= column %></strong> <%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </section>
+
+  <section>
+    <%= form_with model: @user, class: 'login_form', url: login_path do |f| %>
+      <div class="form-group">
+        <%= f.label :username %>
+        <%= f.text_field :username, class: "form-control" %>
+      </div>
+
+      <%= f.submit "Log In", class: "btn btn-primary"%>
+    <% end %>
+  </section>
+</main>

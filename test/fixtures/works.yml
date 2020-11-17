@@ -1,0 +1,51 @@
+album:
+  category: "album"
+  title: "Test Album"
+  creator: "Some musician"
+  publication_year: 2020
+  description: "NA"
+album2:
+  category: "album"
+  title: "Second Album"
+book:
+  category: "book"
+  title: "Test Book"
+  creator: "Some author"
+  publication_year: 2020
+  description: "NA"
+movie:
+  category: "movie"
+  title: "Test Movie"
+  creator: "Some director"
+  publication_year: 2020
+  description: "NA"
+movie2:
+  category: "movie"
+  title: "Movie 2"
+movie3:
+  category: "movie"
+  title: "Movie 3"
+movie4:
+  category: "movie"
+  title: "Movie 4"
+movie5:
+  category: "movie"
+  title: "Movie 5"
+movie6:
+  category: "movie"
+  title: "Movie 6"
+movie7:
+  category: "movie"
+  title: "Movie 7"
+movie8:
+  category: "movie"
+  title: "Movie 8"
+movie9:
+  category: "movie"
+  title: "Movie 9"
+movie10:
+  category: "movie"
+  title: "Movie 10"
+movie11:
+  category: "movie"
+  title: "Movie 11"

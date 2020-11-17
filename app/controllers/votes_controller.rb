@@ -5,13 +5,13 @@ class VotesController < ApplicationController
   end
 
   def create
-    work_id = params[:work_id]
+    work_id = params[:work_id]  # dry up all instances of this
     work = Work.find_by(id: work_id)
 
-    user_id = session[:user_id]
     user = User.find_by(id: session[:user_id])
 
     @vote = Vote.new(work_id: work.id, user_id: user.id)
+
 
     if @vote.save
       flash[:success] = "Successfully upvoted"

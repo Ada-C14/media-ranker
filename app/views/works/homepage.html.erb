@@ -1,12 +1,13 @@
-
  <section class="spotlight">
     <% feature =Work.spotlight %>
+   <%if Work.spotlight.nil? %>
+     <h2>No Media Spotlight. Please vote!</h2>
+     <%else %>
     <h2>
       <span class = "spotlight_header">Media Spotlight:</span><%= link_to feature.title, work_path(feature.id), class: "spotlight_link-to" %> <br>By: <%= feature.created_by%>
     </h2>
       <p class="spotlight__description"><%= feature.votes.count %> votes</p>
   </section>
-
 
   <section class="top-ten__container">
     <h2 class="top_ten_header">Top Movies</h2>
@@ -55,3 +56,4 @@
       <%end%>
     </ul>
   </section>
+ <%end %>

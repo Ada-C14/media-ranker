@@ -17,31 +17,15 @@ describe Work do
     it 'is invalid without a title' do
       # Arrange
       @work.title = nil
-      # Act
-      result = @work.valid?
       # Assert
-      expect(result).must_equal false
-      expect(@work.errors.messages).must_include :title
+      expect(@work.valid?).must_equal false
+      expect(@work.errors.messages.include?(:title)).must_equal true
     end
 
-    it 'is invalid without a description' do
-      # Arrange
-      @work.category = nil
-      # Act
-      result = @work.valid?
+    it 'is invalid when title is not unique' do
+      Work.create(title: @work.title, creator: @work.creator)
       # Assert
-      expect(result).must_equal false
-      expect(@work.errors.messages).must_include :description
-    end
-
-    it "is valid if title is unique in the scope of category" do
-      # Arrange
-      @work.save
-      @diff_work = Work.new(title: @work.title, category: 'book')
-      # Act
-      result = @diff_work.valid?
-      # Assert
-      expect(result).must_equal true
+      expect(@work.valid?).must_equal false
     end
   end
 end

@@ -1,10 +1,10 @@
 class VotesController < ApplicationController
-
   def create
     @user = User.find_by(id: session[:user_id])
     @work = Work.find(params[:work_id])
 
     @vote = Vote.new
+
     @vote.work_id = @work.id
     @vote.user_id = @user.id
     @vote.date = Date.today

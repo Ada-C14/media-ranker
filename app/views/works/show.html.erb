@@ -1,11 +1,14 @@
-<h2>Title: <%= @work.title %></h2>
-<h3>By: <%= @work.creator %></h3>
+<h2><%= @work.title %></h2>
+<p>Created by: <%= @work.creator %></p>
+<p>Published: <%= @work.publication_year %></p>
+<p><%= @work.description %></p>
 
 
 <ul>
-  <li><%= link_to "Edit Media", edit_work_path %></li>
-  <li><%= link_to "Delete Media", work_path, method: :delete, data: { confirm: "Are you sure?" } %></li>
-  <li><%= link_to "Back to All Media", works_path %></li>
+  <li><%= link_to "Back to Media ranks", root_path, class: "btn btn-primary" %></li>
+  <li><%= link_to "Edit", edit_work_path, class: "btn btn-primary" %></li>
+  <li><%= link_to "Upvote", work_votes_path(@work.id), class: "btn btn-primary" %></li>
+  <li><%= link_to "Delete", work_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary"%></li>
 </ul>
 
 

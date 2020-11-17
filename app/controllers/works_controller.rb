@@ -67,10 +67,6 @@ class WorksController < ApplicationController
     end
   end
 
-  def upvote
-
-  end
-
   private
 
   def work_params

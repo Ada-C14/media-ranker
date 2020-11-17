@@ -1,10 +1,13 @@
 <main>
-  <section>
+  <section class="spotlight">
     <% if Work.spotlight.nil? %>
       <h2>No media spotlight. Go vote!</h2>
     <% else %>
-      <h2>Media Spotlight: <%= link_to Work.spotlight.title, work_path(Work.spotlight)%></h2>
-      <p><%= Work.spotlight.votes.count %> - <%= Work.spotlight.description %></p>
+      <h2><span class="spotlight__header--prefix">Media Spotlight: </span>
+        <%= link_to Work.spotlight.title,
+                    work_path(Work.spotlight),
+                    class: "spotlight__link_to" %></h2>
+      <p class="spotlight__description"><%= Work.spotlight.votes.count %> - <%= Work.spotlight.description %></p>
     <% end %>
   </section>
 

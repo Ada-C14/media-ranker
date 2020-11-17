@@ -179,12 +179,24 @@ describe Work do
       result = Work.top_ten(:book)
       expect(result.size).must_equal 10
     end
+
+    it "returns 0 if no work in the database" do
+      clear_database
+      result = Work.top_ten(:book)
+      expect(result.size).must_equal 0
+    end
   end
 
   describe "self.spotlight" do
     it "returns 1 work at most" do
       result = Work.spotlight
       expect(result).wont_be_nil
+    end
+
+    it "returns nil if no work in the database" do
+      clear_database
+      result = Work.spotlight
+      expect(result).must_be_nil
     end
   end
 

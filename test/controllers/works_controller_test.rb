@@ -87,7 +87,7 @@ describe WorksController do
         post works_path, params: work_hash
       }.wont_change "Work.count"
 
-      expect(flash.now[:failure]).must_equal "Failed to create work"
+      expect(flash.now[:danger]).must_equal "Failed to create work"
       must_respond_with :bad_request
     end
   end
@@ -160,7 +160,7 @@ describe WorksController do
         patch work_path(work_id), params: edited_work_hash
       }.wont_change "Work.count"
 
-      expect(flash[:failure]).must_equal "Failed to update work"
+      expect(flash[:danger]).must_equal "Failed to update work"
       must_respond_with :bad_request
     end
   end
@@ -211,7 +211,7 @@ describe WorksController do
         post upvote_path(work.id)
       }.wont_change "Vote.count"
 
-      expect(flash[:error]).must_equal "User has already voted for this work"
+      expect(flash[:warning]).must_equal "User has already voted for this work"
       must_respond_with :redirect
     end
 
@@ -220,7 +220,7 @@ describe WorksController do
         post upvote_path(work.id)
       }.wont_change "Vote.count"
 
-      expect(flash[:error]).must_equal "You must be logged in to upvote!"
+      expect(flash[:warning]).must_equal "You must be logged in to upvote!"
       must_respond_with :redirect
     end
   end

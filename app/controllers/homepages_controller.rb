@@ -6,32 +6,14 @@ class HomepagesController < ApplicationController
      @movies = @work.where(category: "movie")
       @books = @work.where(category: "book")
      @albums = @work.where(category: "album")
-     @spotlight = spotlight
-     @top_books = top( @books)
-     @top_movies = top(@movies)
-     @top_albums = top(@albums)
+     @spotlight = Work.spotlight
+     @top_books = Work.top( @books)
+     @top_movies = Work.top(@movies)
+     @top_albums = Work.top(@albums)
 
   end
 
 
-  def spotlight
-    @works = Work.all
-    if @works.nil?
-      puts "Create some works!"
-    end
-    most_votes = Work.new
-    @works.each do |work|
-      if work.votes.size > most_votes.votes.size
-        most_votes = work
-      end
-    end
-    return most_votes
-  end
-
-  def top(number=10, media)
-    number = number.to_i
-    return media.max_by(number) { |work| work.votes.count }
-  end
 
   #
   # def top_ten

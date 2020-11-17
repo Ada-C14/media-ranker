@@ -21,6 +21,83 @@ main {
 padding: 2rem;
 }
 
+body {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #212529;
+  text-align: left;
+  background-color: #fff;
+}
+
+body, h1, h2, h3, h4, h5 {
+  font-family: "Gudea", sans-serif;
+}
+
+h1, h2, h3, h4, h5 {
+  font-weight: bold;
+  margin-top: 0;
+    margin-bottom: 0.5rem;
+    line-height: 1.2;
+}
+
+h2, h3, a {
+  color: #26A69A;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+}
+
+h4 {
+  font-size: 1.5rem;
+  margin-block-start: 1.33em;
+  margin-block-end: 1.33em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+}
+
+span {
+  color: #424242;
+}
+
+a:hover {
+ color:#00796B;
+ text-decoration:none
+}
+
+.btn-primary {
+  background-color: #26A69A;
+  color: white;
+  border-color: #26A69A;
+}
+
+.app-header__header {
+  max-width: 100%;
+  background-color: #B2DFDB;
+  margin-bottom: 0.5rem;
+  padding: 2rem 1rem 0.5rem 1rem;
+}
+
+.app-header__header h1 a {
+  color: #FF5722;
+  padding-right: 25px;
+  margin-right: 15px;
+  border-right: white 2px solid;
+}
+
+.app-header__header h1 small {
+  color: white;
+}
 .app-header__header {
   background-color: #B2DFDB ;
   max-width: 100%;
@@ -30,17 +107,12 @@ padding: 2rem;
 .app-header__header h1 {
   text-align: center;
   margin: 25px auto 40px auto;
-
-}
-.app-header__header h1 a {
-  color: #FF5722;
-  text-decoration: none;
-  border-right: white solid ;
-  padding-right: 30px;
 }
 
-.app-header__header h1 small {
-  color: white;
+.app-header__nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 nav {
@@ -48,20 +120,35 @@ nav {
   flex-wrap: wrap;
 }
 
-
 .app-header__nav_item {
   margin-right: 15px;
 }
 
-a, h2, h3 {
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  padding-left: 0;
+  margin-bottom: 0;
+  list-style: none;
+}
+
+.app-header__user-nav-container .nav-item {
+  margin-left: 2rem;
+}
+
+.app-header__site-nav-container .app-header__nav_item {
+  margin-right: 2rem;
+}
+
+.app-header__nav_item .nav-link {
+  color: #00796B;
+}
+
+.nav-link {
+  display: block;
+  padding: 0.5rem 1rem;
+}
+
+.spotlight__header {
   color: #26A69A;
 }
-
-h1, h2, h3, h4, h5 {
-  font-weight: bold;
-}
-
-body, h1, h2, h3, h4, h5 {
-  font-family: "Gudea", sans-serif;
-}
-

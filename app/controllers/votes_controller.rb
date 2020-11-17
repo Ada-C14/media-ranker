@@ -16,7 +16,7 @@ class VotesController < ApplicationController
         flash[:error] = "Could not upvote"
       end
     end
-    redirect_to works_path
+    redirect_back fallback_location: works_path
     return
   end
 

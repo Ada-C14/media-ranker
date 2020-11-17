@@ -1,7 +1,7 @@
 <%= form_with model: @work do |f| %>
   <div>
     <%= f.label :category %>
-    <%= f.text_field :category %>
+    <%= f.select :category, ["album", "book", "movie"] %>
   </div>
   <div>
     <%= f.label :title %>

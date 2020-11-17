@@ -11,5 +11,7 @@
   <li><%= link_to "Delete", work_path, method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-primary"%></li>
 </ul>
 
+<h3> <%= @work.votes.count %>Votes for this <%= @work.category %></h3>
+
 
 

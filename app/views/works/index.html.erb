@@ -20,7 +20,7 @@
               <td> <%= link_to "#{item.title}", work_path(item.id) %> </td>
               <td> <%= item.creator %></td>
               <td> <%= item.publication_year %></td>
-              <td>Upvote button</td>
+              <td> <%= button_to "Upvote", users_upvote_path(work_id: item) %></td>
             </tr>
           <% end %>
         </tbody>

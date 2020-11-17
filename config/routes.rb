@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root to: 'works#homepage'
+
   get "/login", to: "users#login_form", as: "login"
   post "/login", to: "users#login"
   post "/logout", to: "users#logout"
@@ -8,10 +11,7 @@ Rails.application.routes.draw do
   get "/users", to: "users#index"
   get "/users", to: "users#show", as: "user"
 
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-  root to: 'works#homepage'
+  post "/users/upvote", to: "users#upvote"
 
   resources :works
-
-  # resources :users
 end

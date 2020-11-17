@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :require_login, except: [:current]
+  skip_before_action :require_login, only: [:upvote] #g
 
   def index
     @users = User.all
@@ -69,6 +69,20 @@ class UsersController < ApplicationController
 
   def current
     @user = User.find_by(id: session[:user_id])
+    return @user
+  end
+
+  def upvote
+    @user = current
+    @work = Work.find_by(params[:work_id])
+
+    if @user && @work
+      new_vote = Vote.new({user_id: @user, work_id: @work}) #should this be @user.id, and @work.id??
+      new_vote.save
+    else
+      flash[:error] = "You must be logged in to vote"
+    end
+    redirect_to works_path #not sure if this is needed
   end
 
   private

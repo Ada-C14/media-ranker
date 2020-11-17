@@ -1,0 +1,36 @@
+jieyou:
+    category: book
+    title: 解忧杂货店
+    creator: 东野圭吾
+    publication_year: 2012
+    description: 日本作家东野圭吾写作的长篇小说
+
+women:
+  category: book
+  title: 我们仨
+  creator: 杨绛
+  publication_year: 2000
+  description: 讲述了一家三口在人生最后阶段相依为命的深刻情感，回忆了女儿钱瑗、丈夫钱钟书先后离去的过程
+
+
+marriage:
+  category: movie
+  title: Marriage Story
+  creator: 斯嘉丽约翰逊
+  publication_year: 2019
+  description: 戏中男主角是戏剧导演，女主角是演员，两人因为工作分居纽约和洛杉矶而导致理念不合离婚的故事
+
+joker:
+  category: movie
+  title: Joker
+  creator: 托德 菲利普斯
+  publication_year: 2019
+  description: 讲述了戏中男主角是戏剧导演，女主角是演员，两人因为工作分居纽约和洛杉矶而导致理念不合离婚的故事
+
+yehui:
+  category: album
+  title: 叶惠美
+  creator: 周杰伦
+  publication_year: 2003
+  description: 周杰伦第四张专辑
+

@@ -51,10 +51,11 @@ class UsersController < ApplicationController
     return
   end
 
+  # If not an instance of @current_user, will be told to login and redirected to root
   def current
     @current_user = User.find_by(id: session[:user_id])
     unless @current_user
-      flash[:error] = "You must log in to vote"
+      flash[:error] = "You must log in"
       redirect_to root_path
       return
     end

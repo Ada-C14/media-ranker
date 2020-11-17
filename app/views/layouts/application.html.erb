@@ -12,37 +12,40 @@
   <body>
     <header class="app-header__header">
       <h1>
-        <a href="/">Media Ranker</a>
+        <%= link_to "Media Ranker", root_path %>
         <small>Ranking the Best of Everything</small>
       </h1>
 
       <nav class="app-header__nav">
         <ul class="nav app-header__site-nav-container">
           <li class="nav-item app-header__nav_item">
-            <a class="nav-link" href="/">View Top Media</a>
+            <%= link_to "View Top Media", root_path, class: "nav-link" %></li>
           </li>
           <li class="nav-item app-header__nav_item">
-            <a class="nav-link" href="/works">View All Media</a>
+            <%= link_to "View All Media", works_path, class: "nav-link" %></li>
           </li>
           <li class="nav-item app-header__nav_item">
-            <a class="nav-link" href="/works/new">Add a new Work</a>
+            <%= link_to "Add a New Work", new_work_path, class: "nav-link" %></li>
           </li>
           <li class="nav-item app-header__nav_item">
-            <a class="nav-link" href="/users">View All Users</a>
+            <%= link_to "View All Users", users_path, class: "nav-link" %></li>
           </li>
         </ul>
 
         <ul class="nav app-header__user-nav-container">
-          <li class="nav-item app-header__nav_item">
-            <a class="btn btn-primary" href="/login">Log In</a>
-          </li>
-<!--          In the case of being logged in. How to integrate?-->
-<!--          <li class="nav-item app-header__nav_item">-->
-<!--            <a class="btn btn-primary" href="/users/996">Logged in as s</a>-->
-<!--          </li>-->
-<!--          <li class="nav-item app-header__nav_item">-->
-<!--            <a class="btn btn-primary" rel="nofollow" data-method="post" href="/logout">Log Out</a>-->
-<!--          </li>-->
+          <% if session[:user_id] %>
+            <% user = User.find_by(id: session[:user_id]) %>
+            <li class="nav-item app-header__nav_item">
+              <%= link_to "Logged in as #{user.user_name}", current_user_path(user.id), class: "btn btn-primary" %>
+            </li>
+            <li class="nav-item app-header__nav_item">
+              <%= link_to 'Log Out', logout_path, method: :post, class: "btn btn-primary" %>
+            </li>
+          <% else %>
+            <li class="nav-item app-header__nav_item">
+              <%= link_to 'Log In', login_path, class: "btn btn-primary" %>
+            </li>
+          <% end %>
         </ul>
       </nav>
     </header>

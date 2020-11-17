@@ -52,7 +52,7 @@ describe WorksController do
       get work_path(-1)
 
       # Assert
-      must_respond_with :not_found
+      must_respond_with :redirect
 
     end
   end
@@ -91,7 +91,7 @@ describe WorksController do
       # Assert
       # Find the newly created work, and check that all its attributes match what was given in the form data
       # Check that the controller redirected the user
-      new_work = Work.find_by(name: work_hash[:work][:title])
+      new_work = Work.find_by(title: work_hash[:work][:title])
       expect(new_work.category).must_equal work_hash[:work][:category]
       expect(new_work.creator).must_equal work_hash[:work][:creator]
 
@@ -173,7 +173,7 @@ describe WorksController do
       # Assert
       # Use the local variable of an existing work's id to find the work again, and check that its attributes are updated
       # Check that the controller redirected the user
-      new_work = Work.find_by(name: work_hash[:work][:title])
+      new_work = Work.find_by(title: work_hash[:work][:title])
       expect(new_work.category).must_equal work_hash[:work][:category]
       expect(new_work.creator).must_equal work_hash[:work][:creator]
 
@@ -205,7 +205,7 @@ describe WorksController do
 
       # Assert
       # Check that the controller gave back a 404
-      must_respond_with :not_found
+      must_respond_with :redirect
 
     end
 
@@ -243,7 +243,7 @@ describe WorksController do
       # Ensure that there is no change in work.count
       expect {
         delete work_path(@work.id)
-      }.wont_differ 'work.count'
+      }.wont_differ 'Work.count'
 
       # Assert
       # Check that the controller responds or redirects with whatever your group decides

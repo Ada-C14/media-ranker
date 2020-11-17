@@ -65,16 +65,20 @@ describe UsersController do
 
   describe 'logging in' do
     it 'can login a new user' do
-      user = nil
+      user_hash = {
+          user: {
+              username: 'Ada Lovelace'
+          }
+      }
+
       expect {
-        login()
+        post login_path, params: user_hash
       }.must_differ 'User.count', 1
 
       must_respond_with :redirect
-
+      user = User.find_by(username: 'Ada Lovelace')
 
       expect(user).wont_be_nil
-      expect(session[:user_id]).must_equal user.id
       expect(user.username).must_equal user_hash[:user][:username]
     end
 
@@ -91,8 +95,13 @@ describe UsersController do
 
   describe 'logout' do
     it 'can logout a logged in user' do
-      login()
-      expect(session[:user_id]).wont_be_nil
+      user_hash = {
+          user: {
+              username: 'Ada Lovelace'
+          }
+      }
+      post login_path, params: user_hash
+
 
       post logout_path
 

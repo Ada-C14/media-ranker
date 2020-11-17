@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  # login stuff will go here
-
   root to: "homepages#index"
 
   get "/login", to: "users#login_form", as: "login"

@@ -7,6 +7,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # requires that user is logged in for an action to run
+  def require_login
+    if current_user.nil?
+      flash[:error] = "You must be logged in to vote"
+      redirect_to login_path
+    end
+  end
 
 
 end

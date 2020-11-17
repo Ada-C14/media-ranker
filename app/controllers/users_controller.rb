@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  before_action :require_login, only: [:logout]
+
   def index
     @users = User.all
   end

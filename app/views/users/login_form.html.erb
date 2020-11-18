@@ -1,0 +1,30 @@
+<section>
+
+  <% if @user.errors.any? %>
+    <ul class = "alert">
+      <% @user.errors.each do |column, message| %>
+        <li>
+          <p><%= column %> <%= message %></p>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <main>
+    <h2>Log In</h2>
+    <%= form_with model: @user, class: 'login__form', url: login_path do |f| %>
+
+        <div class = "form-group">
+        <%= f.label :user_name %>
+        <br>
+        <%= f.text_field :user_name %>
+        </div>
+
+      <div class = "form-group">
+        <%= f.submit "Log In", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </main>
+</section>
+
+

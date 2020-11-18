@@ -1,0 +1,57 @@
+<section>
+
+  <%= form_with model: @work do |f| %>
+
+    <% if @work.errors.any? %>
+      <ul class = "alert">
+        <% @work.errors.each do |column, message| %>
+          <li>
+            <p><%= column %> <%= message %></p>
+          </li>
+        <% end %>
+      </ul>
+    <% end %>
+
+    <div class = "form-group">
+      <%= f.label :category %>
+      <br>
+      <%= f.select :category, ["album", "book", "movie"] %>
+    </div>
+    <br>
+
+    <div class = "form-group">
+      <%= f.label :title %>
+      <br>
+      <%= f.text_field :title %>
+    </div>
+    <br>
+
+    <div class = "form-group">
+      <%= f.label :creator %>
+      <br>
+      <%= f.text_field :creator %>
+    </div>
+    <br>
+
+    <div class = "form-group">
+      <%= f.label :publication_year %>
+      <br>
+      <%= f.date_select :publication_year, start_year: 1900, end_year: 2020, discard_day: true, discard_month: true %>
+    </div>
+    <br>
+
+    <div class = "form-group">
+      <%= f.label :description %>
+      <br>
+      <%= f.text_field :description %>
+    </div>
+    <br>
+
+    <div class = "form-group">
+    <%= f.submit action_name, class: "btn btn-primary" %>
+    </div>
+
+  <% end %>
+</section>
+
+

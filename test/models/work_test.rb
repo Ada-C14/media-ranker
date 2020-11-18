@@ -1,7 +1,6 @@
 require "test_helper"
 
 # Add Relations Tests in Wave 2
-# Add Fixtures Later
 # New? Create?
 
 describe Work do
@@ -9,62 +8,81 @@ describe Work do
     @work = works(:book1)
   end
 
+  describe "validations" do
+    it "can be instantiated and is valid when all required fields are present" do
+      # Act
+      created_work = @work.valid?
 
+      # Assert
+      expect(created_work).must_equal true
+    end
 
-  it "can be instantiated and is valid when all required fields are present" do
-    # Act
-    created_work = @work.valid?
+    it "is invalid without title" do
+      # Arrange
+      @work.title = nil
 
-    # Assert
-    expect(created_work).must_equal true
+      #Act
+      titleless_work = @work.valid?
+
+      # Assert
+      expect(titleless_work).must_equal false
+      expect(@work.errors.messages).must_include :title
+    end
+
+    it "is invalid without category" do
+      # Arrange
+      @work.category = nil
+
+      #Act
+      categoryless_work = @work.valid?
+
+      # Assert
+      expect(categoryless_work).must_equal false
+      expect(@work.errors.messages).must_include :category
+    end
   end
 
-  it "is invalid without title" do
-    # Arrange
-    @work.title = nil
+  describe "relationships" do
+    it "has a vote" do
+      # Arrange movie with single vote in works.yml
+      work = works(:movie2)
 
-    #Act
-    titleless_work = @work.valid?
+      # Assert that movie2 has 1 votes in votes.yml
+      expect(work.votes.count).must_equal 1
+    end
 
-    # Assert
-    expect(titleless_work).must_equal false
-    expect(@work.errors.messages).must_include :title
+    it "has multiple votes" do
+      # Arrange book with 2 votes in works.yml
+      work = works(:book2)
+
+      # Assert
+      expect(work.votes.count).must_equal 2
+    end
   end
 
-  it "is invalid without category" do
-    # Arrange
-    @work.category = nil
+  describe "custom methods" do
+    it "returns a spotlight work" do
 
-    #Act
-    categoryless_work = @work.valid?
+      expect(Work.spotlight).must_be_instance_of Work
+    end
 
-    # Assert
-    expect(categoryless_work).must_equal false
-    expect(@work.errors.messages).must_include :category
-  end
+    it "returns nil for spotlight when database is empty" do
+      Work.delete_all
 
-  it "returns a spotlight work" do
-    # spotlit = Work.spotlight
-    # @works = Work.all
+      expect(Work.count).must_equal 0
+      expect(Work.spotlight).must_be_nil
+    end
 
-    expect(Work.spotlight).must_be_instance_of Work
-  end
+    it "returns an array for top 10" do
+      top_books = Work.top_ten("book")
 
-  it "returns nil for spotlight when database is empty" do
-    Work.delete_all
-    expect(Work.count).must_equal 0
-    expect(Work.spotlight).must_be_nil
-  end
+      expect(top_books).must_be_instance_of Array
+    end
 
-  it "returns an array for top 10" do
-    top_books = Work.top_ten("book")
+    it "returns an array of 10 albums for top 10 method" do
+      top_books = Work.top_ten("album")
 
-    expect(top_books).must_be_instance_of Array
-  end
-
-  it "returns an array of 10 albums for top 10 method" do
-    top_books = Work.top_ten("album")
-
-    expect(top_books.length).must_equal 10
+      expect(top_books.length).must_equal 10
+    end
   end
 end

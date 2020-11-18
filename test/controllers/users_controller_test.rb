@@ -3,7 +3,7 @@ require "test_helper"
 describe UsersController do
   # it "current user can return a page if the user is logged in" do
   #   # Arrange
-  #   login_path
+  #   ?
   #
   #   # Act
   #   get current_user_path
@@ -12,7 +12,7 @@ describe UsersController do
   #   must_respond_with :success
   #
   # end
-  # How to adapt what Chris did?
+
 
   it "current user redirects us to login page if user isn't logged in" do
     # Arrange

@@ -1,25 +1,25 @@
-vote:
-  user: voter1
+vote1:
+  user: user1
+  work: movie2
+
+vote2:
+  user: user1
+  work: book2
+
+vote3:
+  user: user2
+  work: book2
+
+vote4:
+  user: user3
   work: work1
 
-vote:
-  user: voter1
+vote5:
+  user: user3
   work: work2
 
-vote:
-  user: voter2
-  work: work1
-
-vote:
-  user: voter3
-  work: work1
-
-vote:
-  user: voter3
-  work: work2
-
-vote:
-  user: voter3
+vote6:
+  user: user3
   work: work3
 
 

@@ -1,0 +1,25 @@
+vote:
+  user: voter1
+  work: work1
+
+vote:
+  user: voter1
+  work: work2
+
+vote:
+  user: voter2
+  work: work1
+
+vote:
+  user: voter3
+  work: work1
+
+vote:
+  user: voter3
+  work: work2
+
+vote:
+  user: voter3
+  work: worok3
+
+

@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   get "/users/current", to: "users#current", as: "current_user"
 
   resources :homepages, only: [:index]
+
   resources :works do
-    resources :votes, only: [:create] # destroy?
+    resources :votes, only: [:create]
   end
 
   resources :users, except: [:edit, :update, :destroy]

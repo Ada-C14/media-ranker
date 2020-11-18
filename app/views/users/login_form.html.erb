@@ -1,0 +1,24 @@
+<%= form_with model: @user, url: login_path do |f| %>
+
+  <% if @user.errors.any? %>
+    <ul class="errors">
+      <% @user.errors.each do |column, message| %>
+        <li>
+          <strong><%= column.capitalize %></strong> <%= message %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <h2>Login:</h2>
+
+  <div>
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+  </div>
+
+  <div>
+    <%= f.submit "Login", class: "btn btn-primary" %>
+    <% end %>
+
+</div>

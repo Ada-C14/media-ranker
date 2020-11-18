@@ -1,0 +1,23 @@
+
+<h2>Media Spotlight: <%= Work.spotlight.title %></h2>
+
+
+<h4>Top Movies</h4>
+<ul>
+<% Work.top_ten('movie').each do |work|%>
+  <li><%= link_to work.title, work_path(work.id) %></li>
+<% end %>
+</ul>
+
+<h4>Top Books</h4>
+<ul><% Work.top_ten('book').each do |work|%>
+  <li><%= link_to work.title, work_path(work.id) %></li>
+<% end %>
+</ul>
+
+<h4>Top Albums</h4>
+<ul>
+<% Work.top_ten('album').each do |work|%>
+  <li><%= link_to work.title, work_path(work.id) %></li>
+<% end %>
+</ul>

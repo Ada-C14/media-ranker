@@ -1,14 +1,13 @@
 class WorksController < ApplicationController
 
+  before_action :find_work, only: [:show, :edit, :update, :destroy]
+
   def index
     @works = Work.all
   end
 
   def show
-    work_id = params[:id]
-    @work = Work.find_by(id: work_id)
     if @work.nil?
-      # Change this to a 404 page
       redirect_to works_path
     end
   end
@@ -31,9 +30,6 @@ class WorksController < ApplicationController
   end
 
   def edit
-    work_id = params[:id]
-    @work = Work.find_by(id: work_id)
-
     if @work.nil?
       head :not_found
       return
@@ -42,9 +38,6 @@ class WorksController < ApplicationController
 
 
   def update
-    work_id = params[:id]
-    @work = Work.find_by(id: work_id)
-
     if @work.nil?
       head :not_found
       return
@@ -61,9 +54,6 @@ class WorksController < ApplicationController
   end
 
   def destroy
-    work_id = params[:id]
-    @work = Work.find_by(id: work_id)
-
     if @work.nil?
       head :not_found
       return
@@ -76,6 +66,10 @@ class WorksController < ApplicationController
   end
 
   private
+
+  def find_work
+    @work = Work.find_by_id(params[:id])
+  end
 
   def work_params
     return params.require(:work).permit(:title, :category, :creator, :publication_year, :description)

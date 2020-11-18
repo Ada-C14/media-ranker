@@ -8,8 +8,8 @@ describe Work do
   describe 'Relationships' do
     it 'can have many votes' do
       new_work.save
-      user1 = User.create(username: 'first_user')
-      user2 = User.create(username: 'second_user')
+      user1 = users(:user1)
+      user2 = users(:user2)
       vote1 = Vote.create(user_id: user1.id, work_id: new_work.id)
       vote2 = Vote.create(user_id:user2.id, work_id: new_work.id)
 
@@ -21,8 +21,8 @@ describe Work do
 
     it 'can have many users through votes' do
       new_work.save
-      user1 = User.create(username: 'first_user')
-      user2 = User.create(username: 'second_user')
+      user1 = users(:user1)
+      user2 = users(:user2)
       vote1 = Vote.create(user_id: user1.id, work_id: new_work.id)
       vote2 = Vote.create(user_id:user2.id, work_id: new_work.id)
 
@@ -35,7 +35,7 @@ describe Work do
 
   describe 'Validations' do
     before do
-    @work = new_work
+      @work = new_work
     end
 
     it 'is valid when all fields are filled' do

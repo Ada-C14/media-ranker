@@ -6,11 +6,10 @@ class WorksController < ApplicationController
     @books = @works.select { |w| w.category == "book" }
     @movies = @works.select { |w| w.category == "movie" }
 
-    # @user = params[:session][:user_id]
+  end
 
-    # p '==========='
-    # p @user
-    # p '==========='
+  def top_ten
+    @vote = Vote.find_by(work_id: @work.id)
   end
 
   def show

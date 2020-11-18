@@ -26,7 +26,7 @@ class UsersController < ApplicationController
     else
       user = User.create(name: name, date_joined: Date.today)
       session[:user_id] = user.id
-      flash[:success] = "Successfully logged in as new user #{user.valid?}"
+      flash[:success] = "Successfully logged in as new user #{user.name}"
     end
     redirect_to root_path
     return

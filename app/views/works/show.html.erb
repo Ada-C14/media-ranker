@@ -11,7 +11,7 @@
       <%=link_to "Delete", destroy_work_path(@work.id), class: "btn btn-primary", method: :delete, data: {confirm: 'Are you sure?'}%>
     </section>
   <section class="works-votes__container">
-    <h3 class="works-votes__header">0 Votes for this Book</h3>
+    <h3 class="works-votes__header"><%=@vote %> Votes for this </h3>
     <table class="table">
       <thead>
       <tr>

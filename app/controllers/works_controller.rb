@@ -19,7 +19,8 @@ class WorksController < ApplicationController
 
   def top_works
     @works = Work.all
-    @work = Work.all.sample
+
+    @work = @works.sample
 
     @albums = @works.where(category: 'album').sample(10)
     @books = @works.where(category: 'book').sample(10)
@@ -77,6 +78,8 @@ class WorksController < ApplicationController
     return
 
   end
+
+  private
 
   def find_by
     @work = Work.find_by(id: params[:id])

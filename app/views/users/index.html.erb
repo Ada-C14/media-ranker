@@ -9,27 +9,17 @@
       <th>Joined</th>
     </tr>
     </thead>
+
     <tbody>
-<!--    Example of how each user should be displayed-->
-<!--    <tr>-->
-<!--      <td><a href="/users/615">dee</a></td>-->
-<!--      <td>0</td>-->
-<!--      <td>May 13, 2020</td>-->
-<!--    </tr>-->
-<!--    <tr>-->
-<!--      <td><a href="/users/616">chelsea</a></td>-->
-<!--      <td>0</td>-->
-<!--      <td>May 13, 2020</td>-->
-<!--    </tr>-->
+    <% @users.each do |user| %>
+      <tr>
+        <td> <%= link_to user.user_name, user_path(user.id) %> </td>
+        <td> <%= user.votes.count %> </td>
+        <td> <%= user.created_at.strftime("%b %d, %Y") %> </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
 
-
-
-</tbody>
-</table>
-
-<a class="btn btn-secondary" href="/">Back to Media List</a>
-
+  <%= link_to 'Back to Media List', root_path, class: "btn btn-secondary" %>
 </main>
-
-
-</body>

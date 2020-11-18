@@ -1,8 +1,5 @@
 require "test_helper"
 
-# Add Relations Tests in Wave 2
-# New? Create?
-
 describe Work do
   before do
     @work = works(:book1)

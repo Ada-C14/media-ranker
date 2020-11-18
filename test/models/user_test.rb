@@ -1,9 +1,5 @@
 require "test_helper"
 
-# Add Relations Tests in Wave 2
-# Add Fixtures Later
-# New? Create?
-
 describe User do
 
   describe "validations" do

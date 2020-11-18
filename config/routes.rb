@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get '/works/new', to: 'works#new', as: 'new_work'
   get '/works/:id', to: 'works#show', as: "work"
-  get '/works', to: 'works#index', as: 'works_path'
+  get '/works', to: 'works#index', as: 'works'
   get  '/works/:id/edit', to: 'works#edit', as: 'edit_work'
   # put '/works/:id', to: 'works#update'
   patch '/works/:id', to: 'works#update'
@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   post '/votes', to: 'votes#create'
 
-  get '/users', to: 'users#index', as: 'users_path'
+  get '/users', to: 'users#index', as: 'users'
   get '/users/:id/edit', to: 'users#edit', as: 'edit_user'
 
   # session

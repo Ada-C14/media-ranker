@@ -1,17 +1,17 @@
 class WorksController < ApplicationController
   def index
     @works = Work.all
-    @user = session[:user_id]
 
     @albums = @works.select { |w| w.category == "album" }
     @books = @works.select { |w| w.category == "book" }
     @movies = @works.select { |w| w.category == "movie" }
 
-    p '==========='
-    p @user
-    p '==========='
-  end
+    # @user = params[:session][:user_id]
 
+    # p '==========='
+    # p @user
+    # p '==========='
+  end
 
   def show
     @work = Work.find_by(id: params[:id])
@@ -80,6 +80,6 @@ class WorksController < ApplicationController
 
   private
   def work_params
-    return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+    return params.require(:work).permit(:category, :title, :creator, :publication_year, :description, :session)
   end
 end

@@ -11,7 +11,7 @@ class VotesController < ApplicationController
 
     if @vote.save
       flash[:session] = "Success"
-      redirect_to root_path  #work_path(@work)
+      redirect_to work_path(@work) #work_path(@work)
     else
       flash[:error] = "Error, not able to upvote"
       redirect_to root_path

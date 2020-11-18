@@ -23,15 +23,16 @@ describe User do
     end
 
     it 'is invalid when username is not unique' do
-      User.create(name: @user.name)
+      User.create!(name: @user.name, date_joined: Date.today)
       # Assert
       expect(@user.valid?).must_equal false
     end
 
     it 'is invalid without a joined date' do
-      User.create(date_joined: @user.date_joined)
+      @user.date_joined = nil
       # Assert
       expect(@user.valid?).must_equal false
+      expect(@user.errors.messages.include?(:date_joined)).must_equal true
     end
   end
 end

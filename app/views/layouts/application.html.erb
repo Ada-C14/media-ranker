@@ -26,13 +26,22 @@
           <%= link_to "Add a new work", new_work_path, class: "nav-link"%>
         </li>
         <li class="nav-item app-header__nav_item">
-          <%= link_to "View all users", users_path_url, class: "nav-link"%>
+          <%= link_to "View all users", users_path, class: "nav-link"%>
         </li>
       </ul>
       <ul class="nav app-header__user-nav-container">
+        <% if @current_user %>
+          <li class="nav-item app-header__nav_item">
+            <%= link_to "Logged in as #{@current_user.name}", current_user_path, class: "btn btn-primary"%>
+          </li>
+          <li class="nav-item app-header__nav_item">
+            <%= link_to "Log Out", logout_path, class: "btn btn-primary", method: :post%>
+          </li>
+          <% else %>
         <li class="nav-item app-header__nav_item">
-          <a class="btn btn-primary" href="login.html">Log In</a>
+          <%= link_to "Log In", login_path, class: "btn btn-primary"%>
         </li>
+          <% end %>
       </ul>
     </nav>
   </header>
@@ -42,11 +51,6 @@
     <div class="<%= name%> alert"><%= message%> </div>
     <% end %>
   </section>
-<!--  <section class="alert__container">-->
-  <!--  <div class="alert alert-success">-->
-  <!--    <span>Successfully created book 969</span>-->
-  <!--  </div>-->
-  <!--</section>-->
   <%= yield %>
   </body>
 </html>

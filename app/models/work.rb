@@ -11,7 +11,7 @@ class Work < ApplicationRecord
   end
 
   def self.spotlight
-
+    return Work.all.sample.title
   end
 
 end

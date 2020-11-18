@@ -9,4 +9,19 @@ class Work < ApplicationRecord
   validates :creator, presence: true
   validates :category, presence: true, inclusion: { in: %w(album book movie), message: "category must be a movie, book or album" }
 
+  # def spotlight
+  #   return self.sample
+  # end
+  #
+  # def top_albums
+  #   return self.where(category: 'album').sample(10)
+  # end
+  #
+  # def top_books
+  #   return self..where(category: 'book').sample(10)
+  # end
+  #
+  # def top_movies
+  #   return self..where(category: 'movie').sample(10)
+  # end
 end

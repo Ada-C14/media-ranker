@@ -9,7 +9,7 @@
   <section>
     <%= button_to 'Back to media ranks', root_path, method: :get, class: 'button button-primary' %>
     <%= button_to 'Edit', edit_work_path(@work.id), method: :get, class: 'button button-primary'  %>
-    <%= button_to 'Upvote', work_path(@work.id), method: :get, class: 'button button-primary'  %>
+    <%= button_to 'Upvote', votes_path, method: :post, class: 'button button-primary'  %>
     <%= button_to 'Delete', work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"}, class: 'button button-danger'  %>
   </section>
 

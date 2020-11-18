@@ -7,7 +7,6 @@ describe User do
 
   describe 'Relationships' do
     it 'can have many votes through different works' do
-      skip
       new_user.save
       work1 = works(:work1)
       work2 = works(:work2)

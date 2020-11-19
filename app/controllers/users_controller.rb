@@ -17,16 +17,23 @@ class UsersController < ApplicationController
   end
 
   def login
-    name = params[:user][:name] #user input
-    user = User.find_by(name: name)
+    user = User.find_by(name: params[:user][:name])
 
-    if !user.nil?  #if user
-      session[:user_id] = user.id #setting the session id to the user_id
-      flash[:success] = "Successfully logged in as returning user #{user.name}"
-    else
-      user = User.create(name: name, date_joined: Date.today)
+    if user.nil?
+      user = User.new(name: params[:user][:name], date_joined: Date.today)
       session[:user_id] = user.id
-      flash[:success] = "Successfully logged in as new user #{user.name}"
+      if !user.save
+
+      end
+
+      flash[:success] = "Successfully logged in as new user: #{user.name}"
+
+
+      session[:user_id] = user.id #setting the session id to the user_id
+      flash[:success] = "Successfully logged in as returning user: #{user.name}"
+    else
+      #new user
+
     end
     redirect_to root_path
     return

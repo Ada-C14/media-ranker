@@ -1,50 +1,36 @@
 # frozen_string_literal: true
 
 class UsersController < ApplicationController
-  # skip_before_action :require_login, except: [:current_user]
-  # before_action :find_user, only: [:show]
+  before_action :find_user, only: [:show]
   def login_form
     @user = User.new
   end
-
   def index
     @users = User.all
   end
-
   def show
-    @user = User.find_by(id: params[:id])
     if @user.nil?
       redirect_to root_path, status: :not_found
       return
     end
   end
-
-  def create
-    @user = User.new(user_params)
-    if @user.save
-      redirect_to user_path(@user.id)
-      return
-    else
-      flash.now[:error] = "Error occurred. User did not save. Please try again."
-      render :login_form, status: :bad_request
-      return
-    end
-  end
-
   def login
     user = User.find_by(username: params[:user][:username])
-    if user
-      session[:user_id] = user.id
-      flash[:success] = "Successfully logged in as returning user #{username}"
+    if user.nil?
+      user = User.create(username: params[:user][:username])
+      unless user.save
+        flash[:error] = "Login failed"
+        redirect_to root_path
+        return
+      end
+      flash[:success] = "Successfully logged in as new user #{user.username}"
     else
-      user = User.create(username: username)
-      session[:user_id] = user.id
-      flash[:success] = "Successfully logged in as new user #{username}"
+      flash[:success] = "Successfully logged in as returning user #{user.username}"
     end
-    redirect_to root_path
+      session[:user_id] = user.id
+      redirect_to root_path
     return
   end
-
   def current
     @current_user = User.find_by(id: session[:user_id])
     unless @current_user
@@ -53,7 +39,6 @@ class UsersController < ApplicationController
       return
     end
   end
-
   def logout
     if session[:user_id]
       user = User.find_by(id: session[:user_id])
@@ -67,10 +52,8 @@ class UsersController < ApplicationController
       redirect_to root_path
     end
   end
-
   private
-
-  def user_params
-    return params.require(:user).permit(:name)
+  def find_user
+    @user = User.find_by(id: params[:id])
   end
 end

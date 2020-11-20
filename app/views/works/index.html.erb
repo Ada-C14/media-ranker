@@ -1,13 +1,51 @@
-<h1>Index page for Works</h1>
 <h2>List of Works</h2>
-<br>
-<%= render partial: "works_table", locals: { category: "Albums", works: @albums } %>
+<h4>Albums</h4>
+
+<table class="table">
+  <tr>
+    <th width="80px">Votes</th>
+    <th width="1400px">Title</th>
+    <th>Created By</th>
+    <th width="100px">Published</th>
+    <th width="100px">Upvote</th>
+  </tr>
+  <tbody>
+  <tr>
+    <% @works.each do |work| %>
+      <% if work.category == 'album' %>
+        <td>Vote</td>
+        <td><%= link_to work.title, work_path(work) %> </td>
+        <td><%= work.creator %></td>
+        <td><%= work.publication_year %></td>
+        <td>VOTE</td>
+        </tr>
+      <% end %>
+    <% end %>
+    </tbody>
+</table>
 
 <br>
-<%= render partial: "works_table", locals: { category: "Books", works: @books } %>
+<h4>Books</h4>
 
-<br>
-<%= render partial: "works_table", locals: { category: "Movies", works: @movies } %>
-
-
-
+<table class="table">
+  <tr>
+    <th width="80px">Votes</th>
+    <th width="1400px">Title</th>
+    <th>Created By</th>
+    <th width="100px">Published</th>
+    <th width="100px">Upvote</th>
+  </tr>
+  <tbody>
+  <tr>
+    <% @works.each do |work| %>
+      <% if work.category == 'book' %>
+        <td>Vote</td>
+        <td><%= link_to work.title, work_path(work) %> </td>
+        <td><%= work.creator %></td>
+        <td><%= work.publication_year %></td>
+        <td>VOTE</td>
+        </tr>
+      <% end %>
+    <% end %>
+    </tbody>
+</table>

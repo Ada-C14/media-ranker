@@ -1,16 +1,14 @@
 class WorksController < ApplicationController
-  before_action :find_work, only: [:show, :edit, :update, :destroy]
-
   def index
-    @albums = Work.albums
-    @movies = Work.movies
-    @books = Work.books
+    @works = Work.all
   end
 
   def show
+    work_id = params[:id]
+    @work = Work.find_by(id: work_id)
     if @work.nil?
       flash[:warning] = "This particular work does not exist"
-      redirect_to root_path
+      redirect_to works_path
       return
     end
     render :show
@@ -21,7 +19,7 @@ class WorksController < ApplicationController
   end
 
   def create
-    @work = Work.new(work_params) #instantiate a new work
+    @work = Work.new(work_params)
     if @work.save # save returns true if the database insert succeeds
       flash[:success] = "#{@work.category.capitalize} has been added successfully"
       redirect_to work_path(@work.id) # go to the index so we can see the work in the list
@@ -32,6 +30,8 @@ class WorksController < ApplicationController
   end
 
   def edit
+    work_id = params[:id]
+    @work = Work.find_by(id: work_id)
     if @work.nil?
       flash[:warning] = "This particular work does not exist"
       redirect_to root_path
@@ -68,14 +68,34 @@ class WorksController < ApplicationController
     end
   end
 
+  # Custom method
+
+  def upvote
+    @work = Work.find_by_id(params[:id])
+    @user = User.find_by_id(session[:user_id])
+    if @user.nil?
+      flash[:error] = "Missing user"
+      redirect_to works_path
+      return
+    end
+    if @work.nil?
+      flash[:error] = "Missing work"
+      redirect_to works_path
+      return
+    end
+    vote = Vote.new(work: @work, user: @user)
+    if vote.save
+      flash[:success] = "You just voted this work"
+    else
+      flash[:error] = "Oops! You may upvote a work only one time."
+    end
+    redirect_to works_path
+  end
+
   private
 
   def work_params
     return params.require(:work).permit(:title, :description, :creator, :publication_date, :category)
-  end
-
-  def find_work
-    @work = current_user.works.find(params[:id])
   end
 
 end

@@ -8,11 +8,17 @@ Rails.application.routes.draw do
   get '/users/current', to: 'users#current', as: 'current_user'
 
   get '/works/top', to: 'works#top'
-  get '/works/:id/upvote', to: 'works#upvote'
+  # get '/works/:id/upvote', to: 'works#upvote'
+  resources :works do
+    member do
+      post :upvote
+    end
+  end
+
 
   resources :works
-  resources :users
-  resources :votes
+  resources :users, only: [:index, :show]
 
-  root to: 'homepages#index'
+
+  root to: 'works#index'
 end

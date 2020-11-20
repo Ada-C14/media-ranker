@@ -1,0 +1,22 @@
+book:
+  category: "book"
+  title: "Llama llama, holidrama"
+  creator: "Anna Dewdney"
+  publication_year: 2019
+  description: "A book that all kids love"
+
+work_1:
+  category: "album"
+  title: "Mulan"
+
+work_2:
+  category: 'book'
+  title: 'chicken soap for the soul'
+
+work_3:
+  category: 'book'
+  title: 'Weathering Heights'
+
+work_4:
+  category: 'album'
+  title: 'The Hunchback of Notre Dame'

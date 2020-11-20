@@ -1,0 +1,36 @@
+<section>
+    <h2>
+      <span class="spotlight"> Media Spotlight: </span>
+      <% top_work = Work.spotlight %>
+      <%= link_to spotlight.title, work_path(spotlight.id)%> by <%= spotlight.creator %>
+    </h2>
+</section>
+
+<br>
+<section class="top-ten__container">
+  <section>
+    <h2 class="top-ten__header">Album</h2>
+    <ul class="list-group top-ten__list">
+      <% Work.top("album").each do |work| %>
+        <li>
+          <h4><%= link_to work.title, work_path(work.id)%></h4>
+          <p>by <%= work.creator %></p>
+          <p>votes: <%= work.votes.count %></p>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+
+  <section>
+    <h2 class="top-ten__header">Books</h2>
+    <ul class="list-group top-ten__list">
+      <% Work.top("book").each do |work| %>
+        <li>
+          <h4><%= link_to work.title, work_path(work.id)%></h4>
+          <p>by <%= work.creator %></p>
+          <p>votes: <%= work.votes.count %></p>
+        </li>
+      <% end %>
+    </ul>
+  </section>
+</section>

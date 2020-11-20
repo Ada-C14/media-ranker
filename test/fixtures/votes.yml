@@ -1,0 +1,27 @@
+vote_1:
+  user: user_1
+  work: work_1
+
+vote_2:
+  user: user_2
+  work: work_3
+
+vote_3:
+  user: user_3
+  work: work_3
+
+vote_4:
+  user: user_4
+  work: work_3
+
+vote_5:
+  user: user_2
+  work: work_4
+
+vote_6:
+  user: user_1
+  work: work_1
+
+vote_7:
+  user: user_3
+  work: work_2

@@ -1,0 +1,13 @@
+<%# <h1>Works#index</h1>
+<p>Find me in app/views/works/index.html.erb</p> %>
+
+<main>
+
+<% if @works.length > 0 %>
+    <h1 class="text-center">List of works</h1>
+
+<%= render partial: "work_table", locals: {header: "Albums", works: @albums} %>
+<%= render partial: "work_table", locals: {header: "Books", works: @books} %>
+<%= render partial: "work_table", locals: {header: "Movies", works: @movies} %>
+
+</main>

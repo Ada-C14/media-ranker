@@ -1,0 +1,17 @@
+<section class="spotlight"> 
+    <h2> 
+        MEDIA SPOTLIGHT:
+        <%= link_to @spotlight.title, work_path(@spotlight.id), :class => "#{@spotlight.category}" %>
+        <small>by <%= @spotlight.creator %></small>
+      </span>
+    </h2>
+     <%= @spotlight.votes.count %> votes, <%= @spotlight.description %>
+  </section>
+
+  <hr>
+
+  <section class="top-ten__container">
+    <%= render partial: "top-ten-table", locals: { top_collection: @top_albums } %>
+    <%= render partial: "top-ten-table", locals: { top_collection: @top_books } %>
+    <%= render partial: "top-ten-table", locals: { top_collection: @top_movies } %>
+  </section>

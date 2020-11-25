@@ -5,8 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-<<<<<<< HEAD
-=======
 
 require 'csv'
 
@@ -16,9 +14,9 @@ puts "Loading raw work data from #{WORK_FILE}"
 work_failures = []
 CSV.foreach(WORK_FILE, :headers => true) do |row|
   work = Work.new
-  work.name = row['name']
+  work.title = row['title']
   work.creator = row['creator']
-  work.publication_date = row['publication_date']
+  work.publication_year = row['publication_year']
   work.category = row['category']
   work.description = row['description']
 
@@ -33,4 +31,3 @@ end
 
 puts "Added #{Work.count} work records"
 puts "#{work_failures.length} works failed to save"
->>>>>>> 72477d9b986ae4696e0734c67b8c8302d7198149

@@ -10,8 +10,8 @@
 
   <hr>
 
-  <section class="top-ten__container">
-    <%= render partial: "top-ten-table", locals: { top_collection: @top_albums } %>
-    <%= render partial: "top-ten-table", locals: { top_collection: @top_books } %>
-    <%= render partial: "top-ten-table", locals: { top_collection: @top_movies } %>
+  <section class="top-ten__list-container">
+    <%= render partial: "top_ten_table", locals: { top_collection: @top_albums } %>
+    <%= render partial: "top_ten_table", locals: { top_collection: @top_books } %>
+    <%= render partial: "top_ten_table", locals: { top_collection: @top_movies } %>
   </section>

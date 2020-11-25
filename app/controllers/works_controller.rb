@@ -53,7 +53,7 @@ class WorksController < ApplicationController
       return
     else
       @work.destroy 
-      flash.now[:notice] = "You have successfully deleted #{work.title}"
+      flash.now[:notice] = "You have successfully deleted #{@work.title}"
       redirect_to works_path
       return
     end
@@ -84,7 +84,7 @@ class WorksController < ApplicationController
   
     # Share common setups/constraints between actions
     def set_work
-      @work = Work.find(params[:id])
+      @work = Work.find_by(params[:id])
 
       if @work.nil?
         head :not_found

@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-<<<<<<< HEAD
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
-end
-=======
   # Work routes
   resources :works
 
@@ -25,4 +21,3 @@ end
   #  resources :works do
   #   resources :votes, only: [:create, :destroy]
   # end
->>>>>>> 72477d9b986ae4696e0734c67b8c8302d7198149

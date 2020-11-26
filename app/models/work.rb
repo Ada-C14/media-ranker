@@ -5,13 +5,10 @@ class Work < ApplicationRecord
   validates :title, presence: true, uniqueness: { scope: :category }
 
   def self.spotlight
-    # return nil if (Work.all).empty?
-    #raise
     return spotlight_media = Work.order(votes_count: :desc).first
   end
 
   def self.top_ten(category)
-    #raise
     return nil if (Work.all).empty?
     top_ten_list = Work.where(category: category).order(votes_count: :desc, title: :asc).first(10)
     return top_ten_list
@@ -20,7 +17,6 @@ class Work < ApplicationRecord
   def self.sorted_media(category)
     return nil if (Work.all).empty?
     sorted_collection = Work.where(category: category).sort_by { |work| [work.votes_count, work.title] }
-
     return sorted_collection
   end
 end

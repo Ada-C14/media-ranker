@@ -19,6 +19,7 @@ class Work < ApplicationRecord
     sorted_collection = Work.where(category: category).sort_by { |work| [work.votes_count, work.title] }
     return sorted_collection
   end
+  
 end
 
 # def upvote(user)

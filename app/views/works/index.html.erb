@@ -3,11 +3,9 @@
 
 <main>
     <h1 class="text-center">Lists of Works</h1>
-
-<%= render partial: "work_table", locals: {header: "Albums", works: @albums} %>
-<%= render partial: "work_table", locals: {header: "Books", works: @books} %>
-<%= render partial: "work_table", locals: {header: "Movies", works: @movies} %>
-
+        <% if @works.length > 0 %>
+            <%= render partial: "work_table", locals: {header: "Albums", works: @albums} %>
+            <%= render partial: "work_table", locals: {header: "Books", works: @books} %>
+            <%= render partial: "work_table", locals: {header: "Movies", works: @movies} %>
+        <%end%>
 </main>
-
-<%# if @works.length > 0 %> #doesn't work because movie is empty

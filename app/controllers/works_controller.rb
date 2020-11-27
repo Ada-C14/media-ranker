@@ -1,5 +1,6 @@
 class WorksController < ApplicationController
   before_action :set_work, only: [:show, :edit, :update, :destroy, :upvote]
+  # before_action :login 
 
   def index
     @works = Work.all
@@ -25,38 +26,29 @@ class WorksController < ApplicationController
       redirect_to works_path(@work.id)
       return
     else
-      flash.now[:error] = "Work was not created, please try again!"
+      flash.now[:error] = "Something happened. Work was not created, please try again!"
       render :new
       return
     end
   end
 
   def update
-    # @work = Work.find_by(id: params[:id])
-    if @work.nil?
-      flash.now[:error] = "Work was not found"
-      redirect_to works_path
-      return 
-    elsif @work.update(work_params)
+    if @work.update(work_params)
       flash[:success] = "#{@work.title} was successfully updated."
       redirect_to works_path
       return
     else
+      flash.now[:error] = "Work was not updated"
       render :edit
+      return
     end
   end
 
   def destroy
-    if @work.nil?
-      flash.now[:error] = "Work was not found"
-      redirect_to works_path
-      return
-    else
       @work.destroy 
       flash.now[:notice] = "You have successfully deleted #{@work.title}"
       redirect_to works_path
       return
-    end
   end
 
   # Custom method
@@ -84,7 +76,7 @@ class WorksController < ApplicationController
   
     # Share common setups/constraints between actions
     def set_work
-      @work = Work.find_by(params[:id])
+      @work = Work.find_by(id: params[:id])
 
       if @work.nil?
         head :not_found

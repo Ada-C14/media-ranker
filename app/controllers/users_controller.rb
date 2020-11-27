@@ -26,7 +26,7 @@ class UsersController < ApplicationController
   end
 
   def login
-    name = user_params[:name]
+    name = params[:name]
     @user = User.find_by(name: name)
     if @user
       session[:user_id] = @user.id
@@ -39,6 +39,8 @@ class UsersController < ApplicationController
       flash.now[:error] = "Unable to log in"
       render :login_form
     end
+    
+    session[:user_id] = @user.id
     redirect_to root_path
     return
   end

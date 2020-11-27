@@ -1,0 +1,23 @@
+work_one:
+  title: "Get Out"
+  creator: "Jordan Peele"
+  category: "movie"
+  description: "A Scarey and Funny movie"
+  publication_year: 2017
+  votes_count: 
+
+work_two:
+  title: "Becoming"
+  creator: "Michelle Obama"
+  category: "book"
+  description: "Life"
+  publication_year: 2018
+  votes_count:
+
+work_three:
+  title: "24K Magic"
+  creator: "Bruno Mars"
+  category: "album"
+  description: "Magic by Bruno Mars"
+  publication_year: 2016
+  votes_count:

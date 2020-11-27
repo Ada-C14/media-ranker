@@ -11,8 +11,8 @@
 
   <body>
     <header class="app-header__header">
-      <h1><a href="">Media Ranker</a>
-      <small>Ranking the Best of Everthing</small>
+      <h1><%= link_to "Media Ranker", root_path %>
+      <small>Ranking the Best of Everything</small>
       </h1>
 
       <nav class="app-header__nav">
@@ -33,16 +33,14 @@
           </ul>
       </nav>
     </header>
+    <% if flash[:notice] %>
+    <div class="alert alert-warning"><%= flash[:notice] %></div>
+  <% end %>
+
+  <% if flash[:success] %>
+    <div class="alert alert-success"><%= flash[:success] %></div>
+  <% end %>
     <main>
-
-      <% if flash[:notice] %>
-        <div class="alert alert-warning"><%= flash[:notice] %></div>
-      <% end %>
-
-      <% if flash[:success] %>
-        <div class="alert alert-success"><%= flash[:success] %></div>
-      <% end %>
-
       <%= yield %>
     </main>
   </body>

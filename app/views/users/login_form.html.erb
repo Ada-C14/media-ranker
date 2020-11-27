@@ -1,14 +1,4 @@
-<main>
-  <% if @user.errors.any? %>
-      <ul class="errors">
-        <% @user.errors.each do |column, message| %>
-          <li>
-            <strong><%= column.capitalize %></strong> <%= message %>
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
-
+<section class="content">
   <h2>Log In</h2>
 
   <div class="form-group">
@@ -38,4 +28,4 @@
       For now, don't worry about it beyond what you can see here.
     </p>
   </article>
-</main>
+</section>

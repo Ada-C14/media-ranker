@@ -16,34 +16,28 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def current
-    @current_user = User.find_by(id: session[:user_id])
-    unless @current_user
-      flash[:error] = "You must be logged in to see this page"
-      redirect_to root_path
-      return
-    end
-  end
-
   def login
-    name = params[:name]
-    @user = User.find_by(name: name)
-    if @user
-      session[:user_id] = @user.id
-      flash[:success] = "Welcome back #{@user.name}"
-    elsif
-      @user = User.create(name: name)
-      session[:user_id] = @user.id
-      flash[:success] = "#{@user.name}, you have successfully logged in as new user"
+    user = User.find_by(name: params[:user][:name])
+    # Check if an user is already existed
+    if user.nil?
+      # New User
+      user = User.new(name: params[:user][:name])
+      if !user.save # can't save
+        flash.now[:error] = "Unable to log in"
+        @user = User.new
+        render :login_form
+        return
+      end
+      flash[:success] = "#{user.name}, you have successfully logged in as new user"
     else
-      flash.now[:error] = "Unable to log in"
-      render :login_form
+      # Existing User
+      flash[:welcome] = "Welcome back #{user.name}"
     end
-    
-    session[:user_id] = @user.id
+
+    session[:user_id] = user.id
     redirect_to root_path
-    return
   end
+  
 
   def logout
     session[:user_id] = nil
@@ -52,6 +46,15 @@ class UsersController < ApplicationController
     return
   end
 
+  def current
+    @current_user = User.find_by(id: session[:user_id])
+    unless @current_user
+      flash[:error] = "You must be logged in to see this page"
+      redirect_to root_path
+      return
+    end
+  end
+  
   private
 
   def user_params

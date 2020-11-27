@@ -29,5 +29,20 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
+  def login(name = "Ada Cat")
+   # Arrange, take the username to form a user_hash
+   user_hash = {
+     user: {
+       name: name
+      }
+    }
+    # Act, perform a post request using user_hash
+    post login_path, params: user_hash
+    # Find the user by the name
+    user = User.find_by(name: name) 
+    return user
+ 
+  end
+
   # Add more helper methods to be used by all tests here...
 end

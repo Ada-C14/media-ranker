@@ -59,6 +59,21 @@ class WorksController < ApplicationController
         return
     end
 
+    def vote
+        if @logged_in_user
+            vote = Vote.new(work: @work, user: @logged_in_user)
+            if vote.save
+                flash[:message] = "Successfully voted!"
+            else
+                flash[:error] = "Could not vote"
+            end
+        else
+            flash[:error] = "You must be logged in to vote for a work"
+        end
+
+        redirect_to work_path(@work)
+    end
+
     private
     
     def work_params

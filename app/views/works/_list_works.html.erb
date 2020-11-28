@@ -1,9 +1,8 @@
 
 
-<section class="media-table">
-  <h4>Books</h4>
-  <table class="table">
+<!--<section class="media-table">-->
 
+  <table class="table">
     <thead>
     <tr>
       <th width="80">Votes</th>
@@ -15,15 +14,15 @@
     </thead>
 
     <tbody>
-    <% @books.each do |book| %>
+    <% category.each do |work| %>
       <tr>
-        <td><%= book.votes.count %></td>
-        <td><%= link_to book.title, work_path(book.id) %></td>
-        <td><%= book.creator %></td>
-        <td><%= book.publication_date %></td>
-        <td class="button button-primary"><%= button_to 'Upvote', new_vote_path,  %></td>
+        <td><%= work.votes.count %></td>
+        <td><%= link_to work.title, work_path(work.id) %></td>
+        <td><%= work.creator %></td>
+        <td><%= work.publication_date %></td>
+        <td class="button button-primary"><%= button_to 'Upvote', work_votes_path(work.id) %></td>
       </tr>
     <% end %>
     </tbody>
   </table>
-</section>
+<!--</section>-->

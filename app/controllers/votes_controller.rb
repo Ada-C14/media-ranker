@@ -5,7 +5,7 @@ class VotesController < ApplicationController
   end
 
   def new
-    @vote = Work.new
+    @vote = Vote.new
   end
 
   def create
@@ -29,6 +29,7 @@ class VotesController < ApplicationController
       return
     else
       flash[:error] = "A problem occurred: Could not upvote"
+      redirect_back(fallback_location: root_path)
     end
 
   end

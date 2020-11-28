@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   root to: 'works#top_works'
 
-  resources :votes, only: [:index, :new, :create]
+  resources :works do
+    resources :votes, only: [:create]
+  end
 
   resources :works
   get '/works/top_works', to: 'works#top_works', as: 'top_works'
@@ -12,9 +14,7 @@ Rails.application.routes.draw do
   post '/logout', to: 'users#logout', as: 'logout'
   get '/users/current', to: 'users#current', as: 'current_user'
 
-  resources :users, only: [:index, :show] do
-    resources :votes, only: [:index, :new]
-  end
+  resources :users, only: [:index, :show]
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

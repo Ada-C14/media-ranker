@@ -3,82 +3,85 @@
 <h2>List of Works</h2>
 <section class="media-table">
   <h4>Albums</h4>
-  <table class="table">
+<!--  <table class="table">-->
 
-    <thead>
-    <tr>
-      <th width="80">Votes</th>
-      <th>Title</th>
-      <th>Created By</th>
-      <th width="100">Published</th>
-      <th width="100">Upvote</th>
-    </tr>
-    </thead>
+<!--    <thead>-->
+<!--    <tr>-->
+<!--      <th width="80">Votes</th>-->
+<!--      <th>Title</th>-->
+<!--      <th>Created By</th>-->
+<!--      <th width="100">Published</th>-->
+<!--      <th width="100">Upvote</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
 
-    <tbody>
-    <% @albums.each do |work| %>
-      <tr>
-        <td><%= work.votes.count %></td>
-        <td><%= link_to work.title, work_path(work.id) %></td>
-        <td><%= work.creator %></td>
-        <td><%= work.publication_date %></td>
-        <td class="button button-primary"><%= button_to 'Upvote', votes_path %></td>
-      </tr>
-      <% end %>
-    </tbody>
-  </table>
+<!--    <tbody>-->
+    <%# @albums.each do |work| %>
+<!--      <tr>-->
+<!--        <td><%#= work.votes.count %></td>-->
+<!--        <td><%#= link_to work.title, work_path(work.id) %></td>-->
+<!--        <td><%#= work.creator %></td>-->
+<!--        <td><%#= work.publication_date %></td>-->
+<!--        <td class="button button-primary"><%#= button_to 'Upvote', work_votes_path(work.id) %></td>-->
+<!--      </tr>-->
+      <%# end %>
+<!--    </tbody>-->
+<!--  </table>-->
+  <%= render partial: "list_works", locals: {category: @albums} %>
 </section>
 <section class="media-table">
   <h4>Books</h4>
-  <table class="table">
+<!--  <table class="table">-->
 
-    <thead>
-    <tr>
-      <th width="80">Votes</th>
-      <th>Title</th>
-      <th>Created By</th>
-      <th width="100">Published</th>
-      <th width="100">Upvote</th>
-    </tr>
-    </thead>
+<!--    <thead>-->
+<!--    <tr>-->
+<!--      <th width="80">Votes</th>-->
+<!--      <th>Title</th>-->
+<!--      <th>Created By</th>-->
+<!--      <th width="100">Published</th>-->
+<!--      <th width="100">Upvote</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
 
-    <tbody>
-    <% @books.each do |work| %>
-      <tr>
-        <td><%= work.votes.count %></td>
-        <td><%= link_to work.title, work_path(work.id) %></td>
-        <td><%= work.creator %></td>
-        <td><%= work.publication_date %></td>
-        <td class="button button-primary"><%= button_to 'Upvote', votes_path %></td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+<!--    <tbody>-->
+    <%# @books.each do |work| %>
+<!--      <tr>-->
+<!--        <td><%#= work.votes.count %></td>-->
+<!--        <td><%#= link_to work.title, work_path(work.id) %></td>-->
+<!--        <td><%#= work.creator %></td>-->
+<!--        <td><%#= work.publication_date %></td>-->
+<!--        <td class="button button-primary"><%#= button_to 'Upvote', work_votes_path(work.id) %></td>-->
+<!--      </tr>-->
+    <%# end %>
+<!--    </tbody>-->
+<!--  </table>-->
+  <%= render partial: "list_works", locals: {category: @books} %>
 </section>
 <section>
   <h4>Movies</h4>
-  <table class="table">
+  <%= render partial: "list_works", locals: {category: @movies} %>
+<!--  <table class="table">-->
 
-    <thead>
-    <tr>
-      <th width="80">Votes</th>
-      <th>Title</th>
-      <th>Created By</th>
-      <th width="100">Published</th>
-      <th width="100">Upvote</th>
-    </tr>
-    </thead>
+<!--    <thead>-->
+<!--    <tr>-->
+<!--      <th width="80">Votes</th>-->
+<!--      <th>Title</th>-->
+<!--      <th>Created By</th>-->
+<!--      <th width="100">Published</th>-->
+<!--      <th width="100">Upvote</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
 
-    <tbody>
-    <% @movies.each do |work| %>
-      <tr>
-        <td><%= work.votes.count %></td>
-        <td><%= link_to work.title, work_path(work.id) %></td>
-        <td><%= work.creator %></td>
-        <td><%= work.publication_date %></td>
-        <td class="button button-primary"><%= button_to 'Upvote', votes_path %></td>
-      </tr>
-    <% end %>
-    </tbody>
-  </table>
+<!--    <tbody>-->
+    <%# @movies.each do |work| %>
+<!--      <tr>-->
+<!--        <td><%#= work.votes.count %></td>-->
+<!--        <td><%#= link_to work.title, work_path(work.id) %></td>-->
+<!--        <td><%#= work.creator %></td>-->
+<!--        <td><%#= work.publication_date %></td>-->
+<!--        <td class="button button-primary"><%#= button_to 'Upvote', work_votes_path(work.id) %></td>-->
+<!--      </tr>-->
+    <%# end %>
+<!--    </tbody>-->
+<!--  </table>-->
 </section>

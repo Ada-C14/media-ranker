@@ -12,9 +12,9 @@ Rails.application.routes.draw do
 
   end
 
-  get "/login", to: "users#login_form", as: "login"
-  post "/login", to: "users#login"
-  post "/logout", to: "users#logout", as: "logout"
+  # get "/login", to: "users#login_form", as: "login"
+  # post "/login", to: "users#login"
+  # post "/logout", to: "users#logout", as: "logout"
   get "/users/current", to: "users#current", as: "current_user"
 
   resources :works do
@@ -22,4 +22,8 @@ Rails.application.routes.draw do
       post 'upvote'
     end
   end
+
+  get "/auth/github", as: "github_login"
+  get "/auth/:provider/callback", to: "users#create"
+  delete "/logout", to: "users#destroy", as: "logout"
 end

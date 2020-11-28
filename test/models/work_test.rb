@@ -120,5 +120,10 @@ describe Work do
     it 'will rank the work from most votes to least votes' do
       expect((Work.total_lists(category: "album")).last.title).must_equal "Holiday Choice"
     end
+    it 'is blank given no media' do
+      Work.delete_all
+
+      expect(Work.total_lists(category: "album").length).must_equal 0
+    end
   end
 end

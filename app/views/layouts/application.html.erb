@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class="app-header__header">
+      <h1><%= link_to "Media Ranker", root_path %>
+      <small>Ranking the Best of Everything</small>
+      </h1>
+
+      <nav class="app-header__nav">
+        <ul class="nav app-header__site-nav-container">
+          <li class="nav-item app-header__nav_item"><a class="nav-link" href="/">View top media</a></li>
+          <li class="nav-item app-header__nav_item"><a class="nav-link" href="/works">View all media</a></li>
+          <li class="nav-item app-header__nav_item"><a class="nav-link" href="/works/new">Add a new work</a></li>
+          <li class="nav-item app-header__nav_item"><a class="nav-link" href="/users">View all users</a></li>
+        </ul>
+
+        <ul class="nav app-header__user-nav-container">
+        <li class="nav-item app-header__nav_item">
+          <% if @current_user %>
+            <li class="nav-item-right">
+              <i class="fa fa-custom fa-user-circle">
+                <%= link_to @current_user.username, current_user_path, class: "nav-link-custom user-nav"%>
+              </i>
+            </li>
+            <li class="nav-item-right">
+              <i class="fa fa-custom fa-arrow-circle-left">
+                <%= link_to "Log out", logout_path, method: "post", class: "nav-link-custom" %>
+              </i>
+            </li>
+          <% else %>
+            <li class="nav-item-right">
+              <i class="fa fa-custom fa-arrow-circle-right">
+                <%= link_to "Login with Github", github_login_path, class: "nav-link-custom"%>
+              </i>
+            </li>
+          <% end %>
+          </ul>
+      </nav>
+    </header>
+      <% if flash[:notice] %>
+        <div class="alert alert-warning"><%= flash[:notice] %></div>
+      <% end %>
+
+      <% if flash[:success] %>
+        <div class="alert alert-success"><%= flash[:success] %></div>
+      <% end %>
+
+      <% if flash[:error] %>
+        <div class="alert alert-danger"><%= flash[:success] %></div>
+      <% end %>
+    <main>
+      <%= yield %>
+    </main>
+  </body>
+</html>

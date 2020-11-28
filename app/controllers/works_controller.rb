@@ -1,7 +1,8 @@
 class WorksController < ApplicationController
 
-  before_action :find_work, only: [:destroy, :update, :edit, :show ]
-  before_action :require_login, only: [:new, :create, :update, :edit, :destroy, :upvote ]
+  before_action :find_work, only: [:destroy, :update, :edit, :show , :upvote]
+  before_action :current_user, only: [:index]
+
 
   # Helper Methods
   def not_found_error_notice

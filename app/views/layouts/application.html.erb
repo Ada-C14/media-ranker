@@ -38,25 +38,109 @@
 
 </header>
 <section class="alert-container">
-  <div class=""alert alert-warning>
-    <span>
-      <% flash.each do |name, message| %>
-      <strong class="<%= name %>">
-        <%= message %>
-      </strong>
-    <% end %>
-    </span>
 
-    <%# if @work.errors.any? %>
-<!--      <ul class="errors">-->
-        <%# @work.errors.each do |column, message| %>
-<!--          <li>-->
-<!--            <p><strong><%#= column.capitalize %></strong> <%#= message %></p>-->
-<!--          </li>-->
-        <%# end %>
-<!--      </ul>-->
-    <%# end %>
-  </div>
+    <% if flash[:notice] %>
+      <div class="alert alert-info"><%= flash[:notice] %>
+        <% if  @work && @work.errors.any? %>
+          <ul class="errors">
+            <% @work.errors.each do |column, message| %>
+              <li>
+                <p><strong><%= column.capitalize %></strong> <%= message %></p>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+
+        <% if @user && @user.errors.any? %>
+          <ul class="errors">
+            <% @user.errors.each do |column, message| %>
+              <li>
+                <p><strong><%= column.capitalize %></strong> <%= message %></p>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+
+        <% if @vote && @vote.errors.any? %>
+          <ul class="errors">
+            <% @vote.errors.each do |column, message| %>
+              <li>
+                <p><strong><%= column.capitalize %></strong> <%= message %></p>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if flash[:success] %>
+      <div class="alert alert-success"><%= flash[:success] %>
+        <% if  @work && @work.errors.any? %>
+          <ul class="errors">
+            <% @work.errors.each do |column, message| %>
+              <li>
+                <p><strong><%= column.capitalize %></strong> <%= message %></p>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+
+        <% if @user && @user.errors.any? %>
+          <ul class="errors">
+            <% @user.errors.each do |column, message| %>
+              <li>
+                <p><strong><%= column.capitalize %></strong> <%= message %></p>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+
+        <% if @vote && @vote.errors.any? %>
+          <ul class="errors">
+            <% @vote.errors.each do |column, message| %>
+              <li>
+                <p><strong><%= column.capitalize %></strong> <%= message %></p>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if flash[:error] %>
+      <div class="alert alert-warning"><%= flash[:error] %>
+        <% if  @work && @work.errors.any? %>
+          <ul class="errors">
+            <% @work.errors.each do |column, message| %>
+              <li>
+                <p><strong><%= column.capitalize %></strong> <%= message %></p>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+
+        <% if @user && @user.errors.any? %>
+          <ul class="errors">
+            <% @user.errors.each do |column, message| %>
+              <li>
+                <p><strong><%= column.capitalize %></strong> <%= message %></p>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+
+        <% if @vote && @vote.errors.any? %>
+          <ul class="errors">
+            <% @vote.errors.each do |column, message| %>
+              <li>
+                <p><strong><%= column.capitalize %></strong> <%= message %></p>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    <% end %>
+
 </section>
 
 <main>

@@ -91,3 +91,21 @@
 </section>
 
   <%= button_to "Add a New Media", new_work_path, method: :get %>
+
+
+
+
+<main>
+  <section class="row merchant">
+    ::before
+    <h2>List of  Merchants</h2>
+    <section class="column small-12 large-4">
+      <ul>
+        <li>
+          <% @merchants.each do |merchant| %>
+            <%= link_to merchant.username, merchant_path(merchant) %>
+            </li>
+            </ul>
+            </section>
+            </section>
+            </main>

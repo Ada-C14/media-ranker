@@ -3,7 +3,7 @@ class Work < ApplicationRecord
   has_many :votes
   has_many :users, through: :votes
 
-  validates :title, presence: true
+  validates :title, presence: true, uniqueness: {scope: :category}
 
   validates :category, presence: true
 
@@ -12,15 +12,15 @@ class Work < ApplicationRecord
 
 
   def self.albums
-    where(category: "album")
+    where(category: "album").sort_by { |album| album.votes.count }.reverse[0..9]
   end
 
   def self.books
-    where(category: "book")
+    where(category: "book").sort_by { |book| book.votes.count }.reverse[0..9]
   end
 
   def self.movies
-    where(category: "movie")
+    where(category: "movie").sort_by { |movie| movie.votes.count }.reverse[0..9]
   end
 
   def self.media_spotlight

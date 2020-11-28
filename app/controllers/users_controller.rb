@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :require_login, only: [:show, :upvote]
+  before_action :require_login, only: [:show]
 
   # Helper methods
   def successful_login
@@ -42,28 +42,29 @@ class UsersController < ApplicationController
     end
   end
 
-  def login_form
-    @user = User.new
-  end
-
-  def login
-    user = User.find_by(username: params[:user][:username])
-
-    if user.nil?
-      user = User.new(username: params[:user][:username])
-      if !user.save
-        could_not_log_in_error_notice
-        redirect_to login_path
-        return
-      end
-      successful_login
+  def create
+    auth_hash = request.env["omniauth.auth"]
+    user = User.find_by(uid: auth_hash[:uid], provider: "github")
+    if user
+      flash[:notice] = "Existing user #{user.username} is logged in."
     else
-      successful_logged
+      user = User.build_from_github(auth_hash)
+      if user.save
+        flash[:success] = "Logged in back #{user.username}"
+      else
+        flash[:error] = "could not create new user account: #{user.errors.messages}"
+        return redirect_to root_path
+      end
     end
 
     session[:user_id] = user.id
     redirect_to root_path
   end
+
+  def login_form
+    @user = User.new
+  end
+
 
   def logout
     if session[:user_id]
@@ -78,13 +79,5 @@ class UsersController < ApplicationController
       authentication_notice
     end
     redirect_to root_path
-  end
-
-  def current
-    unless @current_user
-     must_be_logged
-      redirect_to root_path
-      return
-    end
   end
 end

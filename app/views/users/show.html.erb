@@ -1,0 +1,30 @@
+<h2> User Summary : <%=@user.username %></h2>
+
+<!--Joined site -- need to figure out how to do this-->
+
+<section class="user-votes__container">
+  <h3 class="user-votes__header">Votes</h3>
+  <table class="table">
+    <thead>
+    <tr>
+      <th>Media Title</th>
+      <th>Created By</th>
+      <th>Published</th>
+      <th>Category</th>
+    </tr>
+    </thead>
+    <% @user.votes.each do |vote| %>
+      <tbody>
+      <tr>
+        <td><%= vote.work.title %></td>
+        <td><%= vote.work.created_by %></td>
+        <td><%= vote.work.published %></td>
+        <td><%= vote.work.media %></td>
+      </tr>
+      </tbody>
+    <% end %>
+  </table>
+</section>
+
+<%#= button_to "See all Users", users_path, method: :get %>
+<%= button_to "View all media", works_path, method: :get %>

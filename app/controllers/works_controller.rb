@@ -1,6 +1,6 @@
 class WorksController < ApplicationController
   before_action :set_work, only: [:show, :edit, :update, :destroy, :upvote]
-  # skip_before_action :current_user
+  before_action :require_login, only: [:upvote]
 
   def index
     @works = Work.all
@@ -53,9 +53,9 @@ class WorksController < ApplicationController
 
   # Custom method
   def upvote
-    if session[:user_id]
-      user = current_user
-      @vote = Vote.new(user_id: user.id, work_id: @work.id)
+    # if session[:user_id]
+    #   user = current_user
+      @vote = Vote.new(user_id: @current_user.id, work_id: @work.id)
       if @vote.save
         flash[:success] = "Your vote for #{@work.title} was successfully recorded."
         redirect_to works_path
@@ -65,11 +65,6 @@ class WorksController < ApplicationController
         redirect_to works_path
         return
       end
-    elsif session[:user_id].nil?
-      flash[:danger] = "User must log in to vote"
-      redirect_to works_path
-    end
-
   end
   
   private

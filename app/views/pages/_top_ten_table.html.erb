@@ -2,7 +2,7 @@
 
   <h2 class="<%= category %> top-ten__header"><%= "Top #{category}s" %></h2>
     <ul class="list-group list-group-flush">
-      <%  Work.top_ten(category).each do |work| %>
+      <%  works.each do |work| %>
         <li class="list-group-item">
           <h4><%= link_to work.title, work_path(work.id), :class => work.category %><small> by <%= work.creator %> </small></h4>
           <p> <%= work.votes_count %> votes</p>

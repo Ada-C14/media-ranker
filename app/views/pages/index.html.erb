@@ -1,4 +1,5 @@
 <section class="spotlight"> 
+  <% if @spotlight %>
     <h2> 
         Media Spotlight:
         <%= link_to @spotlight.title, work_path(@spotlight.id), :class => "#{@spotlight.category}" %>
@@ -6,12 +7,15 @@
       </span>
     </h2>
      <%= @spotlight.votes.count %> votes, <%= @spotlight.description %>
-  </section>
+  <% else %>
+    <p> There is no spotlight currently </p>
+  <% end %>
+</section>
 
   <hr>
 
-  <section class="top-ten__container">
-    <%= render partial: "top_ten_table", locals: { category: "album" } %>
-    <%= render partial: "top_ten_table", locals: { category: "book" } %>
-    <%= render partial: "top_ten_table", locals: { category: "movie" } %>
-  </section>
+<section class="top-ten__container">
+  <%= render partial: "top_ten_table", locals: { category: "Album", works: @top_albums } %>
+  <%= render partial: "top_ten_table", locals: { category: "Book", works: @top_books  } %>
+  <%= render partial: "top_ten_table", locals: { category: "Movie", works: @top_movies  } %>
+</section>

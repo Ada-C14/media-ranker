@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  # before_action :current_user, only: [:logout]
+  before_action :require_login, only: [:logout]
 
   def index
     @users = User.all # list all users in order
@@ -19,11 +19,11 @@ class UsersController < ApplicationController
   end
 
   def login
-    user = User.find_by(name: params[:user][:name])
+    user = User.find_by(user_params)
     # Check if an user is already existed
     if user.nil?
       # New User
-      user = User.new(name: params[:user][:name])
+      user = User.new(user_params)
       if !user.save # can't save
         flash.now[:error] = "Unable to log in"
         @user = User.new
@@ -42,32 +42,16 @@ class UsersController < ApplicationController
   
 
   def logout
-    if session[:user_id]
-      user = current_user()
-      unless user.nil?
-        session[:user_id] = nil
-        flash[:success] = "Goodbye #{user.name}"   
-      else
-        session[:user_id] = nil
-        flash[:error] = "Unknow User"
-      end
-    else
-      flash[:error] = "You must be logged in to logout"
-      return
-    end
+    session[:user_id] = nil
+    flash[:success] = "Goodbye #{@current_user.name}"   
+    redirect_to root_path
   end
 
-  
+  private
 
-  # private
-
-  # def set_user
-  #   @user = User.find_by(id: session[:user_id])
-  # end
-
-  # def user_params
-  #   return params.require(:user).permit(:name)
-  # end
+  def user_params
+    return params.require(:user).permit(:name)
+  end
   
 end
 

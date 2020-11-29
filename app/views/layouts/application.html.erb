@@ -34,17 +34,17 @@
           </li>
         </ul>
 
-        <% if session[:user_id] %>
+        <% if @current_user %>
           <ul class="nav app-header__user-nav-container">
             <li class="nav-item app-header__nav_item">
-            <%= link_to "Logged in as #{session[:name]}",
-                current_user_path(session[:user_id]), class: "btn btn-primary" %>
+            <%= link_to "Logged in as #{@current_user.name}",
+                current_user_path, class: "btn btn-primary" %>
             </li>
             <li class="nav-item app-header__nav_item">
               <%= link_to "Logout", logout_path, method: :post, class: "btn btn-primary" %>
             </li>
           </ul>
-        <%elsif session[:id] == nil%>
+        <% else %>
           <ul class="nav app-header__user-nav-container">
             <li class="nav-item app-header__nav_item">
               <%= link_to "Login", login_path, class: "btn btn-primary" %>

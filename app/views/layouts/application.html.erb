@@ -17,17 +17,16 @@
           <li><%= link_to 'View All Media', works_path %></li>
           <li><%= link_to 'Add New Work', new_work_path %></li>
           <li><%= link_to 'View All Users', users_path %></li>
-          <% if session[:user_id] %>
-          <li> <%= link_to "Log out", logout_path, method: "delete" %> </li>
-          <% else %>
-          <li> <%= link_to "Login with Github", github_login_path %> </li>
-          <% end %>
           <%# if session[:user_id] %>
-<!--          <li> <%#= link_to "Logout", logout_path, method: :post %></li>-->
-            <%# else %>
-<!--          <li> <%#= link_to "Login", login_path %></li>-->
-<!--           <li><%#= link_to "Login with GitHub", github_login_path %></li>-->
-        <%# end %>
+<!--          <li> <%#= link_to "Log out", logout_path, method: "delete" %> </li>-->
+          <%# else %>
+<!--          <li> <%#= link_to "Login with Github", github_login_path %> </li>-->
+          <%# end %>
+          <% if session[:user_id] %>
+          <li> <%= link_to "Logout", logout_path, method: :post %></li>
+            <% else %>
+          <li> <%= link_to "Login", login_path %></li>
+        <% end %>
         </ul>
       </nav>
     </header>

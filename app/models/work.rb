@@ -80,15 +80,16 @@ class Work < ApplicationRecord
   end
 
   def self.top_ten(sorted_hash)
-    top_ten_works = Hash.new
-    sorted_hash.each do |category, works|
-      unless works == []
-        works = works[0..9]
-        works.delete_if { |work| work.number_of_votes < 1 }
-      end
-      top_ten_works[category] = works
-    end
-    return top_ten_works
+    # top_ten_works = Hash.new
+    # sorted_hash.each do |category, works|
+    #   unless works == []
+    #     works = works[0..9]
+    #     works.delete_if { |work| work.number_of_votes < 1 }
+    #   end
+    #   top_ten_works[category] = works
+    # end
+    return spotlight(sorted_hash).limit(10)
+
   end
 
   def self.spotlight(sorted_hash)

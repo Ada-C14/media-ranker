@@ -31,7 +31,7 @@ class WorksController < ApplicationController
       @work.errors.messages.each do |field, messages|
         flash[field] = messages
       end
-      redirect_to new_work_path
+      render :new, status: :bad_request
     end
   end
 
@@ -46,17 +46,17 @@ class WorksController < ApplicationController
       @work.errors.messages.each do |field, messages|
         flash[field] = messages
       end
-      render :edit
+      render :edit, status: :bad_request
     end
   end
 
   def destroy
-    if @work.nil?
+    unless @work.nil?
       @deleted_work = @work.destroy
       flash[:success] = "#{@work.title} deleted"
       redirect_to root_path
     else
-      flash[:failure] = "Work #{@work.title} not destroyed."
+      flash[:failure] = "Work #{params[:id]} not destroyed."
       redirect_back fallback_location: root_path
     end
   end

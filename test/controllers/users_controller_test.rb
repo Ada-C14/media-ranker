@@ -24,8 +24,8 @@ describe UsersController do
 
   describe "show" do
     it "can get a valid user" do
-          # Act
-          get user_path(first.id)
+      # Act
+      get user_path(users(:first))
 
       # Assert
       must_respond_with :success
@@ -39,8 +39,20 @@ describe UsersController do
       must_respond_with :render
 
     end
-  end
 
+    describe "current" do
+      it "returns 200 OK for a logged-in user" do
+        # Arrange
+        perform_login(users(:second))
+
+        # Act
+        get current_user_path
+
+        # Assert
+        must_respond_with :success
+      end
+    end
+  end
 
   describe "create" do
     it "can create a new user" do
@@ -51,23 +63,5 @@ describe UsersController do
     end
   end
 
-  # describe "edit" do
-  #   it "can get the edit page for an existing user" do
-  #     # Act
-  #     get edit_user_path(user.id)
-  #
-  #     # Assert
-  #     must_respond_with :success
-  #   end
-  #
-  #   it "will respond with redirect when attempting to edit a nonexistant user" do
-  #     # Act
-  #     get edit_user_path(-1)
-  #
-  #     # Assert
-  #     must_respond_with :redirect
-  #   end
-  # end
-  #
 
 end

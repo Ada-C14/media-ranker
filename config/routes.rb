@@ -13,5 +13,11 @@ Rails.application.routes.draw do
   #Custom route for upvotes -- votes controller who handles upvoting
   post 'works/:work_id/vote', to: 'votes#upvote', as: 'upvote'
 
+  # #omniauth Github callback route
+  # get "/auth/:provider/callback", to: "users#create", as: "omniauth_callback"
+  #
+  # #omniauth Login Route
+  # get "/auth/github", as: "github_login"
+
   resources :users, only: [:index, :show]
 end

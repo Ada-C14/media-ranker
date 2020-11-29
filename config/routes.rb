@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   get "/users", to: "users#index"
   get "/users", to: "users#show", as: "user"
 
-  post "/users/upvote", to: "users#upvote"
+  post "/users/upvote/:id", to: "users#upvote", as: "upvote"
 
   resources :works
 end

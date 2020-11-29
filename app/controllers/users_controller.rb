@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :require_login, only: [:upvote] #g
+  before_action :require_login, only: [:upvote]
 
   def index
     @users = User.all
@@ -25,7 +25,6 @@ class UsersController < ApplicationController
       render :new, status: :bad_request
       return
     end
-
   end
 
   def login_form
@@ -48,12 +47,11 @@ class UsersController < ApplicationController
     end
 
     session[:user_id] = user.id
-    redirect_to root_path
   end
 
   def logout
     if session[:user_id]
-      user = User.find_by(name: params[:user][:name])
+      user = User.find_by(id: session[:user_id])
       unless user.nil?
         session[:user_id] = nil
         flash[:notice] = "Goodbye #{user.name}"
@@ -67,22 +65,28 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
-  def current
+  def current_user
     @user = User.find_by(id: session[:user_id])
     return @user
   end
 
   def upvote
-    @user = current
-    @work = Work.find_by(params[:work_id])
+    @user = current_user
+    @work = Work.find_by(id: params[:id])
+    @vote_exist = Vote.find_by(user_id: @user.id, work_id: @work.id )
 
     if @user && @work
-      new_vote = Vote.new({user_id: @user, work_id: @work}) #should this be @user.id, and @work.id??
-      new_vote.save
-    else
-      flash[:error] = "You must be logged in to vote"
+      if @vote_exist
+        flash[:error] = "Sorry, you have already cast your vote for this work."
+      else
+        new_vote = Vote.new({user_id: @user.id, work_id: @work.id})
+        new_vote.save
+        @work.increase_vote_count
+        flash[:success] = "Your vote has been added"
+      end
     end
-    redirect_to works_path #not sure if this is needed
+    redirect_to works_path
+    return
   end
 
   private
@@ -92,8 +96,9 @@ class UsersController < ApplicationController
   end
 
   def require_login
-    if @user.nil?
-      flash[:error] = "You must be logged in to view this page"
+
+    unless current_user
+      flash[:error] = "You must be logged in to vote."
       redirect_to root_path
       return
     end

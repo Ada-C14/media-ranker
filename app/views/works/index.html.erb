@@ -14,13 +14,13 @@
         </tr>
         </thead>
         <tbody>
-          <% @works.where(category: category).each do |item| %>
+          <% @works.where(category: category).order(vote_count: :desc).each do |item| %>
             <tr>
-              <td> <%= rand(1..50) %> </td>
+              <td> <%= item.vote_count %> </td>
               <td> <%= link_to "#{item.title}", work_path(item.id) %> </td>
               <td> <%= item.creator %></td>
               <td> <%= item.publication_year %></td>
-              <td> <%= button_to "Upvote", users_upvote_path(work_id: item) %></td>
+              <td> <%= button_to "Upvote", upvote_path(item.id) %></td>
             </tr>
           <% end %>
         </tbody>

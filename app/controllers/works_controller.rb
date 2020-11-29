@@ -3,7 +3,7 @@ class WorksController < ApplicationController
 
   def homepage
     @works = Work.all
-    @sample_work = @works.sample
+    @top_work = @works.order(vote_count: :desc).first
   end
 
   def index

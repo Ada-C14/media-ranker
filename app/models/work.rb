@@ -6,18 +6,8 @@ class Work < ApplicationRecord
 
   CATEGORIES = %w(album book movie)
 
-  # def spotlight
-  #
-  # end
-  #
-  # def top_ten(array_of_works)
-  #   array_of_works.select { |work| work.votes }
-  # end
-  #
-  # def users_that_voted
-  #   users = []
-  #   votes.each do |vote|
-  #     users += user.votes
-  #   end
-  # end
+  def increase_vote_count
+    self.vote_count += 1
+    self.save
+  end
 end

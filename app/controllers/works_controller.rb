@@ -1,6 +1,6 @@
 class WorksController < ApplicationController
   before_action :set_work, only: [:show, :edit, :update, :destroy, :upvote]
-  # skip_before_action :current_user
+  # before_action :login 
 
   def index
     @works = Work.all
@@ -35,7 +35,7 @@ class WorksController < ApplicationController
   def update
     if @work.update(work_params)
       flash[:success] = "#{@work.title} was successfully updated."
-      redirect_to @work
+      redirect_to works_path
       return
     else
       flash.now[:error] = "Work was not updated"

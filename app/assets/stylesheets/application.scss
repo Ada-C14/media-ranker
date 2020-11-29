@@ -17,20 +17,9 @@
 
 @import "**/*";
 
-.app-header__nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.app-header__user-nav-container .nav-item {
-    margin-left: 2rem; 
-}
-
 .app-header__nav_item {
     margin-top: 1rem;
 }
-
 .nav {
     display: flex;
     flex-wrap: wrap;
@@ -59,14 +48,3 @@
     border-radius: 0.25rem;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-
-.top-ten__container{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-column-gap: 2em; 
-}
-
-// ol, ul, dl {
-//     margin-top: 0;
-//     margin-bottom: 1rem;
-// }

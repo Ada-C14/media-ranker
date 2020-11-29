@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-
     <title>MediaRanker</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -16,7 +15,7 @@
         <a href="/">Media Ranker</a>
         <small>Ranking the Best of Everything</small>
       </h1>
-    
+
       <nav class="app-header__nav">
       
         <ul class="nav app-header__site-nav-container">
@@ -53,12 +52,12 @@
         <% end %>
       </nav>
       <section class="flash-msg__section">
-        <% flash.each do |name, message| %>
-          <strong class="<%= name %>">
-            <%= message %>
-          </strong>
-        <% end %>
-      </section>
+    <% flash.each do |name, message| %>
+      <strong class="<%= name %>">
+        <%= message %>
+      </strong>
+    <% end %>
+  </section>
     </header>
     <main>
       <%= yield %>

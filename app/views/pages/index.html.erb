@@ -1,6 +1,6 @@
 <section class="spotlight"> 
     <h2> 
-        Media Spotlight:
+        MEDIA SPOTLIGHT:
         <%= link_to @spotlight.title, work_path(@spotlight.id), :class => "#{@spotlight.category}" %>
         <small>by <%= @spotlight.creator %></small>
       </span>
@@ -10,7 +10,7 @@
 
   <hr>
 
-  <section class="top-ten__container">
+  <section class="top-ten__list-container">
     <%= render partial: "top_ten_table", locals: { category: "album" } %>
     <%= render partial: "top_ten_table", locals: { category: "book" } %>
     <%= render partial: "top_ten_table", locals: { category: "movie" } %>

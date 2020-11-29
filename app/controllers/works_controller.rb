@@ -60,12 +60,14 @@ class WorksController < ApplicationController
     end
 
     def vote
+        @work = Work.find_by(id: params[:id])
         if @logged_in_user
-            vote = Vote.new(work: @work, user: @logged_in_user)
+            vote = Vote.new(work_id: @work.id, user_id: @logged_in_user.id)
             if vote.save
                 flash[:message] = "Successfully voted!"
             else
                 flash[:error] = "Could not vote"
+                flash[:messages] = vote.errors.messages
             end
         else
             flash[:error] = "You must be logged in to vote for a work"

@@ -1,0 +1,56 @@
+// Place all the styles related to the Works controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+main {
+  padding: 2rem;
+}
+
+
+h1 {
+  color: #26A69A;
+  font-weight: bold;
+  font-family: "Gudea", sans-serif;
+  font-size: 2rem;
+  line-height: 1.2;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-weight: bold;
+  font-family: "Gudea", sans-serif;
+  font-size: 1.5rem;
+  margin-top: 0;
+}
+.table th, .table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #dee2e6;
+  font-family: "Gudea", sans-serif;
+}
+
+tr {
+  display: table-row;
+  vertical-align: inherit;
+  border-color: inherit;
+}
+table {
+  width: 100%;
+  margin-bottom: 1rem;
+  background-color: transparent;
+  border-collapse: collapse;
+  display: table;
+  border-collapse: separate;
+  box-sizing: border-box;
+  border-spacing: 2px;
+  border-color: grey;
+  }
+
+tr.border-bottom td {
+  border-bottom: 1pt solid #dddddd;
+
+}
+
+tr.border-bottom th {
+  border-bottom: 1pt solid #dddddd;
+}

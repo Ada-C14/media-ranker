@@ -1,0 +1,14 @@
+<section class = "spotlight"><h1><span class ="media">Media Spotlight: </span>
+  <%= link_to @media_spotlight.title, work_path(@media_spotlight)%>  by <%= @media_spotlight.creator %> </h1>
+  <p class = "spotlight_description"> <%=@media_spotlight.description %> <br>
+  <%= @media_spotlight.votes.count %> votes </p>
+
+</section>
+<section class="largest-container">
+<%= render partial: "list", locals: { works: @top_movies, title: "Top Movies"} %>
+<%= render partial: "list", locals: { works: @top_books, title: "Top Books"} %>
+<%= render partial: "list", locals: { works: @top_albums, title: "Top Albums"} %>
+
+
+</section>
+

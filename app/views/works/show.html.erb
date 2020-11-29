@@ -1,0 +1,34 @@
+<div class="container-content">
+  <h1>Work Details </h1>
+  <div class="summary">
+    <h2><strong>  <%= @work.title %> </strong> </h2>
+    <p>Created by: <%= @work.creator %> </p>
+    <p>Published: <%= @work.publication_date %></p>
+    <p><%= @work.description %> </p>
+    <br>
+
+    <strong> <%= @work.votes.count %> votes for this <%= @work.category %> </strong>
+
+    <br>
+    <%= link_to "Edit", edit_work_path(@work) %> |
+    <%= link_to " Delete", work_path(@work), method: :delete, data: {confirm: "Are you sure you want to delete?"}%>
+    <td><%= pluralize(@work.votes.count, "vote") %></td>
+    <%# unless (@user != nil) && @work.votes.any? { |vote| vote.user_id == @user.id} %>
+    <td><%= button_to 'Upvote', upvote_work_path(@work), method: :post %></td>
+    <%# end %>
+
+
+  <p> <strong> Users that voted for this work </strong></p>
+  <ol>
+    <% unless @users == nil || @work == nil %>
+      <% @users.each do |user| %>
+        <% @work.votes.each do |vote| %>
+          <% if vote.user_id == user.id %>
+            <li> <%= user.name %> </li>
+          <% end %>
+        <% end %>
+      <% end %>
+    <% end %>
+  </ol>
+  </div>
+</div>

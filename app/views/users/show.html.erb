@@ -1,0 +1,29 @@
+<h1> User Summary </h1>
+<p> Joined site  <%= @user.created_at %> </p>
+
+<h2> Votes</h2>
+
+<table>
+  <tr class="border-bottom">
+    <th>Media Title</th>
+    <th>Created By </th>
+    <th>Published</th>
+    <th>Category</th>
+    <th>Voted On</th>
+  </tr>
+  <% unless @user == nil || @works == nil %>
+    <% @works.each do |work| %>
+     <% @user.votes.each do |vote| %>
+      <% if vote.work_id == work.id %>
+        <tr class="border-bottom">
+          <td> <%= link_to work.title, work_path(work) %></td>
+        <td><%= work.creator %></td>
+        <td><%= work.publication_date %></td>
+        <td><%= work.category %></td>
+        <td><%= vote.created_at %></td>
+      <% end %>
+      <% end %>
+      <% end %>
+    <% end %>
+  </tr>
+</table>

@@ -1,0 +1,24 @@
+vote_one:
+  user: user_one
+  work: work_one
+
+vote_two:
+  user: user_two
+  work: work_one
+
+vote_three:
+  user: user_three
+  work: work_two
+
+vote_four:
+  user: user_four
+  work: work_three
+
+#vote_five:
+#  user: user_five
+#  work: work_three
+
+#vote_six:
+#  user_id: user_five
+#  work_id:
+

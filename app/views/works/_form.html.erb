@@ -1,0 +1,42 @@
+<div class="container-content">
+
+  <h1></h1>
+  <% if @work.errors.any? %>
+    <ul class="errors">
+      <% @work.errors.each do |column, message| %>
+        <li>
+          <strong><%= column.capitalize %></strong> <%= message %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+<!--  if @work is saved in the database "persisted?" will return true-->
+  <div class="summary">
+<!--    <h2> <%#= @work.persisted? ? "Edit This Form" : "Add a New Work" %></h2>-->
+    <h2> <%= action_name == "Edit" ? "Edit This Form" : "Add a New Work" %> </h2>
+    <%= form_with model: @work do |f| %>
+      <div>
+        <%= f.label :category %>
+        <%= f.select :category, [:album, :book, :movie]%>
+      </div>
+      <div>
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+      </div>
+      <div>
+        <%= f.label :creator %>
+        <%= f.text_field :creator %>
+      </div>
+      <div>
+        <%= f.label :publication_date %>
+        <%= f.text_field :publication_date %>
+      </div>
+      <div>
+        <%= f.label :description %>
+        <%= f.text_field :description %>
+      </div>
+      <%= f.submit action_name == "Edit" ? "Edit this Form" : "Add a New Work" %>
+    <% end %>
+
+  </div>
+</div>

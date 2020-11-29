@@ -1,0 +1,16 @@
+<main>
+<h1> Works List</h1>
+<h2> Books </h2>
+
+  <%= render partial: "table", locals: { works: @all_books} %>
+
+
+<h2> Albums </h2>
+
+  <%= render partial: "table", locals: { works: @all_albums} %>
+
+<h2> Movies </h2>
+
+  <%= render partial: "table", locals: { works: @all_movies} %>
+
+</main>

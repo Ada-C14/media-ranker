@@ -44,17 +44,18 @@ describe VotesController do
   describe 'destroy' do
     it 'can remove an upvote' do
       work = works(:test_album)
-      user = User.new(name: 'tester')
+      user = users(:first)
 
       perform_login(user)
+      vote = Vote.find_by(user_id: user.id)
 
       expect {
-        delete work_vote_path(work.id)
-      }.must_differ work.votes_button, -1
+        delete work_vote_path(work_id: work, vote_id: vote)
+      }.must_differ 'work.votes', -1
 
-      vote = Vote.find_by(user_id: user.id)
-      expect(vote.user).must_equal user
-      expect(vote.work).must_equal work
+      check_vote = Vote.find_by(user_id: user.id)
+      expect(check_vote.user).must_equal user
+      expect(check_vote.work).must_equal work
 
       expect(flash[:success]).wont_be_nil
     end
@@ -84,8 +85,8 @@ describe VotesController do
       work = works(:test_album)
 
       expect {
-        delete work_vote_path(work.id)
-      }.wont_change work.vote_button
+        delete work_vote_path(work)
+      }.wont_change 'work.votes'
 
       expect(flash[:warning]).wont_be_nil
     end

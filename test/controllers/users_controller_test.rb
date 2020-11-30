@@ -15,7 +15,7 @@ describe UsersController do
     it "can get the new user" do
 
       # Act
-      get new_user_path
+      get signup_path
 
       # Assert
       must_respond_with :success
@@ -36,7 +36,7 @@ describe UsersController do
       get user_path(-1)
 
       # Assert
-      must_respond_with :render
+      must_respond_with :not_found
 
     end
 

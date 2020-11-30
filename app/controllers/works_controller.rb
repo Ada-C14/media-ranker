@@ -25,7 +25,7 @@ class WorksController < ApplicationController
 
     if @work.save
       flash[:success] = "Successfully created new #{@work.category} \"#{@work.title}!\""
-      redirect_to works_path
+      redirect_to works_path(@work)
     else
       flash[:error] = "Work not created!"
       @work.errors.messages.each do |field, messages|

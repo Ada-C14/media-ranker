@@ -10,7 +10,7 @@ describe VotesController do
 
       expect {
         post work_votes_path(work)
-      }.must_differ work.vote_button, 1
+      }.must_differ 'work.votes', 1
 
       vote = Vote.find_by(user_id: user.id)
       expect(vote.user).must_equal user
@@ -27,7 +27,7 @@ describe VotesController do
 
       expect {
         post work_votes_path(work)
-      }.wont_differ work.votes_count
+      }.wont_differ 'work.votes'
 
       expect(flash[:error]).wont_be_nil
     end
@@ -35,7 +35,7 @@ describe VotesController do
       work = works(:test_book)
       expect {
         post work_votes_path(work)
-      }.wont_differ 'work.votes.count'
+      }.wont_differ 'work.votes'
 
       expect(flash[:warning]).wont_be_nil
     end
@@ -75,17 +75,17 @@ describe VotesController do
       perform_login(user)
 
       expect {
-        delete work_vote_path(work_hash)
-      }.wont_differ 'work.votes_button'
+        delete work_vote_path(work_id: work_hash, vote_id: 1)
+      }.wont_differ 'work.votes'
 
       expect(flash[:warning]).wont_be_nil
     end
 
     it 'cannot remove a vote unless logged in' do
       work = works(:test_album)
-
+      vote = votes(:someone_voted_again)
       expect {
-        delete work_vote_path(work)
+        delete work_vote_path(work_id: work, vote_id: vote)
       }.wont_change 'work.votes'
 
       expect(flash[:warning]).wont_be_nil

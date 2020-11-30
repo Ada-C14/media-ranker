@@ -42,7 +42,7 @@ describe WorksController do
 
       movie = Work.find_by(title: "The Pest")
       must_respond_with :redirect
-      must_redirect_to work_path(movie)
+      must_redirect_to work_path(work: movie, work_id: movie)
       expect(flash[:success]).wont_be_nil
 
       expect(movie.category).must_equal work_hash[:work][:category]

@@ -10,11 +10,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
-    @votes = Vote.find(@user.votes.ids)
     if @user == nil
       flash.now[:failure]
       render status: :not_found    # 'layouts/invalid_page' ??,
     end
+    @votes = Vote.find(@user.votes.ids)
   end
 
   def create

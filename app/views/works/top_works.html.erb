@@ -3,10 +3,10 @@
 
   <h2 class="spotlight-header">
     <span class="spotlight-header-prefix">Media Spotlight:</span>
-    <%= link_to @work.title, work_path(@work), class: 'spotlight-link-to' %><span> by </span><%= @work.creator %>
+    <%= link_to @spotlight.title, work_path(@spotlight), class: 'spotlight-link-to' %><span> by </span><%= @spotlight.creator %>
   </h2>
 
-  <p class="spotlight-description"><%= @work.description %></p>
+  <p class="spotlight-description"><%= @spotlight.description %></p>
 </section>
 
 <hr class="root-break"/>
@@ -18,7 +18,7 @@
     <h2 class="ten-header">Top Movies</h2>
 
     <ul class="list-group top-ten-list">
-      <% @movies.each do |movie| %>
+      <% @top_movies.each do |movie| %>
         <li>
 
           <h4>
@@ -37,7 +37,7 @@
     <h2 class="ten-header">Top Books</h2>
 
     <ul class="list-group top-ten-list">
-      <% @books.each do |book| %>
+      <% @top_books.each do |book| %>
         <li>
 
           <h4>
@@ -55,7 +55,7 @@
     <h2 class="ten-header">Top Albums</h2>
 
     <ul class="list-group top-ten-list">
-      <% @albums.each do |album| %>
+      <% @top_albums.each do |album| %>
         <li>
 
           <h4>

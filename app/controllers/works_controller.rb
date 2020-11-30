@@ -3,11 +3,12 @@ class WorksController < ApplicationController
   before_action :find_by, except: [:index, :new, :create]
   before_action :find_user
 
+
+
   def index
-    @works = Work.all
-    @albums = @works.where(category: "album")
-    @books = @works.where(category: "book")
-    @movies = @works.where(category: "movie")
+    @albums = Work.order_media(category: "album")
+    @books = Work.order_media(category: "book")
+    @movies = Work.order_media(category: "movie")
   end
 
   def show
@@ -18,14 +19,14 @@ class WorksController < ApplicationController
   end
 
   def top_works
-    @works = Work.all
+    @albums = Work.order_media(category: "album")
+    @books = Work.order_media(category: "book")
+    @movies = Work.order_media(category: "movie")
 
-    @work = @works.sample
-
-    @albums = @works.where(category: 'album').sample(10)
-    @books = @works.where(category: 'book').sample(10)
-    @movies = @works.where(category: 'movie').sample(10)
-
+    @top_albums = @albums.limit(10)
+    @top_books = @books.limit(10)
+    @top_movies = @movies.limit(10)
+    @spotlight = Work.order(vote_count: :desc).first
   end
 
   def new
@@ -83,6 +84,8 @@ class WorksController < ApplicationController
 
   def find_by
     @work = Work.find_by(id: params[:id])
+
+
   end
 
   def find_user

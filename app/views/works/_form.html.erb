@@ -10,29 +10,29 @@
 
 <%= form_with model: @work do |f|%>
   <p>Please provide the following information to add your new media to our database:</p>
-  <div>
+  <div class="form-group">
     <%= f.label :category %>
-    <%= f.select :category, options_for_select([['album'], ['book'], ['movie']]) %>
+    <%= f.select :category, options_for_select([['album'], ['book'], ['movie']]), {}, { class: "form-control" } %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= f.label :title %>
-    <%= f.text_area :title %>
+    <%= f.text_field :title, class: "form-control" %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= f.label :creator %>
-    <%= f.text_area :creator %>
+    <%= f.text_field :creator, class: "form-control" %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= f.label :publication_year %>
-    <%= f.text_area :publication_year %>
+    <%= f.text_field :publication_year, class: "form-control" %>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= f.label :description %>
-    <%= f.text_area :description %>
+    <%= f.text_area :description, class: "form-control" %>
   </div>
-  <%= f.submit "#{action_name}", class: "task-button" %>
+  <%= f.submit "#{action_name}", class: "btn btn-primary" %>
 <% end %>

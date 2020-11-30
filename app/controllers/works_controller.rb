@@ -1,5 +1,6 @@
 class WorksController < ApplicationController
   before_action :find_work, only: [:show, :edit, :update, :destroy]
+  # before_action :require_login, only [:edit, :update, :destroy]
 
   def homepage
     @works = Work.all

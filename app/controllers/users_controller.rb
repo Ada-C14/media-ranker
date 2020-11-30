@@ -38,8 +38,6 @@ class UsersController < ApplicationController
       user = User.new(name: params[:user][:name])
       if ! user.save
         flash[:error] = "Unable to login"
-        redirect_to root_path
-        return
       end
       flash[:welcome] = "Welcome #{user.name}"
     else
@@ -47,6 +45,8 @@ class UsersController < ApplicationController
     end
 
     session[:user_id] = user.id
+    redirect_to root_path
+    return
   end
 
   def logout
@@ -65,7 +65,7 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
-  def current_user
+  def show
     @user = User.find_by(id: session[:user_id])
     return @user
   end
@@ -96,7 +96,6 @@ class UsersController < ApplicationController
   end
 
   def require_login
-
     unless current_user
       flash[:error] = "You must be logged in to vote."
       redirect_to root_path

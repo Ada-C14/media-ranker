@@ -7,11 +7,11 @@
 <section>
   <%= button_to "Back to media ranks", root_path, { method: :get } %>
   <%= button_to "Edit", edit_work_path(@work.id), { method: :get } %>
-  <%#= button_to "Upvote", path goes here, {class: , method: } %>
+  <%= button_to "Upvote", upvote_path, {method: :post } %>
   <%= button_to "Delete", work_path(@work.id), {method: :delete} %>
 </section>
 <section>
-  <h2><%= rand(1..50) %> Votes for this <%= @work.category.capitalize %></h2>
+  <h2><%= @work.vote_count %> Votes for this <%= @work.category.capitalize %></h2>
   <table>
     <thead>
     <tr>
@@ -20,12 +20,12 @@
     </tr>
     </thead>
     <tbody>
-      <%# loop for the users who voted %>
+      <% Vote.where(work_id: @work.id).each do |vote| %>
         <tr>
-          <td>User link <%#= link_to "#{username goes here}", path goes here(user id goes here)%></td>
-          <td>Date <%#= date voted %></td>
+          <td><%= link_to "#{vote.user.name}", user_path(vote.user_id)%></td>
+          <td><%= vote.created_at.strftime("%b %d, %Y") %></td>
         </tr>
-      <%# end category loop %>
+      <% end %>
     </tbody>
   </table>
 </section>

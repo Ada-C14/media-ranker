@@ -1,9 +1,9 @@
 <section>
   <h1>List of Works</h1>
   <% Work::CATEGORIES.each do |category| %>
-    <section>
+    <section class="media-table">
       <h2> <%= "#{category.capitalize}s" %> </h2>
-      <table>
+      <table class="table">
         <thead>
         <tr>
           <th>Votes</th>
@@ -20,7 +20,7 @@
               <td> <%= link_to "#{item.title}", work_path(item.id) %> </td>
               <td> <%= item.creator %></td>
               <td> <%= item.publication_year %></td>
-              <td> <%= button_to "Upvote", upvote_path(item.id) %></td>
+              <td> <%= button_to "Upvote", upvote_path(item.id), class: "btn btn-primary" %></td>
             </tr>
           <% end %>
         </tbody>

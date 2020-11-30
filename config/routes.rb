@@ -6,10 +6,8 @@ Rails.application.routes.draw do
   post "/login", to: "users#login"
   post "/logout", to: "users#logout"
 
-  get "/users/current", to: "users#current", as: "current_user"
-
+  get "/users/:id", to: "users#show", as: "user"
   get "/users", to: "users#index"
-  get "/users", to: "users#show", as: "user"
 
   post "/users/upvote/:id", to: "users#upvote", as: "upvote"
 

@@ -10,19 +10,24 @@
   </head>
 
   <body>
-    <header>
-      <h1> <%= link_to 'Media Ranker', root_path %> | </h1>
-      <h2>Ranking the Best of Everything</h2>
-      <nav>
-        <%= link_to 'View top media', root_path %>
-        <%= link_to 'View all media', works_path %>
-        <%= link_to 'Add a new work', new_work_path %>
-        <%= link_to 'View all users', users_path %>
-        <% if session[:user_id] %>
-          <%= button_to 'logout', logout_path, method: :post %>
-        <% else %>
-          <%= button_to 'login', login_path, method: :get %>
-        <% end %>
+    <header class="app-header__header">
+      <h1> <%= link_to 'Media Ranker', root_path %> <small>Ranking the Best of Everything</small> </h1>
+      <nav class="app-header__nav">
+        <div class="nav app-header__site-nav-container">
+          <%= link_to 'View top media', root_path, class: "nav-item app-header__nav_item nav-link" %>
+          <%= link_to 'View all media', works_path, class: "nav-item app-header__nav_item nav-link" %>
+          <%= link_to 'Add a new work', new_work_path, class: "nav-item app-header__nav_item nav-link" %>
+          <%= link_to 'View all users', users_path, class: "nav-item app-header__nav_item nav-link" %>
+        </div>
+        <div class="nav app-header__user-nav-container">
+          <% if session[:user_id] %>
+            <% user =  User.find_by(id: session[:user_id])%>
+            <span> <%= link_to "#{user.name}", user_path(user.id), class: "nav-link" %> </span>
+            <%= button_to 'logout', logout_path, { method: :post, class: "btn btn-primary" }%>
+          <% else %>
+            <%= button_to 'login', login_path, { method: :get, class: "btn btn-primary" } %>
+          <% end %>
+        </div>
       </nav>
       <section class="flash">
         <% flash.each do |name, message| %>
@@ -32,6 +37,8 @@
         <% end %>
       </section>
     </header>
-    <%= yield %>
+    <main>
+      <%= yield %>
+    </main>
   </body>
 </html>

@@ -1,25 +1,10 @@
 require "test_helper"
 
 describe Work do
-  # it "does a thing" do
-  #   value(1+1).must_equal 2
-  # end
 
-  # describe "relationships" do
-  #   it "can have many trips" do
-  #     # Arrange
-  #     new_driver.save
-  #     new_passenger = Passenger.create(name: "Kari", phone_num: "111-111-1211")
-  #     trip_1 = Trip.create(driver_id: new_driver.id, passenger_id: new_passenger.id, date: Date.today, rating: 5, cost: 1234)
-  #     trip_2 = Trip.create(driver_id: new_driver.id, passenger_id: new_passenger.id, date: Date.today, rating: 3, cost: 6334)
-  #
-  #     # Assert
-  #     expect(new_driver.trips.count).must_equal 2
-  #     new_driver.trips.each do |trip|
-  #       expect(trip).must_be_instance_of Trip
-  #     end
-  #   end
-  # end
+  describe "relationships" do
+
+  end
 
   describe "validations" do
     it "must have a title" do

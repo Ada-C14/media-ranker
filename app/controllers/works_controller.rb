@@ -6,9 +6,9 @@ class WorksController < ApplicationController
 
 
   def index
-    @albums = Work.order_media(category: "album")
-    @books = Work.order_media(category: "book")
-    @movies = Work.order_media(category: "movie")
+    @albums = Work.order_media("album")
+    @books = Work.order_media("book")
+    @movies = Work.order_media("movie")
   end
 
   def show
@@ -19,9 +19,9 @@ class WorksController < ApplicationController
   end
 
   def top_works
-    @albums = Work.order_media(category: "album")
-    @books = Work.order_media(category: "book")
-    @movies = Work.order_media(category: "movie")
+    @albums = Work.order_media("album")
+    @books = Work.order_media("book")
+    @movies = Work.order_media("movie")
 
     @top_albums = @albums.limit(10)
     @top_books = @books.limit(10)

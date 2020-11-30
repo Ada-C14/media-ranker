@@ -2,8 +2,7 @@ class HomepageController < ApplicationController
     def index
         @works = Work.all
 
-        @albums = @works.where(category: 'album')
-        @books = @works.where(category: 'book')
-        @movies = @works.where(category: 'movie')
+        @top_albums = Work.best_albums
+        @top_books = Work.best_books
     end
 end

@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  def index
+    @users = User.all
+  end
+
   def login_form
     @user = User.new
   end
@@ -23,6 +27,7 @@ class UsersController < ApplicationController
     session[:user_id] = user.id
     redirect_to root_path
   end
+
 
   def logout
     if session[:user_id]

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>MediaRanker</title>
+    <title>Media Ranker</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -9,25 +9,31 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <nav>
-    <%= link_to "Home", root_path %>
-    <%= link_to "All Media", works_path %>
-    <% if session[:user_id] %>
-      <%= link_to "Logout", logout_path, method: :post %>
-    <% else %>
-      <%= link_to "Login", login_path %>
-    <% end %>
-  </nav>
-
   <body>
+    <header>
+      <h1>
+        <%= link_to "Media Ranker", root_path %>
+        <small> | Ranking the Best of Everything</small>
+      </h1>
+      <nav>
+        <%= link_to "View Top Media", root_path %>
+        <%= link_to "View All Media", works_path %>
+        <%= link_to "Add a New Work", new_work_path %>
+        <%= link_to "Show all Users", users_path %>
+        <% if session[:user_id] %>
+          <%= link_to "Logout", logout_path, method: :post %>
+        <% else %>
+          <%= link_to "Login", login_path %>
+        <% end %>
+      </nav>
+    </header>
     <section class="flash-msg_section">
-      <% flash.each do |name, message| %>
+        <% flash.each do |name, message| %>
         <strong class="<% name %>">
           <%= message %>
         </strong>
       <% end %>
     </section>
-
     <%= yield %>
   </body>
 

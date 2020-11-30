@@ -1,17 +1,21 @@
-<h1>Media</h1>
+<% spotlight = @works.media_spotlight %>
+<% top_books = @works.top_ten_books %>
+<% top_albums = @works.top_ten_albums %>
 
-<%= link_to "New Media", new_work_path %>
+<h2>Media Spotlight: <%= link_to spotlight.title, work_path(spotlight) %> by <%= spotlight.creator %><h2>
+<p><%= spotlight.vote_count %> votes - <%= spotlight.description %></p>
 
-<h2>Albums</h2>
-<ul>
-    <% @albums.each do |album| %>
-        <li><%= link_to album.title, work_path(album) %></li>
-    <% end %>
-</ul>
-
-<h2>Books</h2>
-<ul>
-    <% @books.each do |book| %>
-        <li><%= link_to book.title, work_path(book) %></li>
-    <% end %>
-</ul>
+<h2>Top Books</h2>
+<% top_books.each do |work| %>
+    <ul>
+        <h4><%= link_to work.title, work_path(work) %> by <%= work.creator %></h4>
+        <p><%= work.description %></p>
+    </ul>
+<% end %>
+<h2>Top Albums</h2>
+<% top_albums.each do |work| %>
+    <ul>
+        <h4><%= link_to work.title, work_path(work) %> by <%= work.creator %></h4>
+        <p><%= work.description %></p>
+    </ul> 
+<% end %>

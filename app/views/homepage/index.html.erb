@@ -1,32 +1,10 @@
-<h1>Media Ranker</h1>
+<% spotlight = @works.media_spotlight %>
 
-<h2>Media Spotlight</h2>
-<% spotlight = @works.find_by(id: 1) %>
-<ul>
-    <li><%= link_to spotlight.title, work_path(spotlight) %></li>
-    <li>Category: <%= spotlight.category %></li>
-    <li>Creator: <%= spotlight.creator %></li>
-    <li>Published in: <%= spotlight.publication_year %></li>
-    <li>Description: <%= spotlight.description %></li>
-</ul>
-
-<h2>Top Albums</h2>
-<ul>
-    <% top_ten = @albums.sample(10) %>
-    <% top_ten.each do |album| %>
-        <li>
-            <%= link_to album.title, work_path(album) %>
-        </li>
-    <% end %>
-</ul>
+<h2>Media Spotlight: <%= link_to spotlight.title, work_path(spotlight) %> by <%= spotlight.creator %><h2>
 
 <h2>Top Books</h2>
-<ul>
-    <% top_ten = @books.sample(10) %>
-    <% top_ten.each do |book| %>
-        <li>
-            <%= link_to book.title, work_path(book) %>
-        </li>
-    <% end %>
-</ul>
-
+<% @books.top_ten_books.each do |work| %>
+    <ul>
+        <h4><%= link_to work.title, work_path(work) %> by <%= work.title %></h4>
+    </ul>
+<% end %>

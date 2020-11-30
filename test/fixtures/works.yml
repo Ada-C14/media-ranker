@@ -1,0 +1,13 @@
+test_album:
+  category: album
+  title: A Tester
+  creator: Sir Testalot
+  publication_year: 2000
+  description: leaves a bit to be desired; but tests, a lot.
+
+test_book:
+  category: book
+  title: Books Are The Best
+  creator: Creative Minds
+  publication_year: 2010
+  description: Escape when you can.

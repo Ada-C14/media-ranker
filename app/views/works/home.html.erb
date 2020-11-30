@@ -1,0 +1,40 @@
+
+<section class="spotlight main-content px-5 pb-2">
+  <h3> Media Spotlight:
+    <% if @spotlight == nil %>
+      <%= "...whoops, no votes yet" %>
+    <% else %>
+      <%= link_to @spotlight.title, work_path(@spotlight.id), class: "text-info link-underline" %><p class="text-info d-inline"> by <%= @spotlight.creator %></p></h3>
+      <span class="badge badge-light badge-pill"><%= "#{@spotlight.print_number_of_votes}" %></span><p class="d-inline ml-3"><%= "#{@spotlight.description}" %></p>
+    <% end %>
+    </section>
+
+<hr>
+
+<section class = "mt-5 top-ten-container-fluid">
+  <section class = "top-ten row">
+
+    <% @top_ten.each do |category, works| %>
+      <section class= "top-ten-list-container col-4">
+        <h2 class="text-info top-ten-header">Top 10 <%= category.capitalize %>s
+          <% if @top_ten[category].size == 0 %>
+            <div class= "badge-para d-inline"><div class="empty-category d-inline ml-4 badge badge-warning"><%= "No #{category}s yet!" %></div></div>
+          <% end %>
+        </h2>
+        <ul class="list-group top-ten list">
+          <% if works.size == 0 %>
+            <li class="list-group-item border-0"><%= "Vote, then!"%></li>
+          <% else %>
+            <% works.each do |work| %>
+              <li class="list-group-item border-0 m-0 mt-1 p-0 d-flex"><h3 class = "m-0 p-0"><%= link_to work.title, work_path(work.id) %></h3>
+                <span class="badge badge-light badge-pill ml-auto mb-auto mt-2"><%= work.print_number_of_votes %></span></li>
+              <li class="list-group-item border-0 mb-3 p-0 d-flex">by <%= work.creator %></li>
+            <% end %>
+          <% end %>
+        </ul>
+      </section>
+    <% end %>
+
+
+  </section>
+</section>

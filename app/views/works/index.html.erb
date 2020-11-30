@@ -1,0 +1,51 @@
+<section class = "main-content">
+  <h2 class="main-content-header">List of Works</h2>
+  <% @all_works.each do |category, works| %>
+    <h3 class="pt-2 d-inline"><%= category.capitalize %>s
+      <% if works.size == 0 %>
+        <div class="empty-category d-inline ml-5 px-3 badge badge-warning"><%= "No #{category}s yet!" %></div></h3>
+        <hr class="media-category-header">
+      <% else %>
+        </h3>
+        <table class="table table-sm">
+          <thead>
+          <tr class="d-flex">
+            <th class="col-1">Votes</th>
+            <th class="col-4">Title</th>
+            <th class="col-3">Created By</th>
+            <th class="col-2">Published</th>
+            <th class="col-2">Upvote</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% works.each do |work| %>
+            <tr class="d-flex">
+              <td class="col-1"><%= work.print_number_of_votes %></td>
+              <td class="col-4"><%= link_to work.title, work_path(work.id), class: "text-info" %></td>
+              <td class="col-3"><%= work.creator %></td>
+              <td class="col-2"><%= work.publication_year %></td>
+              <td class="col-2">
+                <% case work.vote_button(@current_user) %>
+                <% when "Vote!" %>
+                  <%= link_to "Vote!", work_votes_path(work.id), method: :post, class: "btn btn-outline-info btn-sm", role: "button"%>
+                <% when "Remove Upvote" %>
+                  <% vote = work.votes.find_by(user_id: @current_user.id) %>
+                  <%= link_to "Remove Upvote", work_vote_path(work.id, vote.id), method: :delete, class: "btn btn-danger btn-sm", role: "button" %>
+                <% when nil %>
+                  <div class="text-muted">Please log in to vote.</div>
+                <% end %>
+                </td>
+                </tr>
+          <% end %>
+          </tbody>
+        </table>
+      <% end %>
+  <% end %>
+
+
+  <section class= "mt-5 d-flex justify-content-center">
+    <%= link_to "Add A New Work", new_work_path, class: "btn btn-info m-2", role: "button" %>
+    <%= link_to "Back to Top 10 (Home)", root_path, class: "btn btn-info m-2", role: "button" %>
+  </section>
+
+</section>

@@ -1,0 +1,12 @@
+someone_voted:
+  user: first
+  work: test_book
+
+someone_voted_again:
+  user: first
+  work: test_album
+
+new_vote:
+  user: third
+  work: test_book
+

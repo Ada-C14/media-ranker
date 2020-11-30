@@ -1,0 +1,13 @@
+<section class = "main-content">
+  <h2 class="main-content-header">Please Log In</h2>
+
+  <%= form_with model: @user, url: login_path, method: :post do |f| %>
+    <%= f.label :name, 'Username (6-20 characters)' %>
+    <%= f.text_field :name, placeholder: 'Username', required: true,
+                     maxlength: 20, minlength: 6, pattern: '(\w|-)*',
+                     oninvalid: "this.setCustomValidity('Must be 6-20 characters. Only letters, numbers, underscores, and dashes allowed.')",
+                     oninput: "this.setCustomValidity('')" %>
+    <%= f.submit 'Log In', class: "login-button btn btn-primary", role: "button" %>
+  <% end %>
+
+</section>

@@ -3,7 +3,23 @@ require "test_helper"
 describe Work do
 
   describe "relationships" do
+    it "has votes" do
+      book = works(:book_one)
 
+      expect(book).must_respond_to :votes
+      book.votes.each do |vote|
+        expect(vote).must_be_kind_of Vote
+      end
+    end
+
+    it "has voting users" do
+      book = works(:book_one)
+
+      expect(book).must_respond_to :users
+      book.users.each do |user|
+        expect(user).must_be_kind_of User
+      end
+    end
   end
 
   describe "validations" do

@@ -11,8 +11,7 @@ class WorksController < ApplicationController
 
   def show
     if @work.nil?
-      head :not_found
-      return
+      redirect_to works_path
     end
   end
 
@@ -29,7 +28,7 @@ class WorksController < ApplicationController
       return
     else
       flash.now[:error] = "Uh Oh! Could not create #{@work.category}"
-      render new_work_path
+      render :new, status: :bad_request
       return
     end
   end

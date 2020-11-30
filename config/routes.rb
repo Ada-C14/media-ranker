@@ -16,5 +16,5 @@ Rails.application.routes.draw do
   delete '/works/:id', to: 'works#delete', as: 'delete_work'
   patch '/works/:id/complete', to: 'works#complete', as: 'complete_work'
 
-  root to: 'homepage#index'
+  root to: 'homepages#index'
 end

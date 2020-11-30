@@ -2,10 +2,19 @@
 
     <%= form_with model: @work, class: 'create-work' do |f| %>
 
+      <% if @work.errors.any? %>
+        <ul class = "alert">
+          <% @work.errors.each do |column, message| %>
+            <li>
+              <p><%= column %> <%= message %></p>
+            </li>
+          <% end %>
+        </ul>
+      <% end %>
+
       <div clss="form_group">
         <%= f.label :category %>
-        <%= f.select :category, ["album", "book", "movie"],
-                     {include_blank: false}, {class: "form-control"}%>
+        <%= f.select :category, %W[album book movie] %>
       </div>
 
       <div clss="form_group">
@@ -29,7 +38,7 @@
       </div>
       <hr>
       <div class="form-group">
-        <%= f.submit "#{action_name}", class: "btn btn-primary" %>
+        <%= f.submit action_name, class: "btn btn-primary" %>
       </div>
     <% end %>
 

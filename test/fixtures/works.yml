@@ -1,0 +1,13 @@
+work1:
+  title: title1
+  creator: creator1
+  description: this is work1
+  publication_year: 2020
+  category: album
+
+work2:
+  title: title2
+  creator: creator1
+  description: this is work2
+  publication_year: 2019
+  category: book

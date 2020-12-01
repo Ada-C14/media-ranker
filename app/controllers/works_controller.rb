@@ -18,6 +18,18 @@ class WorksController < ApplicationController
         @work = Work.new
     end
 
+    def create
+        @work = Work.new(work_params)
+
+        if @work.save
+            flash[:message] = "Successfully created"
+            redirect_to work_path(@work)
+        else
+            flash[:error] = "Failed to create new media"
+            render :new
+        end
+    end
+
     def edit
         @work = Work.find_by(id: params[:id])
 

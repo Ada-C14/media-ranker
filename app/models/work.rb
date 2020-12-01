@@ -7,9 +7,28 @@ class Work < ApplicationRecord
 
     def self.spotlight
         sorted_work = self.all.sort_by {|work| work.votes.count }
-         # self.order('RANDOM()').limit(1).first
         return sorted_work.last
     end
+
+    def self.top_books
+        sorted_books = self.all.select {|work| work.category == "book" }
+        top_books = sorted_books.sort_by {|work| work.votes.count }
+
+        top_ten_books = top_books.last(10).reverse
+
+        return top_ten_books
+    end
+
+    def self.top_albums
+        sorted_albums = self.all.select {|work| work.category == "album" }
+        top_albums = sorted_albums.sort_by {|work| work.votes.count }
+
+        top_ten_albums = top_albums.last(10).reverse
+
+        return top_ten_albums
+    end
+
+
     # def self.list_albums
     #     albums = @works.select{ |work| work[:category] == "album"}
 

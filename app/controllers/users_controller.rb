@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
-    return :not_found if @user.nil?
+    return head :not_found if @user.nil?
   end
 
   def new

@@ -1,26 +1,29 @@
 <div>
-<h1>Media Spotlight: 
-</h1>
+<h1>Media Spotlight: <%= Work.spotlight.title %> by <%= Work.spotlight.creator %></h1>
+  <%= Work.spotlight.votes.count %> votes - <%= Work.spotlight.description %>
+
 </div>
 
 <div>
-<h2 class="top-ten-header"> Top Books </h2>
-<% books = @works.select{ |work| work[:category] == "book" } %>
-<% top_books = books.sample(10) %>
-<% top_books.each do |book| %>
-  <li>
-  <%= link_to book.title, work_path(book) %> <%= book[:creator] %> <%= book[:publication_year] %>
-  </li>
-<% end %>
+  <h2 class="top-ten-header">Top Books</h2>
+  <% Work.top_books.each do |book| %>
+    <%= link_to book.title, work_path(book) %>
+    <%= book[:creator] %>
+    <%= book[:publication_year] %>
+    <br>
+    <%= book.votes.count %> votes
+    <br>
+  <% end %>
 </div>
 
 <div>
-<h2 class="top-ten-header"> Top Albums </h2>
-<% albums = @works.select{ |work| work[:category] == "album" } %>
-<% top_albums = albums.sample(10) %>
-<% top_albums.each do |album| %>
-  <li>
-  <%= link_to album.title, work_path(album) %> <%= album[:creator] %> <%= album[:publication_year] %>
-  </li>
-<% end %>
+  <h2 class="top-ten-header">Top Movies</h2>
+  <% Work.top_albums.each do |album| %>
+    <%= link_to album.title, work_path(album) %>
+    <%= album[:creator] %>
+    <%= album[:publication_year] %>
+    <br>
+    <%= album.votes.count %> votes
+    <br>
+  <% end %>
 </div>

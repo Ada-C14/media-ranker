@@ -3,10 +3,12 @@
 <div>
 <h2>Albums</h2>
 <ul>
-<% albums = @works.select{ |work| work[:category] == "album"} %>
-<% albums.each do |album| %>
-  <li>
-  <%= link_to album.title, work_path(album) %> <%= album[:creator] %> <%= album[:publication_year] %>
+<% Work.sort_albums.each do |album| %>
+  <li>Votes:  <%= album.votes.count %>
+    <%= link_to album.title, work_path(album) %>
+    <%= album[:creator] %>
+    <%= album[:publication_year] %>
+    <%= button_to "Upvote", upvote_path(album.id) %>
   </li>
 <% end %>
 
@@ -16,10 +18,12 @@
 <div>
 <h2>Books</h2>
 <ul>
-<% books = @works.select{ |book| book[:category] == "book"} %>
-<% books.each do |book| %>
-  <li>
-  <%= link_to book.title, work_path(book) %> <%= book[:creator] %> <%= book[:publication_year] %>
+<% Work.sort_books.each do |book| %>
+    <li>Votes:  <%= book.votes.count %>
+    <%= link_to book.title, work_path(book) %>
+    <%= book[:creator] %>
+    <%= book[:publication_year] %>
+    <%= button_to "Upvote", upvote_path(book.id) %>
   </li>
 <% end %>
 

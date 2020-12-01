@@ -20,7 +20,6 @@ class UsersController < ApplicationController
     user = User.find_by(username: params[:user][:username])
 
     if user.nil?
-      #New User
       user = User.new(username: params[:user][:username])
       if ! user.save
         flash[:error] = "Unable to login"
@@ -29,7 +28,6 @@ class UsersController < ApplicationController
       end
       flash[:welcome] = "Welcome #{user.username}"
     else
-      #Existing User
       flash[:welcome] = "Welcome back #{user.username}"
     end
 

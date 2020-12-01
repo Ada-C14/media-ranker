@@ -49,6 +49,7 @@ class WorksController < ApplicationController
             redirect_to work_path(@work)
             return
         else
+            flash[:error] = "Was not able to edit media"
             render :edit
             return
         end

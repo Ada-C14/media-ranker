@@ -1,22 +1,26 @@
-first_work:
+work1:
+  id: 1
   category: movie
   title: FirstWork
   creator: FirstWork Creator
   description: a description of the first work
   publication_year: 2021
-second_work:
+work2:
+  id: 2
   category: movie
   title: SecondWork
   creator: SecondWork Creator
   description: a description of the second work
   publication_year: 2022
-third_work:
+work3:
+  id: 3
   category: album
   title: ThirdWork
   creator: ThirdWork Creator
   description: a description of the third work
   publication_year: 2023
-forth_work:
+work4:
+  id: 4
   category: book
   title: FourthtWork
   creator: FourthWork Creator

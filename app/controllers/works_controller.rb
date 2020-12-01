@@ -1,4 +1,5 @@
 class WorksController < ApplicationController
+
     def index
         @works = Work.all
     end
@@ -10,6 +11,7 @@ class WorksController < ApplicationController
             head :not_found
             return
         end 
+        @votes = @work.votes.order(created_at: :desc)
     end
 
     def new

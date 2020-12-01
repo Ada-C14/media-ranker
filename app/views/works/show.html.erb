@@ -3,13 +3,22 @@
     <li>Created by: <%= @work.creator %></li>
     <li>Year Published: <%= @work.publication_year %></li>
     <li>Description: <%= @work.description %></li>
-    <li>Votes: <%= @work.vote_count %></li>
 </ul>
-
-<h2><%= @work.vote_count %> votes for this <%= @work.category.capitalize %></h2>
-<table>
-
 
 <%= link_to "Edit", edit_work_path(@work) %>
 <%= link_to "Delete", work_path(@work), method: :delete, data: {confirm: "Are you sure you want to delete this media entry?"} %>
 <%= link_to "Vote", vote_path(@work), method: :post %>
+
+<h2><%= @work.vote_count %> votes for this <%= @work.category.capitalize %></h2>
+<table>
+    <tr>
+        <th>User</th>
+        <th>Date</th>
+    </tr>
+    <% @votes.each do |vote| %>
+        <tr>
+            <td><%= link_to vote.user.username, user_path(vote.user) %></td>
+            <td><%= readable_date(vote.created_at) %></td>
+        </tr>
+    <% end %>
+</table>

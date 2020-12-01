@@ -1,8 +1,14 @@
 class WorksController < ApplicationController
 
+  before_action :require_login, only: [:new, :create, :edit, :update, :destroy]
+
   def homepage
     @works = Work.all
-  end 
+  end
+
+  def list
+    @albums = Work.list_albums
+  end
 
   def index
     @works = Work.all

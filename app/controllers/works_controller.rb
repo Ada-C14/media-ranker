@@ -23,48 +23,50 @@ class WorksController < ApplicationController
     @work = Work.new(work_params)
 
     if @work.save
-      flash[:success] = "Created: #{@work.category}, ID: #{@work.id}"
       redirect_to work_path(@work.id)
+      flash[:success] = "#{@work.title} was successfully added!"
       return
     else
-      flash.now[:error] = "Uh Oh! Could not create #{@work.category}"
+      #when doing a render, use flash.now
+      flash.now[:error] = "Uh Oh! Could not create new work."
       render :new, status: :bad_request
+
       return
     end
   end
 
   def edit
     if @work.nil?
-      flash.now[:error] = "Uh Oh! We couldn't find #{@work.category}"
       redirect_to root_path
+      flash[:error] = "Uh Oh! We couldn't find #{@work.title}"
       return
     end
   end
 
   def update
     if @work.nil?
-      flash.now[:error] = "Uh Oh! We couldn't find #{@work.category}"
       redirect_to work_path
+      flash[:error] = "Uh Oh! We couldn't find #{@work.title}"
       return
     elsif @work.update(work_params)
-      flash[:success] = "Created: #{@work.category}: #{@work.title}"
       redirect_to work_path(@work.id)
+      flash[:success] = "Created: #{@work.category}: #{@work.title}"
       return
     else
-    flash.now[:error] = "Uh Oh! We couldn't update #{@work.category}"
-    render :edit
+      flash.now[:error] = "Uh Oh! We couldn't update #{@work.title}"
+      render :edit
     return
     end
   end
 
   def delete
     if @work.nil?
-      flash.now[:error] = "Uh Oh! We couldn't find #{@work.category}"
       redirect_to works_path
+      flash[:error] = "Uh Oh! We couldn't find #{@work.title}"
     else
       @work.delete
-      flash[:success] = "POOF! You have deleted: #{@work.category}: #{@work.title}"
       redirect_to works_path
+      flash[:success] = "POOF! You have deleted: #{@work.category}: #{@work.title}"
       return
     end
   end

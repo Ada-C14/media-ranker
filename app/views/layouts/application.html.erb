@@ -38,16 +38,14 @@
         </li>
       </ul>
     </nav>
-  </header>
 
-  <section class="alert">
+
+  <section class="flash">
     <% flash.each do |name, message| %>
-      <strong class="<%= name %>">
-        <%= message %>
-      </strong>
+      <div class="<%= name %>"><%= message %></div>
     <% end %>
   </section>
-
+  </header>
     <main>
       <%= yield %>
     </main>

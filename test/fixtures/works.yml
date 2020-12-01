@@ -1,0 +1,79 @@
+work1:
+  title: title1
+  creator: creator1
+  description: this is work1
+  publication_year: 2020
+  category: album
+  vote_count: 1
+
+work2:
+  title: title2
+  creator: creator1
+  description: this is work2
+  publication_year: 2019
+  category: book
+  vote_count: 2
+
+work3:
+  title: title3
+  creator: creator3
+  description: this is work3
+  publication_year: 2018
+  category: book
+  vote_count: 3
+
+work4:
+  title: title4
+  creator: creator4
+  description: this is work4
+  publication_year: 2018
+  category: book
+  vote_count: 0
+
+work5:
+  title: title5
+  creator: creator5
+  description: this is work5
+  publication_year: 2018
+  category: book
+  vote_count: 0
+
+work6:
+  title: title6
+  creator: creator6
+  description: this is work6
+  publication_year: 2018
+  category: book
+  vote_count: 0
+
+work7:
+  title: title7
+  creator: creator7
+  description: this is work7
+  publication_year: 2018
+  category: book
+  vote_count: 0
+
+work8:
+  title: title8
+  creator: creator8
+  description: this is work8
+  publication_year: 2018
+  category: book
+  vote_count: 0
+
+work9:
+  title: title9
+  creator: creator9
+  description: this is work9
+  publication_year: 2018
+  category: book
+  vote_count: 0
+
+work10:
+  title: title10
+  creator: creator10
+  description: this is work10
+  publication_year: 2018
+  category: book
+  vote_count: 0

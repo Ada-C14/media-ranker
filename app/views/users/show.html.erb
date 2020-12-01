@@ -1,0 +1,23 @@
+<h2>User Summary: <%= @user.username %></h2>
+<p>Joined Site <%= readable_date(@user.created_at) %></p>
+<table>
+    <tr>
+        <th>Media Title</th>
+        <th>Created by</th>
+        <th>Published</th>
+        <th>Category</th>
+        <th>Voted On</th>
+    </tr>   
+    <% @user.votes.each do |vote| %>
+        <tr>
+            <td><%= link_to vote.work.title, work_path(vote.work) %></td>
+            <td><%= vote.work.creator %></td>
+            <td><%= vote.work.publication_year %></td>
+            <td><%= vote.work.category %></td>
+            <td><%= readable_date(vote.created_at) %></td>
+        </tr>
+    <% end %>
+</table>
+
+<%= link_to "See all Users", users_path %>
+<%= link_to "Back to Media List", root_path %>

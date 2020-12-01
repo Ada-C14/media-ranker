@@ -16,6 +16,7 @@ class WorksController < ApplicationController
       redirect_to works_path
       return
     end
+    @votes = @work.votes.order(created_at: :desc)
   end
 
   def top_works
@@ -84,7 +85,6 @@ class WorksController < ApplicationController
 
   def find_by
     @work = Work.find_by(id: params[:id])
-
 
   end
 

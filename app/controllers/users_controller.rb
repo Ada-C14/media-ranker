@@ -41,40 +41,14 @@ class UsersController < ApplicationController
   end
 
   def show
-    if @work.nil?
+    @user = User.find_by(id: params[:id])
+
+    if @user.nil?
       redirect_to works_path
       return
     end
+    @votes = @user.votes.order(created_at: :desc)
   end
-  #
-  # def new
-  #   @user = User.new
-  # end
-  #
-  # def create
-  #   @user = User.new(user_params)
-  #
-  #   if @user.save
-  #     flash[:success] = "Successfully created new user #{@user.name} with ID #{@user.id}"
-  #     redirect_to root_path
-  #     return
-  #   else
-  #     flash.now[:error] = "Something happened. User not added."
-  #     render :new, status: :bad_request
-  #     return
-  #   end
-  # end
-  #
-  # def edit
-  # end
-  #
-  # def update
-  # end
-  #
-  # def destroy
-  # end
-  #
-
 
   private
 

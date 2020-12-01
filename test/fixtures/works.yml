@@ -34,3 +34,57 @@ book_two:
   publication_date: 2011
   creator: Madeline Miller
   category: book
+book_three:
+  title: Lilith's Brood
+  description: The books in a series, so good!
+  publication_date: 1987
+  creator: Octavia Butler
+  category: book
+book_four:
+  title: Kindred
+  description: Time travel historical fiction.
+  publication_date: 1979
+  creator: Ocativa Butler
+  category: book
+book_five:
+  title: Wild Seed
+  description: I haven't read it yet.
+  publication_date: 1980
+  creator: Ocative Butler
+  category: book
+book_six:
+  title: Imago
+  description: Another wish list book.
+  publication_date: 1989
+  creator: Ocatavia Butler
+  category: book
+book_seven:
+  title: The Left Hand of Darkness
+  description: My gender.
+  publication_date: 1969
+  creator: Ursula
+  category: book
+book_eight:
+  title: I can't think
+  description: It a story of hitting the wall.
+  publication_date: 2020
+  creator: Schanen
+  category: book
+book_nine:
+  title: Pick Yourself Up
+  description: You must persist.
+  publication_date: 2020
+  creator: Me As Well
+  category: book
+book_ten:
+  title: Walk the Dog
+  description: He needs to go on a walk.
+  publication_date: 0
+  creator: time
+  category: book
+book_eleven:
+  title: How to make dinner.
+  description: I guide on how to feed yourself.
+  publication_date: 1986
+  creator: Mr. Jello Porcini
+  category: book

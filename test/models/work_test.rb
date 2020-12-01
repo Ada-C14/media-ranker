@@ -25,24 +25,6 @@ describe Work do
 
   end
 
-
-  #
-  #   it "returns at most 10 items" do
-  #     movies = Work.top_ten("movie")
-  #     expect(movies.length).must_equal 8
-  #
-  #     Work.create(title: "phase 2 test movie 1", category: "movie")
-  #     expect(Work.top_ten("movie").length).must_equal 9
-  #
-  #     Work.create(title: "phase 2 test movie 2", category: "movie")
-  #     expect(Work.top_ten("movie").length).must_equal 10
-  #
-  #     Work.create(title: "phase 2 test movie 3", category: "movie")
-  #     expect(Work.top_ten("movie").length).must_equal 10
-  #   end
-  # end
-  #
-
   describe "vote_count" do
     it "defaults to 0" do
       work = works(:album_two)

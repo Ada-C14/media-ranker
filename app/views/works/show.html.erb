@@ -19,13 +19,19 @@
       <thead>
       <tr>
         <th>
-
+          User
         </th>
+        <th>Date</th>
       </tr>
       </thead>
       <tbody>
-      <tr>
-      </tr>
+      <% @votes.each do |vote| %>
+        <tr>
+          <td><%= link_to vote.user.name, user_path(vote.user.id) %></td>
+          <td><%= vote.created_at.strftime("%b %d, %Y") %></td>
+        </tr>
+      <% end %>
+
       </tbody>
     </table>
 

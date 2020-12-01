@@ -5,7 +5,7 @@
 <ul>
 <% albums = @works.select{ |work| work[:category] == "album"} %>
 <% albums.each do |album| %>
-  <li>
+  <li>Votes:  <%= album.votes.count %>
   <%= link_to album.title, work_path(album) %> <%= album[:creator] %> <%= album[:publication_year] %>
     <%= button_to "Upvote", upvote_path(album.id) %>
   </li>

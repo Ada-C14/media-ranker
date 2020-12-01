@@ -1,7 +1,7 @@
 class WorksController < ApplicationController
 
   before_action :require_login, except: [:homepage, :index, :show]
-  before_action :find_work, except: [:homepage, :index, :new]
+  before_action :find_work, except: [:homepage, :index]
 
   def homepage
     @works = Work.all
@@ -77,12 +77,15 @@ class WorksController < ApplicationController
   end
 
   def upvote
-    vote = Vote.new(user_id: @login_user.id, work_id: @work.id)
-
-    if vote.save
-      flash[:success] = "Successfully upvoted #{@work.title}"
+    if @work.votes.select {|vote| vote.user_id == @login_user.id}.count > 0
+      flash[:error] = "Can't vote for #{@work.title} twice"
     else
-      flash[:error] = "Something went wrong. Could not upvote #{@work.title}"
+      vote = Vote.new(user_id: @login_user.id, work_id: @work.id)
+      if vote.save
+        flash[:success] = "Successfully upvoted #{@work.title}"
+      else
+        flash[:error] = "Something went wrong. Could not upvote #{@work.title}"
+      end
     end
 
     redirect_to works_path
@@ -91,7 +94,7 @@ class WorksController < ApplicationController
   private
 
   def work_params
-    return params.require(:work).permit(:category, :title, :creator, :publication_year, :description)
+    return params.require(:work).permit(:category, :title, :creator, :publication_year, :description, :vote_count)
   end
 
   def find_work

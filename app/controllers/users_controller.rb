@@ -50,9 +50,6 @@ class UsersController < ApplicationController
     @votes = @user.votes.order(created_at: :desc)
   end
 
-  @user = User.find_by(id: params[:id])
-  render_404 unless @user
-
   private
 
   def user_params

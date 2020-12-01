@@ -20,10 +20,10 @@
       <% else %>
         <% @works.where(category: category).order(vote_count: :desc).limit(10).each do |item| %>
           <li class="list-group-item">
-            <p class="top-title">
+            <h4 class="top-title">
               <%= link_to "#{item.title}", work_path(item.id) %>
               <small class="top-ten__creator"> by <%= item.creator %> </small>
-            </p>
+            </h4>
             <p> <%= item.votes.count %> votes </p>
           </li>
         <% end %>

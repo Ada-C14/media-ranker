@@ -72,7 +72,7 @@ h1 {
   font-size: 2.5rem;
 }
 
-a, h2, h3 {
+a, h2, h3, h4 {
   color: #26A69A;
 }
 
@@ -111,6 +111,10 @@ a, h2, h3 {
 small, .small {
   font-size: 80%;
   font-weight: 400;
+}
+
+.top-ten__creator {
+  color: slategrey;
 }
 
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {

@@ -25,4 +25,15 @@ describe User do
 
     end
   end
+
+  describe "relationships" do
+    it "user has a list of votes" do
+      user = users(:user1)
+      user.votes.each do |vote|
+        expect(vote).must_be_kind_of Vote
+      end
+      
+      expect(user).must_respond_to :votes
+    end
+  end
 end

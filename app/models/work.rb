@@ -1,9 +1,7 @@
 class Work < ApplicationRecord
     has_many :votes
-
-    def self.by_category(category)
-        self.where(category: category).order(vote_count: desc)
-    end
+    validates :category, presence: true
+    validates :title, presence: true
 
     def self.media_spotlight
         Work.all.order(vote_count: :desc).first

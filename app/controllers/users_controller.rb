@@ -44,11 +44,14 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
 
     if @user.nil?
-      redirect_to works_path
+      redirect_to root_path
       return
     end
     @votes = @user.votes.order(created_at: :desc)
   end
+
+  @user = User.find_by(id: params[:id])
+  render_404 unless @user
 
   private
 

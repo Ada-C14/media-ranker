@@ -10,9 +10,7 @@ class VotesController < ApplicationController
 
   def create
     @work = Work.find_by(id: params[:work_id])
-    p @work
     @user = User.find_by(id: session[:user_id])
-    p @user
 
     if @user.nil?
       flash[:error] = "Please log in to upvote media."
@@ -20,7 +18,6 @@ class VotesController < ApplicationController
       redirect_back(fallback_location: root_path)
     else
       @vote = Vote.new(user_id: session[:user_id], work_id: params[:work_id])
-      p @vote
     end
 
     if @vote.save
@@ -32,20 +29,6 @@ class VotesController < ApplicationController
       redirect_back(fallback_location: root_path)
     end
 
-  end
-
-  def down_vote
-    @vote = Vote.find_by
-  end
-
-
-  def edit
-  end
-
-  def update
-  end
-
-  def destroy
   end
 
   private

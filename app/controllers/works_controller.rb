@@ -49,7 +49,6 @@ class WorksController < ApplicationController
   end
 
   def edit
-
     if @work.nil?
       head :not_found
       return
@@ -61,9 +60,14 @@ class WorksController < ApplicationController
       redirect_to works_path
       return
     elsif @work.update(work_params)
+      flash[:status] = :success
+      flash[:result_text] = "Successfully updated #{@work.category}"
       redirect_to work_path(@work.id)
       return
     else
+      flash.now[:status] = :failure
+      flash.now[:result_text] = "Could not update #{@work.category}"
+      flash.now[:messages] = @work.errors.messages
       render :edit
       return
     end
@@ -73,7 +77,9 @@ class WorksController < ApplicationController
 
     if @work
       @work.destroy
-      redirect_to works_path
+      flash[:status] = :success
+      flash[:result_text] = "Successfully destroyed #{@work.category}"
+      redirect_to root_path
     else
       head :not_found
     end

@@ -6,7 +6,6 @@ Rails.application.routes.draw do
     resources :votes, only: [:create]
   end
 
-  resources :works
   get '/works/top_works', to: 'works#top_works', as: 'top_works'
 
   get '/login', to: 'users#login_form', as: 'login'

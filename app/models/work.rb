@@ -10,4 +10,12 @@ class Work < ApplicationRecord
     self.vote_count += 1
     self.save
   end
+
+  def self.top_work
+    order(vote_count: :desc).first
+  end
+
+  def self.top_ten(category)
+    where(category: category).order(vote_count: :desc).limit(10)
+  end
 end

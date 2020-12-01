@@ -1,10 +1,9 @@
 class WorksController < ApplicationController
   before_action :find_work, only: [:show, :edit, :update, :destroy]
-  # before_action :require_login, only [:edit, :update, :destroy]
 
   def homepage
     @works = Work.all
-    @top_work = @works.order(vote_count: :desc).first
+    @top_work = @works.top_work
   end
 
   def index

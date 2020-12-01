@@ -10,9 +10,18 @@ class Work < ApplicationRecord
         return sorted_work.last
     end
 
-    def self.top_books
+    def self.sort_albums
+        sorted_albums = self.all.select {|work| work.category == "album" }
+        return sorted_albums
+    end
+
+    def self.sort_books
         sorted_books = self.all.select {|work| work.category == "book" }
-        top_books = sorted_books.sort_by {|work| work.votes.count }
+        return sorted_books
+    end
+
+    def self.top_books
+        top_books = sort_books.sort_by {|work| work.votes.count }
 
         top_ten_books = top_books.last(10).reverse
 
@@ -20,25 +29,11 @@ class Work < ApplicationRecord
     end
 
     def self.top_albums
-        sorted_albums = self.all.select {|work| work.category == "album" }
-        top_albums = sorted_albums.sort_by {|work| work.votes.count }
+        top_albums = sort_albums.sort_by {|work| work.votes.count }
 
         top_ten_albums = top_albums.last(10).reverse
 
         return top_ten_albums
     end
-
-
-    # def self.list_albums
-    #     albums = @works.select{ |work| work[:category] == "album"}
-
-        # all_albums = albums.each do |album|
-        #     print album.title
-        #     print album[:creator]
-        #     print album[:publication_year]
-        # end
-
-        # return albums
-    # end
 
 end

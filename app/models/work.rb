@@ -10,7 +10,10 @@ class Work < ApplicationRecord
 
 
   def self.spotlight
-    return Work.all.sample
+    @works = Work.all
+
+    max_votes = @works.max_by { |work| work.votes.count}
+    return max_votes
   end
 
   def self.top_ten(works)

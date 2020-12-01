@@ -87,7 +87,6 @@ describe Work do
       expect(works.where(category: "album").count).must_equal 27
       expect(works.top_ten("album").count).must_equal 10
       expect(works.top_ten("album").first.title).must_equal "Work23"
-
     end
 
     it "top_ten method with less than ten items in a category" do

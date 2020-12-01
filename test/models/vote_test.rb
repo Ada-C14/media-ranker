@@ -1,72 +1,38 @@
 require "test_helper"
 
 describe Vote do
-  let (:new_work) {
-    Work.new(
-        title: "Some Title",
-        category: "album",
-        creator: "Mos",
-        description: "asd sdlkjf sdi sdkjr sdois s oadij slkk dkjle so di elksj eiolksdlk sskl sdlke soio",
-        publication_year: 2222)
-  }
   it "can be instantiated" do
-    # Assert
-    expect(new_work.valid?).must_equal true
+    new_user = User.create(name: "Third User")
+
+    expect(new_user.valid?).must_equal true
   end
 
   it "will have the required fields" do
-    # Arrange
-    new_work.save
-    work = Work.first
-    [:title, :category, :creator, :description, :publication_year].each do |field|
+    users = User.all
 
-      # Assert
-      expect(work).must_respond_to field
+    users.each do |user|
+      expect(user).must_respond_to :name
+      expect(user).must_be_instance_of User
     end
   end
 
   describe 'relations' do
-    it "has many votes" do
-      skip
-      #   book = books(:poodr)
-      #   expect(book.author).must_equal authors(:metz)
+    it 'belongs to many works' do
+      work = works(:work1)
+
+      expect(work.votes.count).must_equal 2
+      work.votes.each do |vote|
+        expect(vote).must_be_instance_of Vote
+      end
     end
 
-    it "has many users through votes" do
-      skip
-      # book = Book.new(title: "test book")
-      # book.author = authors(:metz)
-      # expect(book.author_id).must_equal authors(:metz).id
-    end
-  end
+    it 'belongs to many users' do
+      user = users(:user1)
 
-  describe 'validation' do
-    it "must have a title" do
-      work = works(:first_work)
-      expect(work.title).must_equal works(:first_work).title
-    end
-
-    it "title must be unique" do
-      skip
-      # book = Book.new(title: "test book")
-      # book.author = authors(:metz)
-      # expect(book.author_id).must_equal authors(:metz).id
-    end
-  end
-
-  describe "custom methods" do
-    it "top_ten" do
-      skip
-      # book = Book.new(title: "test book")
-      # book.author = authors(:metz)
-      # expect(book.author_id).must_equal authors(:metz).id
-    end
-
-    it "spotlight" do
-      skip
-      # book = Book.new(title: "test book")
-      # book.author = authors(:metz)
-      # expect(book.author_id).must_equal authors(:metz).id
+      expect(user.votes.count).must_equal 2
+      user.votes.each do |vote|
+        expect(vote).must_be_instance_of Vote
+      end
     end
   end
 end

@@ -41,5 +41,6 @@ ActiveRecord::Schema.define(version: 2020_12_01_150620) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "vote_count", default: 0
   end
-
+  add_foreign_key "votes", "users"
+  add_foreign_key "votes", "works"
 end

@@ -1,12 +1,14 @@
 
 <section class="spotlight">
+  <% if Work.all.count > 1 %>
+    <h2 class="spotlight-header">
+      <span class="spotlight-header-prefix">Media Spotlight:</span>
+        <%= link_to @spotlight.title, work_path(@spotlight), class: 'spotlight-link-to' %><span> by </span><%= @spotlight.creator %>
+    </h2>
 
-  <h2 class="spotlight-header">
-    <span class="spotlight-header-prefix">Media Spotlight:</span>
-    <%= link_to @spotlight.title, work_path(@spotlight), class: 'spotlight-link-to' %><span> by </span><%= @spotlight.creator %>
-  </h2>
+    <p class="spotlight-description"><%= @spotlight.votes.count %> votes - <%= @spotlight.description %></p>
+  <% end %>
 
-  <p class="spotlight-description"><%= @spotlight.votes.count %> votes - <%= @spotlight.description %></p>
 </section>
 
 <hr class="root-break"/>

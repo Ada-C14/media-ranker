@@ -10,6 +10,10 @@ h2, .h2 {
   font-size: 2rem;
 }
 
+.h4-table {
+  color: black;
+}
+
 .table td {
   vertical-align: middle;
 }
@@ -22,10 +26,6 @@ h2, .h2 {
 
 table {
   border-collapse: collapse;
-}
-
-a, h2, h3 {
-  color: #26A69A;
 }
 
 .form-group {
@@ -60,4 +60,9 @@ input, button, select, optgroup, textarea {
 
 section.d-inline-flex .btn {
   margin: 0 5px;
+}
+
+section.back-button {
+  margin-top: 50px;
+  margin-bottom: 50px;
 }

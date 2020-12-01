@@ -18,4 +18,22 @@ class ActiveSupport::TestCase
   fixtures :all
 
   # Add more helper methods to be used by all tests here...
+
+  # method takes username as parameter & creates user hash and makes post request to login path
+  def login(username = "Grace Hopper")
+    # arrange
+    # user_hash is form data that's submitted when logging in new user
+    user_hash = {
+        user: {   # key for user b/c it's form_with. parent key is model name.
+                  username: username   # field: username
+        }
+    }
+
+      # act
+      post login_path, params: user_hash # send post request to path w/ params user_hash
+
+    user = User.find_by(username: username)
+    # user = User.find_by(username: user_hash[:user][:username])
+    return user
+  end
 end

@@ -1,6 +1,6 @@
 class WorksController < ApplicationController
 
-  before_action :require_login, only: [:new, :create, :edit, :update, :destroy]
+  before_action :require_login, only: [:new, :create, :edit, :update, :destroy, :upvote]
 
   def homepage
     @works = Work.all
@@ -73,6 +73,10 @@ class WorksController < ApplicationController
       @work.destroy
       redirect_to works_path
     end
+  end
+
+  def upvote
+
   end
 
   private

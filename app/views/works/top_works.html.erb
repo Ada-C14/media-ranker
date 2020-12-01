@@ -3,10 +3,10 @@
 
   <h2 class="spotlight-header">
     <span class="spotlight-header-prefix">Media Spotlight:</span>
-    <%= link_to @work.title, work_path(@work), class: 'spotlight-link-to' %><span> by </span><%= @work.creator %>
+    <%= link_to @spotlight.title, work_path(@spotlight), class: 'spotlight-link-to' %><span> by </span><%= @spotlight.creator %>
   </h2>
 
-  <p class="spotlight-description"><%= @work.description %></p>
+  <p class="spotlight-description"><%= @spotlight.votes.count %> votes - <%= @spotlight.description %></p>
 </section>
 
 <hr class="root-break"/>
@@ -17,18 +17,7 @@
 
     <h2 class="ten-header">Top Movies</h2>
 
-    <ul class="list-group top-ten-list">
-      <% @movies.each do |movie| %>
-        <li>
-
-          <h4>
-            <%= link_to movie.title, work_path(movie.id) %>
-            <small class="top-ten-creator">by <%= movie.creator %></small>
-          </h4>
-          <p><%= link_to movie.votes.count %> votes</p>
-        </li>
-      <% end %>
-    </ul>
+    <%= render partial: "top_lists", locals: {category: @top_movies} %>
 
   </section>
 
@@ -36,36 +25,16 @@
 
     <h2 class="ten-header">Top Books</h2>
 
-    <ul class="list-group top-ten-list">
-      <% @books.each do |book| %>
-        <li>
+    <%= render partial: "top_lists", locals: {category: @top_books} %>
 
-          <h4>
-            <%= link_to book.title, work_path(book.id) %>
-            <small class="top-ten-creator">by <%= book.creator %></small>
-          </h4>
-          <p><%= link_to book.votes.count %> votes</p>
-        </li>
-      <% end %>
-    </ul>
   </section>
 
   <section class="ten-list-container">
 
     <h2 class="ten-header">Top Albums</h2>
 
-    <ul class="list-group top-ten-list">
-      <% @albums.each do |album| %>
-        <li>
+    <%= render partial: "top_lists", locals: {category: @top_albums} %>
 
-          <h4>
-            <%= link_to album.title, work_path(album.id) %>
-            <small class="top-ten-creator">by <%= album.creator %></small>
-          </h4>
-          <p><%= link_to album.votes.count %> votes</p>
-        </li>
-      <% end %>
-    </ul>
   </section>
 
 </section>

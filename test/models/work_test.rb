@@ -1,25 +1,68 @@
 require "test_helper"
 
 describe Work do
-  # it "does a thing" do
-  #   value(1+1).must_equal 2
-  # end
 
-  # describe "relationships" do
-  #   it "can have many trips" do
-  #     # Arrange
-  #     new_driver.save
-  #     new_passenger = Passenger.create(name: "Kari", phone_num: "111-111-1211")
-  #     trip_1 = Trip.create(driver_id: new_driver.id, passenger_id: new_passenger.id, date: Date.today, rating: 5, cost: 1234)
-  #     trip_2 = Trip.create(driver_id: new_driver.id, passenger_id: new_passenger.id, date: Date.today, rating: 3, cost: 6334)
-  #
-  #     # Assert
-  #     expect(new_driver.trips.count).must_equal 2
-  #     new_driver.trips.each do |trip|
-  #       expect(trip).must_be_instance_of Trip
-  #     end
-  #   end
-  # end
+  describe "order_media" do
+
+    it "returns a list of media of the correct category" do
+      movies = Work.order_media("movie")
+
+      expect(movies.length).must_equal 2
+      movies.each do |movie|
+        expect(movie).must_be_kind_of Work
+        expect(movie.category).must_equal "movie"
+      end
+    end
+
+    it "orders media by vote count" do
+      movies = Work.order_media("movie")
+      previous_vote_count = 100
+      movies.each do |movie|
+        expect(movie.vote_count).must_be :<=, previous_vote_count
+        previous_vote_count = movie.vote_count
+      end
+    end
+
+  end
+
+  describe "vote_count" do
+    it "defaults to 0" do
+      work = works(:album_two)
+      expect(work).must_respond_to :vote_count
+      expect(work.vote_count).must_equal 0
+    end
+
+    it "tracks the number of votes" do
+      work = works(:album_two)
+      4.times do |i|
+        user = User.create!(name: "user#{i}")
+        Vote.create!(user: user, work: work)
+      end
+
+      expect(work.vote_count).must_equal 4
+      expect(Work.find(work.id).vote_count).must_equal 4
+    end
+  end
+
+  describe "relationships" do
+    it "has votes" do
+      book = works(:book_one)
+
+      expect(book).must_respond_to :votes
+      book.votes.each do |vote|
+        expect(vote).must_be_kind_of Vote
+      end
+    end
+
+    it "has voting users" do
+      book = works(:book_one)
+
+      expect(book).must_respond_to :users
+      book.users.each do |user|
+        expect(user).must_be_kind_of User
+      end
+    end
+  end
 
   describe "validations" do
     it "must have a title" do

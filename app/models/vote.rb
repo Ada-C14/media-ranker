@@ -1,6 +1,6 @@
 class Vote < ApplicationRecord
 
-  belongs_to :work
+  belongs_to :work, counter_cache: :vote_count
   belongs_to :user
 
   validates :work_id, :presence => true

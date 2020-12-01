@@ -9,7 +9,7 @@
   <section>
     <%= button_to 'Back to media ranks', root_path, method: :get, class: 'button button-primary' %>
     <%= button_to 'Edit', edit_work_path(@work.id), method: :get, class: 'button button-primary'  %>
-    <%= button_to 'Upvote', votes_path, method: :post, class: 'button button-primary'  %>
+    <%= button_to 'Upvote', work_votes_path(@work.id), method: :post, class: 'button button-primary'  %>
     <%= button_to 'Delete', work_path(@work.id), method: :delete, data: {confirm: "Are you sure?"}, class: 'button button-danger'  %>
   </section>
 
@@ -19,13 +19,19 @@
       <thead>
       <tr>
         <th>
-
+          User
         </th>
+        <th>Date</th>
       </tr>
       </thead>
       <tbody>
-      <tr>
-      </tr>
+      <% @votes.each do |vote| %>
+        <tr>
+          <td><%= link_to vote.user.name, user_path(vote.user.id) %></td>
+          <td><%= vote.created_at.strftime("%b %d, %Y") %></td>
+        </tr>
+      <% end %>
+
       </tbody>
     </table>
 

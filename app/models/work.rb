@@ -6,7 +6,9 @@ class Work < ApplicationRecord
     validates :publication_year, numericality: { only_integer: true }
 
     def self.spotlight
-        return self.order('RANDOM()').limit(1).first
+        sorted_work = self.all.sort_by {|work| work.votes.count }
+         # self.order('RANDOM()').limit(1).first
+        return sorted_work.last
     end
     # def self.list_albums
     #     albums = @works.select{ |work| work[:category] == "album"}

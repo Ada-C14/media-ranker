@@ -32,5 +32,15 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
         expect(user.username).must_equal user_hash[:user][:username]
       end
     end
+
+    describe "logout" do
+      it "can logout a logged in user" do
+        login()
+        expect(session[:user_id]).wont_be_nil
+
+        post logout_path
+        expect(session[:user_id]).must_be_nil
+      end
+    end
   end
 end

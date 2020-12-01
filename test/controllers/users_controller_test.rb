@@ -42,5 +42,19 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
         expect(session[:user_id]).must_be_nil
       end
     end
+
+    describe "current user" do
+      it "can return the page if the user is logged in" do
+        login()
+        get current_user_path
+        must_respond_with :success
+      end
+
+      it "redirects us back if the user isi not logged in" do
+        get current_user_path
+        must_respond_with :redirect
+        expect(flash[:error]).must_equal "You must be logged in to view this page"
+      end
+    end
   end
 end

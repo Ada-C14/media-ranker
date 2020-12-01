@@ -22,15 +22,13 @@ class WorksController < ApplicationController
   def create
     @work = Work.new(work_params)
 
-    if @work.save
-      redirect_to work_path(@work.id)
-      flash[:success] = "#{@work.title} was successfully added!"
-      return
-    else
-      #when doing a render, use flash.now
-      flash.now[:error] = "Uh Oh! Could not create new work."
+    if @work.nil? # form will not allow user to save, but for some reason is not getting flash
+      flash[:error] = "Uh Oh! Could not create new work."
       render :new, status: :bad_request
 
+    else @work.save
+      flash[:success] = "#{@work.title} was successfully added!"
+      redirect_to work_path(@work.id)
       return
     end
   end
@@ -49,8 +47,8 @@ class WorksController < ApplicationController
       flash[:error] = "Uh Oh! We couldn't find #{@work.title}"
       return
     elsif @work.update(work_params)
+      flash[:success] = "Updated: #{@work.category}: #{@work.title}"
       redirect_to work_path(@work.id)
-      flash[:success] = "Created: #{@work.category}: #{@work.title}"
       return
     else
       flash.now[:error] = "Uh Oh! We couldn't update #{@work.title}"

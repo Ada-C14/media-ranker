@@ -3,9 +3,10 @@ class Work < ApplicationRecord
 
   validates :title, presence: true, uniqueness: true
   validates :category, presence: true
+  validates :creator, presence: true
 
   has_many :votes
-  belongs_to :creator
+
   has_and_belongs_to_many :genres
 
 

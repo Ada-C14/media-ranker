@@ -22,21 +22,21 @@
         <div class="nav app-header__user-nav-container">
           <% if session[:user_id] %>
             <% user =  User.find_by(id: session[:user_id])%>
-            <span> <%= link_to "#{user.name}", user_path(user.id), class: "nav-link" %> </span>
+            <span> <%= button_to "Logged In as : #{user.name}", user_path(user.id), { method: :get, class: "btn btn-secondary" } %> </span>
             <%= button_to 'logout', logout_path, { method: :post, class: "btn btn-primary" }%>
           <% else %>
             <%= button_to 'login', login_path, { method: :get, class: "btn btn-primary" } %>
           <% end %>
         </div>
       </nav>
-      <section class="flash">
-        <% flash.each do |name, message| %>
-          <div class="<%= name %>">
-            <%= message %>
-          </div>
-        <% end %>
-      </section>
     </header>
+    <section class="flash alert__container">
+      <% flash.each do |name, message| %>
+        <div class="alert alert-<%= name %>">
+          <%= message %>
+        </div>
+      <% end %>
+    </section>
     <main>
       <%= yield %>
     </main>

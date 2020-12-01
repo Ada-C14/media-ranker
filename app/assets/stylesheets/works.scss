@@ -57,3 +57,7 @@ input, button, select, optgroup, textarea {
   font-size: inherit;
   line-height: inherit;
 }
+
+section.d-inline-flex .btn {
+  margin: 0 5px;
+}

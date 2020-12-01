@@ -1,15 +1,17 @@
-<% if @work.errors.any? %>
-  <ul>
-    <% @work.errors.each do |column, message| %>
-      <li>
-        <strong><%= column.capitalize %></strong> <%= message %>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
+<section class="alert__container">
+  <% if @work.errors.any? %>
+    <ul class="alert alert-danger">
+      <% @work.errors.each do |column, message| %>
+        <li>
+          <strong><%= column.capitalize %></strong> <%= message %>
+        </li>
+      <% end %>
+    </ul>
+  <% end %>
+</section>
+
 
 <%= form_with model: @work do |f|%>
-  <p>Please provide the following information to add your new media to our database:</p>
   <div class="form-group">
     <%= f.label :category %>
     <%= f.select :category, options_for_select([['album'], ['book'], ['movie']]), {}, { class: "form-control" } %>

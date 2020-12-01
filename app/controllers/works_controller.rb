@@ -26,7 +26,7 @@ class WorksController < ApplicationController
       redirect_to work_path(@work.id)
       return
     else
-      flash.now[:error] = "#{@work.title} was not successfully added!"
+      flash.now[:error] = "New work could not be added!"
       render :new, status: :bad_request
       return
     end
@@ -42,9 +42,11 @@ class WorksController < ApplicationController
       head :not_found
       return
     elsif @work.update(work_params)
+      flash[:success] = "#{@work.title} was updated successfully!"
       redirect_to work_path(@work.id)
       return
     else
+      flash[:error] = "Uh oh, #{@work.title} was not updated successfully T^T"
       redirect_to root_path
     end
   end
@@ -74,5 +76,10 @@ class WorksController < ApplicationController
 
   def find_work
     @work = Work.find_by(id: params[:id])
+
+    if @work.nil?
+      flash[:notice] = "The work requested no longer exists."
+      redirect_to works_path
+    end
   end
 end

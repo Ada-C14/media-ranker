@@ -54,7 +54,7 @@ class UsersController < ApplicationController
       user = User.find_by(id: session[:user_id])
       unless user.nil?
         session[:user_id] = nil
-        flash[:notice] = "Goodbye #{user.name}"
+        flash[:success] = "Goodbye #{user.name}! Until next time..."
       else
         session[:user_id] = nil
         flash[:notice] = "Error: Unknown User"
@@ -65,7 +65,7 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
-  def show
+  def current_user
     @user = User.find_by(id: session[:user_id])
     return @user
   end
@@ -98,7 +98,7 @@ class UsersController < ApplicationController
   def require_login
     unless current_user
       flash[:error] = "You must be logged in to vote."
-      redirect_to root_path
+      redirect_back(fallback_location:"/")
       return
     end
   end

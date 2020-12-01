@@ -4,15 +4,15 @@
   <p>Published: <%= @work.publication_year %> </p>
   <p> <%= @work.description %> </p>
 </section>
-<section>
-  <%= button_to "Back to media ranks", root_path, { method: :get } %>
-  <%= button_to "Edit", edit_work_path(@work.id), { method: :get } %>
-  <%= button_to "Upvote", upvote_path, {method: :post } %>
-  <%= button_to "Delete", work_path(@work.id), {method: :delete} %>
+<section class="d-inline-flex">
+  <%= button_to "Back to media ranks", root_path, { method: :get, class: "btn btn-primary" } %>
+  <%= button_to "Edit", edit_work_path(@work.id), { method: :get, class: "btn btn-primary" } %>
+  <%= button_to "Upvote", upvote_path, {method: :post, class: "btn btn-primary" } %>
+  <%= button_to "Delete", work_path(@work.id), {method: :delete, class: "btn btn-danger"} %>
 </section>
 <section>
   <h2><%= @work.vote_count %> Votes for this <%= @work.category.capitalize %></h2>
-  <table>
+  <table class="table">
     <thead>
     <tr>
       <th>User</th>

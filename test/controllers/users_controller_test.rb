@@ -15,7 +15,7 @@ describe UsersController do
       expect {
         # set user = to whatever login method returns
         user = login()
-      }.must_differ "User.count", 1   # should increase by 1 b/c it's Grace's 1st visit
+      }.must_differ "User.count", 1 # should increase by 1 b/c it's Grace's 1st visit
 
       # need to send them somewhere after logging in
       must_respond_with :redirect
@@ -26,7 +26,7 @@ describe UsersController do
       # expect session to keep track of who user is --> session variable is set properly (to current user's id)
       # this way, every subsequent request the browser makes: send session variable w/ it so controller actions can track user
       expect(session[:user_id]).must_equal user.id
-      expect(user.username).must_equal user_hash[:user][:username]
+      expect(user.username).must_equal "Grace Hopper"
     end
 
     it "can login an existing user" do
@@ -38,6 +38,20 @@ describe UsersController do
       }.wont_change "User.count"
 
       expect(session[:user_id]).must_equal user.id
+    end
+  end
+
+  describe "logout" do
+    it "can logout a logged in user" do
+      # arrange
+      login()
+      expect(session[:user_id]).wont_be_nil
+
+      # act
+      # no method body since we're not submitting form
+      post logout_path
+
+      expect(session[:user_id]).must_be_nil
     end
   end
 end

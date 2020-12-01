@@ -5,6 +5,7 @@ work1:
   creator: FirstWork Creator
   description: a description of the first work
   publication_year: 2021
+  vote_count: 3
 work2:
   id: 2
   category: movie
@@ -12,6 +13,7 @@ work2:
   creator: SecondWork Creator
   description: a description of the second work
   publication_year: 2022
+  vote_count: 2
 work3:
   id: 3
   category: album
@@ -19,10 +21,220 @@ work3:
   creator: ThirdWork Creator
   description: a description of the third work
   publication_year: 2023
+  vote_count: 0
 work4:
   id: 4
   category: book
-  title: FourthtWork
+  title: FourthWork
   creator: FourthWork Creator
   description: a description of the fourth work
   publication_year: 2024
+  vote_count: 1
+work5:
+  id: 5
+  category: album
+  title: Work5
+  creator: ThirdWork Creator
+  description: a description of the third work
+  publication_year: 2023
+  vote_count: 1
+work6:
+  id: 6
+  category: album
+  title: Work6
+  creator: ThirdWork Creator
+  description: a description of the third work
+  publication_year: 2023
+  vote_count: 0
+work7:
+  id: 7
+  category: album
+  title: Work7
+  creator: ThirdWork Creator
+  description: a description of the third work
+  publication_year: 2023
+  vote_count: 0
+work8:
+  id: 8
+  category: album
+  title: Work8
+  creator: ThirdWork Creator
+  description: a description of the third work
+  publication_year: 2023
+  vote_count: 0
+work9:
+  id: 9
+  category: album
+  title: Work9
+  creator: ThirdWork Creator
+  description: a description of the third work
+  publication_year: 2023
+  vote_count: 0
+work10:
+  id: 10
+  category: album
+  title: Work10
+  creator: ThirdWork Creator
+  description: a description of the third work
+  publication_year: 2023
+  vote_count: 0
+work11:
+  id: 11
+  category: album
+  title: Work11
+  creator: ThirdWork Creator
+  description: a description of the third work
+  publication_year: 2023
+  vote_count: 0
+work12:
+  id: 12
+  category: album
+  title: Work12
+  creator: ThirdWork Creator
+  description: a description of the third work
+  publication_year: 2023
+  vote_count: 0
+work13:
+  id: 13
+  category: album
+  title: Work13
+  creator: ThirdWork Creator
+  description: a description of the third work
+  publication_year: 2023
+  vote_count: 0
+work14:
+  id: 14
+  category: album
+  title: Work14
+  creator: ThirdWork Creator
+  description: a description of the third work
+  publication_year: 2023
+  vote_count: 0
+work15:
+  id: 15
+  category: album
+  title: Work15
+  creator: ThirdWork Creator
+  description: a description of the third work
+  publication_year: 2023
+  vote_count: 0
+work16:
+  id: 16
+  category: album
+  title: Work16
+  creator: ThirdWork Creator
+  description: a description of the third work
+  publication_year: 2023
+  vote_count: 0
+work17:
+  id: 17
+  category: album
+  title: Work17
+  creator: ThirdWork Creator
+  description: a description of the third work
+  publication_year: 2023
+  vote_count: 0
+work18:
+  id: 18
+  category: album
+  title: Work18
+  creator: ThirdWork Creator
+  description: a description of the third work
+  publication_year: 2023
+  vote_count: 0
+work19:
+  id: 19
+  category: album
+  title: Work19
+  creator: ThirdWork Creator
+  description: a description of the third work
+  publication_year: 2023
+  vote_count: 0
+work20:
+  id: 20
+  category: album
+  title: Work20
+  creator: ThirdWork Creator
+  description: a description of the third work
+  publication_year: 2023
+  vote_count: 0
+work21:
+  id: 21
+  category: album
+  title: Work21
+  creator: ThirdWork Creator
+  description: a description of the third work
+  publication_year: 2023
+  vote_count: 0
+work22:
+  id: 22
+  category: album
+  title: Work22
+  creator: ThirdWork Creator
+  description: a description of the third work
+  publication_year: 2023
+  vote_count: 0
+work23:
+  id: 23
+  category: album
+  title: Work23
+  creator: ThirdWork Creator
+  description: a description of the third work
+  publication_year: 2023
+  vote_count: 2
+work24:
+  id: 24
+  category: album
+  title: Work24
+  creator: ThirdWork Creator
+  description: a description of the third work
+  publication_year: 2023
+  vote_count: 0
+work25:
+  id: 25
+  category: album
+  title: Work25
+  creator: ThirdWork Creator
+  description: a description of the third work
+  publication_year: 2023
+  vote_count: 1
+work26:
+  id: 26
+  category: album
+  title: Work26
+  creator: ThirdWork Creator
+  description: a description of the third work
+  publication_year: 2023
+  vote_count: 0
+work27:
+  id: 27
+  category: album
+  title: Work27
+  creator: ThirdWork Creator
+  description: a description of the third work
+  publication_year: 2023
+  vote_count: 1
+work28:
+  id: 28
+  category: album
+  title: Work28
+  creator: ThirdWork Creator
+  description: a description of the third work
+  publication_year: 2023
+  vote_count: 0
+work29:
+  id: 29
+  category: album
+  title: Work29
+  creator: ThirdWork Creator
+  description: a description of the third work
+  publication_year: 2023
+  vote_count: 0
+work30:
+  id: 30
+  category: album
+  title: Work30
+  creator: ThirdWork Creator
+  description: a description of the third work
+  publication_year: 2023
+  vote_count: 2

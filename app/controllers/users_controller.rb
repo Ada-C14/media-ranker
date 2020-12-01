@@ -82,7 +82,7 @@ class UsersController < ApplicationController
         new_vote = Vote.new({user_id: @user.id, work_id: @work.id})
         new_vote.save
         @work.increase_vote_count
-        flash[:success] = "Your vote has been added"
+        flash[:success] = "Your vote has been added!"
       end
     end
     redirect_to works_path

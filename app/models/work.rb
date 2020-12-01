@@ -10,10 +10,10 @@ class Work < ApplicationRecord
   validates :category, presence: true, inclusion: { in: %w(album book movie), message: "category must be a movie, book or album" }
 
   def spotlight
-
+    Work.all.order(vote_count: :desc).first
   end
 
-  def self.top_albums
+  def top_albums
     order_media("album").limit(10)
   end
 

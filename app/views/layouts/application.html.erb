@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Media Ranker Schanen</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+<header class="app_header-header">
+
+  <h1>
+    <%= link_to "Media Ranker", root_path, :class => 'h1_title' %>
+    <small>Ranking the Best of Everything</small>
+  </h1>
+
+  <nav>
+    <ul class="app-header-site-nav-container">
+      <li class="nav-item app-header-nav-item"><%= link_to "View top media", root_path %></li>
+      <li class="nav-item app-header-nav-item"><%= link_to "View all media", works_path %></li>
+      <li class="nav-item app-header-nav-item"><%= link_to "Add a new work", new_work_path %></li>
+      <li class="nav-item app-header-nav-item"><%= link_to "View all users", users_path %></li>
+    </ul>
+
+    <ul>
+      <% if @current_user != nil %>
+        <li class="button button-primary"><%= button_to "Logged in as #{@current_user.name}", user_path(@current_user.id), method: :get %></li>
+        <li class="button button-primary"><%= button_to "Log Out", logout_path %></li>
+      <% else %>
+        <li class="button button-primary"><%= button_to "Log In", login_path, method: :get %></li>
+        <% end %>
+    </ul>
+  </nav>
+
+</header>
+<section class="alert-container">
+
+    <% if flash[:notice] %>
+      <div class="alert alert-info"><%= flash[:notice] %>
+        <% if  @work && @work.errors.any? %>
+          <ul class="errors">
+            <% @work.errors.each do |column, message| %>
+              <li>
+                <p><strong><%= column.capitalize %></strong> <%= message %></p>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+
+        <% if @user && @user.errors.any? %>
+          <ul class="errors">
+            <% @user.errors.each do |column, message| %>
+              <li>
+                <p><strong><%= column.capitalize %></strong> <%= message %></p>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+
+        <% if @vote && @vote.errors.any? %>
+          <ul class="errors">
+            <% @vote.errors.each do |column, message| %>
+              <li>
+                <p><strong><%= column.capitalize %></strong> <%= message %></p>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if flash[:success] %>
+      <div class="alert alert-success"><%= flash[:success] %>
+        <% if  @work && @work.errors.any? %>
+          <ul class="errors">
+            <% @work.errors.each do |column, message| %>
+              <li>
+                <p><strong><%= column.capitalize %></strong> <%= message %></p>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+
+        <% if @user && @user.errors.any? %>
+          <ul class="errors">
+            <% @user.errors.each do |column, message| %>
+              <li>
+                <p><strong><%= column.capitalize %></strong> <%= message %></p>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+
+        <% if @vote && @vote.errors.any? %>
+          <ul class="errors">
+            <% @vote.errors.each do |column, message| %>
+              <li>
+                <p><strong><%= column.capitalize %></strong> <%= message %></p>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    <% end %>
+
+    <% if flash[:error] %>
+      <div class="alert alert-warning"><%= flash[:error] %>
+        <% if  @work && @work.errors.any? %>
+          <ul class="errors">
+            <% @work.errors.each do |column, message| %>
+              <li>
+                <p><strong><%= column.capitalize %></strong> <%= message %></p>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+
+        <% if @user && @user.errors.any? %>
+          <ul class="errors">
+            <% @user.errors.each do |column, message| %>
+              <li>
+                <p><strong><%= column.capitalize %></strong> <%= message %></p>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+
+        <% if @vote && @vote.errors.any? %>
+          <ul class="errors">
+            <% @vote.errors.each do |column, message| %>
+              <li>
+                <p><strong><%= column.capitalize %></strong> <%= message %></p>
+              </li>
+            <% end %>
+          </ul>
+        <% end %>
+      </div>
+    <% end %>
+
+</section>
+
+<main>
+  <%= yield %>
+</main>
+
+</body>
+</html>

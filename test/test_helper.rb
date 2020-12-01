@@ -32,8 +32,8 @@ class ActiveSupport::TestCase
       # act
       post login_path, params: user_hash # send post request to path w/ params user_hash
 
-    user = User.find_by(username: username)
-    # user = User.find_by(username: user_hash[:user][:username])
+    # user = User.find_by(username: username)
+    user = User.find_by(username: user_hash[:user][:username])
     return user
   end
 end

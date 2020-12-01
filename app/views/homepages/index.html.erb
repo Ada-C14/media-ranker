@@ -1,0 +1,69 @@
+<main>
+
+  <section class="spotlight">
+    <h2 class="spotlight__header">
+      <span class="spotlight__header--prefix">Media Spotlight</span>
+      <% spotlight_work = Work.spotlight %>
+      <%= link_to spotlight_work.title, work_path(spotlight_work.id), class: "spotlight__link-to" %>
+      by <%= spotlight_work.creator %>
+    </h2>
+    <p class="spotlight-description">
+      <%= spotlight_work.description %>
+    </p>
+  </section>
+
+  <hr class="root__hr">
+  <section class=top-ten__container">
+    <section class="top-ten__list-container">
+      <h2 class="top-ten__header">
+        Top Albums
+      </h2>
+      <ul class="list-group top-ten__list">
+        <% @albums.each do |work| %>
+          <li class="list-item">
+            <h4>
+              <%= link_to work.title, work_path(work.id) %>
+              <small class="top-ten-creator">by <%= work.creator %></small>
+            </h4>
+            <p><%= work.votes.count %></p>
+          </li>
+        <% end %>
+      </ul>
+    </section>
+
+    <section class="top-ten__list-container">
+      <h2 class="top-ten__header">
+        Top Books
+      </h2>
+      <ul class="list-group top-ten__list">
+        <% @books.each do |work| %>
+          <li class="list-item">
+            <h4>
+              <%= link_to work.title, work_path(work.id) %>
+              <small class="top-ten-creator">by <%= work.creator %></small>
+            </h4>
+            <p><%= work.votes.count %></p>
+          </li>
+        <% end %>
+      </ul>
+    </section>
+
+    <section class="top-ten__list-container">
+      <h2 class="top-ten__header">
+        Top Movies
+      </h2>
+      <ul class="list-group top-ten__list">
+        <% @movies.each do |work| %>
+          <li class="list-item">
+            <h4>
+              <%= link_to work.title, work_path(work.id) %>
+              <small class="top-ten-creator">by <%= work.creator %></small>
+            </h4>
+            <p><%= work.votes.count %></p>
+          </li>
+        <% end %>
+      </ul>
+    </section>
+
+  </section>
+</main>

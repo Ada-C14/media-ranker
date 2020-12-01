@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+  <header class="app-header__header">
+    <h1>
+      <%= link_to "Media Ranker", root_path %>
+      <small>Ranking the Best of Everything</small>
+    </h1>
+
+    <nav class="app-header__nav">
+      <ul class="nav app-header__site-nav-container">
+        <li class="nav-item app-header__nav_item">
+          <a href="/works">All Works</a>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <a href="/users">All Users</a>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <a href="/works/new">New Work</a>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <a href="/homepages">Top Media</a>
+        </li>
+      </ul>
+
+      <ul class="nav app-header__user-nav-container">
+        <% if session[:user_id] %>
+          <li><%= link_to 'Log Out', logout_path, method: :post, class: "btn btn-primary" %></li>
+        <% else %>
+          <li><%= link_to 'Log In', login_path, class: "btn btn-primary" %></li>
+        <% end %>
+      </ul>
+    </nav>
+
+
+  <section class="flash">
+    <% flash.each do |name, message| %>
+      <div class="<%= name %>"><%= message %></div>
+    <% end %>
+  </section>
+  </header>
+    <main>
+      <%= yield %>
+    </main>
+    <footer>
+      <p> All Rights Reserved. Sophia Donan 2020.</p>
+    </footer>
+  </body>
+</html>

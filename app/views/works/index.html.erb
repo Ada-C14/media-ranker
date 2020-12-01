@@ -1,0 +1,70 @@
+
+<main>
+  <h2>All Works</h2>
+  <section class="media-table">
+    <h4>ALBUMS</h4>
+      <table class="table">
+        <tr>
+          <th>Votes</th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th>Published</th>
+          <th>Upvote</th>
+        </tr>
+        <% @albums.each do |work| %>
+            <tr>
+              <td><%= work.votes.count %></td>
+              <td><%= link_to work.title, work_path(work.id) %></td>
+              <td><%= work.creator %></td>
+              <td><%= work.publication_year %></td>
+              <td><%= link_to "VOTE", work_path(work.id), class: "btn btn-primary"%></td>
+            </tr>
+        <% end %>
+      </table>
+  </section>
+
+  <section class="media-table">
+    <h4>BOOKS</h4>
+    <table class="table">
+      <tr>
+        <th>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Upvote</th>
+      </tr>
+      <% @books.each do |work| %>
+        <tr>
+          <td><%= work.votes.count %></td>
+          <td><%= link_to work.title, work_path(work.id) %></td>
+          <td><%= work.creator %></td>
+          <td><%= work.publication_year %></td>
+          <td><%= link_to "VOTE", work_path(work.id), class: "btn btn-primary"%></td>
+        </tr>
+      <% end %>
+    </table>
+  </section>
+
+  <section class="media-table">
+    <h4>MOVIES</h4>
+    <table class="table">
+      <tr>
+        <th>Votes</th>
+        <th>Title</th>
+        <th>Created By</th>
+        <th>Published</th>
+        <th>Upvote</th>
+      </tr>
+      <% @movies.each do |work| %>
+        <tr>
+          <td><%= work.votes.count %></td>
+          <td><%= link_to work.title, work_path(work.id) %></td>
+          <td><%= work.creator %></td>
+          <td><%= work.publication_year %></td>
+          <td><%= link_to "VOTE", work_path(work.id), class: "btn btn-primary"%></td>
+        </tr>
+      <% end %>
+    </table>
+  </section>
+
+</main>

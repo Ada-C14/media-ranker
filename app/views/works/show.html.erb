@@ -1,0 +1,21 @@
+<main>
+  <section>
+    <h2><%= @work.title %></h2>
+    <h4>
+      Created by: <%= @work.creator%>
+    </h4>
+    <h4>
+      Published: <%= @work.publication_year%>
+    </h4>
+    <p>
+      <%= @work.description%>
+    </p>
+  </section>
+
+  <section>
+    <%= link_to "MAIN", works_path, method: :get, class: "btn btn-primary"%>
+    <%= link_to "EDIT", edit_work_path, method: :get, class: "btn btn-primary"%>
+    <%= link_to "DELETE", delete_work_path, method: :delete, class: "btn btn-danger", data: {confirm: "Are you sure?"}%>
+    <%= link_to "UPVOTE", vote_path(@work.id), method: :post, class: "btn btn-warning", data: {confirm: "Are you sure you want to vote for this title?"}%>
+  </section>
+</main>

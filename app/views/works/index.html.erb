@@ -1,0 +1,34 @@
+<section>
+  <h2>List of Works</h2>
+  <% Work::CATEGORIES.each do |category| %>
+    <section class="media-table">
+      <h4 class="h4-table"> <%= "#{category.capitalize}s" %> </h4>
+      <table class="table">
+        <thead>
+        <tr>
+          <th width="80">Votes</th>
+          <th>Title</th>
+          <th>Created By</th>
+          <th width="100">Published</th>
+          <th width="100">Upvotes</th>
+        </tr>
+        </thead>
+        <tbody>
+          <% @works.where(category: category).order(vote_count: :desc).each do |item| %>
+            <tr>
+              <td> <%= item.vote_count %> </td>
+              <td> <%= link_to "#{item.title}", work_path(item.id) %> </td>
+              <td> <%= item.creator %></td>
+              <td> <%= item.publication_year %></td>
+              <td> <%= button_to "Upvote", upvote_path(item.id), class: "btn btn-primary" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <section class="back-button">
+        <%= button_to "Back to Top Media", root_path, method: :get, class: "btn btn-secondary" %>
+      </section>
+    </section>
+  <% end %>
+</section>
+

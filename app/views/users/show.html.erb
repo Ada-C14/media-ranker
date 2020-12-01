@@ -1,0 +1,21 @@
+<h2> <%= @user.name %> </h2>
+<p> Joined : <%= @user.created_at.strftime("%b %d, %Y") %></p>
+<h3>Votes</h3>
+<table class="table">
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Date Voted</th>
+    <th>Total User Votes</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% Vote.where(user_id: @user.id).each do |vote| %>
+    <tr>
+      <td><%= link_to "#{vote.work.title}", work_path(vote.work_id)%></td>
+      <td><%= vote.created_at.strftime("%b %d, %Y") %></td>
+      <td><%= vote.work.vote_count%></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

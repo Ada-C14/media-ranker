@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <header class="app-header__header">
+      <h1> <%= link_to 'Media Ranker', root_path %> <small>Ranking the Best of Everything</small> </h1>
+      <nav class="app-header__nav">
+        <div class="nav app-header__site-nav-container">
+          <%= link_to 'View top media', root_path, class: "nav-item app-header__nav_item nav-link" %>
+          <%= link_to 'View all media', works_path, class: "nav-item app-header__nav_item nav-link" %>
+          <%= link_to 'Add a new work', new_work_path, class: "nav-item app-header__nav_item nav-link" %>
+          <%= link_to 'View all users', users_path, class: "nav-item app-header__nav_item nav-link" %>
+        </div>
+        <div class="nav app-header__user-nav-container">
+          <% if session[:user_id] %>
+            <% user =  User.find_by(id: session[:user_id])%>
+            <span> <%= button_to "Logged In as : #{user.name}", user_path(user.id), { method: :get, class: "btn btn-secondary" } %> </span>
+            <%= button_to 'logout', logout_path, { method: :post, class: "btn btn-primary" }%>
+          <% else %>
+            <%= button_to 'login', login_path, { method: :get, class: "btn btn-primary" } %>
+          <% end %>
+        </div>
+      </nav>
+    </header>
+    <section class="flash alert__container">
+      <% flash.each do |name, message| %>
+        <div class="alert alert-<%= name %>">
+          <%= message %>
+        </div>
+      <% end %>
+    </section>
+    <main>
+      <%= yield %>
+    </main>
+  </body>
+</html>

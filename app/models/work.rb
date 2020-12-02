@@ -1,9 +1,10 @@
 class Work < ApplicationRecord
     has_many :votes
 
-    validates :title, presence: true
+    validates :title, presence: true, uniqueness: true
     validates :creator, presence: true
     validates :publication_year, numericality: { only_integer: true }
+    validates :description, presence: true
 
     def self.spotlight
         sorted_work = self.all.sort_by {|work| work.votes.count }

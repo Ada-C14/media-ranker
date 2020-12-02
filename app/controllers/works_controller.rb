@@ -1,7 +1,7 @@
 class WorksController < ApplicationController
 
   before_action :require_login, only: [:upvote]
-  before_action :find_work, except: [:homepage, :index]
+  before_action :find_work, except: [:homepage, :index, :new, :create ]
 
   def homepage
     @works = Work.all

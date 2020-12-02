@@ -4,7 +4,8 @@
 
 </div>
 
-<div>
+<section class="top-ten-list-container">
+  <section class="top-ten-list">
   <h2 class="top-ten-header">Top Books</h2>
   <% Work.sort_books.first(10).each do |book| %>
     <%= link_to book.title, work_path(book) %> by
@@ -13,9 +14,9 @@
     <%= book.votes.count %> votes
     <br>
   <% end %>
-</div>
+  </section>
 
-<div>
+  <section class="top-ten-list">
   <h2 class="top-ten-header">Top Movies</h2>
   <% Work.sort_albums.first(10).each do |album| %>
     <%= link_to album.title, work_path(album) %> by
@@ -24,4 +25,5 @@
     <%= album.votes.count %> votes
     <br>
   <% end %>
-</div>
+  </section>
+</section>

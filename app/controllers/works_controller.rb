@@ -1,6 +1,6 @@
 class WorksController < ApplicationController
 
-  before_action :require_login, except: [:homepage, :index, :show]
+  before_action :require_login, only: [:upvote]
   before_action :find_work, except: [:homepage, :index]
 
   def homepage
@@ -68,10 +68,12 @@ class WorksController < ApplicationController
   def destroy
     # @work = Work.find_by(id: params[:id])
     if @work.nil?
-      redirect_to works_path
+      flash.now[:error] = "Something happened. Work not added."
+      render :new, status: :bad_request
       return
     else
       @work.destroy
+      flash[:success] = "#{@work.title} deleted"
       redirect_to works_path
     end
   end
@@ -100,5 +102,10 @@ class WorksController < ApplicationController
   def find_work
     work_id = params[:id].to_i
     @work = Work.find_by(id: work_id)
+
+    if @work.nil?
+      flash.now[:error] = "Work not found!"
+      render :index, status: :bad_request
+    end
   end
 end

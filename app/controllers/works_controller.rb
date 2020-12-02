@@ -8,7 +8,6 @@ class WorksController < ApplicationController
 
   end
 
-
   def show
     @work = Work.find_by(id: params[:id])
     if @work.nil?
@@ -29,8 +28,10 @@ class WorksController < ApplicationController
       redirect_to work_path(@work)
       return
     else
-      flash.now[:error] = "Something happened. Not created"
+      flash[:error] = "Unable to create work. Details below:"
+      flash[:messages] = @work.errors.messages
       render :new, status: :bad_request
+
       return
     end
   end

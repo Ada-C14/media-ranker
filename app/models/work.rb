@@ -22,4 +22,10 @@ class Work < ApplicationRecord
         return sorted_albums.reverse
     end
 
+    def self.sort_movies
+        movies = Work.where(category: "movie")
+        sorted_movies = movies.sort_by {|movie| movie.votes.count }
+        return sorted_movies.reverse
+    end
+
 end

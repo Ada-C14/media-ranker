@@ -17,7 +17,7 @@ class ActiveSupport::TestCase
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all
 
-  # def login(name = "Churro")
+  # def login(name = "churro")
   #   #Arrange
   #   user_hash = {
   #       user: {

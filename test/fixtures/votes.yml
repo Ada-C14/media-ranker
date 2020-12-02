@@ -1,0 +1,9 @@
+vote1:
+  user_id: batman.id
+  work_id: parable.id
+vote2:
+  user_id: moleman.id
+  work_id: parable.id
+vote3:
+  user_id: batman
+  work_id: kindred

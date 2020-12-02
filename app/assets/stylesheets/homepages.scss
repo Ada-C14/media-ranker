@@ -1,0 +1,12 @@
+// Place all the styles related to the Homepages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.top-ten-list-container {
+    width: 100%;
+}
+
+.top-ten-list {
+    display: inline-block;
+    margin: 2em;
+    width: calc(31% - 2em)
+}

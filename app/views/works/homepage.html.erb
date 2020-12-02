@@ -1,0 +1,43 @@
+<div>
+<h1>Media Spotlight: <%= Work.spotlight.title %> by <%= Work.spotlight.creator %></h1>
+  <%= Work.spotlight.votes.count %> votes - <%= Work.spotlight.description %>
+
+</div>
+
+<section class="top-ten-list-container">
+
+  <section class="top-ten-list">
+    <h2 class="top-ten-header">Top Albums</h2>
+    <% Work.sort_albums.first(10).each do |album| %>
+      <%= link_to album.title, work_path(album) %> by
+      <%= album[:creator] %>
+      <br>
+      <%= album.votes.count %> votes
+      <br>
+    <% end %>
+  </section>
+
+  <section class="top-ten-list">
+    <h2 class="top-ten-header">Top Movies</h2>
+    <% Work.sort_movies.first(10).each do |movie| %>
+      <%= link_to movie.title, work_path(movie) %> by
+      <%= movie[:creator] %>
+      <br>
+      <%= movie.votes.count %> votes
+      <br>
+    <% end %>
+  </section>
+
+  <section class="top-ten-list">
+  <h2 class="top-ten-header">Top Books</h2>
+  <% Work.sort_books.first(10).each do |book| %>
+    <%= link_to book.title, work_path(book) %> by
+    <%= book[:creator] %>
+    <br>
+    <%= book.votes.count %> votes
+    <br>
+  <% end %>
+  </section>
+
+
+</section>

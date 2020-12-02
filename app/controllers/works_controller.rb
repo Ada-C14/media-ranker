@@ -8,9 +8,6 @@ class WorksController < ApplicationController
 
   end
 
-  def top_ten
-    @vote = Vote.find_by(work_id: @work.id)
-  end
 
   def show
     @work = Work.find_by(id: params[:id])

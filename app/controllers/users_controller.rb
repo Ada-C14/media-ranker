@@ -1,3 +1,5 @@
+require 'date'
+
 class UsersController < ApplicationController
   def index
     # @users = User.order(joined_date :asc)
@@ -21,7 +23,7 @@ class UsersController < ApplicationController
 
     if user.nil?
       #new user
-      user = User.create(name: params[:user][:name])
+      user = User.create(name: params[:user][:name], date_joined: Date.today)
       if !user.save #not able to save user
         flash[:error] = "unable to log in"
         redirect_to root_path

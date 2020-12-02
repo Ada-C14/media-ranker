@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.
   root 'homepages#index'
-
-  get '/works/new', to: 'works#new', as: 'new_work'
-  get '/works/:id', to: 'works#show', as: "work"
-  get '/works', to: 'works#index', as: 'works'
-  get  '/works/:id/edit', to: 'works#edit', as: 'edit_work'
+  resources :works
+  # get '/works/new', to: 'works#new', as: 'new_work'
+  # get '/works/:id', to: 'works#show', as: "work"
+  # get '/works', to: 'works#index', as: 'works'
+  # get  '/works/:id/edit', to: 'works#edit', as: 'edit_work'
   # put '/works/:id', to: 'works#update'
-  patch '/works/:id', to: 'works#update'
-  post '/works', to: 'works#create'
+  # patch '/works/:id', to: 'works#update'
+  # post '/works', to: 'works#create'
   delete '/works/:id', to: 'works#destroy', as: 'destroy_work'
 
   post '/votes', to: 'votes#create'

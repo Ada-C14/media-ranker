@@ -4,8 +4,14 @@ class VotesController < ApplicationController
     @work = Work.find(params[:work_id])
 
     @vote = Vote.new
-
     @vote.work_id = @work.id
+
+    if @user.nil?
+      flash[:error] = "Unable to vote, please log in first."
+      redirect_to root_path
+      return
+    end
+
     @vote.user_id = @user.id
     @vote.date = Date.today
 

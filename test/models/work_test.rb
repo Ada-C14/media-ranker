@@ -28,4 +28,17 @@ describe Work do
       expect(@work.valid?).must_equal false
     end
   end
+
+  describe 'associations' do
+    before do
+      # Arrange
+      @user = User.create!(name: 'churro', date_joined: Date.today) #bang throws an error/exception if it fails vs false with create
+      @work = Work.create!(category: "movie", title: "Matrix")
+      @vote = Vote.new(user_id: @user.id, work_id: @work.id)
+    end
+
+    it 'has votes' do
+      expect(@work.votes).must_equal @vote
+    end
+  end
 end

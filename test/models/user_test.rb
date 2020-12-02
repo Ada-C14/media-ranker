@@ -5,13 +5,13 @@ describe User do
     before do
       # Arrange
       @user = User.new(name: 'churro', date_joined: Date.today)
+      @work = Work.new(category: "movie", title: "Matrix")
+      @vote = Vote.new(user: @user, work: @work)
     end
 
     it 'is valid when all fields are present' do
-      # Act
-      result = @user.valid?
       # Assert
-      expect(result).must_equal true
+      expect(@user.valid?).must_equal true
     end
 
     it 'is invalid without a name' do
@@ -19,20 +19,30 @@ describe User do
       @user.name = nil
       # Assert
       expect(@user.valid?).must_equal false
-      expect(@user.errors.messages.include?(:name)).must_equal true
+      expect(@user.errors.messages).must_include :name
+      expect(@user.errors.messages[:name]).must_equal ["can't be blank"]
     end
 
-    it 'is invalid when username is not unique' do
-      User.create!(name: @user.name, date_joined: Date.today)
-      # Assert
-      expect(@user.valid?).must_equal false
-    end
 
     it 'is invalid without a joined date' do
       @user.date_joined = nil
       # Assert
       expect(@user.valid?).must_equal false
       expect(@user.errors.messages.include?(:date_joined)).must_equal true
+    end
+  end
+
+  describe "relationships" do
+    before do
+      # Arrange
+      @user = User.new(name: 'churro', date_joined: Date.today)
+      @work = Work.new(category: "movie", title: "Matrix")
+      @vote = Vote.new(user: @user, work: @work)
+    end
+
+    it "has votes" do
+      # assert
+      expect(@user.votes).must_equal @vote
     end
   end
 end

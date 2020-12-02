@@ -10,16 +10,16 @@ class Work < ApplicationRecord
         return sorted_work.last
     end
 
-    def self.sort_books
-        books = Work.where(category: "book")
-        sorted_books = books.sort_by {|book| book.votes.count }
-        return sorted_books.reverse
-    end
-
     def self.sort_albums
         albums = Work.where(category: "album")
         sorted_albums = albums.sort_by {|album| album.votes.count }
         return sorted_albums.reverse
+    end
+
+    def self.sort_books
+        books = Work.where(category: "book")
+        sorted_books = books.sort_by {|book| book.votes.count }
+        return sorted_books.reverse
     end
 
     def self.sort_movies

@@ -30,7 +30,22 @@
 </ul>
 </div>
 
-<%= button_to "Add a new work", new_work_path, method: :get %>
+<div>
+  <h2>Movies</h2>
+  <ul>
+    <% Work.sort_movies.each do |movie| %>
+      <li>Votes:  <%= movie.votes.count %>
+        <%= link_to movie.title, work_path(movie) %>
+        <%= movie[:creator] %>
+        <%= movie[:publication_year] %>
+        <%= button_to "Upvote", upvote_path(movie.id) %>
+      </li>
+    <% end %>
+
+  </ul>
+</div>
+
+<%= button_to "View Top Media", root_path, method: :get %> <%= button_to "Add a new work", new_work_path, method: :get %>
 
 
 

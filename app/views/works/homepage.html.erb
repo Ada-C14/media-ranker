@@ -5,6 +5,18 @@
 </div>
 
 <section class="top-ten-list-container">
+
+  <section class="top-ten-list">
+    <h2 class="top-ten-header">Top Albums</h2>
+    <% Work.sort_albums.first(10).each do |album| %>
+      <%= link_to album.title, work_path(album) %> by
+      <%= album[:creator] %>
+      <br>
+      <%= album.votes.count %> votes
+      <br>
+    <% end %>
+  </section>
+
   <section class="top-ten-list">
     <h2 class="top-ten-header">Top Movies</h2>
     <% Work.sort_movies.first(10).each do |movie| %>
@@ -23,17 +35,6 @@
     <%= book[:creator] %>
     <br>
     <%= book.votes.count %> votes
-    <br>
-  <% end %>
-  </section>
-
-  <section class="top-ten-list">
-  <h2 class="top-ten-header">Top Albums</h2>
-  <% Work.sort_albums.first(10).each do |album| %>
-    <%= link_to album.title, work_path(album) %> by
-    <%= album[:creator] %>
-    <br>
-    <%= album.votes.count %> votes
     <br>
   <% end %>
   </section>

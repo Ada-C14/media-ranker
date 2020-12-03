@@ -1,0 +1,27 @@
+<% if @work.errors.any? %>
+  <ul class="errors">
+    <% @work.errors.each do |column, message| %>
+      <li>
+        <strong><%= column.capitalize %></strong> <%= message %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
+
+<%= form_with model: @work, class: 'work-form' do |f| %>
+  <p>Please provide the following information to save your work:</p>
+  <div>
+    <%= f.label :category %>
+    <%= f.select :category %> <!--#books genre select creates drop down list-->
+    <%= f.submit "Category" %>
+  </div>
+  <div>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+  <div>
+    <%= f.label :completed_at %>
+    <%= f.text_field :completed_at %>
+  </div>
+  <%= f.submit "Save Work", class: "work-button" %>
+<% end %>

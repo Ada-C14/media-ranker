@@ -1,31 +1,34 @@
-<h2>Add a new work</h2>
+<main>
+  <h2>Add a new work</h2>
+  <section>
+    <%= form_with model: @work do |f| %>
+      <div class="form-group">
+        <%= f.label :category, 'Category'%>
+        <%= f.select :category, options_for_select([['album'], ['book'], ['movie']]), {}, { :class => "form-control" } %>
+      </div>
 
-<%= form_with model: @works, class: 'new-work' do |f| %>
-  <p>Please make changes:</p>
-  <div>
-    <%= f.label :category %>
-    <%= f.select :category, [["movie","movie"], ["album","album"], ["book","book"], ] %> <!--#books genre select creates drop down list-->
-  </div>
-  <div>
-    <%= f.label :title %>
-    <%= f.text_field :title %>
-  </div>
+      <div class="form-group">
+        <%= f.label :title %>
+        <%= f.text_field :title, class: "form-control" %>
+      </div>
 
-  <div>
-    <%= f.label :creator %>
-    <%= f.text_field :creator %>
-  </div>
+      <div class="form-group">
+        <%= f.label :creator %>
+        <%= f.text_field :creator, class: "form-control" %>
+      </div>
 
-  <div>
-    <%= f.label :publication_year %>
-    <%= f.text_field :publication_year%>
-  </div>
+      <div class="form-group">
+        <%= f.label :publication_year, "Publication Year" %>
+        <%= f.text_field :publication_year, class: "form-control" %>
+      </div>
 
-  <div>
-    <%= f.label :description %>
-    <%= f.text_field :description%>
-  </div>
-
-
-  <%= f.submit "Create Work", class: "work-button" %>
-<% end %>
+      <div class="form-group">
+        <%= f.label :description %>
+        <%= f.text_field :description, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <%= f.submit "Create Work", class: "btn btn-primary"%>
+      </div>
+    <% end %>
+  </section>
+</main>

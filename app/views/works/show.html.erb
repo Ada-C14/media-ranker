@@ -1,13 +1,23 @@
 
+  <h2><%=@work.title %></h2>
+  <p>Created by: <%= @work.creator %> </p>
+  <p>Published: <%= @work.publication_year %></p>
+  <p><%= @work.description%></p>
+  <section>
+    <%= link_to "Back to media ranks", root_path, class: "btn btn-primary"%>
+    <%=link_to "Edit", edit_work_path(@work.id), class: "btn btn-primary"%>
+    <%= link_to "Upvote", votes_path(work_id: @work.id), method: :post, class: "btn btn-primary"%>
+    <%=link_to "Delete", destroy_work_path(@work.id), class: "btn btn-primary", method: :delete, data: {confirm: 'Are you sure?'}%>
+  </section>
 
-<div>
-  <h1><%= @work.title %></h1>
-  <h2><%= @work.publication_year %></h2>
-  <h2><%= @work.description %></h2>
-  <%= link_to "Back to media ranks", root_path %>
-  <%= link_to "Edit", edit_work_path(@work) %>
-  <%= link_to "Upvote", work_path(@work) %>
-  <%= link_to "Delete", work_path(@work), method: :delete, data: {confirm: "Are you sure?"}%>
-</div>
-<p>Votes for this album</p>
-#table of votes for user
+  <section class="works-votes__container">
+    <h3 class="works-votes__header"><%=@vote %> Votes for this </h3>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>User</th>
+        <th>Date</th>
+      </tr>
+      </thead>
+    </table>
+  </section>

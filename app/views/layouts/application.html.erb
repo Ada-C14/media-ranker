@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <title>Media Ranker 2.0</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"/>
+    <link href="favicon.ico?v=1.0" rel="icon" type="image/x-icon"/>
+  </head>
+  <body>
+  <header class="app-header__header">
+    <h1>
+      <a href="index.html">Media Ranker</a>
+      <small>Ranking the Best of Everything</small>
+    </h1>
+    <nav class="app-header__nav">
+      <ul class="nav app-header__site-nav-container">
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "View top media", root_path, class: "nav-link"%>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "View all media", works_path, class: "nav-link"%>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "Add a new work", new_work_path, class: "nav-link"%>
+        </li>
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "View all users", users_path, class: "nav-link"%>
+        </li>
+      </ul>
+      <ul class="nav app-header__user-nav-container">
+        <% if @current_user %>
+          <li class="nav-item app-header__nav_item">
+            <%= link_to "Logged in as #{@current_user.name}", current_user_path, class: "btn btn-primary"%>
+          </li>
+          <li class="nav-item app-header__nav_item">
+            <%= link_to "Log Out", logout_path, class: "btn btn-primary", method: :post%>
+          </li>
+          <% else %>
+        <li class="nav-item app-header__nav_item">
+          <%= link_to "Log In", login_path, class: "btn btn-primary"%>
+        </li>
+          <% end %>
+      </ul>
+    </nav>
+  </header>
+
+  <section class ="flash alert__container ">
+<% flash.each do |name, message|  %>
+    <div class="<%= name%> alert"><%= message%> </div>
+    <% end %>
+  </section>
+  <%= yield %>
+  </body>
+</html>
+

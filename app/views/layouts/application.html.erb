@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MediaRanker</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%#= favicon_link_tag asset_path('android-chrome-192x192') %>
+  </head>
+
+  <body>
+    <header class="app-header__header">
+      <h1>
+        <a><%= link_to "Media Ranker", root_path %></a>
+        <small>Ranking the Best of Everything</small>
+      </h1>
+      <nav class="app-header__nav">
+        <ul class="nav app-header__site-nav-container">
+          <li class="nav-item app-header__nav_item"><%= link_to "View top media", root_path, class: "nav-link" %></li>
+          <li class="nav-item app-header__nav_item"><%= link_to "View all media", works_path, method: :get, :class => "nav-link" %></li>
+          <li class="nav-item app-header__nav_item"><%= link_to "Add a new work", new_work_path, method: :get, :class => "nav-link" %></li>
+          <li class="nav-item app-header__nav_item"><%= link_to "View all users", users_path, method: :get, :class => "nav-link" %></li>
+        </ul>
+        <ul class="nav app-header__user-nav-container">
+          <% if User.all.empty? || !(session[:user_id])%>
+           <li class="nav-item app-header__nav_item"><%= button_to "Login", login_path, method: :get, class: "btn btn-primary" %></li>
+          <% elsif session[:user_id] %>
+            <% user = User.find(session[:user_id]) %>
+            <li class="nav-item app-header__nav_item"><%= button_to "Logged in as #{user.name}", current_user_path, method: :get, class: "btn btn-primary" %></li>
+            <li class="nav-item app-header__nav_item"><%= button_to "Logout", logout_path, class: "btn btn-primary" %></li>
+          <% end %>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <section class="alert__container">
+        <% flash.each do |name, message| %>
+          <div class="<%=name%>"><%= message %></div>
+        <% end %>
+      </section>
+      <%= yield %>
+    </main>
+  </body>
+</html>
+

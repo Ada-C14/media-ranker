@@ -1,0 +1,33 @@
+vote1:
+  user: user1
+  work: the_dude
+  created_at: Thu, 12 Nov 2020 22:36:22 UTC +00:00
+
+vote2:
+  user: user1
+  work: moonrise
+
+vote3:
+  user: user1
+  work: work3
+
+vote4:
+  user: user4
+  work: work3
+
+vote5:
+  user: user5
+  work: work5
+
+vote6:
+  user: user6
+  work: work3
+
+vote7:
+  user: user6
+  work: work4
+
+vote8:
+  user: user5
+  work: work4
+

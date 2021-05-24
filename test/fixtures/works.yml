@@ -1,0 +1,111 @@
+the_dude:
+  category: movie
+  title: Big Lebowski
+  creator: Coen Brothers
+  publication_year: 1998
+  description: The dude abides
+  votes_count: 1
+
+moonrise:
+  category: movie
+  title: Moonrise Kingdom
+  creator: Wes Anderson
+  publication_year: 2012
+  description: Loose children
+  votes_count: 1
+
+work3:
+  category: movie
+  title: work3 title
+  creator: work3 creator
+  publication_year: 3
+  description: work3 desc
+  votes_count: 3
+
+work4:
+  category: book
+  title: work4 title
+  creator: work4 creator
+  publication_year: 4
+  description: work4 desc
+  votes_count: 2
+
+work5:
+  category: book
+  title: work5 title
+  creator: work5 creator
+  publication_year: 5
+  description: work5 desc
+  votes_count: 1
+
+work6:
+  category: book
+  title: work6 title
+  creator: work6 creator
+  publication_year: 6
+  description: work6 desc
+  votes_count: 0
+
+work7:
+  category: book
+  title: work7 title
+  creator: work7 creator
+  publication_year: 7
+  description: work7 desc
+  votes_count: 0
+
+work8:
+  category: book
+  title: work8 title
+  creator: work8 creator
+  publication_year: 8
+  description: work8 desc
+  votes_count: 0
+
+work9:
+  category: book
+  title: work9 title
+  creator: work9 creator
+  publication_year: 9
+  description: work9 desc
+  votes_count: 0
+
+work10:
+  category: book
+  title: work10 title
+  creator: work10 creator
+  publication_year: 10
+  description: work10 desc
+  votes_count: 0
+
+work11:
+  category: book
+  title: work11 title
+  creator: work11 creator
+  publication_year: 11
+  description: work11 desc
+  votes_count: 0
+
+work12:
+  category: book
+  title: work11 title
+  creator: work11 creator
+  publication_year: 11
+  description: work11 desc
+  votes_count: 0
+
+work13:
+  category: book
+  title: work11 title
+  creator: work11 creator
+  publication_year: 11
+  description: work11 desc
+  votes_count: 0
+
+work14:
+  category: book
+  title: work11 title
+  creator: work11 creator
+  publication_year: 11
+  description: work11 desc
+  votes_count: 0

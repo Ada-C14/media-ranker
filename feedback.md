@@ -23,7 +23,7 @@ Limit your in-line comments on this one. Also, the manual testing is huge, but c
 | 9. Going back to the URL of this deleted work's show page produces a 404 or some redirect behavior (and does not try to produce a broken view) | ✔️?
 | 10. Verify that the "View all users" page lists no users | ✔️?
 | **Log in** | --
-| 11. Logging in with a valid name changes the UI to "Logged in as" and "Logout" buttons | ✔️?
+| 11. Logging in with a valid username changes the UI to "Logged in as" and "Logout" buttons | ✔️?
 | 12. Your username is listed in "View all users" page | ✔️?
 | 13. Verify that number of votes determines the Media Spotlight | ✔️?
 | 14. Voting on several different pieces of media affects the "Votes" tables shown in the work's show page and the user's show page | ✔️?

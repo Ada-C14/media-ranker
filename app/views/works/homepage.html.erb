@@ -1,0 +1,23 @@
+<% if Work.spotlight %>
+  <section class="spotlight">
+    <h2 class="spotlight__header">
+      <span class="spotlight__header--prefix">Media Spotlight</span>
+      <%= link_to Work.spotlight.title, work_path(Work.spotlight.id), class: "spotlight__link-to" %>
+      by <%= Work.spotlight.creator %>
+    </h2>
+    <p class="spotlight__description">
+      <%= Work.spotlight.votes_count %> votes - <%= Work.spotlight.description %>
+    </p>
+  </section>
+<% else %>
+  <h2 class="spotlight__header">
+    <span class="spotlight__header--prefix">Media Spotlight</span></h2>
+    <p>Top work not available</p>
+<% end %>
+
+<hr class="root__hr">
+<section class="top-ten__container">
+  <%= render partial: "top_ten", locals: { category: "movie" } %>
+  <%= render partial: "top_ten", locals: { category: "book" } %>
+  <%= render partial: "top_ten", locals: { category: "album" } %>
+</section>

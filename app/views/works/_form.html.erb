@@ -1,0 +1,32 @@
+<section>
+  <%= form_with model: @work, class: 'work-form' do |f| %>
+    <div class ="form-group">
+    <label><%= f.label :category %></label>
+      <%= f.select :category, ["album", "book", "movie"] %>
+    </div>
+
+    <div class ="form-group">
+      <label><%= f.label :title %></label>
+      <%= f.text_field :title %>
+    </div>
+
+    <div class ="form-group">
+      <label><%= f.label :creator %></label>
+      <%= f.text_field :creator %>
+    </div>
+
+    <div class ="form-group">
+      <label><%= f.label :publication_year %></label>
+      <%= f.text_field :publication_year %>
+    </div>
+
+    <div class ="form-group">
+      <label><%= f.label :description %></label>
+      <%= f.text_area :description %>
+    </div>
+
+    <div class ="form-group">
+    <%= f.submit button_text, class: "btn btn-primary" %>
+    </div>
+  <% end %>
+</section>

@@ -1,0 +1,9 @@
+<h2>User Summary: <%= @user.name %></h2>
+<p>Joined site: <%= User.date_joined(@user) %></p>
+
+<%= render partial: "table", locals: { category: "votes", action_name: @user } %>
+
+<secton class="btn-group">
+  <%= button_to "See all Users", users_path, method: :get, class: "btn btn-secondary" %>
+  <%= button_to "Back to Media List", root_path, method: :get, class: "btn btn-primary" %>
+</secton>
